@@ -6,8 +6,8 @@ root: intro
 chapters:
 #- file: markdown
 #- file: content/notebooks
-- file: content/Spin_one_half_solutions
+- file: content/qm_postulates
+- file: content/Spin_one_half
 - file: content/linear_variational_method
 - file: content/pib_delta_potential_dynamics
-- file: content/qm_postulates
 #- file: markdown-notebooks
