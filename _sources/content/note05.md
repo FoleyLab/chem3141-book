@@ -1,4 +1,5 @@
-## Spin
+# Additional Notes on Spin
+(note05-spin-info)=
 
 :::{admonition} What You Need to Know
 :class: note
