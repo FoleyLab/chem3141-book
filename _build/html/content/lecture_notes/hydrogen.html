@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>The Hydrogen Atom &#8212; My sample book</title>
+    <title>Chapter 6: The Hydrogen Atom &#8212; My sample book</title>
   
   
   
@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/lecture_notes/hydrogen';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="The Variation Theorem" href="variation.html" />
+    <link rel="next" title="Chapter 7: The Variation Theorem" href="variation.html" />
     <link rel="prev" title="Chapter 5: Angular Momentum, and Rotational Motion" href="rotation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -191,9 +191,9 @@
 <li class="toctree-l1"><a class="reference internal" href="translation.html">Chapter 3: Translational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vibration.html">Chapter 4: Vibrational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">The Hydrogen Atom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="variation.html">The Variation Theorem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="perturbation.html">Perturbation Theory</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 6: The Hydrogen Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variation.html">Chapter 7: The Variation Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="perturbation.html">Chapter 8: Perturbation Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SphHarm_visualize.html">Visualizing Spherical harmonics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
@@ -449,7 +449,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>The Hydrogen Atom</h1>
+    <h1>Chapter 6: The Hydrogen Atom</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -480,8 +480,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="the-hydrogen-atom">
-<h1>The Hydrogen Atom<a class="headerlink" href="#the-hydrogen-atom" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-the-hydrogen-atom">
+<h1>Chapter 6: The Hydrogen Atom<a class="headerlink" href="#chapter-6-the-hydrogen-atom" title="Link to this heading">#</a></h1>
 <p>Prof. Eugene DePrince, Florida State University</p>
 <p>The last few notebooks have considered analytically solvable model problems involving translational, vibrational, and rotational motion of quantum particles. Here, we consider a hydrogenic atom (a nucleus plus a single electron), which is the most complex problem for which we can find a closed-form analytic solution. This notebook outlines the solution to the time-independent Schrödinger equation for a hydrogenic atom and provides Python code to visualize and interpret the resulting wave functions.</p>
 <section id="the-hamiltonian">
@@ -1331,11 +1331,11 @@ The most likely radius for a 3s electron is 13.1 a0
 &lt;r&gt; for a 3s electron is 11.6 a0
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_60991/2882782782.py:30: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_66199/2882782782.py:30: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   average_r_1 = np.trapz(P10 * r, x = r)
-/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_60991/2882782782.py:31: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_66199/2882782782.py:31: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   average_r_2 = np.trapz(P20 * r, x = r)
-/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_60991/2882782782.py:32: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_66199/2882782782.py:32: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   average_r_3 = np.trapz(P30 * r, x = r)
 </pre></div>
 </div>
@@ -1397,11 +1397,11 @@ The most likely radius for a 3d electron is  9.0 a0
 &lt;r&gt; for a 3d electron is 10.0 a0
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_60991/1190049772.py:32: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_66199/1190049772.py:32: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   average_r_s = np.trapz(P30 * r, x = r)
-/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_60991/1190049772.py:33: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_66199/1190049772.py:33: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   average_r_p = np.trapz(P31 * r, x = r)
-/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_60991/1190049772.py:34: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_66199/1190049772.py:34: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   average_r_d = np.trapz(P32 * r, x = r)
 </pre></div>
 </div>
@@ -1582,7 +1582,7 @@ e^{\pm i\phi} = \cos(\phi) \pm \sin(\phi)
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The Variation Theorem</p>
+        <p class="prev-next-title">Chapter 7: The Variation Theorem</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

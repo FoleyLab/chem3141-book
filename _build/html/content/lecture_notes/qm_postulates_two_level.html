@@ -191,9 +191,9 @@
 <li class="toctree-l1"><a class="reference internal" href="translation.html">Chapter 3: Translational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vibration.html">Chapter 4: Vibrational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydrogen.html">The Hydrogen Atom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="variation.html">The Variation Theorem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="perturbation.html">Perturbation Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydrogen.html">Chapter 6: The Hydrogen Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variation.html">Chapter 7: The Variation Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="perturbation.html">Chapter 8: Perturbation Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SphHarm_visualize.html">Visualizing Spherical harmonics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
@@ -576,21 +576,28 @@ document.write(`
 <p>For spin 1/2 systems, any wavefunction can be represented as a vector with 2 complex numbers, corresponding to the amplitudes for the two possible spin states along a chosen axis (typically the z-axis).</p>
 <section id="examples">
 <h3>Examples:<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
-<p><strong>Spin-up along z-axis:</strong>
-$<span class="math notranslate nohighlight">\(|\uparrow_z\rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\)</span>$</p>
-<p><strong>Spin-down along z-axis:</strong>
-$<span class="math notranslate nohighlight">\(|\downarrow_z\rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\)</span>$</p>
-<p><strong>General spin 1/2 state:</strong>
-$<span class="math notranslate nohighlight">\(|\psi\rangle = a \begin{pmatrix} 1 \\ 0 \end{pmatrix} + b \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} a \\ b \end{pmatrix}\)</span>$</p>
+<p><strong>Spin-up along z-axis:</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}|\uparrow_z\rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\end{split}\]</div>
+<p><strong>Spin-down along z-axis:</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}|\downarrow_z\rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\end{split}\]</div>
+<p><strong>General spin 1/2 state:</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}|\psi\rangle = a \begin{pmatrix} 1 \\ 0 \end{pmatrix} + b \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} a \\ b \end{pmatrix}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are complex numbers called probability amplitudes, and the normalization condition requires <span class="math notranslate nohighlight">\(|a|^2 + |b|^2 = 1\)</span>.</p>
-<p><strong>Note on some common conventions:</strong> Chemists will often refer to electrons with spin-up along z as <span class="math notranslate nohighlight">\(\alpha\)</span> electrons, and electrons with spin-down along z as <span class="math notranslate nohighlight">\(\beta\)</span> electrons.  In that case, we might refer to the quantum states as
-$<span class="math notranslate nohighlight">\(|\uparrow_z\rangle = |\alpha\rangle \)</span><span class="math notranslate nohighlight">\(
-and 
-\)</span><span class="math notranslate nohighlight">\(|\downarrow_z\rangle = |\beta\rangle. \)</span>$</p>
-<p>Near the end of the term, we will hopefully discuss quantum information science and the concepts of <a class="reference external" href="https://en.wikipedia.org/wiki/Qubit">qubits</a>, for which the formalism of spin 1/2 plays an important role.  In that context, the state with spin-up along z is typically denoted <span class="math notranslate nohighlight">\(|0\rangle\)</span> and the state with spin-down along z is typically denoted <span class="math notranslate nohighlight">\(|1\rangle\)</span>.  So, let’s keep in mind that we might see the following labels used interchangeably in our careers!
-$<span class="math notranslate nohighlight">\(|\uparrow_z\rangle = |\alpha\rangle  = |0\rangle\)</span><span class="math notranslate nohighlight">\(
-and 
-\)</span><span class="math notranslate nohighlight">\(|\downarrow_z\rangle = |\beta\rangle = |1\rangle. \)</span>$</p>
+<p><strong>Note on some common conventions:</strong> Chemists will often refer to electrons with spin-up along z as <span class="math notranslate nohighlight">\(\alpha\)</span> electrons, and electrons with spin-down along z as <span class="math notranslate nohighlight">\(\beta\)</span> electrons.  In that case, we might refer to the quantum states as</p>
+<div class="math notranslate nohighlight">
+\[|\uparrow_z\rangle = |\alpha\rangle \]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[|\downarrow_z\rangle = |\beta\rangle. \]</div>
+<p>Near the end of the term, we will hopefully discuss quantum information science and the concepts of <a class="reference external" href="https://en.wikipedia.org/wiki/Qubit">qubits</a>, for which the formalism of spin 1/2 plays an important role.  In that context, the state with spin-up along z is typically denoted <span class="math notranslate nohighlight">\(|0\rangle\)</span> and the state with spin-down along z is typically denoted <span class="math notranslate nohighlight">\(|1\rangle\)</span>.  So, let’s keep in mind that we might see the following labels used interchangeably in our careers!</p>
+<div class="math notranslate nohighlight">
+\[|\uparrow_z\rangle = |\alpha\rangle  = |0\rangle\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[|\downarrow_z\rangle = |\beta\rangle = |1\rangle. \]</div>
 <p>It is often frustrating to students that there are many different conventions used in quantum mechanics (actually, this isn’t unique to quantum mechanics).  While we will try to use consistent notation, it is also important to understand the abstraction inherent in how we talk about quantum mechanics and express problems and situations in mathematical language.  What we can reliably do when talking about some quantum system is describe its properties and different rules that it obeys, and if you as a student can think clearly about these properties and rules, differences in notation will be much less troubling.</p>
 </section>
 </section>
