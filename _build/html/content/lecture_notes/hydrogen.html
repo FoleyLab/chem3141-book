@@ -1,0 +1,1664 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Hydrogen Atom &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/lecture_notes/hydrogen';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Perturbation Theory" href="perturbation.html" />
+    <link rel="prev" title="5. Hydrogen Atom" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    5. Hydrogen Atom
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">The Hydrogen Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="perturbation.html">Perturbation Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qm_postulates.html">Chapter 1: The Postulates of Quantum Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rotation.html">Angular Momentum, Rotational Motion, and Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SphHarm_visualize.html">Visualizing Spherical harmonics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translation.html">Translational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variation.html">The Variation Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vibration.html">Vibrational Motion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_1.html">Problem Set 1</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">Run the next two cells before beginning!</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Zeeman_Effect_Hydrogen_Atom.html">Solution</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/CO_Perturbation_Theory.html">Computing Fundamental Transition of CO under different levels of approximation</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/hydrogen_wavefunctions.html">DEMO: H wavefunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/linear_variational_method.html">Linear Variational Method</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/note05.html">Additional Notes on Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/pib_delta_potential_dynamics.html">Dynamics of particle in a box with a delta potential</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Chapter 2: Introduction to Spin 1/2</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/formula_sheet.html">Useful Formulae</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note01.html">Hydrogenlike atoms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note03.html">Atomic orbitals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note05.html">Additional Notes on Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/spin_background.html">Spin</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/FoleyLab/chem3141-book/blob/main/content/lecture_notes/hydrogen.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/FoleyLab/chem3141-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FoleyLab/chem3141-book/issues/new?title=Issue%20on%20page%20%2Fcontent/lecture_notes/hydrogen.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/lecture_notes/hydrogen.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Hydrogen Atom</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hamiltonian">The Hamiltonian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-radial-equation">The Radial Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-functions-and-radial-distribution-functions">Wave Functions and Radial Distribution Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-ground-state-wave-function-n-1">The Ground-State Wave Function (<span class="math notranslate nohighlight">\(n = 1\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excited-state-wave-functions-n-1">Excited-State Wave Functions (<span class="math notranslate nohighlight">\(n &gt; 1\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#radial-distribution-functions">Radial Distribution Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-valued-hydrogenic-orbitals">Real-Valued Hydrogenic Orbitals</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection Rules</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-hydrogen-atom">
+<h1>The Hydrogen Atom<a class="headerlink" href="#the-hydrogen-atom" title="Link to this heading">#</a></h1>
+<p>The last few notebooks have considered analytically solvable model problems involving translational, vibrational, and rotational motion of quantum particles. Here, we consider a hydrogenic atom (a nucleus plus a single electron), which is the most complex problem for which we can find a closed-form analytic solution. This notebook outlines the solution to the time-independent Schrödinger equation for a hydrogenic atom and provides Python code to visualize and interpret the resulting wave functions.</p>
+<section id="the-hamiltonian">
+<h2>The Hamiltonian<a class="headerlink" href="#the-hamiltonian" title="Link to this heading">#</a></h2>
+<p>Consider the Hamiltonian for an electron interacting with a nucleus of mass, <span class="math notranslate nohighlight">\(m_\text{n}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H} = -\frac{\hbar^2}{2m_\text{e}}\nabla_\text{e}^2  - \frac{\hbar^2}{2m_\text{n}}\nabla_\text{n}^2 + V(r)
+\end{align}\]</div>
+<p>where the subscripts “e” and “n” refer to the electron and respectively, respectively, <span class="math notranslate nohighlight">\(r\)</span> refers to the distance between the electron and nucleus</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\vec{r} &amp;= \vec{r}_\text{n} - \vec{r}_\text{e} \\
+r &amp;= |\vec{r}|
+\end{align}\end{split}\]</div>
+<p>The potential is the Coulomb potential</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V(r) = -\frac{Z e^2}{4 \pi \epsilon_0 r}
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(Z\)</span> is the atomic number for the nucleus, <span class="math notranslate nohighlight">\(e\)</span> represents the magnitude of the charge of an electron, and <span class="math notranslate nohighlight">\(\epsilon_0\)</span> is the permittivity of free space. As written, this Hamiltonian is not separable, but, as discussed in the previous notebook, we can re-express it in a separable form by performing a coordinate transformation. Specifically, we represent the Hamiltonian using the inter-particle coordinate, <span class="math notranslate nohighlight">\(\vec{r},\)</span> and the center-of-mass coordinate, defined by</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\vec{R} = \frac{m_\text{e} \vec{r}_\text{e} + m_\text{n} \vec{r}_\text{n}}{m_\text{e} + m_\text{n}}
+\end{align}\]</div>
+<p>With these coordinates, the Hamiltonian is expressible as</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H} = -\frac{\hbar^2}{2M}\nabla_M^2  - \frac{\hbar^2}{2\mu}\nabla_\mu^2 + V(r)
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu\)</span> is the reduced mass defined by</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\mu = \frac{m_\text{e}m_\text{n}}{m_\text{e} + m_\text{n}}
+\end{align}\]</div>
+<p>and <span class="math notranslate nohighlight">\(\nabla_M^2\)</span> and <span class="math notranslate nohighlight">\(\nabla_\mu^2\)</span> are Laplacians for the center-of-mass and inter-particle coordinates, respectively. This Hamiltonian is separable in <span class="math notranslate nohighlight">\(\vec{R}\)</span> (the first term) and <span class="math notranslate nohighlight">\(\vec{r}\)</span> (the second and third terms). As discussed in the previous notebook, this structure implies that the wave function will be a product wave function</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\psi(\vec{R}, \vec{r}) = \psi_M(\vec{R}) \psi_\mu(\vec{r})
+\end{align}\]</div>
+<p>and the energy will be expressible as a sum</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+E = E_M + E_\mu
+\end{align}\]</div>
+<p>We are free to determine these wave functions and energies from separate one-particle Schrödinger equations</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{H}_M \psi_M(\vec{R}) &amp;= E_M \psi_M(\vec{R}) \\
+\hat{H}_\mu \psi_\mu(\vec{r}) &amp;= E_\mu \psi_\mu(\vec{r})
+\end{align}\end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{H}_M  &amp;= -\frac{\hbar^2}{2M}\nabla_M^2  \\
+\hat{H}_\mu &amp;= - \frac{\hbar^2}{2\mu}\nabla_\mu^2 + V(r) 
+\end{align}\end{split}\]</div>
+<p>The center-of-mass problem resembles the free-particle problem, and <span class="math notranslate nohighlight">\(E_M\)</span> is thus simply the non-quantized translational energy for the hydrogenic atom as a whole. The inter-particle part of the problem is much more interesting and is the source of the quantization of the energy levels for the system. Thus, for the remainder of this notebook, we focus only on the <span class="math notranslate nohighlight">\(\mu\)</span> dependent part of the problem and suppress the subscript <span class="math notranslate nohighlight">\(\mu,\)</span> for simplicity. We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H} &amp;= - \frac{\hbar^2}{2\mu}\nabla^2 - \frac{Ze^2}{4\pi\epsilon_0 r}
+\end{align}\]</div>
+<p>Note that the Coulomb potential is <strong>spherically symmetrical</strong>, i.e., it depends only on the distance between the electron and nucleus, so the hydrogenic atom problem is thus a <strong>central force problem</strong>. As discussed in the previous notebook, the wave function for a central force problem is factorizable as</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi(r, \theta, \phi) = R(r) Y^m_l(\theta, \phi)
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(R(r)\)</span> is a radial wave function and the functions <span class="math notranslate nohighlight">\(Y^m_l(\theta, \phi)\)</span> are spherical harmonics. From this expression, it appears that the hydrogenic atom wave functions will be eigenfunctions of the operators for the square of the orbital angular momentum <span class="math notranslate nohighlight">\((\hat{L}^2)\)</span> and the <span class="math notranslate nohighlight">\(z\)</span> projection of the angular momentum <span class="math notranslate nohighlight">\((\hat{L}_z).\)</span></p>
+<p>The existence of simultaneous eigenfunctions of <span class="math notranslate nohighlight">\(\hat{H},\)</span> <span class="math notranslate nohighlight">\(\hat{L}^2,\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z\)</span> implies that these operators should all commute with one another. We already know from the last notebook that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+[\hat{L}^2, \hat{L}_z] = 0
+\end{align}\]</div>
+<p>Let us confirm that the Hamiltonian commutes with the <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z\)</span> operators. First, consider the commutator with <span class="math notranslate nohighlight">\(\hat{L}^2\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+[\hat{H}, \hat{L}^2] &amp;= [\hat{T}, \hat{L}^2] + [V(r), \hat{L}^2] \\
+&amp;= [\hat{T}, \hat{L}^2]
+\end{align}\end{split}\]</div>
+<p>where the commutator involving <span class="math notranslate nohighlight">\(V(r)\)</span> must be zero because, as we learned in the previous notebook, <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> does not contain any derivatives with respect to <span class="math notranslate nohighlight">\(r.\)</span> We also recall from the previous notebook that the kinetic energy operator can be expressed in spherical polar coordinates as</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\hat{T} = -\frac{\hbar^2}{2\mu}\left ( \frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r} \right ) + \frac{1}{2\mu r^2}\hat{L}^2
+\end{align}
+\]</div>
+<p>Now,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+[\hat{T}, \hat{L}^2] &amp;= -\frac{\hbar^2}{2\mu}\left [ \frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r} , \hat{L}^2\right ] + \frac{1}{2\mu r^2}[\hat{L}^2, \hat{L}^2] \\
+&amp;= 0
+\end{align}\end{split}\]</div>
+<p>The first term on the right-hand side of the commutator is zero because <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> does not contain any derivatives with respect to <span class="math notranslate nohighlight">\(r,\)</span> and the second term vanishes because the commutator of any operator with itself is zero. As such, we can safely say that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+[\hat{H}, \hat{L}^2] &amp;= 0
+\end{align}\]</div>
+<p>as expected. Similarly, for the commutator of <span class="math notranslate nohighlight">\(\hat{H}\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+[\hat{H}, \hat{L}_z] &amp;= -\frac{\hbar^2}{2\mu}\left [ \frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r} , \hat{L}_z\right ] + \frac{1}{2\mu r^2}[\hat{L}^2, \hat{L}_z] + [V(r), \hat{L}_z] \\
+&amp;= 0
+\end{align}\end{split}\]</div>
+<p>where the first and third terms vanish because <span class="math notranslate nohighlight">\(\hat{L}_z\)</span> does not contain any derivatives with respect to <span class="math notranslate nohighlight">\(r,\)</span> and the second term vanishes because <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z\)</span> commute.</p>
+</section>
+<section id="the-radial-equation">
+<h2>The Radial Equation<a class="headerlink" href="#the-radial-equation" title="Link to this heading">#</a></h2>
+<p>We have already noted that the hydrogenic atom problem is a central force problem, and, as a result, the wave function is factorizable as</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi(r, \theta, \phi) = R(r) Y^m_l(\theta, \phi)
+\end{align}\]</div>
+<p>These functions are eigenfunctions of <span class="math notranslate nohighlight">\(\hat{H},\)</span> <span class="math notranslate nohighlight">\(\hat{L}^2,\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z\)</span> satisfying</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{H} R(r) Y^m_l(\theta, \phi) &amp;= E R(r) Y^m_l(\theta, \phi) \\
+\hat{L}^2 R(r) Y^m_l(\theta, \phi) &amp;= l(l+1)\hbar^2 R(r) Y^m_l(\theta, \phi) \\
+\hat{L}_z R(r) Y^m_l(\theta, \phi) &amp;= m \hbar R(r) Y^m_l(\theta, \phi) \\
+\end{align}\end{split}\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+l &amp;= 0, 1, 2, ... \\
+m &amp;= 0, \pm 1, \pm 2, ... \pm l
+\end{align}\end{split}\]</div>
+<p>We can use the fact that <span class="math notranslate nohighlight">\(\psi(r, \theta, \phi)\)</span> is an eigenfunction of <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> to simplify the Schrödinger equation because</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{T} R(r)Y^m_l(\theta, \phi) &amp;= -\frac{\hbar^2}{2\mu} \left ( \frac{d^2 R(r)}{d r^2} + \frac{2}{r}\frac{d R(r)}{d r} \right )Y^m_l(\theta, \phi) + R(r)\frac{1}{2\mu r^2}\hat{L}^2Y^m_l(\theta, \phi) \\
+&amp;= -\frac{\hbar^2}{2\mu} \left ( R^{\prime\prime}(r) + \frac{2}{r}R^\prime(r) \right )Y^m_l(\theta, \phi) + \frac{l(l+1)\hbar^2}{2\mu r^2}R(r)Y^m_l(\theta, \phi)
+\end{align}\end{split}\]</div>
+<p>The Schrödinger equation then reads</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{H} R(r)Y^m_l(\theta, \phi) &amp;= E R(r)Y^m_l(\theta, \phi) \\
+\left [ -\frac{\hbar^2}{2\mu} \left ( R^{\prime\prime}(r) + \frac{2}{r}R^\prime(r) \right ) + \left ( \frac{l(l+1)\hbar^2}{2\mu r^2} + V(r) \right ) R(r) \right ] Y^m_l(\theta, \phi) &amp;= E R(r)Y^m_l(\theta, \phi) \\
+-\frac{\hbar^2}{2\mu} \left ( R^{\prime\prime}(r) + \frac{2}{r}R^\prime(r) \right ) + \left ( \frac{l(l+1)\hbar^2}{2\mu r^2} + V(r) \right ) R(r) &amp;= E R(r) \\
+\end{align}\end{split}\]</div>
+<p>where the last line is the <strong>radial equation</strong> for the hydrogenic atom problem.</p>
+<p>We can get some idea of what the form of the radial function that satisfies the radial equation should be by inspecting various limits. First, let us assume that the energy, <span class="math notranslate nohighlight">\(E\)</span> is non-negative and then consider the limit that <span class="math notranslate nohighlight">\(r\)</span> becomes large. In this case, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\lim_{r\to\infty} \frac{1}{r} &amp;= 0 \\
+\lim_{r\to\infty} \frac{1}{r^2} &amp;= 0 \\
+\lim_{r\to\infty} V(r) &amp;= 0
+\end{align}\end{split}\]</div>
+<p>so the radial equation reduces to</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+-\frac{\hbar^2}{2\mu} R^{\prime\prime}(r) &amp;= E R(r)
+\end{align}\]</div>
+<p>which has possible solutions of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+R(r) = e^{\pm i(2 \mu E / \hbar^2)^{1/2} r}
+\end{align}\]</div>
+<p>If <span class="math notranslate nohighlight">\(E\)</span> is non-negative, then the radial function would be a complex exponential function, and the resulting state would represent an electron that is not bound to the nucleus (an ionized state). All non-negative energies are allowed, so there exists a continuum of these unbound states.</p>
+<p>Let us now consider states with <span class="math notranslate nohighlight">\(E &lt; 0,\)</span> which we will soon find are bound states. Before inspecting any limits, we note with <b><font color='red'>i</font><font color='orange'>n</font><font color='yellow'>f</font><font color='green'>i</font><font color='blue'>n</font><font color='indigo'>i</font><font color='violet'>t</font><font color='red'>e</font> <font color='orange'>w</font><font color='yellow'>i</font><font color='green'>s</font><font color='blue'>d</font><font color='indigo'>o</font><font color='violet'>m</font></b> that it will be useful to first rearrange the radial equation and then make some clever substitutions. Rearranging the radial equation and multiplying through by <span class="math notranslate nohighlight">\(\frac{2\mu r^2}{\hbar^2}\)</span> leads to</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+-r^2\left ( R^{\prime \prime} + \frac{2}{r} R^\prime \right ) + l(l+1) R + \frac{2\mu r^2}{\hbar^2} [V(r) - E]R = 0
+\end{align}\]</div>
+<p>where we have suppressed the <span class="math notranslate nohighlight">\(r\)</span> dependence of the function, <span class="math notranslate nohighlight">\(R.\)</span> Having already noted how clever we are, we recognize that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+r^2\left ( R^{\prime \prime} + \frac{2}{r} R^\prime \right ) = \frac{d}{dr} \left( r^2 \frac{dR}{dr} \right)
+\end{align}\]</div>
+<p>which gives us</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+-\frac{d}{dr} \left( r^2 \frac{dR}{dr} \right) + \left ( l(l+1)  + \frac{2\mu r^2}{\hbar^2} [V(r) - E]\right ) R = 0
+\end{align}\]</div>
+<p>Now, we introduce an auxiliary function</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+u(r) = rR(r)
+\end{align}\]</div>
+<p>and represent <span class="math notranslate nohighlight">\(R(r)\)</span> and its derivatives in terms of <span class="math notranslate nohighlight">\(u(r)\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+R &amp;= \frac{u}{r} \\
+\frac{dR}{dr} &amp;= \frac{du}{dr}\frac{1}{r} - \frac{u}{r^{2}} \\
+r^2\frac{dR}{dr} &amp;= r \frac{du}{dr} - u \\
+\frac{d}{dr}r^2\frac{dR}{dr} &amp;= \frac{du}{dr} + r\frac{d^2u}{dr^2} - \frac{d u}{dr} \\
+&amp;= r\frac{d^2u}{dr^2}
+\end{align}\end{split}\]</div>
+<p>where we have suppressed the <span class="math notranslate nohighlight">\(r\)</span> dependence of the functions, <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(u.\)</span></p>
+<p>We can now write the radial equation in terms of <span class="math notranslate nohighlight">\(u(r)\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+-r\frac{d^2u}{dr^2} + \left ( \frac{l(l+1)}{r} + \frac{2\mu r}{\hbar^2} [V(r) - E] \right ) u = 0
+\end{align}\]</div>
+<p>If we then multiply through by <span class="math notranslate nohighlight">\(\frac{\hbar^2}{2\mu E r}\)</span> and rearrange, we obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+-\frac{\hbar^2}{2\mu E} \frac{d^2 u}{dr^2} = \left [1 - \frac{V(r)}{E} - \frac{\hbar^2}{2\mu E} \frac{l(l+1)}{r^2} \right ] u
+\end{align}\]</div>
+<p>We simplify our notation by introducing a real-valued constant</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+k = \left ( \frac{-2\mu E}{\hbar^2} \right ) ^{1/2}
+\end{align}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E = -\frac{k^2\hbar^2}{2\mu}
+\end{align}\]</div>
+<p>to give</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{1}{k^2} \frac{d^2 u}{dr^2} = \left [1 - \frac{2\mu V(r)}{k^2\hbar^2} + \frac{l(l+1)}{(kr)^2} \right ] u
+\end{align}\]</div>
+<p>At this point, in a moment of sheer brilliance, we decide that it may be worth reminding ourselves of the actual form of the potential,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V(r) = -\frac{Ze^2}{4\pi \epsilon_0 r}
+\end{align}\]</div>
+<p>which, for kicks, we decide to insert into the radial equation in an enticing way</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{1}{k^2} \frac{d^2 u}{dr^2} = \left [1 - \frac{\mu Z e^2}{2\pi \epsilon_0 \hbar^2 k }\left ( \frac{1}{kr} \right)  + l(l+1) \left ( \frac{1}{kr} \right )^2 \right ] u
+\end{align}\]</div>
+<p>Aha! It seems like a change of variables might be in order. Let us select</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\rho = k r 
+\end{align}\]</div>
+<p>lump as many constants as possible into a single constant, <span class="math notranslate nohighlight">\(\bar{\rho},\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\bar{\rho} = \frac{\mu Z e^2}{2\pi\epsilon_0\hbar^2 k}
+\end{align}\]</div>
+<p>and replace <span class="math notranslate nohighlight">\(\frac{d}{dr}\)</span> using the chain rule</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{d}{dr} = \frac{d\rho}{d r}\frac{d}{d\rho} = k\frac{d}{d\rho}
+\end{align}\]</div>
+<p>At long last, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{d^2 u}{d \rho^2} = \left [ 1 - \frac{\bar{\rho}}{\rho} + \frac{l(l+1)}{\rho^2}\right ] u
+\end{align}\]</div>
+<p>which does not seem so bad!</p>
+<p>At this point, we may begin inspecting limits to get an idea of the functional form for <span class="math notranslate nohighlight">\(u(\rho)\)</span>. Let us start with the limit or large <span class="math notranslate nohighlight">\(\rho\)</span> or <span class="math notranslate nohighlight">\(r.\)</span> In this limit</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{d u(\rho)}{d\rho^2} = u(\rho)
+\end{align}\]</div>
+<p>This equation has a general solution</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+u(\rho) = A e^{-\rho} + Be^{\rho}
+\end{align}\]</div>
+<p>However, because</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\lim_{\rho\to\infty} e^{\rho} = \infty
+\end{align}\]</div>
+<p>we must choose <span class="math notranslate nohighlight">\(B=0,\)</span> and, as a result, we expect that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+u(\rho) \sim Ae^{-\rho}
+\end{align}\]</div>
+<p>in the limit that <span class="math notranslate nohighlight">\(\rho\)</span> becomes large.</p>
+<p>Now, let us consider the limit that <span class="math notranslate nohighlight">\(\rho\)</span> approaches zero. In this limit, we expect the <span class="math notranslate nohighlight">\(l(l+1)\)</span> term to dominate and have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{d u(\rho)}{d\rho^2} = \frac{l(l+1)}{\rho^2} u(\rho)
+\end{align}\]</div>
+<p>We put on our differential equations hats and note that the presence of <span class="math notranslate nohighlight">\(\frac{1}{\rho^2}\)</span> suggests that <span class="math notranslate nohighlight">\(u(\rho)\)</span> may be a polynomial in <span class="math notranslate nohighlight">\(\rho.\)</span> Indeed, a general solution to this equation would be</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+u(\rho) = C \rho^{l+1} + D \rho^{-l}
+\end{align}\]</div>
+<p>We note, however, that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\lim_{\rho\to 0} \rho^{-l} = \infty
+\end{align}\]</div>
+<p>for non-zero <span class="math notranslate nohighlight">\(l,\)</span> so we must choose <span class="math notranslate nohighlight">\(D=0,\)</span> and, as a result, we expect that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+u(\rho) \sim C\rho^{l+1}
+\end{align}\]</div>
+<p>in the limit that <span class="math notranslate nohighlight">\(\rho\)</span> approaches zero.</p>
+<blockquote>
+<div><p>Practice</p>
+<blockquote>
+<div><p>Question 1</p>
+<p>Show that
+$<span class="math notranslate nohighlight">\(\begin{align}
+u(\rho) = C \rho^{l+1} + D \rho^{-l}
+\end{align}\)</span><span class="math notranslate nohighlight">\(
+is a solution to the differential equation
+\)</span><span class="math notranslate nohighlight">\(\begin{align}
+\frac{d u(\rho)}{d\rho^2} = \frac{l(l+1)}{\rho^2} u(\rho)
+\end{align}\)</span>$</p>
+</div></blockquote>
+</div></blockquote>
+<p>Having established the form of <span class="math notranslate nohighlight">\(u(\rho)\)</span> in the limits of large and small <span class="math notranslate nohighlight">\(\rho,\)</span> we now must find a functional form that satisfies the radial equation while stitching together these two limits. We choose</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+u(\rho) = \rho^{l+1} e^{-\rho} w(\rho)
+\end{align}\]</div>
+<p>and seek a power-series solution to the radial equation with</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+w(\rho) = \sum_{j=0}^\infty c_j \rho^j
+\end{align}\]</div>
+<p>We probably all agree that we have suffered through enough math for one day, so the interested reader is directed to Chapter 6 of Levine’s <a class="reference external" href="https://www.amazon.com/Quantum-Chemistry-7th-Ira-Levine/dp/0321803450">Quantum Chemistry textbook</a>, which provides a detailed solution to the remainder of this problem. In short, after a bit of calculus and algebra, one finds a two-term recursion relation for the series expansion coefficients:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+c_{j+1} = \frac{2(l+j+1) - \bar{\rho}}{(2l+2+j)(j+1)}c_j
+\end{align}\]</div>
+<p>Even with this recursion relation, our job is not done. We must ensure that the resulting wave function is well behaved. To do so, we will proceed in a similar manner as when we studied the quantum harmonic oscillator problem. In the limit that <span class="math notranslate nohighlight">\(j\)</span> becomes large, the series expansion coefficients have the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+c_{j+1} = \frac{2}{j+1}c_j
+\end{align}\]</div>
+<p>If this was exactly the form of the series, then we could state</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+c_j = \frac{2^j}{j!} c_0
+\end{align}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+w(\rho) &amp;= c_0 \sum_{j=0}^\infty \frac{2^j}{j!}\rho^j \\
+&amp;= c_0e^{2\rho}
+\end{align}\end{split}\]</div>
+<p>Inserting this result into our expression for <span class="math notranslate nohighlight">\(u(\rho)\)</span> gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+u(\rho) = c_0 \rho^{l+1} e^{\rho}
+\end{align}\]</div>
+<p>which is not well behaved when <span class="math notranslate nohighlight">\(\rho\to\infty\)</span>! So, as was the case in the quantum harmonic oscillator and the particle-on-a-sphere models, the power series expansion for <span class="math notranslate nohighlight">\(w(\rho)\)</span> must truncate at some point, with <span class="math notranslate nohighlight">\(j = j_\text{max},\)</span> in order for the wave function to be well behaved. At <span class="math notranslate nohighlight">\(j_\text{max}\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[ c_{j_\text{max}} = 0 = 2(l + j_\text{max} + 1) - \bar{\rho}\]</div>
+<p>At this point, we introduce a new quantum number, <span class="math notranslate nohighlight">\(n = l + j_\text{max} + 1,\)</span> which we will call the <strong>principal quantum number</strong>. We can see that <span class="math notranslate nohighlight">\(l \le n - 1\)</span> and the minimum value for <span class="math notranslate nohighlight">\(n\)</span> is one, just like we learn in our general chemistry courses.</p>
+<p>The principle quantum number is related to the energy of the hydrogenic atom, but it will take just a bit more algebra to see exactly how. We know that <span class="math notranslate nohighlight">\(\bar{\rho} = 2n,\)</span> and that <span class="math notranslate nohighlight">\(\bar{\rho}\)</span> is related to a number of fundamantal constants. We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\bar{\rho} = 2n &amp;= \frac{\mu Z e^2}{2\pi\epsilon_0\hbar^2 k} \\
+\end{align}\end{split}\]</div>
+<p>and thus</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+4n^2 &amp;= \frac{\mu^2 Z^2 e^4}{4\pi^2\epsilon_0^2\hbar^4 k^2} \\
+\end{align}\end{split}\]</div>
+<p>Recall that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+k = \left ( \frac{-2\mu E}{\hbar^2} \right ) ^{1/2}
+\end{align}\]</div>
+<p>which, when inserted into the previous expression, leads to</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E_n = -\frac{\mu}{2\hbar^2}\left ( \frac{Ze}{4\pi\epsilon_0} \right )^2 \left ( \frac{1}{n^2} \right )
+\end{align}\]</div>
+<p>This result is somewhat remarkable in the sense that it is identical to the energy from the Bohr model of the hydrogen atom (perhaps to within the difference between <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(m_\text{e}\)</span>), despite the fact that Bohr’s model is build on incorrect physics. Regardless, from this expression, it is clear that the energy of the hydrogenic atom is quantized, and that the energy levels become more closely spaced as <span class="math notranslate nohighlight">\(n\)</span> increases. Moreover, for each value of <span class="math notranslate nohighlight">\(n\)</span>, there are <span class="math notranslate nohighlight">\(n\)</span> possible values of the orbital angular momentum quantum number, <span class="math notranslate nohighlight">\(l,\)</span> and <span class="math notranslate nohighlight">\(2l+1\)</span> possible values of the magnetic quantum number, <span class="math notranslate nohighlight">\(m,\)</span> for each <span class="math notranslate nohighlight">\(l\)</span> value:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+n &amp;= 1, 2, 3 ... \\
+l &amp;= 0, 1, 2 ... n-1 \\
+m &amp;= 0, \pm 1, \pm 2, ... \pm l
+\end{align}\end{split}\]</div>
+<p>Because the energy depends only on the principal quantum number, each energy level has an overall degeneracy equal to <span class="math notranslate nohighlight">\(n^2.\)</span></p>
+<p>The following Python code illustrates how the energy levels become more closely spaced as the principal quantum number increases. For this example, we consider a hydrogen atom (<span class="math notranslate nohighlight">\(Z=1\)</span>). Because the mass of the proton, <span class="math notranslate nohighlight">\(m_\text{p},\)</span> is much greater than the mass of the electron, we approximate the reduced mass as</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\mu = \frac{m_\text{e} m_\text{p}}{m_\text{e} + m_\text{p}} \approx m_\text{e}
+\end{align}\]</div>
+<p>We also use atomic units, where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+m_\text{e} &amp;= 1 \\
+4\pi\epsilon_0 &amp;= 1 \\
+\hbar &amp;= 1
+\end{align}\end{split}\]</div>
+<p>so that the energy levels are simply</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E_n = -\frac{1}{2n^2}
+\end{align}\]</div>
+<p>We would also like to visualize the potential, <span class="math notranslate nohighlight">\(V(r),\)</span> which, for a hydrogen atom, in atomic units is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V(r) = -\frac{1}{r}
+\end{align}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">minr</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">maxr</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">minr</span><span class="p">,</span> <span class="n">maxr</span><span class="p">)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">r</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">minr</span><span class="p">,</span> <span class="n">maxr</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;r ($a_0$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;energy ($E_{\rm h}$)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;V(r)&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+    <span class="n">energy</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">/</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="c1"># let&#39;s make the energy level lines span the potential.</span>
+    <span class="c1"># where is V(r) = energy? </span>
+    <span class="c1"># -1/r = energy</span>
+    <span class="c1"># r = -1/energy</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;n = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">/</span><span class="n">energy</span><span class="p">],</span> <span class="p">[</span><span class="n">energy</span><span class="p">,</span> <span class="n">energy</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="n">label</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a6e96301adcd45df37a7467d04047a1524e92de7ba4bbc70a116ccfd641a8ed8.png" src="../../_images/a6e96301adcd45df37a7467d04047a1524e92de7ba4bbc70a116ccfd641a8ed8.png" />
+</div>
+</div>
+<p>In this figure, the symbols <span class="math notranslate nohighlight">\(E_\text{h}\)</span> and <span class="math notranslate nohighlight">\(a_0\)</span> represent the atomic units of energy (the Hartree) and distance (the Bohr), respectively.</p>
+<blockquote>
+<div><p>Practice</p>
+<blockquote>
+<div><p>Question 2</p>
+<p>How much energy is required to ionize an electron from the ground state of the hydrogen atom?</p>
+<details>
+<summary>Answer 2</summary> 
+Let us approximate the reduced mass as $\mu \approx m_\text{e}$ and use atomic units, where 
+</div></blockquote>
+</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$$\begin{align}
+\hbar = m_\text{e} = 4\pi\epsilon_0 = 1
+\end{align}$$ 
+</pre></div>
+</div>
+<blockquote>
+<div><blockquote>
+<div><p>The ground-state energy is
+$<span class="math notranslate nohighlight">\(\begin{align}
+E_1 = -\frac{1}{2} E_\text{h}
+\end{align}\)</span><span class="math notranslate nohighlight">\(
+The bound energy levels for the hydrogen atom become more closely spaced with increasing \)</span>n<span class="math notranslate nohighlight">\( until we reach the continuum. We can determine the energy required to remove the electron by determining from the limit
+\)</span><span class="math notranslate nohighlight">\(\begin{align}
+\lim_{n\to\infty} E_n = \lim_{n\to\infty} -\frac{1}{2n^2} = 0
+\end{align}\)</span><span class="math notranslate nohighlight">\(
+So, the amount of energy required to reach the continuum from the ground state is
+\)</span><span class="math notranslate nohighlight">\(\begin{align}
+0 - E_1 = \frac{1}{2} E_\text{h}
+\end{align}\)</span>$</p>
+</details>
+</div></blockquote>
+</div></blockquote>
+<p>Before moving on to discuss the wave functions, we connect these energy levels to spectral lines discussed in general chemistry or undergraduate physical chemistry courses. Emission lines for hydrogenic atoms correspond to differences in these energy levels</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\tilde{\nu} &amp;= \frac{1}{\lambda} = \frac{1}{hc}(E_{n_f} - E_{n_i}) \\
+&amp;= \left ( \frac{1}{hc} \right ) \left ( \frac{\mu}{2\hbar^2} \right ) \left ( \frac{Ze^2}{4\pi\epsilon_0} \right )^2 \left ( \frac{1}{n_i^2} - \frac{1}{n_f^2} \right ) \\
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(n_i\)</span> and <span class="math notranslate nohighlight">\(n_f\)</span> represent the principal quantum numbers for the initial and final states, respectively. We can also express the lines using the Rydberg constant, <span class="math notranslate nohighlight">\(R_A,\)</span> for atom <span class="math notranslate nohighlight">\(A\)</span> with charge <span class="math notranslate nohighlight">\(Z_A\)</span> and mass <span class="math notranslate nohighlight">\(m_A\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\tilde{\nu} = R_A Z_A^2 \left ( \frac{1}{n_i^2} - \frac{1}{n_f^2} \right )
+\end{align}\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+R_A &amp;= \frac{\mu_A}{2 \hbar^2}\left ( \frac{e^2}{4\pi \epsilon_0} \right ) \\
+\mu_A &amp;= \frac{m_\text{e} m_A}{m_\text{e} + m_A}
+\end{align}\end{split}\]</div>
+</section>
+<section id="wave-functions-and-radial-distribution-functions">
+<h2>Wave Functions and Radial Distribution Functions<a class="headerlink" href="#wave-functions-and-radial-distribution-functions" title="Link to this heading">#</a></h2>
+<p>Before delving into the form of the hydrogenic atom wave functions, we introduce some nomenclature. A hydrogenic wave function defined by the quantum numbers <span class="math notranslate nohighlight">\(n,\)</span> <span class="math notranslate nohighlight">\(l,\)</span> and <span class="math notranslate nohighlight">\(m\)</span> is also referred to as an <strong>orbital</strong>. The set of wave functions or orbitals having a common value of <span class="math notranslate nohighlight">\(n\)</span> is called a <strong>shell</strong>. The set of wave functions or orbitals having common <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(l\)</span> values is called a <strong>subshell</strong>. When labeling orbitals, we can use the nomenclature <span class="math notranslate nohighlight">\(n_{L_m},\)</span> where <span class="math notranslate nohighlight">\(L\)</span> is the symbol corresponding to the orbital angular momentum quantum number</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(l\)</span></p></th>
+<th class="head"><p>label</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(s\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(p\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><span class="math notranslate nohighlight">\(d\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p><span class="math notranslate nohighlight">\(f\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p><span class="math notranslate nohighlight">\(g\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>So, the orbital with <span class="math notranslate nohighlight">\(n=3,\)</span> <span class="math notranslate nohighlight">\(l=2,\)</span> and <span class="math notranslate nohighlight">\(m=0\)</span> could be labeled <span class="math notranslate nohighlight">\(3d_0\)</span> or <span class="math notranslate nohighlight">\(\psi_{3d_0}.\)</span></p>
+<p>Now, what about the actual form of the wave functions? For the radial part, we know that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+u(\rho) &amp;= \rho^{l+1}e^{-\rho}w(\rho) \\
+&amp;= \rho^{l+1}e^{-\rho} \sum^{n-l-1}_{j=0}c_j \rho^j
+\end{align}\end{split}\]</div>
+<p>but what we really want is the radial function, <span class="math notranslate nohighlight">\(R(r).\)</span> Given our original definition of <span class="math notranslate nohighlight">\(\rho = kr\)</span> and the fact that <span class="math notranslate nohighlight">\(k\)</span> is related to the energy, <span class="math notranslate nohighlight">\(E,\)</span> and, thus, the principal quantum number, <span class="math notranslate nohighlight">\(n,\)</span> one can show that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\rho = \frac{Zr}{an}
+\end{align}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+a = \frac{4\pi \epsilon_0 \hbar^2}{\mu e^2}
+\end{align}\]</div>
+<p>This quantity, <span class="math notranslate nohighlight">\(a,\)</span> has units of distance and is closely related to the Bohr radius,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+a_0 = \frac{4\pi \epsilon_0 \hbar^2}{m_e e^2} \approx 0.52918 ~{\rm Å}
+\end{align}\]</div>
+<p>Now, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+u(r) = \left ( \frac{Zr}{an} \right ) ^{l+1}e^{-Zr/an}\sum^{n-l-1}_{j=0}c_j \left ( \frac{Zr}{an} \right )^j
+\end{align}\]</div>
+<p>Recall that <span class="math notranslate nohighlight">\(u(r) = rR(r),\)</span> so the radial function is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+R_{n, l}(r) = \left ( \frac{Z}{an} \right ) ^{l+1} r^l e^{-Zr/an}\sum^{n-l-1}_{j=0}c_j \left ( \frac{Zr}{an} \right )^j
+\end{align}\]</div>
+<p>where we have introduced subscripts <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(l\)</span> in the notation for the radial function. As such, all orbitals belonging to the same subshell share a common radial factor.  The overall wave function is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_{n,l,m}(r, \theta, \phi) = R_{n, l}(r) Y^m_l(\theta, \phi)
+\end{align}\]</div>
+<section id="the-ground-state-wave-function-n-1">
+<h3>The Ground-State Wave Function (<span class="math notranslate nohighlight">\(n = 1\)</span>)<a class="headerlink" href="#the-ground-state-wave-function-n-1" title="Link to this heading">#</a></h3>
+<p>The ground-state wave function corresponds to <span class="math notranslate nohighlight">\(n = 1\)</span> and <span class="math notranslate nohighlight">\(l=m=0,\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_{1,0,0}(r, \theta, \phi) = R_{1, 0}(r) Y^0_0(\theta, \phi)
+\end{align}\]</div>
+<p>For the radial part, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+R_{1, 0}(r) = \left ( \frac{Z}{a} \right ) c_0 e^{-Zr/a}
+\end{align}\]</div>
+<p>We can lump all of the constants together into a single (real-valued) constant, <span class="math notranslate nohighlight">\(N,\)</span> that is determined by normalization,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+R_{1, 0}(r) = N e^{-Zr/a}
+\end{align}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+1 &amp;= \int |\psi_{1,0,0}|^2 d\tau \\
+&amp;= \int_0^\infty r^2 dr \int_0^\pi \sin(\theta) d\theta \int_0^{2\pi} d\phi |\psi_{1,0,0}|^2 \\
+&amp;= \int_0^\infty r^2 dr |R_{1,0}|^2  \int_0^\pi \sin(\theta) d\theta \int_0^{2\pi} d\phi |y^0_0|^2 \\
+&amp;= N^2 \int_0^\infty r^2 e^{-2Zr/a} dr
+\end{align}\end{split}\]</div>
+<p>where, on the last line, we have noted that the spherical harmonics are already normalized. Using an integral table, we find</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+N = 2\left ( \frac{Z}{a} \right )^{3/2}
+\end{align}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+R_{1, 0}(r) = 2\left ( \frac{Z}{a} \right )^{3/2} e^{-Zr/a}
+\end{align}\]</div>
+<p>For <span class="math notranslate nohighlight">\(l=m=0,\)</span> we also have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+Y^0_0(\theta, \phi) = \left(\frac{1}{4\pi}\right)^{1/2}
+\end{align}\]</div>
+<p>so the full ground-state wave function is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_{1,0,0}(r, \theta, \phi) = \frac{1}{\pi^{1/2}}\left ( \frac{Z}{ a} \right )^{3/2} e^{-Zr/a}
+\end{align}\]</div>
+<p>We can more easily visualize this wave function in cartesian coordinates</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_{1,0,0}(x, y, z) = \frac{1}{\pi^{1/2}}\left ( \frac{Z}{ a} \right )^{3/2} e^{-Z(x^2+y^2+z^2)^{1/2}/a}
+\end{align}\]</div>
+<p>Consider a slice in the <span class="math notranslate nohighlight">\(z\)</span> direction, where <span class="math notranslate nohighlight">\(x=0\)</span> and <span class="math notranslate nohighlight">\(y=0\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_{1,0,0}(x, y, z) = \frac{1}{\pi^{1/2}}\left ( \frac{Z}{ a} \right )^{3/2} e^{-Z|z|/a}
+\end{align}\]</div>
+<p>The following Python code will plot this slice of the wave function. We will assume that we are dealing with a hydrogen atom (<span class="math notranslate nohighlight">\(Z = 1\)</span>) and approximating the reduced mass as <span class="math notranslate nohighlight">\(\mu = m_\text{e}\)</span> (or <span class="math notranslate nohighlight">\(a = a_0\)</span>). We will also use atomic units, where <span class="math notranslate nohighlight">\(a_0 = 1.\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">wfn</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">wfn</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\psi_{1,0,0}$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;wave function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;z ($a_0$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/cfe5c01139bbefd60c839f18af11bd3a5dd1d57fe477e9c89ea5a52551f64c0b.png" src="../../_images/cfe5c01139bbefd60c839f18af11bd3a5dd1d57fe477e9c89ea5a52551f64c0b.png" />
+</div>
+</div>
+<p>As can be seen, there is a cusp in the wave function at <span class="math notranslate nohighlight">\(z=0.\)</span> The presence of this derivative discontinuity does not imply that the wave function is not well behaved at this point, though, because the potential is not finite at <span class="math notranslate nohighlight">\(x = y = z = 0\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\lim_{r\to\infty} V(r) = -\infty
+\end{align}\]</div>
+<p>In addition to the cusp, we note that this function is spherically symmetrical, i.e., for a given value of <span class="math notranslate nohighlight">\(r,\)</span> it looks the same, regardless of the values of <span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(\phi.\)</span> This symmetry is the reason that <span class="math notranslate nohighlight">\(s\)</span> type orbitals are visualized as spheres in general chemistry courses.</p>
+</section>
+<section id="excited-state-wave-functions-n-1">
+<h3>Excited-State Wave Functions (<span class="math notranslate nohighlight">\(n &gt; 1\)</span>)<a class="headerlink" href="#excited-state-wave-functions-n-1" title="Link to this heading">#</a></h3>
+<p>Radial functions for the three lowest-energy shells are tabulated here.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(R_{n,l}(r)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(R_{1,0} = 2\left(\frac{Z}{a}\right )^{3/2} e^{-Zr/a}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(R_{2,0} = \frac{1}{\sqrt{2}}\left(\frac{Z}{a}\right )^{3/2} \left(1 - \frac{Zr}{2a}\right )e^{-Zr/2a}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(R_{2,1} = \frac{1}{2\sqrt{6}}\left(\frac{Z}{a}\right )^{5/2} r e^{-Zr/2a}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(R_{3,0} = \frac{2}{3\sqrt{3}}\left(\frac{Z}{a}\right )^{3/2} \left ( 1 -\frac{2Zr}{3a} + \frac{2Z^2r^2}{27a^2}\right ) e^{-Zr/3a}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(R_{3,1} = \frac{8}{27\sqrt{6}}\left(\frac{Z}{a}\right )^{3/2} \left (\frac{Zr}{a} - \frac{Z^2r^2}{6a^2}\right ) e^{-Zr/3a}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(R_{3,2} = \frac{4}{81\sqrt{30}}\left(\frac{Z}{a}\right )^{7/2} r^2  e^{-Zr/3a}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For <span class="math notranslate nohighlight">\(n=2,\)</span> we have four degenerate orbitals with <span class="math notranslate nohighlight">\(l = 0, m = 0\)</span> (the <span class="math notranslate nohighlight">\(2s\)</span> orbital) and <span class="math notranslate nohighlight">\(l = 1, m = 0, \pm 1\)</span> (three <span class="math notranslate nohighlight">\(2p\)</span> orbitals). The Python code below visualizes the radial functions for these two subshells. Again, we assume we are dealing with a hydrogen atom (<span class="math notranslate nohighlight">\(Z=1\)</span>), we approximate <span class="math notranslate nohighlight">\(\mu = m_\text{e},\)</span> and we use atomic units.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">R20</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">r</span><span class="p">)</span>
+<span class="n">R21</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">r</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">R20</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$R_{2, 0}$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">R21</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$R_{2, 1}$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;radial wave function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;r ($a_0$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2a1683189cdde98c92219d0a566f3e330b003ef92d6ad46c15417938920043d8.png" src="../../_images/2a1683189cdde98c92219d0a566f3e330b003ef92d6ad46c15417938920043d8.png" />
+</div>
+</div>
+<p>Like the <span class="math notranslate nohighlight">\(1s\)</span> orbital, the radial function for the <span class="math notranslate nohighlight">\(2s\)</span> orbital is non-zero at the nucleus. On the other hand, <span class="math notranslate nohighlight">\(R_{2, 1}\)</span> is zero at the nucleus, due to the presence of the <span class="math notranslate nohighlight">\(r^l\)</span> term in the radial wave function (<span class="math notranslate nohighlight">\(l=1\)</span> for the <span class="math notranslate nohighlight">\(2p\)</span> orbitals). The second major difference between these radial functions is that <span class="math notranslate nohighlight">\(R_{2,0}\)</span> changes sign as it passes through zero. This type of feature is a node, specifically, a <strong>radial node</strong>. A radial node occurs when the wave function passes through zero at a fixed value of <span class="math notranslate nohighlight">\(r\)</span>. On the other hand, an <strong>angular node</strong> is defined by a plane where the wave function passess through zero. The number of nodes of each type are tabulated below.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>number of nodes</p></th>
+<th class="head"><p>type of node</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(n-1\)</span></p></td>
+<td><p>total</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(l\)</span></p></td>
+<td><p>angular</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(n-l-1\)</span></p></td>
+<td><p>radial</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>As indicated by the table, the <span class="math notranslate nohighlight">\(2p\)</span> orbitals (with <span class="math notranslate nohighlight">\(l=1\)</span>) should display one node, and that node should be an angular node. The presence and meaning of this angular node becomes clear if we remind ourselves of the functional form spherical harmonics that comprise the angular part of the hydrogenic atom wave functions.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Y^0_0(\theta,\phi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{2}\sqrt{\frac{1}{\pi}}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(Y^0_1(\theta,\phi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{2}\sqrt{\frac{3}{\pi}} \cos(\theta)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Y^{\pm 1}_1(\theta,\phi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mp\frac{1}{2}\sqrt{\frac{3}{2\pi}} e^{\pm i \phi}\sin(\theta)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(Y^0_2(\theta,\phi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{4}\sqrt{\frac{5}{\pi}}\left (3 \cos^2(\theta)-1\right)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Y^{\pm 1}_2(\theta,\phi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mp\frac{1}{2}\sqrt{\frac{15}{2\pi}}e^{\pm i \phi}\sin(\theta) \cos(\theta)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(Y^{\pm 2}_2(\theta,\phi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{4}\sqrt{\frac{15}{2\pi}}e^{\pm 2i \phi}\sin^2(\theta)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We can see that the angular part of the <span class="math notranslate nohighlight">\(2p_0\)</span> wave orbital is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+Y^0_1(\theta, \phi) = \frac{1}{2}\left ( \frac{3}{\pi}\right )^{1/2} \cos(\theta)
+\end{align}\]</div>
+<p>which will be zero in the plane defined by <span class="math notranslate nohighlight">\(\theta = \frac{\pi}{2}\)</span> radians or <span class="math notranslate nohighlight">\(90\degree\)</span>. In the spherical polar coordinate system depicted below, this angle represents the <span class="math notranslate nohighlight">\(xy\)</span> plane, defined by <span class="math notranslate nohighlight">\(z=0\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/deprincelab/deprincelab.github.io/main/tutorials/jupyter_notebooks/rotation/spherical_polar_coordinates.png&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><img src="https://raw.githubusercontent.com/deprincelab/deprincelab.github.io/main/tutorials/jupyter_notebooks/rotation/spherical_polar_coordinates.png" width="300"/></div></div>
+</div>
+<p>Indeed, when we consider the full wave function for the <span class="math notranslate nohighlight">\(2p_0\)</span> orbital</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\psi_{2, 1, 0}(r, \theta, \phi) &amp;= R_{2, 1}(r) Y^0_1(\theta, \phi) \\
+&amp;= \frac{1}{4(2\pi)^{1/2}}\left(\frac{Z}{a}\right )^{5/2} r \cos(\theta) e^{-Zr/2a} \\
+\end{align}\end{split}\]</div>
+<p>and note that <span class="math notranslate nohighlight">\(z = r\cos(\theta),\)</span> we can see that this orbital contains a factor of <span class="math notranslate nohighlight">\(z\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_{2, 1, 0}(r, \theta, \phi) = \frac{1}{4(2\pi)^{1/2}}\left( \frac{Z}{a} \right )^{5/2} z e^{-Zr/2a}
+\end{align}\]</div>
+<p>that defines the nodal plane. This structure is why the <span class="math notranslate nohighlight">\(2p_0\)</span> orbital is also called <span class="math notranslate nohighlight">\(2p_z\)</span>. If, like done above for the <span class="math notranslate nohighlight">\(1s\)</span> orbital, we visualize a slice of the <span class="math notranslate nohighlight">\(2p_z\)</span> orbital where <span class="math notranslate nohighlight">\(x = y = 0,\)</span> we can see that the form of this wave function fits our general chemistry picture of an orbital having two lobes of opposite phase. Mathematically, we can see that this phase refers to the sign of the wave function. The following Python code illustrates this slice of the <span class="math notranslate nohighlight">\(2p_z\)</span> orbital, under the same assumptions used above (for <span class="math notranslate nohighlight">\(Z=1,\)</span> etc.).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">wfn</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">z</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">wfn</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$2p_z$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;wave function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;z ($a_0$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/5d3f1141119b026a55220fc8229789dfffce0029af57b7e0f334cb1dd989ecda.png" src="../../_images/5d3f1141119b026a55220fc8229789dfffce0029af57b7e0f334cb1dd989ecda.png" />
+</div>
+</div>
+</section>
+<section id="radial-distribution-functions">
+<h3>Radial Distribution Functions<a class="headerlink" href="#radial-distribution-functions" title="Link to this heading">#</a></h3>
+<p>The Born interpretation of the wave function for a single particle states that the probability, <span class="math notranslate nohighlight">\(P,\)</span> of finding a particle at point <span class="math notranslate nohighlight">\((x, y, z)\)</span> in the volume element defined by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+[x, x+dx] \\
+[y, y+dy] \\
+[z, z+dz] \\
+\end{align}\end{split}\]</div>
+<p>is proportional to</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|\psi(x, y, z)|^2 dx dy dz
+\end{align}\]</div>
+<p>In spherical coordinates, we use a different definition for the volume element and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|\psi(r, \theta, \phi)|^2 r^2 \sin(\theta) dr d\theta d\phi
+\end{align}\]</div>
+<p>For a hydrogenic atom, what is the probability of finding the electron at the radius, <span class="math notranslate nohighlight">\(r,\)</span> and any angles, <span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span>? To answer this question, we simply take the Born interpretation result in spherical coordinates and integrate out the angular degrees of freedom to obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+R_{n,l}^2(r) r^2 dr \int_0^\pi \sin(\theta) d\theta \int_0^{2\pi} d\phi |Y^m_l(\theta, \phi)|^2 = R_{n,l}^2(r) r^2 dr
+\end{align}\]</div>
+<p>because the spherical harmonics are normalized. We now define</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+P(r) dr = R_{n, l}^2(r) r^2 dr
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(P(r)\)</span> is known as the <strong>radial distribution function</strong>. The radial distribution function gives us information regarding the likelihood of finding an electron at a give distance from the nucleus.</p>
+<p>Let us visualize the radial distribution functions for various combinations of hydrogenic orbitals, beginning with <span class="math notranslate nohighlight">\(s\)</span> type functions (<span class="math notranslate nohighlight">\(l=0\)</span>). The following Python code does just that, under the same assumptions used above (<span class="math notranslate nohighlight">\(Z=1\)</span>, etc). It also determines the most likely distance at which we would find electrons that reside in each orbital.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">201</span><span class="p">)</span>
+<span class="n">R10</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="p">)</span>
+<span class="n">R20</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">R30</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mf">3.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span> <span class="mi">1</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">27</span> <span class="p">)</span><span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">P10</span> <span class="o">=</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">R10</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">P20</span> <span class="o">=</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">R20</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">P30</span> <span class="o">=</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">R30</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">P10</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$1s$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">P20</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$2s$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">P30</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$3s$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;wave function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;r ($a_0$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">idx_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">P10</span><span class="p">)</span>
+<span class="n">idx_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">P20</span><span class="p">)</span>
+<span class="n">idx_3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">P30</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The most likely radius for a 1s electron is </span><span class="si">%4.1f</span><span class="s1"> a0&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">idx_1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The most likely radius for a 2s electron is </span><span class="si">%4.1f</span><span class="s1"> a0&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">idx_2</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The most likely radius for a 3s electron is </span><span class="si">%4.1f</span><span class="s1"> a0&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">idx_3</span><span class="p">]))</span>
+
+<span class="c1"># expectation value of r: </span>
+<span class="c1"># &lt;r&gt; = &lt;psi|r|psi&gt; = &lt;R|r|R&gt; &lt;Y|Y&gt; = &lt;R|r|R&gt;</span>
+<span class="n">average_r_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">P10</span> <span class="o">*</span> <span class="n">r</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="p">)</span>
+<span class="n">average_r_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">P20</span> <span class="o">*</span> <span class="n">r</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="p">)</span>
+<span class="n">average_r_3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">P30</span> <span class="o">*</span> <span class="n">r</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;r&gt; for a 1s electron is </span><span class="si">%4.1f</span><span class="s1"> a0&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">average_r_1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;r&gt; for a 2s electron is </span><span class="si">%4.1f</span><span class="s1"> a0&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">average_r_2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;r&gt; for a 3s electron is </span><span class="si">%4.1f</span><span class="s1"> a0&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">average_r_3</span><span class="p">))</span>
+                      
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/6c833aaff481eb6b9a0902aa3197e577eb641cde71281a8fbcabd393762bc264.png" src="../../_images/6c833aaff481eb6b9a0902aa3197e577eb641cde71281a8fbcabd393762bc264.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The most likely radius for a 1s electron is  1.0 a0
+The most likely radius for a 2s electron is  5.2 a0
+The most likely radius for a 3s electron is 13.1 a0
+
+&lt;r&gt; for a 1s electron is  1.5 a0
+&lt;r&gt; for a 2s electron is  6.0 a0
+&lt;r&gt; for a 3s electron is 11.6 a0
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_61094/2882782782.py:30: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  average_r_1 = np.trapz(P10 * r, x = r)
+/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_61094/2882782782.py:31: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  average_r_2 = np.trapz(P20 * r, x = r)
+/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_61094/2882782782.py:32: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  average_r_3 = np.trapz(P30 * r, x = r)
+</pre></div>
+</div>
+</div>
+</div>
+<p>These distribution functions fit our general chemistry intuition for how far electrons in different shells should lie from the nucleus. The <span class="math notranslate nohighlight">\(1s\)</span> electron is most likely to be found closer to the nucleus than the <span class="math notranslate nohighlight">\(2s\)</span> electron, which, in turn, is more likely to be found closer to the nucleus than the <span class="math notranslate nohighlight">\(3s\)</span> electron. Interestingly, the most likely position for the <span class="math notranslate nohighlight">\(1s\)</span> electron (<span class="math notranslate nohighlight">\(r_\text{max}\)</span>) is 1 <span class="math notranslate nohighlight">\(a_0,\)</span> which agrees with the prediction made by Bohr’s model. The average <span class="math notranslate nohighlight">\(r\)</span> values (the expectation value of <span class="math notranslate nohighlight">\(r\)</span>) show similar qualitative trends. <span class="math notranslate nohighlight">\(\langle r \rangle\)</span> for the <span class="math notranslate nohighlight">\(1s\)</span> state is smaller than that for the <span class="math notranslate nohighlight">\(2s\)</span> state, which is smaller than that for the <span class="math notranslate nohighlight">\(3s\)</span> state. For the <span class="math notranslate nohighlight">\(1s\)</span> state, in particular, note that the average <span class="math notranslate nohighlight">\(r\)</span> value is a bit larger than the most probable <span class="math notranslate nohighlight">\(r\)</span>. We can rationalize this result based on the assymetry of the radial distribution function; it is clear that more density lies at <span class="math notranslate nohighlight">\(r &gt; r_\text{max}\)</span> than <span class="math notranslate nohighlight">\(r &lt; r_\text{max}\)</span>. Lastly, we note that the radial distribution functions for the <span class="math notranslate nohighlight">\(2s\)</span> and <span class="math notranslate nohighlight">\(3s\)</span> electrons go to zero once and twice, respectively, at <span class="math notranslate nohighlight">\(r\)</span> values greater than zero. These points correspond to radial nodes.</p>
+<p>The following Python code provides a similar visualization for the radial distribution functions for <span class="math notranslate nohighlight">\(n=3\)</span> and different <span class="math notranslate nohighlight">\(l\)</span> values (<span class="math notranslate nohighlight">\(l=0, 1, 2\)</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">201</span><span class="p">)</span>
+
+<span class="n">R30</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mf">3.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span> <span class="mi">1</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">27</span> <span class="p">)</span><span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">R31</span> <span class="o">=</span> <span class="mi">8</span><span class="o">/</span><span class="p">(</span><span class="mi">27</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span> <span class="n">r</span> <span class="o">-</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">6</span> <span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> 
+<span class="n">R32</span> <span class="o">=</span> <span class="mi">4</span><span class="o">/</span><span class="p">(</span><span class="mi">81</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">30</span><span class="p">))</span> <span class="o">*</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">P30</span> <span class="o">=</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">R30</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">P31</span> <span class="o">=</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">R31</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">P32</span> <span class="o">=</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">R32</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">P30</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$3s$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">P31</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$3p$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">P32</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$3d$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;wave function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;r ($a_0$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">idx_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">P30</span><span class="p">)</span>
+<span class="n">idx_p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">P31</span><span class="p">)</span>
+<span class="n">idx_d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">P32</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The most likely radius for a 3s electron is </span><span class="si">%4.1f</span><span class="s1"> a0&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">idx_s</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The most likely radius for a 3p electron is </span><span class="si">%4.1f</span><span class="s1"> a0&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">idx_p</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The most likely radius for a 3d electron is </span><span class="si">%4.1f</span><span class="s1"> a0&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">idx_d</span><span class="p">]))</span>
+
+<span class="c1"># expectation value of r: </span>
+<span class="c1"># &lt;r&gt; = &lt;psi|r|psi&gt; = &lt;R|r|R&gt; &lt;Y|Y&gt; = &lt;R|r|R&gt;</span>
+<span class="n">average_r_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">P30</span> <span class="o">*</span> <span class="n">r</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="p">)</span>
+<span class="n">average_r_p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">P31</span> <span class="o">*</span> <span class="n">r</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="p">)</span>
+<span class="n">average_r_d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">P32</span> <span class="o">*</span> <span class="n">r</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;r&gt; for a 3s electron is </span><span class="si">%4.1f</span><span class="s1"> a0&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">average_r_s</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;r&gt; for a 3p electron is </span><span class="si">%4.1f</span><span class="s1"> a0&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">average_r_p</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;r&gt; for a 3d electron is </span><span class="si">%4.1f</span><span class="s1"> a0&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">average_r_d</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/07a51a8b8cf9c556c37d44a525d70350a83425e434f0b7738ff87df00ad56566.png" src="../../_images/07a51a8b8cf9c556c37d44a525d70350a83425e434f0b7738ff87df00ad56566.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The most likely radius for a 3s electron is 13.1 a0
+The most likely radius for a 3p electron is 12.0 a0
+The most likely radius for a 3d electron is  9.0 a0
+
+&lt;r&gt; for a 3s electron is 11.6 a0
+&lt;r&gt; for a 3p electron is 11.2 a0
+&lt;r&gt; for a 3d electron is 10.0 a0
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_61094/1190049772.py:32: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  average_r_s = np.trapz(P30 * r, x = r)
+/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_61094/1190049772.py:33: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  average_r_p = np.trapz(P31 * r, x = r)
+/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_61094/1190049772.py:34: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  average_r_d = np.trapz(P32 * r, x = r)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that the most likely position for the <span class="math notranslate nohighlight">\(3d\)</span> is closest to the nucleus, followed by <span class="math notranslate nohighlight">\(3p\)</span> and then <span class="math notranslate nohighlight">\(3s\)</span>. The expectation values of <span class="math notranslate nohighlight">\(r\)</span> follow this same trend.  Note also that, like the example above, the number of times that the radial distribution functions dip to zero at non-zero <span class="math notranslate nohighlight">\(r\)</span> values reflects the number of radial nodes in the wave function.</p>
+<blockquote>
+<div><p>Practice</p>
+<blockquote>
+<div><p>Question 3</p>
+<p>Above, we determined the most likely distance between the electron and nucleus for a hydrogen atom in the <span class="math notranslate nohighlight">\(1s\)</span> state numerically. Verify this result by solving
+$<span class="math notranslate nohighlight">\(\begin{align}
+\frac{d}{dr} P(r) = 0
+\end{align}\)</span><span class="math notranslate nohighlight">\(
+for \)</span>r$.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Question 4</p>
+<p>Determine the most likely distance between the electron and nucleus for a hydrogen atom in the <span class="math notranslate nohighlight">\(2p\)</span> state. Try to find the result both numerically, using Python, and analytically, using calculus.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Question 5</p>
+<p>Above, we determined the most likely distance between the electron and nucleus for a hydrogen atom in the <span class="math notranslate nohighlight">\(3d\)</span> state numerically. Verify this result using calculus.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Question 6</p>
+<p>Above, we determined the average distance between the electron and nucleus for a hydrogen atom in the <span class="math notranslate nohighlight">\(1s\)</span> state numerically. Verify this result using calculus.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Question 7</p>
+<p>Determine the expectation value of <span class="math notranslate nohighlight">\(r\)</span> for a hydrogen atom in the <span class="math notranslate nohighlight">\(2p\)</span> state. Try to find the result both numerically, using Python, and analytically, using calculus.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Question 8</p>
+<p>Above, we determined the average distance between the electron and nucleus for a hydrogen atom in the <span class="math notranslate nohighlight">\(3d\)</span> state numerically. Verify this result using calculus.</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="real-valued-hydrogenic-orbitals">
+<h3>Real-Valued Hydrogenic Orbitals<a class="headerlink" href="#real-valued-hydrogenic-orbitals" title="Link to this heading">#</a></h3>
+<p>The spherical harmonics with <span class="math notranslate nohighlight">\(m \neq 0\)</span> are complex valued, which means that the corresponding hydrogenic orbitals will also be complex. Many chemists are allergic to complex-valued quantities, so we often take linear combinations of these orbitals that result in real-valued functions.</p>
+<p>To illustrate this point, let us consider <span class="math notranslate nohighlight">\(2p\)</span> orbitals, which have <span class="math notranslate nohighlight">\(n = 2,\)</span> <span class="math notranslate nohighlight">\(l = 1,\)</span> and <span class="math notranslate nohighlight">\(m = 0, \pm 1\)</span>. We saw above for <span class="math notranslate nohighlight">\(m=0\)</span> that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\psi_{2p_z} &amp;= \psi_{2, 1, 0}(r, \theta, \phi) \\
+&amp;= \frac{1}{4(2\pi)^{1/2}}\left( \frac{Z}{a} \right )^{5/2} z e^{-Zr/2a}\\
+&amp;= z f(r)
+\end{align}\end{split}\]</div>
+<p>This result is generalizable to other hydrogenic orbitals with <span class="math notranslate nohighlight">\(l=1\)</span> and <span class="math notranslate nohighlight">\(m=0\)</span>; all such functions are expressible as <span class="math notranslate nohighlight">\(z\)</span> times some function of <span class="math notranslate nohighlight">\(r\)</span>. As a result all such functions can be referred to as <span class="math notranslate nohighlight">\(p_z\)</span> type orbitals, and all <span class="math notranslate nohighlight">\(p_z\)</span> orbitals have an angular node in the plane defined by <span class="math notranslate nohighlight">\(z=0\)</span>.</p>
+<p>Now, consider the orbitals with <span class="math notranslate nohighlight">\(n = 2,\)</span> <span class="math notranslate nohighlight">\(l = 1,\)</span> and <span class="math notranslate nohighlight">\(m = \pm 1\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\psi_{2, 1, \pm 1}(r, \theta, \phi) &amp;= R_{2, 1}(r) Y^{\pm 1}_1(\theta, \phi) \\
+&amp;= \mp \left ( \frac{1}{8\pi^{1/2}} \right ) \left ( \frac{Z}{a}\right )^{5/2} r \sin(\theta) e^{\pm i\phi} e^{-Zr/2a} \\
+\end{align}\end{split}\]</div>
+<p>Recall the greatest equation, Euler’s equation, says</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+e^{\pm i\phi} = \cos(\phi) \pm \sin(\phi)
+\end{align}\]</div>
+<p>which suggests that we can take linear combinations of <span class="math notranslate nohighlight">\(\psi_{2, 1, \pm 1}\)</span> to eliminate the compex factors. We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\psi_{2p_x} &amp;= -\frac{1}{2^{1/2}} \left ( \psi_{2,1,1} - \psi_{2,1,-1} \right )\\  
+&amp;= r\sin(\theta)\cos(\phi) f(r) \\
+&amp;= x f(r)
+\end{align}\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\psi_{2p_y} &amp;= \frac{i}{2^{1/2}} \left ( \psi_{2,1,1} + \psi_{2,1,-1} \right )\\  
+&amp;= r\sin(\theta)\sin(\phi) f(r) \\
+&amp;= y f(r)
+\end{align}\end{split}\]</div>
+<p>These functions are real-valued and will have angular nodes in the planes defined by <span class="math notranslate nohighlight">\(x=0\)</span> and <span class="math notranslate nohighlight">\(y=0\)</span>.</p>
+<p>Are <span class="math notranslate nohighlight">\(\psi_{2p_x}\)</span> and <span class="math notranslate nohighlight">\(\psi_{2p_y}\)</span> solutions to the Schrödinger equation for hydrogenic atoms? Yes! As we saw several notebooks ago, a linear combination of degenerate eigenfunctions of an operator (in this case, <span class="math notranslate nohighlight">\(\hat{H}\)</span>) is still an eigenfunction of that operator, with the same eigenvalue.</p>
+<blockquote>
+<div><p>Practice</p>
+<blockquote>
+<div><p>Question 9</p>
+<p>Show that <span class="math notranslate nohighlight">\(\psi_{2p_x}\)</span> and <span class="math notranslate nohighlight">\(\psi_{2p_y}\)</span> are eigenfunctions of the Hamiltonian for the hydrogenic atom problem.</p>
+</div></blockquote>
+</div></blockquote>
+<p>Are <span class="math notranslate nohighlight">\(\psi_{2p_x}\)</span> and <span class="math notranslate nohighlight">\(\psi_{2p_y}\)</span> eigenfunctions of <span class="math notranslate nohighlight">\(\hat{L}^2\)</span>? We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{L}^2 \psi_{2p_1} &amp;= l(l+1)\hbar^2 \psi_{2p_1} \\
+&amp;= 2\hbar^2 \psi_{2p_1} \\
+\hat{L}^2 \psi_{2p_{-1}} &amp;= 2\hbar^2 \psi_{2p_{-1}}
+\end{align}\end{split}\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{L}^2 \psi_{2p_x} &amp;= -\hat{L}^2 \left (\frac{1}{2^{1/2}} \right ) \left ( \psi_{2p_1} -  \psi_{2p_{-1}} \right ) \\
+&amp;= -\left (\frac{1}{2^{1/2}} \right ) \left (\hat{L}^2 \psi_{2p_1} - \hat{L}^2 \psi_{2p_{-1}} \right ) \\
+&amp;= - \left (\frac{1}{2^{1/2}} \right ) \left (2\hbar^2 \psi_{2p_1} - 2\hbar^2 \psi_{2p_{-1}} \right ) \\
+&amp;= 2\hbar^2 \psi_{2p_x}
+\end{align}\end{split}\]</div>
+<p>So, yes! Again, a linear combination of degenerate eigenfunctions of an operator (in this case, <span class="math notranslate nohighlight">\(\hat{L}^2\)</span>) is still an eigenfunction of that operator, with the same eigenvalue.</p>
+<p>Are <span class="math notranslate nohighlight">\(\psi_{2p_x}\)</span> and <span class="math notranslate nohighlight">\(\psi_{2p_y}\)</span> eigenfunctions of <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>? We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{L}_z \psi_{2p_1} &amp;= m\hbar \psi_{2p_1} \\
+&amp;= +\hbar \psi_{2p_1} \\
+\hat{L}_z \psi_{2p_{-1}} &amp;= -\hbar \psi_{2p_{-1}}
+\end{align}\end{split}\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{L}_z \psi_{2p_x} &amp;= -\hat{L}_z \left (\frac{1}{2^{1/2}} \right ) \left ( \psi_{2p_1} -  \psi_{2p_{-1}} \right ) \\
+&amp;= -\left (\frac{1}{2^{1/2}} \right ) \left (\hat{L}_z \psi_{2p_1} - \hat{L}_z \psi_{2p_{-1}} \right ) \\
+&amp;= - \left (\frac{1}{2^{1/2}} \right ) \left (\hbar \psi_{2p_1} + \hbar \psi_{2p_{-1}} \right ) \\
+&amp;= -\frac{\hbar}{2^{1/2}} \left ( \psi_{2p_1} +  \psi_{2p_{-1}} \right ) \\
+&amp;= i\hbar \psi_{2p_y}
+\end{align}\end{split}\]</div>
+<p>No! <span class="math notranslate nohighlight">\(\psi_{2p_x}\)</span> is not an eigenfunction of <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>. As such, this function (and <span class="math notranslate nohighlight">\(\psi_{2p_y}\)</span>) does not have a well-defined <span class="math notranslate nohighlight">\(z\)</span> projection of the orbital angular momentum. We have a similar result for <span class="math notranslate nohighlight">\(\psi_{2p_y}\)</span>.</p>
+<blockquote>
+<div><p>Practice</p>
+<blockquote>
+<div><p>Question 10</p>
+<p>Show that <span class="math notranslate nohighlight">\(\psi_{2p_y}\)</span> is not an eigenfunction of <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>.</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+<section id="selection-rules">
+<h2>Selection Rules<a class="headerlink" href="#selection-rules" title="Link to this heading">#</a></h2>
+<p>As with the quantum harmonic oscillator and rigid rotor problems, we use Fermi’s Golden Rule to derive selection rules for optically allowed transitions in hydrogenic atoms. It turns out that these rules are identical to the rules for the rigid rotor, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\Delta l &amp;= \pm 1 \\
+\Delta m &amp;= 0, \pm 1
+\end{align}\end{split}\]</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/lecture_notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">5. Hydrogen Atom</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="perturbation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Perturbation Theory</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hamiltonian">The Hamiltonian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-radial-equation">The Radial Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-functions-and-radial-distribution-functions">Wave Functions and Radial Distribution Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-ground-state-wave-function-n-1">The Ground-State Wave Function (<span class="math notranslate nohighlight">\(n = 1\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excited-state-wave-functions-n-1">Excited-State Wave Functions (<span class="math notranslate nohighlight">\(n &gt; 1\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#radial-distribution-functions">Radial Distribution Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-valued-hydrogenic-orbitals">Real-Valued Hydrogenic Orbitals</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection Rules</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jay Foley
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

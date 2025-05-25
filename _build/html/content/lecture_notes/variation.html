@@ -1,0 +1,2081 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Variation Theorem &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/lecture_notes/variation';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Vibrational Motion" href="vibration.html" />
+    <link rel="prev" title="Translational Motion" href="translation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    5. Hydrogen Atom
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydrogen.html">The Hydrogen Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="perturbation.html">Perturbation Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qm_postulates.html">Chapter 1: The Postulates of Quantum Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rotation.html">Angular Momentum, Rotational Motion, and Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SphHarm_visualize.html">Visualizing Spherical harmonics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translation.html">Translational Motion</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">The Variation Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vibration.html">Vibrational Motion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_1.html">Problem Set 1</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">Run the next two cells before beginning!</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Zeeman_Effect_Hydrogen_Atom.html">Solution</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/CO_Perturbation_Theory.html">Computing Fundamental Transition of CO under different levels of approximation</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/hydrogen_wavefunctions.html">DEMO: H wavefunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/linear_variational_method.html">Linear Variational Method</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/note05.html">Additional Notes on Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/pib_delta_potential_dynamics.html">Dynamics of particle in a box with a delta potential</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Chapter 2: Introduction to Spin 1/2</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/formula_sheet.html">Useful Formulae</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note01.html">Hydrogenlike atoms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note03.html">Atomic orbitals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note05.html">Additional Notes on Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/spin_background.html">Spin</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/FoleyLab/chem3141-book/blob/main/content/lecture_notes/variation.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/FoleyLab/chem3141-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FoleyLab/chem3141-book/issues/new?title=Issue%20on%20page%20%2Fcontent/lecture_notes/variation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/lecture_notes/variation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Variation Theorem</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-variation-theorem-for-ground-states">The Variation Theorem for Ground States</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-variation-theorem-for-excited-states">The Variation Theorem for Excited States</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-linear-variation-method">The Linear Variation Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices-in-quantum-mechanics">Matrices in Quantum Mechanics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-in-quantum-mechanics">Vectors in Quantum Mechanics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-secular-equation">The Secular Equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-variation-problem-as-an-eigenvalue-problem">The Variation Problem as an Eigenvalue Problem</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-variation-theorem">
+<h1>The Variation Theorem<a class="headerlink" href="#the-variation-theorem" title="Link to this heading">#</a></h1>
+<p>The preceding notebooks have considered analytically solvable model problems that culminated in the hydrogenic atom problem. For other, more complicated problems, it will not be possible, in general, to find exact analytic solutions to the time-independent Schrödinger equation. As such, this notebook describes one strategy to find approximate solutions to the Schrödinger equation using the variation theorem.</p>
+<section id="the-variation-theorem-for-ground-states">
+<h2>The Variation Theorem for Ground States<a class="headerlink" href="#the-variation-theorem-for-ground-states" title="Link to this heading">#</a></h2>
+<p>Consider a system with a time-independent Hamiltonian, <span class="math notranslate nohighlight">\(\hat{H},\)</span> and energy, <span class="math notranslate nohighlight">\(E_1\)</span>. The variation theorem states that, if <span class="math notranslate nohighlight">\(\phi\)</span> is any well-behaved function that satisfies the boundary conditions for the system, then the expectation value of <span class="math notranslate nohighlight">\(\hat{H}\)</span> with respect to <span class="math notranslate nohighlight">\(\phi\)</span> is guaranteed to be an upper-bound to <span class="math notranslate nohighlight">\(E_1,\)</span> i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{\langle \phi | \hat{H} | \phi\rangle}{\langle \phi| \phi\rangle} \ge E_1
+\end{align}\]</div>
+<p>If <span class="math notranslate nohighlight">\(\phi\)</span> is normalized, then we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\langle \phi | \hat{H} | \phi\rangle \ge E_1
+\end{align}\]</div>
+<p><strong>Proof</strong>. Let us expand <span class="math notranslate nohighlight">\(\phi\)</span> in the basis of eigenfunctions of <span class="math notranslate nohighlight">\(\hat{H},\)</span> which form a complete set, which we can choose to be orthonormal. We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|\phi\rangle = \sum_k c_k |\psi_k\rangle
+\end{align}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H} | \psi_k \rangle = E_k | \psi_k \rangle
+\end{align}\]</div>
+<p><span class="math notranslate nohighlight">\(\phi\)</span> is chosen to be normalized, which leads to</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\langle \phi | \phi \rangle = \sum_k |c_k|^2 = 1
+\end{align}\]</div>
+<p>We take the expectation value of <span class="math notranslate nohighlight">\(\hat{H}\)</span> with respect to <span class="math notranslate nohighlight">\(\phi,\)</span> which we will call <span class="math notranslate nohighlight">\(W\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+W &amp;= \langle \phi | \hat{H} | \phi \rangle \\
+&amp;= \sum_{kl} c_k^* c_l \langle \psi_k | \hat{H} | \psi_l \rangle \\
+&amp;= \sum_{kl} c_k^* c_l E_l \langle \psi_k | \psi_l \rangle \\
+&amp;= \sum_{kl} c_k^* c_l E_l \delta_{kl} \\
+&amp;= \sum_k |c_k|^2 E_k
+\end{align}\end{split}\]</div>
+<p>Now, by definition, <span class="math notranslate nohighlight">\(E_k \ge E_1\)</span> for all <span class="math notranslate nohighlight">\(k\)</span> because <span class="math notranslate nohighlight">\(E_1\)</span> is the ground-state energy. As a result, we can state that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|c_k|^2 E_k \ge |c_k|^2 E_1
+\end{align}\]</div>
+<p>Combining this result with the expectation value evaluated above leads to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+W &amp;= \sum_k |c_k|^2 E_k \\
+  &amp;\ge \sum_k |c_k|^2 E_1 = E_1
+\end{align}\end{split}\]</div>
+<p>Therefore,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+W = \langle \phi | \hat{H} | \phi \rangle \ge E_1
+\end{align}\]</div>
+<p>This result has important consequences for finding approximate solutions to the Schrödinger equation. First, we could simply test a set of trial functions to see which one is the “best” in the sense that it gives the lowest energy (the closest to <span class="math notranslate nohighlight">\(E_1\)</span>). Alternatively, we could choose a single trial function that contains parameters, and the best set of parameters could be chosen by varying them such that they minimize the expectation value of the Hamiltonian. In either case, we need to start with a good trial function.</p>
+<p>As an example, consider the one-dimensional particle-in-a-box (PIB) problem. We have a potential defined by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+V(x) = \begin{cases}
+\infty\text{, } &amp;x &lt; 0 \\
+0\text{, } &amp; 0 \le x \le L \\
+\infty\text{, } &amp; x \ge L 
+\end{cases}
+\end{align}\end{split}\]</div>
+<p>As such, we know that the boundary conditions for the problem require that the wave function go to zero at the edges of the box. The following trial wave function satisfies these conditions</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\phi(x) = \begin{cases}
+0\text{, } &amp;x &lt; 0 \\
+N x(L-x)\text{, } &amp;0 \le x \le L \\
+0\text{, }&amp;x \ge L 
+\end{cases}
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(N\)</span> is a normalization coefficient. The following Python code visualizes this trial function alongside the actual ground-state wave function for the PIB problem</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\psi_1(x) = \begin{cases}
+0\text{, } &amp;x &lt; 0 \\
+\left (\frac{2}{L} \right ) ^{1/2}\sin\left (\frac{\pi x}{L}\right )\text{, } &amp;0 \le x \le L \\
+0\text{, }&amp;x \ge L 
+\end{cases}
+\end{align}\end{split}\]</div>
+<p>The code also evaluates the expecation value of the Hamiltonian with respect to <span class="math notranslate nohighlight">\(\phi,\)</span> which, according to the variation theorem, should be greater than or equal to the exact ground-state energy for the PIB problem. To simplify matters, we will work in atomic units. We choose the mass of the particle to be that of an electron (<span class="math notranslate nohighlight">\(m = m_\text{e} = 1\)</span>), and the length of the box to be <span class="math notranslate nohighlight">\(L = 1 a_0\)</span>. Because</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\langle \phi | \hat{H} | \phi \rangle = -\frac{\hbar^2}{2m}  \left \langle \phi \left | \frac{d^2}{dx^2}\right | \phi \right \rangle
+\end{align}\]</div>
+<p>we will also need to know the second derivative of <span class="math notranslate nohighlight">\(\phi\)</span> with respect to <span class="math notranslate nohighlight">\(x\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\frac{d^2}{dx^2} \phi(x) &amp;= \frac{d^2}{dx^2} N x(L-x) \\
+&amp;= \frac{d}{dx} N(L - 2x) \\
+&amp;= -2N
+\end{align}\end{split}\]</div>
+<p>The code below will also normalize <span class="math notranslate nohighlight">\(\phi(x),\)</span> so we need to remember to include the normalization constant in this derivative expression.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+<span class="n">psi_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+
+<span class="c1"># normalize phi </span>
+<span class="c1"># phi -&gt; N * phi</span>
+<span class="c1"># N = 1/sqrt(&lt;phi|phi&gt;)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="n">phi</span> <span class="o">*=</span> <span class="n">N</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;x ($a_0$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;wave function&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\phi(x)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">psi_1</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\psi_1(x)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># evaluate &lt;phi|H|phi&gt; = -1/2&lt;phi|d^2/dx^2|phi&gt; = &lt;phi|N&gt;</span>
+<span class="n">W</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;W = </span><span class="si">%10.5f</span><span class="s1"> Eh&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">W</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_61245/2584263596.py:13: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  N = 1.0 / np.sqrt(np.trapz(phi**2, x))
+</pre></div>
+</div>
+<img alt="../../_images/898e3e70b6a5a9ae53f75f3434677e5d030ade810222f8e57accec68462de074.png" src="../../_images/898e3e70b6a5a9ae53f75f3434677e5d030ade810222f8e57accec68462de074.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>W =    4.99792 Eh
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_61245/2584263596.py:28: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  W = N * np.trapz(phi, x)
+/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_61245/2584263596.py:30: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  print(&#39;W = %10.5f Eh&#39; % (W / np.trapz(phi**2, x)))
+</pre></div>
+</div>
+</div>
+</div>
+<p>How does this result compare to the true ground-state energy for the PIB problem? Recall</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E_n = \frac{\hbar^2n^2\pi^2}{2mL^2} 
+\end{align}\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E_1 =  \frac{\pi^2}{2} {\rm E}_h \approx 4.93480 ~{\rm E}_h
+\end{align}\]</div>
+<p>Sure enough, the average energy associated with the trial wave function is higher than the exact ground-state energy, by about 1.3%.</p>
+<blockquote>
+<div><p>Practice</p>
+<blockquote>
+<div><p>Question 1</p>
+<p>Verify the results above by evaluating the expectation value of the Hamiltonian with respect to <span class="math notranslate nohighlight">\(\phi\)</span> analytically, rather than numerically.</p>
+</div></blockquote>
+</div></blockquote>
+<p>How could this result be improved? As mentioned above, we could choose a trial function that contains parameters and vary these parameters such that they minimize the variational integral, <span class="math notranslate nohighlight">\(W\)</span>. Let us consider the following trial function</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\phi(x) = c_1 \phi_1(x) + c_2 \phi_2(x)
+\end{align}\]</div>
+<p>where the basis functions, <span class="math notranslate nohighlight">\(\phi_1\)</span> and <span class="math notranslate nohighlight">\(\phi_2,\)</span> are both functions that satisfy the boundary conditions for the problem, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\phi_1(x) &amp;= N_1 x(L-x) \\
+\phi_2(x) &amp;= N_2 x^2(L-x)^2
+\end{align}\end{split}\]</div>
+<p>when <span class="math notranslate nohighlight">\(0 \le x \le L,\)</span> and both functions are zero elsewhere. Here, <span class="math notranslate nohighlight">\(N_1\)</span> and <span class="math notranslate nohighlight">\(N_2\)</span> are normalization constants for the basis functions. As will be discussed below, the problem of finding the optimal expansion coefficients <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> can actually be expressed as a matrix eigenvalue problem, but, for now, let us determine these coefficients by direct numerical minimization in Python. As above, we will work in atomic units and choose <span class="math notranslate nohighlight">\(m = m_\text{e}\)</span> and <span class="math notranslate nohighlight">\(L = 1a_0\)</span>. Also like above, we will need to evaluate an integral involving the second derivatives of <span class="math notranslate nohighlight">\(\phi_1\)</span> (which we determined above) and <span class="math notranslate nohighlight">\(\phi_2\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\frac{d^2}{dx^2} \phi_2 &amp;= N_2 \frac{d^2}{dx^2} x^2 (L-x)^2 \\
+&amp;= N_2 \frac{d}{dx}\left [ 2x(L-x)^2 - 2x^2(L-x)\right ] \\
+&amp;= N_2  \left [ 2(L-x)^2 - 8x(L-x) + 2x^2 L \right ]
+\end{align}\end{split}\]</div>
+<p>So, we will write a function that evaluates</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+W = \frac{\langle \phi | \hat{H} \phi \rangle}{\langle \phi |\phi \rangle}
+\end{align}\]</div>
+<p>and use a Python library function to minimize <span class="math notranslate nohighlight">\(W\)</span> with respect to <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2.\)</span> For the numerator, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\langle \phi | \hat{H} \phi \rangle &amp;= -\frac{1}{2} \left ( c_1^2 \langle \phi_1 | \phi_1^{\prime\prime}\rangle  + c_1c_2 [ \langle \phi_1 | \phi_2^{\prime\prime}\rangle + \langle \phi_2 | \phi_1^{\prime\prime}\rangle ] + c_2^2 \langle \phi_2 | \phi_2^{\prime\prime}\rangle \right)
+\end{align}\]</div>
+<p>and, for the denominator, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\langle \phi |\phi \rangle &amp;=   c_1^2 \langle \phi_1 | \phi_1 \rangle  + 2 c_1c_2 \langle \phi_1 | \phi_2\rangle  + c_2^2 \langle \phi_2 | \phi_2 \rangle 
+\end{align}\]</div>
+<p>where, in both expressions, we have assumed that <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> are real valued.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">evaluate_w</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">H11</span><span class="p">,</span> <span class="n">H12</span><span class="p">,</span> <span class="n">H22</span><span class="p">,</span> <span class="n">S12</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    evaluate the variational integral W = &lt;phi|H|phi&gt;/&lt;phi|phi&gt;</span>
+
+<span class="sd">    :param var: the parameters, c1 and c2</span>
+<span class="sd">    :param H11: &lt;phi_1 | H | phi_1&gt;</span>
+<span class="sd">    :param H12: &lt;phi_1 | H | phi_2&gt;</span>
+<span class="sd">    :param H22: &lt;phi_2 | H | phi_2&gt;</span>
+<span class="sd">    :param S12: &lt;phi_1 | phi_1&gt;</span>
+<span class="sd">    :return W: the variational integral</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">var</span>
+
+    <span class="n">numerator</span> <span class="o">=</span> <span class="n">c1</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">H11</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">c1</span><span class="o">*</span><span class="n">c2</span> <span class="o">*</span> <span class="n">H12</span> <span class="o">+</span> <span class="n">c2</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">H22</span>
+    <span class="n">denominator</span> <span class="o">=</span> <span class="n">c1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">S12</span> <span class="o">*</span> <span class="n">c1</span><span class="o">*</span><span class="n">c2</span> <span class="o">+</span> <span class="n">c2</span><span class="o">**</span><span class="mi">2</span>
+    
+    <span class="n">W</span> <span class="o">=</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span>
+                
+    <span class="k">return</span> <span class="n">W</span>
+    
+<span class="c1"># minimize W</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">minimize</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1"># use a fine-grain grid to be sure numerical integrals are accurate</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">5001</span><span class="p">)</span>
+
+<span class="c1"># normalization constant</span>
+<span class="n">phi_1</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+<span class="n">N1</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi_1</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="n">phi_1</span> <span class="o">*=</span> <span class="n">N1</span>
+
+<span class="c1"># second derivative</span>
+<span class="n">phi_1pp</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">N1</span>
+
+<span class="c1"># normalization constant</span>
+<span class="n">phi_2</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">N2</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi_2</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="n">phi_2</span> <span class="o">*=</span> <span class="n">N2</span>
+
+<span class="c1"># second derivative</span>
+<span class="n">phi_2pp</span> <span class="o">=</span> <span class="n">N2</span> <span class="o">*</span> <span class="p">(</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">L</span> <span class="p">)</span>
+
+<span class="c1"># &lt;phi1|H|phi1&gt;</span>
+<span class="n">H11</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi_1</span> <span class="o">*</span> <span class="n">phi_1pp</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    
+<span class="c1"># &lt;phi1|H|phi2&gt;</span>
+<span class="c1"># &lt;phi2|H|phi1&gt; = &lt;phi1|H|phi2&gt;* because H is Hermitian</span>
+<span class="n">H12</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi_1</span> <span class="o">*</span> <span class="n">phi_2pp</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+ <span class="c1"># &lt;phi2|H|phi2&gt;</span>
+<span class="n">H22</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi_2</span> <span class="o">*</span> <span class="n">phi_2pp</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># S11 = &lt;phi_1|phi_1&gt; = 1 because phi_1 is normalized</span>
+<span class="c1"># S22 = &lt;phi_2|phi_2&gt; = 1 because phi_2 is normalized</span>
+<span class="c1"># S12 = S21 = &lt;phi_1 | phi_2&gt;</span>
+<span class="n">S12</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi_1</span> <span class="o">*</span> <span class="n">phi_2</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    
+<span class="n">res</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">evaluate_w</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">H11</span><span class="p">,</span> <span class="n">H12</span><span class="p">,</span> <span class="n">H22</span><span class="p">,</span> <span class="n">S12</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="n">c1</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">evaluate_w</span><span class="p">([</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">],</span> <span class="n">H11</span><span class="p">,</span> <span class="n">H12</span><span class="p">,</span> <span class="n">H22</span><span class="p">,</span> <span class="n">S12</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;c1 = </span><span class="si">%10.5f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;c2 = </span><span class="si">%10.5f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;w  = </span><span class="si">%10.5f</span><span class="s2"> Eh&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">23</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span>     <span class="k">return</span> <span class="n">W</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="c1"># minimize W</span>
+<span class="ne">---&gt; </span><span class="mi">23</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">minimize</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="n">L</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="c1"># use a fine-grain grid to be sure numerical integrals are accurate</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wow! The variational integral, <span class="math notranslate nohighlight">\(W,\)</span> shows only a 0.001% error relative to the exact ground-state energy for the PIB problem, 4.93480 <span class="math notranslate nohighlight">\(E_\text{h}\)</span>! Now, let’s normalize <span class="math notranslate nohighlight">\(\phi\)</span> and visualize it relative to the exact ground-state wave function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psi_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;x ($a_0$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;wave function&#39;</span><span class="p">)</span>
+
+<span class="c1"># normalize phi</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">c1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">c2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">S12</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">*</span> <span class="n">c2</span><span class="p">)</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*</span> <span class="p">(</span><span class="n">c1</span> <span class="o">*</span> <span class="n">phi_1</span> <span class="o">+</span> <span class="n">c2</span> <span class="o">*</span> <span class="n">phi_2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\phi(x)$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">psi_1</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\psi_1(x)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/698a078e1f93b76f77b04e9628deebb3a8e744e67449b60924c1e8a872a9db48.png" src="../../_images/698a078e1f93b76f77b04e9628deebb3a8e744e67449b60924c1e8a872a9db48.png" />
+</div>
+</div>
+<p>We can see that the approximate wave function, <span class="math notranslate nohighlight">\(\phi,\)</span> is indistinguishable from <span class="math notranslate nohighlight">\(\psi_1\)</span> on the scale of this figure.</p>
+<p>Before moving on, let us consider one more example of a trial function that contains a variable parameter. Recall the one-dimensional quantum harmonic oscillator (QHO) problem. The QHO potential has the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V(x) = 2 \pi^2 \nu^2 m x^2
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(m\)</span> is the mass of the oscillator, and <span class="math notranslate nohighlight">\(\nu\)</span> is the frequency at which it oscillates. What boundary conditions should a trial wave function for this problem satisfy? Because</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\lim_{x \to \pm \infty} V(x) = \infty
+\end{align}\]</div>
+<p>we know that the wave function should go to zero in these limits. As such, we should pick a trial function that satisfies this requirement. We choose</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\phi(x) = e^{-c x^2}
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(c\)</span> is a variable parameter that is related to how quickly the wave function decays to zero. For this example, let us determine the optimal parameter analytically, rather than numerically. The optimal value for <span class="math notranslate nohighlight">\(c\)</span> should satisfy</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{d}{dc} W = \frac{d}{dc} \frac{\langle \phi | \hat{H} | \phi \rangle}{\langle \phi | \phi \rangle } = 0
+\end{align}\]</div>
+<p>For the numerator of the variational integral, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\langle \phi | \hat{H} | \phi \rangle &amp;= -\frac{\hbar^2}{2m} \int_{-\infty}^\infty e^{-cx^2} \frac{d^2}{dx^2} e^{-cx^2} dx + 2\pi^2\nu^2 m \int_{-\infty}^{\infty} x^2 e^{-2cx^2} dx \\
+&amp;= \left ( \frac{\hbar^2}{m} \right ) \left ( \frac{\pi}{8} \right )^{1/2} c^{1/2} + \nu^2 m\left ( \frac{\pi^5}{8} \right )^{1/2} c^{-3/2}
+\end{align}\end{split}\]</div>
+<p>The denominator of the variational integral is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\langle \phi | \phi \rangle &amp;= \int_{-\infty}^\infty e^{-2cx^2} dx \\
+&amp;= \left ( \frac{\pi}{2} \right )^{1/2} c^{-1/2}
+\end{align}\end{split}\]</div>
+<p>Combining these results,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+W &amp;= \frac{\langle \phi | \hat{H} \phi \rangle}{\langle \phi | \phi \rangle } \\
+&amp;= \frac{\hbar^2}{2m} c + \frac{\pi^2}{2} \nu^2 m c^{-1}
+\end{align}\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{d}{dc} W = \frac{\hbar^2}{2m} - \frac{\pi^2}{2} \nu^2 m c^{-2} = 0
+\end{align}\]</div>
+<p>Solving for <span class="math notranslate nohighlight">\(c,\)</span> we obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+c = \pm \left ( \frac{\pi m \nu}{\hbar} \right )
+\end{align}\]</div>
+<p>and we reject the solution with the minus sign because</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\phi(x) = e^{+\pi\nu m x^2/\hbar}
+\end{align}\]</div>
+<p>is not a square integrable function. So, the approximate wave function is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\phi(x) = e^{-m\pi\nu x^2/\hbar}
+\end{align}\]</div>
+<p>and, the variational integral is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+W &amp;= \frac{\hbar^2}{2m} c + \frac{\pi^2}{2} \nu^2 m c^{-1} \\
+&amp;= \frac{\hbar^2}{2m} \frac{\pi m \nu}{\hbar}  + \frac{\pi^2}{2} \nu^2 m \frac{\hbar} {\pi m \nu} \\
+&amp;= \frac{1}{2} h\nu
+\end{align}\end{split}\]</div>
+<p>which is exactly equal to the ground-state energy for the one-dimensional QHO! Clearly, we chose an excellent trial function because the optimal variational parameter led to exactly the correct ground-state energy and wave function.</p>
+</section>
+<section id="the-variation-theorem-for-excited-states">
+<h2>The Variation Theorem for Excited States<a class="headerlink" href="#the-variation-theorem-for-excited-states" title="Link to this heading">#</a></h2>
+<p>As expressed above, the variation theorem appears to be useful only for approximating the wave function for the lowest-energy eigenfunction of a given Hamiltonian. However, it is possible to extend this theorem to excited states. We proceed in the same manner as before, by expanding the trial function, <span class="math notranslate nohighlight">\(\phi,\)</span> in the basis of eigen state of the Hamiltonian. We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|\phi\rangle = \sum_k c_k |\psi_k\rangle
+\end{align}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H} | \psi_k \rangle = E_k | \psi_k \rangle
+\end{align}\]</div>
+<p>and, again, we choose <span class="math notranslate nohighlight">\(\{\psi_k\}\)</span> to be an orthonormal set, and we also choose <span class="math notranslate nohighlight">\(\phi\)</span> to be normalized, so</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\langle \phi | \phi \rangle = \sum_k |c_k|^2 = 1
+\end{align}\]</div>
+<p>What happens if <span class="math notranslate nohighlight">\(\phi\)</span> is orthogonal to the true ground-state wave function? In that case, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\langle \phi | \psi_1 \rangle &amp;= 0 \\
+&amp;= \sum c_k^* \langle \psi_k | \phi_1 \rangle \\
+&amp;= c_1^*
+\end{align}\end{split}\]</div>
+<p>So, if <span class="math notranslate nohighlight">\(\langle \phi | \psi_1 \rangle = 0,\)</span> then the expansion coefficient corresponding to that basis function is zero. As a result, we can restrict the sum that defines <span class="math notranslate nohighlight">\(\phi\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|\phi\rangle = \sum_{k=2} c_k |\psi_k\rangle
+\end{align}\]</div>
+<p>Working through the expectation value of the Hamiltonian, we would find that the variational integral would then be</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+W = \sum_{k=2} |c_k|^2 E_k
+\end{align}\]</div>
+<p>and, because all <span class="math notranslate nohighlight">\(E_k\)</span> in that sum satisfy <span class="math notranslate nohighlight">\(E_k \ge E_2,\)</span> we find</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+W \ge E_2
+\end{align}\]</div>
+<p>This analysis suggests that, if we can guarantee that <span class="math notranslate nohighlight">\(\langle \phi | \psi_1 \rangle = 0,\)</span> then we can use the variation theorem to find approximations to excited-state energies and wave functions. Without knowledge of the actual form of the ground-state wave function, enforcing the orthogonality requirement might seem like a tall order. However, in many cases, we can rely on symmetry arguments to make our lives easier. Consider the following examples.</p>
+<p><strong>Case 1</strong>. First, recall that, in the one-dimensional PIB problem, the wave functions with alternate even or odd symmetry about the center of the box. The ground-state wave function has even symmetry (which is actually the case for any problem for which the potential has even symmetry), so the first excited-state wave function must have odd symmetry. A suitable trial function would be</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\phi(x) = \begin{cases}
+0\text{, } &amp;x &lt; 0 \\
+N x(L-x)(L/2 - x) \text{, } &amp;0 \le x \le L \\
+0\text{, }&amp;x \ge L 
+\end{cases}
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(N\)</span> is a normalization constant. The following code visualizes this trial function and the true wave function for the first excited-state (with <span class="math notranslate nohighlight">\(n=2\)</span>) of the PIB problem. Again, we work with atomic units and choose <span class="math notranslate nohighlight">\(L = 1a_0\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">psi_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+
+<span class="c1"># normalize phi </span>
+<span class="c1"># phi -&gt; N * phi</span>
+<span class="c1"># N = 1/sqrt(&lt;phi|phi&gt;)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="n">phi</span> <span class="o">*=</span> <span class="n">N</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;x ($a_0$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;wave function&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\phi(x)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">psi_2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\psi_2(x)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/06097f324b3124ac8c41b6904280d000e5d9ae643dc64ad6723532f462333c64.png" src="../../_images/06097f324b3124ac8c41b6904280d000e5d9ae643dc64ad6723532f462333c64.png" />
+</div>
+</div>
+<p>As can be seen, this trial function seems like it will be a reasonable approximation to the true wave function for the <span class="math notranslate nohighlight">\(n=2\)</span> state.</p>
+<blockquote>
+<div><p>Practice</p>
+<blockquote>
+<div><p>Question 2</p>
+<p>Consider the trial function
+$<span class="math notranslate nohighlight">\(\begin{align}
+\phi(x) = \begin{cases}
+0\text{, } &amp;x &lt; 0 \\
+N x(L-x)(L/2 - x) \text{, } &amp;0 \le x \le L \\
+0\text{, }&amp;x \ge L 
+\end{cases}
+\end{align}\)</span><span class="math notranslate nohighlight">\(
+Evaluate the expecation value of the one-dimensional PIB Hamiltonian with respect to this function numerically and analytically, and show that this expectation value is an upper bound to the true energy of the \)</span>n=2$ state for the PIB problem.</p>
+</div></blockquote>
+</div></blockquote>
+<p><strong>Case 2</strong>. As a second example, let’s revisit the one-dimensional QHO problem. Above, we found that the exact form of the ground-state wave function could be obtained from the trial function,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\phi(x) = e^{-cx^2}
+\end{align}\]</div>
+<p>Recall that, like the PIB problem, the QHO wave functions for different states alternate between even and odd symmetry. The ground-state has even symmetry, so, if we would like to approximate the first-excited state, we should choose a trial function that has odd symmetry. Consider</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\phi(x) = x e^{-cx^2}
+\end{align}\]</div>
+<p>It turns out that this is also an excellent choice for a trial function, because the optimal value for <span class="math notranslate nohighlight">\(c\)</span> will recover the exact energy and wave function for the <span class="math notranslate nohighlight">\(v=1\)</span> state!</p>
+<blockquote>
+<div><p>Practice</p>
+<blockquote>
+<div><p>Question 3</p>
+<p>Show that the trial function</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\phi(x) = x e^{-cx^2}
+\end{align}\]</div>
+<p>will recover the exact energy for the first excited state of the one-dimensional QHO problem.</p>
+</div></blockquote>
+</div></blockquote>
+<p><strong>Case 3</strong>. The hydrogenic atom problem is a central force problem, and all central force problems have solutions of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi(r, \theta, \phi) &amp;= R(r) Y^m_l(\theta, \phi)
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(Y^m_l(\theta, \phi)\)</span> are the spherical harmonics. Recall that the spherical harmonics with different <span class="math notranslate nohighlight">\(l\)</span> values are orthogonal, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\langle Y^m_l(\theta, \phi) | Y^m_{l^\prime}(\theta, \phi) \rangle = 0\text{, }~~~l \neq l^\prime
+\end{align}\]</div>
+<p>One could choose as trial functions</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\phi_1(r, \theta, \phi) &amp;= R(r) Y^0_0(\theta, \phi) \\
+\phi_2(r, \theta, \phi) &amp;= R(r) Y^0_1(\theta, \phi) \\
+\phi_3(r, \theta, \phi) &amp;= R(r) Y^0_2(\theta, \phi) \\
+\text{etc.}  \nonumber
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(R(r)\)</span> is an as-of-yet undetermined function that contains the variational parameters and should satisfy the boundary conditions for bound states</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\lim_{r\to\infty} R(r) = 0
+\end{align}\]</div>
+<p>The trial function <span class="math notranslate nohighlight">\(\phi_1\)</span> could be used to find an approximate radial function and energy for the lowest-energy state with <span class="math notranslate nohighlight">\(l=0,\)</span> which would be the <span class="math notranslate nohighlight">\(n=1\)</span> state. The trial functions <span class="math notranslate nohighlight">\(\phi_2,\)</span> <span class="math notranslate nohighlight">\(\phi_3,\)</span> etc., could then be used to find approximate radial functions and energies for the lowest-energy states with <span class="math notranslate nohighlight">\(l=1, 2,\)</span> etc. (the <span class="math notranslate nohighlight">\(n=2, 3,\)</span> etc. states).</p>
+<p><strong>Case 4</strong>. In a later notebook, we will discuss <a class="reference external" href="https://deprincelab.github.io/tutorials/jupyter_notebooks/hartree_fock/hartree_fock.html">Hartree-Fock theory</a>, which is a variational approach for finding approximate wave functions for many-electron systems. In the Hartree-Fock approach, the trial wave function is chosen to be an antisymmetrized product of “spin-orbitals,” which are one-electron wave functions that include both spin and spatial coordinates. As an example, for two electrons, such a wave function would look like</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\phi({\bf x}_1, {\bf x_2}) = \frac{1}{\sqrt{2}} [ \chi_1({\bf x}_1) \chi_2({\bf x}_2) - \chi_1({\bf x}_2) \chi_2({\bf x}_1)]
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\({\bf x}_1\)</span> and <span class="math notranslate nohighlight">\({\bf x}_2\)</span> represent the spin and spatial coordinates for electrons 1 and 2, respectively, and <span class="math notranslate nohighlight">\(\chi_1\)</span> and <span class="math notranslate nohighlight">\(\chi_2\)</span> are the spin-orbitals that contains the variational parameters. For molecules having point-group symmetry beyond <span class="math notranslate nohighlight">\(\text{C}_1,\)</span> the spin-orbitals can be defined such that they belong to a specific irreducible representation of the point-group. States of different total symmetry can then be constructed where the overall symmetry is defined by the products of the symmetries of the underlying spin-orbitals. Consider a water molecule, which belongs to the C<span class="math notranslate nohighlight">\(_{2v}\)</span> point group, which itself has four irreducible representations (<span class="math notranslate nohighlight">\(A_1,\)</span> <span class="math notranslate nohighlight">\(A_2,\)</span> <span class="math notranslate nohighlight">\(B_1,\)</span> and <span class="math notranslate nohighlight">\(B_2\)</span>). As such, the Hatree-Fock approach could be used to find wave functions and energies approximating those for the four lowest-energy states with each of these overall symmetries.</p>
+<p><strong>Case 5</strong>. Lastly, consider again the antisymmetrized product wave function from Hartree-Fock theory. The spin degrees of freedom could be chosen such that the trial wave function has a specific spin symmetry (e.g., singlet, triplet, etc.). In this way, the Hartree-Fock approach could be used to find wave functions and energies approximating those for the lowest-energy states of a given spin symmetry.</p>
+</section>
+<section id="the-linear-variation-method">
+<h2>The Linear Variation Method<a class="headerlink" href="#the-linear-variation-method" title="Link to this heading">#</a></h2>
+<p>One of the main challenges in applications of the variation theorem is choosing a good trial function. On the one hand, we could simply inspect the boundary conditions and choose an appropriate form that respects those conditions (as we did above for the PIB and QHO problems). A more systematic approach is to expand the wave function in a basis of known functions and let the expansion coefficients be the variational parameters. We touched on this idea above when considering the PIB problem. In that case, we chose a trial function that contained two basis functions,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\phi(x) = c_1 \phi_1(x) + c_2 \phi_2(x)
+\end{align}\]</div>
+<p>and we found the optimal coefficients numerically using a Python minimization routine. It turns out that we could have also solved this problem analytically using a formalism that involves some linear algebra. Before doing so, we should review some relevant mathematical concepts.</p>
+<section id="matrices-in-quantum-mechanics">
+<h3>Matrices in Quantum Mechanics<a class="headerlink" href="#matrices-in-quantum-mechanics" title="Link to this heading">#</a></h3>
+<p>Given a set <span class="math notranslate nohighlight">\(n\)</span> of orthonormal basis functions, <span class="math notranslate nohighlight">\(\{f_i\},\)</span> we can define the <strong>matrix representation</strong> of an operator, <span class="math notranslate nohighlight">\(\hat{A},\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+{\bf A} = \begin{pmatrix}
+A_{11} &amp; A_{12} &amp; ... \\
+A_{21} &amp; \ddots &amp;  \\
+\vdots &amp; &amp; A_{nn}\\
+\end{pmatrix}
+\end{align}\end{split}\]</div>
+<p>where each <strong>matrix element</strong> is defined by</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+A_{ij} = \langle f_i | \hat{A} | f_j \rangle
+\end{align}\]</div>
+<p>We will find that matrices have the same mathematical properties as linear Hermitian operators that we discussed in an earlier notebook. Consider first the equivalence of the matrix representation of two operators</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{R} = \hat{S}
+\end{align}\]</div>
+<p>in the basis <span class="math notranslate nohighlight">\(\{f_i\}\)</span>. We multiply this expression by <span class="math notranslate nohighlight">\(\langle f_i|\)</span> on the left and by <span class="math notranslate nohighlight">\(|f_j\rangle\)</span> on the right and then integrate over all space to obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+R_{ij} = S_{ij}
+\end{align}\]</div>
+<p>From this expression, we conclude that the matrix representations of <span class="math notranslate nohighlight">\(\hat{R}\)</span> and <span class="math notranslate nohighlight">\(\hat{S}\)</span> are equal if the matrix elements are equivalent, for all <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<p>Now, consider the addition of two operators</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{C} = \hat{A} + \hat{B}
+\end{align}\]</div>
+<p>We can evaluate the matrix elements for <span class="math notranslate nohighlight">\(\hat{C}\)</span> in the basis <span class="math notranslate nohighlight">\(\{f_i\}\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+C_{ij} &amp;= \langle f_i |\hat{C} | f_j \rangle \\
+&amp;= \langle f_i |\hat{A} + \hat{B} | f_j \rangle \\
+&amp;= \langle f_i |\hat{A} | f_j \rangle + \langle f_i | \hat{B} | f_j \rangle \\
+&amp;= A_{ij} + B_{ij}
+\end{align}\end{split}\]</div>
+<p>which is the rule for matrix addition!</p>
+<p>Let us try something slightly more complicated. Consider the product of operators</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{R} = \hat{S}\hat{T}
+\end{align}\]</div>
+<p>The matrix representation of this product is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+R_{ij} &amp;= \langle f_i | \hat{R} | f_j \rangle \\
+&amp;= \langle f_i |\hat{S}\hat{T} | f_j \rangle
+\end{align}\end{split}\]</div>
+<p>If the basis <span class="math notranslate nohighlight">\(\{f_i\}\)</span> is complete, then we can expand</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{T} | f_j \rangle = \sum_k c_k | f_k \rangle
+\end{align}\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+R_{ij} &amp;= \sum_k c_k \langle f_i |\hat{S} | f_k \rangle \\
+&amp;= \sum_k c_k S_{ik}
+\end{align}\end{split}\]</div>
+<p>How can we determine the expansion coefficients? You may recall from an earlier notebook that one of the expansion coefficients, <span class="math notranslate nohighlight">\(c_m,\)</span> can be obtained by projecting <span class="math notranslate nohighlight">\(\hat{T} | f_j \rangle = \sum_k c_k | f_k \rangle\)</span> onto the basis function, <span class="math notranslate nohighlight">\(\langle f_m|,\)</span> i.e.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\langle f_m | \hat{T} | f_j \rangle &amp;= \sum_k c_k \langle f_m | f_k \rangle \\
+&amp;= \sum_k c_k \delta_{mk} \\
+&amp;= c_m
+\end{align}\end{split}\]</div>
+<p>Now, we find that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+R_{ij} &amp;= \sum_{k} S_{ik} T_{kj}
+\end{align}\]</div>
+<p>which is the rule for matrix multiplication! We could also have obtained this result more directly, by inserting the identity operator,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{I} = \sum_k | f_k \rangle \langle f_k |
+\end{align}\]</div>
+<p>directy between the product of operators in</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+R_{ij} &amp;= \langle f_i | \hat{R} | f_j \rangle \\
+&amp;= \langle f_i |\hat{S}\hat{T} | f_j \rangle \\
+&amp;= \langle f_i |\hat{S}\hat{I}\hat{T} | f_j \rangle \\
+&amp;= \sum_k  \langle f_i | \hat{S}|f_k \rangle \langle f_k | \hat{T} | f_j \rangle \\
+&amp;= \sum_{k} S_{ik} T_{kj}
+\end{align}\end{split}\]</div>
+</section>
+<section id="vectors-in-quantum-mechanics">
+<h3>Vectors in Quantum Mechanics<a class="headerlink" href="#vectors-in-quantum-mechanics" title="Link to this heading">#</a></h3>
+<p>These exercises should convince us that we can view operators as matrices once we have chosen a basis. It turns out that we can also view functions expanded in this basis as <strong>vectors</strong>. Consider the action of the operator <span class="math notranslate nohighlight">\(\hat{A}\)</span> on a function</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{A} | u \rangle = | w \rangle
+\end{align}\]</div>
+<p>Now, we select a basis, <span class="math notranslate nohighlight">\(\{f_i\},\)</span> in which we expand the function <span class="math notranslate nohighlight">\(|u\rangle\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|u\rangle = \sum_i u_i | f_i \rangle
+\end{align}\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+u_i = \langle f_i | u \rangle
+\end{align}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|u\rangle = \sum_i  | f_i \rangle \langle f_i | u \rangle
+\end{align}\]</div>
+<p>We can think of the expansion coefficients, <span class="math notranslate nohighlight">\(u_i,\)</span> as being components of a vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+{\bf u } = \begin{pmatrix}
+u_1 \\
+u_2 \\
+\vdots \\
+u_n
+\end{pmatrix}
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is the dimension of the basis. Let us insert <span class="math notranslate nohighlight">\(|u\rangle = \sum_i  | f_i \rangle \langle f_i | u \rangle\)</span> into the expression for the matrix vector product</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\sum_i  \hat{A}  | f_i \rangle \langle f_i | u \rangle = | w \rangle
+\end{align}\]</div>
+<p>Next, we can expand the function <span class="math notranslate nohighlight">\(\hat{A}  | f_i \rangle\)</span> in the same basis</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{A}  | f_i \rangle &amp;= \sum_k c_k | f_k \rangle \\
+&amp;= \sum_k \langle f_k | \hat{A} | f_i \rangle | f_k \rangle
+\end{align}\end{split}\]</div>
+<p>which gives us</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\sum_{ik} \langle f_k | \hat{A} | f_i \rangle \langle f_i | u \rangle | f_k \rangle  = | w \rangle
+\end{align}\]</div>
+<p>We now can expand the function <span class="math notranslate nohighlight">\(|w\rangle\)</span> in the same basis to obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+|w\rangle &amp;= \sum_i w_i | f_i \rangle \\
+&amp;= \sum_i |f_i \rangle \langle f_i | w\rangle
+\end{align}\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\sum_{ik} \langle f_k | \hat{A} | f_i \rangle \langle f_i | u \rangle | f_k \rangle  = \sum_j |f_j \rangle \langle f_j | w\rangle
+\end{align}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\sum_{ik} A_{ki} u_i | f_k \rangle  = \sum_j w_j |f_j \rangle 
+\end{align}\]</div>
+<p>We can move all terms to the left-hand side to give</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\sum_{k}\left [ \sum_i A_{ki} u_i - w_k \right ] | f_k \rangle  = 0
+\end{align}\]</div>
+<p>At this point, we put on our linear algebra hats and note that, if <span class="math notranslate nohighlight">\(|f_k\rangle \neq 0\)</span> and all <span class="math notranslate nohighlight">\(|f_k\rangle\)</span> are linearly independent, then this equation only has a solution if</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\sum_i A_{ki} u_i - w_k  = 0\text{, }~~~\forall ~k
+\end{align}\]</div>
+<p>Put another way,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\sum_i A_{ki} u_i = w_k\text{, }~~~\forall ~k
+\end{align}\]</div>
+<p>which is the rule for a matrix-vector product!</p>
+</section>
+<section id="the-secular-equation">
+<h3>The Secular Equation<a class="headerlink" href="#the-secular-equation" title="Link to this heading">#</a></h3>
+<p>In the linear variational method, the trial wave function is expanded in a basis of known functions</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|\phi\rangle = \sum_k c_k |f_k\rangle
+\end{align}\]</div>
+<p>where the set of functions <span class="math notranslate nohighlight">\(\{|f_k\rangle\}\)</span> is not necessarily orthonormalized. While not required, the following analysis will be simpler if we assume that <span class="math notranslate nohighlight">\(\{c_k\}\)</span> and <span class="math notranslate nohighlight">\(\{|f_k\rangle\}\)</span> are real-valued. We would like to minimize the variational integral</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+W = \frac{\langle \phi | \hat{H} | \phi \rangle}{\langle \phi | \phi \rangle}
+\end{align}\]</div>
+<p>with respect to the expansion coefficients. The optimal coefficients should satisfy</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{\partial W}{\partial c_i} = 0
+\end{align}\]</div>
+<p>for all <span class="math notranslate nohighlight">\(i\)</span>. Let’s do some math! We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\frac{\partial W}{\partial c_i} &amp;= \frac{\partial}{\partial c_i} \langle \phi | \hat{H} | \phi \rangle \langle \phi | \phi \rangle^{-1} \\
+&amp;=  \left [ \left \langle \left . \left . \frac{ \partial \phi}{\partial c_i}\right | \hat{H} \right | \phi \right \rangle   + \left \langle \phi \left | \hat{H} \left | \frac{\partial \phi}{\partial c_i} \right . \right . \right \rangle \right ] \langle \phi | \phi \rangle^{-1} \nonumber \\
+&amp;- \langle \phi | \hat{H} | \phi \rangle \left [ \left \langle \left . \frac{ \partial \phi}{\partial c_i} \right | \phi \right \rangle  + \left \langle \phi \left | \frac{\partial \phi}{\partial c_i}\right . \right \rangle \right ] \langle \phi | \phi \rangle^{-2}
+\end{align}\end{split}\]</div>
+<p>The derivative of the trial wave function with respect to <span class="math notranslate nohighlight">\(c_i\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\frac{\partial}{c_i} | \phi \rangle &amp;= \sum_k \frac{\partial}{\partial c_i} c_k | f_k \rangle \\
+&amp;= \sum_k \delta_{ik} | f_k \rangle \\
+&amp;= |f_i\rangle
+\end{align}\end{split}\]</div>
+<p>so the gradient of <span class="math notranslate nohighlight">\(W\)</span> becomes</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{\partial W}{\partial c_i} &amp;= \frac{\langle f_i | \hat{H} | \phi \rangle + \langle \phi | \hat{H} | f_i \rangle}{\langle \phi | \phi \rangle} - \frac{\langle \phi | \hat{H} | \phi \rangle}{\langle \phi |\phi\rangle^2} \left [ \langle f_i | \phi \rangle +  \langle \phi | f_i \rangle \right ]
+\end{align}\]</div>
+<p>By multiplying through by a factor of <span class="math notranslate nohighlight">\(\langle \phi | \phi \rangle\)</span> and recognizing that <span class="math notranslate nohighlight">\(\frac{\langle \phi | \hat{H} | \phi \rangle}{\langle \phi | \phi \rangle} = W,\)</span> this expression simplifies to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+0 &amp;= \langle f_i | \hat{H} | \phi \rangle + \langle \phi | \hat{H} | f_i \rangle - W \left [ \langle f_i | \phi \rangle +  \langle \phi | f_i \rangle \right ] \\
+&amp;= \sum_k c_k \langle f_i | \hat{H} | f_k \rangle  + \sum_k c_k^* \langle f_k | \hat{H} | f_i \rangle  - W \left ( \sum_k c_k \langle f_i | f_k \rangle + \sum_k c_k^* \langle f_k | f_i \rangle  \right ) \\
+&amp;= \sum_k c_k \left ( H_{ik} + H_{ki} \right ) - W \sum_k c_k \left (S_{ik} + S_{ki} \right )
+\end{align}\end{split}\]</div>
+<p>where, in the last line, we have recognized that <span class="math notranslate nohighlight">\(c_k\)</span> is real valued, and we have introduced the overlap integral</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+S_{ik} = \langle f_i | f_k \rangle
+\end{align}\]</div>
+<p>Now, recall that <span class="math notranslate nohighlight">\(\hat{H}\)</span> is a Hermitian operator, so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\langle f_i | \hat{H} | f_k \rangle &amp;= \langle f_k | \hat{H} | f_i \rangle^* \\
+H_{ik} &amp;= H_{ki}^* \\
+H_{ik} &amp;= H_{ik}^\dagger \\
+\end{align}\end{split}\]</div>
+<p>where we have introduced the “dagger” notation, which refers to the adjoint, or conjugate transpose, of the matrix. Hence, we say that Hermitian matrices are “self adjoint.” If the basis functions are real-valued and the Hamiltonian contains only real-valued quantities (e.g., no spin-orbit coupling or complex external fields), then the elements of the matrix representation of the Hamiltonian will be real-valued, as will the overlap integrals, so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+H_{ik} &amp;= H_{ki} \\
+S_{ik} &amp;= S_{ki}
+\end{align}\end{split}\]</div>
+<p>We now have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\sum_k \left [ H_{ik} - S_{ik}W\right ] c_k = 0\text{, }~~~\forall~i
+\end{align}\]</div>
+<p>It will be easiest to understsand how to solve this set of linear equations if we consider the specific case where trial function is expanded in a basis of only two functions, in which case we would have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+i &amp;= 1: ~~~ (H_{11} - S_{11} W) c_1 + (H_{12} - W S_{12}) c_2 = 0 \\
+i &amp;= 2: ~~~ (H_{21} - S_{21} W) c_1 + (H_{22} - W S_{22}) c_2 = 0
+\end{align}\end{split}\]</div>
+<p>We have three options for solving these equations:</p>
+<ol class="arabic">
+<li><p>Use Gaussian / Gauss-Jordon elimination. This procedure is essentially what one would do when solving for <span class="math notranslate nohighlight">\(n\)</span> unknown coefficients with <span class="math notranslate nohighlight">\(n\)</span> equations by hand.</p></li>
+<li><p>Solve the non-linear equation resulting from</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+   \det\left ( {\bf H} - W{\bf S} \right ) = 0
+   \end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\det\)</span> refers to the determinant. It turns out that the original set of equations has a non-trivial solution if and only if this determinant is equal to zero. This determinant equation is sometimes called the <strong>secular equation</strong>.</p>
+</li>
+<li><p>Use numerical matrix methods. The linear equations are equivalent to what is called a generalized eigenvalue problem. If the basis is orthonormalized, then the linear equations would be equivalent to matrix eigenvalue problem, which could be solved by finding a transformation that brings the matrix to diagonal form. This approach is most similar to how some problems in quantum chemistry are solved, in practice, so we will return to this idea later.</p></li>
+</ol>
+<p>For now, let us proced with option 2. Again, consider the two basis function case, where the secular equation is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\det ( {\bf H} - W {\bf S} ) &amp;= 0 \\
+&amp;= \begin{vmatrix}
+H_{11} - S_{11}W &amp; H_{12} - S_{12}W \\
+H_{21} - S_{21}W &amp; H_{22} - S_{22}W \\
+\end{vmatrix} \\
+&amp;= (H_{11} - S_{11}W)(H_{22} - S_{22}W) - (H_{12} - S_{12}W)(H_{21} - S_{21}W)
+\end{align}\end{split}\]</div>
+<p>In the last line, we have followed the <a class="reference external" href="https://en.wikipedia.org/wiki/Determinant">rule for evaluating a <span class="math notranslate nohighlight">\(2\times 2\)</span> determinant</a>. This equation is quadratic in <span class="math notranslate nohighlight">\(W,\)</span> which implies the existance of two solutions, or two estimates of the energy. With <span class="math notranslate nohighlight">\(n\)</span> basis functions, we would have an <span class="math notranslate nohighlight">\(n\)</span>th-order polynomial that would give <span class="math notranslate nohighlight">\(n\)</span> estimates for energies with</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+W_1 \le W_2 \le ... \le W_n
+\end{align}\]</div>
+<p>It can be proved that each of these values are bounded by the true eigenvalues of the Hamiltonian as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+E_1 \le W_1 \\
+E_2 \le W_2 \\
+\text{etc}. \nonumber
+\end{align}\end{split}\]</div>
+<p>How does this work in practice? Let’s revisit the one-dimensional PIB problem, where the trial function is expanded in a basis of four functions:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|\phi\rangle = \sum_{k=1}^4 c_k |f_k\rangle
+\end{align}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+|f_1\rangle &amp;= x(l-x) \\
+|f_2\rangle &amp;= x^2(l-x)^2 \\
+|f_3\rangle &amp;= x(l-x)(l/2-x) \\
+|f_4\rangle &amp;= x^2(l-x)^2(l/2-x) \\
+\end{align}\end{split}\]</div>
+<p>Wait, does the use of four basis functions imply that we will need to deal with a <span class="math notranslate nohighlight">\(4\times 4\)</span> determinant? In general, yes, but for this specify example, not quite. The actual structure of the problem will be much simpler, and the reason is symmetry.</p>
+<p>First, let us think about the symmetry of the basis functions. <span class="math notranslate nohighlight">\(|f_1\rangle\)</span> and <span class="math notranslate nohighlight">\(|f_2\rangle\)</span> are even about the middle of the box, while <span class="math notranslate nohighlight">\(|f_3\rangle\)</span> and <span class="math notranslate nohighlight">\(|f_4\rangle\)</span> are odd. As such,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\langle f_1 | f_3 \rangle = S_{13} &amp;= 0 \\
+&amp;= S_{14} \\
+&amp;= S_{23} \\
+&amp; = S_{24}
+\end{align}\end{split}\]</div>
+<p>So, overall, the overlap matrix is block diagonal</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+{\bf S} = \begin{pmatrix}
+S_{11} &amp; S_{12} &amp; 0 &amp; 0 \\
+S_{21} &amp; S_{22} &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; S_{33} &amp; S_{34} \\
+0 &amp; 0 &amp; S_{43} &amp; S_{44} \\
+\end{pmatrix}
+\end{align}\end{split}\]</div>
+<p>What about the matrix representation of the Hamiltonian? Does it have a similar structure? The answer is, “yes,” but first, in order to understand why, we must introduce the <strong>parity operator</strong> and explore its properties.</p>
+<p>The parity operator, <span class="math notranslate nohighlight">\(\hat{\Pi},\)</span> is an operator that flips the sign of spatial coordinates. In three dimensions, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{\Pi} f(x, y, z) = f(-x, -y, -z)
+\end{align}\]</div>
+<p>What are the eigenvalues of this operator? It may be useful to consider what happens when acting on both sides of this equation with the partity operator</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{\Pi}^2 f(x, y, z) &amp;= \hat{\Pi} f(-x, -y, -z) \\
+&amp;= f(x, y, z)
+\end{align}\end{split}\]</div>
+<p>which implies that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{\Pi}^2 = 1
+\end{align}\]</div>
+<p>Now, consider the eigenvalue equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{\Pi} g_i = c_i g_i
+\end{align}\]</div>
+<p>Acting on both sides of the equation with <span class="math notranslate nohighlight">\(\hat{\Pi}\)</span> leads to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{\Pi}^2 g_i &amp;= c_i \hat{\Pi} g_i \\
+&amp;= c_i^2 g_i 
+\end{align}\end{split}\]</div>
+<p>which, when combined with the previous result, gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+g_i &amp;= c_i^2 g_i \\
+\end{align}\end{split}\]</div>
+<p>and, thus,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+c_i = \pm 1
+\end{align}\]</div>
+<p>What are the eigenfunctions of the parity operator? Given that the eigenvalues are <span class="math notranslate nohighlight">\(\pm 1,\)</span> the eigenfunctions should satisfy</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{\Pi} g_i(x, y, z) &amp;= \pm g_i(x, y, z)
+\end{align}\]</div>
+<p>but we also know that the parity operator should flip the sign of the coordinates, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{\Pi} g_i(x, y, z) &amp;= g_i(-x, -y, -z)
+\end{align}\]</div>
+<p>Combining these results</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+g_i(x, y, z) = \pm g_i(-x, -y, -z)
+\end{align}\]</div>
+<p>which implies that the eigenfunctions of the parity operator are all (well-behaved) functions with even and odd parity.</p>
+<p>Does the parity operator commute with the Hamiltonian for the one-dimensional PIB problem? Consider</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+[\hat{H}, \hat{\Pi}] = [\hat{T}, \hat{\Pi}] + [V, \hat{\Pi}]
+\end{align}\]</div>
+<p>In one-dimension</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+[\hat{T}, \hat{\Pi}] f(x) &amp;= \hat{T}\hat{\Pi}f(x) - \hat{\Pi}\hat{T}f(x) \\
+&amp;= -\frac{\hbar^2}{2m} \left [ \frac{d^2}{dx^2}\hat{\Pi} f(x) - \hat{\Pi} \frac{d^2}{dx^2} f(x) \right ] \\
+&amp;= -\frac{\hbar^2}{2m} \left [ \frac{d^2}{dx^2} f(-x) -  \frac{d}{d(-x)} \frac{d}{d(-x)}f(-x) \right ] \\
+&amp;= -\frac{\hbar^2}{2m} \left [ \frac{d^2}{dx^2} f(-x) -  \frac{d}{dx} \frac{d}{dx}f(-x) \right ] \\
+&amp;= 0
+\end{align}\end{split}\]</div>
+<p>Therefore, <span class="math notranslate nohighlight">\([\hat{T}, \hat{\Pi}] = 0\)</span>.</p>
+<blockquote>
+<div><p>Practice</p>
+<blockquote>
+<div><p>Question 4</p>
+<p>Convince yourself that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{\Pi} \left [ \frac{d^2}{dx^2} f(x) \right ] = \frac{d^2}{dx^2} f(-x)
+\end{align}\]</div>
+<p>using the centered second-order finite-difference expression for the second derivative</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{d^2}{dx^2} f(x) \approx \frac{f(x+h) - 2f(x) + f(x-h)}{h^2}
+\end{align}\]</div>
+</div></blockquote>
+</div></blockquote>
+<p>Does the parity operator commute with the potential operator? In one-dimension, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+[V(x), \hat{\Pi}]f(x) = [V(x) - V(-x)]f(-x)
+\end{align}\]</div>
+<p>If the potential is even, then <span class="math notranslate nohighlight">\(V(x) = V(-x)\)</span>, and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+[V(x), \hat{\Pi}] = 0
+\end{align}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+[\hat{H}, \hat{\Pi}] = 0
+\end{align}\]</div>
+<p>More generally, for a multidimensional problem, if the potential has even parity, then the Hamiltonian will commute with the parity operator. In such cases, it should be possible to define sumultaneous eigenfunctions of both operators. In other words, the eigenfunctions of the Hamiltonian could be chosen such that they have even or odd parity.</p>
+<p>Before returning to the secular equation, we require one additional theorem for Hermitian operators:</p>
+<p><strong>Theorem</strong> If <span class="math notranslate nohighlight">\(g_i\)</span> and <span class="math notranslate nohighlight">\(g_j\)</span> are eigenfunctions of a Hermitian operator <span class="math notranslate nohighlight">\(\hat{A}\)</span> with different eigenvalues, then</p>
+<div class="math notranslate nohighlight">
+\[\langle g_i | \hat{B} | g_j \rangle = 0\]</div>
+<p>If <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> commute.</p>
+<p>If the potential has even parity, then <span class="math notranslate nohighlight">\([\hat{\Pi}, \hat{H}] = 0\)</span>. If the Hamiltonian is represented in a basis of functions with well-defined parity, this theorem suggests that elements <span class="math notranslate nohighlight">\(H_{ij} = \langle f_i | \hat{H} | f_j \rangle\)</span> will be zero, if basis functions <span class="math notranslate nohighlight">\(f_i\)</span> and <span class="math notranslate nohighlight">\(f_j\)</span> have different parities. For the PIB problem with four basis functions, the potential is even, and the basis functions have either even or odd parity (with respect to the center of the box). As such, the Hamiltonian has the same block diagonal structure as the overlap matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+{\bf H} = \begin{pmatrix}
+H_{11} &amp; H_{12} &amp; 0 &amp; 0 \\
+H_{21} &amp; H_{22} &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; H_{33} &amp; H_{34} \\
+0 &amp; 0 &amp; H_{43} &amp; H_{44} \\
+\end{pmatrix}
+\end{align}\end{split}\]</div>
+<blockquote>
+<div><p>Practice</p>
+<blockquote>
+<div><p>Question 5</p>
+<p>Proove that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\langle f_i | \hat{B} | f_j \rangle = 0
+\end{align}\]</div>
+<p>if <span class="math notranslate nohighlight">\(f_i\)</span> and <span class="math notranslate nohighlight">\(f_j\)</span> are eigenfunctions of linear Hermitian operator <span class="math notranslate nohighlight">\(\hat{A}\)</span> with different eigenvalues and <span class="math notranslate nohighlight">\([\hat{A}, \hat{B}] = 0.\)</span></p>
+</div></blockquote>
+</div></blockquote>
+<p>Armed with this new knowledge, we can see that the <span class="math notranslate nohighlight">\(4\times 4\)</span> determinant for the PIB problem has a special structure, block-diagonal structure:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+0 = \begin{vmatrix}
+H_{11} - W S_{11} &amp; H_{12} - W S_{12} &amp; 0 &amp; 0 \\
+H_{21} - W S_{21} &amp; H_{22} - W S_{22} &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; H_{33} - W S_{33} &amp; H_{34} - W S_{34} \\
+0 &amp; 0 &amp; H_{43} - W S_{43} &amp; H_{44} - W S_{44} \\
+\end{vmatrix}
+\end{align}\end{split}\]</div>
+<p>It turns out that the determinant of a block-diagonal matrix is expressible as a product of determinants of the individual subblocks, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\begin{vmatrix}
+{\bf A} &amp; 0 \\
+0 &amp; {\bf B} \\
+\end{vmatrix} =
+\begin{vmatrix} {\bf A} \end{vmatrix}\begin{vmatrix} {\bf B} \end{vmatrix}
+\end{align}\end{split}\]</div>
+<p>So, if we are solving</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\det({\bf A})\det({\bf B}) = 0
+\end{align}\]</div>
+<p>we can obtain separate sets of roots by separately solving</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\det({\bf A}) = 0
+\end{align}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\det({\bf B}) = 0
+\end{align}\]</div>
+<p>To actually solve these equations, we need integrals, <span class="math notranslate nohighlight">\(H_{11},\)</span> <span class="math notranslate nohighlight">\(S_{11},\)</span> etc., some of which we evaluated numerically above. Let us reuse some of that code to solve the secular equation for the even parity part of the four-basis-function PIB problem:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+0 &amp;= \begin{vmatrix}
+H_{11} - W S_{11} &amp; H_{12} - W S_{12} \\
+H_{21} - W S_{21} &amp; H_{22} - W S_{22} \\ 
+\end{vmatrix} \\
+&amp;= (H_{11} - W S_{11})(H_{22} - W S_{22}) - (H_{12} - W S_{12})(H_{21} - W S_{21}) \\
+&amp;= aW^2 + b W + c 
+\end{align}\end{split}\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+a &amp;= S_{11} S_{22} - S_{12} S_{21} \\
+b &amp;= - (H_{11}S_{22} + H_{22}S_{11} - H_{12}S_{21} - H_{21}S_{12}) \\
+c &amp;= H_{11} H_{22} - H_{12}H_{21}
+\end{align}\end{split}\]</div>
+<p>As above, we will work in atomic units and choose <span class="math notranslate nohighlight">\(L=1a_0,\)</span> and <span class="math notranslate nohighlight">\(m = m_\text{e}\text{.}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1"># use a fine-grain grid to be sure numerical integrals are accurate</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">5001</span><span class="p">)</span>
+
+<span class="c1"># normalization constant</span>
+<span class="n">phi_1</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+<span class="n">N1</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi_1</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="n">phi_1</span> <span class="o">*=</span> <span class="n">N1</span>
+
+<span class="c1"># second derivative</span>
+<span class="n">phi_1pp</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">N1</span>
+
+<span class="c1"># normalization constant</span>
+<span class="n">phi_2</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">N2</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi_2</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="n">phi_2</span> <span class="o">*=</span> <span class="n">N2</span>
+
+<span class="c1"># second derivative</span>
+<span class="n">phi_2pp</span> <span class="o">=</span> <span class="n">N2</span> <span class="o">*</span> <span class="p">(</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">L</span> <span class="p">)</span>
+
+<span class="c1"># &lt;phi1|H|phi1&gt;</span>
+<span class="n">H11</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi_1</span> <span class="o">*</span> <span class="n">phi_1pp</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    
+<span class="c1"># &lt;phi1|H|phi2&gt;</span>
+<span class="c1"># &lt;phi2|H|phi1&gt; = &lt;phi1|H|phi2&gt;* because H is Hermitian</span>
+<span class="n">H12</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi_1</span> <span class="o">*</span> <span class="n">phi_2pp</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+ <span class="c1"># &lt;phi2|H|phi2&gt;</span>
+<span class="n">H22</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi_2</span> <span class="o">*</span> <span class="n">phi_2pp</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># S11 = &lt;phi_1|phi_1&gt; = 1 because phi_1 is normalized</span>
+<span class="c1"># S22 = &lt;phi_2|phi_2&gt; = 1 because phi_2 is normalized</span>
+<span class="c1"># S12 = S21 = &lt;phi_1 | phi_2&gt;</span>
+<span class="n">S12</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi_1</span> <span class="o">*</span> <span class="n">phi_2</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    
+<span class="c1"># quadratic formula:</span>
+<span class="c1"># ax^2 + bx + c = 0</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">S12</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="o">-</span> <span class="p">(</span><span class="n">H11</span> <span class="o">+</span> <span class="n">H22</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">H12</span><span class="o">*</span><span class="n">S12</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">H11</span> <span class="o">*</span> <span class="n">H22</span> <span class="o">-</span> <span class="n">H12</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">W1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+<span class="n">W3</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;W1  = </span><span class="si">%10.5f</span><span class="s2"> Eh&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">W1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;W3  = </span><span class="si">%10.5f</span><span class="s2"> Eh&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">W3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>W1  =    4.93487 Eh
+W3  =   51.06507 Eh
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wow! <span class="math notranslate nohighlight">\(W_1\)</span> calculcated in this way, which provides an estimate for the exact ground-state energy, <span class="math notranslate nohighlight">\(E_1,\)</span> is identical to the estimate we found earlier by explicit numerical minimization of the variational integral. As a reminder, this estimate shows only a 0.001% error relative to the exact ground-state energy for the PIB problem, 4.93480 <span class="math notranslate nohighlight">\(E_\text{h}\)</span>! Moreover, we also have an estimate to the energy of the first excited state of even parity, which corresponds to the second excited-state energy overall, <span class="math notranslate nohighlight">\(E_3\)</span>. Recall</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E_n = \frac{\hbar^2n^2\pi^2}{2mL^2} 
+\end{align}\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E_3 =  \frac{9\pi^2}{2} {\rm E}_h \approx 44.41322 ~{\rm E}_h
+\end{align}\]</div>
+<p>As can be seen, the description of this state is a bit worse than that of the ground-state, with <span class="math notranslate nohighlight">\(W_3\)</span> agreeing with <span class="math notranslate nohighlight">\(E_3\)</span> to only <span class="math notranslate nohighlight">\(\approx 15\%\text{.}\)</span> Note that <span class="math notranslate nohighlight">\(W_3 &gt; E_3,\)</span> as asserted above.</p>
+<p>Solving</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+0 &amp;= \begin{vmatrix}
+H_{33} - W S_{33} &amp; H_{34} - W S_{34} \\
+H_{43} - W S_{43} &amp; H_{44} - W S_{44} \\ 
+\end{vmatrix} \\
+\end{align}\end{split}\]</div>
+<p>will give us the odd parity solutions, which provide upper-bounds to <span class="math notranslate nohighlight">\(E_2\)</span> and <span class="math notranslate nohighlight">\(E_4\)</span> of the one-dimensional PIB problem. As with the even-parity states, solving this equation requires knowledge of the matrix elements of the Hamiltonian for basis functions <span class="math notranslate nohighlight">\(|f_3\rangle\)</span> and <span class="math notranslate nohighlight">\(|f_4\rangle\text{.}\)</span> We can simplify matters if we note that the Hamiltonian is purely kinetic within the box, and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H} = \hat{T} = \frac{\hat{p}^2}{2m}
+\end{align}\]</div>
+<p>Because <span class="math notranslate nohighlight">\(\hat{p}\)</span> is Hermitian,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+H_{ij} &amp;= \langle f_i | \hat{H} | f_j \rangle \\
+&amp;= \frac{1}{2m} \langle f_i | \hat{p}^2 | f_j \rangle \\
+&amp;= -\frac{i\hbar}{2m}  \left \langle f_i  \left | \hat{p} \left | \frac{ d f_j}{dx} \right \rangle \right  . \right . \\
+&amp;= -\frac{i\hbar}{2m} \left . \left \langle \left . \frac{ d f_j}{dx}  \right | \hat{p} \right | f_i \right \rangle^*  \\
+&amp;= \frac{\hbar^2}{2m} \left . \left \langle  \frac{ d f_j}{dx} \right | \frac{ d f_i}{dx} \right \rangle^*  \\
+&amp;= \frac{\hbar^2}{2m} \left . \left \langle  \frac{ d f_i}{dx} \right | \frac{ d f_j}{dx} \right \rangle
+\end{align}\end{split}\]</div>
+<p>As such, we only need to evaluate first derivatives of the basis functions. The Python code below calculates these  gradients numerically.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1"># use a fine-grain grid to be sure numerical integrals are accurate</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">5001</span><span class="p">)</span>
+
+<span class="c1"># normalization constant</span>
+<span class="n">phi_3</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">N3</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi_3</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="n">phi_3</span> <span class="o">*=</span> <span class="n">N3</span>
+
+<span class="c1"># first derivative</span>
+<span class="n">phi_3p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">phi_3</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># normalization constant</span>
+<span class="n">phi_4</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">L</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+<span class="n">N4</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi_4</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="n">phi_4</span> <span class="o">*=</span> <span class="n">N4</span>
+
+<span class="c1"># first derivative</span>
+<span class="n">phi_4p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">phi_4</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># &lt;phi3|H|phi3&gt;</span>
+<span class="n">H33</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi_3p</span> <span class="o">*</span> <span class="n">phi_3p</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    
+<span class="c1"># &lt;phi3|H|phi4&gt;</span>
+<span class="c1"># &lt;phi4|H|phi3&gt; = &lt;phi3|H|phi4&gt;* because H is Hermitian</span>
+<span class="n">H34</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi_3p</span> <span class="o">*</span> <span class="n">phi_4p</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+ <span class="c1"># &lt;phi2|H|phi2&gt;</span>
+<span class="n">H44</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi_4p</span> <span class="o">*</span> <span class="n">phi_4p</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># S33 = &lt;phi_3|phi_3&gt; = 1 because phi_3 is normalized</span>
+<span class="c1"># S44 = &lt;phi_4|phi_4&gt; = 1 because phi_4 is normalized</span>
+<span class="c1"># S34 = S43 = &lt;phi_3 | phi_4&gt;</span>
+<span class="n">S34</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">phi_3</span> <span class="o">*</span> <span class="n">phi_4</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    
+<span class="c1"># quadratic formula:</span>
+<span class="c1"># ax^2 + bx + c = 0</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">S34</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="o">-</span> <span class="p">(</span><span class="n">H33</span> <span class="o">+</span> <span class="n">H44</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">H34</span><span class="o">*</span><span class="n">S34</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">H33</span> <span class="o">*</span> <span class="n">H44</span> <span class="o">-</span> <span class="n">H34</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">W2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+<span class="n">W4</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;W2  = </span><span class="si">%10.5f</span><span class="s2"> Eh&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">W2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;W4  = </span><span class="si">%10.5f</span><span class="s2"> Eh&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">W4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>W2  =   19.75077 Eh
+W4  =  100.24872 Eh
+</pre></div>
+</div>
+</div>
+</div>
+<p>Given the exact energies, <span class="math notranslate nohighlight">\(E_2\)</span> and <span class="math notranslate nohighlight">\(E_4,\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+E_2 &amp;= 2\pi^2 \approx 19.73921 E_\text{h} \\
+E_4 &amp;= 8\pi^2 \approx 78.95684 E_\text{h}
+\end{align}\end{split}\]</div>
+<p>we can see that <span class="math notranslate nohighlight">\(W_2\)</span> and <span class="math notranslate nohighlight">\(W_4\)</span> agree with these values to within 0.059% and 27%, respectively. Again, note that <span class="math notranslate nohighlight">\(W_2 &gt; E_2\)</span> and <span class="math notranslate nohighlight">\(W_4 &gt; E_4,\)</span> as asserted above.</p>
+<p>So far, we have seen that estimates for the eigenvalues of the Hamiltonian can be obtained from the secular equation. What about the corresponding estimates of the eigenfunctions? Once the <span class="math notranslate nohighlight">\(W_n\)</span> are known, we can substitute them back into the original linear equations</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\sum_j (H_{ij} - W_n S_{ij}) c_j^{(n)} = 0
+\end{align}\]</div>
+<p>and solve for the expansion coefficients, <span class="math notranslate nohighlight">\(c_j^{(n)},\)</span> where the superscript indicates that these coefficients are different for each state. It is important to note that, in cases where the basis functions have well-defined parity, coefficients corresponding to even parity basis functions will only contribute to the states with even parity, and coefficients corresponding to odd parity basis functions will only contribute to the states with odd parity.</p>
+</section>
+<section id="the-variation-problem-as-an-eigenvalue-problem">
+<h3>The Variation Problem as an Eigenvalue Problem<a class="headerlink" href="#the-variation-problem-as-an-eigenvalue-problem" title="Link to this heading">#</a></h3>
+<p>If the basis in which the trial function is expanded is orthonormalized, the problem of solving the secular  equation is equivalent to the problem of finding the eigenvalues of the matrix representation of the Hamiltonian. To make this apparent, first consider a linear trial function of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|\phi \rangle = \sum_k c_k | f_k \rangle
+\end{align}\]</div>
+<p>For the two basis function case, the stationarity of <span class="math notranslate nohighlight">\(W\)</span> with respect to variations in the coefficients led to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+(H_{11} - S_{11} W) c_1 + (H_{12} - S_{12} W )c_2 &amp;= 0\\(H_{21} - S_{21} W) c_1 + (H_{22} - S_{22} W )c_2 &amp;= 0
+\end{align}\end{split}\]</div>
+<p>If the basis is orthonormalized, then</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+S_{ij} = \langle f_i | f_j \rangle = \delta_{ij}
+\end{align}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+H_{11} c_1 + H_{12}c_2 &amp;= W c_1 \\
+H_{21} c_1 + H_{22}c_2 &amp;= W c_2
+\end{align}\end{split}\]</div>
+<p>which can be re-expressed as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\begin{pmatrix}
+H_{11} &amp; H_{12} \\
+H_{21} &amp; H_{22} \\
+\end{pmatrix}
+\begin{pmatrix}
+c_{1} \\
+c_{2} \\
+\end{pmatrix}
+= W \begin{pmatrix}
+c_{1} \\
+c_{2} \\
+\end{pmatrix}
+\end{align}\end{split}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+{\bf H} {\bf c} = W {\bf c}
+\end{align}\]</div>
+<p>The structure of this equation is similar to that of the eigenvalue equations we have encountered throughout these notebooks. We have a matrix (<span class="math notranslate nohighlight">\({\bf H}\)</span>) whose action on a vector (<span class="math notranslate nohighlight">\({\bf c}\)</span>) gives the same vector, multiplied by a scalar. Indeed, this is an example of a matrix eigenvalue equation, and we refer to <span class="math notranslate nohighlight">\({\bf c}\)</span> as an eigenvector of <span class="math notranslate nohighlight">\({\bf H}\text{.}\)</span> This result is generalizable to the case where the trial function is expanded as a linear combination of more than two basis functions.</p>
+<p>Recall that the linear equations that we are now representing as an eigenvalue equation only have a solution if</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\det({\bf H} - W{\bf I}) = 0
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\({\bf I}\)</span> is the identity matrix. The determinant is an <span class="math notranslate nohighlight">\(n\)</span>th-order polynomial, where <span class="math notranslate nohighlight">\(n\)</span> is the number of basis functions, and there are <span class="math notranslate nohighlight">\(n\)</span> roots to the secular equation, that give <span class="math notranslate nohighlight">\(n\)</span> different estimates for the eigenvalues of the Hamiltonian. It follows that the matrix <span class="math notranslate nohighlight">\({\bf H}\)</span> should have <span class="math notranslate nohighlight">\(n\)</span> distinct eigenvalue and eigenvector pairs. For a Hermitian matrix (like the Hamiltonian), the eigenvectors are linearly independent, which means that they fully span the same space as the basis functions. This property is reminiscent of the postulate stating that the eigenfunctions of Hermitian operators form a complete set.</p>
+<p>Because there are <span class="math notranslate nohighlight">\(n\)</span> eigenvalues and eigenvectors, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+{\bf H}{\bf c}^{(i)} = W_i {\bf c}^{(i)}
+\end{align}\]</div>
+<p>for <span class="math notranslate nohighlight">\(i = 1, 2, ..., n\text{.}\)</span> If we collect each of the eigenvectors into a single matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+{\bf C} = \begin{pmatrix}
+c_1^{(1)} &amp; c_1^{(2)} &amp; ... &amp;c_1^{(n)} \\
+c_2^{(1)} &amp; c_2^{(2)} &amp; ... &amp;c_2^{(n)} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+c_n^{(1)} &amp; c_n^{(2)} &amp; ... &amp;c_n^{(n)} 
+\end{pmatrix}
+\end{align}\end{split}\]</div>
+<p>and define a diagonal matrix with the eigenvalues on the diagonal</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+{\bf W} = \begin{pmatrix}
+W_1 &amp; 0 &amp; 0 &amp; ... \\
+0 &amp; W_2 &amp; 0 &amp; ... \\
+0 &amp; 0 &amp; \ddots &amp;  \\
+\vdots &amp; \vdots &amp;  &amp;W_n 
+\end{pmatrix}
+\end{align}\end{split}\]</div>
+<p>then we can write</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+{\bf H} {\bf C} = {\bf C}{\bf W}
+\end{align}\]</div>
+<p>Now, we define the inverse of a matrix , <span class="math notranslate nohighlight">\({\bf C}^{-1}\text{,}\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+{\bf C}{\bf C}^{-1} = {\bf C}^{-1}{\bf C} = {\bf I}
+\end{align}\]</div>
+<p>The inverse matrix, <span class="math notranslate nohighlight">\({\bf C}^{-1}\text{,}\)</span> exists, provided that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\det({\bf C}) \neq 0
+\end{align}\]</div>
+<p>Assuming that <span class="math notranslate nohighlight">\({\bf C}^{-1}\)</span> does exist, we can apply it to both sides of the equation above to give</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+{\bf C}^{-1} {\bf H} {\bf C} &amp;= {\bf C}^{-1} {\bf C} {\bf W}
+\end{align}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+{\bf C}^{-1} {\bf H} {\bf C} &amp;= {\bf W}
+\end{align}\]</div>
+<p>This expression indicates that the eigenvectors of <span class="math notranslate nohighlight">\({\bf H}\)</span> form a matrix that bring the Hamiltonian to diagonal form. In other words, if the basis used to represent the Hamiltonian is orthonormal, then the linear variational problem reduces to the search for the set of vectors that diagonalize <span class="math notranslate nohighlight">\({\bf H}\)</span>.</p>
+<p>As an example, let us revisit the one-dimensional finite square well potential problem. For this problem, the potential has the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+V(x) = \begin{cases}
+V_0\text{, } &amp;x &lt; 0 \\
+0\text{, } &amp; 0 \le x \le L \\
+V_0\text{, } &amp; x \ge L 
+\end{cases}
+\end{align}\end{split}\]</div>
+<p>We want to expand the trial function as a linear combination of orthogonal basis functions,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+| \phi \rangle = \sum_n c_n |f_n \rangle 
+\end{align}\]</div>
+<p>Let us choose <span class="math notranslate nohighlight">\(f_n\)</span> to be one-dimensional PIB wave functions, which satisfy this orthogonality requirement and have the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+f_n(x) = \begin{cases}
+0\text{, } &amp;x &lt; 0 \\
+\left ( \frac{2}{L^\prime} \right) \sin\left(\frac{n\pi (x-x_\text{min})}{L^\prime}\right)\text{, } &amp;0 \le x \le L^\prime \\
+0\text{, }&amp;x \ge L^\prime
+\end{cases}
+\end{align}\end{split}\]</div>
+<p>Here, we have chosen a box with a length <span class="math notranslate nohighlight">\(L' &gt; L\)</span> because the finite square well potential wave functions should penetrate into the classically forbidden regions where <span class="math notranslate nohighlight">\(x &gt; L\)</span> and <span class="math notranslate nohighlight">\(x &lt; -L\text{.}\)</span> Note that the position in the sine function is shifted because the PIB functions are usually defined on the interval <span class="math notranslate nohighlight">\(x = [0, L^\prime]\text{,}\)</span> but if they are defined in this way, the basis functions would not be centered about the middle of the finite square well. Hence, the PIB basis function should be defined on the interval <span class="math notranslate nohighlight">\(x = [x_\text{min}, x_\text{max}]\text{,}\)</span> where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+x_\text{min} &amp;= \frac{1}{2} L - \frac{1}{2} L^\prime \\
+x_\text{max} &amp;= \frac{1}{2} L + \frac{1}{2} L^\prime \\
+\end{align}\end{split}\]</div>
+<p>The following Python code defines the potential and 100 basis functions on the interval <span class="math notranslate nohighlight">\(x = [x_\text{min}, x_\text{max}]\text{.}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set some parameters (in atomic units, where hbar = 1)</span>
+<span class="c1"># these should be consistent with those used in the previous notebook</span>
+<span class="n">hbar</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># mass of particle</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># length of box (from 0 to L)</span>
+<span class="n">V0</span> <span class="o">=</span> <span class="mf">10.0</span>
+
+<span class="c1"># box width for PIB basis functions</span>
+<span class="n">Lprime</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">L</span>
+
+<span class="c1"># number of basis functions</span>
+<span class="n">nbf</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># min x value ...</span>
+<span class="n">minx</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">L</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">Lprime</span>
+
+<span class="c1"># max x value</span>
+<span class="n">maxx</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">L</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">Lprime</span>
+
+<span class="n">dx</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">minx</span><span class="p">,</span> <span class="n">maxx</span><span class="p">,</span> <span class="nb">int</span><span class="p">((</span><span class="n">maxx</span><span class="o">-</span><span class="n">minx</span><span class="p">)</span><span class="o">/</span><span class="n">dx</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># define the potential over this interval</span>
+<span class="n">V</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">myx</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">myx</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">V</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">V0</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">myx</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">:</span>
+        <span class="n">V</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">V</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">V0</span><span class="p">)</span>
+
+<span class="c1"># define basis functions, f</span>
+<span class="n">f</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nbf</span><span class="p">):</span>
+    
+    <span class="c1"># define basis function n over all space</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">myx</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+        <span class="c1"># don&#39;t forget to shift myx by minx because the PIB functions are supposed to go from 0 to L&#39;</span>
+        <span class="n">fn</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="n">Lprime</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">((</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">myx</span><span class="o">-</span><span class="n">minx</span><span class="p">)</span> <span class="o">/</span> <span class="n">Lprime</span><span class="p">)</span> <span class="p">)</span>
+
+    <span class="c1"># add this basis function to our list of basis functions</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Having defined our basis functions, we can now evaluate the Hamiltonian matrix elements,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+H_{ij} &amp;= \langle f_i | \hat{H} | f_j \rangle \\
+&amp;= \langle f_i | \hat{T} | f_j \rangle + \langle f_i | V(x) | f_j \rangle \\
+&amp;= \frac{\hbar^2}{2m} \langle f_i^\prime | f_j^\prime \rangle + \langle f_i | V(x) | f_j \rangle \\
+\end{align}\end{split}\]</div>
+<p>where on the third line, we have again taken advantage of the fact that the expectation value of the kinetic energy operator can be expressed in terms of an overlap between gradients of the basis functions. The following Python code evaluates these matrix elements, with the gradients and integrals handled numerically.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="p">[</span><span class="n">nbf</span><span class="p">,</span> <span class="n">nbf</span><span class="p">],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+
+<span class="c1"># gradient of basis functions</span>
+<span class="n">df</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nbf</span><span class="p">):</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nbf</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nbf</span><span class="p">):</span>
+
+        <span class="c1"># potential energy term: &lt;fi|V|fj&gt;</span>
+        <span class="n">H</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">V</span> <span class="o">*</span> <span class="n">f</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">)</span>
+        
+        <span class="c1"># kinetic energy term</span>
+        <span class="n">H</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">hbar</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now can use NumPy to solve the eigenvalue problem</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+{\bf H} {\bf C} = {\bf C}{\bf W}
+\end{align}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;W1 = </span><span class="si">%8.5f</span><span class="s1"> Eh&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;W2 = </span><span class="si">%8.5f</span><span class="s1"> Eh&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>W1 =  2.29461 Eh
+W2 =  8.13541 Eh
+</pre></div>
+</div>
+</div>
+</div>
+<p>Recall that the exact energies for this problem that we determined in an earlier notebook were</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+E_1 &amp;= 2.29499 E_\text{h} \\
+E_2 &amp;= 8.13715 E_\text{h}
+\end{align}\end{split}\]</div>
+<p>Wow! <span class="math notranslate nohighlight">\(W_1\)</span> and <span class="math notranslate nohighlight">\(W_2\)</span> agree with these values to within less that 0.1%! However, note that they are not strict upper bounds to the exact energy. There are several possibilities for why this is the case:</p>
+<ol class="arabic simple">
+<li><p>The PIB basis functions do not satisfy the boundary conditions for the finite square well potential problem because they have a derivative discontinuity at <span class="math notranslate nohighlight">\(x = x_\text{min}\)</span> and <span class="math notranslate nohighlight">\(x = x_\text{max}\text{.}\)</span> As a result, there will not be a strict guarantee that the energy estimates obtained by diagonalizing the matrix representation of the Hamiltonian will be upper bounds to the true energies for this problem.</p></li>
+<li><p>The potential and kinetic energy matrix elements are evaluated numerically, which introduces some numerical error.</p></li>
+<li><p>The kinetic energy matrix elements were also evaluated using gradients that were determined numerically, which introduces additional numerical error.</p></li>
+</ol>
+<p>Lastly, we should visualize the variationally optimized wave functions. To do so, we will need to contract the eigenvectors with the basis functions as</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|\phi^{(i)}\rangle = \sum_j c^{(i)}_{j} |f_j\rangle
+\end{align}\]</div>
+<p>which can be achieved using NumPy’s einsum function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;ji,jk-&gt;ik&#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">phi</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\phi_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">phi</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\phi_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;wave function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;x ($a_0$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/07951565d7fa958cb1bbcd47ee9eed6e6b68011fb57da8e3e2d1f48a24ee9ff2.png" src="../../_images/07951565d7fa958cb1bbcd47ee9eed6e6b68011fb57da8e3e2d1f48a24ee9ff2.png" />
+</div>
+</div>
+<p>If you plot these approximate wave functions alongside the exact wave functions determined in a previous notebook, you will find that they are indistinguishable on the scale of this figure.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/lecture_notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="translation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Translational Motion</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="vibration.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Vibrational Motion</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-variation-theorem-for-ground-states">The Variation Theorem for Ground States</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-variation-theorem-for-excited-states">The Variation Theorem for Excited States</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-linear-variation-method">The Linear Variation Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices-in-quantum-mechanics">Matrices in Quantum Mechanics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-in-quantum-mechanics">Vectors in Quantum Mechanics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-secular-equation">The Secular Equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-variation-problem-as-an-eigenvalue-problem">The Variation Problem as an Eigenvalue Problem</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jay Foley
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

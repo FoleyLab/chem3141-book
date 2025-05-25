@@ -1,13 +1,43 @@
-# Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
-
 format: jb-book
-root: intro
-chapters:
-#- file: markdown
-#- file: content/notebooks
-- file: content/qm_postulates
-- file: content/Spin_one_half
-- file: content/linear_variational_method
-- file: content/pib_delta_potential_dynamics
-#- file: markdown-notebooks
+root: content/index
+
+parts:
+  - caption: Lecture Notes
+    chapters:
+      - file: content/lecture_notes/hydrogen
+      - file: content/lecture_notes/perturbation
+      - file: content/lecture_notes/qm_postulates
+      - file: content/lecture_notes/rotation
+      - file: content/lecture_notes/SphHarm_visualize
+      - file: content/lecture_notes/translation
+      - file: content/lecture_notes/variation
+      - file: content/lecture_notes/vibration
+
+  - caption: Problem Sets
+    chapters:
+      - file: content/problem_sets/ps_1
+
+  - caption: Advanced Topics
+    chapters:
+      - file: content/advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect
+      - file: content/advanced_topics/Zeeman_Effect_Hydrogen_Atom
+
+  - caption: Computational Sets
+    chapters:
+      - file: content/computational_sets/CO_Perturbation_Theory
+      - file: content/computational_sets/hydrogen_wavefunctions
+      - file: content/computational_sets/linear_variational_method
+      - file: content/computational_sets/note05
+      - file: content/computational_sets/pib_delta_potential_dynamics
+      - file: content/computational_sets/Spin_one_half
+      # optionally: - file: content/computational_sets/Spin_one_half_old
+
+  - caption: Resources
+    chapters:
+      - file: content/resources/formula_sheet
+      - file: content/resources/note01
+      - file: content/resources/note03
+      - file: content/resources/note05
+      - file: content/resources/notebooks
+      - file: content/resources/spin_background
+

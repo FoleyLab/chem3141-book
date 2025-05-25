@@ -1,7 +1,10 @@
-## Spin
+# Additional Notes on Spin
+(note05-spin-info)=
 
 :::{admonition} What You Need to Know
 :class: note
+
+From Prof. Davit Potoyan, Iowa State University
 
 - **Magnetism** arises from the circular motion of charged particles.
 - Atoms with electrons that have a non-zero orbital angular momentum generate magnetic moments, making them susceptible to the effects of an external magnetic field.

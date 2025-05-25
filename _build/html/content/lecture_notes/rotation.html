@@ -1,0 +1,1806 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Angular Momentum, Rotational Motion, and Spin &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/lecture_notes/rotation';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Visualizing Spherical harmonics" href="SphHarm_visualize.html" />
+    <link rel="prev" title="Chapter 1: The Postulates of Quantum Mechanics" href="qm_postulates.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    5. Hydrogen Atom
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydrogen.html">The Hydrogen Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="perturbation.html">Perturbation Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qm_postulates.html">Chapter 1: The Postulates of Quantum Mechanics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Angular Momentum, Rotational Motion, and Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SphHarm_visualize.html">Visualizing Spherical harmonics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translation.html">Translational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variation.html">The Variation Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vibration.html">Vibrational Motion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_1.html">Problem Set 1</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">Run the next two cells before beginning!</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Zeeman_Effect_Hydrogen_Atom.html">Solution</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/CO_Perturbation_Theory.html">Computing Fundamental Transition of CO under different levels of approximation</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/hydrogen_wavefunctions.html">DEMO: H wavefunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/linear_variational_method.html">Linear Variational Method</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/note05.html">Additional Notes on Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/pib_delta_potential_dynamics.html">Dynamics of particle in a box with a delta potential</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Chapter 2: Introduction to Spin 1/2</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/formula_sheet.html">Useful Formulae</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note01.html">Hydrogenlike atoms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note03.html">Atomic orbitals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note05.html">Additional Notes on Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/spin_background.html">Spin</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/FoleyLab/chem3141-book/blob/main/content/lecture_notes/rotation.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/FoleyLab/chem3141-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FoleyLab/chem3141-book/issues/new?title=Issue%20on%20page%20%2Fcontent/lecture_notes/rotation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/lecture_notes/rotation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Angular Momentum, Rotational Motion, and Spin</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#angular-momentum">Angular Momentum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-polar-coordinates">Spherical Polar Coordinates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-particle-on-a-ring-model">The Particle-on-a-Ring Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-particle-on-a-sphere-model">The Particle-on-a-Sphere Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energies-and-wave-functions">Energies and Wave Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-diagrams">Vector Diagrams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-regarding-uncertainty">A Note Regarding Uncertainty</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rigid-rotor">The Rigid Rotor</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection Rules</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ladder-operators">Ladder Operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-angular-momentum">Spin Angular Momentum</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="angular-momentum-rotational-motion-and-spin">
+<h1>Angular Momentum, Rotational Motion, and Spin<a class="headerlink" href="#angular-momentum-rotational-motion-and-spin" title="Link to this heading">#</a></h1>
+<p>In the previous notebooks, we discussed quantum mechanical problems involving translational and vibrational motion. In this notebook, we explore the properties of the operators corresponding to the angular momentum of a microscopic particle and model problems for rotational motion. We will find analytic solutions the Schrödinger equation for the particle-on-a-ring and particle-on-a-sphere models, which are models for rotational in two or three dimensions, respectively. The particle-on-a-sphere model is also known as the rigid rotor. We will also use an alternative approach based on “ladder” operators to find eigenvalues of some angular momentum operators. We close with a discussion of spin angular momentum and the associated spin operators and eigenfunctions.</p>
+<section id="angular-momentum">
+<h2>Angular Momentum<a class="headerlink" href="#angular-momentum" title="Link to this heading">#</a></h2>
+<p>Consider a particle of mass, <span class="math notranslate nohighlight">\(m\)</span>, with position <span class="math notranslate nohighlight">\(\vec{r} = (x, y, z)\)</span> and linear momentum <span class="math notranslate nohighlight">\(\vec{p} = (p_x, p_y, p_z).\)</span> The angular momentum for this particle is given by the cross product of the position and momentum vectors, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[ 
+\begin{align}
+\vec{L} = (L_x, L_y, L_z) = \vec{r} \times \vec{p}
+\end{align}
+\]</div>
+<p>The <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span> components of the angular momentum are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+L_x &amp;= y p_z - z p_y \\
+L_y &amp;= z p_x - x p_z \\
+L_z &amp;= x p_y - y p_x
+\end{align}\end{split}\]</div>
+<p>Given that <span class="math notranslate nohighlight">\(\hat{p}_x = -i\hbar \frac{\partial}{\partial x},\)</span> etc., the corresponding angular momentum operators are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{L}_x &amp;= -i\hbar \left ( y \frac{\partial}{\partial z} - z \frac{\partial}{\partial y}\right ) \\
+\hat{L}_y &amp;= -i\hbar \left ( z \frac{\partial}{\partial x} - x \frac{\partial}{\partial z}\right ) \\
+\hat{L}_z &amp;= -i\hbar \left ( x \frac{\partial}{\partial y} - y \frac{\partial}{\partial x}\right )
+\end{align}\end{split}\]</div>
+<p>We can also define an operator for the square of the angular momentum as</p>
+<div class="math notranslate nohighlight">
+\[\begin{align} 
+\hat{L}^2 = \hat{L} \cdot \hat{L} = \hat{L}_x^2 + \hat{L}_y^2 + \hat{L}_z^2
+\end{align}\]</div>
+<p>It will be useful to consider the commutator properties of these operators. If any commute, then it will be possible to determine simultaneous eigenfunctions of the operators, and, as a result, it will be possible to specify the corresponding observables simultaneously, with arbitrary precision. Let us begin with the commutator of <span class="math notranslate nohighlight">\(\hat{L}_x\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+[\hat{L}_x, \hat{L}_y] f(x, y, z) = \hat{L}_x \hat{L}_y f(x, y, z) - \hat{L}_y \hat{L}_x f(x, y, z)
+\end{align}\]</div>
+<p>For the first term on the right-hand side of this equation, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{L}_y f &amp;= -i\hbar \left ( z \frac{\partial f}{\partial x} - x\frac{\partial f}{\partial z} \right ) \\
+\hat{L}_x \hat{L}_y f &amp;= -\hbar^2 \left ( y \frac{\partial}{\partial z} - z \frac{\partial}{\partial y} \right ) \left ( z \frac{\partial f}{\partial x} - x\frac{\partial f}{\partial z} \right ) \\
+&amp;= -\hbar^2 \left ( y\frac{\partial f}{\partial x} + yz \frac{\partial^2 f}{\partial x \partial z} - xy \frac{\partial^2 f}{\partial z^2} - z^2 \frac{\partial^2 f}{\partial x \partial y} + xz \frac{\partial^2 f}{\partial y \partial z} \right )
+\end{align}\end{split}\]</div>
+<p>For the second term, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{L}_x f &amp;= -i\hbar \left ( y \frac{\partial f}{\partial z} - z\frac{\partial f}{\partial y} \right ) \\
+\hat{L}_y \hat{L}_x &amp;= -\hbar^2 \left ( z \frac{\partial}{\partial x} - x \frac{\partial }{\partial z}\right ) \left ( y \frac{\partial f}{\partial z} - z\frac{\partial f}{\partial y} \right )  \\
+&amp;= -\hbar^2 \left ( yz \frac{\partial^2 f}{\partial x \partial z} - z^2 \frac{\partial^2 f}{\partial x \partial y} - xy \frac{\partial^2 f}{\partial z^2} + x \frac{\partial f}{\partial y} + xz \frac{\partial^2 f}{\partial y \partial z} \right ) 
+\end{align}\end{split}\]</div>
+<p>Combining these results, most of the terms cancel, and the action of the commutator on <span class="math notranslate nohighlight">\(f(x,y,z)\)</span> is simply</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+[\hat{L}_x, \hat{L}_y] f &amp;= -\hbar^2 \left ( y \frac{\partial f }{\partial x} - x \frac{\partial f}{\partial y} \right ) \\
+&amp;= -\hbar^2 \left ( y \frac{\partial }{\partial x} - x \frac{\partial }{\partial y} \right ) f \\
+&amp;= i\hbar \hat{L}_z f
+\end{align}\end{split}\]</div>
+<p>Therefore,</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+[\hat{L}_x, \hat{L}_y] = i\hbar \hat{L}_z
+\end{align}\]</div>
+<p>Similarly, one could show that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+[\hat{L}_y, \hat{L}_z] &amp;= i\hbar \hat{L}_x \\
+[\hat{L}_z, \hat{L}_x] &amp;= i\hbar \hat{L}_y
+\end{align}\end{split}\]</div>
+<p>Because these operators do not commute with one another, the Heisenberg uncertainty principle states that we cannot specify <span class="math notranslate nohighlight">\(L_x\)</span> and <span class="math notranslate nohighlight">\(L_y\)</span>, <span class="math notranslate nohighlight">\(L_x\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span>, or <span class="math notranslate nohighlight">\(L_y\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span> simultaneously, with arbitrary precision. Similarly, we cannot find a complete set of eigenfunctions of any pair of these operators.</p>
+<blockquote>
+<div><p>Practice</p>
+<blockquote>
+<div><p>Question 1. Show that
+$<span class="math notranslate nohighlight">\( \begin{align}
+[\hat{L}_y, \hat{L}_z] = i\hbar \hat{L}_x 
+\end{align}\)</span><span class="math notranslate nohighlight">\(
+and
+\)</span><span class="math notranslate nohighlight">\( \begin{align}
+[\hat{L}_z, \hat{L}_x] = i\hbar \hat{L}_y 
+\end{align}\)</span>$</p>
+</div></blockquote>
+</div></blockquote>
+<p>Now, consider the commutator of <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_x\)</span>.</p>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+[\hat{L}^2, \hat{L}_x ] &amp;= [\hat{L}_x^2 + \hat{L}_y^2 + \hat{L}_z^2, \hat{L}_x] \\
+&amp;= [\hat{L}_x^2, \hat{L}_x] + [\hat{L}_y^2, \hat{L}_x] + [\hat{L}_z^2, \hat{L}_x] \\
+&amp;= [\hat{L}_y^2, \hat{L}_x] + [\hat{L}_z^2, \hat{L}_x]
+\end{align}\end{split}\]</div>
+<p>where we are able to eliminate the first term because the commutator of an operator with itself is zero. It turns out that we can evaluate the remaining commutators with knowledge of the identity</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+[\hat{A}\hat{B}, \hat{C}] = [\hat{A}, \hat{C}]\hat{B} + \hat{A}[\hat{B}, \hat{C}]
+\end{align}\]</div>
+<p>For the commutator involving <span class="math notranslate nohighlight">\(\hat{L}_y^2\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+[\hat{L}_y\hat{L}_y, \hat{L}_x] &amp;= [\hat{L}_y, \hat{L}_x]\hat{L}_y + \hat{L}_y[\hat{L}_y, \hat{L}_x] \\
+&amp;= -i\hbar\hat{L}_z\hat{L}_y - i\hbar \hat{L}_y \hat{L}_z
+\end{align}\end{split}\]</div>
+<p>Similarly, the commutator involving <span class="math notranslate nohighlight">\(\hat{L}_z^2\)</span> evaluates to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+[\hat{L}_z\hat{L}_z, \hat{L}_x] &amp;= [\hat{L}_z, \hat{L}_x]\hat{L}_z + \hat{L}_z[\hat{L}_z, \hat{L}_x] \\
+&amp;= +i\hbar\hat{L}_y\hat{L}_z + i\hbar \hat{L}_z \hat{L}_y
+\end{align}\end{split}\]</div>
+<p>As a result,</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+[\hat{L}^2, \hat{L}_x ] = 0 
+\end{align}\]</div>
+<p>It turns out that <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> will commute with any cartesian component of the angular momentum operator, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+[\hat{L}^2, \hat{L}_x ] = [\hat{L}^2, \hat{L}_y ] = [\hat{L}^2, \hat{L}_z ] = 0 
+\end{align}\]</div>
+<p>As a result, there exists a complete set of eigenfunctions of both <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> and one cartesian component of the angular momentum operator. According to the Heisenberg uncertainty principle, this result also suggests that it is possible to specify simultaneously, with arbitrary precision, both the square of the angular momentum (<span class="math notranslate nohighlight">\(L^2\)</span>) and the <span class="math notranslate nohighlight">\(x\)</span>-component of the angular momentum vector, <span class="math notranslate nohighlight">\(L_x\)</span> (or <span class="math notranslate nohighlight">\(L^2\)</span> and <span class="math notranslate nohighlight">\(L_y\)</span> or <span class="math notranslate nohighlight">\(L^2\)</span> and <span class="math notranslate nohighlight">\(L_z\)</span>).</p>
+<blockquote>
+<div><p>Practice</p>
+<blockquote>
+<div><p>Question 2. Show that
+$<span class="math notranslate nohighlight">\( \begin{align}
+[\hat{L}^2, \hat{L}_y] = 0 
+\end{align}\)</span><span class="math notranslate nohighlight">\(
+and
+\)</span><span class="math notranslate nohighlight">\( \begin{align}
+[\hat{L}^2, \hat{L}_z] = 0 
+\end{align}\)</span>$</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="spherical-polar-coordinates">
+<h2>Spherical Polar Coordinates<a class="headerlink" href="#spherical-polar-coordinates" title="Link to this heading">#</a></h2>
+<p>The spherical polar coordinate depicted below is the most natural coordinate system for describing rotational motion.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/deprincelab/deprincelab.github.io/main/tutorials/jupyter_notebooks/rotation/spherical_polar_coordinates.png&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><img src="https://raw.githubusercontent.com/deprincelab/deprincelab.github.io/main/tutorials/jupyter_notebooks/rotation/spherical_polar_coordinates.png" width="300"/></div></div>
+</div>
+<p>Here, <span class="math notranslate nohighlight">\(r\)</span>, represents the distance from the origin and spans the range <span class="math notranslate nohighlight">\(r = [0, \infty]\)</span>. The angle, <span class="math notranslate nohighlight">\(\phi\)</span>, is the azimuthal angle, which spans the range <span class="math notranslate nohighlight">\(\phi = [0, 2\pi]\)</span> radians. The angle, <span class="math notranslate nohighlight">\(\theta\)</span>, is the polar angle, which spanse the range <span class="math notranslate nohighlight">\(\theta = [0, \pi]\)</span> radians. The spherical polar coordinates are related to the usual Cartesian coordinates by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+x &amp;= r \sin(\theta)\cos(\phi) \\
+y &amp;= r \sin(\theta)\sin(\phi) \\
+z &amp;= r \cos(\theta) \\
+r &amp;= \left ( x^2 + y^2 + z^2 \right )^{1/2}
+\end{align}\end{split}\]</div>
+<p>In order to represent quantum mechanical operators in spherical polar coordinates, we first write down the operator in Cartesian coordinates and then use the relations above, as well as the chain rule to transform any derivatives. For the partial derivative with respect to <span class="math notranslate nohighlight">\(x\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+\frac{\partial }{\partial x} &amp;= \left (\frac{\partial r}{\partial x} \right )_{y,z} \frac{\partial }{\partial r} + \left (\frac{\partial \theta}{\partial x} \right )_{y,z} \frac{\partial }{\partial \theta} + \left (\frac{\partial \phi}{\partial x} \right )_{y,z} \frac{\partial }{\partial \phi} \\
+&amp;= \sin(\theta)\cos(\phi)\frac{\partial}{\partial r} + \frac{\cos(\theta)\cos(\phi)}{r}\frac{\partial}{\partial\theta}-\frac{\sin(\theta)}{r\sin(\theta)}\frac{\partial}{\partial \phi}
+\end{align}\end{split}\]</div>
+<p>Similarly, for the partial derivative with respect to <span class="math notranslate nohighlight">\(y\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+\frac{\partial }{\partial y} &amp;= \left (\frac{\partial r}{\partial y} \right )_{x,z} \frac{\partial }{\partial r} + \left (\frac{\partial \theta}{\partial y} \right )_{x,z} \frac{\partial }{\partial \theta} + \left (\frac{\partial \phi}{\partial y} \right )_{x,z} \frac{\partial }{\partial \phi} \\
+&amp;= \sin(\theta)\sin(\phi)\frac{\partial}{\partial r} + \frac{\cos(\theta)\sin(\phi)}{r}\frac{\partial}{\partial\theta}+\frac{\cos(\theta)}{r\sin(\theta)}\frac{\partial}{\partial \phi}
+\end{align}\end{split}\]</div>
+<p>Lastly, for the partial derivative with respect to <span class="math notranslate nohighlight">\(y\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+\frac{\partial }{\partial z} &amp;= \left (\frac{\partial r}{\partial z} \right )_{y,z} \frac{\partial }{\partial r} + \left (\frac{\partial \theta}{\partial z} \right )_{y,z} \frac{\partial }{\partial \theta} + \left (\frac{\partial \phi}{\partial z} \right )_{y,z} \frac{\partial }{\partial \phi} \\
+&amp;= \cos(\theta)\frac{\partial}{\partial r} - \frac{\sin(\theta)}{r}\frac{\partial}{\partial \theta}
+\end{align}\end{split}\]</div>
+<p>Given these results, we can express the angular momentum operators in spherical coordinates as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align} 
+\hat{L}_x &amp;= i\hbar \left [ \sin(\phi)\frac{\partial}{\partial \theta} + \cot(\theta)\cos(\phi)\frac{\partial}{\partial\phi} \right ]\\
+\hat{L}_y &amp;= -i\hbar \left [ \cos(\phi)\frac{\partial}{\partial \theta} - \cot(\theta)\sin(\phi)\frac{\partial}{\partial\phi} \right ]\\
+\hat{L}_z &amp;= -i\hbar \frac{\partial}{\partial \phi}
+\end{align}\end{split}\]</div>
+<p>and
+$<span class="math notranslate nohighlight">\(\begin{align}
+\hat{L}^2 = -\hbar^2 \left [ \frac{\partial^2}{\partial \theta^2} + \cot(\theta)\frac{\partial}{\partial \theta} + \frac{1}{\sin^2(\theta)}\frac{\partial^2}{\partial \phi^2} \right ]
+\end{align}\)</span>$</p>
+<p>Recall that, based on the commutator relations given above, we will be able to select simultaneous eigenfunctions of <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> and at most one of the cartesian components of the angular momentum operator. The simplicity of the operator <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>, relative to <span class="math notranslate nohighlight">\(\hat{L}_x\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_y\)</span>, makes this operator a desirable target for the following analyses.</p>
+</section>
+<section id="the-particle-on-a-ring-model">
+<h2>The Particle-on-a-Ring Model<a class="headerlink" href="#the-particle-on-a-ring-model" title="Link to this heading">#</a></h2>
+<p>Consider a particle of mass, <span class="math notranslate nohighlight">\(m\)</span>, constrained to move on a ring of fixed radius, <span class="math notranslate nohighlight">\(r\)</span>, in the <span class="math notranslate nohighlight">\(xy\)</span> plane.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/deprincelab/deprincelab.github.io/main/tutorials/jupyter_notebooks/rotation/particle_on_a_ring.png&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><img src="https://raw.githubusercontent.com/deprincelab/deprincelab.github.io/main/tutorials/jupyter_notebooks/rotation/particle_on_a_ring.png" width="300"/></div></div>
+</div>
+<p>What would the angular momentum of a classical particle traveling on a ring be? Because the motion is constrained to the <span class="math notranslate nohighlight">\(xy\)</span> plane, the <span class="math notranslate nohighlight">\(z\)</span>-components of the position, <span class="math notranslate nohighlight">\(\vec{r}\)</span>, and momentum, <span class="math notranslate nohighlight">\(\vec{p}\)</span>, are zero, and the angular momentum of the classical particle would thus be</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\vec{L} = \vec{r} \times \vec{p} = (0, 0, L_z)
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(L_z = x p_y - y p_x\)</span></p>
+<p>Let us determine the energy eigenfunctions for the quantum-mechanical particle on a ring. In order to do so, we must consider what sort of potential will constrain the particle to remain on the ring. We choose the potential such that it is zero when the particle is on the ring and infinite otherwise, so this problem resembles an angular version of the particle-in-a-box (PIB) problem. Like the PIB, the wave function will be zero in all regions of space where the potential is infinite, so we only consider the “region” of space corresponding to the ring. The Hamiltonian on the ring will be most compactly represented in spherical polar coordinates. Again, by applying the chain rule, we obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\hat{H} &amp;= \hat{T} \\
+&amp;= -\frac{\hbar^2}{2m} \nabla^2 \\
+&amp;= -\frac{\hbar^2}{2m}\left ( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2} \right ) \\
+&amp;= -\frac{\hbar^2}{2m}\left ( \frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r} + \frac{1}{r^2}\left [ \frac{1}{\sin^2(\theta)}\frac{\partial^2}{\partial \phi^2} + \frac{1}{\sin(\theta)}\frac{\partial}{\partial \theta} \sin(\theta)\frac{\partial}{\partial \theta} \right ] \right )
+\end{align}
+\end{split}\]</div>
+<p>The particle-on-a-rign energy eigenfunctions will be functions of the azimuthal angle, <span class="math notranslate nohighlight">\(\phi,\)</span> only, so we can safely ignore all derivatives involving <span class="math notranslate nohighlight">\(r\)</span> or <span class="math notranslate nohighlight">\(\theta\)</span>. The Laplacian, <span class="math notranslate nohighlight">\(\nabla^2\)</span>, then simplifies to</p>
+<div class="math notranslate nohighlight">
+\[ 
+\begin{align}
+\nabla^2 = \frac{1}{r^2}\left [ \frac{1}{\sin^2(\theta)}\frac{\partial^2}{\partial \phi^2} \right ]
+\end{align}
+\]</div>
+<p>In the <span class="math notranslate nohighlight">\(xy\)</span> plane, the polar angle, <span class="math notranslate nohighlight">\(\theta = \frac{\pi}{2}\)</span>, so <span class="math notranslate nohighlight">\(\sin^2(\theta) = 1\)</span> and the Hamiltonian reduces to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+\hat{H} &amp;= -\frac{\hbar^2}{2m} \frac{1}{r^2} \frac{\partial^2}{\partial \phi^2} \\
+&amp;= -\frac{\hbar^2}{2I} \frac{\partial^2}{\partial \phi^2}
+\end{align}\end{split}\]</div>
+<p>where we have introduced the moment of inertia, <span class="math notranslate nohighlight">\(I = mr^2.\)</span> Interestingly, this Hamiltonian could also be expressed in terms of the operator for the <span class="math notranslate nohighlight">\(z\)</span> component of the angular momentum, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\hat{H} = \frac{\hat{L}^2_z}{2I}
+\end{align}\]</div>
+<p>Given this form for the Hamiltonian, is is clear that <span class="math notranslate nohighlight">\(\hat{H}\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z\)</span> will commute and we should thus be able to obtain simultaneous eigenfunctions of both operators.</p>
+<p>Now, let us find solutions to the Schrödinger equation. We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{H} \psi(\phi) &amp;= E \psi(\phi) \\
+-\frac{\hbar^2}{2I} \frac{\partial^2}{\partial \phi^2} \psi(\phi) &amp;= E \psi(\phi) \\
+\frac{\partial^2}{\partial \phi^2} \psi(\phi) &amp;= -\frac{2IE}{\hbar^2} \psi(\phi)
+\end{align}\end{split}\]</div>
+<p>A possible solution to this equation is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi(\phi) = A e^{ib\phi/\hbar}
+\end{align}\]</div>
+<p>with <span class="math notranslate nohighlight">\(b = \left ( 2EI \right)^{1/2}\)</span> or <span class="math notranslate nohighlight">\(E = \frac{b^2}{2I}\)</span>. This wave function is also an eigenfunction of <span class="math notranslate nohighlight">\(\hat{L}_z\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{L}_z \psi(\phi) &amp;= -i\hbar \frac{\partial}{\partial \phi} A e^{ib\phi/\hbar} \\
+&amp;= b A e^{ib\phi/\hbar}
+\end{align}\end{split}\]</div>
+<p>So, we have <span class="math notranslate nohighlight">\(L_z = b\)</span> and <span class="math notranslate nohighlight">\(E = \frac{b^2}{2I} = \frac{L_z^2}{2I}.\)</span> Note that the sign of <span class="math notranslate nohighlight">\(b\)</span> provides information regarding the direction of rotation. A positive value of <span class="math notranslate nohighlight">\(b\)</span> indicates that the rotation is clockwise, when viewing the ring from below. A negative value of <span class="math notranslate nohighlight">\(b\)</span> indicates that the rotation is counter-clockwise, when viewing the ring from below.</p>
+<blockquote>
+<div><p>Practice</p>
+<blockquote>
+<div><p>Question 3. Show that <span class="math notranslate nohighlight">\(\psi(\phi) = C e^{ib\phi/\hbar} + D e^{-ib\phi/\hbar}\)</span> is a solution to the Schrödinger equation for the particle-on-a-ring problem. What is the energy?</p>
+</div></blockquote>
+<blockquote>
+<div><p>Question 4. Show that <span class="math notranslate nohighlight">\(\psi(\phi) = C e^{ib\phi/\hbar} + D e^{-ib\phi/\hbar}\)</span> is not an eigenfunction of the operator, <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>.</p>
+</div></blockquote>
+</div></blockquote>
+<p>What boundary conditions should be satisfied by <span class="math notranslate nohighlight">\(\psi(\phi) = A e^{ib\phi/\hbar}\)</span>? Because the coordinate system is periodic in <span class="math notranslate nohighlight">\(\phi\)</span>, we must be careful to ensure that the wave function is <strong>single valued</strong>. We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\psi(\phi) &amp;= \psi(\phi + 2\pi) \\
+Ae^{ib\phi/\hbar} &amp;=Ae^{ib(\phi + 2\pi)/\hbar} \\
+&amp;= Ae^{ib\phi/\hbar} e^{i 2\pi b/\hbar}
+\end{align}
+\end{split}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+1 &amp;= e^{i 2\pi b/\hbar} \\
+&amp;= \cos\left(\frac{2\pi b}{\hbar}\right ) + i\sin\left(\frac{2\pi b}{\hbar}\right )
+\end{align}
+\end{split}\]</div>
+<p>To satisfy this equation, the cosine term must be equal to one, and the sine term must be equal to zero. These conditions are satisfied by the choice</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\frac{2\pi b}{\hbar} = m 2 \pi
+\end{align}
+\]</div>
+<p>or <span class="math notranslate nohighlight">\(b = m\hbar\)</span>, where <span class="math notranslate nohighlight">\(m = 0, \pm 1, \pm 2,\)</span> etc. Now, after the application of this boundary condition, we can see that the energy  for a particle-on-a-ring system in the state</p>
+<div class="math notranslate nohighlight">
+\[ 
+\begin{align}
+\psi_m(\phi) = A e^{im\phi}
+\end{align}\]</div>
+<p>is quantized</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+E_m = \frac{m^2\hbar^2}{2I} 
+\end{align}\]</div>
+<p>where we have added the subscripts to indicate that the state can be characterized by the quantum number <span class="math notranslate nohighlight">\(m\)</span>. In addition to the energy, the <span class="math notranslate nohighlight">\(z\)</span> component of the angular momentum is also quantized</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align} 
+L_z = m \hbar 
+\end{align}\]</div>
+<p>The quantization of a spatial quantity such as <span class="math notranslate nohighlight">\(L_z\)</span> is called <strong>space quantization</strong>.</p>
+<p>Before moving on, we note that we can determine the unknown coefficient, <span class="math notranslate nohighlight">\(A\)</span>, via normalization:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+1 &amp;= \int_0^{2\pi} |\psi_m(\phi)|^2 d\phi \\
+&amp;= |A|^2 \int_0^{2\pi} e^{-im\phi} e^{im\phi} d\phi \\
+&amp;= |A|^2 \int_0^{2\pi} d\phi \\
+&amp;= |A|^2 2\pi
+\end{align}
+\end{split}\]</div>
+<p>Taking <span class="math notranslate nohighlight">\(A\)</span> to be real-valued, we have <span class="math notranslate nohighlight">\(A = (\frac{1}{2\pi})^{1/2}\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\psi(\phi) = \left ( \frac{1}{2\pi} \right )^{1/2} e^{im\phi}
+\end{align}\]</div>
+</section>
+<section id="the-particle-on-a-sphere-model">
+<h2>The Particle-on-a-Sphere Model<a class="headerlink" href="#the-particle-on-a-sphere-model" title="Link to this heading">#</a></h2>
+<section id="energies-and-wave-functions">
+<h3>Energies and Wave Functions<a class="headerlink" href="#energies-and-wave-functions" title="Link to this heading">#</a></h3>
+<p>Consider a particle of mass, <span class="math notranslate nohighlight">\(m,\)</span> confined to rotate on the surface of a sphere of fixed radius, <span class="math notranslate nohighlight">\(r\)</span>. Like in the particle-on-a-ring problem, the motion of the particle is constrained by a potential that is zero on the surface of the sphere and infinite elsewhere. The Hamiltonian in the region of space corresponding to the surface of the sphere is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\hat{H} &amp;= -\frac{\hbar^2}{2m} \nabla^2 \\
+&amp;= -\frac{\hbar^2}{2m}\left ( \frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r} + \frac{1}{r^2}\left [ \frac{1}{\sin^2(\theta)}\frac{\partial^2}{\partial \phi^2} + \frac{1}{\sin(\theta)}\frac{\partial}{\partial \theta} \sin(\theta)\frac{\partial}{\partial \theta} \right ] \right )
+\end{align}
+\end{split}\]</div>
+<p>This Hamiltonian can be expressed more compactly by recognizing that the parts involving the angular derivatives are actually related to <span class="math notranslate nohighlight">\(\hat{L}^2\)</span>, i.e,</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\hat{H} = -\frac{\hbar^2}{2m}\left ( \frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r} \right ) + \frac{1}{2m r^2}\hat{L}^2
+\end{align}
+\]</div>
+<p>Like in the particle-on-a-ring problem, we ignore derivatives with respect to <span class="math notranslate nohighlight">\(r\)</span> because the radius is fixed, and we are left with</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\hat{H} =  \frac{1}{2I}\hat{L}^2
+\end{align}
+\]</div>
+<p>Now, it is evident that the eigenfunctions of the particle-on-a-sphere Hamiltonian are also eigenfunctions of the operator corresponding to the square of the angular momentum.</p>
+<p>Recall that <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> commutes with <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>. As such, we could choose to find solutions to the Schrödinger equation for the particle-on-a-sphere model that are simultaneous eigenfunctions of <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z\)</span> that satisfy</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\hat{L}^2 Y(\theta,\phi) &amp;= c Y(\theta,\phi) \\
+\hat{L}_z Y(\theta,\phi) &amp;= b Y(\theta,\phi)
+\end{align}
+\end{split}\]</div>
+<p>With <b><font color='red'>i</font><font color='orange'>n</font><font color='yellow'>f</font><font color='green'>i</font><font color='blue'>n</font><font color='indigo'>i</font><font color='violet'>t</font><font color='red'>e</font> <font color='orange'>w</font><font color='yellow'>i</font><font color='green'>s</font><font color='blue'>d</font><font color='indigo'>o</font><font color='violet'>m</font></b>, we note that there is no <span class="math notranslate nohighlight">\(\theta\)</span> dependence in <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>, so it seems reasonable to expect that <span class="math notranslate nohighlight">\(Y(\theta, \phi)\)</span> is factorizable into a product of functions that depend only on <span class="math notranslate nohighlight">\(\theta\)</span> or <span class="math notranslate nohighlight">\(\phi.\)</span> Let’s try the form</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+Y(\theta, \phi) = f(\theta) g(\phi)
+\end{align}
+\]</div>
+<p>If we insert this form into the eigenvalue equation for <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>, we obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\hat{L}_z Y(\theta,\phi) &amp;= b Y(\theta,\phi)\\
+-i\hbar\frac{\partial}{\partial \phi} f(\theta) g(\phi) &amp;= b f(\theta) g(\phi)\\
+-i\hbar f(\theta) \frac{\partial}{\partial \phi} g(\phi) &amp;= b f(\theta) g(\phi)\\
+-i\hbar \frac{d g(\phi)}{d \phi}  &amp;= b g(\phi)\\
+\end{align}
+\end{split}\]</div>
+<p>which, not surprisingly, is just an eigenvalue equation for <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>, without any <span class="math notranslate nohighlight">\(\theta\)</span> component. In the previous section, we found that the particle-on-a-ring energy eigenfunctions were also eigenfunctions of the <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>, so we choose</p>
+<div class="math notranslate nohighlight">
+\[ 
+\begin{align}
+g(\phi) = \left ( \frac{1}{2\pi} \right )^{1/2} e^{im\phi}
+\end{align}
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+Y(\theta, \phi) = \left ( \frac{1}{2\pi} \right )^{1/2} e^{im\phi} f(\theta)
+\end{align}
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(m = 0, \pm 1, \pm 2\)</span>, etc. Without the restriction on <span class="math notranslate nohighlight">\(m,\)</span> the <span class="math notranslate nohighlight">\(phi\)</span> component of <span class="math notranslate nohighlight">\(Y(\theta, \phi)\)</span> would not be well behaved. Like we found for the particle-on-a-ring model, the eigenvalue <span class="math notranslate nohighlight">\(b\)</span> is equal to <span class="math notranslate nohighlight">\(m\hbar\)</span>.</p>
+<p>To find <span class="math notranslate nohighlight">\(f(\theta)\)</span>, we consider the eigenvalue equation for <span class="math notranslate nohighlight">\(\hat{L}^2\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\hat{L}^2 \left ( \frac{1}{2\pi} \right )^{1/2} e^{im\phi} f(\theta) = c \left ( \frac{1}{2\pi} \right )^{1/2} e^{im\phi} f(\theta)
+\end{align}
+\]</div>
+<p>which, after evaluating the action of <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> on <span class="math notranslate nohighlight">\(g(\theta)\)</span> and collecting terms, gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{d^2}{d\theta^2} f(\theta) + \cot(\theta) \frac{d}{d\theta} f(\theta) - \frac{m^2}{\sin^2(\theta)}f(\theta) = -\frac{c}{\hbar^2} f(\theta)
+\end{align}\]</div>
+<p>Solving this differential equation is quite complicated, so we will discuss the main points in the process. A detailed solution is given in Chapter 5 of Levine’s <a class="reference external" href="https://www.amazon.com/Quantum-Chemistry-7th-Ira-Levine/dp/0321803450">Quantum Chemistry textbook</a>. That text outlines several clever choices along the way to the solution, including a change of variables</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\cos(\theta)&amp;  \to w\\
+f(\theta) &amp;\to f(w)
+\end{align}
+\end{split}\]</div>
+<p>and the introduction of an auxiliary function, <span class="math notranslate nohighlight">\(h(w)\)</span>, which is related to <span class="math notranslate nohighlight">\(f(w)\)</span> by</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+f(w) = \left ( 1 - w^2 \right ) ^{|m|/2} h(w)
+\end{align}\]</div>
+<p>The function <span class="math notranslate nohighlight">\(h(w)\)</span> is expanded as a power series</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+h(w) = \sum_{k=0}^\infty c_k w^k
+\end{align}\]</div>
+<p>Inserting this form for <span class="math notranslate nohighlight">\(h(w)\)</span> into the eigenvalue equation for <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> eventually leads to a two-term recursion relation for the expansion coefficients</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+c_{k+2} = \frac{\left [ (k + |m|)(k + |m| + 1) - \frac{c}{\hbar^2}\right ] }{(k+1)(k+2)} c_k
+\end{align}\]</div>
+<p>Like in the quantum harmonic oscillator, inspection of various limits reveals that the <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> eigenfunctions are only well-behaved if the series expansion for <span class="math notranslate nohighlight">\(h(w)\)</span> truncates (at <span class="math notranslate nohighlight">\(k_\text{max}\)</span>, for example). Then, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+c = \hbar^2(k_\text{max} + |m|)(k_\text{max} + |m| + 1)
+\end{align}\]</div>
+<p><span class="math notranslate nohighlight">\(k_\text{max}\)</span> corresponds to the upper limit in the series summation, so it must be a non-negative integer. Because <span class="math notranslate nohighlight">\(|m| = 0, 1, 2,\)</span> etc. is also non-negative, the sum of these two quantities is non-negative and is a quantum number that characterizes the eigenfunctions of <span class="math notranslate nohighlight">\(\hat{L}^2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+l = k_\text{max} + |m| = 0, 1, 2, ...
+\end{align}\]</div>
+<p>and thus the square of the angular momentum for a particle confined to move on a sphere is quantized,</p>
+<p>Note that this relationship also implies that <span class="math notranslate nohighlight">\(m\)</span> is bounded by <span class="math notranslate nohighlight">\(l\)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+m = 0, \pm 1, \pm 2, ..., \pm l
+\end{align}\]</div>
+<p>Now, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{L}^2 Y(\theta, \phi) &amp; =  l(l+1) \hbar^2 Y(\theta, \phi)\\
+\hat{L}_z Y(\theta, \phi) &amp;=  m \hbar Y(\theta, \phi)\text{, }\\
+\end{align}\end{split}\]</div>
+<p>and, inserting this result into the Schrödinger equation, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\hat{H} Y(\theta, \phi) &amp;= E Y(\theta, \phi) \\
+ &amp;= \frac{1}{2I} \hat{L}^2 Y(\theta, \phi)\\
+ &amp;= \frac{l(l+1)\hbar^2}{2I}  Y(\theta, \phi)\\
+\end{align}
+\end{split}\]</div>
+<p>At this point, it is clear that the energy, the square of the angular momentum, and the <span class="math notranslate nohighlight">\(z\)</span> projection of the angular momentum for a particle constrained to move on the surface of a sphere are all quantized, with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+E &amp;= \frac{l(l+1)\hbar^2}{2I} \\
+L^2 &amp;= l(l+1)\hbar^2 \\
+L_z &amp;= m\hbar \\
+\end{align}
+\end{split}\]</div>
+<p>From these results, we can see that the energy depends only on the quantum number, <span class="math notranslate nohighlight">\(l,\)</span> and, each energy level is <span class="math notranslate nohighlight">\((2l+1)\)</span>-fold degenerate because, for each <span class="math notranslate nohighlight">\(l\)</span>, there are <span class="math notranslate nohighlight">\(2l+1\)</span> possible values of the quantum number, <span class="math notranslate nohighlight">\(m.\)</span></p>
+<p>Because the states can be characterized <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(m,\)</span> we label the wave functions for these states as <span class="math notranslate nohighlight">\(Y(\theta, \phi) \to Y^m_l(\theta, \phi).\)</span> What is the form of these functions? We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+Y^m_l(\theta, \phi) &amp;= \left ( \frac{1}{2\pi} \right )^{1/2} e^{im\phi} f(\theta)
+\end{align}\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+f(\theta) &amp;= \sin^{|m|}(\theta)\sum_{j \in \{\text{odd or even}\}}^{l - |m|} c_j \cos^j(\theta)
+\end{align}\]</div>
+<p>where the series expansion coefficients are determined by recursion. Note that the sum runs over even or odd non-negative integers depending on whether <span class="math notranslate nohighlight">\(k_\text{max} = l - |m|\)</span> is even or odd. The sum must be restricted in this way to guarantee that the series truncates at <span class="math notranslate nohighlight">\(k_\text{max}.\)</span> It turns out that <span class="math notranslate nohighlight">\(f(\theta)\)</span> can be expressed in terms of special functions called <strong>associated Legendre polynomials</strong>, <span class="math notranslate nohighlight">\(\rho_l^{|m|},\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+f(\theta) &amp;= \left [ \frac{2l+1}{2}\frac{(l-|m|)!}{(l+|m|)!}\right ] \rho_l^{|m|}(\cos(\theta))
+\end{align}\]</div>
+<p>so the wave function is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+Y^m_l(\theta, \phi) &amp;=  \left [ \frac{2l+1}{4\pi}\frac{(l-|m|)!}{(l+|m|)!}\right ] \rho_l^{|m|}(\cos(\theta))e^{im\phi} f(\theta)
+\end{align}\]</div>
+<p>These special functions are known as the <strong>spherical harmonics</strong>. The spherical harmonics with up to <span class="math notranslate nohighlight">\(l=2\)</span> are tabulated below.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Y^0_0(\theta,\phi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{2}\sqrt{\frac{1}{\pi}}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(Y^0_1(\theta,\phi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{2}\sqrt{\frac{3}{\pi}} \cos(\theta)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Y^{\pm 1}_1(\theta,\phi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mp\frac{1}{2}\sqrt{\frac{3}{2\pi}} e^{\pm i \phi}\sin(\theta)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(Y^0_2(\theta,\phi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{4}\sqrt{\frac{5}{\pi}}\left (3 \cos^2(\theta)-1\right)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Y^{\pm 1}_2(\theta,\phi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mp\frac{1}{2}\sqrt{\frac{15}{2\pi}}e^{\pm i \phi}\sin(\theta) \cos(\theta)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(Y^{\pm 2}_2(\theta,\phi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{4}\sqrt{\frac{15}{2\pi}}e^{\pm 2i \phi}\sin^2(\theta)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="vector-diagrams">
+<h3>Vector Diagrams<a class="headerlink" href="#vector-diagrams" title="Link to this heading">#</a></h3>
+<p>Vector diagrams allow us to visualize how the angular momentum vector is oriented in space. Consider a particle in a state represented by <span class="math notranslate nohighlight">\(Y^m_l(\theta, \phi).\)</span> The magnitude of the total angular momentum is determined by the quantum number, <span class="math notranslate nohighlight">\(l\)</span>, i.e., <span class="math notranslate nohighlight">\(|L| = [l(l+1)\hbar^2]^{1/2},\)</span> while the <span class="math notranslate nohighlight">\(z\)</span> projection of the angular momentum is determined by the quantum number, <span class="math notranslate nohighlight">\(m.\)</span> These quantities can be visualized for the <span class="math notranslate nohighlight">\(l=0, 1, 2, 3\)</span> states with the following Python code</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax3</span><span class="p">)</span>
+
+<span class="c1"># l = 0, 1, 2, 3</span>
+<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+    <span class="n">magnitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">l</span> <span class="o">*</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="c1"># m = -l ... l</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="o">-</span><span class="n">l</span><span class="p">,</span> <span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span> 
+        <span class="n">dx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">magnitude</span><span class="o">*</span><span class="n">magnitude</span> <span class="o">-</span> <span class="n">m</span><span class="o">*</span><span class="n">m</span><span class="p">)</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="n">m</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">head_width</span> <span class="o">=</span> <span class="mf">0.15</span><span class="p">,</span> <span class="n">length_includes_head</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;z (units of $\hbar$)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;z (units of $\\hbar$)&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/d20c492c5dc4d4abeb1a2ed0d411622835cb0f8082fe1678a32a03d0a03a6691.png" src="../../_images/d20c492c5dc4d4abeb1a2ed0d411622835cb0f8082fe1678a32a03d0a03a6691.png" />
+</div>
+</div>
+<p>From this figure, we can make the following observations:</p>
+<ol class="arabic simple">
+<li><p>The ground state (<span class="math notranslate nohighlight">\(l=0\)</span>) is a state for which the particle has zero angular momentum.</p></li>
+<li><p>For all states with <span class="math notranslate nohighlight">\(l&gt;0,\)</span>, there are <span class="math notranslate nohighlight">\(2l+1\)</span> different states with different <span class="math notranslate nohighlight">\(m\)</span> values. The magnitude of the angular momentum is the same for each of these states (as is the energy), but the direction in which the angular momentum vector points is different.</p></li>
+<li><p>The <span class="math notranslate nohighlight">\(z\)</span> projection of the angular momentum is quantized. This space quantization is at odds with the classical picture of angular momentum in a classical rotating body. However, we can see that the number of possible <span class="math notranslate nohighlight">\(z\)</span> projections increases with <span class="math notranslate nohighlight">\(l\)</span>. In the limit that <span class="math notranslate nohighlight">\(l\)</span> becomes large, the <span class="math notranslate nohighlight">\(z\)</span> projection of the angular momentum becomes effectively continuous. This result is another manifestation of the <strong>Bohr Correspondence Principle</strong>.</p></li>
+</ol>
+<p>This vector diagram is informative, but it is misleading in the sense that it makes it appear as though, in addition to knowledge regarding the magnitude and <span class="math notranslate nohighlight">\(z\)</span> projection of the angular momentum vector, we also know something about its <span class="math notranslate nohighlight">\(x\)</span> or <span class="math notranslate nohighlight">\(y\)</span> component, depending on what the <span class="math notranslate nohighlight">\(x\)</span> axis in the figure above is meant to represent. In reality, we can know <strong>nothing</strong> about the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> components of the angular momentum vector because we know exactly what the <span class="math notranslate nohighlight">\(z\)</span> component is and the relevant operators do not commute (although, the <span class="math notranslate nohighlight">\(l=0\)</span> state is a special case which we will consider below). In reality, the angular momentum vector should lie on the edge of a <strong>cone</strong> with known magnitude and <span class="math notranslate nohighlight">\(z\)</span> projection, as the following Python code illustrates for the <span class="math notranslate nohighlight">\(l=1\)</span> states.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="n">azim</span><span class="o">=-</span><span class="mi">72</span><span class="p">)</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="n">radius</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">l</span><span class="o">*</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">m</span><span class="o">*</span><span class="n">m</span> <span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">radius</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">radius</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span> 
+        <span class="n">val</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">m</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">val</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">m</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">val</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_pane_color</span><span class="p">((</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_pane_color</span><span class="p">((</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">zaxis</span><span class="o">.</span><span class="n">set_pane_color</span><span class="p">((</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">zaxis</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;z (units of $\hbar$)&#39;</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span> <span class="o">=</span> <span class="p">[])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">ticks</span> <span class="o">=</span> <span class="p">[])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ebb628e91c21907824d272ec3569d3f633c6c59184b7268c202e60324be3d961.png" src="../../_images/ebb628e91c21907824d272ec3569d3f633c6c59184b7268c202e60324be3d961.png" />
+</div>
+</div>
+</section>
+<section id="a-note-regarding-uncertainty">
+<h3>A Note Regarding Uncertainty<a class="headerlink" href="#a-note-regarding-uncertainty" title="Link to this heading">#</a></h3>
+<p>The general form of the <strong>Heisenberg Uncertainty Principle</strong> states that the product of the uncertainties in observables <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> is bounded by an expectation value involving the commutators of the corresponding operators. Specifically, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\Delta A \Delta B \ge \frac{1}{2} | \langle [\hat{A}, \hat{B} ] \rangle|
+\end{align}\]</div>
+<p>If this commutator is zero, then it is possible to specify a complete set of common eigenfunctions of <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span>. Conversely, if these operators do not commute, then no such set of eigenfunctions exist, and it will not be possible, in general, to specify both <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> exactly, simultaneously.</p>
+<p>For a particle constrained to move on a sphere in a state described by <span class="math notranslate nohighlight">\(Y^m_l(\theta, \phi),\)</span> the product of the uncertainties in the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> projections of the angular momentum would be</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\Delta L_x \Delta L_y &amp;\ge \frac{1}{2} \left | \langle Y^m_l(\theta, \phi) | [\hat{L}_x, \hat{L}_y] | Y^m_l(\theta, \phi) \rangle \right | \\
+&amp;= \frac{\hbar}{2} \left | \langle Y^m_l(\theta, \phi) | \hat{L}_z | Y^m_l(\theta, \phi) \rangle \right |
+\end{align}\end{split}\]</div>
+<p>Because <span class="math notranslate nohighlight">\(\hat{L}_x\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_y\)</span> do not commute, it is impossible to find a complete set of common eigenfunctions for both operators. Is it ever possible to specify the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> components of the angular momentum, simultaneously, with arbitrary precision? Surprisingly, the answer to this question is yes, but only in a single special case. Consider the state with <span class="math notranslate nohighlight">\(l=0\)</span> and <span class="math notranslate nohighlight">\(m=0\)</span>. This is a state with zero total angular momentum and, obviously, zero <span class="math notranslate nohighlight">\(z\)</span> projection of angular momentum. Because the total angular momentum is zero, the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> projections must be exactly equal to zero, too! This result implies that the function <span class="math notranslate nohighlight">\(Y^0_0(\theta, \phi)\)</span> is an eigenfunction of all four operators, <span class="math notranslate nohighlight">\(\hat{L}^2\)</span>, <span class="math notranslate nohighlight">\(\hat{L}_x\)</span>, <span class="math notranslate nohighlight">\(\hat{L}_y\)</span>, and <span class="math notranslate nohighlight">\(\hat{L}_z.\)</span> The existence of a single common eigenfunction of these operators does not contradict the Heisenberg Uncertainty Principle, though. It is still impossible to specify a <strong>complete</strong> set of common eigenfunctions for these operators.</p>
+</section>
+</section>
+<section id="the-rigid-rotor">
+<h2>The Rigid Rotor<a class="headerlink" href="#the-rigid-rotor" title="Link to this heading">#</a></h2>
+<p>The particle-on-a-sphere model is equivalent to a model for molecular rotations known as the rigid rotor. In this section, we derive the Hamiltonian for the rigid-rotor problem and show the equivalence of these two models.</p>
+<p>Consider two particles of mass <span class="math notranslate nohighlight">\(m_1\)</span> and <span class="math notranslate nohighlight">\(m_2\)</span> moving in three dimensions with coordinates <span class="math notranslate nohighlight">\(\vec{r}_1\)</span> and <span class="math notranslate nohighlight">\(\vec{r}_2.\)</span> The Hamiltonian for this system depends on the coordinates of both particles</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H} = -\frac{\hbar^2}{2m_1}\nabla_1^2  - \frac{\hbar^2}{2m_1}\nabla_2^2 + V(\vec{r})
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(V(\vec{r})\)</span> is a potenial that depends on the inter-particle separation</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\vec{r} = \vec{r}_2 - \vec{r}_1
+\end{align}\]</div>
+<p>As written, this Hamiltonian is not separable in the coordinates of the particles, but we can obtain a separable Hamiltonian through a coordinate transformation. First, we introduce the center-of-mass coordinate, <span class="math notranslate nohighlight">\(\vec{R},\)</span> defined as</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\vec{R} = \frac{m_1 \vec{r}_1 + m_2 \vec{r}_2}{m_1 + m_2}
+\end{align}\]</div>
+<p>which can be re-expressed in terms of the coordinates of one of the particles and <span class="math notranslate nohighlight">\(\vec{r}\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\vec{R} = \frac{m_1 \vec{r}_1 + m_2 (\vec{r}+\vec{r}_1)}{m_1 + m_2}
+\end{align}\]</div>
+<p>Now, we introduce the total and reduced masses, <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(\mu,\)</span> respectively, which are defined by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+M &amp;= m_1 + m_2 \\
+\mu &amp;= \frac{m_1 m_2}{m_1 + m_2}
+\end{align}\end{split}\]</div>
+<p>From the expression for the center-of-mass cordinate, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+M \vec{R} = M \vec{r}_1 + m_2 \vec{r} 
+\end{align}\]</div>
+<p>We can also express <span class="math notranslate nohighlight">\(\vec{r}_1\)</span> and <span class="math notranslate nohighlight">\(\vec{r}_2\)</span> in terms of <span class="math notranslate nohighlight">\(\vec{R}\)</span> and <span class="math notranslate nohighlight">\(\vec{r}\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\vec{r}_1 &amp;= \vec{R} - \frac{m_2}{M} \vec{r} \\
+\vec{r}_2 &amp;= \vec{R} + \frac{m_1}{M} \vec{r}
+\end{align}\end{split}\]</div>
+<p>Now, what happens to the classical expression for the kinetic energy with these new coordinates? We begin with the momenta for these particles, defined by</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\vec{p}_i = m_i \frac{d \vec{r}_i}{dt} = m_i \dot{r}_i
+\end{align}\]</div>
+<p>The kinetic energy is then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+T &amp;= \frac{\vec{p}_1\cdot \vec{p}_1}{2 m_1} + \frac{\vec{p}_2 \cdot \vec{p}_2}{2 m_2}\\
+&amp;= \frac{m_1}{2} \dot{\vec{r}}_1 \cdot \dot{\vec{r}}_1 + \frac{m_2}{2} \dot{\vec{r}}_2 \cdot \dot{\vec{r}}_2 \\
+&amp;= \frac{m_1}{2} \left ( \dot{\vec{R}} - \frac{m_2}{M}\dot{\vec{r}} \right ) \cdot \left ( \dot{\vec{R}} - \frac{m_2}{M}\dot{\vec{r}} \right ) \nonumber \\
+&amp;+ \frac{m_2}{2} \left ( \dot{\vec{R}} + \frac{m_1}{M}\dot{\vec{r}} \right ) \cdot \left ( \dot{\vec{R}} + \frac{m_1}{M}\dot{\vec{r}} \right ) \\
+&amp;= \frac{m_1 + m_2}{2} \dot{\vec{R}} \cdot \dot{\vec{R}} + \frac{m_1 m_2}{2 M} \dot{\vec{r}}\cdot \dot{\vec{r}} \\
+&amp;= \frac{M}{2} \dot{\vec{R}} \cdot \dot{\vec{R}} + \frac{\mu}{2} \dot{\vec{r}}\cdot \dot{\vec{r}} \\
+&amp;= \frac{\vec{p}_M \cdot \vec{p}_M}{2M}  + \frac{\vec{p}_\mu \cdot \vec{p}_\mu}{2\mu}
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\vec{p}_M\)</span> and <span class="math notranslate nohighlight">\(\vec{p}_\mu\)</span> are momenta for effective particles of mass <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(\mu\)</span> that depend on the coordinates <span class="math notranslate nohighlight">\(\vec{R}\)</span> and <span class="math notranslate nohighlight">\(\vec{r},\)</span> respectively. We can define quantum mechanical operators for these momenta and insert them into the Hamiltonian to obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H} = \frac{\hat{p}_M^2}{2M} + \left [ \frac{\hat{p}_\mu^2}{2\mu} + V(\vec{r}) \right ]
+\end{align}\]</div>
+<p>The first term depends on the center-of-mass coordinate <span class="math notranslate nohighlight">\((\vec{R}),\)</span>  while the second and third terms depend on the inter-particle separation coordinate <span class="math notranslate nohighlight">\((\vec{r}).\)</span> With this choice of coordinates, the Hamiltonian is additively separable. As a result, the wave function can be expressed as a product of wave functions for effective particles of mass <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(\mu\)</span></p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\psi(\vec{R}, \vec{r}) = \psi_M(\vec{R}) \psi_\mu(\vec{r})
+\end{align}\]</div>
+<p>and the energy will be expressible as a sum</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+E = E_M + E_\mu
+\end{align}\]</div>
+<p>Because the Hamiltonian is separable, these wave function and energy components can be obtained by solving separate Schrödinger equations that involve only one coordinate, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{H}_M \psi_M(\vec{R}) &amp;= E_M \psi_M(\vec{R}) \\
+\hat{H}_\mu \psi_\mu(\vec{r}) &amp;= E_\mu \psi_\mu(\vec{r})
+\end{align}\end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{H}_M  &amp;= \frac{\hat{p}_M^2}{2M}  \\
+\hat{H}_\mu &amp;= \frac{\hat{p}_\mu^2}{2\mu} + V(\vec{r}) 
+\end{align}\end{split}\]</div>
+<p>The first of these equations resembles the Schrödinger equation for a free-particle of mass, <span class="math notranslate nohighlight">\(M.\)</span> As such, the energy, <span class="math notranslate nohighlight">\(E_M,\)</span> corresponds to the translational energy of the entire system traveling through space and will not be quantized. The Schrödinger equation for the effective particle of mass, <span class="math notranslate nohighlight">\(\mu,\)</span> is more complicated, and its solution will depend on the precise form of <span class="math notranslate nohighlight">\(V(\vec{r}).\)</span> Depending on the form of this potential, <span class="math notranslate nohighlight">\(E_\mu\)</span> may be quantized.</p>
+<p>To this point, this analysis has been completely general. The Hamiltonian for any two-particle system with a potential that depends on the inter-particle distance can be separated in this way. The <span class="math notranslate nohighlight">\(\vec{R}\)</span>-dependent part of the wave function will always look like that for a free-particle, where as the <span class="math notranslate nohighlight">\(\vec{r}\)</span>-dependent part will be more interesting.  Here, we are specifically concerned with the case where <span class="math notranslate nohighlight">\(\psi(\vec{r})\)</span> is a wave function characterizing the rotational motion of a molecular system (specifically, a diatomic molecule). In the <strong>rigid rotor</strong> model, the atoms in this molecular are assumed to rotate about their center of mass, at a fixed distance, <span class="math notranslate nohighlight">\(d\)</span> from one-another. As a result <span class="math notranslate nohighlight">\(V(\vec{r})\)</span> is chosen to be zero when <span class="math notranslate nohighlight">\(|\vec{r}|=d\)</span> and infinite otherwise. This potential is <strong>sperically symmetrical</strong>, meaning that it depends on the magnitude but not the orientation of <span class="math notranslate nohighlight">\(\vec{r}.\)</span>  For a particle experiencing such a potential, the force experienced by the particle is radially directed. For this reason, this type of a problem is called a <strong>central force problem</strong>.</p>
+<blockquote>
+<div><p>Practice</p>
+<blockquote>
+<div><p>Question 5.</p>
+<p>Show that the force for a central force problem is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}\vec{f} = -\frac{d V(r)}{dr} \frac{\vec{r}}{r}\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(r = |\vec{r}|.\)</span></p>
+</div></blockquote>
+</div></blockquote>
+<p>It turns out that the wave function for a central force problem is separable as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\psi_\mu(\vec{r}) &amp;= \psi_\mu(r, \theta, \phi) \\
+&amp;= R(r) Y^m_l(\theta, \phi)
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(R(r)\)</span> is a <strong>radial wave function</strong>, and <span class="math notranslate nohighlight">\(Y^m_l(\theta, \phi)\)</span> are the same <strong>spherical harmonics</strong> that are eigenfunctions of the orbital angular momentum operators, <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z.\)</span> Now, because <span class="math notranslate nohighlight">\(r\)</span> is fixed in the rigid rotor problem, the function <span class="math notranslate nohighlight">\(R(r)\)</span> has no meaning and is ignored. We are left with</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_\mu(\theta, \phi) &amp;= Y^m_l(\theta, \phi)
+\end{align}\]</div>
+<p>The Hamiltonian for the rigid rotor is the <span class="math notranslate nohighlight">\(\mu\)</span>-dependent part of the Hamiltonian above. If we consider only the region of space where <span class="math notranslate nohighlight">\(|\vec{r}| = r = d,\)</span> where the potential, <span class="math notranslate nohighlight">\(V(\vec{r}),\)</span> vanishes, then we have</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\hat{H}_\mu = -\frac{\hbar^2}{2\mu}\left ( \frac{\partial^2}{\partial r^2} + \frac{2}{d}\frac{\partial}{\partial r} \right ) + \frac{1}{2\mu d^2}\hat{L}^2
+\end{align}
+\]</div>
+<p>Note that, because <span class="math notranslate nohighlight">\(r\)</span> is fixed, we have replaced it with <span class="math notranslate nohighlight">\(d\)</span> in this expression. Moreover, with <span class="math notranslate nohighlight">\(r\)</span> being fixed, derivatives with respect to <span class="math notranslate nohighlight">\(r\)</span> carry no meaning, so we ignore these terms and are left with</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\hat{H}_\mu = \frac{1}{2\mu d^2}\hat{L}^2
+\end{align}
+\]</div>
+<p>The corresponding Schrödinger equation is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{H}_\mu \psi_\mu &amp;= E_\mu \psi_\mu \\
+\frac{1}{2\mu d^2}\hat{L}^2 Y^m_l &amp;= E_\mu Y^l_m \\
+&amp;= \frac{l(l+1)\hbar^2}{2\mu d^2} Y^l_m
+\end{align}\end{split}\]</div>
+<p>So, the energy for a two-particle rigid rotor is quantized and given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+E &amp;= \frac{l(l+1)\hbar^2}{2\mu d^2} \\
+&amp;= \frac{l(l+1)\hbar^2}{2I}
+\end{align}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(I = \mu d^2\)</span> is the moment of inertia for the molecule. As was the case for the particle-on-a-sphere model, the rotational quantum number, <span class="math notranslate nohighlight">\(l,\)</span> can take on any non-negative integer, and <span class="math notranslate nohighlight">\(m\)</span> is bounded by <span class="math notranslate nohighlight">\(l\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+l &amp;= 0, 1, 2, ... \\
+m &amp;= 0, \pm 1, \pm 2, ... \pm l
+\end{align}\end{split}\]</div>
+<p>As such, each energy level is <span class="math notranslate nohighlight">\((2l+1)\)</span>-fold degenerate.</p>
+<p>Note that this result is generalizable to rotating molecules with more than two atoms. Rotational energy levels are given by the energy expression above, augmented by the appropriate moment of inertia.</p>
+<section id="selection-rules">
+<h3>Selection Rules<a class="headerlink" href="#selection-rules" title="Link to this heading">#</a></h3>
+<p>The rigid rotor model can be used to predict both rotational energy levels and spectra for rotations in molecules. Here, we derive rules for which rotational transitions will be “allowed” or “forbidden.”</p>
+<p><strong>Fermi’s Golden Rule for Molecular Rotations</strong></p>
+<p>Recall that Fermi’s Golden Rule allows us to predict the probability that a system will transition between energy states when interacting with a time-dependent external perturbation. For a rigid rotor interacting with an oscillating electric field, a transition between states characterized by the wave functions <span class="math notranslate nohighlight">\(Y^m_l(\theta, \phi)\)</span> and <span class="math notranslate nohighlight">\(Y^{m^\prime}_{l^\prime}(\theta, \phi)\)</span> will be proportional to the square modulus of the transition dipole moment involving these wave functions,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+P_{m,l \to m^\prime, l^\prime} \propto |\langle Y^m_l(\theta, \phi) | \hat{\mu} | Y^{m^\prime}_{l^\prime}(\theta, \phi) \rangle |^2
+\end{align}\]</div>
+<p>For the quantum harmonic oscillator model, we were able to derive selection rules from the recursion relations for Hermite polynomials. It turns out that we can derive selection rules for the rigid rotor that are related to the change in <span class="math notranslate nohighlight">\(m,\)</span> <span class="math notranslate nohighlight">\(\Delta m = m - m^{\prime},\)</span> from commutator relations involving the operators <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>, <span class="math notranslate nohighlight">\(x,\)</span>, <span class="math notranslate nohighlight">\(y,\)</span> and <span class="math notranslate nohighlight">\(z.\)</span></p>
+<blockquote>
+<div><p>Practice</p>
+<blockquote>
+<div><p>Question 6.</p>
+<p>Show that <span class="math notranslate nohighlight">\([\hat{L}_z, x] = i\hbar y\)</span></p>
+</div></blockquote>
+<blockquote>
+<div><p>Question 7.</p>
+<p>Show that <span class="math notranslate nohighlight">\([\hat{L}_z, y] = -i\hbar x\)</span></p>
+</div></blockquote>
+<blockquote>
+<div><p>Question 8.</p>
+<p>Show that <span class="math notranslate nohighlight">\([\hat{L}_z, z] = 0\)</span></p>
+</div></blockquote>
+</div></blockquote>
+<p>Let us insert <span class="math notranslate nohighlight">\([\hat{L}_z, z] = 0\)</span> into an integral involving the states <span class="math notranslate nohighlight">\(Y^m_l\)</span> and <span class="math notranslate nohighlight">\(Y^{m^\prime}_{l^\prime}\)</span>, where we suppress the notation for the dependence on the coordinates <span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\langle Y^m_l | [\hat{L}_z, z] | Y^{m^\prime}_{l^\prime} \rangle &amp;= 0 \\
+&amp;= \langle Y^m_l | \hat{L}_z z | Y^{m^\prime}_{l^\prime} \rangle - \langle Y^m_l | z\hat{L}_z | Y^{m^\prime}_{l^\prime} \rangle \\
+&amp;= \langle Y^m_l | \hat{L}_z | f \rangle - m^\prime \hbar \langle Y^m_l | z | Y^{m^\prime}_{l^\prime} \rangle \\
+&amp;= \langle f | \hat{L}_z | Y^m_l \rangle^* - m^\prime \hbar \langle Y^m_l | z | Y^{m^\prime}_{l^\prime} \rangle \\
+&amp;= m^* \hbar \langle f | Y^m_l \rangle^* - m^\prime \hbar \langle Y^m_l | z | Y^{m^\prime}_{l^\prime} \rangle \\
+&amp;= m \hbar \langle Y^m_l | f \rangle - m^\prime \hbar \langle Y^m_l | z | Y^{m^\prime}_{l^\prime} \rangle \\
+&amp;= (m - m^\prime) \hbar \langle Y^m_l | z | Y^{m^\prime}_{l^\prime} \rangle 
+\end{align}\end{split}\]</div>
+<p>Where, on the third line, we have introduced a function, <span class="math notranslate nohighlight">\(|f\rangle = z|Y^{m^\prime}_{l^\prime}\rangle\)</span> to make the manipulation in the fourth line, based on the Hermiticity of the operator <span class="math notranslate nohighlight">\(\hat{L}_z\)</span> a little easier to see. Note also that we also took advantage of the fact that <span class="math notranslate nohighlight">\(m\)</span> is a real number, i.e., <span class="math notranslate nohighlight">\(m = m^*.\)</span> Now, we are left with</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+(m - m^\prime) \langle Y^m_l | z | Y^{m^\prime}_{l^\prime} \rangle = 0
+\end{align}\]</div>
+<p>For <span class="math notranslate nohighlight">\(z\)</span> polarized light, a transition between states <span class="math notranslate nohighlight">\(Y^m_l\)</span> and <span class="math notranslate nohighlight">\(Y^{m^\prime}_{l^\prime}\)</span> will only occur if the integral <span class="math notranslate nohighlight">\(\langle Y^m_l | z | Y^{m^\prime}_{l^\prime} \rangle\)</span> is non-zero. If this integral is non-zero, then this equation can only be satisfied if</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\Delta m =  m - m^\prime = 0
+\end{align}\]</div>
+<p>If we perform a similar exercise involving the commutators <span class="math notranslate nohighlight">\([\hat{L}_z, x]\)</span> and <span class="math notranslate nohighlight">\([\hat{L}_z, y],\)</span> we would find two additional selection rules. In total, we have three selection rules for allowed changes in the <span class="math notranslate nohighlight">\(m\)</span> quantum number:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\Delta m = 0, \pm 1 
+\end{align}\]</div>
+<p>There is also a selection rule on the change in the quantum number, <span class="math notranslate nohighlight">\(l,\)</span> that we will not derive:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\Delta l = \pm 1
+\end{align}\]</div>
+<p>In addition to these rules, non-zero transitions in “pure” rotational spectra (with no changes in vibrational energy levels) require that the molecule have a permanent dipole moment.</p>
+<blockquote>
+<div><p>Practice</p>
+<blockquote>
+<div><p>Question 9:</p>
+<p>Derive the <span class="math notranslate nohighlight">\(\Delta m = \pm 1\)</span> selection rules from the commutators <span class="math notranslate nohighlight">\([\hat{L}_z, x]\)</span> and <span class="math notranslate nohighlight">\([\hat{L}_z, y]\)</span></p>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+<section id="ladder-operators">
+<h2>Ladder Operators<a class="headerlink" href="#ladder-operators" title="Link to this heading">#</a></h2>
+<p>Above, we derived the eigenfunctions and eigenvalues of <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z\)</span> by solving the respective eigenvalue equations. It turns out that we can also derive the eigenvalues for these operators using only their commutator properties. These results will also apply to other types of angular momentum whose operators have the same commutator properties, like spin angular momentum, so let us consider the following general angular momentum operators</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\vec{M} &amp;= \hat{M}_x \vec{i} + \hat{M}_y \vec{j} + \hat{M}_z \vec{k} \\
+\hat{M}^2 &amp;= \hat{M}_x^2 + \hat{M}_y^2 + \hat{M}_z^2 \\
+\end{align}\end{split}\]</div>
+<p>We assume that these operators have similar commutator properties as we derived above, so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+[\hat{M}^2, \hat{M}_x] &amp;= 0 \\
+[\hat{M}^2, \hat{M}_y] &amp;= 0 \\
+[\hat{M}^2, \hat{M}_z] &amp;= 0 \\
+[\hat{M}_x, \hat{M}_y] &amp;= i\hbar \hat{M}_z \\
+[\hat{M}_z, \hat{M}_x] &amp;= i\hbar \hat{M}_y \\
+[\hat{M}_y, \hat{M}_z] &amp;= i\hbar \hat{M}_x \\
+\end{align}\end{split}\]</div>
+<p>Now, we introduce “raising” and “lowering” operators, <span class="math notranslate nohighlight">\(\hat{M}_-\)</span> and <span class="math notranslate nohighlight">\(\hat{M}_+,\)</span> respectively, whose names will become clear soon.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{M}_+ &amp;= \hat{M}_x + i \hat{M}_y \\
+\hat{M}_- &amp;= \hat{M}_x - i \hat{M}_y \\
+\end{align}\end{split}\]</div>
+<p>Do these operators commute with <span class="math notranslate nohighlight">\(\hat{M}_z\)</span>? Let’s check.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+[\hat{M}_+, \hat{M}_z ] &amp;= [\hat{M}_+, \hat{M}_x + i \hat{M}_y] \\
+&amp;= [\hat{M}_+, \hat{M}_x] + i [\hat{M}_+, \hat{M}_y] \\
+&amp;= -i\hbar \hat{M}_y - \hbar\hat{M}_x \\
+&amp;= -\hbar \hat{M}_+
+\end{align}\end{split}\]</div>
+<p>No! These operators do not commute, and neither do <span class="math notranslate nohighlight">\(\hat{M}_-\)</span> and <span class="math notranslate nohighlight">\(\hat{M}_z.\)</span> For that case, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+[\hat{M}_-, \hat{M}_z ] &amp;= +\hbar \hat{M}_-
+\end{align}\]</div>
+<p>We can reexpress these commutator relations in a form that will soon become useful as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{M}_+ \hat{M}_z &amp;= \hat{M}_z \hat{M}_+ - \hbar \hat{M}_+ \\
+\hat{M}_- \hat{M}_z &amp;= \hat{M}_z \hat{M}_- + \hbar \hat{M}_-
+\end{align}\end{split}\]</div>
+<blockquote>
+<div><p>Practice</p>
+<blockquote>
+<div><p>Question 10.</p>
+<p>Show that <span class="math notranslate nohighlight">\([\hat{M}_-, \hat{M}_z] = +\hbar \hat{M}_-\)</span></p>
+</div></blockquote>
+</div></blockquote>
+<p>Now, consider the eigenvalue equation for <span class="math notranslate nohighlight">\(\hat{M}_z\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{M}_z Y = b Y
+\end{align}\]</div>
+<p>and let us apply <span class="math notranslate nohighlight">\(\hat{M}_+\)</span> on the left to both sides of this equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{M}_+ \hat{M}_z Y &amp;= b \hat{M}_+ Y \\
+\hat{M}_z \hat{M}_+ Y  - \hbar \hat{M}_+ Y &amp;=  b \hat{M}_+ Y\\
+\hat{M}_z (\hat{M}_+ Y)   &amp;=  (b+\hbar) (\hat{M}_+ Y)
+\end{align}\end{split}\]</div>
+<p>Now, we see that the function <span class="math notranslate nohighlight">\(\hat{M}_+ Y\)</span> is an eigenfunction of <span class="math notranslate nohighlight">\(\hat{M}_z\)</span>, with eigenvalue one unit of <span class="math notranslate nohighlight">\(\hbar\)</span> higher than that for <span class="math notranslate nohighlight">\(Y,\)</span> which is why we call <span class="math notranslate nohighlight">\(\hat{M}_+\)</span> a “raising” operator. We could repeat this process multiple times to obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{M}_z (\hat{M}^k_+ Y)   &amp;=  (b+k\hbar) (\hat{M}^k_+ Y)
+\end{align}\]</div>
+<p>A similar analysis involving <span class="math notranslate nohighlight">\(\hat{M}_-\)</span> leads to</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{M}_z (\hat{M}^k_- Y)   &amp;=  (b-k\hbar) (\hat{M}^k_- Y)
+\end{align}\]</div>
+<p>Hence, <span class="math notranslate nohighlight">\(\hat{M}_\pm\)</span> generate a “ladder” of eigenfunctions of <span class="math notranslate nohighlight">\(\hat{M}_z\)</span>, which is why we call such operators “ladder operators.”</p>
+<p>Now, does <span class="math notranslate nohighlight">\(\hat{M}^2\)</span> commute with the raising and lowering operators? We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+[\hat{M}^2, \hat{M}_\pm ] = [\hat{M}^2, \hat{M}_x ] \pm i [\hat{M}^2, \hat{M}_y ] = 0
+\end{align}\]</div>
+<p>So, yes, these operators commute, and we thus have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{M}^2 \hat{M}_\pm = \hat{M}_\pm \hat{M}^2
+\end{align}\]</div>
+<p>Now, consider the eigenvalue equation for <span class="math notranslate nohighlight">\(\hat{M}^2\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{M}^2 Y = c Y
+\end{align}\]</div>
+<p>Let us act on this equation with <span class="math notranslate nohighlight">\(\hat{M}_\pm^k\)</span> on both sides</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{M}_\pm^k \hat{M}^2 Y &amp;= c \hat{M}_\pm^k Y \\
+\hat{M}^2(\hat{M}_\pm^k Y) &amp;= c (\hat{M}_\pm^k Y)
+\end{align}\end{split}\]</div>
+<p>This result indicates that the function <span class="math notranslate nohighlight">\(\hat{M}_+ Y\)</span> is an eigenfunction of <span class="math notranslate nohighlight">\(\hat{M}^2\)</span> with the same eigenvalue as <span class="math notranslate nohighlight">\(Y.\)</span> As such, each “rung” on the ladder generated by <span class="math notranslate nohighlight">\(\hat{M}_\pm^k\)</span> is an eigenfunction of both <span class="math notranslate nohighlight">\(\hat{M}_z\)</span> and <span class="math notranslate nohighlight">\(\hat{M}^2\)</span>.</p>
+<p>Is there a limit to the number of times <span class="math notranslate nohighlight">\(\hat{M}_\pm\)</span> can be applied to a state? Let us define a family of functions satisfying</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{M}_z Y_k = b_k Y_k
+\end{align}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+Y_k &amp;= \hat{M}^k_\pm Y_k \\
+b_k &amp;= b \pm k \hbar
+\end{align}\end{split}\]</div>
+<p>Now, if we act on the state <span class="math notranslate nohighlight">\(Y_k\)</span> with the operator <span class="math notranslate nohighlight">\(\hat{M}^2 - \hat{M}_z\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+(\hat{M}^2 - \hat{M}_z)Y_k &amp;= (c - b_k^2)Y_k \\
+\end{align}\end{split}\]</div>
+<p>or, equivalently, based on how <span class="math notranslate nohighlight">\(\hat{M}^2\)</span> was defined above</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+(\hat{M}_x^2 + \hat{M}^2_y)Y_k &amp;= (c - b_k^2)Y_k \\
+\end{align}\end{split}\]</div>
+<p>Multiplying this expression on the left by <span class="math notranslate nohighlight">\(Y_k^*\)</span> and integrating over all space yields</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\langle Y_k | \hat{M}_x^2 | Y_k \rangle + \langle Y_k | \hat{M}^2_y | Y_k\rangle &amp;= (c - b_k^2)\langle Y_k | Y_k \rangle \\
+\end{align}\end{split}\]</div>
+<p>The two integrals on the left-hand side of this equation represent expectation values of the square of an operator, the results of which much be non-negative. Similarly, the integral on the right-hand side of this expression is also non-negative. As such, we expect that the quantity <span class="math notranslate nohighlight">\(c-b_k^2\)</span> must also be non-negative, which implies that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+-c^{1/2} \le b_k \le c^{1/2} 
+\end{align}\]</div>
+<p>This result indicates that <span class="math notranslate nohighlight">\(b_k\)</span> is bounded by <span class="math notranslate nohighlight">\(c.\)</span> In other words, the ladder of functions <span class="math notranslate nohighlight">\(Y_k\)</span> is finite!</p>
+<p>If a bound on <span class="math notranslate nohighlight">\(b_k\)</span> exists, our next goal should be to find the maximum / minimum allowed values of <span class="math notranslate nohighlight">\(b_k\)</span> that satisfy</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{M}_z Y_\text{max} &amp;= b_\text{max} Y_\text{max} \\
+\hat{M}_z Y_\text{min} &amp;= b_\text{min} Y_\text{min}
+\end{align}\end{split}\]</div>
+<p>To do so, we can consider the application of the raising operator to the top rung of the ladder:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{M}_z (\hat{M}_+ Y_\text{max}) = (b_\text{max} + \hbar)(\hat{M}_+ Y_\text{max})
+\end{align}\]</div>
+<p>This result suggests that the state <span class="math notranslate nohighlight">\(\hat{M}_+ Y_\text{max}\)</span> has a larger <span class="math notranslate nohighlight">\(z\)</span> projection of the angular momentum than the state <span class="math notranslate nohighlight">\(Y_\text{max}\)</span>, which contradicts our assertion that <span class="math notranslate nohighlight">\(Y_\text{max}\)</span> represents the top rung of the ladder of functions. To avoid this contridiction, the application of <span class="math notranslate nohighlight">\(\hat{M}_+\)</span> to <span class="math notranslate nohighlight">\(Y_\text{max}\)</span> must be zero:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{M}_+Y_\text{max} = 0
+\end{align}\]</div>
+<p>We obtain a useful result if we probe this zero state with <span class="math notranslate nohighlight">\(\hat{M}_-\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{M}_-\hat{M}_+Y_\text{max} &amp;= 0 \\
+&amp;= (\hat{M}_x - i \hat{M}_y)(\hat{M}_x + i\hat{M}_y) Y_\text{max} \\
+&amp;= (\hat{M}_x^2 + \hat{M}_y^2 + i [M_x, M_y]) Y_\text{max} \\
+&amp;= (\hat{M}^2 - \hat{M}_z^2 - \hbar \hat{M}_z ) Y_\text{max} \\
+&amp;= (c - b_\text{max}^2 - \hbar b_\text{max}) Y_\text{max}
+\end{align}\end{split}\]</div>
+<p>where on the fourth line, we have made use of the commutator relation given above. Now, we can see that <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(b_\text{max}\)</span> should satisfy</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+c - b_\text{max}^2 - \hbar b_\text{max} = 0
+\end{align}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+c = b_\text{max}(b_\text{max} + \hbar)
+\end{align}\]</div>
+<p>If we repeat this exercise starting with</p>
+<div class="math notranslate nohighlight">
+\[\begin{align} 
+\hat{M}_- Y_\text{min} = 0
+\end{align}\]</div>
+<p>which must be true to avoid a similar contradition as we encountered above, we obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{M}_+\hat{M}_- Y_\text{min} &amp;= 0 \\
+&amp;= (\hat{M}_x + i \hat{M}_y)(\hat{M}_x - i\hat{M}_y) Y_\text{min} \\
+&amp;= (\hat{M}_x^2 + \hat{M}_y^2 - i [M_x, M_y]) Y_\text{min} \\
+&amp;= (\hat{M}^2 - \hat{M}_z^2 + \hbar \hat{M}_z ) Y_\text{min} \\
+&amp;= (c - b_\text{min}^2 + \hbar b_\text{min}) Y_\text{min}
+\end{align}\end{split}\]</div>
+<p>which suggests</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+c = b_\text{min}^2 - \hbar b_\text{min}
+\end{align}\]</div>
+<p>Subtracting this result from the other expression for <span class="math notranslate nohighlight">\(c\)</span> in terms of <span class="math notranslate nohighlight">\(b_\text{max}\)</span> gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+b_\text{max}^2 + \hbar b_\text{max} - b_\text{min}^2 + \hbar b_\text{min} = 0
+\end{align}\]</div>
+<p>which we can solve as a quadratic equation in <span class="math notranslate nohighlight">\(b_\text{max}\)</span>. This equation has two solutions</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+b_\text{max} &amp;= \frac{-\hbar \pm \sqrt{\hbar^2 - 4(\hbar b_\text{min} - b_\text{min}^2)}}{2} \\
+&amp;= \frac{-\hbar \pm(\hbar - 2b_\text{min})}{2}
+\end{align}\end{split}\]</div>
+<p>which simplify to</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+b_\text{max} = -b_\text{min}
+\end{align}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+b_\text{max} = b_\text{min} - \hbar
+\end{align}\]</div>
+<p>We reject the second solution because <span class="math notranslate nohighlight">\(b_\text{max}\)</span> must be greater than <span class="math notranslate nohighlight">\(b_\text{min}.\)</span> Recall that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+b_k = b \pm k\hbar
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(k\)</span> is an integer, which suggests that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+b_\text{max} - b_\text{min} = n \hbar\text{, }~~~n = 0, 1, 2...
+\end{align}\]</div>
+<p>Given that <span class="math notranslate nohighlight">\(b_\text{max} = -b_\text{min},\)</span> we now see that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+b_\text{max} - (-b_\text{max}) &amp;= n\hbar \\
+2 b_\text{max} &amp;= n \hbar\\
+\end{align}\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+b_\text{max} &amp;= \frac{n\hbar}{2} \\
+b_\text{min} &amp;= -\frac{n\hbar}{2}
+\end{align}\end{split}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+b_\text{max} &amp;= j\hbar \\
+b_\text{min} &amp;= -j\hbar
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(j = 0, \frac{1}{2}, 1, \frac{3}{2}, ...\)</span> Recall that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+c = b_\text{max}(b_\text{max}+\hbar)
+\end{align}\]</div>
+<p>so we also have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+c = j(j+1)\hbar^2
+\end{align}\]</div>
+<p>Now, we can insert these results back into the original eigenvalue equations for <span class="math notranslate nohighlight">\(\hat{M}^2\)</span> and <span class="math notranslate nohighlight">\(\hat{M}_z\)</span> to give</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{M}^2Y &amp;= j(j+1)\hbar^2 Y\text{, }~~~j = 0, \frac{1}{2}, 1, \frac{3}{2}, ... \\
+\hat{M}_z Y &amp;= m_j \hbar Y\text{, }~~~m_j = -j, -j+1, ..., j-1, j
+\end{align}\end{split}\]</div>
+<p>Note that this is the same result as we obtained from explicitly solving the eigenvalue equations for the orbital angular momentum operators <span class="math notranslate nohighlight">\(\hat{L}^2\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z,\)</span> except that the quantum numbers <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(m_j\)</span> can take on half-integer values. The half-integer values would be rejected in the orbital angular momentum case because the associated wave functions would not satisfy the boundary conditions for the particle-on-a-sphere problem. It turns out that the half-integer quantum numbers are relevant for a different type of angular momentum, <strong>spin angular momentum</strong>, which is an intrinsic property of quantum mechanical particles.</p>
+</section>
+<section id="spin-angular-momentum">
+<h2>Spin Angular Momentum<a class="headerlink" href="#spin-angular-momentum" title="Link to this heading">#</a></h2>
+<p>Spin angular momentum is an intrinsic property of microscopic particles, like their mass and charge. The concept of spin emerges in Dirac’s relativistic extension of the Schrödinger equation. In non-relativistic quantum mechanics, spin is incorporated into a wave function because we know, from experiment, that quantum particles possess this property. Fundamental particles can be chategorized in one of two ways, based on their spin. <strong>Fermions</strong> have half-integer spin; for example, electrons are fermions with a spin quantum number, <span class="math notranslate nohighlight">\(s = \frac{1}{2}.\)</span> <strong>Bosons</strong> have integer spin; for example, photons are bosons with <span class="math notranslate nohighlight">\(s = 1.\)</span></p>
+<p>Let us consider the spin of an electron, which is a fermion. All electrons have <span class="math notranslate nohighlight">\(s = \frac{1}{2},\)</span> which determins the magnitude of the spin angular momentum, <span class="math notranslate nohighlight">\(s(s+1)\hbar^2 = \frac{3}{4}\hbar^2.\)</span> From general chemistry, we learn that electrons can have <span class="math notranslate nohighlight">\(\alpha\)</span> or <span class="math notranslate nohighlight">\(\beta\)</span> spin, and we also refer to these electrons has having spin up or down. The terms “up” and “down” refer to the <span class="math notranslate nohighlight">\(z\)</span> projection of the spin angular momentum, <span class="math notranslate nohighlight">\(m_s \hbar.\)</span> From the analysis in the previous section, we know <span class="math notranslate nohighlight">\(m_s\)</span> for an electron can take on two values. <span class="math notranslate nohighlight">\(\alpha\)</span> spin electrons have <span class="math notranslate nohighlight">\(m_s = + \frac{1}{2},\)</span> while <span class="math notranslate nohighlight">\(\beta\)</span> spin electrons have <span class="math notranslate nohighlight">\(m_s = - \frac{1}{2}.\)</span></p>
+<p>The operators for spin angular momentum are analogous to those we considered above for orbital angular momentum. We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\vec{S} &amp;= \hat{S}_x \vec{i} + \hat{S}_y \vec{j} + \hat{S}_z \vec{k} \\
+\hat{S}^2 &amp;= \hat{S}_x^2 + \hat{S}_y^2 + \hat{S}_z^2 \\
+\end{align}\end{split}\]</div>
+<p>These operators have the same commutator properties as we derived above for orbital angular momentum, so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+[\hat{S}^2, \hat{S}_x] &amp;= 0 \\
+[\hat{S}^2, \hat{S}_y] &amp;= 0 \\
+[\hat{S}^2, \hat{S}_z] &amp;= 0 \\
+[\hat{S}_x, \hat{S}_y] &amp;= i\hbar \hat{S}_z \\
+[\hat{S}_z, \hat{S}_x] &amp;= i\hbar \hat{S}_y \\
+[\hat{S}_y, \hat{S}_z] &amp;= i\hbar \hat{S}_x \\
+\end{align}\end{split}\]</div>
+<p>Mathematically, we represent spin operators as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{S}_x &amp;= \frac{\hbar}{2} \sigma_x \\
+\hat{S}_y &amp;= \frac{\hbar}{2} \sigma_y \\
+\hat{S}_z &amp;= \frac{\hbar}{2} \sigma_z
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma_x,\)</span> <span class="math notranslate nohighlight">\(\sigma_y,\)</span> and <span class="math notranslate nohighlight">\(\sigma_z\)</span> are <span class="math notranslate nohighlight">\(2 \times 2\)</span> Hermitian matrices called “Pauli spin matrices” and are defined by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\sigma_x &amp;= \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \\ \end{pmatrix} \\
+\sigma_y &amp;= \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \\ \end{pmatrix} \\
+\sigma_z &amp;= \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \\ \end{pmatrix} \\
+\end{align}\end{split}\]</div>
+<p>The spin state of an electron can then be represented as a two-component vector quantity. We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+|\alpha \rangle &amp;= \begin{pmatrix} 1 \\ 0 \end{pmatrix} \\
+|\beta \rangle &amp;= \begin{pmatrix} 0 \\ 1 \end{pmatrix} \\
+\end{align}\end{split}\]</div>
+<p>Are <span class="math notranslate nohighlight">\(|\alpha\rangle\)</span> and <span class="math notranslate nohighlight">\(|\beta \rangle\)</span> eigenfunctions (or eigenvectors) of the spin matrices? For <span class="math notranslate nohighlight">\(\hat{S}_x,\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{S}_x | \alpha \rangle &amp;= \frac{\hbar}{2} \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \\ \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} \\
+&amp;= \frac{\hbar}{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} \\
+&amp;=  \frac{\hbar}{2} |\beta\rangle \\
+\hat{S}_x | \beta \rangle &amp;= \frac{\hbar}{2} \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \\ \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} \\
+&amp;= \frac{\hbar}{2} \begin{pmatrix} 1 \\ 0 \end{pmatrix} \\
+&amp;=  \frac{\hbar}{2} |\alpha\rangle
+\end{align}\end{split}\]</div>
+<p>For <span class="math notranslate nohighlight">\(\hat{S}_y,\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{S}_y | \alpha \rangle &amp;= \frac{\hbar}{2} \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \\ \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} \\
+&amp;= \frac{\hbar}{2} \begin{pmatrix} 0 \\ i \end{pmatrix} \\
+&amp;=  \frac{i\hbar}{2} |\beta\rangle \\
+\hat{S}_y | \beta \rangle &amp;= \frac{\hbar}{2} \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \\ \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} \\
+&amp;= \frac{\hbar}{2} \begin{pmatrix} -i \\ 0 \end{pmatrix} \\
+&amp;=  -\frac{i\hbar}{2} |\alpha\rangle
+\end{align}\end{split}\]</div>
+<p>For <span class="math notranslate nohighlight">\(\hat{S}_z,\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{S}_z | \alpha \rangle &amp;= \frac{\hbar}{2} \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \\ \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} \\
+&amp;= \frac{\hbar}{2} \begin{pmatrix} 1 \\ 0 \end{pmatrix} \\
+&amp;=  \frac{\hbar}{2} |\alpha\rangle \\
+\hat{S}_z | \beta \rangle &amp;= \frac{\hbar}{2} \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \\ \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} \\
+&amp;= \frac{\hbar}{2} \begin{pmatrix} 0 \\ -1 \end{pmatrix} \\
+&amp;=  -\frac{\hbar}{2} |\beta\rangle
+\end{align}\end{split}\]</div>
+<p>So, <span class="math notranslate nohighlight">\(|\alpha\rangle\)</span> and <span class="math notranslate nohighlight">\(|\beta\rangle\)</span> are not eigenfunctions of <span class="math notranslate nohighlight">\(\hat{S}_x\)</span> or <span class="math notranslate nohighlight">\(\hat{S}_y,\)</span> but they are eigenfunctions of <span class="math notranslate nohighlight">\(\hat{S}_z,\)</span> with eigenvalues equal to <span class="math notranslate nohighlight">\(\frac{\hbar}{2}\)</span> and <span class="math notranslate nohighlight">\(-\frac{\hbar}{2},\)</span> respectively.</p>
+<p>Are <span class="math notranslate nohighlight">\(|\alpha\rangle\)</span> and <span class="math notranslate nohighlight">\(|\beta\rangle\)</span> are eigenfunctions of <span class="math notranslate nohighlight">\(\hat{S}^2\)</span>? We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{S}^2|\alpha\rangle &amp;= \hat{S}_x^2|\alpha\rangle + \hat{S}_y^2|\alpha\rangle + \hat{S}_z^2|\alpha\rangle \\
+ &amp;= \frac{\hbar}{2}\hat{S}_x|\beta\rangle + \frac{i\hbar}{2}\hat{S}_y|\beta\rangle + \frac{\hbar}{2}\hat{S}_z|\alpha\rangle \\
+ &amp;= \frac{\hbar^2}{4}|\alpha\rangle + \frac{\hbar^2}{4}|\alpha\rangle + \frac{\hbar^2}{4}|\alpha\rangle \\
+ &amp;= \frac{3\hbar^2}{4}|\alpha\rangle
+\end{align}\end{split}\]</div>
+<p>and, similarly,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{S}^2|\beta\rangle &amp;= \frac{3\hbar^2}{4}|\beta\rangle
+\end{align}\]</div>
+<p>So, both <span class="math notranslate nohighlight">\(|\alpha\rangle\)</span> and <span class="math notranslate nohighlight">\(|\beta\rangle\)</span> are eigenfunctions of <span class="math notranslate nohighlight">\(\hat{S}^2\)</span>, with eigenvalue <span class="math notranslate nohighlight">\(\frac{3\hbar^2}{4}.\)</span></p>
+<p>Lastly, note that a general spin function for an electron could be a linear combination of the <span class="math notranslate nohighlight">\(|\alpha\rangle\)</span> and <span class="math notranslate nohighlight">\(|\beta\rangle\)</span> spin functions, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|g\rangle = c_1 |\alpha \rangle + c_2 |\beta\rangle
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> are probability amplitudes whose square moduli are the respective probabilities that the electron would be found to have either spin up or down, if this property was measured.</p>
+<blockquote>
+<div><p>Practice</p>
+<blockquote>
+<div><p>Question 11.</p>
+<p>Show that
+$<span class="math notranslate nohighlight">\(\begin{align}[\hat{S}^2, \hat{S}_x] &amp;= 0 \\
+[\hat{S}^2, \hat{S}_y] &amp;= 0 \\
+[\hat{S}^2, \hat{S}_z] &amp;= 0 \\
+[\hat{S}_x, \hat{S}_y] &amp;= i\hbar \hat{S}_z \\
+[\hat{S}_z, \hat{S}_x] &amp;= i\hbar \hat{S}_y \\
+[\hat{S}_y, \hat{S}_z] &amp;= i\hbar \hat{S}_x \\
+\end{align}\)</span>$</p>
+</div></blockquote>
+<blockquote>
+<div><p>Question 12.</p>
+<p>Find spin eigenfunctions of <span class="math notranslate nohighlight">\(\hat{S}_x\)</span> and <span class="math notranslate nohighlight">\(\hat{S}_y.\)</span> Are these eigenfunctions also eigenfunctions of <span class="math notranslate nohighlight">\(\hat{S}^2\)</span>?</p>
+</div></blockquote>
+<blockquote>
+<div><p>Question 13.</p>
+<p>Consider rasing and lowering spin operators</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{S}_\pm &amp;= \hat{S}_x \pm i\hat{S}_y \\
+\end{align}\end{split}\]</div>
+<p>Show that
+$<span class="math notranslate nohighlight">\(\begin{align}
+\hat{S}_+|\alpha\rangle &amp;= 0 \\
+\hat{S}_+|\beta\rangle &amp;= \hbar|\alpha\rangle \\
+\hat{S}_-|\alpha\rangle &amp;= \hbar|\beta\rangle \\
+\hat{S}_-|\beta\rangle &amp;= 0
+\end{align}\)</span>$</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/lecture_notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="qm_postulates.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 1: The Postulates of Quantum Mechanics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="SphHarm_visualize.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Visualizing Spherical harmonics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#angular-momentum">Angular Momentum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-polar-coordinates">Spherical Polar Coordinates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-particle-on-a-ring-model">The Particle-on-a-Ring Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-particle-on-a-sphere-model">The Particle-on-a-Sphere Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energies-and-wave-functions">Energies and Wave Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-diagrams">Vector Diagrams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-regarding-uncertainty">A Note Regarding Uncertainty</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rigid-rotor">The Rigid Rotor</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection Rules</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ladder-operators">Ladder Operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-angular-momentum">Spin Angular Momentum</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jay Foley
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

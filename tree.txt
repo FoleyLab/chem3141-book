@@ -1,0 +1,458 @@
+.
+├── _build
+│   ├── html
+│   │   ├── _images
+│   │   │   ├── 03dd65249565aa66e3569ae46b1a2bedac40e247782e436e6316a8d4b89468d5.png
+│   │   │   ├── 0f39d46432eaf82019a8aa10013526d9aa7a6050a8498031e0c0bdf75cfefe10.png
+│   │   │   ├── 1440b716aaaaa4d8990aeef73df66294f5bedbecd045933bd6f7aa5120e4c79a.png
+│   │   │   ├── 1c6698e095dbc621f850969437bf45246f28f3e94a071daf5b991123f68ccc6b.png
+│   │   │   ├── 3efc65fa4b2038e66c79107c5708bbee12b6045ad137cd7d855537006b8a87ab.png
+│   │   │   ├── 618693478c00317961e614b43afc123d7d083dce442a343dabb127ceef4134e5.png
+│   │   │   ├── 682a2a5a2de35e208de33dd9e7758cef23ea574df34cf705c43996f18100f715.png
+│   │   │   ├── 968de3bc08b10d3e6579257c79bc56da3be5f575540871558fa12401110fa6b5.png
+│   │   │   ├── 9b736a4bd25bf2ac6d830201013207f098d54f3ae518bafac4971c2f16795700.png
+│   │   │   ├── 9f67ded99f84ba727ceed893d6b9bb645f094886fd0678838213c6f3f3672954.png
+│   │   │   ├── a52e09eb4523633319b825597306cb0c693039f4c690c536efac8ee3447202fc.png
+│   │   │   ├── aa317d20ea3196480ef2d15dfa9fc746828b8e1907f8cffe7c186d5c1b1946ec.png
+│   │   │   ├── afc2ced5f8909b2660e7f970575369445a4198ae087ba5714988dfc01d104c7e.png
+│   │   │   ├── AO_0.png
+│   │   │   ├── AO.png
+│   │   │   ├── AO2.jpg
+│   │   │   ├── AO3.png
+│   │   │   ├── bc9fd3d41ecf886c1f482208fddd1f669a68f38262b3f60409cb8233bf9d9aa5.png
+│   │   │   ├── df9a8e79a2df6995590a3ee2828a44b98dc45979010838f04fed3fed6fa7d8c7.png
+│   │   │   ├── e5f4594a0860226c0701b3c1814b24a461e927383120e0134204b1546b2fff64.png
+│   │   │   ├── electro1.gif
+│   │   │   ├── f24c17f36bb4cdd550c7a4d71d26227ad6ae08afe4cbafb47cc2eb0630d8b1e7.png
+│   │   │   ├── hydrogen_probability_densities.png
+│   │   │   ├── mag-orient.jpeg
+│   │   │   ├── magnetic.jpg
+│   │   │   ├── Orbital_p1-px_animation.gif
+│   │   │   ├── p-orbitals.png
+│   │   │   ├── spin-orbit2.png
+│   │   │   ├── Spin1.jpg
+│   │   │   ├── spin3.gif
+│   │   │   ├── tot_j.png
+│   │   │   ├── vecz.png
+│   │   │   ├── Zeeman.png
+│   │   │   └── zeeman2.png
+│   │   ├── _sources
+│   │   │   ├── content
+│   │   │   │   ├── bonus_H.ipynb
+│   │   │   │   ├── CO_Perturbation_Theory.ipynb
+│   │   │   │   ├── formula_sheet.md
+│   │   │   │   ├── hydrogen_wavefunctions.ipynb
+│   │   │   │   ├── index.md
+│   │   │   │   ├── Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.ipynb
+│   │   │   │   ├── linear_variational_method.ipynb
+│   │   │   │   ├── note01.md
+│   │   │   │   ├── note03.md
+│   │   │   │   ├── note05.md
+│   │   │   │   ├── notebooks.ipynb
+│   │   │   │   ├── pib_delta_potential_dynamics.ipynb
+│   │   │   │   ├── ps_1.md
+│   │   │   │   ├── qm_postulates.ipynb
+│   │   │   │   ├── SphHarm_visualize.ipynb
+│   │   │   │   ├── spin_background.md
+│   │   │   │   ├── Spin_one_half_old.ipynb
+│   │   │   │   ├── Spin_one_half_solutions.ipynb
+│   │   │   │   ├── Spin_one_half.ipynb
+│   │   │   │   └── Zeeman_Effect_Hydrogen_Atom.ipynb
+│   │   │   ├── intro.md
+│   │   │   ├── markdown-notebooks.ipynb
+│   │   │   ├── markdown-notebooks.md
+│   │   │   ├── markdown.md
+│   │   │   └── notebooks.ipynb
+│   │   ├── _sphinx_design_static
+│   │   │   ├── design-tabs.js
+│   │   │   └── sphinx-design.min.css
+│   │   ├── _static
+│   │   │   ├── basic.css
+│   │   │   ├── check-solid.svg
+│   │   │   ├── clipboard.min.js
+│   │   │   ├── copy-button.svg
+│   │   │   ├── copybutton_funcs.js
+│   │   │   ├── copybutton.css
+│   │   │   ├── copybutton.js
+│   │   │   ├── design-tabs.js
+│   │   │   ├── doctools.js
+│   │   │   ├── documentation_options.js
+│   │   │   ├── file.png
+│   │   │   ├── images
+│   │   │   │   ├── logo_binder.svg
+│   │   │   │   ├── logo_colab.png
+│   │   │   │   ├── logo_deepnote.svg
+│   │   │   │   └── logo_jupyterhub.svg
+│   │   │   ├── language_data.js
+│   │   │   ├── locales
+│   │   │   │   ├── ar
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── bg
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── bn
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── ca
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── cs
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── da
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── de
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── el
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── eo
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── es
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── et
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── fi
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── fr
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── hr
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── id
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── it
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── iw
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── ja
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── ko
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── lt
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── lv
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── ml
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── mr
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── ms
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── nl
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── no
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── pl
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── pt
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── ro
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── ru
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── sk
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── sl
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── sr
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── sv
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── ta
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── te
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── tg
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── th
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── tl
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── tr
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── uk
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── ur
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── vi
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   ├── zh_CN
+│   │   │   │   │   └── LC_MESSAGES
+│   │   │   │   │       ├── booktheme.mo
+│   │   │   │   │       └── booktheme.po
+│   │   │   │   └── zh_TW
+│   │   │   │       └── LC_MESSAGES
+│   │   │   │           ├── booktheme.mo
+│   │   │   │           └── booktheme.po
+│   │   │   ├── logo.png
+│   │   │   ├── minus.png
+│   │   │   ├── mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css
+│   │   │   ├── play-solid.svg
+│   │   │   ├── plus.png
+│   │   │   ├── pygments.css
+│   │   │   ├── sbt-webpack-macros.html
+│   │   │   ├── scripts
+│   │   │   │   ├── bootstrap.js
+│   │   │   │   ├── bootstrap.js.LICENSE.txt
+│   │   │   │   ├── bootstrap.js.map
+│   │   │   │   ├── pydata-sphinx-theme.js
+│   │   │   │   ├── pydata-sphinx-theme.js.map
+│   │   │   │   ├── sphinx-book-theme.js
+│   │   │   │   └── sphinx-book-theme.js.map
+│   │   │   ├── searchtools.js
+│   │   │   ├── sphinx_highlight.js
+│   │   │   ├── sphinx-design.min.css
+│   │   │   ├── sphinx-thebe.css
+│   │   │   ├── sphinx-thebe.js
+│   │   │   ├── styles
+│   │   │   │   ├── bootstrap.css
+│   │   │   │   ├── bootstrap.css.map
+│   │   │   │   ├── pydata-sphinx-theme.css
+│   │   │   │   ├── pydata-sphinx-theme.css.map
+│   │   │   │   ├── sphinx-book-theme.css
+│   │   │   │   ├── sphinx-book-theme.css.map
+│   │   │   │   └── theme.css
+│   │   │   ├── togglebutton.css
+│   │   │   ├── togglebutton.js
+│   │   │   ├── vendor
+│   │   │   │   └── fontawesome
+│   │   │   │       └── 6.5.2
+│   │   │   │           ├── css
+│   │   │   │           │   └── all.min.css
+│   │   │   │           ├── js
+│   │   │   │           │   ├── all.min.js
+│   │   │   │           │   └── all.min.js.LICENSE.txt
+│   │   │   │           ├── LICENSE.txt
+│   │   │   │           └── webfonts
+│   │   │   │               ├── fa-brands-400.ttf
+│   │   │   │               ├── fa-brands-400.woff2
+│   │   │   │               ├── fa-regular-400.ttf
+│   │   │   │               ├── fa-regular-400.woff2
+│   │   │   │               ├── fa-solid-900.ttf
+│   │   │   │               ├── fa-solid-900.woff2
+│   │   │   │               ├── fa-v4compatibility.ttf
+│   │   │   │               └── fa-v4compatibility.woff2
+│   │   │   └── webpack-macros.html
+│   │   ├── content
+│   │   │   ├── bonus_H.html
+│   │   │   ├── CO_Perturbation_Theory.html
+│   │   │   ├── formula_sheet.html
+│   │   │   ├── hydrogen_wavefunctions.html
+│   │   │   ├── index.html
+│   │   │   ├── Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html
+│   │   │   ├── linear_variational_method.html
+│   │   │   ├── note01.html
+│   │   │   ├── note03.html
+│   │   │   ├── note05.html
+│   │   │   ├── notebooks.html
+│   │   │   ├── pib_delta_potential_dynamics.html
+│   │   │   ├── ps_1.html
+│   │   │   ├── qm_postulates.html
+│   │   │   ├── SphHarm_visualize.html
+│   │   │   ├── spin_background.html
+│   │   │   ├── Spin_one_half_old.html
+│   │   │   ├── Spin_one_half_solutions.html
+│   │   │   ├── Spin_one_half.html
+│   │   │   └── Zeeman_Effect_Hydrogen_Atom.html
+│   │   ├── genindex.html
+│   │   ├── index.html
+│   │   ├── intro.html
+│   │   ├── markdown-notebooks.html
+│   │   ├── markdown.html
+│   │   ├── notebooks.html
+│   │   ├── objects.inv
+│   │   ├── reports
+│   │   │   └── content
+│   │   │       ├── CO_Perturbation_Theory.err.log
+│   │   │       ├── hydrogen_wavefunctions.err.log
+│   │   │       ├── Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.err.log
+│   │   │       ├── linear_variational_method.err.log
+│   │   │       ├── qm_postulates.err.log
+│   │   │       ├── SphHarm_visualize.err.log
+│   │   │       ├── Spin_one_half.err.log
+│   │   │       └── Zeeman_Effect_Hydrogen_Atom.err.log
+│   │   ├── search.html
+│   │   └── searchindex.js
+│   └── jupyter_execute
+│       ├── 03dd65249565aa66e3569ae46b1a2bedac40e247782e436e6316a8d4b89468d5.png
+│       ├── 0f39d46432eaf82019a8aa10013526d9aa7a6050a8498031e0c0bdf75cfefe10.png
+│       ├── 1440b716aaaaa4d8990aeef73df66294f5bedbecd045933bd6f7aa5120e4c79a.png
+│       ├── 1c6698e095dbc621f850969437bf45246f28f3e94a071daf5b991123f68ccc6b.png
+│       ├── 3efc65fa4b2038e66c79107c5708bbee12b6045ad137cd7d855537006b8a87ab.png
+│       ├── 618693478c00317961e614b43afc123d7d083dce442a343dabb127ceef4134e5.png
+│       ├── 682a2a5a2de35e208de33dd9e7758cef23ea574df34cf705c43996f18100f715.png
+│       ├── 968de3bc08b10d3e6579257c79bc56da3be5f575540871558fa12401110fa6b5.png
+│       ├── 9b736a4bd25bf2ac6d830201013207f098d54f3ae518bafac4971c2f16795700.png
+│       ├── 9f67ded99f84ba727ceed893d6b9bb645f094886fd0678838213c6f3f3672954.png
+│       ├── a52e09eb4523633319b825597306cb0c693039f4c690c536efac8ee3447202fc.png
+│       ├── aa317d20ea3196480ef2d15dfa9fc746828b8e1907f8cffe7c186d5c1b1946ec.png
+│       ├── afc2ced5f8909b2660e7f970575369445a4198ae087ba5714988dfc01d104c7e.png
+│       ├── bc9fd3d41ecf886c1f482208fddd1f669a68f38262b3f60409cb8233bf9d9aa5.png
+│       ├── content
+│       │   ├── bonus_H.ipynb
+│       │   ├── CO_Perturbation_Theory.ipynb
+│       │   ├── hydrogen_wavefunctions.ipynb
+│       │   ├── Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.ipynb
+│       │   ├── linear_variational_method.ipynb
+│       │   ├── notebooks.ipynb
+│       │   ├── pib_delta_potential_dynamics.ipynb
+│       │   ├── qm_postulates.ipynb
+│       │   ├── SphHarm_visualize.ipynb
+│       │   ├── Spin_one_half_old.ipynb
+│       │   ├── Spin_one_half_solutions.ipynb
+│       │   ├── Spin_one_half.ipynb
+│       │   └── Zeeman_Effect_Hydrogen_Atom.ipynb
+│       ├── df9a8e79a2df6995590a3ee2828a44b98dc45979010838f04fed3fed6fa7d8c7.png
+│       ├── e5f4594a0860226c0701b3c1814b24a461e927383120e0134204b1546b2fff64.png
+│       ├── f24c17f36bb4cdd550c7a4d71d26227ad6ae08afe4cbafb47cc2eb0630d8b1e7.png
+│       ├── markdown-notebooks.ipynb
+│       └── notebooks.ipynb
+├── _config.yml
+├── _toc.yml
+├── content
+│   ├── advanced_topics
+│   │   ├── Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.ipynb
+│   │   └── Zeeman_Effect_Hydrogen_Atom.ipynb
+│   ├── computational_sets
+│   │   ├── CO_Perturbation_Theory.ipynb
+│   │   ├── hydrogen_wavefunctions.ipynb
+│   │   ├── linear_variational_method.ipynb
+│   │   ├── note05.md
+│   │   ├── pib_delta_potential_dynamics.ipynb
+│   │   ├── Spin_one_half_old.ipynb
+│   │   └── Spin_one_half.ipynb
+│   ├── images
+│   │   ├── 8.4.2.svg
+│   │   ├── AO_0.png
+│   │   ├── AO.png
+│   │   ├── AO2.jpg
+│   │   ├── AO3.png
+│   │   ├── Balmer.png
+│   │   ├── centrifug.png
+│   │   ├── electro1.gif
+│   │   ├── Henergies.png
+│   │   ├── hydrogen_probability_densities.png
+│   │   ├── mag-orient.jpeg
+│   │   ├── magnetic.gif
+│   │   ├── magnetic.jpg
+│   │   ├── Orbital_p1-px_animation.gif
+│   │   ├── p-orbitals.png
+│   │   ├── spin-orbit1.png
+│   │   ├── spin-orbit2.png
+│   │   ├── Spin1.jpg
+│   │   ├── spin3.gif
+│   │   ├── tot_j.png
+│   │   ├── vecz.png
+│   │   ├── Zeeman.png
+│   │   ├── zeeman2.png
+│   │   └── zeemanen.jpeg
+│   ├── index.md
+│   ├── lecture_notes
+│   │   ├── hydrogen.ipynb
+│   │   ├── perturbation.ipynb
+│   │   ├── qm_postulates.ipynb
+│   │   ├── rotation.ipynb
+│   │   ├── SphHarm_visualize.ipynb
+│   │   ├── translation.ipynb
+│   │   ├── variation.ipynb
+│   │   └── vibration.ipynb
+│   ├── problem_sets
+│   │   └── ps_1.md
+│   └── resources
+│       ├── formula_sheet.md
+│       ├── note01.md
+│       ├── note03.md
+│       ├── note05.md
+│       ├── notebooks.ipynb
+│       └── spin_background.md
+├── intro.md
+├── logo.png
+├── markdown-notebooks.md
+├── markdown.md
+├── notebooks.ipynb
+├── references.bib
+├── requirements.txt
+└── tree.txt
+
+120 directories, 336 files
