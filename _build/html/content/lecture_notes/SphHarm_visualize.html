@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/lecture_notes/SphHarm_visualize';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Translational Motion" href="translation.html" />
-    <link rel="prev" title="Angular Momentum, Rotational Motion, and Spin" href="rotation.html" />
+    <link rel="next" title="Problem Set 1" href="../problem_sets/ps_1.html" />
+    <link rel="prev" title="Perturbation Theory" href="perturbation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,14 +183,18 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture Notes</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="qm_postulates_two_level.html">Chapter 1: Introduction to Quantum Phenomena</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translation.html">Chapter 3: Translational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vibration.html">Chapter 4: Vibrational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydrogen.html">The Hydrogen Atom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="perturbation.html">Perturbation Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qm_postulates.html">Chapter 1: The Postulates of Quantum Mechanics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rotation.html">Angular Momentum, Rotational Motion, and Spin</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualizing Spherical harmonics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="translation.html">Translational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variation.html">The Variation Theorem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vibration.html">Vibrational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="perturbation.html">Perturbation Theory</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualizing Spherical harmonics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
 <ul class="nav bd-sidenav">
@@ -501,17 +505,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#Import spherical harmonics</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">sph_harm</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="math notranslate nohighlight">
 \[
@@ -564,8 +557,14 @@ Polar (colatitudinal) coordinate; must be in <span class="math notranslate nohig
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../../_images/682a2a5a2de35e208de33dd9e7758cef23ea574df34cf705c43996f18100f715.png"><img alt="../../_images/682a2a5a2de35e208de33dd9e7758cef23ea574df34cf705c43996f18100f715.png" src="../../_images/682a2a5a2de35e208de33dd9e7758cef23ea574df34cf705c43996f18100f715.png" style="width: 572px; height: 558px;" />
-</a>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_60960/2655294372.py:5: DeprecationWarning: `scipy.special.sph_harm` is deprecated as of SciPy 1.15.0 and will be removed in SciPy 1.17.0. Please use `scipy.special.sph_harm_y` instead.
+  Ylm  = sph_harm(m, l, theta, phi).real
+/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/mpl_toolkits/mplot3d/art3d.py:1403: RuntimeWarning: divide by zero encountered in matmul
+  shade = ((normals / np.linalg.norm(normals, axis=1, keepdims=True))
+/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/mpl_toolkits/mplot3d/art3d.py:1403: RuntimeWarning: overflow encountered in matmul
+  shade = ((normals / np.linalg.norm(normals, axis=1, keepdims=True))
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -594,7 +593,7 @@ Polar (colatitudinal) coordinate; must be in <span class="math notranslate nohig
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b9accf006b1b472286106781e4f99bff", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "0ee30d8bb79b485ab6c96340202715ec"}</script></div>
 </div>
 </section>
 <section id="making-volume-plot-with-ipyvolumes">
@@ -605,6 +604,16 @@ Polar (colatitudinal) coordinate; must be in <span class="math notranslate nohig
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ipyvolume</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ipv</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">ipyvolume</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ipv</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;ipyvolume&#39;
 </pre></div>
 </div>
 </div>
@@ -625,8 +634,6 @@ Polar (colatitudinal) coordinate; must be in <span class="math notranslate nohig
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c7197a3c5e2f43198ce993c7da85cb1a", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -634,8 +641,6 @@ Polar (colatitudinal) coordinate; must be in <span class="math notranslate nohig
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a3aa3ab9d01848dbbf4f1f35142d7b9c", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 </section>
 </section>
@@ -671,20 +676,20 @@ Polar (colatitudinal) coordinate; must be in <span class="math notranslate nohig
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="rotation.html"
+       href="perturbation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Angular Momentum, Rotational Motion, and Spin</p>
+        <p class="prev-next-title">Perturbation Theory</p>
       </div>
     </a>
     <a class="right-next"
-       href="translation.html"
+       href="../problem_sets/ps_1.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Translational Motion</p>
+        <p class="prev-next-title">Problem Set 1</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

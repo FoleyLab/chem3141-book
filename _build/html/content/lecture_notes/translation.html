@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Translational Motion &#8212; My sample book</title>
+    <title>Chapter 3: Translational Motion &#8212; My sample book</title>
   
   
   
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/lecture_notes/translation';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="The Variation Theorem" href="variation.html" />
-    <link rel="prev" title="Visualizing Spherical harmonics" href="SphHarm_visualize.html" />
+    <link rel="next" title="Chapter 4: Vibrational Motion" href="vibration.html" />
+    <link rel="prev" title="Chapter 2: The Postulates Revisited" href="qm_postulates.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,14 +183,18 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture Notes</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="qm_postulates_two_level.html">Chapter 1: Introduction to Quantum Phenomena</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 3: Translational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vibration.html">Chapter 4: Vibrational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydrogen.html">The Hydrogen Atom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="perturbation.html">Perturbation Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qm_postulates.html">Chapter 1: The Postulates of Quantum Mechanics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rotation.html">Angular Momentum, Rotational Motion, and Spin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SphHarm_visualize.html">Visualizing Spherical harmonics</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Translational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variation.html">The Variation Theorem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vibration.html">Vibrational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="perturbation.html">Perturbation Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SphHarm_visualize.html">Visualizing Spherical harmonics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
 <ul class="nav bd-sidenav">
@@ -445,7 +449,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Translational Motion</h1>
+    <h1>Chapter 3: Translational Motion</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -487,8 +491,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="translational-motion">
-<h1>Translational Motion<a class="headerlink" href="#translational-motion" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-3-translational-motion">
+<h1>Chapter 3: Translational Motion<a class="headerlink" href="#chapter-3-translational-motion" title="Link to this heading">#</a></h1>
+<p>Prof. Eugene DePrince, Florida State University</p>
 <p>This notebook develops solutions to the time-independent Schrödinger equation (TISE) for several translational problems (e.g., particle-in-a-box, tunneling through a one-dimensional barrier, etc.). Relevant Python code is provided to assist in visualizing the wave functions and obtaining numerical solutions to the TISE.</p>
 <section id="the-free-particle">
 <h2>The Free Particle<a class="headerlink" href="#the-free-particle" title="Link to this heading">#</a></h2>
@@ -1368,7 +1373,7 @@ E = \frac{h^2}{8ma^2} \left ( n_x^2 + n_y^2 \right )
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x10a86e710&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x107bba950&gt;
 </pre></div>
 </div>
 <img alt="../../_images/ce2a05565d6c2eac2155db63ce3d0c460580a2d09755f331238d423bd1f7a7b7.png" src="../../_images/ce2a05565d6c2eac2155db63ce3d0c460580a2d09755f331238d423bd1f7a7b7.png" />
@@ -1670,7 +1675,7 @@ E - V(x) &amp;= T_x \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_61221/4185230906.py:9: RuntimeWarning: divide by zero encountered in divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_61298/4185230906.py:9: RuntimeWarning: divide by zero encountered in divide
   rhs = 2 * np.sqrt(V0-E) * np.sqrt(E) / (2 * E - V0)
 </pre></div>
 </div>
@@ -1713,15 +1718,7 @@ E - V(x) &amp;= T_x \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># solve for the allowable energy, with some reasonable initial guess</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimize</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">E</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fsolve</span><span class="p">(</span><span class="n">func</span> <span class="o">=</span> <span class="n">allowable_energies</span><span class="p">,</span> <span class="n">x0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">V0</span><span class="p">,</span> <span class="n">L</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the allowable energies are&#39;</span><span class="p">,</span> <span class="n">E</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the allowable energies are [2.29499075 8.13714776]
 </pre></div>
 </div>
 </div>
@@ -1786,7 +1783,7 @@ E - V(x) &amp;= T_x \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dq/61z8k56n7r3gtgfrmv5bxdxh0000gp/T/ipykernel_65410/337456428.py:7: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_61298/337456428.py:7: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   N = np.sqrt(1.0 / np.trapz(psi2[:, state], x = x))
 </pre></div>
 </div>
@@ -1816,7 +1813,7 @@ E - V(x) &amp;= T_x \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ba7947d9fcc00f125349fe3b6a815427dd435bb24b4501e6c2b8cbd0fa0bcb99.png" src="../../_images/ba7947d9fcc00f125349fe3b6a815427dd435bb24b4501e6c2b8cbd0fa0bcb99.png" />
+<img alt="../../_images/492b5cd4faa478892eb5725cf086e5c532ad21b742c050b7f9aa742c1e6022dd.png" src="../../_images/492b5cd4faa478892eb5725cf086e5c532ad21b742c050b7f9aa742c1e6022dd.png" />
 </div>
 </div>
 <blockquote>
@@ -2094,20 +2091,20 @@ T &amp;= \frac{|F|^2}{|A|^2} \\
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="SphHarm_visualize.html"
+       href="qm_postulates.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Visualizing Spherical harmonics</p>
+        <p class="prev-next-title">Chapter 2: The Postulates Revisited</p>
       </div>
     </a>
     <a class="right-next"
-       href="variation.html"
+       href="vibration.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The Variation Theorem</p>
+        <p class="prev-next-title">Chapter 4: Vibrational Motion</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/lecture_notes/perturbation';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Chapter 1: The Postulates of Quantum Mechanics" href="qm_postulates.html" />
-    <link rel="prev" title="The Hydrogen Atom" href="hydrogen.html" />
+    <link rel="next" title="Visualizing Spherical harmonics" href="SphHarm_visualize.html" />
+    <link rel="prev" title="The Variation Theorem" href="variation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,14 +183,18 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture Notes</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="qm_postulates_two_level.html">Chapter 1: Introduction to Quantum Phenomena</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translation.html">Chapter 3: Translational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vibration.html">Chapter 4: Vibrational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydrogen.html">The Hydrogen Atom</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Perturbation Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qm_postulates.html">Chapter 1: The Postulates of Quantum Mechanics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rotation.html">Angular Momentum, Rotational Motion, and Spin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SphHarm_visualize.html">Visualizing Spherical harmonics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="translation.html">Translational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variation.html">The Variation Theorem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vibration.html">Vibrational Motion</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Perturbation Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SphHarm_visualize.html">Visualizing Spherical harmonics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
 <ul class="nav bd-sidenav">
@@ -479,6 +483,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="perturbation-theory">
 <h1>Perturbation Theory<a class="headerlink" href="#perturbation-theory" title="Link to this heading">#</a></h1>
+<p>Prof. Eugene DePrince, Florida State University</p>
 <p>In the last notebook, we used the variation theorem to find approximate solutions to the Schrödinger equation. An alterative approach is based on perturbation theory. This notebook outlines the fundamental principles of time-independent and time-dependent perturbation theories.</p>
 <section id="time-independent-perturbation-theory">
 <h2>Time-Independent Perturbation Theory<a class="headerlink" href="#time-independent-perturbation-theory" title="Link to this heading">#</a></h2>
@@ -806,14 +811,8 @@ E_0 = \frac{1}{2}\hbar \omega + \frac{3d}{4\alpha^2} + \sum_{k\neq 0} \frac{N_k 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">psi4</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">psi4</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;psi4&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Molecule: geometry: Molecule is not complete, please use &#39;update_geometry&#39;
+                    once all variables are set.
 </pre></div>
 </div>
 </div>
@@ -839,7 +838,7 @@ E_0 = \frac{1}{2}\hbar \omega + \frac{3d}{4\alpha^2} + \sum_{k\neq 0} \frac{N_k 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d75ce039b2637fdd007c6a0fb2bea7d928cbcc7fc25399d677743b2020bef4a5.png" src="../../_images/d75ce039b2637fdd007c6a0fb2bea7d928cbcc7fc25399d677743b2020bef4a5.png" />
+<img alt="../../_images/bd7c194ab9db49f77f1a26a1b6bdfd37b80e4382b24615be4f210546f8ac230e.png" src="../../_images/bd7c194ab9db49f77f1a26a1b6bdfd37b80e4382b24615be4f210546f8ac230e.png" />
 </div>
 </div>
 <p>The Hartree-Fock approach is variational, so the Hartree-Fock energy is always an upper-bound to the full CI energy. We can see that MP2, MP3, and MP4 improve upon the Hartree-Fock result near equilibrium but begin to give nonsense results at stretched H–H distances. In particular, the MPn energy can be lower than the “exact” variational approach (recall that perturbation theory is not a variational theory). Why is this happening? Like any non-degenerate perturbation theory, Møller-Plesset perturbation theory only works well when the zeroth-order energies are non-degenerate. Recall the expression for the second-order energy,</p>
@@ -883,20 +882,20 @@ E_n^{(2)} = \sum_{k\neq n} \frac{ |\langle \psi_k^{(0)}|\hat{H}^\prime | \psi_n^
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="hydrogen.html"
+       href="variation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">The Hydrogen Atom</p>
+        <p class="prev-next-title">The Variation Theorem</p>
       </div>
     </a>
     <a class="right-next"
-       href="qm_postulates.html"
+       href="SphHarm_visualize.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chapter 1: The Postulates of Quantum Mechanics</p>
+        <p class="prev-next-title">Visualizing Spherical harmonics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
