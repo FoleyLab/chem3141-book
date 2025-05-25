@@ -53,3 +53,11 @@ then the bibliography is inserted with:
 
 This is just a simple starter to get you started.
 You can learn a lot more at [jupyterbook.org](https://jupyterbook.org).
+
+## Workflow for making edits
+
+1.  Make edits within the main branch
+2.  build jupyter book with `jupyter-book build .` from within the top-level directory of the main branch
+3.  Commit changes to main branch from github desktop
+4.  Push the `_build` folder to gh-pages branch using `ghp-import -n -p -f _build/html`
+5. Check the build remotely by going to the gh-pages branch, push on the "Actions" button, and follow the link after the deploy action finalizes.  The page should render at https://foleylab.github.io/chem3141-book/intro.html

@@ -1,0 +1,984 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Perturbation Theory &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/lecture_notes/perturbation';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Chapter 1: The Postulates of Quantum Mechanics" href="qm_postulates.html" />
+    <link rel="prev" title="The Hydrogen Atom" href="hydrogen.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    5. Hydrogen Atom
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydrogen.html">The Hydrogen Atom</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Perturbation Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qm_postulates.html">Chapter 1: The Postulates of Quantum Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rotation.html">Angular Momentum, Rotational Motion, and Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SphHarm_visualize.html">Visualizing Spherical harmonics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translation.html">Translational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variation.html">The Variation Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vibration.html">Vibrational Motion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_1.html">Problem Set 1</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">Run the next two cells before beginning!</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Zeeman_Effect_Hydrogen_Atom.html">Solution</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/CO_Perturbation_Theory.html">Computing Fundamental Transition of CO under different levels of approximation</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/hydrogen_wavefunctions.html">DEMO: H wavefunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/linear_variational_method.html">Linear Variational Method</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/note05.html">Additional Notes on Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/pib_delta_potential_dynamics.html">Dynamics of particle in a box with a delta potential</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Chapter 2: Introduction to Spin 1/2</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/formula_sheet.html">Useful Formulae</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note01.html">Hydrogenlike atoms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note03.html">Atomic orbitals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note05.html">Additional Notes on Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/spin_background.html">Spin</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/FoleyLab/chem3141-book/blob/main/content/lecture_notes/perturbation.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/FoleyLab/chem3141-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FoleyLab/chem3141-book/issues/new?title=Issue%20on%20page%20%2Fcontent/lecture_notes/perturbation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/lecture_notes/perturbation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Perturbation Theory</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-independent-perturbation-theory">Time-Independent Perturbation Theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-degenerate-perturbation-theory">Non-Degenerate Perturbation Theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-first-order-correction-to-the-energy">The First-Order Correction to the Energy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-first-order-correction-to-the-wave-function">The First-Order Correction to the Wave Function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-second-order-correction-to-the-energy">The Second-Order Correction to the Energy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-points">Discussion Points</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moller-plesset-perturbation-theory">Møller-Plesset Perturbation theory</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="perturbation-theory">
+<h1>Perturbation Theory<a class="headerlink" href="#perturbation-theory" title="Link to this heading">#</a></h1>
+<p>In the last notebook, we used the variation theorem to find approximate solutions to the Schrödinger equation. An alterative approach is based on perturbation theory. This notebook outlines the fundamental principles of time-independent and time-dependent perturbation theories.</p>
+<section id="time-independent-perturbation-theory">
+<h2>Time-Independent Perturbation Theory<a class="headerlink" href="#time-independent-perturbation-theory" title="Link to this heading">#</a></h2>
+<p>Time-independent perturbation theory is an approach for finding approximate solutions to the time-independent Schrödinger equation that complements the variational approach discussed in the last notebook. The basic idea is that the Hamiltonian for a system can be partitioned into a “simple” Hamiltonian for which solutions can be determined and a “small” perturbation to that simple Hamiltonian. We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H} = \hat{H}_0 + \lambda \hat{H}^\prime
+\end{align}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(H_0\)</span> is the <strong>zeroth-order</strong> Hamiltonian, which is the simple part of the problem and <span class="math notranslate nohighlight">\(\hat{H}^\prime\)</span> is the operator representing the perturbation. We have also introduced a parameter, <span class="math notranslate nohighlight">\(\lambda,\)</span> which can have any value on the interval <span class="math notranslate nohighlight">\([0, 1].\)</span> In the limit that <span class="math notranslate nohighlight">\(\lambda \to 0,\)</span> we recover the simple Hamiltonian. In the limit that <span class="math notranslate nohighlight">\(\lambda \to 1,\)</span> we recover the full Hamiltonian. We assume that we can determine the eigenfunctions of <span class="math notranslate nohighlight">\(\hat{H}_0\)</span> that satisfy</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H}_0 | \psi_n^{(0)}\rangle  = E_n^{(0)}|  \psi_n^{(0)}\rangle
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(E_n^{(0)}\)</span> and <span class="math notranslate nohighlight">\(\psi_n^{(0)}\)</span> are called the zeroth-order energies and wave functions, respectively.</p>
+<section id="non-degenerate-perturbation-theory">
+<h3>Non-Degenerate Perturbation Theory<a class="headerlink" href="#non-degenerate-perturbation-theory" title="Link to this heading">#</a></h3>
+<p>The next steps differ depending on whether or not any of the eigenvalues of <span class="math notranslate nohighlight">\(\hat{H}_0\)</span> are degenerate. We will consider only the case that the eigenvalues are all non-degenerate; the resulting perturbation theory is thus called non-denerate perturbation theory.</p>
+<p>Consider a wave function, <span class="math notranslate nohighlight">\(|\psi_n\rangle\)</span>, that satisfies the time-independent Schrödinger equation,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H} |\psi_n\rangle = E_n |\psi_n\rangle
+\end{align}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+(\hat{H}_0 + \lambda \hat{H}^\prime) |\psi_n\rangle = E_n |\psi_n\rangle
+\end{align}\]</div>
+<p>where the subscript <span class="math notranslate nohighlight">\(n\)</span> refers to a particular state. We now expand <span class="math notranslate nohighlight">\(|\psi_n\rangle\)</span> as a Taylor series in the perturbation strength, <span class="math notranslate nohighlight">\(\lambda\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|\psi_n\rangle  = \left . |\psi_n\rangle  \right |_{\lambda = 0} + \lambda \left . \frac{\partial |\psi_n\rangle}{\partial \lambda} \right |_{\lambda = 0} + \lambda ^2\frac{1}{2!}\left . \frac{\partial^2 |\psi_n\rangle}{\partial \lambda^2} \right |_{\lambda = 0} + \lambda ^3 \frac{1}{3!} \left . \frac{\partial^3 |\psi_n\rangle}{\partial \lambda^3} \right |_{\lambda = 0} + ...
+\end{align}\]</div>
+<p>We can simply our notation by first noting that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\left . |\psi_n\rangle  \right |_{\lambda = 0} = |\psi_n^{(0)}\rangle
+\end{align}\]</div>
+<p>Next, we define the <strong><span class="math notranslate nohighlight">\(p\)</span>-th order correction to the wave function</strong> in terms of the <span class="math notranslate nohighlight">\(p\)</span>-th order derivative of the wave function, evaluated at <span class="math notranslate nohighlight">\(\lambda = 0\)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{1}{p!} \left  . \frac{\partial^p |\psi_n\rangle}{\partial \lambda^p} \right |_{\lambda = 0} = |\psi_n^{(p)}\rangle
+\end{align}\]</div>
+<p>Now, the full wave function can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|\psi_n\rangle  = |\psi_n^{(0)}\rangle + \lambda |\psi_n^{(1)}\rangle   + \lambda ^2|\psi_n^{(2)}\rangle  + \lambda ^3|\psi_n^{(3)}\rangle  + ...
+\end{align}\]</div>
+<p>The energy for state <span class="math notranslate nohighlight">\(n\)</span> is expanded in a similar way:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E_n = E_n^{(0)} + \lambda E_n^{(1)}   + \lambda ^2 E_n^{(2)}  + \lambda^3 E_n^{(3)}  + ...
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(E_n^{(p)}\)</span> is referred to as the <strong><span class="math notranslate nohighlight">\(p\)</span>-th order correction to the energy</strong>. In what follows, we will derive expressions for the <span class="math notranslate nohighlight">\(p\)</span>-th order corrections to the wave function and energy, which are typically determined order-by-order, starting with <span class="math notranslate nohighlight">\(p = 1\)</span>.</p>
+<p>If the corrections to the wave function are determined order-by-order, how is the total wave function normalized? Here, we use a special type of normalization condition, called <strong>intermediate normalization</strong> in which the overlap of the full wave function with the zeroth-order wave function is one:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\langle \psi_n^{(0)} | \psi_n \rangle = 1
+\end{align}\]</div>
+<p>If we expand <span class="math notranslate nohighlight">\(|\psi_n\rangle\)</span> in powers of <span class="math notranslate nohighlight">\(\lambda\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+1 = \langle \psi_n^{(0)} | \psi_n^{(0)} \rangle + \langle \psi_n^{(0)} | \psi_n^{(1)} \rangle \lambda + \langle \psi_n^{(0)} | \psi_n^{(2)} \rangle \lambda^2 + \langle \psi_n^{(0)} | \psi_n^{(3)} \rangle \lambda^3 + ...
+\end{align}\]</div>
+<p>If we choose <span class="math notranslate nohighlight">\(|\psi_n^{(0)}\rangle\)</span> to be normalized, then we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\langle \psi_n^{(0)} | \psi_n^{(0)}\rangle = 1
+\end{align}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+0 =  \langle \psi_n^{(0)} | \psi_n^{(1)} \rangle \lambda + \langle \psi_n^{(0)} | \psi_n^{(2)} \rangle \lambda^2 + \langle \psi_n^{(0)} | \psi_n^{(3)} \rangle \lambda^3 + ...
+\end{align}\]</div>
+<p>This expression must be satisfied for all powers of <span class="math notranslate nohighlight">\(\lambda\)</span>. As a result, we can conclude that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\langle \psi_n^{(0)} | \psi_n^{(p)}\rangle = 0\text{, }\forall\text{ }p &gt; 0
+\end{align}\]</div>
+<p>In other words, the zeroth-order wave function for state <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(|\psi_n^{(0)}\rangle\)</span>, is orthogonal to all corrections to the wave function, <span class="math notranslate nohighlight">\(|\psi_n^{(p)}\rangle\)</span>. Note that the reason we can assume that <span class="math notranslate nohighlight">\(|\psi_n^{(0)}\rangle\)</span> is normalized is that it is an eigenfunction of a Hermitian operator (<span class="math notranslate nohighlight">\(\hat{H}_0\)</span>) and is therefore normalizable. For the remainder of this discussion, we will assume that the zeroth-order wave functions form an orthonormal set, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\langle \psi_n^{(0)}|\psi_m^{(0)}\rangle = \delta_{mn}
+\end{align}\]</div>
+<p>Let us go back to the Schrödinger equation, with <span class="math notranslate nohighlight">\(|\psi_n\rangle\)</span> and <span class="math notranslate nohighlight">\(E_n\)</span> expanded in powers of <span class="math notranslate nohighlight">\(\lambda\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+(\hat{H}_0 + \lambda \hat{H}^\prime) ( |\psi_0\rangle + \lambda |\psi_n^{(1)}\rangle + ...) = ( E_n^{(0)} + \lambda E_n^{(1)} + ...)( |\psi_0\rangle + \lambda |\psi_n^{(1)}\rangle + ...)
+\end{align}\]</div>
+<p>The right- and left-hand sides of this equation must be equal for all possible values of <span class="math notranslate nohighlight">\(\lambda\)</span>, which implies that terms on either side having the same power of <span class="math notranslate nohighlight">\(\lambda\)</span> must be equivalent. Each order in <span class="math notranslate nohighlight">\(\lambda\)</span> defines a different equation involving only a few of the corrections to the wave function and energy. For up to <span class="math notranslate nohighlight">\(\lambda = 2\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\lambda^0:~~&amp; \hat{H}_0 |\psi_n^{(0)}\rangle = E_n^{(0)} |\psi_n^{(0)}\rangle \\
+\lambda^1:~~&amp; \hat{H}_0 |\psi_n^{(1)}\rangle + \hat{H}^\prime | \psi_n^{(0)} \rangle = E_n^{(0)} |\psi_n^{(1)}\rangle + E_n^{(1)} |\psi_n^{(0)}\rangle \\
+\lambda^2:~~&amp; \hat{H}_0 |\psi_n^{(2)}\rangle + \hat{H}^\prime | \psi_n^{(1)} \rangle = E_n^{(0)} |\psi_n^{(2)}\rangle + E_n^{(1)} |\psi_n^{(1)}\rangle + E_n^{(2)} |\psi_n^{(0)}\rangle\\
+...
+\end{align}\end{split}\]</div>
+<p>The first of these equations is simply the zeroth-order Schrödinger equation.</p>
+<section id="the-first-order-correction-to-the-energy">
+<h4>The First-Order Correction to the Energy<a class="headerlink" href="#the-first-order-correction-to-the-energy" title="Link to this heading">#</a></h4>
+<p>What is the first-order correction to the energy for state <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(E_n^{(1)}\)</span>? We can determine this quantity using the first-order Schrödinger equation,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H}_0 |\psi_n^{(1)}\rangle + \hat{H}^\prime | \psi_n^{(0)} \rangle = E_n^{(0)} |\psi_n^{(1)}\rangle + E_n^{(1)} |\psi_n^{(0)}\rangle
+\end{align}\]</div>
+<p>To isolate <span class="math notranslate nohighlight">\(E_n^{(1)}\)</span>, we can left-multiply both sides of this equation by <span class="math notranslate nohighlight">\(\langle \psi_n^{(0)}|\)</span> and integrating each term over all space</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\langle \psi_n^{(0)}| \hat{H}_0 |\psi_n^{(1)}\rangle + \langle \psi_n^{(0)}| \hat{H}^\prime | \psi_n^{(0)} \rangle = E_n^{(0)} \langle \psi_n^{(0)}|\psi_n^{(1)}\rangle + E_n^{(1)} \langle \psi_n^{(0)}|\psi_n^{(0)}\rangle
+\end{align}\]</div>
+<p>Now, let us inspect each term and play my favorite game: “zero, one, or something else?!”.</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\langle \psi_n^{(0)}| \hat{H}_0 |\psi_n^{(1)}\rangle = 0\)</span>. “How can this be?” you might ask. Well, two pieces of information are key. First, <span class="math notranslate nohighlight">\(|\psi_n^{(0)}\rangle\)</span> is an eigenfunction of <span class="math notranslate nohighlight">\(\hat{H}_0\)</span>. Second, <span class="math notranslate nohighlight">\(|\psi_n^{(0)}\rangle\)</span> is orthogonal to any correction to the wave function for state <span class="math notranslate nohighlight">\(n\)</span> (e.g., <span class="math notranslate nohighlight">\(|\psi_n^{(1)}\rangle\)</span>). More explicitly,
+$<span class="math notranslate nohighlight">\(\begin{align}
+\langle \psi_n^{(0)}| \hat{H}_0 |\psi_n^{(1)}\rangle &amp; = \langle \psi_n^{(1)}| \hat{H}_0 |\psi_n^{(0)}\rangle ^* 
+\\
+&amp; = E_n^{(0)} \langle \psi_n^{(1)} | \psi_n^{(0)}\rangle^* \\
+&amp; = 0
+\end{align}\)</span>$</p></li>
+<li><p><span class="math notranslate nohighlight">\(\langle \psi_n^{(0)}| \hat{H}^\prime | \psi_n^{(0)} \rangle = \)</span> something else.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\langle \psi_n^{(0)}|\psi_n^{(1)}\rangle = 0\)</span> because, as mentioned above, these functions are orthogonal.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\langle \psi_n^{(0)}|\psi_n^{(0)}\rangle = 1\)</span> because the zeroth-order wave functions are normalized.</p></li>
+</ol>
+<p>Thus, to first-order in perturbation theory,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E_n = E_n^{(0)} + \langle \psi_n^{(0)}| \hat{H}^\prime | \psi_n^{(0)} \rangle
+\end{align}\]</div>
+<p>Now, let us evaluate the ground-state energy (to first order) of a one-dimensional anharmonic oscillator of mass <span class="math notranslate nohighlight">\(m\)</span> with the following Hamiltonian</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H} = -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} + \frac{1}{2} k x^2 + c x^3 + d x^4
+\end{align}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(x\)</span> reprents the displacement of the oscillator from its equilibrium position, and <span class="math notranslate nohighlight">\(k,\)</span> <span class="math notranslate nohighlight">\(c,\)</span> and <span class="math notranslate nohighlight">\(d\)</span> are constants. We can partition this Hamiltonian into a zeroth-order part that looks like the Hamiltonian for the quantum harmonic oscillator (QHO) problem,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H}_0 = -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} + \frac{1}{2} k x^2
+\end{align}\]</div>
+<p>and a perturbation</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H}^\prime = c x^3 + d x^4
+\end{align}\]</div>
+<p>The zeroth-order wave functions have the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|\psi_n^{(0)}\rangle = N_n e^{-\alpha x^2/2} H_n(\alpha^{1/2}x) 
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha = \frac{\omega m}{\hbar}\)</span>, <span class="math notranslate nohighlight">\(\omega = 2\pi \nu\)</span>, <span class="math notranslate nohighlight">\(\nu\)</span> is the frequency of the oscillations, <span class="math notranslate nohighlight">\(N_n\)</span> is a normalization constant, and <span class="math notranslate nohighlight">\(H_n\)</span> is a Hermite polynomial. The zeroth-order energies are</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E_n^{(0)} = \left (n + \frac{1}{2} \right ) \hbar \omega
+\end{align}\]</div>
+<p>To first order, the ground-state energy is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E_0 = E_0^{(0)} + \langle \psi_0^{(0)} | \hat{H}^\prime | \psi_0^{(0)}\rangle
+\end{align}\]</div>
+<p>Given that <span class="math notranslate nohighlight">\(E_0^{(0)} = \frac{1}{2}\hbar \omega\)</span> and <span class="math notranslate nohighlight">\(|\psi_0^{(0)}\rangle = \left ( \frac{\alpha}{\pi}\right ) ^{1/4}e^{-\alpha x^2/2} \)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+E_0 &amp;= \frac{1}{2}\hbar \omega + \int_{-\infty}^{\infty} ( cx^3 + dx^4) \left ( \frac{\alpha}{\pi}\right ) ^{1/2}e^{-\alpha x^2} \\
+&amp;= \frac{1}{2}\hbar \omega + d \left ( \frac{\alpha}{\pi}\right ) ^{1/2} \int_{-\infty}^{\infty} x^4 e^{-\alpha x^2} dx \\
+&amp;= \frac{1}{2}\hbar \omega + \frac{3d}{4\alpha^2}
+\end{align}\end{split}\]</div>
+<p>Note that the parameter, <span class="math notranslate nohighlight">\(c\)</span>, does not appear at first order, but it will appear at higher orders in perturbation theory.</p>
+</section>
+<section id="the-first-order-correction-to-the-wave-function">
+<h4>The First-Order Correction to the Wave Function<a class="headerlink" href="#the-first-order-correction-to-the-wave-function" title="Link to this heading">#</a></h4>
+<p>We isolated the first-order correction to the energy by left-multiplying the first-order Schrödinger equation by <span class="math notranslate nohighlight">\(\langle \psi_n^{(0)}|\)</span> and integrating over all space. Let us see what happens if instead we project the first-order Schrödinger equation,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H}_0 |\psi_n^{(1)}\rangle + \hat{H}^\prime | \psi_n^{(0)} \rangle = E_n^{(0)} |\psi_n^{(1)}\rangle + E_n^{(1)} |\psi_n^{(0)}\rangle
+\end{align}\]</div>
+<p>onto <span class="math notranslate nohighlight">\(\langle \psi_m^{(0)}|\)</span>, with <span class="math notranslate nohighlight">\(m\neq n\)</span>. Doing so gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\langle \psi_m^{(0)}| \hat{H}_0 |\psi_n^{(1)}\rangle + \langle \psi_m^{(0)}| \hat{H}^\prime | \psi_n^{(0)} \rangle = E_n^{(0)} \langle \psi_m^{(0)}|\psi_n^{(1)}\rangle + E_n^{(1)} \langle \psi_m^{(0)}|\psi_n^{(0)}\rangle
+\end{align}\]</div>
+<p>How shall we proceed? You guessed it! It is time for another rousing game of “zero, one, or something else?!”.</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\langle \psi_m^{(0)}| \hat{H}_0 |\psi_n^{(1)}\rangle =\)</span> something else. We have
+$<span class="math notranslate nohighlight">\(\begin{align}
+\langle \psi_m^{(0)}| \hat{H}_0 |\psi_n^{(1)}\rangle &amp; = \langle \psi_n^{(1)}| \hat{H}_0 |\psi_m^{(0)}\rangle ^* 
+\\
+&amp; = E_m^{(0)} \langle \psi_n^{(1)} | \psi_m^{(0)}\rangle^* \\
+&amp; = E_m^{(0)} \langle \psi_m^{(0)} | \psi_n^{(1)}\rangle
+\end{align}\)</span><span class="math notranslate nohighlight">\(
+Note that, while the first-order correction to the wave function for state \)</span>n<span class="math notranslate nohighlight">\( will be orthogonal to the zeroth-order wave function for state \)</span>n<span class="math notranslate nohighlight">\(, we have no such guarantee for the zeroth-order wave function for a different state (in this case, state \)</span>m$).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\langle \psi_m^{(0)}| \hat{H}^\prime | \psi_n^{(0)} \rangle = \)</span> something else.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\langle \psi_m^{(0)}|\psi_n^{(1)}\rangle = \)</span> something else. As stated above, we have no guarantee that a correction to the wave function for state <span class="math notranslate nohighlight">\(n\)</span> is orthogonal to the zeroth-order wave function for a different state, <span class="math notranslate nohighlight">\(m\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\langle \psi_m^{(0)}|\psi_n^{(0)}\rangle = 0\)</span> because the zeroth-order wave functions form an orthonormal set, and <span class="math notranslate nohighlight">\(m \neq n\)</span>.</p></li>
+</ol>
+<p>With these considerations, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\langle \psi_m^{(0)}|\psi_n^{(1)}\rangle  = \frac{\langle \psi_m^{(0)}| \hat{H}^\prime | \psi_n^{(0)} \rangle}{E_n^{(0)} - E_m^{(0)}}
+\end{align}\]</div>
+<p>Now, we recall that the zeroth-order wave functions are eigenfunctions of a Hermitian operator, and, they form a complete set. As such, we can expand <span class="math notranslate nohighlight">\(|\psi_n^{(1)}\rangle\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|\psi_n^{(1)}\rangle = \sum_{k\neq n} c^{(1)}_k |\psi_k^{(0)}\rangle
+\end{align}\]</div>
+<p>Note the restriction that <span class="math notranslate nohighlight">\(k \neq n\)</span>, which is necessary to guaratee that <span class="math notranslate nohighlight">\(\langle \psi_n^{(0)}|\psi_n^{(1)}\rangle = 0\)</span>. To determine a given expansion coefficient, we must project <span class="math notranslate nohighlight">\(|\psi_n^{(1)}\rangle\)</span> onto the corresponding basis function:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\langle \psi_m^{(0)} | \psi_n^{(1)} \rangle &amp;= \sum_{k\neq n} c^{(1)}_k\langle \psi_m^{(0)} | \psi_k^{(0)} \rangle \\
+&amp;= \sum_{k\neq n} c^{(1)}_k \delta_{mk}\\
+&amp;= c^{(1)}_m
+\end{align}\end{split}\]</div>
+<p>Combined with the result from above, we can see that the expansion coefficients are</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+c^{(1)}_m = \frac{\langle \psi_m^{(0)}| \hat{H}^\prime | \psi_n^{(0)} \rangle}{E_n^{(0)} - E_m^{(0)}}
+\end{align}\]</div>
+<p>so the first-order correction to the wave function is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|\psi_n^{(1)}\rangle = \sum_{k\neq n} \frac{\langle \psi_k^{(0)}| \hat{H}^\prime | \psi_n^{(0)} \rangle}{E_n^{(0)} - E_k^{(0)}} | \psi_k^{(0)} \rangle
+\end{align}\]</div>
+<p>From our anharmonic oscillator example, the first-order correction to the wave function for state <span class="math notranslate nohighlight">\(n\)</span> would be</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|\psi_n^{(1)}\rangle = \sum_{k\neq n}^\infty \frac{N_k N_n \int_{-\infty}^{\infty} e^{-\alpha x^2} H_k(\alpha^{1/2}x) H_n(\alpha^{1/2} x) (cx^3 + dx^4)}{\hbar\omega ( n - k )} |\psi_k^{(0)}\rangle
+\end{align}\]</div>
+<p>In this case, we can see that the summation is over an infinite number of states, <span class="math notranslate nohighlight">\(k\)</span>. Note, however, that this is not generally the case. In Møller-Plesset perturbation theory, for example, evalulating the first-order correction to the wave function does not require an infinite summation.</p>
+</section>
+<section id="the-second-order-correction-to-the-energy">
+<h4>The Second-Order Correction to the Energy<a class="headerlink" href="#the-second-order-correction-to-the-energy" title="Link to this heading">#</a></h4>
+<p>Let’s keep this party going. Here, we will derive an expression for the second-order correction to the energy. The second-order energy is particularly important in electronic structure theory. In Møller-Plesset perturbation theory, the second-order correction (MP2) is the first correction to the Hartree-Fock energy.</p>
+<p>To obtain the second-order energy, we proceed in a similar manner as above, when we isolated the first-order energy from the first-order Schrödinger equation. The second-order Schrödinger equation is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H}_0 |\psi_n^{(2)}\rangle + \hat{H}^\prime | \psi_n^{(1)} \rangle = E_n^{(0)} |\psi_n^{(2)}\rangle + E_n^{(1)} |\psi_n^{(1)}\rangle + E_n^{(2)} |\psi_n^{(0)}\rangle
+\end{align}\]</div>
+<p>We left-multiply both sides by <span class="math notranslate nohighlight">\(\langle \psi_n^{(0)}|\)</span> and integrate over all space, giving</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\langle \psi_n^{(0)}| \hat{H}_0 |\psi_n^{(2)}\rangle + \langle \psi_n^{(0)} | \hat{H}^\prime | \psi_n^{(1)} \rangle = E_n^{(0)} \langle \psi_n^{(0)}|\psi_n^{(2)}\rangle + E_n^{(1)} \langle \psi_n^{(0)}|\psi_n^{(1)}\rangle + E_n^{(2)} \langle \psi_n^{(0)}|\psi_n^{(0)}\rangle
+\end{align}\]</div>
+<p>Guess what time it is? It is time to play “zero, one, or something else?!”. On the left-hand side of this equation, <span class="math notranslate nohighlight">\(\langle \psi_n^{(0)}| \hat{H}_0 |\psi_n^{(2)}\rangle = 0\)</span> (you can prove this for yourself). On the right-hand side, only the third term survives because the zeroth order wave function for state <span class="math notranslate nohighlight">\(n\)</span> is orthogonal to any correction to the wave function for state <span class="math notranslate nohighlight">\(n\)</span>. We then have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E_n^{(2)} &amp;= \langle \psi_n^{(0)} | \hat{H}^\prime | \psi_n^{(1)}\rangle
+\end{align}\]</div>
+<p>We just showed that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|\psi_n^{(1)}\rangle = \sum_{k\neq n} \frac{\langle \psi_k^{(0)}| \hat{H}^\prime | \psi_n^{(0)} \rangle}{E_n^{(0)} - E_k^{(0)}} | \psi_k^{(0)} \rangle
+\end{align}\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+E_n^{(2)} &amp;= \sum_{k\neq n} \langle \psi_n^{(0)} | \hat{H}^\prime | \psi_k^{(0)} \rangle \frac{\langle \psi_k^{(0)}|\hat{H}^\prime | \psi_n^{(0)} \rangle }{E_n^{(0)} - E_k^{(0)}} \\
+&amp;= \sum_{k\neq n} \frac{ |\langle \psi_k^{(0)}|\hat{H}^\prime | \psi_n^{(0)} \rangle |^2 }{E_n^{(0)} - E_k^{(0)}} 
+\end{align}\end{split}\]</div>
+<p>Recall the anharmonic oscillator. To second-order the ground-state energy for this system would be</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E_0 = \frac{1}{2}\hbar \omega + \frac{3d}{4\alpha^2} + \sum_{k\neq 0} \frac{N_k N_0 \left [ \int_{-\infty}^{\infty} e^{-\alpha x^2} H_k(\alpha^{1/2}x) H_0(\alpha^{1/2} x) (cx^3 + dx^4) dx\right ] }{\frac{1}{2}\hbar\omega-\hbar\omega (k + \frac{1}{2})}
+\end{align}\]</div>
+<p>Note that, unlike the first-order energy, the second-order energy  for the anharmonic oscillator will depend on both the <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(d\)</span> parameters.</p>
+</section>
+<section id="discussion-points">
+<h4>Discussion Points<a class="headerlink" href="#discussion-points" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Perturbed energies and wave functions allow us to “mix” character of other zeroth-order states into state <span class="math notranslate nohighlight">\(n\)</span>. This mixing is necessary because <span class="math notranslate nohighlight">\(|\psi_n^{(0)}\rangle\)</span> will not look exactly like <span class="math notranslate nohighlight">\(|\psi_n\rangle\)</span>.</p></li>
+<li><p>The <span class="math notranslate nohighlight">\(\frac{1}{E_n^{(0)} - E_k^{(0)}}\)</span> term implies that states nearby in energy dominate perturbative corrections for state <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p>In general, summations can be infinite (e.g., as we saw for the anharmonic oscillator problem). Exceptions include Møller-Plesset perturbation theory.</p></li>
+<li><p>Higher-order corrections to the energies and wave functions can become extremely complicated. In electronic structure theory, the highest-order corrections one would typically encouter would be fourth or fifth order. As an example, the perturbative triple excitation correction (T) to the coupled-cluster with single and double excitations (CCSD) energy [CCSD(T)], mostly looks like the triples part of the fourth-order energy in Møller-Plesset perturbation theory. It also contains some terms that appear at fifth-order.</p></li>
+<li><p>If the zeroth-order problem has a continuum of eigenfunctions (e.g., unbound states in the hydrogen atom problem), the these states must be included in the perturbative expansins (in these cases, sums over states become integrals).</p></li>
+<li><p>The approach outlined above works well for <span class="math notranslate nohighlight">\(\hat{H}_0\)</span> with non-degenerate energy levels and when the perturbation is “small.” In such cases, <span class="math notranslate nohighlight">\(|\psi_n^{(0)}\rangle\)</span> gives a good approximation to <span class="math notranslate nohighlight">\(|\psi_n\rangle\)</span>.</p></li>
+<li><p>It is important to recognize that the energy in perturbation theory is not variational, i.e., there is no guarantee that it will be an upper bound to the true ground-state energy.</p></li>
+</ol>
+</section>
+</section>
+<section id="moller-plesset-perturbation-theory">
+<h3>Møller-Plesset Perturbation theory<a class="headerlink" href="#moller-plesset-perturbation-theory" title="Link to this heading">#</a></h3>
+<p>Møller-Plesset perturbation theory is a form of non-degenerate perturbation theory that is used in electronic structure theory to obtain estimates of the ground-state energy for many-electron systems. The zeroth-order Hamiltonian in Møller-Plesset perturbation theory is the Fock operator, <span class="math notranslate nohighlight">\(\hat{F}\)</span>, which is an effective one-particle Hamiltonian that arises in <a class="reference external" href="https://deprincelab.github.io/tutorials/jupyter_notebooks/hartree_fock/hartree_fock.html">Hartree-Fock theory</a> (which is a variational approach and is essentially the mathematical version of molecular orbital theory). Second-order Møller-Plesset perturbation theory (MP2) holds a special place in electronic structure theory because it is the lowest-order of this perturbation theory that improves upon the Hartree-Fock energy. The code below uses the Psi4 package to calculate the energy of molecular hydrogen (H<span class="math notranslate nohighlight">\(_2\)</span>) as a function of the H-H distance at several levels of theory: Hartree-Fock, full configuration interaction (CI, which is the “exact” variational result within the chosen basis set), and second-, third-, and fourth-order Møller-Plesset perturbation theory (MP2, MP3, and MP4, respectively).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">psi4</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">psi4</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># set molecule</span>
+<span class="n">mol</span> <span class="o">=</span> <span class="n">psi4</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">h</span>
+<span class="s2">h 1 x</span>
+<span class="s2">symmetry c1</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>   
+
+<span class="c1"># set some options for psi4</span>
+<span class="n">psi4</span><span class="o">.</span><span class="n">set_options</span><span class="p">({</span><span class="s1">&#39;basis&#39;</span><span class="p">:</span> <span class="s1">&#39;cc-pvdz&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;guess_mix&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                  <span class="s1">&#39;reference&#39;</span><span class="p">:</span> <span class="s1">&#39;rhf&#39;</span><span class="p">})</span>
+
+<span class="c1"># tell psi4 not to print any output to the screen</span>
+<span class="n">psi4</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">be_quiet</span><span class="p">()</span>
+
+<span class="c1"># calculate the energy at different H-H separations, x</span>
+<span class="n">hf_energy</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ci_energy</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mp2_energy</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mp3_energy</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mp4_energy</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">8.1</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+    <span class="n">mol</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+    <span class="c1"># full ci</span>
+    <span class="n">en</span> <span class="o">=</span> <span class="n">psi4</span><span class="o">.</span><span class="n">energy</span><span class="p">(</span><span class="s1">&#39;fci&#39;</span><span class="p">)</span>
+    <span class="n">ci_energy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">en</span><span class="p">)</span>
+
+    <span class="c1"># hartree-fock and MPn</span>
+    <span class="n">en</span> <span class="o">=</span> <span class="n">psi4</span><span class="o">.</span><span class="n">energy</span><span class="p">(</span><span class="s1">&#39;mp4&#39;</span><span class="p">)</span>
+    <span class="n">ehf</span> <span class="o">=</span> <span class="n">psi4</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="s2">&quot;HF TOTAL ENERGY&quot;</span><span class="p">)</span>
+    <span class="n">hf_energy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ehf</span><span class="p">)</span>
+    <span class="n">mp2_energy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ehf</span> <span class="o">+</span> <span class="n">psi4</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="s2">&quot;MP2 CORRELATION ENERGY&quot;</span><span class="p">))</span>
+    <span class="n">mp3_energy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ehf</span> <span class="o">+</span> <span class="n">psi4</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="s2">&quot;MP3 CORRELATION ENERGY&quot;</span><span class="p">))</span>
+    <span class="n">mp4_energy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ehf</span> <span class="o">+</span> <span class="n">psi4</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="s2">&quot;MP4 CORRELATION ENERGY&quot;</span><span class="p">))</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">psi4</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">psi4</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;psi4&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">hf_energy</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Hartree-Fock&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ci_energy</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;configuration interaction&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mp2_energy</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MP2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mp3_energy</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MP3&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mp4_energy</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MP4&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;energy (E$_h$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;H-H distance (Å)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d75ce039b2637fdd007c6a0fb2bea7d928cbcc7fc25399d677743b2020bef4a5.png" src="../../_images/d75ce039b2637fdd007c6a0fb2bea7d928cbcc7fc25399d677743b2020bef4a5.png" />
+</div>
+</div>
+<p>The Hartree-Fock approach is variational, so the Hartree-Fock energy is always an upper-bound to the full CI energy. We can see that MP2, MP3, and MP4 improve upon the Hartree-Fock result near equilibrium but begin to give nonsense results at stretched H–H distances. In particular, the MPn energy can be lower than the “exact” variational approach (recall that perturbation theory is not a variational theory). Why is this happening? Like any non-degenerate perturbation theory, Møller-Plesset perturbation theory only works well when the zeroth-order energies are non-degenerate. Recall the expression for the second-order energy,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E_n^{(2)} = \sum_{k\neq n} \frac{ |\langle \psi_k^{(0)}|\hat{H}^\prime | \psi_n^{(0)} \rangle |^2 }{E_n^{(0)} - E_k^{(0)}} 
+\end{align}\]</div>
+<p>It is clear that this energy could be poorly behaved if <span class="math notranslate nohighlight">\(E_n^{(0)} - E_k^{(0)}\)</span> becomes small. In the case of MPn, the zeroth-order energies are sums of orbital energies (the negative of which can be interpreted as the energy required to remove an electron from that orbital). In bond breaking processes, the bonding and antibonding orbital energies approach one another, and we run the risk of encountering small energy denominators in the MP2 energy expression. This issue becomes even worse for higher-order corrections (<span class="math notranslate nohighlight">\(E_n^{(3)}\)</span>, <span class="math notranslate nohighlight">\(E_n^{(4)}\)</span>, etc.) because the relevant expressions contain <em>products</em> of these energy differences. Degeneracies and near degeneracies in orbital energies are commonly encountered in chemical applications aside from bond-breaking processes. As such, extreme care should be taken when using perturbation theory in practice.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/lecture_notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="hydrogen.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">The Hydrogen Atom</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="qm_postulates.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 1: The Postulates of Quantum Mechanics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-independent-perturbation-theory">Time-Independent Perturbation Theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-degenerate-perturbation-theory">Non-Degenerate Perturbation Theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-first-order-correction-to-the-energy">The First-Order Correction to the Energy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-first-order-correction-to-the-wave-function">The First-Order Correction to the Wave Function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-second-order-correction-to-the-energy">The Second-Order Correction to the Energy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-points">Discussion Points</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moller-plesset-perturbation-theory">Møller-Plesset Perturbation theory</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jay Foley
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

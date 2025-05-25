@@ -1,0 +1,2205 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Translational Motion &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/lecture_notes/translation';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="The Variation Theorem" href="variation.html" />
+    <link rel="prev" title="Visualizing Spherical harmonics" href="SphHarm_visualize.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    5. Hydrogen Atom
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydrogen.html">The Hydrogen Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="perturbation.html">Perturbation Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qm_postulates.html">Chapter 1: The Postulates of Quantum Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rotation.html">Angular Momentum, Rotational Motion, and Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SphHarm_visualize.html">Visualizing Spherical harmonics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Translational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variation.html">The Variation Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vibration.html">Vibrational Motion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_1.html">Problem Set 1</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">Run the next two cells before beginning!</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Zeeman_Effect_Hydrogen_Atom.html">Solution</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/CO_Perturbation_Theory.html">Computing Fundamental Transition of CO under different levels of approximation</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/hydrogen_wavefunctions.html">DEMO: H wavefunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/linear_variational_method.html">Linear Variational Method</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/note05.html">Additional Notes on Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/pib_delta_potential_dynamics.html">Dynamics of particle in a box with a delta potential</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Chapter 2: Introduction to Spin 1/2</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/formula_sheet.html">Useful Formulae</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note01.html">Hydrogenlike atoms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note03.html">Atomic orbitals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note05.html">Additional Notes on Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/spin_background.html">Spin</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/FoleyLab/chem3141-book/blob/main/content/lecture_notes/translation.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/FoleyLab/chem3141-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FoleyLab/chem3141-book/issues/new?title=Issue%20on%20page%20%2Fcontent/lecture_notes/translation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/lecture_notes/translation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Translational Motion</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-free-particle">The Free Particle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-wave-function-and-its-properties">The Wave Function and Its Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heisenberg-uncertainty-principle">Heisenberg Uncertainty Principle</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infinite-square-well-potential">Infinite Square Well Potential</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-dimensional-particle-in-a-box">One-Dimensional Particle-in-a-Box</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#three-dimensional-particle-in-a-box">Three-Dimensional Particle-in-a-Box</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#degenerate-energy-levels">Degenerate Energy Levels</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-free-particle-revisited">The Free Particle, Revisited</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-square-well-potential">Finite Square Well Potential</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wavefunctions">Wavefunctions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions">Boundary Conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#procedure-for-visualizing-the-allowable-wavefunctions">Procedure for visualizing the allowable wavefunctions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tunneling-through-a-barrier">Tunneling Through a Barrier</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="translational-motion">
+<h1>Translational Motion<a class="headerlink" href="#translational-motion" title="Link to this heading">#</a></h1>
+<p>This notebook develops solutions to the time-independent Schrödinger equation (TISE) for several translational problems (e.g., particle-in-a-box, tunneling through a one-dimensional barrier, etc.). Relevant Python code is provided to assist in visualizing the wave functions and obtaining numerical solutions to the TISE.</p>
+<section id="the-free-particle">
+<h2>The Free Particle<a class="headerlink" href="#the-free-particle" title="Link to this heading">#</a></h2>
+<section id="the-wave-function-and-its-properties">
+<h3>The Wave Function and Its Properties<a class="headerlink" href="#the-wave-function-and-its-properties" title="Link to this heading">#</a></h3>
+<p>Consider the Hamiltonian for particle moving in one dimension (1D)</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H} = \hat{T}_x + \hat{V}(x) 
+\end{align}\]</div>
+<p>In the free particle problem, the particle is subject to no external forces, which means that the potential term, <span class="math notranslate nohighlight">\(\hat{V}(x)\)</span>, vanishes, so</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H} = \hat{T}_x = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}
+\end{align}\]</div>
+<p>Like the other Hamiltonians that will be considered in this notebook, this Hamiltonian does not depend on time. As a result, we can solve the time-independent Schrödinger equation for the spatial part of the wave function, <span class="math notranslate nohighlight">\(\psi(x)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{H} \psi(x) &amp;= E \psi(x) \\
+-\frac{\hbar^2}{2m}\frac{d^2}{dx^2} \psi(x) &amp;= E \psi(x)\\
+\end{align}\end{split}\]</div>
+<p>Rearranging the constants, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\frac{d^2}{dx^2} \psi(x) &amp;= -\frac{2mE}{\hbar^2} \psi(x)\\
+&amp;= -k^2 \psi(x)
+\end{align}\end{split}\]</div>
+<p>where we have introduced a constant, <span class="math notranslate nohighlight">\(k = +(2mE/\hbar^2)^{1/2}\)</span>. Now, we have two useful pieces of information:</p>
+<ol class="arabic simple">
+<li><p>The wave function should be an eigenfunction of <span class="math notranslate nohighlight">\(\frac{d^2}{dx^2}\)</span> (e.g., exponential, sin, or cosine functions)</p></li>
+<li><p>The wave function should have a negative eigenvalue.</p></li>
+</ol>
+<p>A general form for <span class="math notranslate nohighlight">\(\psi(x)\)</span> that satisfies both of these requirements is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi(x) = A e^{ikx} + B e^{-ikx}
+\end{align}\]</div>
+<p>Let’s verify that this form satisfies the Schrödinger equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{H}\psi(x) &amp;= -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} \left [ A e^{ikx} + B e^{-ikx} \right ] \\
+&amp;= ik \left ( -\frac{\hbar^2}{2m} \right ) \frac{d}{dx} \left [ A e^{ikx} + B e^{-ikx} \right ] \\
+&amp;= (ik)^2 \left ( -\frac{\hbar^2}{2m} \right ) \frac{d}{dx} \left [ A e^{ikx} + B e^{-ikx} \right ] \\
+&amp;= -k^2 \left ( -\frac{\hbar^2}{2m} \right ) \psi(x) \\
+&amp;= \frac{k^2\hbar^2}{2m} \psi(x)
+\end{align}\end{split}\]</div>
+<p>So, yes, <span class="math notranslate nohighlight">\(\psi(x) = Ae^{ik} + Be^{-ikx}\)</span> is an eigenfunction of the Hamiltonian for a free particle moving in one dimension, and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E = \frac{k^2\hbar^2}{2m}
+\end{align}\]</div>
+<p>is the associated eigenvalue. We can draw one interesting conclusion from this result: nothing limits the value that <span class="math notranslate nohighlight">\(k\)</span> can take (as long as it is real-valued). As a result, the energy of a free particle is not quantized.</p>
+<p>What do the terms <span class="math notranslate nohighlight">\(e^{\pm ikx}\)</span> mean, physically? Let’s assume that <span class="math notranslate nohighlight">\(B = 0,\)</span> so <span class="math notranslate nohighlight">\(\psi(x) = Ae^{ikx}\)</span>. This function is still an eigenfunction of the Hamiltonian, with the same eigenvalue. Is it an eigenfunction of any other operators, like <span class="math notranslate nohighlight">\(\hat{p}_x\)</span>? Let’s see:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{p}_x A e^{ikx} &amp;= -i\hbar \frac{d}{dx} Ae^{ikx} \\
+&amp;= -i^2 \hbar k A e^{ikx} \\
+&amp;= \hbar k \psi(x)
+\end{align}\end{split}\]</div>
+<p>Yes! <span class="math notranslate nohighlight">\(\psi(x) = A e^{ikx}\)</span> is an eigenfunction of <span class="math notranslate nohighlight">\(\hat{p}_x,\)</span> with eigenfunction <span class="math notranslate nohighlight">\(\hbar k.\)</span> This result indicates that the state described by this function has a well-defined (or definite) value of the momentum in the <span class="math notranslate nohighlight">\(x\)</span>-direction. Recall, <span class="math notranslate nohighlight">\(k = +\left ( \frac{2mE}{\hbar^2} \right )^{1/2},\)</span> so, <span class="math notranslate nohighlight">\(k \ge 0\)</span> and <span class="math notranslate nohighlight">\(\hbar k \ge 0\)</span>, which implies that <span class="math notranslate nohighlight">\(p_x \ge 0\)</span>. Since the momentum of the particle is positive and well-defined, the state described by <span class="math notranslate nohighlight">\(\psi(x) = Ae^{ikx}\)</span> corresponds to the case where the free particle is traveling in the <span class="math notranslate nohighlight">\(+x\)</span> direction, with momentum <span class="math notranslate nohighlight">\(\hbar k\)</span>. If this interpretation is not clear, recall the following</p>
+<ol class="arabic simple">
+<li><p>Any function can be expanded in terms of eigenfunctions of a Hermitian operator, <span class="math notranslate nohighlight">\(\hat{B}\)</span>, as
+$<span class="math notranslate nohighlight">\( \begin{align}
+\psi = \sum_i c_i g_i
+\end{align}\)</span><span class="math notranslate nohighlight">\(
+where
+\)</span><span class="math notranslate nohighlight">\(\begin{align}
+\hat{B} g_i = b_i g_i 
+\end{align}\)</span>$</p></li>
+<li><p>Any measurement of <span class="math notranslate nohighlight">\(B\)</span> results in one of the eigenvalues, <span class="math notranslate nohighlight">\(b_i\)</span>. The probability with which we observe <span class="math notranslate nohighlight">\(b_i\)</span> is proportional to <span class="math notranslate nohighlight">\(|c_i|^2\)</span>. The proportionality becomes an equality of the wave function is normalized.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\psi\)</span> is exactly equal to an eigenfunction of <span class="math notranslate nohighlight">\(\hat{B}\)</span>, then there is only one term in the sum above, and the only value of <span class="math notranslate nohighlight">\(B\)</span> that would ever be observed would be the corresponding eigenvalue. In the case above, we have <span class="math notranslate nohighlight">\(\psi(x) = A e^{ikx}\)</span>, which we showed is an eigenfunction of <span class="math notranslate nohighlight">\(\hat{p}_x\)</span>.</p></li>
+</ol>
+<p>We obtain a similar result if we start from the free particle wave function and assume that <span class="math notranslate nohighlight">\(A = 0\)</span>. In this case, <span class="math notranslate nohighlight">\(\psi(x) = B e^{-ikx}\)</span> is also an eigenfunction of <span class="math notranslate nohighlight">\(\hat{p}_x\)</span>, but the associated eigenvalue is <span class="math notranslate nohighlight">\(-\hbar k\)</span>. Hence,  <span class="math notranslate nohighlight">\(\psi(x) = Be^{-ikx}\)</span> represents a state where the particle has definite value of the momentum, <span class="math notranslate nohighlight">\(-\hbar k\)</span> (moving in the <span class="math notranslate nohighlight">\(-x\)</span> direction).</p>
+<p>The general form of the free-particle wave function is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi(x) = A e^{ikx} + Be^{-ikx}
+\end{align}\]</div>
+<p>Based on the analysis above, this state is a superposition of two pure-momentum states (momentum eigenfunctions), with different values for the momentum. Is this state an eigenfunction of the momentum operator?  We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{p}_x (A e^{ikx} + Be^{-ikx}) &amp;= \hat{p}_x A e^{ikx} + \hat{p}_x B e^{-ikx} \\
+&amp;= \hbar k A e^{ikx} - \hbar k Be^{-ikx} \\
+&amp;= \hbar k ( A e^{ikx} - Be^{-ikx})
+\end{align}\end{split}\]</div>
+<p>Note the minus sign. This wave function is not an eigenfunction of the momentum operator. As such, we cannot know whether the particle is moving to the left or the right without taking a measurement. The probability of finding the particle moving to the right will be proportional to <span class="math notranslate nohighlight">\(|A|^2\)</span>, while the probability of finding the particle moving to the left will be proportional to <span class="math notranslate nohighlight">\(|B|^2\)</span>.</p>
+<p>What about other properties, such as position? We can proceed as we did above. Let us assume <span class="math notranslate nohighlight">\(B=0\)</span> and check if <span class="math notranslate nohighlight">\(\psi(x) = Ae^{ikx}\)</span> is an eigenfunction of the position operator. We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{x} \psi(x) = A x e^{ikx}
+\end{align}\]</div>
+<p>Clearly, the function on the right-hand side is a different function of <span class="math notranslate nohighlight">\(x\)</span>, so we can safely conclude that, no, <span class="math notranslate nohighlight">\(\psi(x) = A e^{ikx}\)</span> is not an eigenfunction of the position operator. While the state represented by this wave function does not have a definite position, we can still calculate the expectation value of position. We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\langle x \rangle &amp;= \frac{\langle \psi(x)|x|\psi(x)\rangle}{\langle \psi(x) | \psi(x) \rangle} \\
+&amp;= \frac{|A|^2\int_{-\infty}^{\infty} e^{-ikx} x e^{ikx} dx}{|A|^2\int_{-\infty}^{\infty} e^{-ikx} e^{ikx} dx} \\
+&amp;= \frac{\int_{-\infty}^{\infty} x dx}{\int_{-\infty}^{\infty} dx} \\
+&amp;= 0
+\end{align}\end{split}\]</div>
+<p>This result does not tell us much, only that, after infinitely-many mesurements, the average position is zero, which implies that we are equally likely to find the particle at <span class="math notranslate nohighlight">\(+x\)</span> and <span class="math notranslate nohighlight">\(-x\)</span>.</p>
+<p>The Born interpretation of the wave function provides a result consistent with this one. The probability density</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+|\Psi(x)|^2 = |A|^2 e^{-ikx} e^{ikx} = |A|^2
+\end{align}\]</div>
+<p>is equal to a constant over all space, which implies we’re equally likely to find the particle <em>anywhere</em> in <span class="math notranslate nohighlight">\(x\)</span>. Put another way, we have no idea where the particle will be located before a measurement is taken.</p>
+</section>
+<section id="heisenberg-uncertainty-principle">
+<h3>Heisenberg Uncertainty Principle<a class="headerlink" href="#heisenberg-uncertainty-principle" title="Link to this heading">#</a></h3>
+<p>This result is a specific manifestation of Heisenberg’s Uncertainty Principle. It is impossible to specify, with arbitrary precision, both the position and momentum of a quantum mechanical particle. The wave function <span class="math notranslate nohighlight">\(\psi(x) = A e^{ikx}\)</span> represents a state with a well-defined value for the momentum, meaning we know exactly what the momentum is for the particle in this state. As a consequence, we cannot know anything about the position of the particle.</p>
+<p>Mathematically, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\Delta x \Delta p_x \ge \frac{1}{2}\hbar
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta \Omega\)</span> represents the uncertainty in the observable <span class="math notranslate nohighlight">\(\Omega\)</span>. The uncertainty is calculated as the standard deviation</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\Delta \Omega = \left ( \langle \Omega^2 \rangle - \langle \Omega \rangle^2 \right )^{1/2}
+\end{align}\]</div>
+<p>The uncertainty relationship between position and momentum is a consequance of the particle-wave duality of microscopic particles. See Section 1.3 of Levine’s “Quantum Chemistry” textbook (5th Ed.) for a graphical illustration of this concept.</p>
+<p>Let’s calculate the uncertainty in position and momentum for the state represented by the wave function <span class="math notranslate nohighlight">\(\psi(x) = A e^{ikx}\)</span>. Because <span class="math notranslate nohighlight">\(\psi(x)\)</span> is an eigenfunction of the momentum operator, we immediately know that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\langle p_x \rangle &amp;= \hbar k \\
+\langle p_x^2 \rangle &amp;= \hbar^2 k^2
+\end{align}\end{split}\]</div>
+<p>In the second line, we take advantage of the fact that an eigenfunction of an operator <span class="math notranslate nohighlight">\(\hat{B}\)</span> is also an eigenfunction of the operator <span class="math notranslate nohighlight">\(\hat{B}^2\)</span>. Now, the uncertainty in the momentum is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\Delta p_x =&amp; \left ( \langle p_x^2 \rangle - \langle p_x \rangle^2 \right )^{1/2} \\
+&amp;= \left( \hbar^2 k^2 - \hbar^2 k^2 \right )^{1/2} \\
+&amp;= 0
+\end{align}\end{split}\]</div>
+<p>Note that, in general, a variance / standard deviation of zero for a given property implies that the state is an eigenfunction of the operator associated with that observable.</p>
+<p>Now, consider the uncertainty in <span class="math notranslate nohighlight">\(x\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\Delta x =&amp; \left ( \langle x^2 \rangle - \langle x \rangle^2 \right )^{1/2}
+\end{align}\]</div>
+<p>We showed already that <span class="math notranslate nohighlight">\(\langle x \rangle = 0\)</span>. Next, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\langle x^2 \rangle &amp;= \frac{\langle \psi(x)|x^2|\psi(x)\rangle}{\langle \psi(x) | \psi(x) \rangle} \\
+&amp;= \frac{|A|^2\int_{-\infty}^{\infty} e^{-ikx} x^2 e^{ikx} dx}{|A|^2\int_{-\infty}^{\infty} e^{-ikx} e^{ikx} dx} \\
+&amp;= \frac{\int_{-\infty}^{\infty} x^2 dx}{\int_{-\infty}^{\infty} dx}
+\end{align}\end{split}\]</div>
+<p>Both the numerator and denomator are integrals over even functions, which are infinite, but the numerator is a larger infinity and thus</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\langle x^2 \rangle = \infty
+\end{align}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\Delta x = \infty
+\end{align}\]</div>
+<p>Hence, there is an infinite uncertainty in the position of the particle represented by the state, <span class="math notranslate nohighlight">\(\psi(x) = A e^{ikx}\)</span>. This result is consistent with the Born interpretation of the state suggesting that one would be equally likely to find the particle anywere, and, thus, we have no idea where the particle is without taking a measurement.</p>
+<p>More generally, the Heisenberg Uncertainty Principle applies to other pairs of observables, <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>. Specifically, the product of uncertainties in <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are bounded by</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\Delta A \Delta B \ge \frac{1}{2} |\langle [\hat{A}, \hat{B}]\rangle|
+\end{align}\]</div>
+<p>If <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> commute, then</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\Delta A \Delta B \ge 0
+\end{align}\]</div>
+<p>which suggests that it would be possible for states to exist where the uncertainties in <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are both zero. On the other hand, if <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> do not commute, then there is some finite lower bound to the degree to which <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> can be known simultaneously.</p>
+<p>If <span class="math notranslate nohighlight">\([\hat{A}, \hat{B}] = 0\)</span> and <span class="math notranslate nohighlight">\(\Delta A\)</span> and <span class="math notranslate nohighlight">\(\Delta B\)</span> are both zero, then the state would be an eigenfunction of both <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span>, which brings us to a theorem</p>
+<p><strong>Theorem</strong>: If Hermitian operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> commute, then there exists a common, complete set of eigenfunctions of these operators.</p>
+<p>Stated another way, if <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> have a common, complete set of eigenfunctions, then they <em>must</em> commute.</p>
+<p><strong>Proof</strong></p>
+<p>Consider linear Hermitian operators <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> that share a common set of eigenfunctions:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{A} g_i &amp;= a_i g_i \\
+\hat{B} g_i &amp;= b_i g_i
+\end{align}\end{split}\]</div>
+<p>Now, consider a general function, <span class="math notranslate nohighlight">\(f\)</span>, that is expanded in terms of these functions, <span class="math notranslate nohighlight">\(\{g_i\}\)</span>, which form a complete set</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+f = \sum_k c_k g_k 
+\end{align}\]</div>
+<p>Let us evaluate how the commutator of <span class="math notranslate nohighlight">\(\hat{A}\)</span> and <span class="math notranslate nohighlight">\(\hat{B}\)</span> act on this function</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+[\hat{A}, \hat{B}]f &amp;= [\hat{A}, \hat{B}]\sum_k c_k g_k \\
+&amp;= (\hat{A}\hat{B} -\hat{B}\hat{A})\sum_k c_k g_k\\
+&amp;= \sum_k c_k \left [ \hat{A} (\hat{B}g_k) - \hat{B}(\hat{A}g_k) \right ]\\
+&amp;= \sum_k c_k \left [ b_k \hat{A} g_k - a_k \hat{B} g_k \right ] \\
+&amp;= \sum_k c_k \left [ b_k a_k - a_k b_k \right ] g_k \\
+[\hat{A}, \hat{B}]f &amp;= 0
+\end{align}\end{split}\]</div>
+<p>Therefore <span class="math notranslate nohighlight">\([\hat{A}, \hat{B}] = 0\)</span>.</p>
+<p>If we can write down free-particle wave functions that are eigenfunctions of both the Hamiltonian and the momentum operator (i.e., <span class="math notranslate nohighlight">\(\psi(x) = C e^{\pm ikx})\)</span>, then these operators must commute. Recall that the free-particle Hamiltonian is purely kinetic, and the kinetic energy operator can be expressed in terms of the momentum operator</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H} = \hat{T} = \frac{\hat{p}_x^2}{2m}
+\end{align}\]</div>
+<p>Now, it should be clear after this discussion that  the commutator between this operator and the momentum operator should vanish. Indeed, it does,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+[\hat{H}, \hat{p}_x] &amp;= [\frac{\hat{p}_x^2}{2m}, \hat{p}_x] \\
+&amp;= \frac{1}{2m} [\hat{p}_x^2, \hat{p}_x] \\
+&amp;= 0
+\end{align}\end{split}\]</div>
+<p>because, as we learned in the last notebook, the commutator of any operator with any power of itself is zero.</p>
+<blockquote>
+<div><p>Practice</p>
+<p>Question 1: Derive the result</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\Delta x \Delta p_x \ge \frac{1}{2} \hbar
+\end{align}\]</div>
+<p>using the general expression for Heisenberg’s Uncertainty principle</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\Delta x \Delta p_x \ge \frac{1}{2} | \langle [ \hat{x}, \hat{p}_x ] \rangle |
+\end{align}\]</div>
+<details>
+<summary>Answer 1</summary> 
+Let us first evaluate the commutator of $\hat{x}$ and $\hat{p}_x$:
+$$\begin{align}
+</div></blockquote>
+<p>[\hat{x}, \hat{p}_x]f &amp;= x \left ( -i\hbar \frac{d}{dx}\right ) f - \left (-i\hbar \frac{d}{dx}\right ) x f \
+&amp;= -i\hbar x f^\prime + i\hbar( f + x f^\prime) \
+[\hat{x}, \hat{p}_x]f &amp;= i\hbar f
+\end{align}$$</p>
+<blockquote>
+<div><p>Therefore <span class="math notranslate nohighlight">\([\hat{x}, \hat{p}_x] = i\hbar\)</span>. Now, insert this result into the expression for the joint uncertainty in <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(p_x\)</span>
+$<span class="math notranslate nohighlight">\(\begin{align}
+\Delta x \Delta p_x \ge \frac{1}{2} | \langle i\hbar \rangle |
+\end{align}\)</span><span class="math notranslate nohighlight">\(
+For the expectation value, we have
+\)</span><span class="math notranslate nohighlight">\(\begin{align}
+\langle i\hbar \rangle &amp;= \frac{\langle \psi | i \hbar | \psi \rangle }{\langle \psi | \psi \rangle }\\
+&amp;= i \hbar \frac{\langle \psi | \psi \rangle }{\langle \psi | \psi \rangle } \\
+&amp;= i\hbar
+\end{align}\)</span><span class="math notranslate nohighlight">\(
+For any non-zero wave function, \)</span>\psi<span class="math notranslate nohighlight">\(. So
+\)</span><span class="math notranslate nohighlight">\(\begin{align}\Delta x \Delta p_x &amp;\ge \frac{1}{2} | i\hbar |\\
+&amp;\ge \frac{1}{2} \hbar
+\end{align}\)</span><span class="math notranslate nohighlight">\(
+because
+\)</span><span class="math notranslate nohighlight">\(\begin{align}
+|i\hbar| = \left [ (-i\hbar)(i\hbar) \right]^{1/2} = \left [ \hbar^2 \right ]^{1/2} = \hbar
+\end{align}\)</span>$</p>
+</details></div></blockquote>
+</section>
+</section>
+<section id="infinite-square-well-potential">
+<h2>Infinite Square Well Potential<a class="headerlink" href="#infinite-square-well-potential" title="Link to this heading">#</a></h2>
+<p>A particle confined to an infinite square well potential, also called the particle-in-a-box (PIB), is a useful model for translational motion of a confined quantum mechanical particle. The model is crude, it but can still capture some qualitative trends in the electronic structure of molecular systems. For example, the one-dimensional PIB model can predict the red-shift in excitation energies as the length of a dye molecule increases:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/deprincelab/deprincelab.github.io/main/tutorials/jupyter_notebooks/translation/pib_red_shift.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><img src="https://raw.githubusercontent.com/deprincelab/deprincelab.github.io/main/tutorials/jupyter_notebooks/translation/pib_red_shift.png"/></div></div>
+</div>
+<p>Obviously, the agreement with experiment is not great, but it is surprisingly good, given the crudeness of the model. As will be discussed below, particles (in the case above, electrons) feel no potential inside the “box” (the <span class="math notranslate nohighlight">\(\pi\)</span>-network of the dye molecules), despite the presence of the nuclei and other electrons.</p>
+<section id="one-dimensional-particle-in-a-box">
+<h3>One-Dimensional Particle-in-a-Box<a class="headerlink" href="#one-dimensional-particle-in-a-box" title="Link to this heading">#</a></h3>
+<p>Consider a particle of mass, <span class="math notranslate nohighlight">\(m\)</span>, that is moving in the <span class="math notranslate nohighlight">\(x\)</span>-direction and experiences an infinite square potential of width, <span class="math notranslate nohighlight">\(L\)</span>. Graphically, this potential has the form:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/deprincelab/deprincelab.github.io/main/tutorials/jupyter_notebooks/translation/infinite_square_well_potential.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><img src="https://raw.githubusercontent.com/deprincelab/deprincelab.github.io/main/tutorials/jupyter_notebooks/translation/infinite_square_well_potential.png"/></div></div>
+</div>
+<p>Mathematically, we define this potential in a piecewise way as</p>
+<p><strong>Region I</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V(x) = \infty\text{, }~~~x &lt; 0
+\end{align}\]</div>
+<p><strong>Region II</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V(x) = 0\text{, }~~~0 \le x \le L
+\end{align}\]</div>
+<p><strong>Region III</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V(x) = \infty\text{, }~~~x &gt; L
+\end{align}\]</div>
+<p>As such, the TISE should be solved in a piecewise way, i.e., for each region of space. We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\psi(x) = \psi_I(x) ~~~ &amp;\text{if } x &lt; 0 \\
+\psi(x) = \psi_{II}(x) ~~~ &amp;\text{if } 0 \le x \le L \\
+\psi(x) = \psi_{III}(x) ~~~ &amp;\text{if } x &gt; L
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\psi_I\)</span>, <span class="math notranslate nohighlight">\(\psi_{II}\)</span>, and <span class="math notranslate nohighlight">\(\psi_{III}\)</span> satisfy</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{H} \psi_I(x) = E \psi_I(x) ~~~ &amp;\text{if } x &lt; 0 \\
+\hat{H} \psi_{II}(x) = E \psi_{II}(x) ~~~ &amp;\text{if } 0 \le x \le L \\
+\hat{H} \psi_{III}(x) = E \psi_{III}(x) ~~~ &amp;\text{if } x &gt; L
+\end{align}\end{split}\]</div>
+<p>To start, what does the wave function look like outside of the box (in regions I and III)? Consider the Schrödinger equation for region I:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{H}\psi_I(x) &amp;= E \psi_I \\
+\left [ -\frac{\hbar^2}{2m}\frac{d^2}{dx^2} + V(x) \right ] \psi_I(x) &amp;= E \psi_I(x) \\
+-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\psi_I(x) &amp;= [E-V(x)]\psi_I(x) \\
+\frac{1}{V(x)-E}\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\psi_I(x) &amp;= \psi_I(x)
+\end{align}\end{split}\]</div>
+<p>Recall that the potential is infinite in this region of space, so,</p>
+<div class="math notranslate nohighlight">
+\[ \psi_I(x) = \lim_{V(x)\to \infty} \frac{1}{V(x)-E}\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\psi_I(x) = 0\]</div>
+<p>From this simple analysis, we can conlude that the wave function must go to zero as <span class="math notranslate nohighlight">\(V(x)\)</span> approaches infinity. Therefor the probability of finding a particle at <span class="math notranslate nohighlight">\(x \le 0\)</span> is zero (<span class="math notranslate nohighlight">\(|\psi_I(x)|^2 = 0\)</span>). This result makes sense because the particle would need infinite kinetic energy to overcome the infinite potential energy barrier required to enter that region of space.</p>
+<p>A similar analysis for region III leads to</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\psi_{III}(x) = 0 
+\end{align}\]</div>
+<p>In region II, the Schrödinger equation has a non-trivial solution. We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{H}\psi_{II}(x) &amp;= E\psi_{II}(x) \\
+-\frac{\hbar^2}{2m} \frac{d^2}{dx^2} \psi_{II}(x) &amp;= -E\psi_{II}(x) \\
+\frac{d^2}{dx^2} \psi_{II}(x) &amp;= -\frac{2mE}{\hbar^2} \psi_{II}(x) \\
+\frac{d^2}{dx^2} \psi_{II}(x) &amp;= -k^2 \psi_{II}(x) \\
+\end{align}\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(k = \left ( \frac{2mE}{\hbar^2} \right )^{1/2}\)</span>. Like the free-particle, a general solution to this differential equation is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_{II}(x) = A e^{ikx} + B e^{-ikx} 
+\end{align}\]</div>
+<p>Unlike the free-particle problem, the probability amplitudes, <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, can be determined by considering the boundary conditions for the problem. These are the conditions that must be satisfied by the wave function in order for it to be well-behaved. Before applying these conditions, note that it will actually be easier to solve this problem by representing the wave function in terms of sine and cosine functions, as opposed to complex exponential functions. Euler’s formula can be used to express <span class="math notranslate nohighlight">\(\psi_{II}\)</span> in this way. We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+e^{\pm ikx} = \text{cos}(kx) + i \text{sin}(\pm kx) 
+\end{align}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+e^{\pm ikx} = \text{cos}(kx) \pm i \text{sin}(kx) 
+\end{align}\]</div>
+<p>Given this relationship, it is eash to show that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi(x) = (A+B) \text{cos}(kx) + i (A-B)\text{sin}(kx)
+\end{align}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi(x) = C \text{cos}(kx) + D \text{sin}(kx)
+\end{align}\]</div>
+<p>where we have introduced new constant factors, <span class="math notranslate nohighlight">\(C = A+B\)</span> and <span class="math notranslate nohighlight">\(D = i (A-B)\)</span>.</p>
+<p>Now, what are <span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(D\)</span>? As mentioned above, we can determine these constants by the application of boundary conditions. First, in order for <span class="math notranslate nohighlight">\(\psi(x)\)</span> to be well-behaved, it must be continuous over all space. In particular, it must be continuous at the edges of the box (at <span class="math notranslate nohighlight">\(x=0\)</span> and <span class="math notranslate nohighlight">\(x=L\)</span>), which places restrictions on <span class="math notranslate nohighlight">\(\psi_{II}\)</span>, namely</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_{II}(x = 0) = \psi_{I}(x = 0) = 0
+\end{align}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_{II}(x = L) = \psi_{III}(x = L) = 0
+\end{align}\]</div>
+<p>For the first of these conditions, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+0 &amp;= \psi_{II}(0) \\
+&amp;= C \text{cos}(0) + D \text{sin}(0) \\
+&amp;= C
+\end{align}\end{split}\]</div>
+<p>and the wave function simplifies to</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_{II}(x) = D \text{sin}(kx)
+\end{align}\]</div>
+<p>The second boundary condition gives us</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+0 = \psi_{II}(L) = D \text{sin}(k L)
+\end{align}\]</div>
+<p>This equation could be satisfied with the choice <span class="math notranslate nohighlight">\(D = 0\)</span>, but then <span class="math notranslate nohighlight">\(\psi(x)\)</span> would be zero over all space, which means that <span class="math notranslate nohighlight">\(|\psi(x)|^2 = 0\)</span> over all space, implying that there is zero probability of finding the particle anywhere. We reject this unphysical solution. How else can this equation be satisfied? The sine function must be zero; the following Python code will visualize where this is the case:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">sin_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sin_x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;sin(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/4037625c11c911dac2ae47308c57b9a903d095d4162dbc031bccbd8d24aaeed6.png" src="../../_images/4037625c11c911dac2ae47308c57b9a903d095d4162dbc031bccbd8d24aaeed6.png" />
+</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\text{sin}(x)\)</span> is zero whenever <span class="math notranslate nohighlight">\(x = n \pi\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is an integer. So, the boundary condition can be satisfied if <span class="math notranslate nohighlight">\(kL = n\pi\)</span>, giving <span class="math notranslate nohighlight">\(k = \frac{n\pi}{L}\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_{II}(x) = D \text{sin}\left (\frac{n\pi x}{L}\right )
+\end{align}\]</div>
+<p>We have not yet determined the constant <span class="math notranslate nohighlight">\(D\)</span>, but we did stumble upon an interesting result. Recall that <span class="math notranslate nohighlight">\(k\)</span> is related to the energy:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+k = \left ( \frac{2 m E}{\hbar^2} \right )^{1/2} = \frac{n\pi}{L}
+\end{align}\]</div>
+<p>Rearranging for the energy, we find</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E_n = \frac{\hbar^2 n^2 \pi^2}{2 m L^2}
+\end{align}\]</div>
+<p>or, since <span class="math notranslate nohighlight">\(\hbar = \frac{h}{2\pi}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E_n = \frac{h^2 n^2}{8 m L^2}
+\end{align}\]</div>
+<p>Here, we have added a subscript “<span class="math notranslate nohighlight">\(n\)</span>” to the symbol for the energy to denote that the energy for each state can be labeled by <span class="math notranslate nohighlight">\(n\)</span>. Because <span class="math notranslate nohighlight">\(n\)</span> must be an integer, the energy for a PIB is <u>quantized</u>, which means that it can only take on certain values, and the quantization of the energy results from applying restrictions to the wave function. We call <span class="math notranslate nohighlight">\(n\)</span> a <u>quantum number</u>; this quantum number characterizes the state of the particle.</p>
+<p>Are there any other restrictions on the value that <span class="math notranslate nohighlight">\(n\)</span> can take, aside from being an integer? Yes. First, consider the case where <span class="math notranslate nohighlight">\(n=0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_{II}^{n=0}(x) = D \text{sin} \left ( \frac{0 x \pi}{L} \right ) = 0
+\end{align}\]</div>
+<p>which would imply that the wave function is zero everywhere. We already rejected such a situation as unphysical earlier, and the do the same here. The case <span class="math notranslate nohighlight">\(n=0\)</span> is not allowed. What about <span class="math notranslate nohighlight">\(n &lt; 0\)</span>? Let’s try <span class="math notranslate nohighlight">\(n=-1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+\psi_{II}^{n=-1}(x) &amp;= D \text{sin} \left ( \frac{-1 x \pi}{L} \right ) \\
+&amp;= -D \text{sin} \left ( \frac{1 x \pi}{L} \right ) \\
+&amp;= \psi_{II}^{n=1}(x)
+\end{align}\end{split}\]</div>
+<p>More generally,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_{II}^{-n}(x) = -\psi_{II}^{n}(x) 
+\end{align}\]</div>
+<p>When introducing the concept of normalization in the last notebook, we discussed idea that two states that differ by only a multiplicative constant represent the same state. So, because the wave functions for <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(-n\)</span> differ by only a sign, they must represent the same state. For this reason, we ignore all <span class="math notranslate nohighlight">\(n &lt; 0\)</span>, because these states are redundant. Hence, the allowed values for <span class="math notranslate nohighlight">\(n\)</span> are all <em>positive</em> integers, 1, 2, 3, etc. The lowest-energy state (having <span class="math notranslate nohighlight">\(n=0\)</span>) is the “ground state.” All other PIB states have higher energy and are called “excited states.”</p>
+<p>After applying two boundary conditions, we have yet to determine the constant <span class="math notranslate nohighlight">\(D\)</span>. This constant can be determined by normalization:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\int_{-\infty}^{\infty} |\psi(x)|^2 dx &amp;= 1 \\
+&amp;= \int_{0}^{L} |\psi_{II}(x)|^2 dx
+\end{align}\end{split}\]</div>
+<p>because the integrals over <span class="math notranslate nohighlight">\(|\psi(x)|^2\)</span> in regions I and III are zero. Now,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+1 &amp;= |D|^2 \int_0^L \text{sin}^2\left ( \frac{n \pi x}{L} \right ) dx \\
+&amp;= \frac{1}{2} D^2 \int_0^L \left [ 1 - \text{cos}\left ( \frac{2 n \pi x}{L}\right ) \right ] dx \\
+&amp;= \left . \frac{1}{2} D^2 \left [ x - \frac{L}{2\pi n}\text{sin}\left ( \frac{2 \pi n x}{L} \right ) \right ]  \right|_0^L \\
+&amp;= \frac{1}{2}D^2 L\\
+D &amp;= \left ( \frac{2}{L} \right ) ^{1/2}
+\end{align}\end{split}\]</div>
+<p>where, in the second line, we assumed that <span class="math notranslate nohighlight">\(D\)</span> is real-valued, and made use of the double angle formula <span class="math notranslate nohighlight">\([2 \text{sin}^2(t) = 1 - \text{cos}(2t)].\)</span> Now, we have fully defined the spatial wave function for the one-dimensional PIB problem:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+\psi_n(x) &amp;= \left ( \frac{2}{L} \right)^{1/2} \text{sin}\left ( \frac{n\pi x}{L}\right)\text{, if }~~~0 \le x \le L \\
+&amp;= 0\text{, }~~~\text{otherwise}
+\end{align}\end{split}\]</div>
+<p>and the energy of the state represented by this wave function is <span class="math notranslate nohighlight">\(E_n\)</span>.</p>
+<p>Let’s visualize the wave functions and probability densities for the first few <span class="math notranslate nohighlight">\(n\)</span>. For simplicity, we will take the particle to be an electron with mass, <span class="math notranslate nohighlight">\(m = m_e\)</span>, and we will use atomic units, where <span class="math notranslate nohighlight">\(\hbar = 1\)</span> and <span class="math notranslate nohighlight">\(m_e = 1\)</span>. The length of the box will be <span class="math notranslate nohighlight">\(L = 1 a_0\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">hbar</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+
+<span class="n">wfn_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">wfn_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">wfn_3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">wfn_4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">wfn_5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+
+
+<span class="n">energy_1</span> <span class="o">=</span> <span class="n">hbar</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">1</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">m</span> <span class="o">*</span> <span class="n">L</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">energy_2</span> <span class="o">=</span> <span class="n">hbar</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">2</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">m</span> <span class="o">*</span> <span class="n">L</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">energy_3</span> <span class="o">=</span> <span class="n">hbar</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">m</span> <span class="o">*</span> <span class="n">L</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">energy_4</span> <span class="o">=</span> <span class="n">hbar</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">4</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">m</span> <span class="o">*</span> <span class="n">L</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">energy_5</span> <span class="o">=</span> <span class="n">hbar</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">4</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">m</span> <span class="o">*</span> <span class="n">L</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># shift wave functions by constant proportional </span>
+<span class="c1"># to the energy when plotting</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\psi(x)$&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wfn_1</span> <span class="o">+</span> <span class="n">energy_1</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;n=1&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wfn_2</span> <span class="o">+</span> <span class="n">energy_2</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;n=2&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wfn_3</span> <span class="o">+</span> <span class="n">energy_3</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;n=3&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wfn_4</span> <span class="o">+</span> <span class="n">energy_4</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;n=4&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wfn_5</span> <span class="o">+</span> <span class="n">energy_5</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;n=5&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">energy_1</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">energy_2</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">energy_3</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">energy_4</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">energy_5</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$|\psi(x)|^2$&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wfn_1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">energy_1</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;n=1&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wfn_2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">energy_2</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;n=2&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wfn_3</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">energy_3</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;n=3&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wfn_4</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">energy_4</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;n=4&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wfn_5</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">energy_5</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;n=5&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">energy_1</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">energy_2</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">energy_3</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">energy_4</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">energy_5</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/56562b9e56107fd512c13fed84bb62777000a9f591e56c64ecde51b37b82f751.png" src="../../_images/56562b9e56107fd512c13fed84bb62777000a9f591e56c64ecde51b37b82f751.png" />
+</div>
+</div>
+<p>We make the following observations:</p>
+<ul class="simple">
+<li><p>the spacing between energy levels increases with <span class="math notranslate nohighlight">\(n\)</span></p></li>
+<li><p>the wave function oscillates inside the box and is zero outside of the box. As <span class="math notranslate nohighlight">\(n\)</span> increases, the oscillations become more rapid.</p></li>
+<li><p>for states with <span class="math notranslate nohighlight">\(n &gt; 1\)</span>, the wave function passes <em>through</em> zero <span class="math notranslate nohighlight">\(n-1\)</span> times. These points where the wave function passes through zero are called “nodes.” There is zero probability of finding the particle at a node (i.e., <span class="math notranslate nohighlight">\(|\psi(x)|^2=0\)</span> at the node).</p></li>
+<li><p>there is a kink in the wave function at the left- and right-hand edges of the box, so the wave function does not have a continuous first derivative over all space. Recall that the requirement that the wave function be smooth is lifted when the potential is not finite.</p></li>
+</ul>
+<p>Where are we most likely to find the particle? For any <span class="math notranslate nohighlight">\(n\)</span>, we are most likely to find the particle where <span class="math notranslate nohighlight">\(|\psi(x)|^2\)</span> is at a maximum. To find such a point, we first locate the stationary points by setting the first derivative of the probability density equal to zero</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{d}{dx}|\psi(x)|^2 = 0
+\end{align}\]</div>
+<p>and solving for <span class="math notranslate nohighlight">\(x\)</span>. We can verify that the stationary point is a maximum by checking the sign on the second derivative of the probability density. If</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{d^2}{dx^2} |\psi(x)|^2 &lt; 0 
+\end{align}\]</div>
+<p>the stationary point is a maximum. For the PIB problem, all maxima in <span class="math notranslate nohighlight">\(|\psi(x)|^2\)</span> have the same value (meaning we’re equally likely to find the particle at any of the maxima). For other problems, this might not be the case; there could be local maxima.</p>
+<p>How does the quantum mechanical probability density relate to the classical one? For a classical particle in a box, we would be equally likely to find the particle anywhere in the box (with probability <span class="math notranslate nohighlight">\(1/L\)</span>), as visualized here:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">hbar</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+
+<span class="n">wfn_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">wfn_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+
+<span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$|\psi(x)|^2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wfn_1</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;n=1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wfn_2</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;n=2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;classical probability&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/39153bb452c11fcbc38180c2cb706237687b96e5c9392d7c61ed32c53a1cb435.png" src="../../_images/39153bb452c11fcbc38180c2cb706237687b96e5c9392d7c61ed32c53a1cb435.png" />
+</div>
+</div>
+<p>Clearly, the quantum and classical probability distributions differ, which brings us to an impoartant question. Should quantum mechanics recover classical results in any limit? The anser is yes. The <strong>Bohr Correspondence Principle</strong> states that, in the limit of large quantum numbers, quantum mechanicals will recover classical results. Let us consider the quantum mechanical description of a classical particle, which would have very large <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(L\)</span>. Given the form of the energy:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E_n = \frac{\hbar^2 n^2 \pi^2}{2 m L^2}
+\end{align}\]</div>
+<p>we can conclude that the spacings between energy levels is tiny because <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(L\)</span> are large. As a consequence any non-zero kinetic energy will put the particle in an extremely high-energy state. Let us inspect the probability density for a high-energy state, as compared to the low-energy states and the classical limit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">hbar</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">)</span>
+
+<span class="n">wfn_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">wfn_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">wfn_100</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+
+<span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$|\psi(x)|^2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wfn_1</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;n=1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wfn_2</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;n=2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wfn_100</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;n=100&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;classical probability&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ec763811caa26ab6e37ba0b4077d28f1d07382217d0d174706f4ca589b1a707b.png" src="../../_images/ec763811caa26ab6e37ba0b4077d28f1d07382217d0d174706f4ca589b1a707b.png" />
+</div>
+</div>
+<p>At first glance, it seems like the classical and large-<span class="math notranslate nohighlight">\(n\)</span> limits still yield different probability distributions, until we think about the resoultion of any actual measurement of position. For sufficiently high <span class="math notranslate nohighlight">\(n\)</span>, the oscillations in <span class="math notranslate nohighlight">\(|\psi_n(x)|^2\)</span> will be sufficiently rapid that it will be impossible to resolve the difference between a maximum and a minimum in the distribution, and the classical distribution (the average of these) is what is detected.</p>
+<blockquote>
+<div><p>Practice</p>
+<p>Question 2: Show that particle-in-a-box wave functions for different states, <span class="math notranslate nohighlight">\(n_i\)</span> and <span class="math notranslate nohighlight">\(n_j\)</span> are orthogonal.</p>
+<details>
+<summary>Answer 2</summary> 
+<p>We have
+$<span class="math notranslate nohighlight">\(\begin{align}
+    \psi_{n_i}(x) = \left ( \frac{2}{L} \right )^{1/2} \text{sin}\left(\frac{n_i \pi x}{L}\right)
+    \end{align}\)</span><span class="math notranslate nohighlight">\(
+when \)</span>0 \le x \le L<span class="math notranslate nohighlight">\(, and \)</span>\psi_{n_i}(x) = 0<span class="math notranslate nohighlight">\( otherwise.
+The overlap of \)</span>\psi_{n_i}(x)<span class="math notranslate nohighlight">\( and \)</span>\psi_{n_j}(x)<span class="math notranslate nohighlight">\( is
+\)</span><span class="math notranslate nohighlight">\( \begin{align} 
+\langle \psi_{n_i} | \psi_{n_j} \rangle &amp;= \int_{-\infty}^{0} |0|^2 dx + \frac{2}{L}  \int_0^L \text{sin}\left(\frac{n_i \pi x}{L} \right )\text{sin}\left(\frac{n_j \pi x}{L} \right ) dx   + \int_L^\infty |0|^2 dx \\
+&amp;= \frac{2}{L} \int_0^L \text{sin}\left(\frac{n_i \pi x}{L} \right )\text{sin}\left(\frac{n_j \pi x}{L} \right ) dx
+\end{align}\)</span><span class="math notranslate nohighlight">\(
+Using the trigonometric identity
+\)</span><span class="math notranslate nohighlight">\(\begin{align}
+\text{sin}(n_i x) \text{sin}(n_j x) = \frac{1}{2} \text{cos}\left[(n_i - n_j) x\right] - \frac{1}{2} \text{cos}\left[(n_i + n_j) x\right]
+\end{align}\)</span><span class="math notranslate nohighlight">\(
+This overlap becomes
+\)</span><span class="math notranslate nohighlight">\( \begin{align} 
+\langle \psi_{n_i} | \psi_{n_j} \rangle &amp;= \frac{1}{L}  \int_0^L \left ( \text{cos}\left[\frac{(n_i - n_j) \pi x}{L} \right] - \text{cos}\left[\frac{(n_i + n_j) \pi x}{L} \right] \right ) dx \\
+ &amp;= \left . \frac{1}{L} \left ( \frac{1}{n_i-n_j}\text{sin}\left[\frac{(n_i - n_j) \pi x}{L} \right] - \frac{1}{n_i+n_j}\text{sin}\left[\frac{(n_i + n_j) \pi x}{L} \right] \right ) \right |_0^L \\
+&amp;= 0
+\end{align}\)</span><span class="math notranslate nohighlight">\(
+The limit at \)</span>x=L<span class="math notranslate nohighlight">\( is zero because \)</span>n_i\pm n_j$ are both integers.</p>
+</details></div></blockquote>
+<p>Before moving on, it is worth reiterating that the application of boundary conditions placed restrictions on the form of the wave function, which then led to the quantization of the energy. Essentially, only certain wave functions satisfy the boundary conditions (i.e., are well behaved), and, thus only certain energies are observed. We can supplement these mathematical arguments for the quantization of the energy with the following, more physical arguments.</p>
+<p>Recall that all PIB wave functions look like standing waves. If a particle is represented as a wave, then only certain wave lengths will lead to waves that do not interfere destructively with themselves. For a standing wave, the wave length should be a half-integer multiple of the box length, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\frac{n \lambda}{2} = L
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(n = 1, 2, 3,\)</span> etc. Now, recall the <strong>de Broglie wave length</strong> for a microscopic particle, which is related to the linear momentum, <span class="math notranslate nohighlight">\(p\)</span>, for that particle</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\lambda = \frac{h}{p} 
+\end{align}\]</div>
+<p>If we insert the de Broglie wave length into the standing wave length expression and solve for the momentum, we obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+p = \frac{n h}{2 L}
+\end{align}\]</div>
+<p>For the particle-in-a-box problem, the energy is purely kinetic because the potential is zero inside the box and the wave function is zero outside the box. Combining the classical expression for the kinetic energy and the expression above for the momentum yields</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E = \frac{p^2}{2m} = \frac{n^2 h^2}{8 mL^2}
+\end{align}\]</div>
+<p>which is the same result obtained from solving the Schrödinger equation and applying boundary conditions! In this case, simple physical arguments starting from the wave-like nature of microscopic particles leads to the same result as solving the Schrödinger equation directly.</p>
+</section>
+<section id="three-dimensional-particle-in-a-box">
+<h3>Three-Dimensional Particle-in-a-Box<a class="headerlink" href="#three-dimensional-particle-in-a-box" title="Link to this heading">#</a></h3>
+<p>Now, consider the three-dimensional generalization of the PIB problem. In the three-dimensional PIB problem, a particle of mass, <span class="math notranslate nohighlight">\(m\)</span>, is confined to a three-dimensional region of space by an infinite potential barrier. In this problem, the potential has the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+V(x,y,z) = 0 \text{, } \text{if } &amp;0 \le x \le a \\
+\text{and } &amp;0 \le y \le b \\
+\text{and } &amp;0 \le z \le c
+\end{align}\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+V(x, y, z) = \infty \text{, otherwise}
+\end{align}\]</div>
+<p>We showed above that the wave function is zero in regions of space where the potential is infinite, so we only need to solve the Schrödinger equation for the wave function inside the box. We have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H}\psi(x, y, z) = E\psi(x, y, z) 
+\end{align}\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{H} = -\frac{\hbar^2}{2m} \nabla^2 = -\frac{\hbar^2}{2m} \left ( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}  + \frac{\partial^2}{\partial z^2}  \right ) 
+\end{align}\]</div>
+<p>Note that the Hamiltonian is <strong>additively separable</strong> in <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span>. This structure means that we can apply the separation of variables technique, as was done in the time-independent Schrödinger equation in the previous notebook. The wave function will be a product of wave functions that depend, separately on each variable, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\psi(x, y, z) = f(x) g(y) h(z) 
+\end{align}\]</div>
+<p>Insert this result into the Schrödinger equation to obtain</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+-\frac{\hbar^2}{2m} \left [ f^{\prime\prime}(x) g(y) h(z) + f(x) g^{\prime\prime}(y) h(z) + f(x) g(y) h^{\prime\prime}(z) \right ] = E f(x) g(y) h(z)
+\end{align}\]</div>
+<p>Left-multiplying both sides of the equation by <span class="math notranslate nohighlight">\(\frac{1}{f(x) g(y) h(z)}\)</span> yields</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+-\frac{\hbar^2}{2m} \frac{1}{f(x)} f^{\prime\prime}(x)-\frac{\hbar^2}{2m} \frac{1}{g(x)} g^{\prime\prime}(y)-\frac{\hbar^2}{2m} \frac{1}{h(x)} h^{\prime\prime}(z) = E 
+\end{align}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E_x + E_y + E_z = E 
+\end{align}\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+E_x = -\frac{\hbar^2}{2m} \frac{1}{f(x)} f^{\prime\prime}(x) 
+\end{align}\]</div>
+<p>etc. Now, it is easy to see that, for</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+E_x = E - E_y + E_z
+\end{align}\]</div>
+<p>the left-hand side depends only on the variable <span class="math notranslate nohighlight">\(x\)</span>, while the right-hand side depends on <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> and is independent of <span class="math notranslate nohighlight">\(x\)</span>. So, if <span class="math notranslate nohighlight">\(x\)</span> is varied and <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> are held constant, then the right-hand side of this equation will not change. Hence, <span class="math notranslate nohighlight">\(E_x\)</span>, <span class="math notranslate nohighlight">\(E_y\)</span>, and <span class="math notranslate nohighlight">\(E_z\)</span> must all be constants.</p>
+<p>The functions <span class="math notranslate nohighlight">\(f(x)\)</span>, <span class="math notranslate nohighlight">\(g(y)\)</span>, and <span class="math notranslate nohighlight">\(h(z)\)</span> can be determined by solving separate one-dimensional problems of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\frac{d^2}{dx^2} f(x) &amp;= -\frac{2 m E_x}{\hbar^2} f(x) \\
+\frac{d^2}{dy^2} g(y) &amp;= -\frac{2 m E_y}{\hbar^2} g(y) \\
+\frac{d^2}{dz^2} h(z) &amp;= -\frac{2 m E_z}{\hbar^2} h(z)
+\end{align}\end{split}\]</div>
+<p>While look like the equation for the one-dimensional PIB problem, with similar boundary conditions. Hence,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+f(x) &amp;= \left ( \frac{2}{a} \right )^{1/2} \text{sin}\left ( \frac{n_x \pi x}{a} \right ) \\
+g(y) &amp;= \left ( \frac{2}{b} \right )^{1/2} \text{sin}\left ( \frac{n_y \pi y}{b} \right ) \\
+h(z) &amp;= \left ( \frac{2}{c} \right )^{1/2} \text{sin}\left ( \frac{n_z \pi z}{c} \right )
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(n_x\)</span>, <span class="math notranslate nohighlight">\(n_y\)</span>, and <span class="math notranslate nohighlight">\(n_z\)</span> are all positive integers, and</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\psi(x, y, z) = \left ( \frac{8}{abc} \right )^{1/2} \text{sin}\left ( \frac{n_x \pi x}{a} \right ) \text{sin}\left ( \frac{n_y \pi y}{b} \right )\text{sin}\left ( \frac{n_z \pi z}{c} \right ) 
+\end{align}\]</div>
+<p>For the energy, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+E_x &amp;= \frac{n_x^2 h^2}{8ma^2} \\
+E_y &amp;= \frac{n_y^2 h^2}{8mb^2} \\
+E_z &amp;= \frac{n_z^2 h^2}{8mc^2}
+\end{align}\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+E = \frac{h^2}{8m}\left ( \frac{n_x^2}{a^2} + \frac{n_y^2}{b^2} + \frac{n_z^2}{c^2} \right ) 
+\end{align}\]</div>
+<p>The ground state (the lowest-energy state) will have <span class="math notranslate nohighlight">\(n_x = n_y = n_z = 1.\)</span></p>
+<section id="degenerate-energy-levels">
+<h4>Degenerate Energy Levels<a class="headerlink" href="#degenerate-energy-levels" title="Link to this heading">#</a></h4>
+<p>Suppose that the box to which the particle is confined is a cube, with <span class="math notranslate nohighlight">\(a = b = c.\)</span> The energy would be</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+E = \frac{h^2}{8ma^2}\left ( n_x^2 + n_y^2 + n_z^2 \right ) 
+\end{align}\]</div>
+<p>Now, states with different quantum numbers could be degenerate. The table below provides values of <span class="math notranslate nohighlight">\(n_x^2 + n_y^2 + n_z^2,\)</span> which is proportional to the energy, for the lowest 11 states.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(n_x\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(n_y\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(n_z\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(n_x^2 + n_y^2 + n_z^2\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(g\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>6</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>6</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>6</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>9</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>9</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>9</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>11</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>11</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>3</p></td>
+<td><p>11</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>12</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We can see that the ground state is non-degenerate, but the first, second, and third excited states are all triply degenerate.</p>
+<p>It is easy to visualize why some states are degenerate. Consider an electron of mass, <span class="math notranslate nohighlight">\(m = m_e\)</span>, confined to a two-dimensional box with sides, <span class="math notranslate nohighlight">\(a = b = 1a_0\)</span>. Following a procedure similar to that given above, the wave function and energy levels for this state are</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\psi(x, y) = \frac{2}{a} \text{sin}\left ( \frac{n_x \pi x}{a}\right )\text{sin}\left ( \frac{n_y \pi y}{a}\right ) 
+\end{align}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+E = \frac{h^2}{8ma^2} \left ( n_x^2 + n_y^2 \right )
+\end{align}\]</div>
+<p>Let us visualize the wave functions for the lowest-energy excited states, which are degenerate and characterized by <span class="math notranslate nohighlight">\(n_x = 1,\)</span> <span class="math notranslate nohighlight">\(n_y = 2\)</span> and <span class="math notranslate nohighlight">\(n_x = 2,\)</span> <span class="math notranslate nohighlight">\(n_y = 1.\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">101</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">101</span><span class="n">j</span><span class="p">]</span>
+
+<span class="n">psi_12</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">psi_21</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1">#ax1.plot(psi_12, &#39;title = &#39;</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[])</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">psi_12</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$n_x = 1$, $n_y = 2$&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">psi_21</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$n_x = 2$, $n_y = 1$&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x10a86e710&gt;
+</pre></div>
+</div>
+<img alt="../../_images/ce2a05565d6c2eac2155db63ce3d0c460580a2d09755f331238d423bd1f7a7b7.png" src="../../_images/ce2a05565d6c2eac2155db63ce3d0c460580a2d09755f331238d423bd1f7a7b7.png" />
+</div>
+</div>
+<p>We can see that these wave functions look identical, except for their spatial orientation, so it is not surprising that the states have the same energy.</p>
+</section>
+</section>
+</section>
+<section id="the-free-particle-revisited">
+<h2>The Free Particle, Revisited<a class="headerlink" href="#the-free-particle-revisited" title="Link to this heading">#</a></h2>
+<p>Now that we have some practice applying boundary conditions, let’s revisit the free particle problem. Recall that the Schrödinger equation for a particle of mass, <span class="math notranslate nohighlight">\(m\)</span>, moving in the <span class="math notranslate nohighlight">\(x\)</span>-direction and subject to no external forces has the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+-\frac{\hbar^2}{2m} \frac{d^2}{dx^2} \psi(x) &amp;= E \psi(x) \\
+\frac{d^2}{dx^2} \psi(x) &amp;= -\frac{2mE}{\hbar^2} \psi(x) \\
+\frac{d^2}{dx^2} \psi(x) &amp;= -k^2 \psi(x)
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(k = +\left (\frac{2mE}{\hbar^2}\right)^{1/2}\)</span>. We already found that this equation has a general solution</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\psi(x) = A e^{ikx} + B e^{-ikx}
+\end{align}\]</div>
+<p>Can we apply any boundary conditions? We do not know much about the form of the wave function as <span class="math notranslate nohighlight">\(x \to \pm \infty\)</span>, aside from the fact that it does not go to zero, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\lim_{x\to\pm\infty} \psi(x) \neq 0
+\end{align}\]</div>
+<p>As such, there is a non-zero probability that the particle could be found <strong>anywhere</strong> in <span class="math notranslate nohighlight">\(x\)</span>, even at <span class="math notranslate nohighlight">\(x \to \pm \infty.\)</span> Such a state is called an “unbound” state, as opposed to a “bound” state in which the particle is <strong>localized</strong> in some region of space. For a bound state,</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\lim_{x\to\pm\infty} \psi(x) = 0 
+\end{align}\]</div>
+<p>While the free-particle wave function does not vanish as <span class="math notranslate nohighlight">\(x\to\pm\infty\)</span>, we should still expect that it is finite in this limit, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\lim_{x\to\pm\infty} |\psi(x)| &lt; \infty
+\end{align}\]</div>
+<p>This is the only boundary condition for the free particle problem: the wave function must be finite <strong>everywhere</strong>. Does this condition have any interesting consequences?</p>
+<p>Let us assume that <span class="math notranslate nohighlight">\(E &lt; 0\)</span> and see what happens to the wave function</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\psi(x) &amp;= A e^{i[2mE / \hbar^2]^{1/2} x} + B e^{-i[2mE / \hbar^2]^{1/2} x} \\
+&amp;= A e^{i[-2m|E| / \hbar^2]^{1/2} x} + B e^{-i[-2m|E| / \hbar^2]^{1/2} x} \\
+&amp;= A e^{-[2m|E| / \hbar^2]^{1/2} x} + B e^{[2m|E| / \hbar^2]^{1/2} x}
+\end{align}\end{split}\]</div>
+<p>Now, consider the following limits</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\lim_{x \to \infty} \psi(x) = A e^{-\infty} + B e^{\infty} = B e^{\infty} = \infty 
+\end{align}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\lim_{x \to -\infty} \psi(x) = A e^{\infty} + B e^{-\infty} = A e^{\infty} = \infty 
+\end{align}\]</div>
+<p>So, <span class="math notranslate nohighlight">\(E&lt;0\)</span> leads to <span class="math notranslate nohighlight">\(\psi(\pm\infty) = \infty\)</span>, which violates our only boundary condition. As such, <span class="math notranslate nohighlight">\(E\)</span> <strong>must</strong> be a non-negative number. This result makes sense, physically. The energy of a free particle is purely kinetic. Classically, the kinetic energy, <span class="math notranslate nohighlight">\(T\)</span>, is</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+T = \frac{p^2}{2m}
+\end{align}\]</div>
+<p>Having <span class="math notranslate nohighlight">\(T &lt; 0\)</span> would imply that the momentum is imaginary! This result is clearly nonsense and is rejected as non-physical.</p>
+<blockquote>
+<div><p>Practice</p>
+<p>Question 3: Prove that the expectation value of the kinetic energy operator in the <span class="math notranslate nohighlight">\(x\)</span> direction is non-negative.</p>
+<details>
+<summary>Answer 3</summary> 
+We would like to show
+$$\begin{align}
+</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\langle \hat{T}_x \rangle &amp;= \frac{\langle \psi | \hat{T}_x | \psi \rangle }{\langle \psi | \psi \rangle} \ge 0 \\
+</pre></div>
+</div>
+<p>\end{align}$$</p>
+<blockquote>
+<div><p>To simplify things, let us assume that <span class="math notranslate nohighlight">\(\psi\)</span> is normalized, i.e., <span class="math notranslate nohighlight">\(\langle \psi | \psi \rangle = 1\)</span>, so we have
+$<span class="math notranslate nohighlight">\(\begin{align}
+    \langle \hat{T}_x \rangle &amp;= \langle \psi | \hat{T}_x | \psi \rangle \\
+    &amp;= \int_{-\infty}^{\infty} \psi(x)^* \frac{\hat{p}_x^2}{2m} \psi(x) dx \\
+    &amp;= \frac{1}{2m} \int_{-\infty}^{\infty} \psi(x)^* \hat{p}_x \hat{p}_x \psi(x) dx \\
+    &amp;= \frac{1}{2m} \int_{-\infty}^{\infty} \psi(x)^* \hat{p}_x f(x) dx \\
+\end{align}\)</span><span class="math notranslate nohighlight">\(
+where we have introduced a function, \)</span>f(x) = \hat{p}_x \psi(x)<span class="math notranslate nohighlight">\(. Now, because \)</span>\hat{p}_x<span class="math notranslate nohighlight">\( is Hermitian, the last line can be reexpressed as
+\)</span><span class="math notranslate nohighlight">\( \begin{align}
+    \langle \hat{T}_x \rangle &amp;= \frac{1}{2m} \left ( \int_{-\infty}^{\infty} f(x)^* \hat{p}_x \psi(x) dx \right ) ^* \\
+    &amp;= \frac{1}{2m} \left ( \int_{-\infty}^{\infty} f(x)^* f(x) dx \right ) ^* \\
+    &amp;= \frac{1}{2m} \int_{-\infty}^{\infty} f(x)^* f(x) dx \\
+    &amp;= \frac{1}{2m} \int_{-\infty}^{\infty} |f(x)|^2 dx
+\end{align}\)</span><span class="math notranslate nohighlight">\(
+The square modulus of any function is a non-negative function, the integral of a non-negative function over all space is  non-negative, and the mass, \)</span>m<span class="math notranslate nohighlight">\( is also non-negative, which means that
+\)</span><span class="math notranslate nohighlight">\( \begin{align}
+\langle \hat{T}_x \rangle \ge 0
+\end{align}\)</span>$</p>
+</details></div></blockquote>
+</section>
+<section id="finite-square-well-potential">
+<h2>Finite Square Well Potential<a class="headerlink" href="#finite-square-well-potential" title="Link to this heading">#</a></h2>
+<p>The PIB model is a crude but useful model for understanding the energy states of a confined quantum mechanical particle. Some aspects of the model are unphysical, though, nameley that, no matter how much kinetic energy the particle has, it can never overcome the infinite potential energy barrier required to escape the box. A slightly more physically sensible model is the finite square well potential model, where the particle is confined by a finite potential of height <span class="math notranslate nohighlight">\(V_0\)</span>. In this model, in prinicple, the particle could have sufficiently high energy to allow it to escape the box. In the analysis below, though, we will assume that the energy of this particle, <span class="math notranslate nohighlight">\(E\)</span>, is less than <span class="math notranslate nohighlight">\(V_0\)</span>.</p>
+<p>Graphically, the potential has the form:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/deprincelab/deprincelab.github.io/main/tutorials/jupyter_notebooks/translation/square_well_potential.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><img src="https://raw.githubusercontent.com/deprincelab/deprincelab.github.io/main/tutorials/jupyter_notebooks/translation/square_well_potential.png"/></div></div>
+</div>
+<p>Mathematically, we define this potential in a piecewise way as</p>
+<p><strong>Region I</strong> (<span class="math notranslate nohighlight">\(x &lt; 0\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V(x) = V_0
+\end{align}\]</div>
+<p><strong>Region II</strong> (<span class="math notranslate nohighlight">\(0 \le x \le L\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V(x) = 0
+\end{align}\]</div>
+<p><strong>Region III</strong> (<span class="math notranslate nohighlight">\(x &gt; L\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V(x) = V_0
+\end{align}\]</div>
+<section id="wavefunctions">
+<h3>Wavefunctions<a class="headerlink" href="#wavefunctions" title="Link to this heading">#</a></h3>
+<p>As for the PIB problem, the TISE for the finite square well potential problem should be solved in a piecewise way, i.e., for each region of space. We have</p>
+<p><strong>Region I</strong> (<span class="math notranslate nohighlight">\(x &lt; 0\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\left ( \frac{-\hbar^2}{2m}\frac{d^2}{dx^2} + V_0 \right ) \psi_I(x) = E \psi_I(x)
+\end{align}\]</div>
+<p>which has solutions of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_I(x) = C~e^{\alpha x} + D~e^{-\alpha x}
+\end{align}\]</div>
+<p><strong>Region II</strong> (<span class="math notranslate nohighlight">\(0 \le x \le L\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{-\hbar^2}{2m}\frac{d^2}{dx^2} \psi_{II}(x) = E \psi_{II}(x)
+\end{align}\]</div>
+<p>which has solutions of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_{II}(x) = A~{\rm cos}(\beta x) + B~{\rm sin}(\beta x)
+\end{align}\]</div>
+<p>and</p>
+<p><strong>Region III</strong> (<span class="math notranslate nohighlight">\(x &gt; l\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\left (\frac{-\hbar^2}{2m}\frac{d^2}{dx^2} + V_0 \right ) \psi_{III}(x) = E \psi_{III}(x)
+\end{align}\]</div>
+<p>which has solutions of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_{III}(x) = F~e^{\alpha x} + G~e^{-\alpha x}
+\end{align}\]</div>
+<p>Above, <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are real numbers, defined by</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\alpha = ( 2 m [V_0 - E] / \hbar^2)^{1/2}
+\end{align}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\beta = (2 m E / \hbar^2)^{1/2}
+\end{align}\]</div>
+<p>Note that the solutions in regions I and III involve <strong>real</strong>-valued exponential functions, as opposed to complex exponential functions.</p>
+</section>
+<section id="boundary-conditions">
+<h3>Boundary Conditions<a class="headerlink" href="#boundary-conditions" title="Link to this heading">#</a></h3>
+<p>If we consider that the wave function should be finite in the limit that <span class="math notranslate nohighlight">\(x\)</span> tends to <span class="math notranslate nohighlight">\(\pm \infty\)</span>, then we immediately find that two of the unknown coefficients must be zero. First, consider the limit</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\lim_{x\to-\infty} \psi_I(x) = Ce^{-\alpha\infty} + D e^{\alpha\infty} = D e^{\infty} 
+\end{align}\]</div>
+<p>Hence, <span class="math notranslate nohighlight">\(D = 0\)</span> is required to prevent the wave function from blowing up as <span class="math notranslate nohighlight">\(x\to -\infty.\)</span> Similarly, the limit</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\lim_{x\to+\infty} \psi_{III}(x) = Fe^{\alpha\infty} + G e^{-\alpha\infty} = F e^{\infty} 
+\end{align}\]</div>
+<p>implies that <span class="math notranslate nohighlight">\(F\)</span> must vanish as well. So, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\psi_{I}(x) &amp;= C e^{\alpha x} \\
+\psi_{III}(x) &amp;= G e^{-\alpha x}
+\end{align}\end{split}\]</div>
+<p>which already tells us something interesting about the probability density in regions I and III. First, there is a non-zero probability of finding the particle outside of the box, despite having <span class="math notranslate nohighlight">\(E &lt; V_0\)</span>. A region of space where the external potential is greater than the energy of the particle is called a <strong>classically forbidden</strong> region. It is forbidden for a classical particle to enter such a region of space, because doing so would imply that the momentum of the particle is imaginary. Classically, we would have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+E &amp;= T_x + V(x) \\
+E - V(x) &amp;= T_x \\
+&amp;= \frac{p_x^2}{2m}  &lt; 0\text{ if } E &lt; V(x)
+\end{align}\end{split}\]</div>
+<p>The penetration of a particle into such a classically forbidden region is called <strong>tunneling</strong>. The second interesting observation we can make is that <span class="math notranslate nohighlight">\(|\psi(x)|^2\)</span> will decay exponentially in these classically forbidden regions with <span class="math notranslate nohighlight">\(E &lt; V_0.\)</span></p>
+<p>We can determine the remaining unknown coefficients through the application of additional boundary conditions:</p>
+<ol class="arabic">
+<li><p>The wavefunction should be continuous between regions I and II (at <span class="math notranslate nohighlight">\(x=0\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+    \psi_I(x=0) = \psi_{II}(x=0)
+    \end{align}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+    C e^{0} = A \text{cos}(0) + B\text{sin}(0)
+    \end{align}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+    C = A
+    \end{align}\]</div>
+</li>
+<li><p>The derivative of the wavefunction should be continuous between regions I and II (at <span class="math notranslate nohighlight">\(x=0\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+    \left . \psi_I(x)^\prime \right |_{x=0} = \left . \psi_{II}(x)^\prime \right |_{x=0}
+    \end{align}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+    \left .C \alpha e^{\alpha x} \right |_{x=0} = \left . \left [ -\beta A \text{sin}(\beta x) + \beta B \text{cos}(\beta x) \right ] \right |_{x=0}
+    \end{align}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+    C \alpha e^{0}  =  -\beta A \text{sin}(0) + \beta B \text{cos}(0)
+    \end{align}\]</div>
+<p>Inserting <span class="math notranslate nohighlight">\(C = A\)</span> and solving for <span class="math notranslate nohighlight">\(B\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+    B = \frac{\alpha}{\beta} A
+    \end{align}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+    B = [(V_0 - E)^{1/2} / (E)^{1/2}] A
+    \end{align}\]</div>
+</li>
+<li><p>The wavefunction should be continuous between regions II and III (at <span class="math notranslate nohighlight">\(x=L):\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+    \psi_{II}(x=L) = \psi_{III}(x=L) 
+    \end{align}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+    A\text{cos}(\beta L) + \frac{\alpha}{\beta}  A \text{sin}(\beta L) = G e^{-\alpha L}
+    \end{align}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+    G = A ~[ {\rm cos}(\beta L) + \alpha~ / \beta ~{\rm sin}(\beta L) ] ~e^{\alpha L}
+    \end{align}\]</div>
+</li>
+<li><p>The derivative of the wavefunction should be continuous between regions II and III (at <span class="math notranslate nohighlight">\(x=L).\)</span> Omitting the algebra, this condition leads us to a trancendental equation for the energy:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+    {\rm tan}[(2mE/\hbar^2)^{1/2} L] = 2 (V_0-E)(E)^{1/2}/(2 E-V_0)
+    \end{align}\]</div>
+</li>
+</ol>
+<p>Lastly, the coefficent A can be determined by normalization.</p>
+</section>
+<section id="procedure-for-visualizing-the-allowable-wavefunctions">
+<h3>Procedure for visualizing the allowable wavefunctions<a class="headerlink" href="#procedure-for-visualizing-the-allowable-wavefunctions" title="Link to this heading">#</a></h3>
+<p>In order to determine the allowable energies and corresponding wavefunctions for the particle in a finite square well potential, we will follow the following steps:</p>
+<ol class="arabic simple">
+<li><p>We should specify parameters <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(L\)</span>, and <span class="math notranslate nohighlight">\(V_0\)</span> that define our problem.</p></li>
+<li><p>We should plot the trancendental equation for the energy to (a) determine how many bound states we have and (b) to obtain reasonable guesses for these energies.</p></li>
+<li><p>We should numerically solve the trancendental equation using some functionality in the scipy package.</p></li>
+<li><p>Once we have the allowable energies, we can evaluate the corresponding wavefunction parameters defined above.</p></li>
+<li><p>Given the wave function parameters, we can visualize the wavefunction or its square modulus.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set some parameters (in atomic units, where hbar = 1)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># mass of particle</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># length of box (from 0 to L)</span>
+<span class="n">V0</span> <span class="o">=</span> <span class="mf">10.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dE</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">V0</span><span class="p">,</span> <span class="n">dE</span><span class="p">)</span>
+<span class="c1">#lhs = []</span>
+<span class="c1">#rhs = []</span>
+<span class="c1">#for i in range(len(E)):</span>
+<span class="c1">#    lhs.append(np.tan(np.sqrt(2 * m * E[i]) * L))</span>
+<span class="c1">#    rhs.append(2 * np.sqrt(V0-E[i]) * np.sqrt(E[i]) / (2 * E[i] - V0))</span>
+<span class="n">lhs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">m</span> <span class="o">*</span> <span class="n">E</span><span class="p">)</span> <span class="o">*</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">rhs</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">V0</span><span class="o">-</span><span class="n">E</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">E</span> <span class="o">-</span> <span class="n">V0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">lhs</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;LHS&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;RHS&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_61221/4185230906.py:9: RuntimeWarning: divide by zero encountered in divide
+  rhs = 2 * np.sqrt(V0-E) * np.sqrt(E) / (2 * E - V0)
+</pre></div>
+</div>
+<img alt="../../_images/fc92b8490e5a05c0b34b5637761280180edc9dc319a409f8b5325865933db708.png" src="../../_images/fc92b8490e5a05c0b34b5637761280180edc9dc319a409f8b5325865933db708.png" />
+</div>
+</div>
+<p>From above, we can see that there are two allowable energies (points at which the blue and orange curves cross, not counting the divergence in the blue curve). These energies look like they are roughly 2.5 and 8.0 (atomic units). We now need to numerically solve the trancendental equation. We’re going to use the function:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>optimize.fsolve
+</pre></div>
+</div>
+<p>from the scipy package for this purpose. We will have to pass some objective function <span class="math notranslate nohighlight">\(f(E) = 0\)</span> for which this function will find the optimal <span class="math notranslate nohighlight">\(E\)</span> value(s).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">allowable_energies</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="o">*</span><span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    function defining allowable energies:</span>
+
+<span class="sd">    tan[sqrt(2mE) L] - 2sqrt(V-E)sqrt(E)/(2E-V0)</span>
+
+<span class="sd">    :param E: the energy</span>
+<span class="sd">    :return value: the function value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">V0</span><span class="p">,</span> <span class="n">L</span> <span class="o">=</span> <span class="n">data</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">m</span> <span class="o">*</span> <span class="n">E</span><span class="p">)</span> <span class="o">*</span> <span class="n">L</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">V0</span><span class="o">-</span><span class="n">E</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">E</span> <span class="o">-</span> <span class="n">V0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we’re ready to solve for the allowable energies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solve for the allowable energy, with some reasonable initial guess</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimize</span>
+
+<span class="n">E</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fsolve</span><span class="p">(</span><span class="n">func</span> <span class="o">=</span> <span class="n">allowable_energies</span><span class="p">,</span> <span class="n">x0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">V0</span><span class="p">,</span> <span class="n">L</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the allowable energies are&#39;</span><span class="p">,</span> <span class="n">E</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># solve for the allowable energy, with some reasonable initial guess</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimize</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">E</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fsolve</span><span class="p">(</span><span class="n">func</span> <span class="o">=</span> <span class="n">allowable_energies</span><span class="p">,</span> <span class="n">x0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">V0</span><span class="p">,</span> <span class="n">L</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the allowable energies are&#39;</span><span class="p">,</span> <span class="n">E</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s plot the wave functions</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">m</span> <span class="o">*</span> <span class="p">(</span><span class="n">V0</span> <span class="o">-</span> <span class="n">E</span><span class="p">))</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">m</span> <span class="o">*</span> <span class="n">E</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># we&#39;ll normalize, but start with A = 1</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">A</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">V0</span> <span class="o">-</span> <span class="n">E</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">*</span> <span class="n">A</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">beta</span> <span class="o">*</span> <span class="n">L</span><span class="p">)</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">/</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">beta</span> <span class="o">*</span> <span class="n">L</span><span class="p">)</span> <span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">L</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Given the allowable energies, we can calculate the corresponding wavefunction parameters. Since all of the parameters can be expressed in terms of <span class="math notranslate nohighlight">\(A\)</span>, we start with the choice <span class="math notranslate nohighlight">\(A = 1\)</span>, but we’ll rescale all of the coefficients such that the wavefunction is normalized.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define the wave function</span>
+
+<span class="n">dx</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span> <span class="o">*</span> <span class="n">L</span> <span class="p">,</span> <span class="mi">11</span> <span class="o">*</span> <span class="n">L</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span> 
+
+<span class="n">psi</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">psi2</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">myx</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">myx</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">mypsi</span> <span class="o">=</span> <span class="n">C</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">myx</span><span class="p">)</span>
+        <span class="n">psi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mypsi</span><span class="p">)</span>
+        <span class="n">psi2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mypsi</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># in case psi is complex valued</span>
+    <span class="k">elif</span> <span class="n">myx</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">:</span>
+        <span class="n">mypsi</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">beta</span> <span class="o">*</span> <span class="n">myx</span><span class="p">)</span> <span class="o">+</span> <span class="n">B</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">beta</span> <span class="o">*</span> <span class="n">myx</span><span class="p">)</span>
+        <span class="n">psi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mypsi</span><span class="p">)</span>
+        <span class="n">psi2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mypsi</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="n">mypsi</span> <span class="o">=</span> <span class="n">G</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">myx</span><span class="p">)</span>
+        <span class="n">psi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mypsi</span><span class="p">)</span>
+        <span class="n">psi2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mypsi</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">psi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span>
+<span class="n">psi2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">psi2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># normalize the wave function ... </span>
+<span class="c1"># it is possible to do this analytically, but let&#39;s do it numerically</span>
+
+<span class="c1"># N = (1 / int(|psi|^2) )^1/2</span>
+
+<span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">alpha</span><span class="p">)):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">psi2</span><span class="p">[:,</span> <span class="n">state</span><span class="p">],</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">))</span>
+    <span class="n">psi</span><span class="p">[:,</span> <span class="n">state</span><span class="p">]</span> <span class="o">*=</span> <span class="n">N</span>
+    <span class="n">psi2</span><span class="p">[:,</span> <span class="n">state</span><span class="p">]</span> <span class="o">*=</span> <span class="n">N</span><span class="o">*</span><span class="n">N</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dq/61z8k56n7r3gtgfrmv5bxdxh0000gp/T/ipykernel_65410/337456428.py:7: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  N = np.sqrt(1.0 / np.trapz(psi2[:, state], x = x))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot normalized wave functions overlaid over the potential</span>
+
+<span class="n">Vx</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">xval</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">xval</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">Vx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">V0</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">xval</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">:</span>
+        <span class="n">Vx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">Vx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">V0</span><span class="p">)</span>
+
+<span class="n">Vx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Vx</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">psi</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Vx</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ba7947d9fcc00f125349fe3b6a815427dd435bb24b4501e6c2b8cbd0fa0bcb99.png" src="../../_images/ba7947d9fcc00f125349fe3b6a815427dd435bb24b4501e6c2b8cbd0fa0bcb99.png" />
+</div>
+</div>
+<blockquote>
+<div><h3 class="rubric" id="practice">Practice</h3>
+<p>Now, you should re-run this part of the notebook with different values for the mass (<span class="math notranslate nohighlight">\(m\)</span>), the width of the well (<span class="math notranslate nohighlight">\(L\)</span>), and the height of the potential outside of the well (<span class="math notranslate nohighlight">\(V_0\)</span>). Ask yourself the following questions:</p>
+<blockquote>
+<div><p>Question 4: Does increasing <span class="math notranslate nohighlight">\(V_0\)</span> increase or decrease the number of bound states?</p>
+<details>
+</div></blockquote>
+</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;summary&gt;Answer 4&lt;/summary&gt; 
+As $V_0$ is increased, the well should be able to support a larger number of bound states.
+&lt;/details&gt;    
+</pre></div>
+</div>
+<blockquote>
+<div><blockquote>
+<div><p>Question 5: Does increasing <span class="math notranslate nohighlight">\(L\)</span> increase or decrease the number of bound states?</p>
+<details>
+</div></blockquote>
+</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;summary&gt;Answer 5&lt;/summary&gt;  
+As $L$ is increased, the well should be able to support a larger number of bound states. We can rationalize this result by thinking about the form of the energy for the infinite square well potential model (the particle in a box):
+$$\begin{align}
+E_n = \frac{h^2 n^2}{8mL^2}
+\end{align}$$
+As $L$ increases, the spacing between energy levels decreases. Hence, for the finite square well potential model, it is reasonable to expect that a similar trend will occur, resulting in a larger number states with $E &lt; V_0$. 
+&lt;/details&gt;
+</pre></div>
+</div>
+<blockquote>
+<div><blockquote>
+<div><p>Question 6: Does increasing <span class="math notranslate nohighlight">\(m\)</span> increase or decrease the number of bound states?</p>
+<details>
+</div></blockquote>
+</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;summary&gt;Answer 6&lt;/summary&gt;  
+As $m$ is increased, the well should be able to support a larger number of bound states. Again, we can rationalize this result by thinking about the form of the energy for the infinite square well potential model (the particle in a box):
+$$\begin{align}
+E_n = \frac{h^2 n^2}{8mL^2}
+\end{align}$$
+As $m$ increases, the spacing between energy levels decreases. Hence, for the finite square well potential model, it is reasonable to expect that a similar trend will occur, resulting in a larger number states with $E &lt; V_0$. 
+&lt;/details&gt;
+</pre></div>
+</div>
+<blockquote>
+<div><blockquote>
+<div><p>Question 7: For a given <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(L\)</span>, and <span class="math notranslate nohighlight">\(V_0\)</span>, which bound states have the highest / lowest tunneling probability (the probability of finding the particle outside of the well)? Can you rationalize this result?</p>
+<details>
+</div></blockquote>
+</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;summary&gt;Answer 7&lt;/summary&gt;
+The highest-energy bound states should have the largest tunneling probability. The lowest-energy bound states should have the lowest tunneling probability. We can rationalize this result by considering the form of the wave function in region III:
+$$ \begin{align}
+\psi_{III}(x) = G e^{-\alpha x}
+\end{align}$$
+Recall that 
+$$\begin{align}
+\alpha = ( 2 m [V_0 - E] / \hbar^2)^{1/2}
+\end{align}$$
+The quantity $V_0 - E$ is related to how rapidly the wave function decays with increasing $x$ in this region of space. As $E$ increases, $V_0 - E$ decreases, which implies that the wave function will decay more slowly in this region. 
+&lt;/details&gt;
+</pre></div>
+</div>
+<blockquote>
+<div><blockquote>
+<div><p>Question 8: Can the number of bound states ever be zero, for certain combinations of <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(L\)</span>, and <span class="math notranslate nohighlight">\(V_0\)</span>?</p>
+<details>
+</div></blockquote>
+</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;summary&gt;Answer 8&lt;/summary&gt;
+</pre></div>
+</div>
+<p>No, the minimum number of bound states is one, no matter what values we have for <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(L\)</span>, and <span class="math notranslate nohighlight">\(V_0\)</span>.
+</details></p>
+<p>This ananlysis has assumed that the potential barrier height, <span class="math notranslate nohighlight">\(V_0\)</span>, is greater than the energy for the particle, <span class="math notranslate nohighlight">\(E\)</span>. What if <span class="math notranslate nohighlight">\(E &gt; V_0\)</span>? In this case, the particle should be able to overcome the potential barrier to “escape” the box. Let us inspect the general form of the wave function in region I given above, (before the application of any boundary conditions). We had</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\psi_I(x) = A e^{\alpha x} + B^{-\alpha x}
+\end{align}\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\alpha = \left ( \frac{2m}{\hbar^2} \right )^{1/2} \left ( V_0 - E \right )^{1/2}
+\end{align}\]</div>
+<p>which must be imaginary, since <span class="math notranslate nohighlight">\(V_0 - E &lt; 0\)</span>! A similar analysis holds for the wave function in region III. Hence the wave function looks like sums of complex exponential functions in all regions of space, much like the wave function for a free particle. Moreover</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\lim_{x\to-\infty} \psi_I(x) \neq 0 
+\end{align}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\lim_{x\to+\infty} \psi_{III}(x) \neq 0 
+\end{align}\]</div>
+<p>which implies that there is a non-zero probability of finding the particle anywhere in <span class="math notranslate nohighlight">\(x\)</span>. Hence, the states with <span class="math notranslate nohighlight">\(E &gt; V_0\)</span> are <strong>unbound</strong> states. Like in the free-particle problem, the energy for these unbound states is continuous (not quantized).</p>
+</section>
+</section>
+<section id="tunneling-through-a-barrier">
+<h2>Tunneling Through a Barrier<a class="headerlink" href="#tunneling-through-a-barrier" title="Link to this heading">#</a></h2>
+<p>The finite square well potential model demonstrated that a quantum particle can penetrate into a classically forbidden region. We can extend this concept by considering a situation where a particle of mass, <span class="math notranslate nohighlight">\(m\)</span>, and energy, <span class="math notranslate nohighlight">\(E\)</span>, encounters a potential energy barrier of height, <span class="math notranslate nohighlight">\(V_0 &gt; E\)</span>, and width, <span class="math notranslate nohighlight">\(L\)</span>. Graphically, we have the following situation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/deprincelab/deprincelab.github.io/main/tutorials/jupyter_notebooks/translation/tunneling_through_barrier.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><img src="https://raw.githubusercontent.com/deprincelab/deprincelab.github.io/main/tutorials/jupyter_notebooks/translation/tunneling_through_barrier.png"/></div></div>
+</div>
+<p>where we have assumed that the particle encounters the barrier from the left (from the <span class="math notranslate nohighlight">\(-x\)</span> direction). Classical mechanics would predict that the particle would be reflected off of the potential barrier, given that the barrier height exceeds the energy. On the other hand, quantum mechanics suggests that it is possible for the particle to tunnel into the barrier, and, possibly, be transmitted through to the other side.</p>
+<p>What is the probability, <span class="math notranslate nohighlight">\(T\)</span>, that the particle will be transmitted through the barrier? To answer this question, let us first define the wave function in each region. As in the previous examples, the wave function is defined in a piecewise manner, by solving the Schrödinger equation in each region. We have</p>
+<p><strong>Region I</strong> (<span class="math notranslate nohighlight">\(x &lt; 0\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V(x) = 0
+\end{align}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{-\hbar^2}{2m}\frac{d^2}{dx^2} \psi_I(x) = E \psi_I(x)
+\end{align}\]</div>
+<p>which has solutions of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_I(x) = A~e^{ikx} + B~e^{-ikx}
+\end{align}\]</div>
+<p><strong>Region II</strong> (<span class="math notranslate nohighlight">\(0 \le x \le L\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V(x) = V_0
+\end{align}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+(\frac{-\hbar^2}{2m}\frac{d^2}{dx^2} + V_0) \psi_{II}(x) = E \psi_{II}(x)
+\end{align}\]</div>
+<p>which has solutions of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_{II}(x) = C~e^{\lambda x} + D~e^{-\lambda x}
+\end{align}\]</div>
+<p>and</p>
+<p><strong>Region III</strong> (<span class="math notranslate nohighlight">\(x &gt; L\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V(x) = 0
+\end{align}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{-\hbar^2}{2m}\frac{d^2}{dx^2} \psi_{III}(x) = E \psi_{III}(x)
+\end{align}\]</div>
+<p>which has solutions of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\psi_{III}(x) = F~e^{i k x} + G~e^{-i k x}
+\end{align}\]</div>
+<p>Above, <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\(\lambda\)</span> are real numbers, defined by</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+k = (2 m E / \hbar^2)^{1/2}
+\end{align}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\lambda = ( 2 m [V_0 - E] / \hbar^2)^{1/2}
+\end{align}\]</div>
+<p>Similar to the finite square well potential problem, the solutions in regions I and III (where <span class="math notranslate nohighlight">\(V(x) = 0\)</span>) involve complex exponential functions, while the solution in region II (where <span class="math notranslate nohighlight">\(V(x) = V_0 &gt; E\)</span>) involves real-valued exponential functions.</p>
+<p>How can we define the transmission probability? First, note that the wave functions in regions I and III look like free partile wave functions. Such wave functions are a superposition of momentum eigenfunctions, and the probability amplitudes are related to the probability that the particle will be found moving to the right / left in a particular region of space. Specifically,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(|A|^2\)</span> is proportional to the probability that the particle is traveling to the right in region I</p></li>
+<li><p><span class="math notranslate nohighlight">\(|B|^2\)</span> is proportional to the probability that the particle is traveling to the left in region I</p></li>
+<li><p><span class="math notranslate nohighlight">\(|F|^2\)</span> is proportional to the probability that the particle is traveling to the right in region III</p></li>
+<li><p><span class="math notranslate nohighlight">\(|G|^2\)</span> is proportional to the probability that the particle is traveling to the left in region III</p></li>
+</ul>
+<p>The tunneling probability should be probability that the particle is traveling to the right in region III, normalized by the probability that the particle encountered the barrier in region I, or</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+T = \frac{|F|^2}{|A|^2}
+\end{align}\]</div>
+<p>Similarly, we could define a reflection probability, <span class="math notranslate nohighlight">\(R\)</span>, as the probability that the particle is moving to the left in region I, normalized by the probability that the particle encountered the barrier in region I, or</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+R = \frac{|B|^2}{|A|^2}
+\end{align}\]</div>
+<p>In order to determine <span class="math notranslate nohighlight">\(T\)</span>, we must apply boundary conditions to determine the unknown coefficients, <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, <span class="math notranslate nohighlight">\(C\)</span>, <span class="math notranslate nohighlight">\(D\)</span>, <span class="math notranslate nohighlight">\(F\)</span>, and <span class="math notranslate nohighlight">\(G\)</span>. We have four boundary conditions:</p>
+<ol class="arabic simple">
+<li><p>The wave function should be continuous between regions I and II: <span class="math notranslate nohighlight">\(\psi_I(x=0) = \psi_{II}(x=0)\)</span></p></li>
+<li><p>The derivative of the wave function should be continuous between regions I and II: <span class="math notranslate nohighlight">\(\left . \psi^\prime_I(x) \right |_{x=0} = \left . \psi_{II}^\prime(x) \right |_{x = 0}\)</span></p></li>
+<li><p>The wave function should be continuous between regions II and III: <span class="math notranslate nohighlight">\(\psi_{II}(x=L) = \psi_{III}(x=L)\)</span></p></li>
+<li><p>The derivative of the wave function should be continuous between regions II and III: <span class="math notranslate nohighlight">\(\left . \psi^\prime_{II}(x) \right |_{x=L} = \left . \psi_{III}^\prime(x) \right |_{x = L}\)</span></p></li>
+</ol>
+<p>At first glance, it seems like we have more unknown coefficients than equations, but this will not be an issue. First, we can eliminate one of the unknowns on physical grounds. Consider the coffficient, <span class="math notranslate nohighlight">\(G\)</span>. The value <span class="math notranslate nohighlight">\(|G|^2\)</span> should represent the probability that the particle is moving to the left in region III. However, because (i) the particle encountered the barrier from the left and (ii) the potential in region III is zero for all <span class="math notranslate nohighlight">\(x &gt; L\)</span>, we can conclude that the particle should <em>never</em> be found moving to the left in region III. Therefore, we set <span class="math notranslate nohighlight">\(G = 0\)</span>. Second, note that we do not need to know <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(F\)</span> absolutely. Determining <span class="math notranslate nohighlight">\(T\)</span> only requires knowledge of their ratio. Hence, we really only have four unknown quantities:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+\frac{|F|^2}{|A|^2}\text{, }B\text{, }C\text{, }D
+\end{align}\]</div>
+<p><strong>Boundary condition 1</strong>:</p>
+<p>Enforcing continuity of the wave function at the boundary between regions I and II <span class="math notranslate nohighlight">\([ \psi_I(x=0) = \psi_{II}(x=0)]\)</span> leads to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+A e^0 + B e^0 &amp;= C e^0 + D e ^0 \\
+A + B &amp;= C + D
+\end{align}\end{split}\]</div>
+<p>Enforcing the smoothness of the wave function at the boundary between regions I and II <span class="math notranslate nohighlight">\([ \left . \psi^\prime_I(x) \right |_{x=0} = \left . \psi_{II}^\prime(x) \right |_{x = 0} ]\)</span> leads to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+ik A e^0 - ik B e^0 &amp;= \lambda c e^0 - \lambda D e^0 \\
+ik (A - B) &amp;= \lambda (C - D)  \\
+A - B &amp;= -\frac{i\lambda}{k} (C - D)  \\
+\end{align}\end{split}\]</div>
+<p>Adding the results of the application of these boundary conditions eliminates <span class="math notranslate nohighlight">\(B\)</span> and leads to</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}
+2 A = C\left ( 1 - \frac{i\lambda}{k}\right ) + D \left ( 1 + \frac{i\lambda}{k}\right ) 
+\end{align}\]</div>
+<p>Eventually after applying the two remaining conditions and a bit of algebra, we eventually find</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+T &amp;= \frac{|F|^2}{|A|^2} \\
+&amp;= \left [ 1 + \frac{V_0^2}{4E(V_0-E)}\text{sinh}\left ( \left [ \frac{2m(V_0-E)}{\hbar^2}\right ]^{1/2} L \right )  \right ]^{-1}
+\end{align}\end{split}\]</div>
+<p>where the hyperbolic sine function is defined by</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\text{sinh}(x) = \frac{e^x - e^{-x}}{2}
+\end{align}\]</div>
+<p>This expression for <span class="math notranslate nohighlight">\(T\)</span> is a bit difficult to interpret directly, but we can learn something useful in the limits of high (<span class="math notranslate nohighlight">\(V_0 - E \gg 1\)</span>) and wide (<span class="math notranslate nohighlight">\(L \gg 1\)</span>) barriers. For the hyperbolic sine term, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+\lim_{\substack{V_0 - E \gg 1\\ L \gg 1}} \text{sinh}\left ( \left [ \frac{2m(V_0-E)}{\hbar^2}\right ]^{1/2} L \right ) &amp;= \frac{1}{2} \lim_{\substack{V_0 - E \gg 1\\ L \gg 1}} \left [ e^{[2m(V_0-E)/\hbar^2]^{1/2}L} - e^{-[2m(V_0-E)/\hbar^2]^{1/2}L} \right ] \\
+&amp;= \frac{1}{2} e^{[2m(V_0-E)/\hbar^2]^{1/2}L}
+\end{align}\end{split}\]</div>
+<p>Now,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+\lim_{\substack{V_0 - E \gg 1\\ L \gg 1}}T &amp;= \left [ 1 + \frac{V_0^2}{8E(V_0-E)}\frac{1}{2} e^{[2m(V_0-E)/\hbar^2]^{1/2}L}  \right ]^{-1} \\
+&amp;\approx \frac{8E(V_0-E)}{V_0^2}e^{-[2m(V_0-E)/\hbar^2]^{1/2}L}
+\end{align}\end{split}\]</div>
+<p>This last expression is much easier to interpret. The tunneling probability, <span class="math notranslate nohighlight">\(T\)</span>, decreases as</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(L\)</span> increases</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_0 - E\)</span> increases</p></li>
+<li><p><span class="math notranslate nohighlight">\(m\)</span> increases</p></li>
+</ul>
+<p>Hence, tunneling is most important for light particles encountering low, narrow barriers.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/lecture_notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="SphHarm_visualize.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Visualizing Spherical harmonics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="variation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The Variation Theorem</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-free-particle">The Free Particle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-wave-function-and-its-properties">The Wave Function and Its Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heisenberg-uncertainty-principle">Heisenberg Uncertainty Principle</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infinite-square-well-potential">Infinite Square Well Potential</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-dimensional-particle-in-a-box">One-Dimensional Particle-in-a-Box</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#three-dimensional-particle-in-a-box">Three-Dimensional Particle-in-a-Box</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#degenerate-energy-levels">Degenerate Energy Levels</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-free-particle-revisited">The Free Particle, Revisited</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-square-well-potential">Finite Square Well Potential</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wavefunctions">Wavefunctions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions">Boundary Conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#procedure-for-visualizing-the-allowable-wavefunctions">Procedure for visualizing the allowable wavefunctions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tunneling-through-a-barrier">Tunneling Through a Barrier</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jay Foley
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
