@@ -686,11 +686,11 @@ Well,
 <h3>Probabilistic Nature of Measurements<a class="headerlink" href="#probabilistic-nature-of-measurements" title="Link to this heading">#</a></h3>
 <p>Not all quantum states are eigenstates of a given observable. For <strong>superposition states</strong>, measurement outcomes are probabilistic. Consider a general superposition:</p>
 <div class="math notranslate nohighlight">
-\[|\psi\rangle = \alpha|\uparrow_z\rangle + \beta|\downarrow_z\rangle\]</div>
+\[|\psi\rangle = a|\uparrow_z\rangle + b|\downarrow_z\rangle\]</div>
 <p>When measuring <span class="math notranslate nohighlight">\(S_z\)</span>:</p>
 <ul class="simple">
-<li><p>Probability of obtaining <span class="math notranslate nohighlight">\(+\hbar/2\)</span>: <span class="math notranslate nohighlight">\(|\alpha|^2\)</span></p></li>
-<li><p>Probability of obtaining <span class="math notranslate nohighlight">\(-\hbar/2\)</span>: <span class="math notranslate nohighlight">\(|\beta|^2\)</span></p></li>
+<li><p>Probability of obtaining <span class="math notranslate nohighlight">\(+\hbar/2\)</span>: <span class="math notranslate nohighlight">\(|a|^2\)</span></p></li>
+<li><p>Probability of obtaining <span class="math notranslate nohighlight">\(-\hbar/2\)</span>: <span class="math notranslate nohighlight">\(|b|^2\)</span></p></li>
 </ul>
 <p>The probabilities are given by the <strong>norm squared</strong> of each coefficient in the superposition.</p>
 </section>
@@ -716,6 +716,22 @@ Well,
 <p><strong>Example</strong>: For the <span class="math notranslate nohighlight">\(+x\)</span> eigenstate <span class="math notranslate nohighlight">\(|\uparrow_x\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 1 \end{pmatrix}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}c_{\uparrow} = \langle\uparrow_z|\uparrow_x\rangle = \begin{pmatrix} 1 &amp; 0 \end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 1 \end{pmatrix} = \frac{1}{\sqrt{2}}\end{split}\]</div>
+<p><strong>Bra-Ket Notation</strong>
+Let’s clarify the notation we’re using:</p>
+<p>A ket <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> represents a quantum state as a column vector
+A bra <span class="math notranslate nohighlight">\(\langle\psi|\)</span> represents the adjoint (complex conjugate transpose) of the ket as a row vector
+The bra-ket <span class="math notranslate nohighlight">\(\langle\phi|\psi\rangle\)</span> is the inner product between two states, computed as the matrix product of a row vector and a column vector, yielding a scalar</p>
+<p>For real-valued coefficients (as in our last example), the adjoint operation simply transposes the vector. For example:
+<span class="math notranslate nohighlight">\(|\uparrow_z\rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix} \quad \Rightarrow \quad \langle\uparrow_z| = \begin{pmatrix} 1 &amp; 0 \end{pmatrix}\)</span></p>
+<p>For a general state</p>
+<p><span class="math notranslate nohighlight">\(|\psi\rangle = \begin{pmatrix} a \\ b \end{pmatrix} \quad \Rightarrow \quad \langle\psi| = \begin{pmatrix} a^* &amp; b^* \end{pmatrix}\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(a^*\)</span> is the complex conjugate of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b^*\)</span> is the complex conjugate of <span class="math notranslate nohighlight">\(b\)</span>.   For any complex number, we may always express it as a real part plus an imaginary part:</p>
+<div class="math notranslate nohighlight">
+\[ z = c + d i \]</div>
+<p>where <span class="math notranslate nohighlight">\(i = \sqrt{-1}\)</span>.</p>
+<p>The complex conjugate of <span class="math notranslate nohighlight">\(z\)</span> simply results from taking the negative of the imaginary component:</p>
+<div class="math notranslate nohighlight">
+\[ z^* = c - di \]</div>
 </section>
 </section>
 <hr class="docutils" />
@@ -727,9 +743,9 @@ Well,
 \[\langle\hat{A}\rangle = \langle\psi|\hat{A}|\psi\rangle\]</div>
 <section id="example-expectation-value-of-hat-s-z">
 <h3>Example: Expectation value of <span class="math notranslate nohighlight">\(\hat{S}_z\)</span><a class="headerlink" href="#example-expectation-value-of-hat-s-z" title="Link to this heading">#</a></h3>
-<p>For a superposition state <span class="math notranslate nohighlight">\(|\psi\rangle = \alpha|\uparrow_z\rangle + \beta|\downarrow_z\rangle\)</span>:</p>
+<p>For a superposition state <span class="math notranslate nohighlight">\(|\psi\rangle = a|\uparrow_z\rangle + b|\downarrow_z\rangle\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[\langle\hat{S}_z\rangle = |\alpha|^2\left(+\frac{\hbar}{2}\right) + |\beta|^2\left(-\frac{\hbar}{2}\right) = \frac{\hbar}{2}(|\alpha|^2 - |\beta|^2)\]</div>
+\[\langle\hat{S}_z\rangle = |a|^2\left(+\frac{\hbar}{2}\right) + |b|^2\left(-\frac{\hbar}{2}\right) = \frac{\hbar}{2}(|a|^2 - |b|^2)\]</div>
 </section>
 <section id="physical-interpretation">
 <h3>Physical Interpretation<a class="headerlink" href="#physical-interpretation" title="Link to this heading">#</a></h3>
