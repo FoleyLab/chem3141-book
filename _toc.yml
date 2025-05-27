@@ -20,6 +20,7 @@ parts:
 
   - caption: Advanced Topics
     chapters:
+      - file: content/HF_Coupled_to_Cavity_Tensor_To_Complete
       - file: content/advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect
       - file: content/advanced_topics/Zeeman_Effect_Hydrogen_Atom
 
