@@ -1,0 +1,123 @@
+Traceback (most recent call last):
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/asyncio/base_events.py", line 650, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/nbclient/client.py", line 654, in async_setup_kernel
+    yield
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.linspace(0.01, 20, 500)
+
+# Radial wavefunctions (3s, 3p, 3d)
+R30 = 2 / (3.0 * np.sqrt(3)) * (1 - 2*r/3 + 2*r**2/27) * np.exp(-r/3)
+R31 = 8 / (27*np.sqrt(6)) * (r - r**2/6) * np.exp(-r/3)
+R32 = 4 / (81*np.sqrt(30)) * r**2 * np.exp(-r/3)
+R10 = 2.0 * np.exp(-r)
+R21 = 1 / (2 * np.sqrt(6)) * r * np.exp(-0.5 * r)
+
+# Radial probability distributions
+P30 = r**2 * R30**2
+P31 = r**2 * R31**2
+P32 = r**2 * R32**2
+
+P21 = r ** 2 * R21 ** 2
+
+
+
+# Coulomb potential
+V = -1 / r
+
+# Centrifugal potentials and effective potentials
+l_vals = [0, 1, 2]
+V_cents = [l*(l+1) / (2 * r**2) for l in l_vals]
+V_effs = [V + V_cent for V_cent in V_cents]
+
+# Plot settings
+fig, axs = plt.subplots(3, 1, figsize=(8, 10), sharex=True)
+
+orb_labels = ['3s', '3p', '3d']
+colors = ['tab:blue', 'tab:orange', 'tab:green']
+
+for i, ax in enumerate(axs):
+    l = l_vals[i]
+    ax.plot(r, V, 'k--', label=r'$V(r)$ (Coulomb)')
+    ax.plot(r, V_cents[i], 'gray', linestyle='dotted', label=rf'$V_{{\rm cent}}^{{\ell={l}}}(r)$')
+    ax.plot(r, V_effs[i], 'k-', label=rf'$V_{{\rm eff}}^{{\ell={l}}}(r)$')
+
+    # scale radial distribution for visual overlay
+    scale = 0.5  # adjust to your taste
+    #P = [P30, P31, P32][i]
+    P = [P10, P21][i]
+    ax.plot(r, scale * P + (-1/9), color=colors[i], label=rf'$P_{{3{["s","p","d"][i]}}}(r)$ (scaled)')
+
+    ax.axhline(y=-1/9, color='gray', lw=0.5, linestyle=':')
+    ax.set_ylabel('Energy (E$_h$)')
+    ax.set_title(f'{orb_labels[i]} orbital (l = {l})')
+    ax.set_ylim(-1.1, 0.6)
+    ax.legend()
+
+axs[-1].set_xlabel(r'$r$ ($a_0$)')
+plt.tight_layout()
+plt.show()
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mValueError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[9][39m[32m, line 46[39m
+[32m     44[39m [38;5;66;03m#P = [P30, P31, P32][i][39;00m
+[32m     45[39m P = [P10, P21][i]
+[32m---> [39m[32m46[39m ax.plot(r, scale * P + (-[32m1[39m/[32m9[39m), color=colors[i], label=[33mrf[39m[33m'[39m[33m$P_[39m[38;5;130;01m{{[39;00m[33m3[39m[38;5;132;01m{[39;00m[[33m"[39m[33ms[39m[33m"[39m,[33m"[39m[33mp[39m[33m"[39m,[33m"[39m[33md[39m[33m"[39m][i][38;5;132;01m}[39;00m[38;5;130;01m}}[39;00m[33m(r)$ (scaled)[39m[33m'[39m)
+[32m     48[39m ax.axhline(y=-[32m1[39m/[32m9[39m, color=[33m'[39m[33mgray[39m[33m'[39m, lw=[32m0.5[39m, linestyle=[33m'[39m[33m:[39m[33m'[39m)
+[32m     49[39m ax.set_ylabel([33m'[39m[33mEnergy (E$_h$)[39m[33m'[39m)
+
+[36mFile [39m[32m~/miniconda3/envs/jbook/lib/python3.11/site-packages/matplotlib/axes/_axes.py:1777[39m, in [36mAxes.plot[39m[34m(self, scalex, scaley, data, *args, **kwargs)[39m
+[32m   1534[39m [38;5;250m[39m[33;03m"""[39;00m
+[32m   1535[39m [33;03mPlot y versus x as lines and/or markers.[39;00m
+[32m   1536[39m 
+[32m   (...)[39m[32m   1774[39m [33;03m(``'green'``) or hex strings (``'#008000'``).[39;00m
+[32m   1775[39m [33;03m"""[39;00m
+[32m   1776[39m kwargs = cbook.normalize_kwargs(kwargs, mlines.Line2D)
+[32m-> [39m[32m1777[39m lines = [*[38;5;28mself[39m._get_lines([38;5;28mself[39m, *args, data=data, **kwargs)]
+[32m   1778[39m [38;5;28;01mfor[39;00m line [38;5;129;01min[39;00m lines:
+[32m   1779[39m     [38;5;28mself[39m.add_line(line)
+
+[36mFile [39m[32m~/miniconda3/envs/jbook/lib/python3.11/site-packages/matplotlib/axes/_base.py:297[39m, in [36m_process_plot_var_args.__call__[39m[34m(self, axes, data, return_kwargs, *args, **kwargs)[39m
+[32m    295[39m     this += args[[32m0[39m],
+[32m    296[39m     args = args[[32m1[39m:]
+[32m--> [39m[32m297[39m [38;5;28;01myield from[39;00m [38;5;28mself[39m._plot_args(
+[32m    298[39m     axes, this, kwargs, ambiguous_fmt_datakey=ambiguous_fmt_datakey,
+[32m    299[39m     return_kwargs=return_kwargs
+[32m    300[39m )
+
+[36mFile [39m[32m~/miniconda3/envs/jbook/lib/python3.11/site-packages/matplotlib/axes/_base.py:494[39m, in [36m_process_plot_var_args._plot_args[39m[34m(self, axes, tup, kwargs, return_kwargs, ambiguous_fmt_datakey)[39m
+[32m    491[39m     axes.yaxis.update_units(y)
+[32m    493[39m [38;5;28;01mif[39;00m x.shape[[32m0[39m] != y.shape[[32m0[39m]:
+[32m--> [39m[32m494[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([33mf[39m[33m"[39m[33mx and y must have same first dimension, but [39m[33m"[39m
+[32m    495[39m                      [33mf[39m[33m"[39m[33mhave shapes [39m[38;5;132;01m{[39;00mx.shape[38;5;132;01m}[39;00m[33m and [39m[38;5;132;01m{[39;00my.shape[38;5;132;01m}[39;00m[33m"[39m)
+[32m    496[39m [38;5;28;01mif[39;00m x.ndim > [32m2[39m [38;5;129;01mor[39;00m y.ndim > [32m2[39m:
+[32m    497[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([33mf[39m[33m"[39m[33mx and y can be no greater than 2D, but have [39m[33m"[39m
+[32m    498[39m                      [33mf[39m[33m"[39m[33mshapes [39m[38;5;132;01m{[39;00mx.shape[38;5;132;01m}[39;00m[33m and [39m[38;5;132;01m{[39;00my.shape[38;5;132;01m}[39;00m[33m"[39m)
+
+[31mValueError[39m: x and y must have same first dimension, but have shapes (500,) and (201,)
+
