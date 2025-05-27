@@ -22,14 +22,37 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Zeeman Effect Solved
-Jay Foley, UNC Charlotte 
+# build ladder operator when matter Hilbert space is truncated to include 4 states
+a_dag, a = build_ladder_operator_matrices(4)
+
+# print raising operator
+print("The raising operator matrix for the matter Hilbert space truncated to include 4 states")
+print(a_dag)
+
+# print lowering opreator
+print("The lowering operator matrix for the matter Hilbert space truncated to include 4 states")
+print(a)
+
+# build ladder operator when matter Hilbert space is truncated to include 4 states
+b_dag, b = build_ladder_operator_matrices(4)
+
+# print raising operator
+print("The raising operator matrix for the photonic Hilbert space truncated to include 2 states")
+print(b_dag)
+
+# print lowering opreator
+print("The lowering operator matrix for the photonic Hilbert space truncated to include 2 states")
+print(b)
 ------------------
 
 
-  [36mCell[39m[36m [39m[32mIn[1][39m[32m, line 2[39m
-[31m    [39m[31mJay Foley, UNC Charlotte[39m
-        ^
-[31mSyntaxError[39m[31m:[39m invalid syntax
+[31m---------------------------------------------------------------------------[39m
+[31mTypeError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 2[39m
+[32m      1[39m [38;5;66;03m# build ladder operator when matter Hilbert space is truncated to include 4 states[39;00m
+[32m----> [39m[32m2[39m a_dag, a = build_ladder_operator_matrices([32m4[39m)
+[32m      4[39m [38;5;66;03m# print raising operator[39;00m
+[32m      5[39m [38;5;28mprint[39m([33m"[39m[33mThe raising operator matrix for the matter Hilbert space truncated to include 4 states[39m[33m"[39m)
 
+[31mTypeError[39m: cannot unpack non-iterable NoneType object
 

@@ -22,14 +22,24 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Zeeman Effect Solved
-Jay Foley, UNC Charlotte 
+# Take slices of information for Eg, Ee, and mu_eg only
+Eg_array = np.copy(Es[0,:])
+Ee_array = np.copy(Es[1,:])
+tdm_array = np.copy(mu_z[0,:])
+
+
+assert np.allclose(Eg_array, _expected_Eg_array)
+assert np.allclose(Ee_array, _expected_Ee_array)
+assert np.allclose(tdm_array, _expected_tdm_array)
 ------------------
 
 
-  [36mCell[39m[36m [39m[32mIn[1][39m[32m, line 2[39m
-[31m    [39m[31mJay Foley, UNC Charlotte[39m
-        ^
-[31mSyntaxError[39m[31m:[39m invalid syntax
+[31m---------------------------------------------------------------------------[39m
+[31mAssertionError[39m                            Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[5][39m[32m, line 9[39m
+[32m      7[39m [38;5;28;01massert[39;00m np.allclose(Eg_array, _expected_Eg_array)
+[32m      8[39m [38;5;28;01massert[39;00m np.allclose(Ee_array, _expected_Ee_array)
+[32m----> [39m[32m9[39m [38;5;28;01massert[39;00m np.allclose(tdm_array, _expected_tdm_array)
 
+[31mAssertionError[39m: 
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Run the next two cells before beginning! &#8212; My sample book</title>
+    <title>Linear Variational Method - Anharmonic Oscillator &#8212; My sample book</title>
   
   
   
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Solution" href="Zeeman_Effect_Hydrogen_Atom.html" />
-    <link rel="prev" title="Problem Set 1" href="../problem_sets/ps_1.html" />
+    <link rel="next" title="Zeeman Effect" href="Zeeman_Effect_Hydrogen_Atom.html" />
+    <link rel="prev" title="Introduction to Molecular CQED" href="HF_Coupled_to_Cavity_Tensor_To_Complete.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,14 +183,18 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture Notes</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/hydrogen.html">The Hydrogen Atom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/perturbation.html">Perturbation Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates.html">Chapter 1: The Postulates of Quantum Mechanics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/rotation.html">Angular Momentum, Rotational Motion, and Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates_two_level.html">Chapter 1: Introduction to Quantum Phenomena</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/translation.html">Chapter 3: Translational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/vibration.html">Chapter 4: Vibrational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/hydrogen.html">Chapter 6: The Hydrogen Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/variation.html">Chapter 7: The Variation Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/perturbation.html">Chapter 8: Perturbation Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/SphHarm_visualize.html">Visualizing Spherical harmonics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/translation.html">Translational Motion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/variation.html">The Variation Theorem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/vibration.html">Vibrational Motion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
 <ul class="nav bd-sidenav">
@@ -198,9 +202,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Run the next two cells before beginning!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HF_Coupled_to_Cavity_Tensor_To_Complete.html">Introduction to Molecular CQED</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Zeeman_Effect_Hydrogen_Atom.html">Solution</a></li>
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear Variational Method - Anharmonic Oscillator</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Zeeman_Effect_Hydrogen_Atom.html">Zeeman Effect</a></li>
+
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
@@ -445,7 +458,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Run the next two cells before beginning!</h1>
+    <h1>Linear Variational Method - Anharmonic Oscillator</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -455,7 +468,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Run the next two cells before beginning!</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Linear Variational Method - Anharmonic Oscillator</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-next-two-cells-before-beginning">Run the next two cells before beginning!</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-fundamental-transition-of-co-under-different-levels-of-approximation-using-the-linear-variational-method">Computing Fundamental Transition of CO under different levels of approximation using the linear variational method</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a></li>
 </ul>
@@ -475,7 +489,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="run-the-next-two-cells-before-beginning">
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-variational-method-anharmonic-oscillator">
+<h1>Linear Variational Method - Anharmonic Oscillator<a class="headerlink" href="#linear-variational-method-anharmonic-oscillator" title="Link to this heading">#</a></h1>
+<p>Jay Foley, UNC Charlotte</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="run-the-next-two-cells-before-beginning">
 <h1>Run the next two cells before beginning!<a class="headerlink" href="#run-the-next-two-cells-before-beginning" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -489,20 +507,6 @@ document.write(`
 
 <span class="c1"># conversion factor from atomic units of energy to wavenumbers in inverse centimeters</span>
 <span class="n">au_to_wn</span> <span class="o">=</span> <span class="mf">219474.63068</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">trapz</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">hermite</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">factorial</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># conversion factor from atomic units of energy to wavenumbers in inverse centimeters</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
 </pre></div>
 </div>
 </div>
@@ -757,34 +761,34 @@ V_{Quartic}(r) = \frac{1}{2} k (r - r_{eq})^2 + \frac{1}{6}g (r - r_{eq})^3 + \f
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total Hamiltonian
 [[ 5.61932217e-03 -6.89496986e-04  9.36093827e-05 -5.62971931e-04
-   5.40454023e-05 -1.96829634e-21 -3.29312768e-20 -3.09542873e-20
-  -7.26913654e-21 -1.25133066e-20]
+   5.40454023e-05 -2.22970871e-20 -2.80608374e-20 -5.04889846e-20
+   1.85653683e-20 -2.26777019e-20]
  [-6.89496986e-04  1.69241583e-02 -1.95019198e-03  2.70227012e-04
-  -1.12594386e-03  1.20849193e-04 -1.14744902e-19  1.27977170e-19
-   2.07025017e-20  6.47856416e-20]
+  -1.12594386e-03  1.20849193e-04 -1.83354571e-19  5.64028855e-20
+  -1.31763429e-19  9.69728934e-20]
  [ 9.36093827e-05 -1.95019198e-03  2.83613782e-02 -3.58273143e-03
-   5.35022187e-04 -1.78027356e-03  2.09316943e-04 -3.98041676e-19
-   1.29717426e-20 -1.70231352e-19]
+   5.35022187e-04 -1.78027356e-03  2.09316943e-04 -6.79256614e-19
+   2.07789320e-19 -1.60713571e-20]
  [-5.62971931e-04  2.70227012e-04 -3.58273143e-03  3.99309816e-02
   -5.51597588e-03  8.88056579e-04 -2.51768702e-03  3.19736912e-04
-  -6.60310656e-19 -7.81881139e-19]
+  -1.18250647e-18 -6.22638951e-19]
  [ 5.40454023e-05 -1.12594386e-03  5.35022187e-04 -5.51597588e-03
    5.16329688e-02 -7.70881065e-03  1.32934113e-03 -3.33058686e-03
-   4.52176277e-04 -1.86432434e-18]
- [-4.08587871e-21  1.20849193e-04 -1.78027356e-03  8.88056579e-04
+   4.52176277e-04 -1.22735555e-18]
+ [-2.18735706e-20  1.20849193e-04 -1.78027356e-03  8.88056579e-04
   -7.70881065e-03  6.34673396e-02 -1.01334948e-02  1.85887902e-03
   -4.21289617e-03  6.06658136e-04]
- [-1.04849037e-20 -9.18750123e-20  2.09316943e-04 -2.51768702e-03
+ [ 5.82048054e-21 -2.13000724e-19  2.09316943e-04 -2.51768702e-03
    1.32934113e-03 -1.01334948e-02  7.54340940e-02 -1.27696629e-02
    2.47667147e-03 -5.15972298e-03]
- [-3.09542873e-20  8.98606869e-20 -4.48863653e-19  3.19736912e-04
+ [-3.72540948e-20  8.12200754e-21 -6.41987164e-19  3.19736912e-04
   -3.33058686e-03  1.85887902e-03 -1.27696629e-02  8.75332321e-02
   -1.56015358e-02  3.18271901e-03]
- [-1.80688066e-20  1.73143699e-20 -1.12389134e-19 -5.56549120e-19
+ [ 1.89888848e-20 -1.41927824e-19  2.28118110e-19 -1.10288537e-18
    4.52176277e-04 -4.21289617e-03  2.47667147e-03 -1.56015358e-02
    9.97647539e-02 -1.86164186e-02]
- [ 6.12141829e-21  3.17513568e-20 -2.19359263e-19 -7.98821798e-19
-  -1.81011423e-18  6.06658136e-04 -5.15972298e-03  3.18271901e-03
+ [-5.73704300e-21  6.81737734e-20 -7.36695976e-20 -6.04004227e-19
+  -1.28156566e-18  6.06658136e-04 -5.15972298e-03  3.18271901e-03
   -1.86164186e-02  1.12128659e-01]]
 Harmonic Hamiltonian
 [[0.00558623 0.         0.         0.         0.         0.
@@ -807,8 +811,12 @@ Harmonic Hamiltonian
   0.         0.         0.09496585 0.        ]
  [0.         0.         0.         0.         0.         0.
   0.         0.         0.         0.1061383 ]]
-The fundamental is 2420.6916609431296 cm^-1
+The fundamental is 2420.691660943128 cm^-1
 The fundamental harmonic is 2452.069887228941
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_42797/3937728167.py:121: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  V_nm = np.trapz(integrand, r)
 </pre></div>
 </div>
 </div>
@@ -828,7 +836,7 @@ The fundamental harmonic is 2452.069887228941
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9b736a4bd25bf2ac6d830201013207f098d54f3ae518bafac4971c2f16795700.png" src="../../_images/9b736a4bd25bf2ac6d830201013207f098d54f3ae518bafac4971c2f16795700.png" />
+<img alt="../../_images/52a4ef56b5f68330b5eac9b42dd4bfe64e3017d51d3ae4c0cf2a347aab9670e5.png" src="../../_images/52a4ef56b5f68330b5eac9b42dd4bfe64e3017d51d3ae4c0cf2a347aab9670e5.png" />
 </div>
 </div>
 </section>
@@ -870,12 +878,12 @@ The fundamental harmonic is 2452.069887228941
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../problem_sets/ps_1.html"
+       href="HF_Coupled_to_Cavity_Tensor_To_Complete.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Problem Set 1</p>
+        <p class="prev-next-title">Introduction to Molecular CQED</p>
       </div>
     </a>
     <a class="right-next"
@@ -883,7 +891,7 @@ The fundamental harmonic is 2452.069887228941
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Solution</p>
+        <p class="prev-next-title">Zeeman Effect</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -903,7 +911,8 @@ The fundamental harmonic is 2452.069887228941
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Run the next two cells before beginning!</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Linear Variational Method - Anharmonic Oscillator</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-next-two-cells-before-beginning">Run the next two cells before beginning!</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-fundamental-transition-of-co-under-different-levels-of-approximation-using-the-linear-variational-method">Computing Fundamental Transition of CO under different levels of approximation using the linear variational method</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a></li>
 </ul>
