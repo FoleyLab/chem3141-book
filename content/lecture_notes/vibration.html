@@ -202,9 +202,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">Run the next two cells before beginning!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/HF_Coupled_to_Cavity_Tensor_To_Complete.html">Introduction to Molecular CQED</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Zeeman_Effect_Hydrogen_Atom.html">Solution</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">Linear Variational Method - Anharmonic Oscillator</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Zeeman_Effect_Hydrogen_Atom.html">Zeeman Effect</a></li>
+
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
@@ -464,6 +473,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-dimensional-quantum-harmonic-oscillator">One-Dimensional Quantum Harmonic Oscillator</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-series-solution-to-the-schrodinger-equation">Power Series Solution to the Schrödinger Equation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-boundary-conditions">Applying Boundary Conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-energy-eigenvalue-expression">Final Energy Eigenvalue Expression</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qho-wave-functions">QHO Wave Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tunneling-and-the-correspondence-principle">Tunneling and the Correspondence Principle</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection Rules</a><ul class="nav section-nav flex-column">
@@ -520,7 +530,7 @@ V(x) = \frac{1}{2} k (x - x_e)^2 + c
 \[ \begin{align}
 V(x) = \frac{1}{2} k (x - x_e)^2
 \end{align}\]</div>
-<p>Because the harmonic oscillator problem is a model for molecular vibrations, it will be illustrative to consider how this potential relates to one for an actual molecular system. For the sake of simlicity, let us take the molecule to be molecular hydrogen, H<span class="math notranslate nohighlight">\(_2\)</span>. Below, we will calculate the potential energy curve along the bond stretch coordinate for H<span class="math notranslate nohighlight">\(_2\)</span> using one of the simplest procedures for finding approximate solutions to the electronic part of the Schrödinger equation, the Hartree-Fock approach. You can read more about Hartree-Fock theory in <a class="reference external" href="https://deprincelab.github.io/tutorials/jupyter_notebooks/hartree_fock/index.html">this notebook</a>. Specifically, we will use the unrestricted Hartree-Fock approach, as implemented in the <a class="reference external" href="https://psicode.org">Psi4</a> electronic structure package, with the cc-pVDZ basis set.</p>
+<p>Because the harmonic oscillator problem is a model for molecular vibrations, it will be illustrative to consider how this potential relates to one for an actual molecular system. We will consider the diatomic hydrogen flouride, HF. Below, we will calculate the potential energy curve along the bond stretch coordinate for HF using one of the simplest procedures for finding approximate solutions to the electronic part of the Schrödinger equation, the Hartree-Fock approach. You can read more about Hartree-Fock theory in <a class="reference external" href="https://deprincelab.github.io/tutorials/jupyter_notebooks/hartree_fock/index.html">this notebook</a>. Specifically, we will use the restricted Hartree-Fock approach, as implemented in the <a class="reference external" href="https://psicode.org">Psi4</a> electronic structure package, with the cc-pVDZ basis set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pyscf
@@ -534,8 +544,8 @@ V(x) = \frac{1}{2} k (x - x_e)^2
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="n">hf_potential</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">dx</span> <span class="o">=</span> <span class="mf">0.05</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">3.05</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">2.05</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
     <span class="n">current_x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -584,32 +594,32 @@ Requirement already satisfied: setuptools in /Users/jfoley19/miniconda3/envs/jbo
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="c1">#plt.ylim(0, 0.2)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;potential&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;H-H distance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;H-F distance&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/561a895737deb6a620b3b4c1684ae7cb91879eaf1c2cd55b5c828561ab505a82.png" src="../../_images/561a895737deb6a620b3b4c1684ae7cb91879eaf1c2cd55b5c828561ab505a82.png" />
+<img alt="../../_images/766f7d5c1f1987ae2234d519aa7e3764d9ab2c87a9c04746d34a1206cceebd9f.png" src="../../_images/766f7d5c1f1987ae2234d519aa7e3764d9ab2c87a9c04746d34a1206cceebd9f.png" />
 </div>
 </div>
-<p>Near the equilibrium H-H distance, the potential in which the nuclei live looks harmonic, i.e., it could be approximated by a quadratic function. How can we extract an appropriate force constant, <span class="math notranslate nohighlight">\(k\)</span>, from this potential? Well, if</p>
+<p>Near the equilibrium H-F distance, the potential in which the nuclei live looks harmonic, i.e., it could be approximated by a quadratic function. How can we extract an appropriate force constant, <span class="math notranslate nohighlight">\(k\)</span>, from this potential? Well, if</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}
 V(x) = \frac{1}{2} k(x-x_e)^2
 \end{align}\]</div>
-<p>where <span class="math notranslate nohighlight">\(x\)</span> is the H-H distance, and <span class="math notranslate nohighlight">\(x_e\)</span> is the equilibrium H-H distance, then</p>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> is the H-F distance, and <span class="math notranslate nohighlight">\(x_e\)</span> is the equilibrium H-F distance, then</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}
 k = \frac{d^2}{dx^2} V(x) 
 \end{align}\]</div>
-<p>So, we take <span class="math notranslate nohighlight">\(k\)</span> to be the second derivative of the potential with respect to the H-H distance, evaluated at the equilibrium geometry. The second derivative of the potential can be calculated numerically, via the centered <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference">finite difference</a> formula</p>
+<p>So, we take <span class="math notranslate nohighlight">\(k\)</span> to be the second derivative of the potential with respect to the H-F distance, evaluated at the equilibrium geometry. The second derivative of the potential can be calculated numerically, via the centered <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference">finite difference</a> formula</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
 k \approx \frac{V(x_e + h) - 2 V(x_e) + V(x_e - h)}{h^2} 
 \end{align}\]</div>
-<p>where <span class="math notranslate nohighlight">\(h\)</span> is a displacement from the equilbrium H-H distance, <span class="math notranslate nohighlight">\(x_e\)</span>. Here, we calculate <span class="math notranslate nohighlight">\(k\)</span> in this way and visualize the harmonic and Hartree-Fock potentials together.</p>
+<p>where <span class="math notranslate nohighlight">\(h\)</span> is a displacement from the equilbrium H-F distance, <span class="math notranslate nohighlight">\(x_e\)</span>. Here, we calculate <span class="math notranslate nohighlight">\(k\)</span> in this way and visualize the harmonic and Hartree-Fock potentials together.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># equilbirum bond length</span>
@@ -626,7 +636,7 @@ k \approx \frac{V(x_e + h) - 2 V(x_e) + V(x_e - h)}{h^2}
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">hf_potential</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Hartree-Fock&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">harmonic</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;harmonic&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;potential&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;H-H distance&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -635,7 +645,7 @@ k \approx \frac{V(x_e + h) - 2 V(x_e) + V(x_e - h)}{h^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/56309c2d2e030943e80e06c7e0452e8d37983a852dd7b9a1278ba223c29ed293.png" src="../../_images/56309c2d2e030943e80e06c7e0452e8d37983a852dd7b9a1278ba223c29ed293.png" />
+<img alt="../../_images/555f92c357fcddfe0a23acb6ea9342bb8d6a063f935ca599648e65576f586ab3.png" src="../../_images/555f92c357fcddfe0a23acb6ea9342bb8d6a063f935ca599648e65576f586ab3.png" />
 </div>
 </div>
 <p>Clearly these potentials have some major qualitative differences, the most obvious of which is that the Hartree-Fock potential tends to some constant value in the limit of dissociation, whereas the harmonic potential does not. Indeed, for the harmonic potential, <span class="math notranslate nohighlight">\(V(x)\)</span>,</p>
@@ -793,23 +803,25 @@ V(x) = \frac{1}{2} k x^2
 <p><span class="math notranslate nohighlight">\(m\)</span> represents the mass of the oscillator, and we have assumed that <span class="math notranslate nohighlight">\(x_e = 0\)</span>. Recall from the classical harmonic oscillator problem that the force constant is related to the frequency of oscillation as</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
-k = \frac{1}{2\pi}\left ( \frac{k}{m} \right )^{1/2}
+\omega = \left ( \frac{k}{m} \right )^{1/2}
 \end{align}\]</div>
 <p>so the potential can be expressed as</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
-V(x) = 2 m \nu^2 \pi^2 x^2
+V(x) = \frac{1}{2} m \omega^2  x^2
 \end{align}\]</div>
 <p>Now, it will be convenient to introduce a constant, <span class="math notranslate nohighlight">\(\alpha\)</span>, which is defined as</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
-\alpha = \frac{2 \pi \nu m}{\hbar}
+\alpha = \frac{\omega m}{\hbar}
 \end{align}\]</div>
-<p>so that the Hamiltonian can be expressed as</p>
-<div class="math notranslate nohighlight">
-\[ \begin{align}
-\hat{H} = -\frac{\hbar^2}{2m}\left ( \frac{d^2}{dx^2} - \alpha^2 x^2 \right )
-\end{align}\]</div>
+<p>so that the Hamiltonian can be expressed in several equivalent ways:
+$<span class="math notranslate nohighlight">\( \begin{align}
+\hat{H} &amp;= -\frac{\hbar^2}{2m}\left ( \frac{d^2}{dx^2} - \alpha^2 x^2 \right ) \\
+        &amp;= -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} + \frac{1}{2} m \omega^2 x^2 \\
+        &amp;= -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} + \frac{1}{2} k x^2 \\
+        &amp;= \frac{\hat{p}^2}{2m} + \frac{1}{2} k x^2 \\
+\end{align}\)</span>$</p>
 <p>As was the case for the translational problems explored in the previous notebook, this Hamiltonian is time-independent, so our goal is to find the eigenfunctions that satisfy the time-independent Schrödinger equation,</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
@@ -826,6 +838,9 @@ V(x) = 2 m \nu^2 \pi^2 x^2
 \frac{d^2}{dx^2} \psi(x) + \left (\frac{2 m E}{\hbar^2} - \alpha^2 x^2 \right )\psi(x) = 0 
 \end{align}\]</div>
 <p>Unfortunately, we can see that this differential equation is much more complicated than any that we have encountered so far, which is attributable to the fact that the potential depends the displacement, <span class="math notranslate nohighlight">\(x\)</span>. In order to solve this equation, we find a power series solution.</p>
+<p><strong>This is fairly lengthy, so we leave this derivation as optional material for the interested reader.  The solution to the energy eigenvalues is provided below this optional derivation.</strong></p>
+<details>
+  <summary>Click to Show The Power Series Solution to the Harmonic Oscillator Schrödinger Equation</summary>
 <section id="power-series-solution-to-the-schrodinger-equation">
 <h3>Power Series Solution to the Schrödinger Equation<a class="headerlink" href="#power-series-solution-to-the-schrodinger-equation" title="Link to this heading">#</a></h3>
 <p>The basic idea of a power series solution to a differential equation is to assume that the function, in this case, the wave function, <span class="math notranslate nohighlight">\(\psi(x)\)</span>, can be expanded as a power series</p>
@@ -909,6 +924,8 @@ f^{\prime\prime}(x) - 2\alpha x f^{\prime}(x) + \left (\frac{2 m E}{\hbar^2} - \
 \[ \begin{align}
 c_{n+2} = \frac{\alpha(2n+1) - 2mE/\hbar^2}{(n+1)(n+2)} c_n
 \end{align}\]</div>
+</details><details>
+  <summary>Click to Show the application of boundary conditions to the solution</summary>
 </section>
 <section id="applying-boundary-conditions">
 <h3>Applying Boundary Conditions<a class="headerlink" href="#applying-boundary-conditions" title="Link to this heading">#</a></h3>
@@ -983,10 +1000,14 @@ e^{\alpha x^2} &amp;= \sum_{n=0} \frac{(\alpha x^2)^n}{n!} \\
 \[\begin{align}
 c_{v+2} = 0 = \frac{\alpha ( 2 v + 1) - 2mE/\hbar^2}{(v+1)(v+2)} c_v
 \end{align}\]</div>
-<p>Solving for <span class="math notranslate nohighlight">\(E\)</span> and using <span class="math notranslate nohighlight">\(\alpha = 2\pi \nu m / \hbar\)</span> yields</p>
+</details>
+</section>
+<section id="final-energy-eigenvalue-expression">
+<h3>Final Energy Eigenvalue Expression<a class="headerlink" href="#final-energy-eigenvalue-expression" title="Link to this heading">#</a></h3>
+<p>Solving for <span class="math notranslate nohighlight">\(E\)</span> and using <span class="math notranslate nohighlight">\(\alpha = \omega m / \hbar\)</span> yields</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
-E_v = \hbar\omega\left ( v + \frac{1}{2} \right) = h\nu \left( v + \frac{1}{2} \right)
+E_n = \hbar\omega\left ( n + \frac{1}{2} \right) = h\nu \left( n + \frac{1}{2} \right)
 \end{align}\]</div>
 <p>where we have added a subscript “<span class="math notranslate nohighlight">\(v\)</span>” to the energy to indicate that the energy of the state is determined by the vibrational quantum number, <span class="math notranslate nohighlight">\(v\)</span>. So, what have we learned?</p>
 <ol class="arabic simple">
@@ -1320,7 +1341,7 @@ P &amp;= 1 - \frac{2}{\pi^{1/2}} \int_{0}^1 e^{-\xi^2} d\xi \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_82471/3792243395.py:24: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_42186/3792243395.py:24: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   my_P = 1.0 - np.trapz(psi_v.conj() * psi_v, x)
 </pre></div>
 </div>
@@ -1822,6 +1843,7 @@ E_\text{ZPE} = \frac{1}{2} \sum_i h \nu_i
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-dimensional-quantum-harmonic-oscillator">One-Dimensional Quantum Harmonic Oscillator</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-series-solution-to-the-schrodinger-equation">Power Series Solution to the Schrödinger Equation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-boundary-conditions">Applying Boundary Conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-energy-eigenvalue-expression">Final Energy Eigenvalue Expression</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qho-wave-functions">QHO Wave Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tunneling-and-the-correspondence-principle">Tunneling and the Correspondence Principle</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection Rules</a><ul class="nav section-nav flex-column">
