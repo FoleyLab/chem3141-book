@@ -190,6 +190,7 @@
 <li class="toctree-l1"><a class="reference internal" href="qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
 <li class="toctree-l1"><a class="reference internal" href="translation.html">Chapter 3: Translational Motion</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 4: Vibrational Motion</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydrogen.html">Chapter 6: The Hydrogen Atom</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variation.html">Chapter 7: The Variation Theorem</a></li>
@@ -468,6 +469,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter 4: Vibrational Motion</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-harmonic-potential">The Harmonic Potential</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-dimensional-classical-harmonic-oscillator">One-Dimensional Classical Harmonic Oscillator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-dimensional-quantum-harmonic-oscillator">One-Dimensional Quantum Harmonic Oscillator</a><ul class="nav section-nav flex-column">
@@ -485,6 +487,14 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connections-to-computational-chemistry">Connections to Computational Chemistry</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-frequency-analysis">Harmonic Frequency Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-points-about-units">Important Points about Units</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-conversion-question-1">Unit Conversion Question 1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectroscopic-units">Spectroscopic units</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question">❓ Question</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-state-optimization">Transition State Optimization</a></li>
 </ul>
 </li>
@@ -494,6 +504,14 @@ document.write(`
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#morse-oscillator-model">Morse Oscillator model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perturbation-theory">Perturbation Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -530,49 +548,103 @@ V(x) = \frac{1}{2} k (x - x_e)^2 + c
 \[ \begin{align}
 V(x) = \frac{1}{2} k (x - x_e)^2
 \end{align}\]</div>
-<p>Because the harmonic oscillator problem is a model for molecular vibrations, it will be illustrative to consider how this potential relates to one for an actual molecular system. We will consider the diatomic hydrogen flouride, HF. Below, we will calculate the potential energy curve along the bond stretch coordinate for HF using one of the simplest procedures for finding approximate solutions to the electronic part of the Schrödinger equation, the Hartree-Fock approach. You can read more about Hartree-Fock theory in <a class="reference external" href="https://deprincelab.github.io/tutorials/jupyter_notebooks/hartree_fock/index.html">this notebook</a>. Specifically, we will use the restricted Hartree-Fock approach, as implemented in the <a class="reference external" href="https://psicode.org">Psi4</a> electronic structure package, with the cc-pVDZ basis set.</p>
+<p>Because the harmonic oscillator problem is a model for molecular vibrations, it will be illustrative to consider how this potential relates to one for an actual molecular system. We will consider the diatomic carbon monoxide, CO. Below, we will calculate the potential energy curve along the bond stretch coordinate for CO using a procedures for finding approximate solutions to the electronic part of the Schrödinger equation, called Hartree-Fock theory. You can read more about Hartree-Fock theory in <a class="reference external" href="https://deprincelab.github.io/tutorials/jupyter_notebooks/hartree_fock/hartree_fock.html">this notebook</a>. We will use this approach in the <a class="reference external" href="https://pyscf.org/">PySCF</a> electronic structure package, with the cc-pVDZ basis set.</p>
+<p>The first code block will install the relevant packages for all of the PySCF calculations performed in this notebook if needed.</p>
+<ul class="simple">
+<li><p>If you are running on Google Colab, you should run these every time you run this notebook</p></li>
+<li><p>If you are running locally, you can run these commands locally only once and then you will have them for all future sessions.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">pyscf</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">geometric</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">pyberny</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pyscf
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>geometric
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pyberny
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pyscf in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (2.9.0)
+Requirement already satisfied: numpy!=1.16,!=1.17,&gt;=1.13 in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (from pyscf) (1.26.4)
+Requirement already satisfied: scipy&gt;=1.6.0 in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (from pyscf) (1.15.3)
+Requirement already satisfied: h5py&gt;=2.7 in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (from pyscf) (3.13.0)
+Requirement already satisfied: setuptools in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (from pyscf) (78.1.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: geometric in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (1.1)
+Requirement already satisfied: numpy&gt;=1.11 in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (from geometric) (1.26.4)
+Requirement already satisfied: networkx in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (from geometric) (3.4.2)
+Requirement already satisfied: six in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (from geometric) (1.17.0)
+Requirement already satisfied: scipy in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (from geometric) (1.15.3)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pyberny in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (0.6.3)
+Requirement already satisfied: numpy&lt;2.0,&gt;=1.15 in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (from pyberny) (1.26.4)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The next block imports the relevant libraries from PySCF</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pyscf</span><span class="w"> </span><span class="kn">import</span> <span class="n">gto</span><span class="p">,</span> <span class="n">scf</span> <span class="c1"># Import necessary modules</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># conversion from Angstroms to atomic units</span>
+<span class="n">ang_to_au</span> <span class="o">=</span> <span class="mf">1.88973</span>
 
 <span class="c1"># set molecule</span>
 <span class="n">mol_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">H 0 0 0</span>
-<span class="s2">F </span><span class="si">{}</span><span class="s2"> 0 0</span>
+<span class="s2">C 0 0 0</span>
+<span class="s2">O </span><span class="si">{}</span><span class="s2"> 0 0</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="n">hf_potential</span> <span class="o">=</span> <span class="p">[]</span>
+
+
 <span class="n">dx</span> <span class="o">=</span> <span class="mf">0.01</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">2.05</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+<span class="n">dx_au</span> <span class="o">=</span> <span class="n">dx</span> <span class="o">*</span> <span class="n">ang_to_au</span>
+
+<span class="c1"># array of bond lengths in angstroms, which will be what PySCF understands</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.05</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+
+<span class="c1"># array of bond lengths in atomic units (Bohr), which is what we will use for calculating k in atomic units</span>
+<span class="n">x_au</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">ang_to_au</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
     <span class="n">current_x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 
     <span class="c1"># Redefine the molecule for each geometry</span>
-    <span class="c1"># This is the PySCF equivalent of mol.x = x[i]</span>
     <span class="n">mol</span> <span class="o">=</span> <span class="n">gto</span><span class="o">.</span><span class="n">M</span><span class="p">(</span>
         <span class="n">atom</span><span class="o">=</span><span class="n">mol_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">current_x</span><span class="p">),</span>
         <span class="n">basis</span><span class="o">=</span><span class="s1">&#39;cc-pvdz&#39;</span><span class="p">,</span>
         <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">spin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Keep output quiet for each step</span>
 
+    <span class="c1"># Perform RHF calculation</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">scf</span><span class="o">.</span><span class="n">RHF</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">kernel</span><span class="p">()</span>
 
-    <span class="c1"># Extract the energy</span>
-    <span class="n">en</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">e_tot</span>
-    <span class="n">hf_potential</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">en</span><span class="p">)</span>
+    <span class="c1"># Extract the RHF energy</span>
+    <span class="n">hf_en</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">e_tot</span>
+    <span class="n">hf_potential</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hf_en</span><span class="p">)</span>
+
+
+
+<span class="c1"># Now, all three lists will contain the respective energies for each geometry.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RHF Potential Energy Curve (first 5 points):&quot;</span><span class="p">,</span> <span class="n">hf_potential</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pyscf in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (2.9.0)
-Requirement already satisfied: numpy!=1.16,!=1.17,&gt;=1.13 in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (from pyscf) (2.2.6)
-Requirement already satisfied: scipy&gt;=1.6.0 in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (from pyscf) (1.15.3)
-Requirement already satisfied: h5py&gt;=2.7 in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (from pyscf) (3.13.0)
-Requirement already satisfied: setuptools in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (from pyscf) (78.1.1)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RHF Potential Energy Curve (first 5 points): [-106.91320008883994, -107.29223070755722, -107.64878577139375, -107.9841187949562, -108.29941954437882]
 </pre></div>
 </div>
 </div>
@@ -580,75 +652,84 @@ Requirement already satisfied: setuptools in /Users/jfoley19/miniconda3/envs/jbo
 <p>Now, let us visualize this potential (shifted so that the minimum value is zero)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># minimum energy</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># minimum energy</span>
 <span class="n">V_e</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">hf_potential</span><span class="p">)</span>
 
 
 <span class="c1"># shift potential so the minimum value is zero</span>
 <span class="n">hf_potential</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">hf_potential</span><span class="p">)</span> <span class="o">-</span> <span class="n">V_e</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">hf_potential</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Hartree-Fock&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="c1">#plt.ylim(0, 0.2)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="n">hf_potential</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Hartree-Fock&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;potential&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;H-F distance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;C-O distance (Angstroms)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/766f7d5c1f1987ae2234d519aa7e3764d9ab2c87a9c04746d34a1206cceebd9f.png" src="../../_images/766f7d5c1f1987ae2234d519aa7e3764d9ab2c87a9c04746d34a1206cceebd9f.png" />
+<img alt="../../_images/02121325f39c913efa2a6c0c7ce174d336444dc8c0b2b7e3cf4ccf446a649535.png" src="../../_images/02121325f39c913efa2a6c0c7ce174d336444dc8c0b2b7e3cf4ccf446a649535.png" />
 </div>
 </div>
-<p>Near the equilibrium H-F distance, the potential in which the nuclei live looks harmonic, i.e., it could be approximated by a quadratic function. How can we extract an appropriate force constant, <span class="math notranslate nohighlight">\(k\)</span>, from this potential? Well, if</p>
+<p>Near the equilibrium C-O distance, the potential in which the nuclei live looks harmonic, i.e., it could be approximated by a quadratic function. How can we extract an appropriate force constant, <span class="math notranslate nohighlight">\(k\)</span>, from this potential? Well, if</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}
 V(x) = \frac{1}{2} k(x-x_e)^2
 \end{align}\]</div>
-<p>where <span class="math notranslate nohighlight">\(x\)</span> is the H-F distance, and <span class="math notranslate nohighlight">\(x_e\)</span> is the equilibrium H-F distance, then</p>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> is the C-O distance, and <span class="math notranslate nohighlight">\(x_e\)</span> is the equilibrium C-O distance, then</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}
 k = \frac{d^2}{dx^2} V(x) 
 \end{align}\]</div>
-<p>So, we take <span class="math notranslate nohighlight">\(k\)</span> to be the second derivative of the potential with respect to the H-F distance, evaluated at the equilibrium geometry. The second derivative of the potential can be calculated numerically, via the centered <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference">finite difference</a> formula</p>
+<p>So, we take <span class="math notranslate nohighlight">\(k\)</span> to be the second derivative of the potential with respect to the C-O distance, evaluated at the equilibrium geometry. The second derivative of the potential can be calculated numerically, via finite differences.  You can find expressions for finite differences for different derivatives using this calculator <a class="reference external" href="https://web.media.mit.edu/~crtaylor/calculator.html">here</a>.  Using a 5-point formula for the second derivative, we can express <span class="math notranslate nohighlight">\(k\)</span> as</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
-k \approx \frac{V(x_e + h) - 2 V(x_e) + V(x_e - h)}{h^2} 
+k \approx \frac{-V(x_e + 2 h) + 16 V(x_e + h) - 30 V(x_e) + 16 V(x_e - h) - V(x_e - 2h)}{12h^2} 
 \end{align}\]</div>
-<p>where <span class="math notranslate nohighlight">\(h\)</span> is a displacement from the equilbrium H-F distance, <span class="math notranslate nohighlight">\(x_e\)</span>. Here, we calculate <span class="math notranslate nohighlight">\(k\)</span> in this way and visualize the harmonic and Hartree-Fock potentials together.</p>
+<p>where <span class="math notranslate nohighlight">\(h\)</span> is a displacement from the equilbrium C-O distance, <span class="math notranslate nohighlight">\(x_e\)</span>. Here, we calculate <span class="math notranslate nohighlight">\(k\)</span> in this way and visualize the harmonic and Hartree-Fock potentials together.</p>
+<p><strong>IMPORTANT</strong> Your energies in the numerator are in atomic units, so it is important to express your <span class="math notranslate nohighlight">\(h\)</span> in the denominator also in atomic units!  We will use <code class="docutils literal notranslate"><span class="pre">dx_au</span></code> to get <span class="math notranslate nohighlight">\(h\)</span> in atomic units.</p>
+<p>This plot will have the bond length in Bohr units (or atomic units), so we will see that the features of this curve (the equilibrium bond length, etc) appear to be shifted by a factor <span class="math notranslate nohighlight">\(\approx 1.88973\)</span>, which is the conversion from Angstroms to Bohr units of length.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># equilbirum bond length</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># equilbirum bond length - defined by CCSD potential</span>
 <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">hf_potential</span><span class="p">)</span>
+
+<span class="c1"># equilibrium bond length in atomic units</span>
+<span class="n">x_e_au</span> <span class="o">=</span> <span class="n">x_au</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+<span class="c1"># equilibrium bond length in Angstroms</span>
 <span class="n">x_e</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
 
 <span class="c1"># k = d^2 V(x) / dx^2</span>
-<span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="n">hf_potential</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">hf_potential</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> <span class="n">hf_potential</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">hf_potential</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">*</span> <span class="n">hf_potential</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span> <span class="o">*</span> <span class="n">hf_potential</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">*</span> <span class="n">hf_potential</span><span class="p">[</span><span class="n">idx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">hf_potential</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="n">dx_au</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c1"># harmonic potential</span>
-<span class="n">harmonic</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x_e</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">harmonic</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">x_au</span><span class="o">-</span><span class="n">x_e_au</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">hf_potential</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Hartree-Fock&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">harmonic</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;harmonic&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_au</span><span class="p">,</span> <span class="n">hf_potential</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Hartree-Fock Potential&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_au</span><span class="p">,</span> <span class="n">harmonic</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;harmonic&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x_au</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_au</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;potential&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;H-H distance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;C-O distance (Bohr Units)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/555f92c357fcddfe0a23acb6ea9342bb8d6a063f935ca599648e65576f586ab3.png" src="../../_images/555f92c357fcddfe0a23acb6ea9342bb8d6a063f935ca599648e65576f586ab3.png" />
+<img alt="../../_images/58d4cdd4da2af1f9ae67ace725291cba18dff263858ea04e5c55fe2b56199c52.png" src="../../_images/58d4cdd4da2af1f9ae67ace725291cba18dff263858ea04e5c55fe2b56199c52.png" />
 </div>
 </div>
-<p>Clearly these potentials have some major qualitative differences, the most obvious of which is that the Hartree-Fock potential tends to some constant value in the limit of dissociation, whereas the harmonic potential does not. Indeed, for the harmonic potential, <span class="math notranslate nohighlight">\(V(x)\)</span>,</p>
+<p>Clearly these potentials have some major qualitative differences, the most obvious of which is that the CCSD potential tends to some constant value in the limit of dissociation, whereas the harmonic potential does not. Indeed, for the harmonic potential, <span class="math notranslate nohighlight">\(V(x)\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}
 \lim_{x\to\infty} V(x) = \infty 
@@ -1007,7 +1088,7 @@ c_{v+2} = 0 = \frac{\alpha ( 2 v + 1) - 2mE/\hbar^2}{(v+1)(v+2)} c_v
 <p>Solving for <span class="math notranslate nohighlight">\(E\)</span> and using <span class="math notranslate nohighlight">\(\alpha = \omega m / \hbar\)</span> yields</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
-E_n = \hbar\omega\left ( n + \frac{1}{2} \right) = h\nu \left( n + \frac{1}{2} \right)
+E_n = \hbar\omega\left ( v + \frac{1}{2} \right) = h\nu \left( v + \frac{1}{2} \right)
 \end{align}\]</div>
 <p>where we have added a subscript “<span class="math notranslate nohighlight">\(v\)</span>” to the energy to indicate that the energy of the state is determined by the vibrational quantum number, <span class="math notranslate nohighlight">\(v\)</span>. So, what have we learned?</p>
 <ol class="arabic simple">
@@ -1090,7 +1171,7 @@ c_6 &amp;= 0 \\
 <p>where <span class="math notranslate nohighlight">\(H_v\)</span> represents a special polynomial function called a Hermite polynomial, the first few of which are tabulated here:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(H_n(z)\)</span></p></th>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(H_v(z)\)</span></p></th>
 <th class="head"><p>symmetry</p></th>
 </tr>
 </thead>
@@ -1115,12 +1196,14 @@ c_6 &amp;= 0 \\
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for hermite polynomials</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 <span class="c1"># for the factorial function</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 
 <span class="c1"># displacements</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 
 <span class="c1"># arbitrary parameters</span>
 <span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.5</span>
@@ -1202,7 +1285,7 @@ c_6 &amp;= 0 \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5b61d0cd3a08c959cbe7849daf2dfbb0330251ff5131450e698b11b5237bb7da.png" src="../../_images/5b61d0cd3a08c959cbe7849daf2dfbb0330251ff5131450e698b11b5237bb7da.png" />
+<img alt="../../_images/471062a77d7d137fc36280db78614233c6ec9e88a650b14536e4fb3438a35d5e.png" src="../../_images/471062a77d7d137fc36280db78614233c6ec9e88a650b14536e4fb3438a35d5e.png" />
 </div>
 </div>
 <p>In this figure, the horizontal lines represent the classically “allowed” regions, where <span class="math notranslate nohighlight">\(V(x) \le E_v\)</span>. The QHO wave functions oscillate within this region and decay in the classically forbidden regions, where <span class="math notranslate nohighlight">\(V(x) &gt; E_v\)</span>. Recall that, classically, the total energy is the sum of potential energy, <span class="math notranslate nohighlight">\(V(x)\)</span>, and kinetic energy, <span class="math notranslate nohighlight">\(T_x\)</span>,</p>
@@ -1341,10 +1424,6 @@ P &amp;= 1 - \frac{2}{\pi^{1/2}} \int_{0}^1 e^{-\xi^2} d\xi \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_42186/3792243395.py:24: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
-  my_P = 1.0 - np.trapz(psi_v.conj() * psi_v, x)
-</pre></div>
-</div>
 <img alt="../../_images/196831440b217a21f4a17d054bf06280cd246f3ee5e9e86cc4c0ddb48f1b4544.png" src="../../_images/196831440b217a21f4a17d054bf06280cd246f3ee5e9e86cc4c0ddb48f1b4544.png" />
 </div>
 </div>
@@ -1417,7 +1496,7 @@ P = \frac{1}{\pi (x_\text{tp}^2 - x^2)^{1/2}}
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">54</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">54</span>
 <span class="g g-Whitespace">     </span><span class="mi">51</span> <span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">probability_density</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
 <span class="ne">---&gt; </span><span class="mi">54</span> <span class="n">HTML</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">())</span>
@@ -1580,43 +1659,14 @@ v^\prime = v + 1
 <p>Many quantum chemistry packages support vibrational analyses on molecular systems that yield both vibrational energies and the normal modes, which are the independent vibrational modes for the molecule. Linear and non-linear molecules possess <span class="math notranslate nohighlight">\(3N-5\)</span> and <span class="math notranslate nohighlight">\(3N-6\)</span> vibrational degrees of freedom, respectively, where <span class="math notranslate nohighlight">\(N\)</span> is the number of atoms. Each of the normal modes can be treated as an independent quantum harmonic oscillator, the energy of which is the same as that derived above. As such, the total vibrational energy is</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
-E_\text{vib} = \sum_i h \nu_i ( v_i + 1/2 )
+E_\text{vib} = \sum_i h \nu_i ( v_i + 1/2 ) = \sum_i \hbar \omega (v_i + 1/2)
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\nu_i\)</span> is the frequency for the <span class="math notranslate nohighlight">\(i\)</span>th normal mode. At zero kelvin, only the <span class="math notranslate nohighlight">\(v_i=0\)</span> state is populated for each of these modes, so the total zero-point energy is</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
-E_\text{ZPE} = \frac{1}{2} \sum_i h \nu_i
+E_\text{ZPE} = \frac{1}{2} \sum_i h \nu_i = \frac{1}{2} \sum_i \hbar \omega_i
 \end{align}\]</div>
-<p>The harmonic vibrational frequencies can be determined using the method of <a class="reference external" href="https://en.wikipedia.org/wiki/GF_method">F and G matrices</a>, for example. Let us consider the simplest case, a heteronuclear diatomic molecule, <span class="math notranslate nohighlight">\(H_2\)</span>. As discussed above, one can calculate the potential energy curve as a function of the H-H distance using a quantum chemistry method such as Hartree-Fock theory. The potential near the equilibrium geometry can then be approximated with a harmonic one, where the force constant is defined by the second derivative of the calculated potential. Here is the same Python code used above to visualize the calculated and harmonic potentials.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># redefine x because it has been over written</span>
-<span class="n">dx</span> <span class="o">=</span> <span class="mf">0.05</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">3.05</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
-
-<span class="c1"># equilbirum bond length</span>
-<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">hf_potential</span><span class="p">)</span>
-<span class="n">x_e</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-
-<span class="c1"># k = d^2 V(x) / dx^2</span>
-<span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="n">hf_potential</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">hf_potential</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> <span class="n">hf_potential</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span>
-
-<span class="c1"># harmonic potential</span>
-<span class="n">harmonic</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x_e</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">hf_potential</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Hartree-Fock&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">harmonic</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;harmonic&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;potential&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;H-H distance&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>The harmonic vibrational frequencies can be determined using the method of <a class="reference external" href="https://en.wikipedia.org/wiki/GF_method">F and G matrices</a>, for example. Let us consider the simplest case, a heteronuclear diatomic molecule, <span class="math notranslate nohighlight">\(CO\)</span>. As discussed above, one can calculate the potential energy curve as a function of the C-O distance using a quantum chemistry method such as coupled cluster theory. The potential near the equilibrium geometry can then be approximated with a harmonic one, where the force constant is defined by the second derivative of the calculated potential. Here is the same Python code used above to visualize the calculated and harmonic potentials.</p>
 <p>Now, we can write down a Hamiltonian for the nuclei that experience this potential:</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}
@@ -1637,62 +1687,218 @@ E_\text{ZPE} = \frac{1}{2} \sum_i h \nu_i
 \[\begin{align}
 \nu = \frac{1}{2\pi} \left ( \frac{k}{\mu} \right )^{1/2}
 \end{align}\]</div>
-<p>We can determine <span class="math notranslate nohighlight">\(\nu\)</span> using the value for <span class="math notranslate nohighlight">\(k\)</span> extracted from the Hartree-Fock potential energy curve. We must be careful of our units, though. Having calculated <span class="math notranslate nohighlight">\(k\)</span> as the second derivative of the potential, its units are <span class="math notranslate nohighlight">\(E_h / Å^2\)</span>, where <span class="math notranslate nohighlight">\(E_h\)</span> represents the Hartree, the atomic unit for energy. Calculating <span class="math notranslate nohighlight">\(\nu\)</span> is probabaly easiest done in atomic units, where 1 Å = 1.8897259886 a<span class="math notranslate nohighlight">\(_0\)</span>, where a<span class="math notranslate nohighlight">\(_0\)</span> is the Bohr, the atomic unit of distance.</p>
-<div class="cell docutils container">
+<p>We can determine <span class="math notranslate nohighlight">\(\nu\)</span> using the value for <span class="math notranslate nohighlight">\(k\)</span> extracted from the HF potential energy curve we computed earlier.</p>
+</section>
+</section>
+<section id="important-points-about-units">
+<h2>Important Points about Units<a class="headerlink" href="#important-points-about-units" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>We have computed our <span class="math notranslate nohighlight">\(k\)</span> value in atomic units</p></li>
+<li><p>We typically report atomic masses in atomic mass units, which are not the same as atomic units</p></li>
+<li><p>We will want to convert our reduced mass to atomic units so that our frequency can be in a common unit system</p></li>
+<li><p>We should report our fundamental frequency in a unit system that aligns with spectroscopic conventions, which for vibrational spectroscopy is the wavenumber <span class="math notranslate nohighlight">\(\bar{\nu}\)</span> in <span class="math notranslate nohighlight">\({\rm cm}^{-1}\)</span></p></li>
+</ul>
+<p>Let’s think through how we can perform the necessary unit conversion.</p>
+<p><strong>Atomic Mass Unit</strong> Is defined such that <span class="math notranslate nohighlight">\(1 \: {\rm AMU} = \frac{m_{\rm ^{12}C}}{12}\)</span>, where <span class="math notranslate nohighlight">\(m_{{\rm ^{12}C}}\)</span> is the mass of carbon 12.</p>
+<p><strong>Atomic Unit of Mass</strong> Is defined such that <span class="math notranslate nohighlight">\(1 \: {\rm a.u.} = m_{\rm e}\)</span>, where <span class="math notranslate nohighlight">\(m_{\rm e}\)</span> is the mass of an electron.</p>
+<p>Let’s think through how we can perform the necessary unit conversion.</p>
+<p><strong>Atomic Mass Unit</strong> is defined such that<br />
+$<span class="math notranslate nohighlight">\(1 \: \text{AMU} = \frac{m_{\rm ^{12}C}}{12},\)</span><span class="math notranslate nohighlight">\(  
+where \)</span> m_{\rm ^{12}C} $ is the mass of a carbon-12 atom.</p>
+<p><strong>Atomic Unit of Mass</strong> is defined such that<br />
+$<span class="math notranslate nohighlight">\(1 \: \text{a.u.} = m_{\rm e},\)</span><span class="math notranslate nohighlight">\(  
+where \)</span> m_{\rm e} $ is the mass of an electron.</p>
+<hr class="docutils" />
+<section id="unit-conversion-question-1">
+<h3>Unit Conversion Question 1<a class="headerlink" href="#unit-conversion-question-1" title="Link to this heading">#</a></h3>
+<p>How many atomic units of mass (a.u.) are there in one atomic mass unit (AMU)?<br />
+In other words, convert <span class="math notranslate nohighlight">\( 1 \: \text{AMU} \)</span> to atomic units of mass.</p>
+<details>
+<summary><strong>💡 Click to reveal the worked solution</strong></summary>
+<p>We are asked to convert from AMU to atomic units of mass (electron masses).</p>
+<p>We start by noting the following values:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( 1 \: \text{AMU} = 1.66053906660 \times 10^{-27} \: \text{kg} \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( 1 \: \text{a.u.} = m_{\rm e} = 9.1093837015 \times 10^{-31} \: \text{kg} \)</span></p></li>
+</ul>
+<p>Now compute the ratio:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1 \: \text{AMU}}{1 \: \text{a.u.}} = \frac{1.66053906660 \times 10^{-27} \: \text{kg}}{9.1093837015 \times 10^{-31} \: \text{kg}} \approx 1822.888
+\]</div>
+<p>So,
+$<span class="math notranslate nohighlight">\(
+1 \: \text{AMU} \approx 1822.888 \: \text{a.u.}
+\)</span>$</p>
+</details>
+<br>
+<br>
+Now if we compute the frequency using $k$ and $\mu$ both in atomic units, we will have a frequency in inverse atomic units of time.
+<p><strong>Atomic Unit of Time</strong> is defined such that<br />
+$<span class="math notranslate nohighlight">\(1 \: \text{a.u.} = 2.418884326509 \times 10^{-17} \: \text{s}\)</span>$</p>
+<p>So the atomic unit of frequency is the inverse:</p>
+<div class="math notranslate nohighlight">
+\[
+1 \: \text{a.u. of frequency} = \frac{1}{2.418884326509 \times 10^{-17} \: \text{s}} \approx 4.134137333649 \times 10^{16} \: \text{Hz}
+\]</div>
+<p>Thus, if we take our values of <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\(\mu\)</span> in atomic units, we can compute the frequency in inverse seconds as</p>
+<div class="math notranslate nohighlight">
+\[ \nu \; \; (\text{in \; s}^{-1}) = \frac{1}{2 \pi} \sqrt{\frac{k}{\mu}} \times 4.134137333649 \times 10^{16} \]</div>
+</section>
+</section>
+<section id="spectroscopic-units">
+<h2>Spectroscopic units<a class="headerlink" href="#spectroscopic-units" title="Link to this heading">#</a></h2>
+<p>Very commonly, vibrational spectra are reported using wavenumbers in inverse centimeters (<span class="math notranslate nohighlight">\(\bar{\nu} \; \text{in} \; \text{cm}^{-1}\)</span>) rather than frequency in Hertz (<span class="math notranslate nohighlight">\(\nu \; \text{in} \; \text{s}^-1\)</span>).  We can perform one
+final manipulation from our frequency in seconds to get to wavenumbers, which is to divide by the speed of light in <span class="math notranslate nohighlight">\(\frac{\text{cm}}{\text{s}}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ \bar{\nu} = \frac{\nu}{c} \]</div>
+<section id="question">
+<h3>❓ Question<a class="headerlink" href="#question" title="Link to this heading">#</a></h3>
+<p>What is the single <strong>conversion factor</strong> that allows you to convert a vibrational frequency expressed in atomic units of frequency (i.e., <span class="math notranslate nohighlight">\( \nu_{\text{a.u.}} \)</span>) directly into wavenumbers (in <span class="math notranslate nohighlight">\(\text{cm}^{-1} \)</span>)?</p>
+<p>That is, find the value of the constant <span class="math notranslate nohighlight">\( \alpha \)</span> such that:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{\nu} \; (\text{in} \; \text{cm}^{-1}) = \alpha \times \nu_{\text{a.u.}}
+\]</div>
+<details>
+<summary><strong>💡 Click to reveal the worked solution</strong></summary>
+<p>We begin by converting from atomic units of frequency to frequency in Hz (s<span class="math notranslate nohighlight">\(^{-1}\)</span>), and then to wavenumbers (cm<span class="math notranslate nohighlight">\(^{-1}\)</span>).</p>
+<hr class="docutils" />
+<p><strong>Step 1: Convert atomic units of frequency to Hz</strong></p>
+<p>The atomic unit of time is:</p>
+<div class="math notranslate nohighlight">
+\[
+1 \: \text{a.u.} = 2.418884326509 \times 10^{-17} \: \text{s}
+\]</div>
+<p>So the atomic unit of frequency is the inverse:</p>
+<div class="math notranslate nohighlight">
+\[
+1 \: \text{a.u. of frequency} = \frac{1}{2.418884326509 \times 10^{-17} \: \text{s}} \approx 4.134137333649 \times 10^{16} \: \text{Hz}
+\]</div>
+<hr class="docutils" />
+<p><strong>Step 2: Convert Hz to cm<span class="math notranslate nohighlight">\(^{-1}\)</span></strong></p>
+<p>The speed of light is:</p>
+<div class="math notranslate nohighlight">
+\[
+c = 2.99792458 \times 10^{10} \: \text{cm/s}
+\]</div>
+<p>So:</p>
+<div class="math notranslate nohighlight">
+\[
+1 \: \text{Hz} = \frac{1}{2.99792458 \times 10^{10}} \: \text{cm}^{-1} \approx 3.335640951981 \times 10^{-11} \: \text{cm}^{-1}
+\]</div>
+<hr class="docutils" />
+<p><strong>Step 3: Multiply the two conversions</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\alpha = \left(4.134137333649 \times 10^{16}\right) \times \left(3.335640951981 \times 10^{-11}\right)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\alpha \approx 1378999.77 \: \text{cm}^{-1}
+\]</div>
+<hr class="docutils" />
+<p>✅ <strong>Final Answer:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{1 \: \text{a.u. of frequency} \approx 1378999.77 \: \text{cm}^{-1}}
+\]</div>
+<p>So you can use this constant to convert vibrational frequencies in atomic units directly into wavenumbers.</p>
+</details>
+<br>
+<br>
+**In the following markdown cell, we will assign these conversion constants for subsequent use in determining the fundamental of CO in wavenumbers.<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mass of hydrogen (amu). take from molecule object defined earlier</span>
-<span class="n">m</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">mass</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># conversion from AMU to atomic units</span>
+<span class="n">amu_to_au</span> <span class="o">=</span> <span class="mf">1822.888</span>
 
-<span class="c1"># convert the mass to atomic units</span>
-<span class="n">m</span> <span class="o">=</span> <span class="n">m</span> <span class="o">/</span> <span class="n">psi4</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">au2amu</span>
-
-<span class="c1"># reduced mass mm/(m+m) = 1/2 m</span>
-<span class="n">mu</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">m</span>
-
-<span class="c1"># force constant in atomic units</span>
-<span class="n">k_au</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">psi4</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">bohr2angstroms</span><span class="o">**</span><span class="mi">2</span>
-
-<span class="c1"># frequency in atomic units</span>
-<span class="n">nu_au</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k_au</span> <span class="o">/</span> <span class="n">mu</span><span class="p">)</span>
-
-<span class="c1"># angular frequency (units of Hartree ... for ease of conversion to cm^-1)</span>
-<span class="n">omega_au</span> <span class="o">=</span> <span class="n">nu_au</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> 
-
-<span class="c1"># frequency in cm^-1</span>
-<span class="n">nu</span> <span class="o">=</span> <span class="n">omega_au</span> <span class="o">*</span> <span class="n">psi4</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">hartree2wavenumbers</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The harmonic frequency is </span><span class="si">%8.1f</span><span class="s1"> cm^-1&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">nu</span><span class="p">)</span> <span class="p">)</span>
+<span class="c1"># conversion from atomic units of frequency to wavenumbers in inverse centimeters</span>
+<span class="n">au_to_inv_cm</span> <span class="o">=</span> <span class="mf">1378999.77</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Now, let us check this result against a frequency calculation carried out using Psi4. When performing frequency analysis with a quantum chemistry package such as Psi4, we must be sure that the analysis is done at the equilibrium geometry for the molecule.</p>
+<p>In the next cell, we will set up the calculation of the fundamental frequency from our HF scan of the C-O stretch.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set molecule</span>
-<span class="n">mol</span> <span class="o">=</span> <span class="n">psi4</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">h</span>
-<span class="s2">h 1 0.7</span>
-<span class="s2">symmetry c1</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>   
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># equilbirum bond length</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">hf_potential</span><span class="p">)</span>
+<span class="n">x_e_au</span> <span class="o">=</span> <span class="n">x_au</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
 
-<span class="c1"># set some options for psi4</span>
-<span class="n">psi4</span><span class="o">.</span><span class="n">set_options</span><span class="p">({</span><span class="s1">&#39;basis&#39;</span><span class="p">:</span> <span class="s1">&#39;cc-pvdz&#39;</span><span class="p">,</span>
-                  <span class="s1">&#39;guess_mix&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-                  <span class="s1">&#39;reference&#39;</span><span class="p">:</span> <span class="s1">&#39;uhf&#39;</span><span class="p">})</span>
+<span class="c1"># k = d^2 V(x) / dx^2</span>
+<span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">hf_potential</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">*</span> <span class="n">hf_potential</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span> <span class="o">*</span> <span class="n">hf_potential</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">*</span> <span class="n">hf_potential</span><span class="p">[</span><span class="n">idx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">hf_potential</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="n">dx_au</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="c1"># tell psi4 not to print any output to the screen</span>
-<span class="n">psi4</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">be_quiet</span><span class="p">()</span>
+<span class="c1"># define reduced mass of carbon monoxide first in AMU</span>
+<span class="n">m_C</span> <span class="o">=</span> <span class="mf">12.0</span> <span class="c1"># mass of ^12C in AMU</span>
+<span class="n">m_O</span> <span class="o">=</span> <span class="mf">15.99491461956</span> <span class="c1"># mass of ^16O in AMU</span>
 
-<span class="c1"># optimize geometry</span>
-<span class="n">psi4</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="s1">&#39;scf&#39;</span><span class="p">)</span>
+<span class="c1"># reduced mass</span>
+<span class="n">mu_AMU</span> <span class="o">=</span> <span class="p">(</span><span class="n">m_C</span> <span class="o">*</span> <span class="n">m_O</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">m_C</span> <span class="o">+</span> <span class="n">m_O</span><span class="p">)</span>
 
-<span class="c1"># calculate harmonic frequencies</span>
-<span class="n">en</span><span class="p">,</span> <span class="n">wfn</span> <span class="o">=</span> <span class="n">psi4</span><span class="o">.</span><span class="n">frequency</span><span class="p">(</span><span class="s1">&#39;scf&#39;</span><span class="p">,</span> <span class="n">return_wfn</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="c1"># convesion from AMU to atomic units of mass</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">mu_AMU</span> <span class="o">*</span> <span class="n">amu_to_au</span>
 
-<span class="c1"># extract frequencies from the wave function</span>
-<span class="n">freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">wfn</span><span class="o">.</span><span class="n">frequencies</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The harmonic frequency is </span><span class="si">%8.1f</span><span class="s1"> cm^-1&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">freq</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">)</span>
+<span class="c1"># compute the frequency in atomic units</span>
+<span class="n">freq_au</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">k</span> <span class="o">/</span> <span class="n">mu</span> <span class="p">)</span>
+
+<span class="c1"># convert to wavenumbers</span>
+<span class="n">au_to_wn</span> <span class="o">=</span> <span class="mf">1378999.77</span>
+<span class="n">nu_bar</span> <span class="o">=</span> <span class="n">freq_au</span> <span class="o">*</span> <span class="n">au_to_wn</span>
+
+<span class="c1"># harmonic potential</span>
+<span class="n">harmonic</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">x_au</span><span class="o">-</span><span class="n">x_e_au</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_au</span><span class="p">,</span> <span class="n">hf_potential</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CCSD&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_au</span><span class="p">,</span> <span class="n">harmonic</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;harmonic&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x_au</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_au</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;potential&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;C-O distance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, let us check this result against a frequency calculation carried out using PySCF. When performing frequency analysis with a quantum chemistry package such as PySCF, we must be sure that the analysis is done at the equilibrium geometry for the molecule.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyscf</span><span class="w"> </span><span class="kn">import</span> <span class="n">gto</span><span class="p">,</span> <span class="n">scf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyscf.geomopt.geometric_solver</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimize</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyscf.hessian</span><span class="w"> </span><span class="kn">import</span> <span class="n">thermo</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyscf.hessian</span><span class="w"> </span><span class="kn">import</span> <span class="n">rhf</span> <span class="k">as</span> <span class="n">rhf_hessian</span>
+
+<span class="c1"># Guess geometry of CO</span>
+<span class="n">mol</span> <span class="o">=</span> <span class="n">gto</span><span class="o">.</span><span class="n">M</span><span class="p">(</span><span class="n">atom</span><span class="o">=</span><span class="s1">&#39;C 0 0 0; O 0 0 1.2&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="s1">&#39;cc-pvdz&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">mf</span> <span class="o">=</span> <span class="n">scf</span><span class="o">.</span><span class="n">RHF</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+
+<span class="c1"># optimize geometry and print the result</span>
+<span class="n">mol_eq</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span><span class="n">mf</span><span class="p">,</span> <span class="n">maxsteps</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mol_eq</span><span class="o">.</span><span class="n">tostring</span><span class="p">())</span>
+
+<span class="c1"># prepare frequency calculation</span>
+<span class="n">mf_eq</span> <span class="o">=</span> <span class="n">scf</span><span class="o">.</span><span class="n">RHF</span><span class="p">(</span><span class="n">mol_eq</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">hess</span> <span class="o">=</span> <span class="n">rhf_hessian</span><span class="o">.</span><span class="n">Hessian</span><span class="p">(</span><span class="n">mf_eq</span><span class="p">)</span><span class="o">.</span><span class="n">kernel</span><span class="p">()</span>
+
+<span class="c1"># perform vibrational analysis on the Hessian</span>
+<span class="n">freq_info</span> <span class="o">=</span> <span class="n">thermo</span><span class="o">.</span><span class="n">harmonic_analysis</span><span class="p">(</span><span class="n">mf</span><span class="o">.</span><span class="n">mol</span><span class="p">,</span> <span class="n">hess</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now the frequency information from PySCF is stored in the dictionary <code class="docutils literal notranslate"><span class="pre">freq_info</span></code>, and we can access the fundamental frequency in wavenumbers
+by using the key <code class="docutils literal notranslate"><span class="pre">'freq_wavenumber'</span></code>.  For most molecular systems, there will be more than one vibrational frequency, so this dictionary element is actually as list.<br />
+For CO, we only have one frequency, so we will only be interested in element 0 of that list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pySCF_nu_bar</span> <span class="o">=</span> <span class="n">freq_info</span><span class="p">[</span><span class="s1">&#39;freq_wavenumber&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;PySCF Fundamental: </span><span class="si">{</span><span class="n">pySCF_nu_bar</span><span class="si">:</span><span class="s1">12.4f</span><span class="si">}</span><span class="s1"> cm^-1&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;Our Fundamental:   </span><span class="si">{</span><span class="n">nu_bar</span><span class="si">:</span><span class="s1">12.4f</span><span class="si">}</span><span class="s1"> cm^-1&#39;</span><span class="p">)</span>
+
+<span class="n">Error</span> <span class="o">=</span> <span class="n">nu_bar</span> <span class="o">-</span> <span class="n">pySCF_nu_bar</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;Difference is:     </span><span class="si">{</span><span class="n">Error</span><span class="si">:</span><span class="s1">12.4f</span><span class="si">}</span><span class="s1"> cm^-1&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1764,13 +1970,134 @@ E_\text{ZPE} = \frac{1}{2} \sum_i h \nu_i
 </section>
 <section id="real-molecular-vibrations">
 <h3>“Real” Molecular Vibrations<a class="headerlink" href="#real-molecular-vibrations" title="Link to this heading">#</a></h3>
-<p>The QHO model is just that, a model, and the vibrational motion of a real molecule is not perfectly described as a QHO. Several key differences between vibrations in a harmonic oscillator and a “real” molecule are worth discussing.</p>
-<ol class="arabic simple">
-<li><p>In addition to transitions that obey the selection rule, <span class="math notranslate nohighlight">\(\Delta v = \pm 1,\)</span> a vibrational spectrum may also include <strong>overtones</strong>, which correspond to transitions that violate this rule (e.g., <span class="math notranslate nohighlight">\(v=0 \to v=2\)</span>). Why are such features observed, if, mathematically, the selection rule suggests that these transitions should not occur? The reason is that the actual potential energy curve corresponding to a vibrational mode is not harmonic. As such, the selection rules derived above are not strict.</p></li>
-<li><p>The energy levels of a quantum harmonic oscillator are evenly spaced. On the other hand, vibrational energy levels in a real molecule become more closely spaced as the vibrational quantum number increases. Hence, the QHO model is better suited to the description of low-energy vibrational states than high-energy ones.</p></li>
-<li><p>The QHO model predicts that there are infinitely many <strong>bound</strong> vibrational states, with quantized energies. In a real-molecular system, however, the vibrational energy levels get closer together with increasing energy until reaching the dissociation limit for the molecule. Beyond this point, there exists a continuum of <strong>unbound</strong> states.</p></li>
+<p>The harmonic oscillator is a powerful model that is widely used for molecular vibrations among many other phenomena; however, it does not
+capture several important features of real molecular vibrations.  Here we list some of the more important features of real molecular vibrations that the harmonic oscillator model misses.</p>
+<ol class="arabic">
+<li><p><strong>Overtones and Selection Rule Violations</strong></p>
+<p>In addition to transitions that obey the selection rule, <span class="math notranslate nohighlight">\(\Delta v = \pm 1,\)</span> a vibrational spectrum may also include <strong>overtones</strong>, which correspond to transitions that violate this rule (e.g., <span class="math notranslate nohighlight">\(v=0 \to v=2\)</span> for the first overtone, <span class="math notranslate nohighlight">\(v=0 \to v=3\)</span> for the second overtone, etc.). Why are such features observed, if, mathematically, the selection rule suggests that these transitions should not occur? The reason is that the actual potential energy curve corresponding to a vibrational mode is not harmonic. Real molecular potentials are <strong>anharmonic</strong> - they deviate from the parabolic shape of the harmonic potential, typically becoming “softer” (less steep) at larger displacements. As such, the selection rules derived for the harmonic oscillator are not strict.</p>
+</li>
+<li><p><strong>Energy Level Spacing</strong></p>
+<p>The energy levels of a quantum harmonic oscillator are evenly spaced. On the other hand, vibrational energy levels in a real molecule become more closely spaced as the vibrational quantum number increases. This decreasing spacing occurs because real molecular potentials deviate from the parabolic harmonic form, becoming increasingly flat at larger displacements. Hence, the QHO model is better suited to the description of low-energy vibrational states than high-energy ones.</p>
+</li>
+<li><p><strong>Hot Band Transitions</strong></p>
+<p>Given that energy levels become more closely spaced as the vibrational quantum number increases, transitions like <span class="math notranslate nohighlight">\(v = 0 \to v = 1\)</span> will be associated with a larger frequency than transitions like <span class="math notranslate nohighlight">\(v = 1 \to v = 2\)</span> in real molecules (they would be identical in the harmonic oscillator model). Hence, in real molecules we observe distinct <strong>hot band</strong> transitions that correspond to transitions between <span class="math notranslate nohighlight">\(v \to v'\)</span> where <span class="math notranslate nohighlight">\(v &gt; 0\)</span> and <span class="math notranslate nohighlight">\(v' = v + 1\)</span>. In this nomenclature, the <span class="math notranslate nohighlight">\(v = 1 \to v = 2\)</span> transition is called the first hot band, the <span class="math notranslate nohighlight">\(v = 2 \to v = 3\)</span> transition is called the second hot band, and so on. Hot bands become more prominent at higher temperatures when higher vibrational states are thermally populated, which is why they’re called “hot” bands.</p>
+</li>
+<li><p><strong>Dissociation and Bound States</strong></p>
+<p>The QHO model predicts that there are infinitely many <strong>bound</strong> vibrational states, with quantized energies. In a real molecular system, however, the vibrational energy levels <strong>converge</strong> toward the dissociation limit for the molecule. Beyond this point, there exists a continuum of <strong>unbound</strong> states. This convergence occurs because the anharmonic potential becomes increasingly flat as the bond stretches toward the breaking point. A different way of saying this is that real molecules can dissociate after the atoms stretch beyond the point of bond breaking, but the harmonic oscillator does not dissociate.</p>
+</li>
 </ol>
+<p><strong>Mathematical Description of Anharmonicity</strong>
+In the next section, we will the Morse oscillator model, which is one particular anharmonic oscillator model that has an analytical solution.</p>
 </section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="morse-oscillator-model">
+<h1>Morse Oscillator model<a class="headerlink" href="#morse-oscillator-model" title="Link to this heading">#</a></h1>
+<p>The Morse oscillator model will lead to all of the features mentioned above (overtones, energy levels that become more closely spaced, distinct hot bands, dissociation).  After introducing the model, we will compare the potentials to the harmonic potential and the {\it ab initio} potential for CO, and we will compare the estimates of the fundamental transition (<span class="math notranslate nohighlight">\(v=0 \rightarrow v=1\)</span>) for CO as obtained by the harmonic and Morse oscillator models.</p>
+<p>Within the Morse model, the vibrational Hamiltonian can be written as
+\begin{equation}
+\hat{H}<em>{vib} = -\frac{\hbar^2}{2\mu} \frac{d^2}{dr^2} + V</em>{Morse}(r), \tag{1}
+\end{equation}
+where
+\begin{equation}
+V_{Morse}(r) = D_e \left(1 - e^{-\beta(r-r_{eq})} \right)^2. \tag{2}
+\end{equation}</p>
+<p>The Morse parameters for <span class="math notranslate nohighlight">\({\rm CO}\)</span> are as follows: <span class="math notranslate nohighlight">\(D_e = 11.225 \: {\rm eV}\)</span>, <span class="math notranslate nohighlight">\(r_{eq} = 1.1283 \: {\rm Ang.}\)</span>, <span class="math notranslate nohighlight">\(\beta = 2.5944 \: {\rm Ang.}^{-1}\)</span>,
+and <span class="math notranslate nohighlight">\(\mu = 6.8606 \: {\rm amu}\)</span>.</p>
+<p>The exact energy eigenvalues for Equation (1) can be written as
+\begin{equation}
+E_n = \hbar \omega \left( \left(n+ \frac{1}{2} \right) - \chi_e \left(n+ \frac{1}{2} \right)^2 \right) \tag{3}
+\end{equation}
+where
+\begin{equation}
+\omega = \sqrt{\frac{2D_e \beta^2}{\mu}} \tag{4}
+\end{equation}
+and
+\begin{equation}
+\chi_e = \frac{\hbar \omega}{4 D_e}. \tag{5}
+\end{equation}</p>
+<p>We can see these as subsequent corrections to the harmonic oscillator model, or alternatively, we can view them as approximations to the Morse model.</p>
+<p>We will use the Morse potential as a model for the “exact” interatomic potential, and we will approximate this potential by different orders of a Taylor expansion: including up to quadratic (which is the harmonic oscillator approximation), cubic, and quartic terms.  The harmonic and Morse potentials are exactly solvable, and the eigenfunctions and eigenvalues of the vibrational Hamiltonian with cubic and quartic potentials can be approximated using perturbation theory.  Therefore, we will
+compare the fundamental  transition computed exactly for harmonic and Morse potentials, and approximately at 2nd order of perturbation theory for cubic and quartic potentials to see the impact of various levels of potential truncation and approximation.</p>
+<p>Within the Morse model, the vibrational Hamiltonian can be written as
+\begin{equation}
+\hat{H}<em>{vib} = -\frac{\hbar^2}{2\mu} \frac{d^2}{dr^2} + V</em>{Morse}(r), \tag{1}
+\end{equation}
+where
+\begin{equation}
+V_{Morse}(r) = D_e \left(1 - e^{-\beta(r-r_{eq})} \right)^2. \tag{2}
+\end{equation}</p>
+<p>The Morse parameters for <span class="math notranslate nohighlight">\({\rm CO}\)</span> are as follows: <span class="math notranslate nohighlight">\(D_e = 11.225 \: {\rm eV}\)</span>, <span class="math notranslate nohighlight">\(r_{eq} = 1.1283 \: {\rm Ang.}\)</span>, <span class="math notranslate nohighlight">\(\beta = 2.5944 \: {\rm Ang.}^{-1}\)</span>,
+and <span class="math notranslate nohighlight">\(\mu = 6.8606 \: {\rm amu}\)</span>.</p>
+<p>The exact energy eigenvalues for Equation (1) can be written as
+\begin{equation}
+E_n = \hbar \omega \left( \left(n+ \frac{1}{2} \right) - \chi_e \left(n+ \frac{1}{2} \right)^2 \right) \tag{3}
+\end{equation}
+where
+\begin{equation}
+\omega = \sqrt{\frac{2D_e \beta^2}{\mu}} \tag{4}
+\end{equation}
+and
+\begin{equation}
+\chi_e = \frac{\hbar \omega}{4 D_e}. \tag{5}
+\end{equation}</p>
+<p>The Morse potential can be approximated by a Taylor expansion as follows:
+\begin{equation}
+V_T(r) = \sum_{n=0}^{\infty} \frac{ f^{(n)}(r_{eq})}{n!} \left(r-r_{eq} \right)^n, \tag{6}
+\end{equation}
+where <span class="math notranslate nohighlight">\(f^{(n)}(r_{eq})\)</span> is the <span class="math notranslate nohighlight">\(n^{th}\)</span>-order derivative of the Morse potential evaluated at the equilibrium bondlength, e.g. <span class="math notranslate nohighlight">\(f^{(1)}(r_{eq}) = \frac{d}{dr}V_{Morse}(r_{eq}).\)</span></p>
+<p>We will define the Harmonic approximation to the potential as
+\begin{equation}
+V_H(r) =  \frac{ f^{‘’}(r_{eq})}{2} \left(r-r_{eq} \right)^2 = \frac{1}{2} k \left(r-r_{eq} \right)^2 \tag{7}
+\end{equation}
+the cubic approximation to the potential as
+\begin{equation}
+V_C(r) =  V_H(r) + \frac{ f^{‘’’}(r_{eq})}{6} \left(r-r_{eq} \right)^3 = V_H(r) + \frac{1}{6} g \left(r-r_{eq} \right)^3,   \tag{8}
+\end{equation}
+and the quartic approximation as
+\begin{equation}
+V_Q(r) =  V_C(r) + \frac{ f^{‘’’’}(r_{eq})}{24} \left(r-r_{eq} \right)^4 =  V_C(r) + \frac{1}{24}h(r-r_{eq})^4.  \tag{9}
+\end{equation}</p>
+<p>Because we are using the Morse model as the “exact” interatomic potential in this notebook, we can compute these derivatives at <span class="math notranslate nohighlight">\(r_{eq}\)</span> analytically:
+\begin{align}
+k = 2 D_e \beta^2 \
+g = -6 D_e \beta^3 \tag{10} \
+h = 14 D_e \beta^4.
+\end{align}
+However, in general we do not have an analytical form for the interatomic potential, so we must rely on numerical derivatives of the potential evaluated at the <span class="math notranslate nohighlight">\(r_{eq}\)</span>.  In the context of interatomic potentials computed by quantum chemistry methods (e.g. CCSD(T)), one must first identify the equilibrium geometry, and then compute derivatives by taking a number of single point calculations along all displacement coordinates to compute differences among.  We will write the explicit expression for the second derivative using centered finite differences along the one displacement coordinate relevant for our <span class="math notranslate nohighlight">\({\rm CO}\)</span> molecule:
+\begin{equation}
+k=\frac{V_{Morse}(r_{eq}+\Delta r)-2V_{Morse}(r_{eq})+V_{Morse}(r_{eq}-\Delta r)}{\Delta r^2}+\mathcal O (\Delta r^2) \tag{11}
+\end{equation}
+where <span class="math notranslate nohighlight">\(\Delta r\)</span> represents a small displacement along the coordinate <span class="math notranslate nohighlight">\(r\)</span>.  Higher-order derivatives can also be computed, but will require larger numbers of displacements and therefore more energy evaluations by your quantum chemistry method.  Expressions for higher-order derivatives along a single coordinate can be found <a class="reference external" href="https://sameradeeb.srv.ualberta.ca/introduction-to-numerical-analysis/numerical-differentiation/#centred-finite-difference9">here</a>. Note that the number of displacement coordinates <span class="math notranslate nohighlight">\(N\)</span> grows linearly with the number of atoms, and that the number of displacements required to form the <span class="math notranslate nohighlight">\(n^{{\rm th}}\)</span>-order approximation to the potential grows as <span class="math notranslate nohighlight">\(N^n\)</span>.</p>
+<section id="perturbation-theory">
+<h2>Perturbation Theory<a class="headerlink" href="#perturbation-theory" title="Link to this heading">#</a></h2>
+<p>We can compute the exact vibrational transition energies for the Morse oscillator and the Harmonic oscillator using Equation (3), where the Harmonic oscillator transition energies come from Equation (3) with <span class="math notranslate nohighlight">\(\chi_e = 0\)</span>.  However, the transition energies when the potential is approximated as <span class="math notranslate nohighlight">\(V_C(r)\)</span> or <span class="math notranslate nohighlight">\(V_Q(r)\)</span> must be approximated.  We will illustrate the use of Perturbation Theory approximate these transition energies.</p>
+<p>Here we will consider the Hamiltonian
+\begin{equation}
+\hat{H}<em>{vib} = -\frac{\hbar^2}{2\mu} \frac{d^2}{dr^2} + V</em>{H}(r) + V’(r) = \hat{H}_0 + V’(r) \tag{12},
+\end{equation}
+where <span class="math notranslate nohighlight">\(\hat{H}_0\)</span> is exactly solved by the Harmonic oscillator energy eigenfunctions and eigenvalues (<span class="math notranslate nohighlight">\(\psi^{(0)}_n(r)\)</span>, <span class="math notranslate nohighlight">\(E^{(0)}_n\)</span>), and <span class="math notranslate nohighlight">\(V'(r)\)</span> is the perturbation which will take the form of either
+<span class="math notranslate nohighlight">\(V'(r) = \frac{1}{6}g(r-r_{eq})^3\)</span> or <span class="math notranslate nohighlight">\(V'(r) = \frac{1}{6}g(r-r_{eq})^3 + \frac{1}{24}h(r-r_{eq})^4\)</span> in the cubic and quartic approximations, respectively.</p>
+<p>We can calculate the energy of state <span class="math notranslate nohighlight">\(n\)</span> at 2nd order of perturbation theory as follows:
+\begin{equation}
+E_n = E_n^{(0)} +  \langle \psi_n^{(0)} | V’(r) | \psi_n^{(0)} \rangle + \sum_{k \neq n} \frac{|\langle \psi_k^{(0)} | V’(r) | \psi_n^{(0)}|^2}{E_n^{(0)}-E_k^{(0)}}. \tag{13}
+\end{equation}</p>
+<p>Recall that for the zeroth-order functions have the form
+\begin{align}
+\psi_n^{(0)}(r) &amp;= \sqrt{\frac{1}{2^n n!}} \cdot \left(\frac{\alpha}{\pi} \right)^{1/4} \cdot H_n \left(\sqrt{\alpha} r \right) \cdot {\rm exp}\left(\frac{-\alpha }{2} r^2 \right) \
+\alpha &amp;= \frac{\mu \omega}{\hbar} \
+\omega &amp;= \sqrt{\frac{k}{\mu}}
+\end{align}</p>
+</section>
+<section id="approach">
+<h2>Approach<a class="headerlink" href="#approach" title="Link to this heading">#</a></h2>
+<p>We will compute the fundamental transition (<span class="math notranslate nohighlight">\(E_1 - E_0\)</span>) using the following approaches:</p>
+<ol class="arabic simple">
+<li><p>Harmonic approximation: <span class="math notranslate nohighlight">\(E_1 - E_0 = \hbar \omega\)</span></p></li>
+<li><p>Exact solution for Morse Hamiltonian: <span class="math notranslate nohighlight">\(E_1 - E_0 = \hbar \omega (1 - 2\chi_e)\)</span></p></li>
+<li><p>Evaluation of Eq. (13) for <span class="math notranslate nohighlight">\(n=0\)</span> and <span class="math notranslate nohighlight">\(n=1\)</span> utilizing the cubic contribution for <span class="math notranslate nohighlight">\(V'(r)\)</span></p></li>
+<li><p>Evaluation of Eq. (13) for <span class="math notranslate nohighlight">\(n=0\)</span> and <span class="math notranslate nohighlight">\(n=1\)</span> utilizing the cubic and quartic contribution for <span class="math notranslate nohighlight">\(V'(r)\)</span></p></li>
+</ol>
 </section>
 </section>
 
@@ -1838,6 +2165,7 @@ E_\text{ZPE} = \frac{1}{2} \sum_i h \nu_i
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter 4: Vibrational Motion</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-harmonic-potential">The Harmonic Potential</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-dimensional-classical-harmonic-oscillator">One-Dimensional Classical Harmonic Oscillator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-dimensional-quantum-harmonic-oscillator">One-Dimensional Quantum Harmonic Oscillator</a><ul class="nav section-nav flex-column">
@@ -1855,6 +2183,14 @@ E_\text{ZPE} = \frac{1}{2} \sum_i h \nu_i
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connections-to-computational-chemistry">Connections to Computational Chemistry</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-frequency-analysis">Harmonic Frequency Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-points-about-units">Important Points about Units</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-conversion-question-1">Unit Conversion Question 1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectroscopic-units">Spectroscopic units</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question">❓ Question</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-state-optimization">Transition State Optimization</a></li>
 </ul>
 </li>
@@ -1864,6 +2200,14 @@ E_\text{ZPE} = \frac{1}{2} \sum_i h \nu_i
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#morse-oscillator-model">Morse Oscillator model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perturbation-theory">Perturbation Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
