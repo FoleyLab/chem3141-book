@@ -564,3 +564,31 @@
 2025-06-19:10:05:55,477 INFO     [psi4.driver.driver:526] Return energy(): -100.43557891730518
 2025-06-19:10:05:55,486 INFO     [psi4.driver.task_planner:285] PLANNING Atomic:  keywords={'SCF__INTS_TOLERANCE': 1e-12, 'REFERENCE': 'RHF', 'SAVE_JK': 1, 'function_kwargs': {}}
 2025-06-19:10:05:55,487 INFO     [psi4.driver.driver:523] Compute energy(): method=b3lyp, basis=cc-pvdz, molecule=default, nre=5.133743828366506
+2025-06-19:10:05:55,703 INFO     [psi4.driver.driver:526] Return energy(): -100.43557833106223
+2025-06-19:10:05:55,716 INFO     [psi4.driver.task_planner:285] PLANNING Atomic:  keywords={'SCF__INTS_TOLERANCE': 1e-12, 'REFERENCE': 'RHF', 'SAVE_JK': 1, 'function_kwargs': {}}
+2025-06-19:10:05:55,717 INFO     [psi4.driver.driver:523] Compute energy(): method=b3lyp, basis=cc-pvdz, molecule=default, nre=5.150399137307532
+2025-06-19:10:05:55,940 INFO     [psi4.driver.driver:526] Return energy(): -100.43557379044643
+2025-06-19:10:05:55,949 INFO     [psi4.driver.task_planner:285] PLANNING Atomic:  keywords={'SCF__INTS_TOLERANCE': 1e-12, 'REFERENCE': 'RHF', 'SAVE_JK': 1, 'function_kwargs': {}}
+2025-06-19:10:05:55,950 INFO     [psi4.driver.driver:523] Compute energy(): method=b3lyp, basis=cc-pvdz, molecule=default, nre=5.14483537296373
+2025-06-19:10:05:56,192 INFO     [psi4.driver.driver:526] Return energy(): -100.43557740893387
+2025-06-19:10:05:56,201 INFO     [psi4.driver.task_planner:285] PLANNING Atomic:  keywords={'SCF__INTS_TOLERANCE': 1e-12, 'REFERENCE': 'RHF', 'SAVE_JK': 1, 'function_kwargs': {}}
+2025-06-19:10:05:56,202 INFO     [psi4.driver.driver:523] Compute energy(): method=b3lyp, basis=cc-pvdz, molecule=default, nre=5.133743828366506
+2025-06-19:10:05:56,413 INFO     [psi4.driver.driver:526] Return energy(): -100.43557833106223
+2025-06-19:10:05:56,422 INFO     [psi4.driver.task_planner:285] PLANNING Atomic:  keywords={'SCF__INTS_TOLERANCE': 1e-12, 'REFERENCE': 'RHF', 'SAVE_JK': 1, 'function_kwargs': {}}
+2025-06-19:10:05:56,423 INFO     [psi4.driver.driver:523] Compute energy(): method=b3lyp, basis=cc-pvdz, molecule=default, nre=5.128215970619956
+2025-06-19:10:05:56,632 INFO     [psi4.driver.driver:526] Return energy(): -100.43557566558007
+2025-06-19:10:05:56,645 INFO     [psi4.driver.task_planner:285] PLANNING Atomic:  keywords={'SCF__INTS_TOLERANCE': 1e-12, 'REFERENCE': 'RHF', 'SAVE_JK': 1, 'function_kwargs': {}}
+2025-06-19:10:05:56,646 INFO     [psi4.driver.driver:523] Compute energy(): method=b3lyp, basis=cc-pvdz, molecule=default, nre=5.150399137307532
+2025-06-19:10:05:56,854 INFO     [psi4.driver.driver:526] Return energy(): -100.43557379044643
+2025-06-19:10:05:56,863 INFO     [psi4.driver.task_planner:285] PLANNING Atomic:  keywords={'SCF__INTS_TOLERANCE': 1e-12, 'REFERENCE': 'RHF', 'SAVE_JK': 1, 'function_kwargs': {}}
+2025-06-19:10:05:56,864 INFO     [psi4.driver.driver:523] Compute energy(): method=b3lyp, basis=cc-pvdz, molecule=default, nre=5.14483537296373
+2025-06-19:10:05:57,72 INFO     [psi4.driver.driver:526] Return energy(): -100.43557740893387
+2025-06-19:10:05:57,81 INFO     [psi4.driver.task_planner:285] PLANNING Atomic:  keywords={'SCF__INTS_TOLERANCE': 1e-12, 'REFERENCE': 'RHF', 'SAVE_JK': 1, 'function_kwargs': {}}
+2025-06-19:10:05:57,82 INFO     [psi4.driver.driver:523] Compute energy(): method=b3lyp, basis=cc-pvdz, molecule=default, nre=5.139283616260117
+2025-06-19:10:05:57,292 INFO     [psi4.driver.driver:526] Return energy(): -100.43557891730518
+2025-06-19:10:05:57,301 INFO     [psi4.driver.task_planner:285] PLANNING Atomic:  keywords={'SCF__INTS_TOLERANCE': 1e-12, 'REFERENCE': 'RHF', 'SAVE_JK': 1, 'function_kwargs': {}}
+2025-06-19:10:05:57,302 INFO     [psi4.driver.driver:523] Compute energy(): method=b3lyp, basis=cc-pvdz, molecule=default, nre=5.133743828366506
+2025-06-19:10:05:57,520 INFO     [psi4.driver.driver:526] Return energy(): -100.43557833106223
+2025-06-19:10:05:57,529 INFO     [psi4.driver.task_planner:285] PLANNING Atomic:  keywords={'SCF__INTS_TOLERANCE': 1e-12, 'REFERENCE': 'RHF', 'SAVE_JK': 1, 'function_kwargs': {}}
+2025-06-19:10:05:57,530 INFO     [psi4.driver.driver:523] Compute energy(): method=b3lyp, basis=cc-pvdz, molecule=default, nre=5.128215970619956
+2025-06-19:10:05:57,742 INFO     [psi4.driver.driver:526] Return energy(): -100.43557566558007
