@@ -189,11 +189,14 @@
 
 <li class="toctree-l1"><a class="reference internal" href="qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 3: Translational Motion</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="vibration.html">Chapter 4: Vibrational Motion</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydrogen.html">The Hydrogen Atom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="variation.html">The Variation Theorem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="perturbation.html">Perturbation Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydrogen.html">Chapter 6: The Hydrogen Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variation.html">Chapter 7: The Variation Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="perturbation.html">Chapter 8: Perturbation Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SphHarm_visualize.html">Visualizing Spherical harmonics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
@@ -202,9 +205,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">Run the next two cells before beginning!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/HF_Coupled_to_Cavity_Tensor_To_Complete.html">Introduction to Molecular CQED</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Zeeman_Effect_Hydrogen_Atom.html">Solution</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">Linear Variational Method - Anharmonic Oscillator</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Zeeman_Effect_Hydrogen_Atom.html">Zeeman Effect</a></li>
+
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
@@ -459,17 +471,35 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter 3: Translational Motion</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-free-particle">The Free Particle</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-wave-function-and-its-properties">The Wave Function and Its Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-physical-meaning-of-e-pm-ikx-and-operator-eigenfunctions">Question: Physical Meaning of <span class="math notranslate nohighlight">\(e^{\pm ikx}\)</span> and Operator Eigenfunctions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-is-the-general-free-particle-an-eigenfunction-of-momentum">Question: Is the General Free Particle an Eigenfunction of Momentum?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-is-psi-x-ae-ikx-an-eigenfunction-of-the-position-operator">Question: Is <span class="math notranslate nohighlight">\(\psi(x) = Ae^{ikx}\)</span> an Eigenfunction of the Position Operator?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heisenberg-uncertainty-principle">Heisenberg Uncertainty Principle</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infinite-square-well-potential">Infinite Square Well Potential</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-dimensional-particle-in-a-box">One-Dimensional Particle-in-a-Box</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#three-dimensional-particle-in-a-box">Three-Dimensional Particle-in-a-Box</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#degenerate-energy-levels">Degenerate Energy Levels</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#infinite-square-well-potential-aka-particle-in-a-box-model">Infinite Square Well Potential, aka, Particle-in-a-box model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-to-conjugated-dye-molecules">Application to Conjugated Dye Molecules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-the-pib-model-works">Why the PIB Model Works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-interpretation">Physical Interpretation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-dimensional-particle-in-a-box">One-Dimensional Particle-in-a-Box</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deeper-dive-on-the-modeling-of-conjugated-dyes">Deeper Dive on the modeling of conjugated dyes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-box-length-and-energy-scaling-in-a-cyanine-dye">🔬 Particle in a Box: Length and Energy Scaling in a Cyanine Dye</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-unit-conversion-angstroms-to-meters">🧮 Step 1: Unit Conversion — Angstroms to Meters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-energy-in-joules">⚡ Step 2: Energy in Joules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-convert-to-electronvolts-ev">⚙️ Step 3: Convert to Electronvolts (eV)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-convert-to-wavelength-nm">🌈 Step 4: Convert to Wavelength (nm)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">✅ Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#three-dimensional-particle-in-a-box">Three-Dimensional Particle-in-a-Box</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#degenerate-energy-levels">Degenerate Energy Levels</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-free-particle-revisited">The Free Particle, Revisited</a></li>
@@ -481,6 +511,9 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tunneling-through-a-barrier">Tunneling Through a Barrier</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -493,7 +526,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-3-translational-motion">
 <h1>Chapter 3: Translational Motion<a class="headerlink" href="#chapter-3-translational-motion" title="Link to this heading">#</a></h1>
-<p>Prof. Eugene DePrince, Florida State University</p>
+<p>Prof. Eugene DePrince, Florida State University and Prof. Jay Foley, UNC Charlotte</p>
 <p>This notebook develops solutions to the time-independent Schrödinger equation (TISE) for several translational problems (e.g., particle-in-a-box, tunneling through a one-dimensional barrier, etc.). Relevant Python code is provided to assist in visualizing the wave functions and obtaining numerical solutions to the TISE.</p>
 <section id="the-free-particle">
 <h2>The Free Particle<a class="headerlink" href="#the-free-particle" title="Link to this heading">#</a></h2>
@@ -546,14 +579,30 @@ document.write(`
 E = \frac{k^2\hbar^2}{2m}
 \end{align}\]</div>
 <p>is the associated eigenvalue. We can draw one interesting conclusion from this result: nothing limits the value that <span class="math notranslate nohighlight">\(k\)</span> can take (as long as it is real-valued). As a result, the energy of a free particle is not quantized.</p>
-<p>What do the terms <span class="math notranslate nohighlight">\(e^{\pm ikx}\)</span> mean, physically? Let’s assume that <span class="math notranslate nohighlight">\(B = 0,\)</span> so <span class="math notranslate nohighlight">\(\psi(x) = Ae^{ikx}\)</span>. This function is still an eigenfunction of the Hamiltonian, with the same eigenvalue. Is it an eigenfunction of any other operators, like <span class="math notranslate nohighlight">\(\hat{p}_x\)</span>? Let’s see:</p>
+</section>
+<section id="question-physical-meaning-of-e-pm-ikx-and-operator-eigenfunctions">
+<h3>Question: Physical Meaning of <span class="math notranslate nohighlight">\(e^{\pm ikx}\)</span> and Operator Eigenfunctions<a class="headerlink" href="#question-physical-meaning-of-e-pm-ikx-and-operator-eigenfunctions" title="Link to this heading">#</a></h3>
+<p>What do the terms <span class="math notranslate nohighlight">\(e^{\pm ikx}\)</span> mean, physically?</p>
+<p>Let’s assume that <span class="math notranslate nohighlight">\(B = 0,\)</span> so <span class="math notranslate nohighlight">\(\psi(x) = Ae^{ikx}\)</span>.<br />
+This function is still an eigenfunction of the Hamiltonian, with the same eigenvalue.</p>
+<p><strong>Question:</strong><br />
+Is <span class="math notranslate nohighlight">\(\psi(x)\)</span> also an eigenfunction of any other operators, like the momentum operator <span class="math notranslate nohighlight">\(\hat{p}_x\)</span>?</p>
+<p>Try computing <span class="math notranslate nohighlight">\(\hat{p}_x \psi(x)\)</span> by hand.<br />
+Then click below to reveal the full worked-out solution.</p>
+<details>
+<summary>Click to reveal the solution</summary>
+<p>We apply the momentum operator to <span class="math notranslate nohighlight">\(\psi(x) = A e^{ikx}\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}
-\hat{p}_x A e^{ikx} &amp;= -i\hbar \frac{d}{dx} Ae^{ikx} \\
-&amp;= -i^2 \hbar k A e^{ikx} \\
+\[\begin{split}
+\begin{align}
+\hat{p}_x \psi(x) &amp;= -i\hbar \frac{d}{dx} (Ae^{ikx}) \\
+&amp;= -i\hbar \cdot i k A e^{ikx} \\
 &amp;= \hbar k \psi(x)
-\end{align}\end{split}\]</div>
-<p>Yes! <span class="math notranslate nohighlight">\(\psi(x) = A e^{ikx}\)</span> is an eigenfunction of <span class="math notranslate nohighlight">\(\hat{p}_x,\)</span> with eigenfunction <span class="math notranslate nohighlight">\(\hbar k.\)</span> This result indicates that the state described by this function has a well-defined (or definite) value of the momentum in the <span class="math notranslate nohighlight">\(x\)</span>-direction. Recall, <span class="math notranslate nohighlight">\(k = +\left ( \frac{2mE}{\hbar^2} \right )^{1/2},\)</span> so, <span class="math notranslate nohighlight">\(k \ge 0\)</span> and <span class="math notranslate nohighlight">\(\hbar k \ge 0\)</span>, which implies that <span class="math notranslate nohighlight">\(p_x \ge 0\)</span>. Since the momentum of the particle is positive and well-defined, the state described by <span class="math notranslate nohighlight">\(\psi(x) = Ae^{ikx}\)</span> corresponds to the case where the free particle is traveling in the <span class="math notranslate nohighlight">\(+x\)</span> direction, with momentum <span class="math notranslate nohighlight">\(\hbar k\)</span>. If this interpretation is not clear, recall the following</p>
+\end{align}
+\end{split}\]</div>
+<p>✅ So, yes! <span class="math notranslate nohighlight">\(\psi(x)\)</span> is an eigenfunction of <span class="math notranslate nohighlight">\(\hat{p}_x\)</span>, with eigenvalue <span class="math notranslate nohighlight">\(\hbar k\)</span>.</p>
+</details>
+<p>This result indicates that the state described by this function has a well-defined (or definite) value of the momentum in the <span class="math notranslate nohighlight">\(x\)</span>-direction. Recall, <span class="math notranslate nohighlight">\(k = +\left ( \frac{2mE}{\hbar^2} \right )^{1/2},\)</span> so, <span class="math notranslate nohighlight">\(k \ge 0\)</span> and <span class="math notranslate nohighlight">\(\hbar k \ge 0\)</span>, which implies that <span class="math notranslate nohighlight">\(p_x \ge 0\)</span>. Since the momentum of the particle is positive and well-defined, the state described by <span class="math notranslate nohighlight">\(\psi(x) = Ae^{ikx}\)</span> corresponds to the case where the free particle is traveling in the <span class="math notranslate nohighlight">\(+x\)</span> direction, with momentum <span class="math notranslate nohighlight">\(\hbar k\)</span>. If this interpretation is not clear, recall the following</p>
 <ol class="arabic simple">
 <li><p>Any function can be expanded in terms of eigenfunctions of a Hermitian operator, <span class="math notranslate nohighlight">\(\hat{B}\)</span>, as
 $<span class="math notranslate nohighlight">\( \begin{align}
@@ -567,33 +616,97 @@ where
 <li><p>If <span class="math notranslate nohighlight">\(\psi\)</span> is exactly equal to an eigenfunction of <span class="math notranslate nohighlight">\(\hat{B}\)</span>, then there is only one term in the sum above, and the only value of <span class="math notranslate nohighlight">\(B\)</span> that would ever be observed would be the corresponding eigenvalue. In the case above, we have <span class="math notranslate nohighlight">\(\psi(x) = A e^{ikx}\)</span>, which we showed is an eigenfunction of <span class="math notranslate nohighlight">\(\hat{p}_x\)</span>.</p></li>
 </ol>
 <p>We obtain a similar result if we start from the free particle wave function and assume that <span class="math notranslate nohighlight">\(A = 0\)</span>. In this case, <span class="math notranslate nohighlight">\(\psi(x) = B e^{-ikx}\)</span> is also an eigenfunction of <span class="math notranslate nohighlight">\(\hat{p}_x\)</span>, but the associated eigenvalue is <span class="math notranslate nohighlight">\(-\hbar k\)</span>. Hence,  <span class="math notranslate nohighlight">\(\psi(x) = Be^{-ikx}\)</span> represents a state where the particle has definite value of the momentum, <span class="math notranslate nohighlight">\(-\hbar k\)</span> (moving in the <span class="math notranslate nohighlight">\(-x\)</span> direction).</p>
-<p>The general form of the free-particle wave function is</p>
+<p><strong>More Practice:</strong><br />
+Show <span class="math notranslate nohighlight">\(\psi(x) = B e^{-ikx}\)</span> is also an eigenfunction of <span class="math notranslate nohighlight">\(\hat{p}_x\)</span> with eigenvalue <span class="math notranslate nohighlight">\(-\hbar k\)</span>.</p>
+<p>Try computing <span class="math notranslate nohighlight">\(\hat{p}_x \psi(x)\)</span> by hand.<br />
+Then click below to reveal the full worked-out solution.</p>
+<details>
+<summary>Click to reveal the solution</summary>
+<p>We apply the momentum operator to <span class="math notranslate nohighlight">\(\psi(x) = B e^{-ikx}\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[\begin{align}
-\psi(x) = A e^{ikx} + Be^{-ikx}
-\end{align}\]</div>
-<p>Based on the analysis above, this state is a superposition of two pure-momentum states (momentum eigenfunctions), with different values for the momentum. Is this state an eigenfunction of the momentum operator?  We have</p>
+\[\begin{split}
+\begin{align}
+\hat{p}_x \psi(x) &amp;= -i\hbar \frac{d}{dx} (Be^{-ikx}) \\
+&amp;= -i\hbar \cdot -i k B e^{-ikx} \\
+&amp;= -\hbar k \psi(x)
+\end{align}
+\end{split}\]</div>
+<p>✅ So, yes! <span class="math notranslate nohighlight">\(\psi(x) = B e^{-ikx}\)</span> is an eigenfunction of <span class="math notranslate nohighlight">\(\hat{p}_x\)</span>, with eigenvalue <span class="math notranslate nohighlight">\(-\hbar k\)</span>.</p>
+</details>
+</section>
+<section id="question-is-the-general-free-particle-an-eigenfunction-of-momentum">
+<h3>Question: Is the General Free Particle an Eigenfunction of Momentum?<a class="headerlink" href="#question-is-the-general-free-particle-an-eigenfunction-of-momentum" title="Link to this heading">#</a></h3>
+<p>The general form of the free-particle wave function is:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}
-\hat{p}_x (A e^{ikx} + Be^{-ikx}) &amp;= \hat{p}_x A e^{ikx} + \hat{p}_x B e^{-ikx} \\
-&amp;= \hbar k A e^{ikx} - \hbar k Be^{-ikx} \\
-&amp;= \hbar k ( A e^{ikx} - Be^{-ikx})
-\end{align}\end{split}\]</div>
-<p>Note the minus sign. This wave function is not an eigenfunction of the momentum operator. As such, we cannot know whether the particle is moving to the left or the right without taking a measurement. The probability of finding the particle moving to the right will be proportional to <span class="math notranslate nohighlight">\(|A|^2\)</span>, while the probability of finding the particle moving to the left will be proportional to <span class="math notranslate nohighlight">\(|B|^2\)</span>.</p>
-<p>What about other properties, such as position? We can proceed as we did above. Let us assume <span class="math notranslate nohighlight">\(B=0\)</span> and check if <span class="math notranslate nohighlight">\(\psi(x) = Ae^{ikx}\)</span> is an eigenfunction of the position operator. We have</p>
+\[
+\psi(x) = A e^{ikx} + B e^{-ikx}
+\]</div>
+<p>This is a superposition of two pure-momentum states.<br />
+Is <span class="math notranslate nohighlight">\(\psi(x)\)</span> an eigenfunction of the momentum operator <span class="math notranslate nohighlight">\(\hat{p}_x\)</span>?</p>
+<p><strong>Choose one:</strong></p>
+<p>A.  Yes, because <span class="math notranslate nohighlight">\(\hat{p}_x \psi(x) = \hbar k \psi(x)\)</span><br />
+B.  No, because it includes both positive and negative momentum components<br />
+C.  Yes, as long as <span class="math notranslate nohighlight">\(|A|^2 + |B|^2 = 1\)</span><br />
+D.  No, because the Hamiltonian doesn’t have momentum as an observable</p>
+<details>
+<summary>Click to reveal the solution</summary>
+<p>We apply the momentum operator:</p>
 <div class="math notranslate nohighlight">
-\[\begin{align}
-\hat{x} \psi(x) = A x e^{ikx}
-\end{align}\]</div>
-<p>Clearly, the function on the right-hand side is a different function of <span class="math notranslate nohighlight">\(x\)</span>, so we can safely conclude that, no, <span class="math notranslate nohighlight">\(\psi(x) = A e^{ikx}\)</span> is not an eigenfunction of the position operator. While the state represented by this wave function does not have a definite position, we can still calculate the expectation value of position. We have</p>
+\[\begin{split}
+\begin{align}
+\hat{p}_x (A e^{ikx} + B e^{-ikx}) &amp;= \hat{p}_x A e^{ikx} + \hat{p}_x B e^{-ikx} \\
+&amp;= \hbar k A e^{ikx} - \hbar k B e^{-ikx} \\
+&amp;= \hbar k (A e^{ikx} - B e^{-ikx})
+\end{align}
+\end{split}\]</div>
+<p>Note the <strong>minus sign</strong> in the second term:<br />
+<span class="math notranslate nohighlight">\(\psi(x)\)</span> is <strong>not</strong> an eigenfunction of <span class="math notranslate nohighlight">\(\hat{p}_x\)</span>, since the result is not proportional to the original wave function.</p>
+<p>Instead, <span class="math notranslate nohighlight">\(\psi(x)\)</span> is a <strong>superposition</strong> of two momentum eigenfunctions, one with momentum <span class="math notranslate nohighlight">\(+\hbar k\)</span> and one with <span class="math notranslate nohighlight">\(-\hbar k\)</span>.<br />
+The probability of measuring the particle with momentum <span class="math notranslate nohighlight">\(+\hbar k\)</span> is proportional to <span class="math notranslate nohighlight">\(|A|^2\)</span>,<br />
+and for <span class="math notranslate nohighlight">\(-\hbar k\)</span> it is proportional to <span class="math notranslate nohighlight">\(|B|^2\)</span>.</p>
+<p>✅ <strong>Correct answer: B</strong></p>
+</details>
+</section>
+<section id="question-is-psi-x-ae-ikx-an-eigenfunction-of-the-position-operator">
+<h3>Question: Is <span class="math notranslate nohighlight">\(\psi(x) = Ae^{ikx}\)</span> an Eigenfunction of the Position Operator?<a class="headerlink" href="#question-is-psi-x-ae-ikx-an-eigenfunction-of-the-position-operator" title="Link to this heading">#</a></h3>
+<p>We’ve seen that <span class="math notranslate nohighlight">\(\psi(x) = A e^{ikx}\)</span> is an eigenfunction of the momentum operator.<br />
+But what about <strong>position</strong>?</p>
+<p>Let’s test whether <span class="math notranslate nohighlight">\(\psi(x)\)</span> is an eigenfunction of the position operator <span class="math notranslate nohighlight">\(\hat{x}\)</span> by applying the operator directly.<br />
+Then, try computing the <strong>expectation value</strong> <span class="math notranslate nohighlight">\(\langle x \rangle\)</span> for this wave function.</p>
+<p>Does the particle have a well-defined position?<br />
+What can you say about where the particle is likely to be found?</p>
+<details>
+<summary>Click to reveal the solution</summary>
+<p>We apply the position operator to the wave function:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}
-\langle x \rangle &amp;= \frac{\langle \psi(x)|x|\psi(x)\rangle}{\langle \psi(x) | \psi(x) \rangle} \\
-&amp;= \frac{|A|^2\int_{-\infty}^{\infty} e^{-ikx} x e^{ikx} dx}{|A|^2\int_{-\infty}^{\infty} e^{-ikx} e^{ikx} dx} \\
-&amp;= \frac{\int_{-\infty}^{\infty} x dx}{\int_{-\infty}^{\infty} dx} \\
-&amp;= 0
-\end{align}\end{split}\]</div>
-<p>This result does not tell us much, only that, after infinitely-many mesurements, the average position is zero, which implies that we are equally likely to find the particle at <span class="math notranslate nohighlight">\(+x\)</span> and <span class="math notranslate nohighlight">\(-x\)</span>.</p>
+\[
+\hat{x} \psi(x) = x \cdot \psi(x) = A x e^{ikx}
+\]</div>
+<p>This is <strong>not</strong> proportional to the original wave function <span class="math notranslate nohighlight">\(A e^{ikx}\)</span>,<br />
+so <span class="math notranslate nohighlight">\(\psi(x)\)</span> is <strong>not</strong> an eigenfunction of the position operator.</p>
+<hr class="docutils" />
+<p>Now let’s calculate the <strong>expectation value</strong> of position:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle x \rangle = \frac{\langle \psi(x) | x | \psi(x) \rangle}{\langle \psi(x) | \psi(x) \rangle}
+\]</div>
+<p>Plug in the expression for <span class="math notranslate nohighlight">\(\psi(x) = A e^{ikx}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle x \rangle = \frac{|A|^2 \int_{-\infty}^{\infty} e^{-ikx} \, x \, e^{ikx} \, dx}{|A|^2 \int_{-\infty}^{\infty} e^{-ikx} e^{ikx} \, dx}
+= \frac{\int_{-\infty}^{\infty} x \, dx}{\int_{-\infty}^{\infty} dx}
+\]</div>
+<p>The numerator and denominator are both divergent, but their <strong>ratio</strong> is symmetric around <span class="math notranslate nohighlight">\(x = 0\)</span>,<br />
+so by symmetry arguments (or via regularization), we get:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle x \rangle = 0
+\]</div>
+<hr class="docutils" />
+<p>🔍 <strong>Interpretation:</strong><br />
+This result doesn’t mean the particle is always at <span class="math notranslate nohighlight">\(x = 0\)</span>, but rather that, on average, measurements would be equally likely to yield positions on either side of the origin.<br />
+The wave function is <strong>completely delocalized</strong> — we have no knowledge of where the particle is, only that the average position is zero.</p>
+</details>
 <p>The Born interpretation of the wave function provides a result consistent with this one. The probability density</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
@@ -614,7 +727,7 @@ where
 \[\begin{align}
 \Delta \Omega = \left ( \langle \Omega^2 \rangle - \langle \Omega \rangle^2 \right )^{1/2}
 \end{align}\]</div>
-<p>The uncertainty relationship between position and momentum is a consequance of the particle-wave duality of microscopic particles. See Section 1.3 of Levine’s “Quantum Chemistry” textbook (5th Ed.) for a graphical illustration of this concept.</p>
+<p>The uncertainty relationship between position and momentum is a consequance of the particle-wave duality of microscopic particles. See <a class="reference external" href="http://hyperphysics.phy-astr.gsu.edu/hbase/uncer.html">this page</a> for a graphical illustration of this concept.</p>
 <p>Let’s calculate the uncertainty in position and momentum for the state represented by the wave function <span class="math notranslate nohighlight">\(\psi(x) = A e^{ikx}\)</span>. Because <span class="math notranslate nohighlight">\(\psi(x)\)</span> is an eigenfunction of the momentum operator, we immediately know that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
@@ -745,9 +858,26 @@ because
 </details></div></blockquote>
 </section>
 </section>
-<section id="infinite-square-well-potential">
-<h2>Infinite Square Well Potential<a class="headerlink" href="#infinite-square-well-potential" title="Link to this heading">#</a></h2>
-<p>A particle confined to an infinite square well potential, also called the particle-in-a-box (PIB), is a useful model for translational motion of a confined quantum mechanical particle. The model is crude, it but can still capture some qualitative trends in the electronic structure of molecular systems. For example, the one-dimensional PIB model can predict the red-shift in excitation energies as the length of a dye molecule increases:</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="infinite-square-well-potential-aka-particle-in-a-box-model">
+<h1>Infinite Square Well Potential, aka, Particle-in-a-box model<a class="headerlink" href="#infinite-square-well-potential-aka-particle-in-a-box-model" title="Link to this heading">#</a></h1>
+<p>The particle-in-a-box (PIB) model describes a quantum mechanical particle confined within an infinite square well potential. While this model is simplified, it effectively captures qualitative trends in the electronic structure of molecular systems, particularly conjugated organic compounds.</p>
+<section id="application-to-conjugated-dye-molecules">
+<h2>Application to Conjugated Dye Molecules<a class="headerlink" href="#application-to-conjugated-dye-molecules" title="Link to this heading">#</a></h2>
+<p>The one-dimensional PIB model successfully predicts the red-shift in electronic excitation energies as the conjugation length of dye molecules increases. This correlation arises because the excitation energies of these systems are closely related to the HOMO-LUMO gap—the energy difference between the highest-occupied molecular orbital (HOMO) and lowest-unoccupied molecular orbital (LUMO). In conjugated dye systems, these correspond to the π and π* orbitals, respectively.</p>
+</section>
+<section id="why-the-pib-model-works">
+<h2>Why the PIB Model Works<a class="headerlink" href="#why-the-pib-model-works" title="Link to this heading">#</a></h2>
+<p>The PIB model provides a good approximation for π → π* transitions in conjugated systems for several key reasons:</p>
+<ul class="simple">
+<li><p><strong>Delocalization</strong>: The π electrons are delocalized across the entire conjugated backbone of the molecule</p></li>
+<li><p><strong>Weak nuclear attraction</strong>: These electrons are relatively diffuse and experience weaker attraction to individual nuclei</p></li>
+<li><p><strong>Reduced electron-electron repulsion</strong>: The delocalized nature minimizes strong repulsive interactions between electrons</p></li>
+</ul>
+</section>
+<section id="physical-interpretation">
+<h2>Physical Interpretation<a class="headerlink" href="#physical-interpretation" title="Link to this heading">#</a></h2>
+<p>Essentially, the PIB model treats electrons as nearly free particles that are confined by infinite potential barriers at the boundaries of the conjugated system. The remarkable agreement between PIB predictions and experimental π-system energies suggests that conjugated π electrons behave, to a first approximation, like free electrons with spatial confinement—a testament to their delocalized, weakly-bound nature.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
@@ -885,20 +1015,29 @@ e^{\pm ikx} = \text{cos}(kx) \pm i \text{sin}(kx)
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="c1"># Generate x values from 0 to 6π</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
 <span class="n">sin_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sin_x</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;sin(x)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set x-axis ticks at multiples of π</span>
+<span class="n">pi_ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>  <span class="c1"># 0, π, 2π, 3π, 4π, 5π, 6π</span>
+<span class="n">pi_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;π&#39;</span><span class="p">,</span> <span class="s1">&#39;2π&#39;</span><span class="p">,</span> <span class="s1">&#39;3π&#39;</span><span class="p">,</span> <span class="s1">&#39;4π&#39;</span><span class="p">,</span> <span class="s1">&#39;5π&#39;</span><span class="p">,</span> <span class="s1">&#39;6π&#39;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">pi_ticks</span><span class="p">,</span> <span class="n">pi_labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>  
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4037625c11c911dac2ae47308c57b9a903d095d4162dbc031bccbd8d24aaeed6.png" src="../../_images/4037625c11c911dac2ae47308c57b9a903d095d4162dbc031bccbd8d24aaeed6.png" />
+<img alt="../../_images/5b8370e1af3122c08cf7e8fb2769cc875f54922a3605b2d6011698eff6a15b57.png" src="../../_images/5b8370e1af3122c08cf7e8fb2769cc875f54922a3605b2d6011698eff6a15b57.png" />
 </div>
 </div>
 <p><span class="math notranslate nohighlight">\(\text{sin}(x)\)</span> is zero whenever <span class="math notranslate nohighlight">\(x = n \pi\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is an integer. So, the boundary condition can be satisfied if <span class="math notranslate nohighlight">\(kL = n\pi\)</span>, giving <span class="math notranslate nohighlight">\(k = \frac{n\pi}{L}\)</span> and</p>
@@ -1165,8 +1304,265 @@ E = \frac{p^2}{2m} = \frac{n^2 h^2}{8 mL^2}
 \end{align}\]</div>
 <p>which is the same result obtained from solving the Schrödinger equation and applying boundary conditions! In this case, simple physical arguments starting from the wave-like nature of microscopic particles leads to the same result as solving the Schrödinger equation directly.</p>
 </section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="deeper-dive-on-the-modeling-of-conjugated-dyes">
+<h1>Deeper Dive on the modeling of conjugated dyes<a class="headerlink" href="#deeper-dive-on-the-modeling-of-conjugated-dyes" title="Link to this heading">#</a></h1>
+<p>As discussed in <a class="reference external" href="https://open.spotify.com/episode/03gFQCXfUhq998t9eUhTFb?si=7aMXBQkAS3C32a40YGEkZw&amp;amp;nd=1&amp;amp;dlsi=e54db8d0c26d47d0">this interview</a>, there are some exciting applications that can be opened up by desigining chromophores that absorb or emit <a class="reference external" href="https://www.edmundoptics.com/knowledge-center/application-notes/imaging/what-is-swir/">Short Wave Infrared</a> radiation (SWIR). It turns out to be difficult to design organic chromophores that absorb and emit in this region with high efficiency.</p>
+<p>We discussed the particle in a box model as being particularly useful for thinking about electronic transitions in <a class="reference external" href="https://en.wikipedia.org/wiki/Cyanine">cyanine dyes</a>.  While this model would also suggest that we can abritrarily red-shift such dyes by increasing the number of conjugated pi units, and that while we do, the cyanine dyes would become better absorbers and emitters.<br />
+As we discuss in the episode, this is not actually true for reasons that are very interesting and somewhat complicated (please listen to find out more!).</p>
+<p>That said, the scaling relationships suggested by the particle in a box model are interesting in their own right, and useful in some limited contexts, so we try to illustrate them here!</p>
+<section id="particle-in-a-box-length-and-energy-scaling-in-a-cyanine-dye">
+<h2>🔬 Particle in a Box: Length and Energy Scaling in a Cyanine Dye<a class="headerlink" href="#particle-in-a-box-length-and-energy-scaling-in-a-cyanine-dye" title="Link to this heading">#</a></h2>
+<p>Let’s explore how the <strong>HOMO–LUMO gap</strong> scales in a conjugated dye using a 1D particle-in-a-box model.</p>
+<p>The energy levels are given by:</p>
+<div class="math notranslate nohighlight">
+\[
+E_n = \frac{\hbar^2 \pi^2 n^2}{2mL^2}
+\]</div>
+<p>The length of the “box” is approximated by:</p>
+<div class="math notranslate nohighlight">
+\[
+L = a(K + 1) + b
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( a = 2.49 \)</span> Å</p></li>
+<li><p><span class="math notranslate nohighlight">\( b = 5.69 \)</span> Å</p></li>
+<li><p><span class="math notranslate nohighlight">\( L \)</span> is the number of –CH=CH– units</p></li>
+</ul>
+<p>We assume:</p>
+<div class="math notranslate nohighlight">
+\[
+n_{\text{HOMO}} = K + 3
+\]</div>
+<hr class="docutils" />
+</section>
+<section id="step-1-unit-conversion-angstroms-to-meters">
+<h2>🧮 Step 1: Unit Conversion — Angstroms to Meters<a class="headerlink" href="#step-1-unit-conversion-angstroms-to-meters" title="Link to this heading">#</a></h2>
+<p>Let’s start by converting the length of the box from Ångströms to meters.</p>
+<p><strong>Prompt:</strong><br />
+For <span class="math notranslate nohighlight">\( K = 5 \)</span>, compute the box length <span class="math notranslate nohighlight">\( L \)</span> in Ångströms and convert it to meters.</p>
+<details>
+<summary>Click to reveal the solution</summary>
+<p>First, calculate <span class="math notranslate nohighlight">\( L \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+L = 2.49(5 + 1) + 5.69 = 2.49 \times 6 + 5.69 = 20.63\ \text{Å}
+\]</div>
+<p>Now convert to meters:</p>
+<div class="math notranslate nohighlight">
+\[
+1\ \text{Å} = 1 \times 10^{-10}\ \text{m}
+\]</div>
+<p>So:</p>
+<div class="math notranslate nohighlight">
+\[
+L = 20.63 \times 10^{-10} = 2.063 \times 10^{-9}\ \text{m}
+\]</div>
+</details>
+<hr class="docutils" />
+</section>
+<section id="step-2-energy-in-joules">
+<h2>⚡ Step 2: Energy in Joules<a class="headerlink" href="#step-2-energy-in-joules" title="Link to this heading">#</a></h2>
+<p>Use the particle-in-a-box equation to compute the HOMO–LUMO gap in <strong>Joules</strong>.</p>
+<p><strong>Prompt:</strong><br />
+For <span class="math notranslate nohighlight">\(K = 5 \)</span>, we have <span class="math notranslate nohighlight">\( n_{\text{HOMO}} = 8 \)</span> and <span class="math notranslate nohighlight">\( n_{\text{LUMO}} = 9 \)</span>.<br />
+Compute the energy difference <span class="math notranslate nohighlight">\( \Delta E = E_9 - E_8 \)</span> in Joules.</p>
+<details>
+<summary>Click to reveal the solution</summary>
+<p>Let’s plug into:</p>
+<div class="math notranslate nohighlight">
+\[
+E_n = \frac{\hbar^2 \pi^2 n^2}{2mL^2}
+\]</div>
+<p>Constants:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \hbar = 1.055 \times 10^{-34} \ \text{J·s} \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( m = 9.109 \times 10^{-31} \ \text{kg} \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( L = 2.063 \times 10^{-9} \ \text{m} \)</span></p></li>
+</ul>
+<p>Compute:</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta E = \frac{\hbar^2 \pi^2}{2mL^2} (n_{\text{LUMO}}^2 - n_{\text{HOMO}}^2) = C \cdot (9^2 - 8^2)
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+C = \frac{(1.055 \times 10^{-34})^2 \cdot \pi^2}{2 \cdot 9.11 \times 10^{-31} \cdot (2.063 \times 10^{-9})^2} \approx 1.4156 \times 10^{-20}\ \text{J}
+\]</div>
+<p>Then:</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta E = C \cdot (81 - 64) = C \cdot 17 \approx 2.406 \times 10^{-19} \ \text{J}
+\]</div>
+</details>
+<hr class="docutils" />
+</section>
+<section id="step-3-convert-to-electronvolts-ev">
+<h2>⚙️ Step 3: Convert to Electronvolts (eV)<a class="headerlink" href="#step-3-convert-to-electronvolts-ev" title="Link to this heading">#</a></h2>
+<p><strong>Prompt:</strong><br />
+Convert your answer from Joules to electronvolts.<br />
+Use:<br />
+<span class="math notranslate nohighlight">\( 1\ \text{eV} = 1.602 \times 10^{-19} \ \text{J} \)</span></p>
+<details>
+<summary>Click to reveal the solution</summary>
+<p>Convert:</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta E = \frac{2.406 \times 10^{-19}\ \text{J}}{1.602 \times 10^{-19}\ \text{J/eV}} \approx 1.502\ \text{eV}
+\]</div>
+</details>
+<hr class="docutils" />
+</section>
+<section id="step-4-convert-to-wavelength-nm">
+<h2>🌈 Step 4: Convert to Wavelength (nm)<a class="headerlink" href="#step-4-convert-to-wavelength-nm" title="Link to this heading">#</a></h2>
+<p><strong>Prompt:</strong><br />
+Use the relation <span class="math notranslate nohighlight">\( E = \frac{hc}{\lambda} \)</span> to find the wavelength (in <strong>nm</strong>) corresponding to this energy.</p>
+<p>Use:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( h = 6.626 \times 10^{-34} \ \text{J·s} \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( c = 3.00 \times 10^8 \ \text{m/s} \)</span></p></li>
+</ul>
+<details>
+<summary>Click to reveal the solution</summary>
+<p>Rearrange:</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda = \frac{hc}{\Delta E} = \frac{6.626 \times 10^{-34} \cdot 3.00 \times 10^8}{2.406 \times 10^{-19}} \approx 8.26 \times 10^{-7}\ \text{m}
+\]</div>
+<p>Convert to nm:</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda \approx 826\ \text{nm}
+\]</div>
+<p>This corresponds to the <strong>short infrared</strong> region.</p>
+</details>
+<hr class="docutils" />
+</section>
+<section id="summary">
+<h2>✅ Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>For <span class="math notranslate nohighlight">\( K = 5 \)</span>, we find:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( L = 2.063 \times 10^{-9}\ \text{m} \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \Delta E \approx 2.406 \times 10^{-19}\ \text{J} \approx 1.502\ \text{eV} \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \lambda \approx 826\ \text{nm} \)</span></p></li>
+</ul>
+<p>This illustrates how <strong>quantum size effects</strong> can explain optical properties of molecules!</p>
+<p>The next code block will illustrate these scaling relationships.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">constants</span>
+<span class="c1"># create an array for k, where k is the number of -CH=CH- units.</span>
+<span class="c1"># basically each value of k defines a new cyanine dye with a longer &quot;box length&quot;</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c1"># a constant in SI units related to the average -CH=CH- unit length</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">2.49e-10</span>
+<span class="c1"># b constant in SI units related to the length of the terminal moities in </span>
+<span class="c1"># the cyanine dyes</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">5.69e-10</span>
+
+<span class="c1"># create an array of L values, where L is the length of the box,</span>
+<span class="c1"># for each distinct dye defined by the k array</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="c1"># create an array of quantum numbers associated with the HOMOs of each dye</span>
+<span class="n">n_homo</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">3</span>
+
+<span class="c1"># create an array of quantum numbers associated with the LUMOs of each dye</span>
+<span class="n">n_lumo</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">4</span>
+
+<span class="c1"># need reduced Planck&#39;s constant and the mass of the electron in SI units as well</span>
+<span class="n">hbar</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">hbar</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">m_e</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">h</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">c</span>
+
+<span class="c1"># conversion from SI units of energy (Joules) to electron volts</span>
+<span class="n">ev_to_joules</span> <span class="o">=</span> <span class="mf">1.602e-19</span>
+
+
+<span class="c1"># compute the energies of each HOMO in SI units</span>
+<span class="n">E_homo</span> <span class="o">=</span> <span class="n">hbar</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n_homo</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">m</span> <span class="o">*</span> <span class="n">L</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1"># compte the energies of each LUMO in SI units</span>
+<span class="n">E_lumo</span> <span class="o">=</span> <span class="n">hbar</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n_lumo</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">m</span> <span class="o">*</span> <span class="n">L</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># energy gaps in eV</span>
+<span class="n">E_gap</span> <span class="o">=</span> <span class="p">(</span><span class="n">E_lumo</span> <span class="o">-</span> <span class="n">E_homo</span><span class="p">)</span>
+<span class="n">E_gap_eV</span> <span class="o">=</span> <span class="n">E_gap</span> <span class="o">/</span> <span class="n">ev_to_joules</span>
+
+
+<span class="c1"># absorption wavelength in nm </span>
+<span class="n">lambda_abs</span> <span class="o">=</span> <span class="p">(</span> <span class="n">h</span> <span class="o">*</span> <span class="n">c</span> <span class="p">)</span> <span class="o">/</span> <span class="n">E_gap</span> <span class="o">*</span> <span class="mf">1e9</span>
+
+<span class="c1"># plot of the absorption energy of each dye vs it&#39;s &quot;box length&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L</span><span class="o">*</span><span class="mf">1e10</span><span class="p">,</span> <span class="n">E_gap_eV</span><span class="p">,</span> <span class="s1">&#39;bo-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Energy vs L&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Box length (Angstroms)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Absorption Energy (eV)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># plot of the absorption wavelength of each dye vs it&#39;s &quot;box length&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L</span><span class="o">*</span><span class="mf">1e10</span><span class="p">,</span> <span class="n">lambda_abs</span><span class="p">,</span> <span class="s1">&#39;ro-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Absorption Wavelength vs L&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Box length (Angstroms)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Absorption Wavelength (nm)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a126c5d3c7c8a99dca9a6770a3ffe16e42a8dc9fb3d4481c4d4c4b13397a5334.png" src="../../_images/a126c5d3c7c8a99dca9a6770a3ffe16e42a8dc9fb3d4481c4d4c4b13397a5334.png" />
+<img alt="../../_images/b183d1252691e54b01911a9241455eac54377d7c5305d4ea23f2d1c274045626.png" src="../../_images/b183d1252691e54b01911a9241455eac54377d7c5305d4ea23f2d1c274045626.png" />
+</div>
+</div>
+<p>The second trend of interest is the scaling of the transition dipole moment with the size of the cyanine system, which we can again estimate from the particle in a box system.  Here, we want to compute the transition dipole moment between the particle in a box energy eigenfunctions that are reasonable models for the HOMO and LUMO orbitals:
+\begin{equation}
+\mu_{n_i\rightarrow n_f} = \int_0^L \psi_{n_f}(x) : \hat{\mu} : \psi_{n_i}(x) dx.
+\end{equation}
+Here, the particle in a box energy eigenfunctions have the form
+\begin{equation}
+\psi_n(x) = \sqrt{\frac{2}{L}} : {\rm sin}\left( \frac{n \pi x}{L} \right),
+\end{equation}
+and the transition dipole operator has the form
+\begin{equation}
+\hat{\mu} = -e x
+\end{equation}
+where <span class="math notranslate nohighlight">\(e\)</span> is the electron charge and <span class="math notranslate nohighlight">\(x\)</span> is displacement or position operator along the <span class="math notranslate nohighlight">\(x\)</span> axis.  The full expression for the transition dipole moment integrals can be found on page 5 of the supporting information of <a class="reference external" href="https://pubs.acs.org/doi/abs/10.1021/acsphotonics.6b00773">this paper</a>.</p>
+<p>Given that the quantum numbers for the HOMO-LUMO transitions always differ by one, the relevant HOMO-LUMO transition dipole moments from the particle in a box model take on a fairly simple form as follows:
+\begin{equation}
+\mu_{i\rightarrow f} = 2eL \left(  \frac{1}{( n_f + n_i )^2 \pi^2 } - \frac{1}{\pi^2} \right).
+\end{equation}
+From this, we can see that the transition dipole moment approaches a value of <span class="math notranslate nohighlight">\(\frac{-2eL}{\pi^2}\)</span> in the limit of large <span class="math notranslate nohighlight">\(k\)</span> (which is also the limit of large <span class="math notranslate nohighlight">\(L\)</span>); thus from this particle in a box model, we would expect the transition dipole momento to scale linearly with the length of the cyanine dye system.  We see from the plot below, this is the case!  Note in the podcast, we could not remember how it scaled and speculated it scaled as the square root of <span class="math notranslate nohighlight">\(L\)</span>, so we were being too conservative by a factor of <span class="math notranslate nohighlight">\(L^{1/2}\)</span>!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># charge of the electron</span>
+<span class="n">ec</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">elementary_charge</span>
+<span class="c1"># compute the transition dipole moment in SI units for the above values of L</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">ec</span> <span class="o">*</span> <span class="n">L</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">((</span><span class="n">n_lumo</span> <span class="o">+</span> <span class="n">n_homo</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># conversion from SI units of dipole to Debye</span>
+<span class="n">cm_to_debye</span> <span class="o">=</span>  <span class="mi">1</span> <span class="o">/</span> <span class="mf">3.33564e-30</span> 
+
+<span class="c1"># plot of the transition dipole moment of the particle in a box</span>
+<span class="c1"># HOMO-LUMO transitions vs &quot;box length&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L</span><span class="o">*</span><span class="mf">1e10</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mu</span><span class="o">*</span><span class="n">cm_to_debye</span><span class="p">),</span> <span class="s1">&#39;ro-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Transition dipole moment&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Box Length (Angstroms)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Transition dipole moment (Debye)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/e71f1b8c3200cb8f3b4cf8a63429707754a62e54af101b45c6b347d0dc449e03.png" src="../../_images/e71f1b8c3200cb8f3b4cf8a63429707754a62e54af101b45c6b347d0dc449e03.png" />
+</div>
+</div>
+</section>
 <section id="three-dimensional-particle-in-a-box">
-<h3>Three-Dimensional Particle-in-a-Box<a class="headerlink" href="#three-dimensional-particle-in-a-box" title="Link to this heading">#</a></h3>
+<h2>Three-Dimensional Particle-in-a-Box<a class="headerlink" href="#three-dimensional-particle-in-a-box" title="Link to this heading">#</a></h2>
 <p>Now, consider the three-dimensional generalization of the PIB problem. In the three-dimensional PIB problem, a particle of mass, <span class="math notranslate nohighlight">\(m\)</span>, is confined to a three-dimensional region of space by an infinite potential barrier. In this problem, the potential has the form</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align}
@@ -1253,7 +1649,7 @@ E = \frac{h^2}{8m}\left ( \frac{n_x^2}{a^2} + \frac{n_y^2}{b^2} + \frac{n_z^2}{c
 \end{align}\]</div>
 <p>The ground state (the lowest-energy state) will have <span class="math notranslate nohighlight">\(n_x = n_y = n_z = 1.\)</span></p>
 <section id="degenerate-energy-levels">
-<h4>Degenerate Energy Levels<a class="headerlink" href="#degenerate-energy-levels" title="Link to this heading">#</a></h4>
+<h3>Degenerate Energy Levels<a class="headerlink" href="#degenerate-energy-levels" title="Link to this heading">#</a></h3>
 <p>Suppose that the box to which the particle is confined is a cube, with <span class="math notranslate nohighlight">\(a = b = c.\)</span> The energy would be</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}
@@ -1373,14 +1769,13 @@ E = \frac{h^2}{8ma^2} \left ( n_x^2 + n_y^2 \right )
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x107bba950&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x11721d610&gt;
 </pre></div>
 </div>
 <img alt="../../_images/ce2a05565d6c2eac2155db63ce3d0c460580a2d09755f331238d423bd1f7a7b7.png" src="../../_images/ce2a05565d6c2eac2155db63ce3d0c460580a2d09755f331238d423bd1f7a7b7.png" />
 </div>
 </div>
 <p>We can see that these wave functions look identical, except for their spatial orientation, so it is not surprising that the states have the same energy.</p>
-</section>
 </section>
 </section>
 <section id="the-free-particle-revisited">
@@ -1675,7 +2070,7 @@ E - V(x) &amp;= T_x \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_61298/4185230906.py:9: RuntimeWarning: divide by zero encountered in divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_39694/4185230906.py:9: RuntimeWarning: divide by zero encountered in divide
   rhs = 2 * np.sqrt(V0-E) * np.sqrt(E) / (2 * E - V0)
 </pre></div>
 </div>
@@ -1779,12 +2174,6 @@ E - V(x) &amp;= T_x \\
     <span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">psi2</span><span class="p">[:,</span> <span class="n">state</span><span class="p">],</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">))</span>
     <span class="n">psi</span><span class="p">[:,</span> <span class="n">state</span><span class="p">]</span> <span class="o">*=</span> <span class="n">N</span>
     <span class="n">psi2</span><span class="p">[:,</span> <span class="n">state</span><span class="p">]</span> <span class="o">*=</span> <span class="n">N</span><span class="o">*</span><span class="n">N</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_61298/337456428.py:7: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
-  N = np.sqrt(1.0 / np.trapz(psi2[:, state], x = x))
 </pre></div>
 </div>
 </div>
@@ -2124,17 +2513,35 @@ T &amp;= \frac{|F|^2}{|A|^2} \\
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter 3: Translational Motion</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-free-particle">The Free Particle</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-wave-function-and-its-properties">The Wave Function and Its Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-physical-meaning-of-e-pm-ikx-and-operator-eigenfunctions">Question: Physical Meaning of <span class="math notranslate nohighlight">\(e^{\pm ikx}\)</span> and Operator Eigenfunctions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-is-the-general-free-particle-an-eigenfunction-of-momentum">Question: Is the General Free Particle an Eigenfunction of Momentum?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-is-psi-x-ae-ikx-an-eigenfunction-of-the-position-operator">Question: Is <span class="math notranslate nohighlight">\(\psi(x) = Ae^{ikx}\)</span> an Eigenfunction of the Position Operator?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heisenberg-uncertainty-principle">Heisenberg Uncertainty Principle</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infinite-square-well-potential">Infinite Square Well Potential</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-dimensional-particle-in-a-box">One-Dimensional Particle-in-a-Box</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#three-dimensional-particle-in-a-box">Three-Dimensional Particle-in-a-Box</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#degenerate-energy-levels">Degenerate Energy Levels</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#infinite-square-well-potential-aka-particle-in-a-box-model">Infinite Square Well Potential, aka, Particle-in-a-box model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-to-conjugated-dye-molecules">Application to Conjugated Dye Molecules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-the-pib-model-works">Why the PIB Model Works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-interpretation">Physical Interpretation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-dimensional-particle-in-a-box">One-Dimensional Particle-in-a-Box</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deeper-dive-on-the-modeling-of-conjugated-dyes">Deeper Dive on the modeling of conjugated dyes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-in-a-box-length-and-energy-scaling-in-a-cyanine-dye">🔬 Particle in a Box: Length and Energy Scaling in a Cyanine Dye</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-unit-conversion-angstroms-to-meters">🧮 Step 1: Unit Conversion — Angstroms to Meters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-energy-in-joules">⚡ Step 2: Energy in Joules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-convert-to-electronvolts-ev">⚙️ Step 3: Convert to Electronvolts (eV)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-convert-to-wavelength-nm">🌈 Step 4: Convert to Wavelength (nm)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">✅ Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#three-dimensional-particle-in-a-box">Three-Dimensional Particle-in-a-Box</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#degenerate-energy-levels">Degenerate Energy Levels</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-free-particle-revisited">The Free Particle, Revisited</a></li>
@@ -2146,6 +2553,9 @@ T &amp;= \frac{|F|^2}{|A|^2} \\
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tunneling-through-a-barrier">Tunneling Through a Barrier</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
