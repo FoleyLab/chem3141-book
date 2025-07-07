@@ -7,9 +7,13 @@ Traceback (most recent call last):
   File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
     return loop.run_until_complete(inner)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/asyncio/base_events.py", line 650, in run_until_complete
     return future.result()
            ^^^^^^^^^^^^^^^
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/nbclient/client.py", line 654, in async_setup_kernel
+    yield
   File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
     await self.async_execute_cell(
   File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
@@ -18,36 +22,46 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# compute eigenvectors and eigenvalues of Sx, store them to vals_x, vecs_x
+# insert code to compute <alpha|alpha> and store to bra_ket_aa
+bra_ket_aa = bra_ket_solve(bra_alpha, ket_alpha)
 
+# insert code to compute <alpha|beta> and store to bra_ket_ab
+bra_ket_ab = bra_ket_solve(bra_alpha, ket_beta)
 
-# compute eigenvectors and eigenvalues of Sy, store them to vals_y, vecs_y
+# insert code to compute <beta|alpha> and store to bra_ket_ba
+bra_ket_ba = bra_ket_solve(bra_beta, ket_alpha)
 
+# insert code to compute <beta|beta> and store to bra_ket_bb
+bra_ket_bb = bra_ket_solve(bra_beta, ket_beta)
 
-# print shape of vals_x
+# define what we expect the brakets to give
+_expected_bra_ket_aa = 1
+_expected_bra_ket_ab = 0
+_expected_bra_ket_ba = 0
+_expected_bra_ket_bb = 1
 
+# test1: does bra_ket_aa match the expected value?
+assert np.isclose(bra_ket_aa, _expected_bra_ket_aa)
 
-# print shape of vecs_x
+# add test2
+assert np.isclose(bra_ket_ab, _expected_bra_ket_ab)
 
+# add test 3
+assert np.isclose(bra_ket_ba, _expected_bra_ket_ba)
 
-print(vals_x)
-print(vecs_x)
-print(vals_y)
-print(vecs_y)
+# add test 4
+assert np.isclose(bra_ket_bb, _expected_bra_ket_bb)
+
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
 [31mNameError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[13][39m[32m, line 13[39m
-[32m      1[39m [38;5;66;03m# compute eigenvectors and eigenvalues of Sx, store them to vals_x, vecs_x[39;00m
-[32m      2[39m 
-[32m      3[39m 
-[32m   (...)[39m[32m      9[39m 
-[32m     10[39m [38;5;66;03m# print shape of vecs_x[39;00m
-[32m---> [39m[32m13[39m [38;5;28mprint[39m(vals_x)
-[32m     14[39m [38;5;28mprint[39m(vecs_x)
-[32m     15[39m [38;5;28mprint[39m(vals_y)
+[36mCell[39m[36m [39m[32mIn[6][39m[32m, line 2[39m
+[32m      1[39m [38;5;66;03m# insert code to compute <alpha|alpha> and store to bra_ket_aa[39;00m
+[32m----> [39m[32m2[39m bra_ket_aa = bra_ket_solve(bra_alpha, ket_alpha)
+[32m      4[39m [38;5;66;03m# insert code to compute <alpha|beta> and store to bra_ket_ab[39;00m
+[32m      5[39m bra_ket_ab = bra_ket_solve(bra_alpha, ket_beta)
 
-[31mNameError[39m: name 'vals_x' is not defined
+[31mNameError[39m: name 'bra_ket_solve' is not defined
 

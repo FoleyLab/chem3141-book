@@ -22,56 +22,35 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-def evaluate_Morse(r, De, beta, r_eq):
-    """ Helper function to evaluate the Morse potential at a given value of r
+import numpy as np
+import matplotlib.pyplot as plt
 
-    Arguments
-    ---------
-    r : float
-        value(s) of r to evaluate potential at
+r_values = np.linspace(0.2 * r_eq_au, 2.5 * r_eq_au, 500)
+V_values = evaluate_Morse(r_values, De_au, beta_au, r_eq_au)
 
-    De : float
-        dissociation energy of the Morse oscillator
+plt.plot(r_values, V_values, label="Morse Potential")
+plt.axhline(0, color='gray', linestyle='--')
+plt.axhline(0.4127, color='red', linestyle='--', label=r"$D_e$ (Dissociation Energy)")
+plt.axvline(2.132, color='green', linestyle='--', label=r"$r_{eq}$ (Equilibrium Bond Length)")
 
-    beta : float
-        related to the curvature of the Morse oscillator
-
-    r_eq : float
-        equilibrium bondlength of the Morse oscillator
-
-    Returns
-    -------
-    V_m : float
-        value of the Morse potential at value(s) of r
-
-    """
-    # <== inert code to compute Morse Oscillator potential and store to V_M
-    return V_M
-
-
-# array of bondlength values
-r = np.linspace(0.2, 2.5 * r_eq_au, 20)
-
-# array of Morse potential values
-V_Morse = evaluate_Morse(r, De_au, beta_au, r_eq_au)
+plt.xlabel("Bond Length (au)")
+plt.ylabel("Potential Energy (au)")
+plt.title("Morse Potential for CO Molecule")
+plt.tight_layout()
+plt.legend()
+plt.ylim(-0.05, 0.45)
+plt.show()
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
 [31mNameError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 32[39m
-[32m     29[39m r = np.linspace([32m0.2[39m, [32m2.5[39m * r_eq_au, [32m20[39m)
-[32m     31[39m [38;5;66;03m# array of Morse potential values[39;00m
-[32m---> [39m[32m32[39m V_Morse = evaluate_Morse(r, De_au, beta_au, r_eq_au)
+[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 4[39m
+[32m      1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mnp[39;00m
+[32m      2[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[34;01m.[39;00m[34;01mpyplot[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mplt[39;00m
+[32m----> [39m[32m4[39m r_values = np.linspace([32m0.2[39m * r_eq_au, [32m2.5[39m * r_eq_au, [32m500[39m)
+[32m      5[39m V_values = evaluate_Morse(r_values, De_au, beta_au, r_eq_au)
+[32m      7[39m plt.plot(r_values, V_values, label=[33m"[39m[33mMorse Potential[39m[33m"[39m)
 
-[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 25[39m, in [36mevaluate_Morse[39m[34m(r, De, beta, r_eq)[39m
-[32m      2[39m [38;5;250m[39m[33;03m""" Helper function to evaluate the Morse potential at a given value of r[39;00m
-[32m      3[39m 
-[32m      4[39m [33;03mArguments[39;00m
-[32m   (...)[39m[32m     22[39m 
-[32m     23[39m [33;03m"""[39;00m
-[32m     24[39m [38;5;66;03m# <== inert code to compute Morse Oscillator potential and store to V_M[39;00m
-[32m---> [39m[32m25[39m [38;5;28;01mreturn[39;00m V_M
-
-[31mNameError[39m: name 'V_M' is not defined
+[31mNameError[39m: name 'r_eq_au' is not defined
 

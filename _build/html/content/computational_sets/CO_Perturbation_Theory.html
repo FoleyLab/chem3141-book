@@ -189,6 +189,8 @@
 
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/translation.html">Chapter 3: Translational Motion</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/vibration.html">Chapter 4: Vibrational Motion</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
@@ -654,11 +656,30 @@ E_n = E_n^{(0)} +  \langle \psi_n^{(0)} | V’(r) | \psi_n^{(0)} \rangle + \sum_
 
 <span class="c1"># h in SI</span>
 <span class="n">h_SI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">F</span><span class="s2">&quot;De_eV </span><span class="si">{</span><span class="n">De_eV</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">F</span><span class="s2">&quot;mu_amu </span><span class="si">{</span><span class="n">mu_amu</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">F</span><span class="s2">&quot;beta_inv_ang </span><span class="si">{</span><span class="n">beta_inv_ang</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">F</span><span class="s2">&quot;r_eq_ang </span><span class="si">{</span><span class="n">r_eq_ang</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">F</span><span class="s2">&quot;De_au </span><span class="si">{</span><span class="n">De_au</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">F</span><span class="s2">&quot;mu_au </span><span class="si">{</span><span class="n">mu_au</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">F</span><span class="s2">&quot;beta_au </span><span class="si">{</span><span class="n">beta_au</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">F</span><span class="s2">&quot;r_eq_au </span><span class="si">{</span><span class="n">r_eq_au</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.132177987349192
+De_eV 11.225
+mu_amu 6.8606
+beta_inv_ang 2.5994
+r_eq_ang 1.1283
+De_au 0.4125169968027636
+mu_au 12506.119134
+beta_au 1.3755432414187434
+r_eq_au 2.132177987349192
 </pre></div>
 </div>
 </div>
@@ -713,6 +734,33 @@ E_n = E_n^{(0)} +  \langle \psi_n^{(0)} | V’(r) | \psi_n^{(0)} \rangle + \sum_
 </pre></div>
 </div>
 <img alt="../../_images/1812bbdf839bad49c0478b501a3a8e23435ea737c38b705a94ebad4cc41da44a.png" src="../../_images/1812bbdf839bad49c0478b501a3a8e23435ea737c38b705a94ebad4cc41da44a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">r_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.2</span> <span class="o">*</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="mf">2.5</span> <span class="o">*</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">V_values</span> <span class="o">=</span> <span class="n">evaluate_Morse</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span> <span class="n">De_au</span><span class="p">,</span> <span class="n">beta_au</span><span class="p">,</span> <span class="n">r_eq_au</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span> <span class="n">V_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Morse Potential&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.4127</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$D_e$ (Dissociation Energy)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mf">2.132</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$r_</span><span class="si">{eq}</span><span class="s2">$ (Equilibrium Bond Length)&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Bond Length (au)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Potential Energy (au)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Morse Potential for CO Molecule&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/61315a74402a5e9f2884bf9d6c8c19381071a3ccfa3106cbddf59f4ed81181eb.png" src="../../_images/61315a74402a5e9f2884bf9d6c8c19381071a3ccfa3106cbddf59f4ed81181eb.png" />
 </div>
 </div>
 </section>
@@ -782,21 +830,30 @@ k=\frac{V_{Morse}(r_{eq}+\Delta r)-2V_{Morse}(r_{eq})+V_{Morse}(r_{eq}-\Delta r)
 <span class="c1"># quartic</span>
 <span class="n">V_Q</span> <span class="o">=</span> <span class="n">V_C</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">24</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">r_eq_au</span><span class="p">)</span> <span class="o">**</span> <span class="mi">4</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">V_Morse</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Morse Potential&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">V_Morse</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Morse Potential&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">V_H</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Harmonic Potential&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">V_C</span><span class="p">,</span> <span class="s1">&#39;b--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Cubic Potential&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">V_Q</span><span class="p">,</span> <span class="s1">&#39;g--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Quartic Potential&quot;</span><span class="p">)</span>
+
+<span class="c1"># Mark equilibrium bond length (r_eq)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">r_eq_au</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$r_</span><span class="si">{eq}</span><span class="s1">$&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mark dissociation energy (D_e)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">De_au</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$D_e$&#39;</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="mf">2.5</span> <span class="o">*</span> <span class="n">r_eq_au</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Bondlength (Bohr radii)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Bond Length (Bohr radii)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Energy (Hartrees)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Comparison of Morse Potential and Taylor Expansions&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/10b52b7db9d959bc456f6a38c15efe52e3a2d9313412cb4049a913cc001d8946.png" src="../../_images/10b52b7db9d959bc456f6a38c15efe52e3a2d9313412cb4049a913cc001d8946.png" />
+<img alt="../../_images/e6b9492bc9af84a90269d37aba58cd0fd9fb600bdcd54d99f8652aee4c0c5222.png" src="../../_images/e6b9492bc9af84a90269d37aba58cd0fd9fb600bdcd54d99f8652aee4c0c5222.png" />
 </div>
 </div>
 </section>
@@ -804,6 +861,77 @@ k=\frac{V_{Morse}(r_{eq}+\Delta r)-2V_{Morse}(r_{eq})+V_{Morse}(r_{eq}-\Delta r)
 <h2>Compute <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span> using Perturbation Theory<a class="headerlink" href="#compute-e-1-and-e-2-using-perturbation-theory" title="Link to this heading">#</a></h2>
 <p>We will need access to the zeroth-order states <span class="math notranslate nohighlight">\(\psi_n^{(0)}(r)\)</span> to compute the 1st and 2nd order energy corrections.
 The following helper functions will give us access to these states and will also perform the operations necessary to compute the perturbative corrections.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conversion factor from Hartree to cm^-1</span>
+<span class="n">hartree_to_cm</span> <span class="o">=</span> <span class="mf">219474.63</span>
+
+<span class="c1"># Compute omega and chi_e using the Morse parameters</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">De_au</span> <span class="o">*</span> <span class="n">beta_au</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">mu_au</span><span class="p">)</span>
+<span class="n">chi_e</span> <span class="o">=</span> <span class="p">(</span><span class="n">omega</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">De_au</span><span class="p">)</span>
+
+<span class="c1"># Define functions to compute energy levels</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">E_morse</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute Morse oscillator energy level E_n (in atomic units)&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">omega</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="n">chi_e</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">E_harmonic</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute Harmonic oscillator energy level E_n (in atomic units)&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">omega</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Compute energy levels for n=0,1,2</span>
+<span class="n">E0_morse</span> <span class="o">=</span> <span class="n">E_morse</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">E1_morse</span> <span class="o">=</span> <span class="n">E_morse</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">E2_morse</span> <span class="o">=</span> <span class="n">E_morse</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">E0_harm</span> <span class="o">=</span> <span class="n">E_harmonic</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">E1_harm</span> <span class="o">=</span> <span class="n">E_harmonic</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">E2_harm</span> <span class="o">=</span> <span class="n">E_harmonic</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Calculate transition energies (in atomic units)</span>
+
+<span class="c1"># Fundamental transition: n=0 -&gt; n=1</span>
+<span class="n">fund_morse</span> <span class="o">=</span> <span class="n">E1_morse</span> <span class="o">-</span> <span class="n">E0_morse</span>
+<span class="n">fund_harm</span> <span class="o">=</span> <span class="n">E1_harm</span> <span class="o">-</span> <span class="n">E0_harm</span>
+
+<span class="c1"># First overtone: n=0 -&gt; n=2</span>
+<span class="n">overtone_morse</span> <span class="o">=</span> <span class="n">E2_morse</span> <span class="o">-</span> <span class="n">E0_morse</span>
+<span class="n">overtone_harm</span> <span class="o">=</span> <span class="n">E2_harm</span> <span class="o">-</span> <span class="n">E0_harm</span>
+
+<span class="c1"># First hot band: n=1 -&gt; n=2</span>
+<span class="n">hotband_morse</span> <span class="o">=</span> <span class="n">E2_morse</span> <span class="o">-</span> <span class="n">E1_morse</span>
+<span class="n">hotband_harm</span> <span class="o">=</span> <span class="n">E2_harm</span> <span class="o">-</span> <span class="n">E1_harm</span>
+
+<span class="c1"># Convert transition energies to cm^-1</span>
+<span class="n">fund_morse_cm</span> <span class="o">=</span> <span class="n">fund_morse</span> <span class="o">*</span> <span class="n">hartree_to_cm</span>
+<span class="n">fund_harm_cm</span> <span class="o">=</span> <span class="n">fund_harm</span> <span class="o">*</span> <span class="n">hartree_to_cm</span>
+
+<span class="n">overtone_morse_cm</span> <span class="o">=</span> <span class="n">overtone_morse</span> <span class="o">*</span> <span class="n">hartree_to_cm</span>
+<span class="n">overtone_harm_cm</span> <span class="o">=</span> <span class="n">overtone_harm</span> <span class="o">*</span> <span class="n">hartree_to_cm</span>
+
+<span class="n">hotband_morse_cm</span> <span class="o">=</span> <span class="n">hotband_morse</span> <span class="o">*</span> <span class="n">hartree_to_cm</span>
+<span class="n">hotband_harm_cm</span> <span class="o">=</span> <span class="n">hotband_harm</span> <span class="o">*</span> <span class="n">hartree_to_cm</span>
+
+<span class="c1"># Print the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Transition Energies (cm^-1):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Transition&#39;</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}{</span><span class="s1">&#39;Morse&#39;</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}{</span><span class="s1">&#39;Harmonic&#39;</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fundamental (0-&gt;1): </span><span class="si">{</span><span class="n">fund_morse_cm</span><span class="si">:</span><span class="s2">12.2f</span><span class="si">}{</span><span class="n">fund_harm_cm</span><span class="si">:</span><span class="s2">12.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First overtone (0-&gt;2): </span><span class="si">{</span><span class="n">overtone_morse_cm</span><span class="si">:</span><span class="s2">12.2f</span><span class="si">}{</span><span class="n">overtone_harm_cm</span><span class="si">:</span><span class="s2">12.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First hot band (1-&gt;2): </span><span class="si">{</span><span class="n">hotband_morse_cm</span><span class="si">:</span><span class="s2">12.2f</span><span class="si">}{</span><span class="n">hotband_harm_cm</span><span class="si">:</span><span class="s2">12.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Transition Energies (cm^-1):
+Transition                 Morse    Harmonic
+Fundamental (0-&gt;1):      2418.87     2452.07
+First overtone (0-&gt;2):      4804.53     4904.14
+First hot band (1-&gt;2):      2385.66     2452.07
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_alpha</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">hbar</span><span class="p">):</span>
@@ -1090,7 +1218,7 @@ The following helper functions will give us access to these states and will also
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:40:51 2025
+*** at Mon Jul  7 09:02:16 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -1207,7 +1335,9 @@ The following helper functions will give us access to these states and will also
 
    @RHF iter SAD:  -111.87581173858700   -1.11876e+02   0.00000e+00 
    @RHF iter   1:  -109.86427294935213    2.01154e+00   2.70547e-02 ADIIS/DIIS
-   @RHF iter   2:  -110.01423240672058   -1.49959e-01   9.80410e-03 ADIIS/DIIS
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   @RHF iter   2:  -110.01423240672058   -1.49959e-01   9.80410e-03 ADIIS/DIIS
    @RHF iter   3:  -110.03902288773426   -2.47905e-02   1.22407e-03 ADIIS/DIIS
    @RHF iter   4:  -110.03955643570893   -5.33548e-04   2.28915e-04 ADIIS/DIIS
    @RHF iter   5:  -110.03958809679759   -3.16611e-05   4.82557e-05 DIIS
@@ -1271,10 +1401,7 @@ The following helper functions will give us access to these states and will also
 Computation Completed
 
 
-Properties will be ev
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>aluated at   0.000000,   0.000000,   0.000000 [a0]
+Properties will be evaluated at   0.000000,   0.000000,   0.000000 [a0]
 
 Properties computed using the SCF density matrix
 
@@ -1293,14 +1420,14 @@ Properties computed using the SCF density matrix
 
  ------------------------------------------------------------------------------------
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:40:51 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:16 2025
 Module time:
-	user time   =       0.31 seconds =       0.01 minutes
-	system time =       0.02 seconds =       0.00 minutes
+	user time   =       0.37 seconds =       0.01 minutes
+	system time =       0.03 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       0.31 seconds =       0.01 minutes
-	system time =       0.02 seconds =       0.00 minutes
+	user time   =       0.37 seconds =       0.01 minutes
+	system time =       0.03 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
@@ -1321,16 +1448,16 @@ Total time:
  OEINTS: Overlap, kinetic, potential, dipole, and quadrupole integrals
          stored in file 35.
 
-      Computing two-electron integrals...done
-      Computed 335921 non-zero two-e
+      Computing two-electro
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lectron integrals.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n integrals...done
+      Computed 335921 non-zero two-electron integrals.
         Stored in file 33.
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:40:51 2025
+*** at Mon Jul  7 09:02:16 2025
 
 
 	Wfn Parameters:
@@ -1417,14 +1544,14 @@ Total time:
 	Two-electron energy          =     78.30002831099279
 	Reference energy             =   -110.03958985382491
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:40:51 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:16 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
-	system time =       0.09 seconds =       0.00 minutes
+	system time =       0.10 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       0.44 seconds =       0.01 minutes
-	system time =       0.12 seconds =       0.00 minutes
+	user time   =       0.50 seconds =       0.01 minutes
+	system time =       0.13 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
             **************************
             *                        *
@@ -1535,7 +1662,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:40:52 2025
+*** at Mon Jul  7 09:02:17 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -1734,18 +1861,18 @@ Properties computed using the SCF density matrix
 
  ------------------------------------------------------------------------------------
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:40:52 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:17 2025
 Module time:
-	user time   =       0.14 seconds =       0.00 minutes
+	user time   =       0.17 seconds =       0.00 minutes
 	system time =       0.01 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       0.89 seconds =       0.01 minutes
-	system time =       0.38 seconds =       0.01 minutes
+	user time   =       0.98 seconds =       0.02 minutes
+	system time =       0.39 seconds =       0.01 minutes
+	total time  =          1 seconds =       0.02 minutes
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	total time  =          1 seconds =       0.02 minutes
- MINTS: Wrapper to libmints.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> MINTS: Wrapper to libmints.
    by Justin Turney
 
    Calculation information:
@@ -1770,7 +1897,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:40:52 2025
+*** at Mon Jul  7 09:02:17 2025
 
 
 	Wfn Parameters:
@@ -1857,13 +1984,13 @@ Total time:
 	Two-electron energy          =     74.26197614317930
 	Reference energy             =   -111.49727180325011
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:40:52 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:17 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
 	system time =       0.09 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       1.02 seconds =       0.02 minutes
+	user time   =       1.12 seconds =       0.02 minutes
 	system time =       0.48 seconds =       0.01 minutes
 	total time  =          1 seconds =       0.02 minutes
             **************************
@@ -1979,7 +2106,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:40:53 2025
+*** at Mon Jul  7 09:02:18 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -2177,19 +2304,18 @@ Properties computed using the SCF density matrix
  Magnitude           :                                                    0.4306959
 
  ------------------------------------------------------------------------------------
-
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:40:53 2025
-Module time:
-	user time   =       0.14 seconds =       0.00 minutes
-	system time =       0.00 seconds =       0.00 minutes
-	total time  =          0 seconds =       0.00 minutes
-Total time:
-	user time   =       1.47 seconds =       0.02 minutes
-	system time =       0.74 seconds =       0.01 minutes
-	total time  =          2 seconds =       0.03 minutes
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> MINTS: Wrapper to libmints.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:18 2025
+Module time:
+	user time   =       0.15 seconds =       0.00 minutes
+	system time =       0.01 seconds =       0.00 minutes
+	total time  =          0 seconds =       0.00 minutes
+Total time:
+	user time   =       1.58 seconds =       0.03 minutes
+	system time =       0.73 seconds =       0.01 minutes
+	total time  =          2 seconds =       0.03 minutes
+ MINTS: Wrapper to libmints.
    by Justin Turney
 
    Calculation information:
@@ -2214,7 +2340,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:40:53 2025
+*** at Mon Jul  7 09:02:18 2025
 
 
 	Wfn Parameters:
@@ -2301,14 +2427,14 @@ Total time:
 	Two-electron energy          =     70.81227463779409
 	Reference energy             =   -112.23878290658510
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:40:53 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:18 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
-	system time =       0.09 seconds =       0.00 minutes
+	system time =       0.08 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       1.60 seconds =       0.03 minutes
-	system time =       0.84 seconds =       0.01 minutes
+	user time   =       1.71 seconds =       0.03 minutes
+	system time =       0.82 seconds =       0.01 minutes
 	total time  =          2 seconds =       0.03 minutes
             **************************
             *                        *
@@ -2423,7 +2549,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:40:54 2025
+*** at Mon Jul  7 09:02:19 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -2622,16 +2748,16 @@ Properties computed using the SCF density matrix
 
  ------------------------------------------------------------------------------------
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:40:54 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:19 2025
 Module time:
-	user time   =       0.14 seconds =       0.00 minutes
-	system time =       0.01 seconds =       0.00 minutes
-	total time  =          0 seconds =       0.00 minutes
-Total time:
-	user time   =       2.05 seconds =       0.03 minutes
+	user time   =       0.15 seconds =       0.00 minutes
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	system time =       1.11 seconds =       0.02 minutes
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	system time =       0.01 seconds =       0.00 minutes
+	total time  =          0 seconds =       0.00 minutes
+Total time:
+	user time   =       2.17 seconds =       0.04 minutes
+	system time =       1.09 seconds =       0.02 minutes
 	total time  =          3 seconds =       0.05 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
@@ -2658,7 +2784,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:40:54 2025
+*** at Mon Jul  7 09:02:19 2025
 
 
 	Wfn Parameters:
@@ -2745,15 +2871,15 @@ Total time:
 	Two-electron energy          =     67.91800450676106
 	Reference energy             =   -112.59503852155605
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:40:55 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:19 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
 	system time =       0.09 seconds =       0.00 minutes
-	total time  =          1 seconds =       0.02 minutes
+	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       2.18 seconds =       0.04 minutes
-	system time =       1.21 seconds =       0.02 minutes
-	total time  =          4 seconds =       0.07 minutes
+	user time   =       2.31 seconds =       0.04 minutes
+	system time =       1.19 seconds =       0.02 minutes
+	total time  =          3 seconds =       0.05 minutes
             **************************
             *                        *
             *        CCENERGY        *
@@ -2865,7 +2991,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:40:55 2025
+*** at Mon Jul  7 09:02:20 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -3064,17 +3190,16 @@ Properties computed using the SCF density matrix
  Magnitude           :                                                    0.1357255
 
  ------------------------------------------------------------------------------------
-
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:40:55 2025
-Module time:
-	user time   =       0.15 seconds =       0.00 minutes
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	system time =       0.01 seconds =       0.00 minutes
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:20 2025
+Module time:
+	user time   =       0.15 seconds =       0.00 minutes
+	system time =       0.00 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       2.60 seconds =       0.04 minutes
-	system time =       1.44 seconds =       0.02 minutes
+	user time   =       2.74 seconds =       0.05 minutes
+	system time =       1.43 seconds =       0.02 minutes
 	total time  =          4 seconds =       0.07 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
@@ -3101,7 +3226,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:40:55 2025
+*** at Mon Jul  7 09:02:20 2025
 
 
 	Wfn Parameters:
@@ -3188,14 +3313,14 @@ Total time:
 	Two-electron energy          =     65.49172860387580
 	Reference energy             =   -112.74388923743129
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:40:55 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:20 2025
 Module time:
-	user time   =       0.07 seconds =       0.00 minutes
-	system time =       0.10 seconds =       0.00 minutes
+	user time   =       0.09 seconds =       0.00 minutes
+	system time =       0.09 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       2.72 seconds =       0.05 minutes
-	system time =       1.54 seconds =       0.03 minutes
+	user time   =       2.88 seconds =       0.05 minutes
+	system time =       1.53 seconds =       0.03 minutes
 	total time  =          4 seconds =       0.07 minutes
             **************************
             *                        *
@@ -3311,7 +3436,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:40:56 2025
+*** at Mon Jul  7 09:02:21 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -3510,17 +3635,16 @@ Properties computed using the SCF density matrix
  Magnitude           :                                                    0.0432251
 
  ------------------------------------------------------------------------------------
-
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:40:56 2025
-Module time:
-	user time   =       0.16 seconds =       0.00 minutes
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	system time =       0.01 seconds =       0.00 minutes
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:21 2025
+Module time:
+	user time   =       0.16 seconds =       0.00 minutes
+	system time =       0.00 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       3.21 seconds =       0.05 minutes
-	system time =       1.81 seconds =       0.03 minutes
+	user time   =       3.37 seconds =       0.06 minutes
+	system time =       1.82 seconds =       0.03 minutes
 	total time  =          5 seconds =       0.08 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
@@ -3547,7 +3671,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:40:56 2025
+*** at Mon Jul  7 09:02:21 2025
 
 
 	Wfn Parameters:
@@ -3634,15 +3758,15 @@ Total time:
 	Two-electron energy          =     63.44784098408645
 	Reference energy             =   -112.78175788218095
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:40:57 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:21 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
 	system time =       0.09 seconds =       0.00 minutes
-	total time  =          1 seconds =       0.02 minutes
+	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       3.34 seconds =       0.06 minutes
-	system time =       1.91 seconds =       0.03 minutes
-	total time  =          6 seconds =       0.10 minutes
+	user time   =       3.50 seconds =       0.06 minutes
+	system time =       1.92 seconds =       0.03 minutes
+	total time  =          5 seconds =       0.08 minutes
             **************************
             *                        *
             *        CCENERGY        *
@@ -3759,7 +3883,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:40:57 2025
+*** at Mon Jul  7 09:02:22 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -3960,14 +4084,14 @@ Properties computed using the SCF density matrix
  ------------------------------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:40:57 2025
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:22 2025
 Module time:
-	user time   =       0.14 seconds =       0.00 minutes
-	system time =       0.01 seconds =       0.00 minutes
+	user time   =       0.16 seconds =       0.00 minutes
+	system time =       0.00 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       3.87 seconds =       0.06 minutes
-	system time =       2.26 seconds =       0.04 minutes
+	user time   =       4.05 seconds =       0.07 minutes
+	system time =       2.22 seconds =       0.04 minutes
 	total time  =          6 seconds =       0.10 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
@@ -3994,7 +4118,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:40:58 2025
+*** at Mon Jul  7 09:02:22 2025
 
 
 	Wfn Parameters:
@@ -4081,15 +4205,15 @@ Total time:
 	Two-electron energy          =     61.71477629255946
 	Reference energy             =   -112.76160835056547
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:40:58 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:22 2025
 Module time:
-	user time   =       0.07 seconds =       0.00 minutes
-	system time =       0.10 seconds =       0.00 minutes
+	user time   =       0.08 seconds =       0.00 minutes
+	system time =       0.09 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       4.00 seconds =       0.07 minutes
-	system time =       2.36 seconds =       0.04 minutes
-	total time  =          7 seconds =       0.12 minutes
+	user time   =       4.18 seconds =       0.07 minutes
+	system time =       2.32 seconds =       0.04 minutes
+	total time  =          6 seconds =       0.10 minutes
             **************************
             *                        *
             *        CCENERGY        *
@@ -4206,7 +4330,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:40:58 2025
+*** at Mon Jul  7 09:02:23 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -4405,19 +4529,18 @@ Properties computed using the SCF density matrix
  Magnitude           :                                                    0.4394364
 
  ------------------------------------------------------------------------------------
-
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:40:59 2025
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:23 2025
 Module time:
 	user time   =       0.15 seconds =       0.00 minutes
 	system time =       0.00 seconds =       0.00 minutes
-	total time  =          1 seconds =       0.02 minutes
+	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       4.52 seconds =       0.08 minutes
-	system time =       2.68 seconds =       0.04 minutes
-	total time  =          8 seconds =       0.13 minutes
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> MINTS: Wrapper to libmints.
+	user time   =       4.70 seconds =       0.08 minutes
+	system time =       2.60 seconds =       0.04 minutes
+	total time  =          7 seconds =       0.12 minutes
+ MINTS: Wrapper to libmints.
    by Justin Turney
 
    Calculation information:
@@ -4442,7 +4565,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:40:59 2025
+*** at Mon Jul  7 09:02:23 2025
 
 
 	Wfn Parameters:
@@ -4529,15 +4652,15 @@ Total time:
 	Two-electron energy          =     60.23500341157590
 	Reference energy             =   -112.71279583924263
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:40:59 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:23 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
-	system time =       0.10 seconds =       0.00 minutes
+	system time =       0.09 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       4.65 seconds =       0.08 minutes
-	system time =       2.79 seconds =       0.05 minutes
-	total time  =          8 seconds =       0.13 minutes
+	user time   =       4.84 seconds =       0.08 minutes
+	system time =       2.70 seconds =       0.05 minutes
+	total time  =          7 seconds =       0.12 minutes
             **************************
             *                        *
             *        CCENERGY        *
@@ -4656,7 +4779,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:00 2025
+*** at Mon Jul  7 09:02:24 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -4856,18 +4979,17 @@ Properties computed using the SCF density matrix
  Magnitude           :                                                    0.6445335
 
  ------------------------------------------------------------------------------------
-
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:00 2025
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:24 2025
 Module time:
 	user time   =       0.15 seconds =       0.00 minutes
 	system time =       0.01 seconds =       0.00 minutes
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	total time  =          0 seconds =       0.00 minutes
+	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       5.20 seconds =       0.09 minutes
-	system time =       3.16 seconds =       0.05 minutes
-	total time  =          9 seconds =       0.15 minutes
+	user time   =       5.40 seconds =       0.09 minutes
+	system time =       3.03 seconds =       0.05 minutes
+	total time  =          8 seconds =       0.13 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
 
@@ -4893,7 +5015,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:00 2025
+*** at Mon Jul  7 09:02:24 2025
 
 
 	Wfn Parameters:
@@ -4980,15 +5102,15 @@ Total time:
 	Two-electron energy          =     58.96263573942372
 	Reference energy             =   -112.65169220817066
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:00 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:24 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
-	system time =       0.10 seconds =       0.00 minutes
+	system time =       0.09 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       5.33 seconds =       0.09 minutes
-	system time =       3.27 seconds =       0.05 minutes
-	total time  =          9 seconds =       0.15 minutes
+	user time   =       5.54 seconds =       0.09 minutes
+	system time =       3.12 seconds =       0.05 minutes
+	total time  =          8 seconds =       0.13 minutes
             **************************
             *                        *
             *        CCENERGY        *
@@ -5107,7 +5229,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:01 2025
+*** at Mon Jul  7 09:02:25 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -5309,18 +5431,18 @@ Properties computed using the SCF density matrix
 
  ------------------------------------------------------------------------------------
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:01 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:25 2025
 Module time:
-	user time   =       0.15 seconds =       0.00 minutes
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	system time =       0.01 seconds =       0.00 minutes
+	user time   =       0.16 seconds =       0.00 minutes
+	system time =       0.01 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       5.89 seconds =       0.10 minutes
-	system time =       3.62 seconds =       0.06 minutes
-	total time  =         10 seconds =       0.17 minutes
- MINTS: Wrapper to libmints.
+	user time   =       6.11 seconds =       0.10 minutes
+	system time =       3.48 seconds =       0.06 minutes
+	total time  =          9 seconds =       0.15 minutes
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> MINTS: Wrapper to libmints.
    by Justin Turney
 
    Calculation information:
@@ -5345,7 +5467,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:01 2025
+*** at Mon Jul  7 09:02:25 2025
 
 
 	Wfn Parameters:
@@ -5432,14 +5554,14 @@ Total time:
 	Two-electron energy          =     57.86188040843967
 	Reference energy             =   -112.58745987401683
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:01 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:26 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
 	system time =       0.09 seconds =       0.00 minutes
-	total time  =          0 seconds =       0.00 minutes
+	total time  =          1 seconds =       0.02 minutes
 Total time:
-	user time   =       6.02 seconds =       0.10 minutes
-	system time =       3.72 seconds =       0.06 minutes
+	user time   =       6.25 seconds =       0.10 minutes
+	system time =       3.58 seconds =       0.06 minutes
 	total time  =         10 seconds =       0.17 minutes
             **************************
             *                        *
@@ -5561,7 +5683,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:02 2025
+*** at Mon Jul  7 09:02:26 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -5762,17 +5884,16 @@ Properties computed using the SCF density matrix
  Magnitude           :                                                    1.0330489
 
  ------------------------------------------------------------------------------------
-
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:02 2025
-Module time:
-	user time   =       0.16 seconds =       0.00 minutes
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	system time =       0.01 seconds =       0.00 minutes
-	total time  =          0 seconds =       0.00 minutes
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:27 2025
+Module time:
+	user time   =       0.16 seconds =       0.00 minutes
+	system time =       0.01 seconds =       0.00 minutes
+	total time  =          1 seconds =       0.02 minutes
 Total time:
-	user time   =       6.63 seconds =       0.11 minutes
-	system time =       4.11 seconds =       0.07 minutes
+	user time   =       6.86 seconds =       0.11 minutes
+	system time =       4.00 seconds =       0.07 minutes
 	total time  =         11 seconds =       0.18 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
@@ -5799,7 +5920,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:02 2025
+*** at Mon Jul  7 09:02:27 2025
 
 
 	Wfn Parameters:
@@ -5886,14 +6007,14 @@ Total time:
 	Two-electron energy          =     56.90696945458834
 	Reference energy             =   -112.52535631838505
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:02 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:27 2025
 Module time:
-	user time   =       0.07 seconds =       0.00 minutes
+	user time   =       0.08 seconds =       0.00 minutes
 	system time =       0.09 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       6.75 seconds =       0.11 minutes
-	system time =       4.21 seconds =       0.07 minutes
+	user time   =       6.99 seconds =       0.12 minutes
+	system time =       4.10 seconds =       0.07 minutes
 	total time  =         11 seconds =       0.18 minutes
             **************************
             *                        *
@@ -6018,7 +6139,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:03 2025
+*** at Mon Jul  7 09:02:28 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -6220,18 +6341,17 @@ Properties computed using the SCF density matrix
  Magnitude           :                                                    1.1873478
 
  ------------------------------------------------------------------------------------
-
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:04 2025
-Module time:
-	user time   =       0.15 seconds =       0.00 minutes
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	system time =       0.01 seconds =       0.00 minutes
-	total time  =          1 seconds =       0.02 minutes
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:28 2025
+Module time:
+	user time   =       0.16 seconds =       0.00 minutes
+	system time =       0.01 seconds =       0.00 minutes
+	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       7.43 seconds =       0.12 minutes
-	system time =       4.70 seconds =       0.08 minutes
-	total time  =         13 seconds =       0.22 minutes
+	user time   =       7.67 seconds =       0.13 minutes
+	system time =       4.58 seconds =       0.08 minutes
+	total time  =         12 seconds =       0.20 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
 
@@ -6257,7 +6377,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:04 2025
+*** at Mon Jul  7 09:02:28 2025
 
 
 	Wfn Parameters:
@@ -6344,15 +6464,15 @@ Total time:
 	Two-electron energy          =     56.08240363571734
 	Reference energy             =   -112.46898896898173
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:04 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:28 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
-	system time =       0.09 seconds =       0.00 minutes
+	system time =       0.10 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       7.56 seconds =       0.13 minutes
-	system time =       4.80 seconds =       0.08 minutes
-	total time  =         13 seconds =       0.22 minutes
+	user time   =       7.81 seconds =       0.13 minutes
+	system time =       4.68 seconds =       0.08 minutes
+	total time  =         12 seconds =       0.20 minutes
             **************************
             *                        *
             *        CCENERGY        *
@@ -6472,7 +6592,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:05 2025
+*** at Mon Jul  7 09:02:29 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -6678,15 +6798,15 @@ Properties computed using the SCF density matrix
  ------------------------------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:05 2025
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:29 2025
 Module time:
 	user time   =       0.17 seconds =       0.00 minutes
-	system time =       0.02 seconds =       0.00 minutes
+	system time =       0.01 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       8.16 seconds =       0.14 minutes
-	system time =       5.19 seconds =       0.09 minutes
-	total time  =         14 seconds =       0.23 minutes
+	user time   =       8.41 seconds =       0.14 minutes
+	system time =       5.06 seconds =       0.08 minutes
+	total time  =         13 seconds =       0.22 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
 
@@ -6712,7 +6832,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:05 2025
+*** at Mon Jul  7 09:02:29 2025
 
 
 	Wfn Parameters:
@@ -6799,15 +6919,15 @@ Total time:
 	Two-electron energy          =     55.36993223229562
 	Reference energy             =   -112.42197157078293
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:05 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:29 2025
 Module time:
-	user time   =       0.07 seconds =       0.00 minutes
+	user time   =       0.08 seconds =       0.00 minutes
 	system time =       0.09 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       8.28 seconds =       0.14 minutes
-	system time =       5.28 seconds =       0.09 minutes
-	total time  =         14 seconds =       0.23 minutes
+	user time   =       8.55 seconds =       0.14 minutes
+	system time =       5.16 seconds =       0.09 minutes
+	total time  =         13 seconds =       0.22 minutes
             **************************
             *                        *
             *        CCENERGY        *
@@ -6928,7 +7048,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:06 2025
+*** at Mon Jul  7 09:02:30 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -7133,17 +7253,16 @@ Properties computed using the SCF density matrix
  Magnitude           :                                                    1.2348218
 
  ------------------------------------------------------------------------------------
-
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:06 2025
-Module time:
-	user time   =       0.17 seconds =       0.00 minutes
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	system time =       0.02 seconds =       0.00 minutes
-	total time  =          0 seconds =       0.00 minutes
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:31 2025
+Module time:
+	user time   =       0.17 seconds =       0.00 minutes
+	system time =       0.01 seconds =       0.00 minutes
+	total time  =          1 seconds =       0.02 minutes
 Total time:
-	user time   =       8.90 seconds =       0.15 minutes
-	system time =       5.68 seconds =       0.09 minutes
+	user time   =       9.18 seconds =       0.15 minutes
+	system time =       5.55 seconds =       0.09 minutes
 	total time  =         15 seconds =       0.25 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
@@ -7170,7 +7289,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:06 2025
+*** at Mon Jul  7 09:02:31 2025
 
 
 	Wfn Parameters:
@@ -7257,14 +7376,14 @@ Total time:
 	Two-electron energy          =     54.72069193122744
 	Reference energy             =   -112.38674764701395
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:06 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:31 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
 	system time =       0.09 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       9.03 seconds =       0.15 minutes
-	system time =       5.77 seconds =       0.10 minutes
+	user time   =       9.32 seconds =       0.16 minutes
+	system time =       5.65 seconds =       0.09 minutes
 	total time  =         15 seconds =       0.25 minutes
             **************************
             *                        *
@@ -7393,7 +7512,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:07 2025
+*** at Mon Jul  7 09:02:32 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -7600,15 +7719,15 @@ Properties computed using the SCF density matrix
  ------------------------------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:08 2025
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:32 2025
 Module time:
 	user time   =       0.17 seconds =       0.00 minutes
-	system time =       0.01 seconds =       0.00 minutes
-	total time  =          1 seconds =       0.02 minutes
+	system time =       0.02 seconds =       0.00 minutes
+	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       9.79 seconds =       0.16 minutes
-	system time =       6.30 seconds =       0.10 minutes
-	total time  =         17 seconds =       0.28 minutes
+	user time   =      10.08 seconds =       0.17 minutes
+	system time =       6.19 seconds =       0.10 minutes
+	total time  =         16 seconds =       0.27 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
 
@@ -7634,7 +7753,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:08 2025
+*** at Mon Jul  7 09:02:32 2025
 
 
 	Wfn Parameters:
@@ -7721,15 +7840,15 @@ Total time:
 	Two-electron energy          =     54.10057211339879
 	Reference energy             =   -112.36184090315818
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:08 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:32 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
-	system time =       0.10 seconds =       0.00 minutes
+	system time =       0.09 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =       9.92 seconds =       0.17 minutes
-	system time =       6.40 seconds =       0.11 minutes
-	total time  =         17 seconds =       0.28 minutes
+	user time   =      10.22 seconds =       0.17 minutes
+	system time =       6.28 seconds =       0.10 minutes
+	total time  =         16 seconds =       0.27 minutes
             **************************
             *                        *
             *        CCENERGY        *
@@ -7859,7 +7978,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:09 2025
+*** at Mon Jul  7 09:02:34 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -8002,10 +8121,7 @@ Scratch directory: /tmp/
     Orbital Energies [Eh]
     ---------------------
 
-    Doubly Occupied:                                       
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>               
+    Doubly Occupied:                                                      
 
        1A1   -20.609059     2A1   -11.471212     3A1    -1.188071  
        4A1    -0.791265     1B1    -0.489062     1B2    -0.489062  
@@ -8069,16 +8185,16 @@ Properties computed using the SCF density matrix
 
  ------------------------------------------------------------------------------------
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:09 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:34 2025
 Module time:
+	user time   =       0.18 seconds =       0.00 minutes
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	user time   =       0.19 seconds =       0.00 minutes
-	system time =       0.02 seconds =       0.00 minutes
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	system time =       0.01 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      10.75 seconds =       0.18 minutes
-	system time =       7.00 seconds =       0.12 minutes
+	user time   =      11.04 seconds =       0.18 minutes
+	system time =       6.86 seconds =       0.11 minutes
 	total time  =         18 seconds =       0.30 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
@@ -8105,7 +8221,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:09 2025
+*** at Mon Jul  7 09:02:34 2025
 
 
 	Wfn Parameters:
@@ -8133,10 +8249,7 @@ Total time:
 	Constructing frozen core operators
 	Starting first half-transformation.
 	Sorting half-transformed integrals.
-	First half integral transforma
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tion complete.
+	First half integral transformation complete.
 	Starting second half-transformation.
 	Two-electron integral transformation complete.
 	(OO|OV)...
@@ -8195,18 +8308,21 @@ Total time:
 	Two-electron energy          =     53.50937991030755
 	Reference energy             =   -112.34416561480158
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:10 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:34 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
-	system time =       0.10 seconds =       0.00 minutes
-	total time  =          1 seconds =       0.02 minutes
+	system time =       0.09 seconds =       0.00 minutes
+	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      10.88 seconds =       0.18 minutes
-	system time =       7.10 seconds =       0.12 minutes
-	total time  =         19 seconds =       0.32 minutes
+	user time   =      11.17 seconds =       0.19 minutes
+	system time =       6.96 seconds =       0.12 minutes
+	total time  =         18 seconds =       0.30 minutes
             **************************
             *                        *
-            *        CCENERGY        *
+            * 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       CCENERGY        *
             *                        *
             **************************
 
@@ -8410,7 +8526,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:11 2025
+*** at Mon Jul  7 09:02:35 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -8526,7 +8642,9 @@ Scratch directory: /tmp/
                         Total Energy        Delta E     RMS |[F,P]|
 
    @RHF iter SAD:  -112.38254761560461   -1.12383e+02   0.00000e+00 
-   @RHF iter   1:  -112.56902605198684   -1.86478e-01   9.66181e-03 ADIIS/DIIS
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   @RHF iter   1:  -112.56902605198684   -1.86478e-01   9.66181e-03 ADIIS/DIIS
    @RHF iter   2:  -112.58881253467902   -1.97865e-02   4.19904e-03 ADIIS/DIIS
    @RHF iter   3:  -112.59389900920687   -5.08647e-03   7.78015e-04 ADIIS/DIIS
    @RHF iter   4:  -112.59410690989664   -2.07901e-04   1.27417e-04 ADIIS/DIIS
@@ -8545,10 +8663,7 @@ Scratch directory: /tmp/
     Orbital Energies [Eh]
     ---------------------
 
-    Doubly Occupied:                                 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     
+    Doubly Occupied:                                                      
 
        1A1   -20.646357     2A1   -11.261649     3A1    -1.680134  
        4A1    -0.821531     1B1    -0.761093     1B2    -0.761093  
@@ -8566,10 +8681,7 @@ Scratch directory: /tmp/
        7B1     2.438958     7B2     2.438958     8B2     2.933815  
        8B1     2.933815    15A1     3.052905    16A1     3.241097  
        3A2     3.241097     4A2     3.341144    17A1     3.341144  
-       9B2     3.351421     9B1     3.351421    18A1     3
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.445507  
+       9B2     3.351421     9B1     3.351421    18A1     3.445507  
       10B2     3.979634    10B1     3.979634    19A1     4.214987  
       11B2     4.673218    11B1     4.673218    12B2     5.569130  
       12B1     5.569130    20A1     5.781621    21A1     6.358375  
@@ -8614,18 +8726,17 @@ Properties computed using the SCF density matrix
  Magnitude           :                                                    0.2955864
 
  ------------------------------------------------------------------------------------
-
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:11 2025
-Module time:
-	user time   =       0.50 seconds =       0.01 minutes
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	system time =       0.01 seconds =       0.00 minutes
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:35 2025
+Module time:
+	user time   =       0.49 seconds =       0.01 minutes
+	system time =       0.01 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      12.05 seconds =       0.20 minutes
-	system time =       7.58 seconds =       0.13 minutes
-	total time  =         20 seconds =       0.33 minutes
+	user time   =      12.33 seconds =       0.21 minutes
+	system time =       7.43 seconds =       0.12 minutes
+	total time  =         19 seconds =       0.32 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
 
@@ -8651,7 +8762,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:11 2025
+*** at Mon Jul  7 09:02:35 2025
 
 
 	Wfn Parameters:
@@ -8738,22 +8849,22 @@ Total time:
 	Two-electron energy          =     67.92855524789087
 	Reference energy             =   -112.59411427043187
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:11 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:36 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
 	system time =       0.09 seconds =       0.00 minutes
-	total time  =          0 seconds =       0.00 minutes
+	total time  =          1 seconds =       0.02 minutes
 Total time:
-	user time   =      12.29 seconds =       0.20 minutes
-	system time =       7.67 seconds =       0.13 minutes
+	user time   =      12.59 seconds =       0.21 minutes
+	system time =       7.53 seconds =       0.13 minutes
 	total time  =         20 seconds =       0.33 minutes
             **************************
             *                        *
-            * 
+            *        CCENERGY        *
+            *                 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       CCENERGY        *
-            *                        *
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       *
             **************************
 
     Nuclear Rep. energy (wfn)     =   28.235294117582498
@@ -8784,10 +8895,7 @@ Total time:
     Local CC        =     No
     SCS-MP2         =     False
     SCSN-MP2        =     False
-    SCS-CCSD     
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   =     False
+    SCS-CCSD        =     False
 
     Using old T1 amplitudes.
     Using old T2 amplitudes.
@@ -8868,7 +8976,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:12 2025
+*** at Mon Jul  7 09:02:36 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -9068,17 +9176,17 @@ Properties computed using the SCF density matrix
  ------------------------------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:12 2025
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:36 2025
 Module time:
-	user time   =       0.14 seconds =       0.00 minutes
+	user time   =       0.15 seconds =       0.00 minutes
 	system time =       0.01 seconds =       0.00 minutes
-	total time  =          0 seconds =       0.00 minutes
-Total time:
-	user time   =      12.79 seconds =       0.21 minutes
-	system time =       7.98 seconds =       0.13 minutes
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	total time  =         21 seconds =       0.35 minutes
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	total time  =          0 seconds =       0.00 minutes
+Total time:
+	user time   =      13.09 seconds =       0.22 minutes
+	system time =       7.81 seconds =       0.13 minutes
+	total time  =         20 seconds =       0.33 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
 
@@ -9104,7 +9212,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:12 2025
+*** at Mon Jul  7 09:02:36 2025
 
 
 	Wfn Parameters:
@@ -9191,14 +9299,14 @@ Total time:
 	Two-electron energy          =     66.80548915073213
 	Reference energy             =   -112.67858688184849
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:12 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:37 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
-	system time =       0.08 seconds =       0.00 minutes
-	total time  =          0 seconds =       0.00 minutes
+	system time =       0.09 seconds =       0.00 minutes
+	total time  =          1 seconds =       0.02 minutes
 Total time:
-	user time   =      12.92 seconds =       0.22 minutes
-	system time =       8.07 seconds =       0.13 minutes
+	user time   =      13.23 seconds =       0.22 minutes
+	system time =       7.91 seconds =       0.13 minutes
 	total time  =         21 seconds =       0.35 minutes
             **************************
             *                        *
@@ -9314,7 +9422,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:13 2025
+*** at Mon Jul  7 09:02:37 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -9514,17 +9622,15 @@ Properties computed using the SCF density matrix
  ------------------------------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:13 2025
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:37 2025
 Module time:
 	user time   =       0.15 seconds =       0.00 minutes
 	system time =       0.01 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total time:
-	user time   =      13.40 seconds =       0.22 minutes
-	system time =       8.35 seconds =       0.14 minutes
-	total time  =         22 seconds =       0.37 minutes
+Total time:
+	user time   =      13.71 seconds =       0.23 minutes
+	system time =       8.18 seconds =       0.14 minutes
+	total time  =         21 seconds =       0.35 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
 
@@ -9550,7 +9656,7 @@ Module time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:13 2025
+*** at Mon Jul  7 09:02:37 2025
 
 
 	Wfn Parameters:
@@ -9559,7 +9665,10 @@ Module time:
 	Number of irreps     = 4
 	Number of MOs        = 60
 	Number of active MOs = 60
-	AO-Basis             = NONE
+	AO-Basis          
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   = NONE
 	Semicanonical        = false
 	Reference            = RHF
 	Print Level          = 1
@@ -9637,14 +9746,14 @@ Module time:
 	Two-electron energy          =     65.76571708156605
 	Reference energy             =   -112.73308734368388
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:13 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:38 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
-	system time =       0.09 seconds =       0.00 minutes
-	total time  =          0 seconds =       0.00 minutes
+	system time =       0.08 seconds =       0.00 minutes
+	total time  =          1 seconds =       0.02 minutes
 Total time:
-	user time   =      13.53 seconds =       0.23 minutes
-	system time =       8.45 seconds =       0.14 minutes
+	user time   =      13.84 seconds =       0.23 minutes
+	system time =       8.27 seconds =       0.14 minutes
 	total time  =         22 seconds =       0.37 minutes
             **************************
             *                        *
@@ -9760,7 +9869,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:14 2025
+*** at Mon Jul  7 09:02:38 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -9959,18 +10068,19 @@ Properties computed using the SCF density matrix
  Magnitude           :                                                    0.0805702
 
  ------------------------------------------------------------------------------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:14 2025
+
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:38 2025
 Module time:
 	user time   =       0.15 seconds =       0.00 minutes
-	system time =       0.01 seconds =       0.00 minutes
+	system time =       0.00 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      14.01 seconds =       0.23 minutes
-	system time =       8.75 seconds =       0.15 minutes
-	total time  =         23 seconds =       0.38 minutes
- MINTS: Wrapper to libmints.
+	user time   =      14.33 seconds =       0.24 minutes
+	system time =       8.54 seconds =       0.14 minutes
+	total time  =         22 seconds =       0.37 minutes
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> MINTS: Wrapper to libmints.
    by Justin Turney
 
    Calculation information:
@@ -9990,15 +10100,12 @@ Total time:
          stored in file 35.
 
       Computing two-electron integrals...done
-      Computed 335921 non-zero two-e
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lectron integrals.
+      Computed 335921 non-zero two-electron integrals.
         Stored in file 33.
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:14 2025
+*** at Mon Jul  7 09:02:38 2025
 
 
 	Wfn Parameters:
@@ -10007,7 +10114,10 @@ Total time:
 	Number of irreps     = 4
 	Number of MOs        = 60
 	Number of active MOs = 60
-	AO-Basis             = NONE
+	AO-Basis          
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   = NONE
 	Semicanonical        = false
 	Reference            = RHF
 	Print Level          = 1
@@ -10085,14 +10195,14 @@ Total time:
 	Two-electron energy          =     64.80200856108523
 	Reference energy             =   -112.76485715170654
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:14 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:39 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
 	system time =       0.09 seconds =       0.00 minutes
-	total time  =          0 seconds =       0.00 minutes
+	total time  =          1 seconds =       0.02 minutes
 Total time:
-	user time   =      14.14 seconds =       0.24 minutes
-	system time =       8.85 seconds =       0.15 minutes
+	user time   =      14.47 seconds =       0.24 minutes
+	system time =       8.64 seconds =       0.14 minutes
 	total time  =         23 seconds =       0.38 minutes
             **************************
             *                        *
@@ -10204,7 +10314,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:15 2025
+*** at Mon Jul  7 09:02:39 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -10405,17 +10515,17 @@ Properties computed using the SCF density matrix
  ------------------------------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:15 2025
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:39 2025
 Module time:
 	user time   =       0.15 seconds =       0.00 minutes
+	system time =       0.00 seconds =       0.00 minutes
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	system time =       0.01 seconds =       0.00 minutes
-	total time  =          0 seconds =       0.00 minutes
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      14.54 seconds =       0.24 minutes
-	system time =       9.08 seconds =       0.15 minutes
-	total time  =         24 seconds =       0.40 minutes
+	user time   =      14.87 seconds =       0.25 minutes
+	system time =       8.84 seconds =       0.15 minutes
+	total time  =         23 seconds =       0.38 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
 
@@ -10441,7 +10551,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:15 2025
+*** at Mon Jul  7 09:02:39 2025
 
 
 	Wfn Parameters:
@@ -10528,15 +10638,15 @@ Total time:
 	Two-electron energy          =     63.90770236861041
 	Reference energy             =   -112.77945805575533
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:15 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:39 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
-	system time =       0.09 seconds =       0.00 minutes
+	system time =       0.10 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      14.67 seconds =       0.24 minutes
-	system time =       9.17 seconds =       0.15 minutes
-	total time  =         24 seconds =       0.40 minutes
+	user time   =      15.01 seconds =       0.25 minutes
+	system time =       8.95 seconds =       0.15 minutes
+	total time  =         23 seconds =       0.38 minutes
             **************************
             *                        *
             *        CCENERGY        *
@@ -10651,7 +10761,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:16 2025
+*** at Mon Jul  7 09:02:40 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -10850,17 +10960,18 @@ Properties computed using the SCF density matrix
  Magnitude           :                                                    0.0811324
 
  ------------------------------------------------------------------------------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:16 2025
+
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:40 2025
 Module time:
-	user time   =       0.15 seconds =       0.00 minutes
+	user time   =       0.16 seconds =       0.00 minutes
 	system time =       0.01 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      15.17 seconds =       0.25 minutes
-	system time =       9.51 seconds =       0.16 minutes
-	total time  =         25 seconds =       0.42 minutes
+	user time   =      15.51 seconds =       0.26 minutes
+	system time =       9.25 seconds =       0.15 minutes
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	total time  =         24 seconds =       0.40 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
 
@@ -10880,23 +10991,23 @@ Total time:
  OEINTS: Overlap, kinetic, potential, dipole, and quadrupole integrals
          stored in file 35.
 
-      Computing two-electro
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n integrals...done
+      Computing two-electron integrals...done
       Computed 335921 non-zero two-electron integrals.
         Stored in file 33.
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:16 2025
+*** at Mon Jul  7 09:02:40 2025
 
 
 	Wfn Parameters:
 	--------------------
 	Wavefunction         = CCSD
 	Number of irreps     = 4
-	Number of MOs        = 60
+	Number of MOs    
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    = 60
 	Number of active MOs = 60
 	AO-Basis             = NONE
 	Semicanonical        = false
@@ -10976,14 +11087,14 @@ Total time:
 	Two-electron energy          =     63.07672315629788
 	Reference energy             =   -112.78116950256710
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:16 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:41 2025
 Module time:
-	user time   =       0.08 seconds =       0.00 minutes
+	user time   =       0.09 seconds =       0.00 minutes
 	system time =       0.09 seconds =       0.00 minutes
-	total time  =          0 seconds =       0.00 minutes
+	total time  =          1 seconds =       0.02 minutes
 Total time:
-	user time   =      15.31 seconds =       0.26 minutes
-	system time =       9.61 seconds =       0.16 minutes
+	user time   =      15.65 seconds =       0.26 minutes
+	system time =       9.35 seconds =       0.16 minutes
 	total time  =         25 seconds =       0.42 minutes
             **************************
             *                        *
@@ -11099,7 +11210,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:17 2025
+*** at Mon Jul  7 09:02:41 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -11300,18 +11411,18 @@ Properties computed using the SCF density matrix
  ------------------------------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:17 2025
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:41 2025
 Module time:
-	user time   =       0.15 seconds =       0.00 minutes
-	system time =       0.00 seconds =       0.00 minutes
+	user time   =       0.16 seconds =       0.00 minutes
+	system time =       0.01 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      15.79 seconds =       0.26 minutes
-	system time =       9.91 seconds =       0.17 minutes
-	total time  =         26 seconds =       0.43 minutes
+	user time   =      16.15 seconds =       0.27 minutes
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> MINTS: Wrapper to libmints.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	system time =       9.66 seconds =       0.16 minutes
+	total time  =         25 seconds =       0.42 minutes
+ MINTS: Wrapper to libmints.
    by Justin Turney
 
    Calculation information:
@@ -11336,7 +11447,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:17 2025
+*** at Mon Jul  7 09:02:41 2025
 
 
 	Wfn Parameters:
@@ -11423,14 +11534,14 @@ Total time:
 	Two-electron energy          =     62.30355677220241
 	Reference energy             =   -112.77328936987138
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:17 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:42 2025
 Module time:
-	user time   =       0.08 seconds =       0.00 minutes
-	system time =       0.09 seconds =       0.00 minutes
-	total time  =          0 seconds =       0.00 minutes
+	user time   =       0.09 seconds =       0.00 minutes
+	system time =       0.10 seconds =       0.00 minutes
+	total time  =          1 seconds =       0.02 minutes
 Total time:
-	user time   =      15.92 seconds =       0.27 minutes
-	system time =      10.01 seconds =       0.17 minutes
+	user time   =      16.29 seconds =       0.27 minutes
+	system time =       9.77 seconds =       0.16 minutes
 	total time  =         26 seconds =       0.43 minutes
             **************************
             *                        *
@@ -11548,7 +11659,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:18 2025
+*** at Mon Jul  7 09:02:42 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -11748,7 +11859,7 @@ Properties computed using the SCF density matrix
 
  ------------------------------------------------------------------------------------
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:18 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:42 2025
 Module time:
 	user time   =       0.15 seconds =       0.00 minutes
 </pre></div>
@@ -11756,9 +11867,9 @@ Module time:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	system time =       0.01 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      16.44 seconds =       0.27 minutes
-	system time =      10.35 seconds =       0.17 minutes
-	total time  =         27 seconds =       0.45 minutes
+	user time   =      16.82 seconds =       0.28 minutes
+	system time =      10.11 seconds =       0.17 minutes
+	total time  =         26 seconds =       0.43 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
 
@@ -11779,12 +11890,15 @@ Total time:
          stored in file 35.
 
       Computing two-electron integrals...done
-      Computed 335921 non-zero two-electron integrals.
+      Computed 335921 non-zero two-e
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lectron integrals.
         Stored in file 33.
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:18 2025
+*** at Mon Jul  7 09:02:43 2025
 
 
 	Wfn Parameters:
@@ -11814,10 +11928,7 @@ Total time:
 	Sorting half-transformed integrals.
 	First half integral transformation complete.
 	Starting second half-transformation.
-	T
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>wo-electron integral transformation complete.
+	Two-electron integral transformation complete.
 	(OO|OV)...
 	Starting second half-transformation.
 	Two-electron integral transformation complete.
@@ -11874,14 +11985,14 @@ Total time:
 	Two-electron energy          =     61.58320665385268
 	Reference energy             =   -112.75836268858637
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:18 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:43 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
 	system time =       0.09 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      16.57 seconds =       0.28 minutes
-	system time =      10.45 seconds =       0.17 minutes
+	user time   =      16.96 seconds =       0.28 minutes
+	system time =      10.21 seconds =       0.17 minutes
 	total time  =         27 seconds =       0.45 minutes
             **************************
             *                        *
@@ -11998,7 +12109,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:19 2025
+*** at Mon Jul  7 09:02:43 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -12197,18 +12308,17 @@ Properties computed using the SCF density matrix
  Magnitude           :                                                    0.3422838
 
  ------------------------------------------------------------------------------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:19 2025
+
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:44 2025
 Module time:
-	user time   =       0.15 seconds =       0.00 minutes
-	system time =       0.02 seconds =       0.00 minutes
-	total time  =          0 seconds =       0.00 minutes
+	user time   =       0.16 seconds =       0.00 minutes
+	system time =       0.01 seconds =       0.00 minutes
+	total time  =          1 seconds =       0.02 minutes
+Total time:
+	user time   =      17.47 seconds =       0.29 minutes
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total time:
-	user time   =      17.07 seconds =       0.28 minutes
-	system time =      10.78 seconds =       0.18 minutes
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	system time =      10.49 seconds =       0.17 minutes
 	total time  =         28 seconds =       0.47 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
@@ -12235,12 +12345,15 @@ Module time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:19 2025
+*** at Mon Jul  7 09:02:44 2025
 
 
 	Wfn Parameters:
 	--------------------
-	Wavefunction         = CCSD
+	Wavefunction     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    = CCSD
 	Number of irreps     = 4
 	Number of MOs        = 60
 	Number of active MOs = 60
@@ -12322,14 +12435,14 @@ Module time:
 	Two-electron energy          =     60.91114568246660
 	Reference energy             =   -112.73835605807528
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:19 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:44 2025
 Module time:
-	user time   =       0.08 seconds =       0.00 minutes
+	user time   =       0.09 seconds =       0.00 minutes
 	system time =       0.09 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      17.20 seconds =       0.29 minutes
-	system time =      10.88 seconds =       0.18 minutes
+	user time   =      17.61 seconds =       0.29 minutes
+	system time =      10.59 seconds =       0.18 minutes
 	total time  =         28 seconds =       0.47 minutes
             **************************
             *                        *
@@ -12448,7 +12561,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:20 2025
+*** at Mon Jul  7 09:02:44 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -12647,16 +12760,17 @@ Properties computed using the SCF density matrix
  Magnitude           :                                                    0.4322342
 
  ------------------------------------------------------------------------------------
+
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:45 2025
+Module time:
+	user time   =       0.15 seconds =       0.00 minutes
+	system time =       0.01 seconds =       0.00 minutes
+	total time  =          1 seconds =       0.02 minutes
+Total time:
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:20 2025
-Module time:
-	user time   =       0.14 seconds =       0.00 minutes
-	system time =       0.01 seconds =       0.00 minutes
-	total time  =          0 seconds =       0.00 minutes
-Total time:
-	user time   =      17.74 seconds =       0.30 minutes
-	system time =      11.24 seconds =       0.19 minutes
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	user time   =      18.15 seconds =       0.30 minutes
+	system time =      10.92 seconds =       0.18 minutes
 	total time  =         29 seconds =       0.48 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
@@ -12678,18 +12792,18 @@ Total time:
          stored in file 35.
 
       Computing two-electron integrals...done
-      Computed 335921 non-zero two-e
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lectron integrals.
+      Computed 335921 non-zero two-electron integrals.
         Stored in file 33.
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:20 2025
+*** at Mon Jul  7 09:02:45 2025
 
 
-	Wfn Parameters:
+	W
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fn Parameters:
 	--------------------
 	Wavefunction         = CCSD
 	Number of irreps     = 4
@@ -12745,14 +12859,14 @@ Total time:
 	Starting second half-transformation.
 	Two-electron integral transformation complete.
 	(VV|VV)...
-	Starting second
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> half-transformation.
+	Starting second half-transformation.
 	Two-electron integral transformation complete.
 	Frozen core energy     =      0.00000000000000
 
-	Size of irrep 0 of &lt;ab|cd&gt; integrals:      0.664 (MW) /      5.314 (MB)
+	Si
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ze of irrep 0 of &lt;ab|cd&gt; integrals:      0.664 (MW) /      5.314 (MB)
 	Size of irrep 1 of &lt;ab|cd&gt; integrals:      0.348 (MW) /      2.785 (MB)
 	Size of irrep 2 of &lt;ab|cd&gt; integrals:      0.493 (MW) /      3.942 (MB)
 	Size of irrep 3 of &lt;ab|cd&gt; integrals:      0.493 (MW) /      3.942 (MB)
@@ -12776,14 +12890,14 @@ Total time:
 	Two-electron energy          =     60.28327335635264
 	Reference energy             =   -112.71479068943096
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:20 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:45 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
-	system time =       0.08 seconds =       0.00 minutes
+	system time =       0.09 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      17.88 seconds =       0.30 minutes
-	system time =      11.33 seconds =       0.19 minutes
+	user time   =      18.28 seconds =       0.30 minutes
+	system time =      11.01 seconds =       0.18 minutes
 	total time  =         29 seconds =       0.48 minutes
             **************************
             *                        *
@@ -13012,7 +13126,7 @@ MP2 correlation energy -0.4073482689893628
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:21 2025
+*** at Mon Jul  7 09:02:46 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -13211,17 +13325,16 @@ Properties computed using the SCF density matrix
  Magnitude           :                                                    0.0853940
 
  ------------------------------------------------------------------------------------
-
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:21 2025
-Module time:
-	user time   =       0.15 seconds =       0.00 minutes
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	system time =       0.01 seconds =       0.00 minutes
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:46 2025
+Module time:
+	user time   =       0.15 seconds =       0.00 minutes
+	system time =       0.01 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      18.40 seconds =       0.31 minutes
-	system time =      11.66 seconds =       0.19 minutes
+	user time   =      18.80 seconds =       0.31 minutes
+	system time =      11.33 seconds =       0.19 minutes
 	total time  =         30 seconds =       0.50 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
@@ -13248,7 +13361,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:21 2025
+*** at Mon Jul  7 09:02:46 2025
 
 
 	Wfn Parameters:
@@ -13278,10 +13391,7 @@ Total time:
 	Sorting half-transformed integrals.
 	First half integral transformation complete.
 	Starting second half-transformation.
-	T
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>wo-electron integral transformation complete.
+	Two-electron integral transformation complete.
 	(OO|OV)...
 	Starting second half-transformation.
 	Two-electron integral transformation complete.
@@ -13310,10 +13420,7 @@ Total time:
 	Starting second half-transformation.
 	Two-electron integral transformation complete.
 	(VV|VV)...
-	Starting second
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> half-transformation.
+	Starting second half-transformation.
 	Two-electron integral transformation complete.
 	Frozen core energy     =      0.00000000000000
 
@@ -13341,15 +13448,15 @@ Total time:
 	Two-electron energy          =     63.03609669845174
 	Reference energy             =   -112.78097618539977
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:22 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:46 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
 	system time =       0.10 seconds =       0.00 minutes
-	total time  =          1 seconds =       0.02 minutes
+	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      18.53 seconds =       0.31 minutes
-	system time =      11.76 seconds =       0.20 minutes
-	total time  =         31 seconds =       0.52 minutes
+	user time   =      18.94 seconds =       0.32 minutes
+	system time =      11.44 seconds =       0.19 minutes
+	total time  =         30 seconds =       0.50 minutes
             **************************
             *                        *
             *        CCENERGY        *
@@ -13465,7 +13572,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:22 2025
+*** at Mon Jul  7 09:02:47 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -13666,14 +13773,14 @@ Properties computed using the SCF density matrix
  ------------------------------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:22 2025
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:47 2025
 Module time:
 	user time   =       0.15 seconds =       0.00 minutes
 	system time =       0.01 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      19.03 seconds =       0.32 minutes
-	system time =      12.06 seconds =       0.20 minutes
+	user time   =      19.45 seconds =       0.32 minutes
+	system time =      11.75 seconds =       0.20 minutes
 	total time  =         31 seconds =       0.52 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
@@ -13700,7 +13807,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:22 2025
+*** at Mon Jul  7 09:02:47 2025
 
 
 	Wfn Parameters:
@@ -13709,10 +13816,7 @@ Total time:
 	Number of irreps     = 4
 	Number of MOs        = 60
 	Number of active MOs = 60
-	AO-Basis          
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   = NONE
+	AO-Basis             = NONE
 	Semicanonical        = false
 	Reference            = RHF
 	Print Level          = 1
@@ -13741,10 +13845,7 @@ Total time:
 	Starting second half-transformation.
 	Two-electron integral transformation complete.
 	(OV|OO)...
-	Starting first half-transformati
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>on.
+	Starting first half-transformation.
 	Sorting half-transformed integrals.
 	First half integral transformation complete.
 	Starting second half-transformation.
@@ -13793,15 +13894,15 @@ Total time:
 	Two-electron energy          =     63.05639133493819
 	Reference energy             =   -112.78107589454817
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:23 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:47 2025
 Module time:
-	user time   =       0.08 seconds =       0.00 minutes
+	user time   =       0.09 seconds =       0.00 minutes
 	system time =       0.10 seconds =       0.00 minutes
-	total time  =          1 seconds =       0.02 minutes
+	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      19.16 seconds =       0.32 minutes
-	system time =      12.16 seconds =       0.20 minutes
-	total time  =         32 seconds =       0.53 minutes
+	user time   =      19.59 seconds =       0.33 minutes
+	system time =      11.85 seconds =       0.20 minutes
+	total time  =         31 seconds =       0.52 minutes
             **************************
             *                        *
             *        CCENERGY        *
@@ -13911,7 +14012,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:23 2025
+*** at Mon Jul  7 09:02:48 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -14110,17 +14211,18 @@ Properties computed using the SCF density matrix
  Magnitude           :                                                    0.0811324
 
  ------------------------------------------------------------------------------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:23 2025
+
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:48 2025
 Module time:
 	user time   =       0.15 seconds =       0.00 minutes
-	system time =       0.01 seconds =       0.00 minutes
+	system time =       0.00 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      19.54 seconds =       0.33 minutes
-	system time =      12.37 seconds =       0.21 minutes
-	total time  =         32 seconds =       0.53 minutes
+	user time   =      19.97 seconds =       0.33 minutes
+	system time =      12.06 seconds =       0.20 minutes
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	total time  =         32 seconds =       0.53 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
 
@@ -14140,16 +14242,13 @@ Total time:
  OEINTS: Overlap, kinetic, potential, dipole, and quadrupole integrals
          stored in file 35.
 
-      Computing two-electro
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n integrals...done
+      Computing two-electron integrals...done
       Computed 335921 non-zero two-electron integrals.
         Stored in file 33.
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:23 2025
+*** at Mon Jul  7 09:02:48 2025
 
 
 	Wfn Parameters:
@@ -14177,10 +14276,7 @@ Total time:
 	Constructing frozen core operators
 	Starting first half-transformation.
 	Sorting half-transformed integrals.
-	First half integral transforma
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tion complete.
+	First half integral transformation complete.
 	Starting second half-transformation.
 	Two-electron integral transformation complete.
 	(OO|OV)...
@@ -14239,14 +14335,14 @@ Total time:
 	Two-electron energy          =     63.07672315629788
 	Reference energy             =   -112.78116950256710
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:23 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:48 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
 	system time =       0.09 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      19.67 seconds =       0.33 minutes
-	system time =      12.47 seconds =       0.21 minutes
+	user time   =      20.11 seconds =       0.34 minutes
+	system time =      12.16 seconds =       0.20 minutes
 	total time  =         32 seconds =       0.53 minutes
             **************************
             *                        *
@@ -14357,7 +14453,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:24 2025
+*** at Mon Jul  7 09:02:48 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -14558,14 +14654,14 @@ Properties computed using the SCF density matrix
  ------------------------------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:24 2025
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:49 2025
 Module time:
 	user time   =       0.15 seconds =       0.00 minutes
 	system time =       0.01 seconds =       0.00 minutes
-	total time  =          0 seconds =       0.00 minutes
+	total time  =          1 seconds =       0.02 minutes
 Total time:
-	user time   =      20.05 seconds =       0.33 minutes
-	system time =      12.69 seconds =       0.21 minutes
+	user time   =      20.49 seconds =       0.34 minutes
+	system time =      12.39 seconds =       0.21 minutes
 	total time  =         33 seconds =       0.55 minutes
  MINTS: Wrapper to libmints.
    by Justin Turney
@@ -14592,15 +14688,12 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:24 2025
+*** at Mon Jul  7 09:02:49 2025
 
 
 	Wfn Parameters:
 	--------------------
-	Wavefunction     
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    = CCSD
+	Wavefunction         = CCSD
 	Number of irreps     = 4
 	Number of MOs        = 60
 	Number of active MOs = 60
@@ -14630,10 +14723,7 @@ Total time:
 	Starting second half-transformation.
 	Two-electron integral transformation complete.
 	(OO|VV)...
-	Starting second half
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-transformation.
+	Starting second half-transformation.
 	Two-electron integral transformation complete.
 	(OV|OO)...
 	Starting first half-transformation.
@@ -14685,14 +14775,14 @@ Total time:
 	Two-electron energy          =     63.09709224834448
 	Reference energy             =   -112.78125696254870
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:24 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:49 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
 	system time =       0.09 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      20.18 seconds =       0.34 minutes
-	system time =      12.78 seconds =       0.21 minutes
+	user time   =      20.63 seconds =       0.34 minutes
+	system time =      12.48 seconds =       0.21 minutes
 	total time  =         33 seconds =       0.55 minutes
             **************************
             *                        *
@@ -14747,7 +14837,10 @@ MP2 correlation energy -0.3784620075127024
      6        -0.381857908260446    1.495e-06    0.015174    0.037878    0.037878    0.160261
      7        -0.381857877055776    3.786e-07    0.015174    0.037878    0.037878    0.160261
      8        -0.381857886015903    1.168e-07    0.015174    0.037878    0.037878    0.160261
-     9        -0.381857884613052    3.010e-08    0.015174    0.037878    0.037878    0.160261
+     9        -0.381857884613052    3.010e
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-08    0.015174    0.037878    0.037878    0.160261
     10        -0.381857884700495    7.004e-09    0.015174    0.037878    0.037878    0.160261
     11        -0.381857884673237    1.976e-09    0.015174    0.037878    0.037878    0.160261
 
@@ -14803,7 +14896,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:25 2025
+*** at Mon Jul  7 09:02:49 2025
 
    =&gt; Loading Basis Set &lt;=
 
@@ -15004,18 +15097,16 @@ Properties computed using the SCF density matrix
  ------------------------------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:25 2025
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:49 2025
 Module time:
-	user time   =       0.15 seconds =       0.00 minutes
+	user time   =       0.16 seconds =       0.00 minutes
 	system time =       0.01 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      20.57 seconds =       0.34 minutes
-	system time =      13.00 seconds =       0.22 minutes
-	total time  =         34 seconds =       0.57 minutes
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> MINTS: Wrapper to libmints.
+	user time   =      21.02 seconds =       0.35 minutes
+	system time =      12.71 seconds =       0.21 minutes
+	total time  =         33 seconds =       0.55 minutes
+ MINTS: Wrapper to libmints.
    by Justin Turney
 
    Calculation information:
@@ -15040,7 +15131,7 @@ Total time:
 
 
 *** tstart() called on CHEM9QDFT72ALT
-*** at Mon Jun  2 11:41:25 2025
+*** at Mon Jul  7 09:02:49 2025
 
 
 	Wfn Parameters:
@@ -15049,10 +15140,7 @@ Total time:
 	Number of irreps     = 4
 	Number of MOs        = 60
 	Number of active MOs = 60
-	AO-Basis          
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   = NONE
+	AO-Basis             = NONE
 	Semicanonical        = false
 	Reference            = RHF
 	Print Level          = 1
@@ -15106,12 +15194,12 @@ Total time:
 	Two-electron integral transformation complete.
 	Frozen core energy     =      0.00000000000000
 
-	Size of irrep 0 of &lt;ab|cd&gt; integrals:      0.664 (MW) /      5.314 (MB)
-	Size of irrep 1 of &lt;ab|cd&gt; integrals:      0.348 (MW) /      2.785 (MB)
-	Size of irrep 2 of &lt;a
+	Size of irrep 0 of &lt;ab|cd&gt; integrals:      0.664 (MW) /  
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b|cd&gt; integrals:      0.493 (MW) /      3.942 (MB)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    5.314 (MB)
+	Size of irrep 1 of &lt;ab|cd&gt; integrals:      0.348 (MW) /      2.785 (MB)
+	Size of irrep 2 of &lt;ab|cd&gt; integrals:      0.493 (MW) /      3.942 (MB)
 	Size of irrep 3 of &lt;ab|cd&gt; integrals:      0.493 (MW) /      3.942 (MB)
 	Total:                                     1.998 (MW) /     15.983 (MB)
 
@@ -15133,14 +15221,14 @@ Total time:
 	Two-electron energy          =     63.11749869710624
 	Reference energy             =   -112.78133822727480
 
-*** tstop() called on CHEM9QDFT72ALT at Mon Jun  2 11:41:25 2025
+*** tstop() called on CHEM9QDFT72ALT at Mon Jul  7 09:02:50 2025
 Module time:
 	user time   =       0.08 seconds =       0.00 minutes
-	system time =       0.09 seconds =       0.00 minutes
-	total time  =          0 seconds =       0.00 minutes
+	system time =       0.10 seconds =       0.00 minutes
+	total time  =          1 seconds =       0.02 minutes
 Total time:
-	user time   =      20.70 seconds =       0.35 minutes
-	system time =      13.09 seconds =       0.22 minutes
+	user time   =      21.15 seconds =       0.35 minutes
+	system time =      12.81 seconds =       0.21 minutes
 	total time  =         34 seconds =       0.57 minutes
             **************************
             *                        *

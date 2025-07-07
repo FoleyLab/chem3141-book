@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Computing Fundamental Transition of CO under different levels of approximation &#8212; My sample book</title>
+    <title>Vibrational Transitions in CO Using the Morse Oscillator &#8212; My sample book</title>
   
   
   
@@ -189,6 +189,8 @@
 
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/translation.html">Chapter 3: Translational Motion</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/vibration.html">Chapter 4: Vibrational Motion</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
@@ -459,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Computing Fundamental Transition of CO under different levels of approximation</h1>
+    <h1>Vibrational Transitions in CO Using the Morse Oscillator</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -469,21 +471,30 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Computing Fundamental Transition of CO under different levels of approximation</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perturbation-theory">Perturbation Theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-morse-oscillator-parameters">Setting up Morse Oscillator Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-conversion">Unit conversion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-the-morse-potential-in-atomic-units">Evaluating the Morse potential in atomic units</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expanding-the-morse-potential-as-a-taylor-series">Expanding the Morse potential as a Taylor series</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-e-1-and-e-2-using-perturbation-theory">Compute <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span> using Perturbation Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-and-theory">Background and Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-parameters-and-unit-conversion-factors">Molecular Parameters and Unit Conversion Factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-convert-molecular-parameters-to-atomic-units">Exercise: Convert Molecular Parameters to Atomic Units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-questions">Reflection Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-the-morse-potential-using-python-functions">Evaluating the Morse Potential Using Python Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-the-evaluate-morse-function-using-the-design-recipe">Writing the <code class="docutils literal notranslate"><span class="pre">evaluate_Morse</span></code> Function Using the Design Recipe</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#test-out-the-eigenfunctions">Test out the eigenfunctions</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-fundamental-transition-energies">Compute the fundamental transition energies</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment">Assignment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-morse-potential">Plotting the Morse potential</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expanding-the-morse-potential-as-a-taylor-series">Expanding the Morse Potential as a Taylor Series</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-computation-of-derivatives-using-finite-differences">Numerical Computation of Derivatives Using Finite Differences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-taylor-expansions-of-the-morse-potential">Comparing Taylor Expansions of the Morse Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#guided-questions-interpreting-the-potential-energy-plot">Guided Questions: Interpreting the Potential Energy Plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-vibrational-transition-energies">Computing Vibrational Transition Energies</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reminder-energy-level-formulas">Reminder: Energy Level Formulas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task">Task:</a></li>
 </ul>
-
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-questions-vibrational-transition-energies">Reflection Questions: Vibrational Transition Energies</a></li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
@@ -494,303 +505,531 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="computing-fundamental-transition-of-co-under-different-levels-of-approximation">
-<h1>Computing Fundamental Transition of CO under different levels of approximation<a class="headerlink" href="#computing-fundamental-transition-of-co-under-different-levels-of-approximation" title="Link to this heading">#</a></h1>
-<p>We will illustrate approximations to the vibrational transition energies, specifically the fundamental (<span class="math notranslate nohighlight">\(n=0 \rightarrow n=1\)</span>) transition, using the diatomic molecule CO.</p>
-<p>We will use the Morse potential as a model for the “exact” interatomic potential, and we will approximate this potential by different orders of a Taylor expansion: including up to quadratic (which is the harmonic oscillator approximation), cubic, and quartic terms.  The harmonic and Morse potentials are exactly solvable, and the eigenfunctions and eigenvalues of the vibrational Hamiltonian with cubic and quartic potentials can be approximated using perturbation theory.  Therefore, we will
-compare the fundamental  transition computed exactly for harmonic and Morse potentials, and approximately at 2nd order of perturbation theory for cubic and quartic potentials to see the impact of various levels of potential truncation and approximation.</p>
-<p>Within the Morse model, the vibrational Hamiltonian can be written as
+  <section class="tex2jax_ignore mathjax_ignore" id="vibrational-transitions-in-co-using-the-morse-oscillator">
+<h1>Vibrational Transitions in CO Using the Morse Oscillator<a class="headerlink" href="#vibrational-transitions-in-co-using-the-morse-oscillator" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://foleylab.github.io/">Jay Foley, University of North Carolina Charlotte</a></p>
+<section id="learning-outcomes">
+<h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Link to this heading">#</a></h2>
+<p>By the end of this workbook, students should be able to:</p>
+<ul class="simple">
+<li><p>Explain the Morse potential and its parameters for modeling diatomic molecules</p></li>
+<li><p>Apply Taylor expansions to approximate anharmonic potentials up to quartic order</p></li>
+<li><p>Convert molecular parameters from common units into atomic units for quantum calculations</p></li>
+<li><p>Write Python functions to evaluate Morse potential and its approximations</p></li>
+<li><p>Visualize potentials and compare exact and approximate vibrational energies</p></li>
+<li><p>Utilize the Morse model to estimate spectral positions of the fundamental, first overtone, and first hot band of a diatomic</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>In this activity, we study vibrational transitions of the carbon monoxide (CO) molecule using the Morse potential, a realistic model of molecular bonding that captures anharmonicity. We compare exact solutions of the Morse and harmonic oscillator potentials with perturbative approximations using cubic and quartic Taylor expansions of the Morse potential. We will implement these calculations using Python and NumPy, convert parameters into atomic units, and visualize the results. This provides a comprehensive example of connecting quantum mechanical theory with computational practice.</p>
+<hr class="docutils" />
+</section>
+<section id="background-and-theory">
+<h2>Background and Theory<a class="headerlink" href="#background-and-theory" title="Link to this heading">#</a></h2>
+<p>We model the vibrational Hamiltonian as:<br />
 \begin{equation}
-\hat{H}<em>{vib} = -\frac{\hbar^2}{2\mu} \frac{d^2}{dr^2} + V</em>{Morse}(r), \tag{1}
+\hat{H}<em>{vib} = -\frac{\hbar^2}{2\mu} \frac{d^2}{dr^2} + V</em>{Morse}(r),
 \end{equation}
-where
+where the Morse potential is<br />
 \begin{equation}
-V_{Morse}(r) = D_e \left(1 - e^{-\beta(r-r_{eq})} \right)^2. \tag{2}
+V_{Morse}(r) = D_e \left( 1 - e^{-\beta (r - r_{eq})} \right)^2.
 \end{equation}</p>
-<p>The Morse parameters for <span class="math notranslate nohighlight">\({\rm CO}\)</span> are as follows: <span class="math notranslate nohighlight">\(D_e = 11.225 \: {\rm eV}\)</span>, <span class="math notranslate nohighlight">\(r_{eq} = 1.1283 \: {\rm Ang.}\)</span>, <span class="math notranslate nohighlight">\(\beta = 2.5944 \: {\rm Ang.}^{-1}\)</span>,
-and <span class="math notranslate nohighlight">\(\mu = 6.8606 \: {\rm amu}\)</span>.</p>
-<p>The exact energy eigenvalues for Equation (1) can be written as
+<p>The parameters for CO are:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(D_e = 11.225 \text{ eV}\)</span> (dissociation energy)</p></li>
+<li><p><span class="math notranslate nohighlight">\(r_{eq} = 1.1283 \text{ Å}\)</span> (equilibrium bond length)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta = 2.5944 \text{ Å}^{-1}\)</span> (potential curvature)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu = 6.8606 \text{ amu}\)</span> (reduced mass)</p></li>
+</ul>
+<p>The exact energy levels are given by:<br />
+$<span class="math notranslate nohighlight">\(
+E_n = \hbar \omega \left( n + \frac{1}{2} - \chi_e \left( n + \frac{1}{2} \right)^2 \right),
+\)</span><span class="math notranslate nohighlight">\( 
+where  
+\)</span><span class="math notranslate nohighlight">\(
+\omega = \sqrt{\frac{2 D_e \beta^2}{\mu}}, \quad \chi_e = \frac{\hbar \omega}{4 D_e}.
+\)</span>$</p>
+<p>The Morse potential can be approximated by a Taylor expansion around <span class="math notranslate nohighlight">\(r_{eq}\)</span>:<br />
+$<span class="math notranslate nohighlight">\(
+V_T(r) = \sum_{n=0}^\infty \frac{f^{(n)}(r_{eq})}{n!} (r - r_{eq})^n,
+\)</span>$</p>
+<p>where <span class="math notranslate nohighlight">\(f^{(n)}(r_{eq})\)</span> is the <span class="math notranslate nohighlight">\(n^{th}\)</span>-order derivative of the Morse potential evaluated at the equilibrium bondlength, e.g. <span class="math notranslate nohighlight">\(f^{(1)}(r_{eq}) = \frac{d}{dr}V_{Morse}(r_{eq}).\)</span></p>
+<p>We can define the harmonic oscillator model by truncating this Taylor series at the quadratic term,
 \begin{equation}
-E_n = \hbar \omega \left( \left(n+ \frac{1}{2} \right) - \chi_e \left(n+ \frac{1}{2} \right)^2 \right) \tag{3}
-\end{equation}
-where
-\begin{equation}
-\omega = \sqrt{\frac{2D_e \beta^2}{\mu}} \tag{4}
-\end{equation}
-and
-\begin{equation}
-\chi_e = \frac{\hbar \omega}{4 D_e}. \tag{5}
-\end{equation}</p>
-<p>The Morse potential can be approximated by a Taylor expansion as follows:
-\begin{equation}
-V_T(r) = \sum_{n=0}^{\infty} \frac{ f^{(n)}(r_{eq})}{n!} \left(r-r_{eq} \right)^n, \tag{6}
-\end{equation}
-where <span class="math notranslate nohighlight">\(f^{(n)}(r_{eq})\)</span> is the <span class="math notranslate nohighlight">\(n^{th}\)</span>-order derivative of the Morse potential evaluated at the equilibrium bondlength, e.g. <span class="math notranslate nohighlight">\(f^{(1)}(r_{eq}) = \frac{d}{dr}V_{Morse}(r_{eq}).\)</span></p>
-<p>We will define the Harmonic approximation to the potential as
-\begin{equation}
-V_H(r) =  \frac{ f^{‘’}(r_{eq})}{2} \left(r-r_{eq} \right)^2 = \frac{1}{2} k \left(r-r_{eq} \right)^2 \tag{7}
+V_H(r) =  \frac{ f^{‘’}(r_{eq})}{2} \left(r-r_{eq} \right)^2 = \frac{1}{2} k \left(r-r_{eq} \right)^2
 \end{equation}
 the cubic approximation to the potential as
 \begin{equation}
-V_C(r) =  V_H(r) + \frac{ f^{‘’’}(r_{eq})}{6} \left(r-r_{eq} \right)^3 = V_H(r) + \frac{1}{6} g \left(r-r_{eq} \right)^3,   \tag{8}
+V_C(r) =  V_H(r) + \frac{ f^{‘’’}(r_{eq})}{6} \left(r-r_{eq} \right)^3 = V_H(r) + \frac{1}{6} g \left(r-r_{eq} \right)^3,<br />
 \end{equation}
 and the quartic approximation as
 \begin{equation}
-V_Q(r) =  V_C(r) + \frac{ f^{‘’’’}(r_{eq})}{24} \left(r-r_{eq} \right)^4 =  V_C(r) + \frac{1}{24}h(r-r_{eq})^4.  \tag{9}
+V_Q(r) =  V_C(r) + \frac{ f^{‘’’’}(r_{eq})}{24} \left(r-r_{eq} \right)^4 =  V_C(r) + \frac{1}{24}h(r-r_{eq})^4.<br />
 \end{equation}</p>
-<p>Because we are using the Morse model as the “exact” interatomic potential in this notebook, we can compute these derivatives at <span class="math notranslate nohighlight">\(r_{eq}\)</span> analytically:
-\begin{align}
-k = 2 D_e \beta^2 \
-g = -6 D_e \beta^3 \tag{10} \
-h = 14 D_e \beta^4.
-\end{align}
-However, in general we do not have an analytical form for the interatomic potential, so we must rely on numerical derivatives of the potential evaluated at the <span class="math notranslate nohighlight">\(r_{eq}\)</span>.  In the context of interatomic potentials computed by quantum chemistry methods (e.g. CCSD(T)), one must first identify the equilibrium geometry, and then compute derivatives by taking a number of single point calculations along all displacement coordinates to compute differences among.  We will write the explicit expression for the second derivative using centered finite differences along the one displacement coordinate relevant for our <span class="math notranslate nohighlight">\({\rm CO}\)</span> molecule:
-\begin{equation}
-k=\frac{V_{Morse}(r_{eq}+\Delta r)-2V_{Morse}(r_{eq})+V_{Morse}(r_{eq}-\Delta r)}{\Delta r^2}+\mathcal O (\Delta r^2) \tag{11}
-\end{equation}
-where <span class="math notranslate nohighlight">\(\Delta r\)</span> represents a small displacement along the coordinate <span class="math notranslate nohighlight">\(r\)</span>.  Higher-order derivatives can also be computed, but will require larger numbers of displacements and therefore more energy evaluations by your quantum chemistry method.  Expressions for higher-order derivatives along a single coordinate can be found <a class="reference external" href="https://sameradeeb.srv.ualberta.ca/introduction-to-numerical-analysis/numerical-differentiation/#centred-finite-difference9">here</a>. Note that the number of displacement coordinates <span class="math notranslate nohighlight">\(N\)</span> grows linearly with the number of atoms, and that the number of displacements required to form the <span class="math notranslate nohighlight">\(n^{{\rm th}}\)</span>-order approximation to the potential grows as <span class="math notranslate nohighlight">\(N^n\)</span>.</p>
-<section id="perturbation-theory">
-<h2>Perturbation Theory<a class="headerlink" href="#perturbation-theory" title="Link to this heading">#</a></h2>
-<p>We can compute the exact vibrational transition energies for the Morse oscillator and the Harmonic oscillator using Equation (3), where the Harmonic oscillator transition energies come from Equation (3) with <span class="math notranslate nohighlight">\(\chi_e = 0\)</span>.  However, the transition energies when the potential is approximated as <span class="math notranslate nohighlight">\(V_C(r)\)</span> or <span class="math notranslate nohighlight">\(V_Q(r)\)</span> must be approximated.  We will illustrate the use of Perturbation Theory approximate these transition energies.</p>
-<p>Here we will consider the Hamiltonian
-\begin{equation}
-\hat{H}<em>{vib} = -\frac{\hbar^2}{2\mu} \frac{d^2}{dr^2} + V</em>{H}(r) + V’(r) = \hat{H}_0 + V’(r) \tag{12},
-\end{equation}
-where <span class="math notranslate nohighlight">\(\hat{H}_0\)</span> is exactly solved by the Harmonic oscillator energy eigenfunctions and eigenvalues (<span class="math notranslate nohighlight">\(\psi^{(0)}_n(r)\)</span>, <span class="math notranslate nohighlight">\(E^{(0)}_n\)</span>), and <span class="math notranslate nohighlight">\(V'(r)\)</span> is the perturbation which will take the form of either
-<span class="math notranslate nohighlight">\(V'(r) = \frac{1}{6}g(r-r_{eq})^3\)</span> or <span class="math notranslate nohighlight">\(V'(r) = \frac{1}{6}g(r-r_{eq})^3 + \frac{1}{24}h(r-r_{eq})^4\)</span> in the cubic and quartic approximations, respectively.</p>
-<p>We can calculate the energy of state <span class="math notranslate nohighlight">\(n\)</span> at 2nd order of perturbation theory as follows:
-\begin{equation}
-E_n = E_n^{(0)} +  \langle \psi_n^{(0)} | V’(r) | \psi_n^{(0)} \rangle + \sum_{k \neq n} \frac{|\langle \psi_k^{(0)} | V’(r) | \psi_n^{(0)}|^2}{E_n^{(0)}-E_k^{(0)}}. \tag{13}
-\end{equation}</p>
-<p>Recall that for the zeroth-order functions have the form
-\begin{align}
-\psi_n^{(0)}(r) &amp;= \sqrt{\frac{1}{2^n n!}} \cdot \left(\frac{\alpha}{\pi} \right)^{1/4} \cdot H_n \left(\sqrt{\alpha} r \right) \cdot {\rm exp}\left(\frac{-\alpha }{2} r^2 \right) \
-\alpha &amp;= \frac{\mu \omega}{\hbar} \
-\omega &amp;= \sqrt{\frac{k}{\mu}}
-\end{align}</p>
+<p>As we have already seen, the harmonic oscillator has an exact solution, as does the Morse potential.  The quartic and qubit oscillators do not have exact solutions, but they can be approximated using perturbation theory, as we will see later!</p>
 </section>
-<section id="approach">
-<h2>Approach<a class="headerlink" href="#approach" title="Link to this heading">#</a></h2>
-<p>We will compute the fundamental transition (<span class="math notranslate nohighlight">\(E_1 - E_0\)</span>) using the following approaches:</p>
-<ol class="arabic simple">
-<li><p>Harmonic approximation: <span class="math notranslate nohighlight">\(E_1 - E_0 = \hbar \omega\)</span></p></li>
-<li><p>Exact solution for Morse Hamiltonian: <span class="math notranslate nohighlight">\(E_1 - E_0 = \hbar \omega (1 - 2\chi_e)\)</span></p></li>
-<li><p>Evaluation of Eq. (13) for <span class="math notranslate nohighlight">\(n=0\)</span> and <span class="math notranslate nohighlight">\(n=1\)</span> utilizing the cubic contribution for <span class="math notranslate nohighlight">\(V'(r)\)</span></p></li>
-<li><p>Evaluation of Eq. (13) for <span class="math notranslate nohighlight">\(n=0\)</span> and <span class="math notranslate nohighlight">\(n=1\)</span> utilizing the cubic and quartic contribution for <span class="math notranslate nohighlight">\(V'(r)\)</span></p></li>
-</ol>
+<section id="molecular-parameters-and-unit-conversion-factors">
+<h2>Molecular Parameters and Unit Conversion Factors<a class="headerlink" href="#molecular-parameters-and-unit-conversion-factors" title="Link to this heading">#</a></h2>
+<p>The parameters for the CO molecule are given below in common units:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Symbol</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Units</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Dissociation Energy</p></td>
+<td><p><span class="math notranslate nohighlight">\(D_e\)</span></p></td>
+<td><p>11.225</p></td>
+<td><p>electron volts (eV)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Equilibrium Bond Length</p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{eq}\)</span></p></td>
+<td><p>1.1283</p></td>
+<td><p>angstroms (Å)</p></td>
+</tr>
+<tr class="row-even"><td><p>Potential Curvature</p></td>
+<td><p><span class="math notranslate nohighlight">\(\beta\)</span></p></td>
+<td><p>2.5944</p></td>
+<td><p>inverse angstroms (<span class="math notranslate nohighlight">\(\text{Å}^{-1}\)</span>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Reduced Mass</p></td>
+<td><p><span class="math notranslate nohighlight">\(\mu\)</span></p></td>
+<td><p>6.8606</p></td>
+<td><p>atomic mass units (amu)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Conversion factors to atomic units (au) needed for calculations:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Conversion</p></th>
+<th class="head"><p>Factor</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>amu to atomic units of mass</p></td>
+<td><p>1822.89</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>angstrom to atomic units of length</p></td>
+<td><p>0.52917721067121</p></td>
+<td><p>1 Bohr radius = 0.529 Å</p></td>
+</tr>
+<tr class="row-even"><td><p>electron volts to atomic units of energy</p></td>
+<td><p><span class="math notranslate nohighlight">\(1/27.2114\)</span></p></td>
+<td><p>1 Hartree = 27.2114 eV</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
 </section>
-<section id="setting-up-morse-oscillator-parameters">
-<h2>Setting up Morse Oscillator Parameters<a class="headerlink" href="#setting-up-morse-oscillator-parameters" title="Link to this heading">#</a></h2>
-<p>The following block will establish the parameters for <span class="math notranslate nohighlight">\(\hat{H}_{vib}\)</span> with the Morse potential for the CO molecule.</p>
+<section id="exercise-convert-molecular-parameters-to-atomic-units">
+<h2>Exercise: Convert Molecular Parameters to Atomic Units<a class="headerlink" href="#exercise-convert-molecular-parameters-to-atomic-units" title="Link to this heading">#</a></h2>
+<p>For each parameter below, write the expression to convert it into atomic units using the conversion factors above.</p>
+<hr class="docutils" />
+<p><strong>1. What is <span class="math notranslate nohighlight">\(D_e\)</span> in atomic units?</strong></p>
+<details>
+<summary>Click to reveal the solution for $D_e$</summary>
+<p>The dissociation energy conversion:</p>
+<div class="math notranslate nohighlight">
+\[
+D_e (\text{au}) = D_e (\text{eV}) \times \frac{1}{27.2114}
+\]</div>
+<p>Numerically:</p>
+<div class="math notranslate nohighlight">
+\[
+D_e (\text{au}) = 11.225 \times \frac{1}{27.2114} \approx 0.4125
+\]</div>
+</details>
+<hr class="docutils" />
+<p><strong>2. What is <span class="math notranslate nohighlight">\(r_{eq}\)</span> in atomic units?</strong></p>
+<details>
+<summary>Click to reveal the solution for $r_{eq}$</summary>
+<p>The equilibrium bond length conversion:</p>
+<div class="math notranslate nohighlight">
+\[
+r_{eq} (\text{au}) = \frac{r_{eq} (\text{Å})}{0.529177}
+\]</div>
+<p>Numerically:</p>
+<div class="math notranslate nohighlight">
+\[
+r_{eq} (\text{au}) = \frac{1.1283}{0.529177} \approx 2.132
+\]</div>
+</details>
+<hr class="docutils" />
+<p><strong>3. What is <span class="math notranslate nohighlight">\(\beta\)</span> in atomic units?</strong></p>
+<details>
+<summary>Click to reveal the solution for $\beta$</summary>
+<p>The potential curvature conversion:</p>
+<div class="math notranslate nohighlight">
+\[
+\beta (\text{au}) = \beta (\text{Å}^{-1}) \times 0.529177
+\]</div>
+<p>Numerically:</p>
+<div class="math notranslate nohighlight">
+\[
+\beta (\text{au}) = 2.5944 \times 0.529177 \approx 1.3755
+\]</div>
+</details>
+<hr class="docutils" />
+<p><strong>4. What is <span class="math notranslate nohighlight">\(\mu\)</span> in atomic units?</strong></p>
+<details>
+<summary>Click to reveal the solution for $\mu$</summary>
+<p>The reduced mass conversion:</p>
+<div class="math notranslate nohighlight">
+\[
+\mu (\text{au}) = \mu (\text{amu}) \times 1822.89
+\]</div>
+<p>Numerically:</p>
+<div class="math notranslate nohighlight">
+\[
+\mu (\text{au}) = 6.8606 \times 1822.89 \approx 12506.1
+\]</div>
+</details>
+<hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># library imports for the entire notebook</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">trapz</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">hermite</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">factorial</span>
 
-<span class="c1"># dissociation energy in eV</span>
+<span class="c1"># TODO: Convert the molecular parameters to atomic units.</span>
+<span class="c1"># Assign the converted values to the variables De_au, r_eq_au, beta_au, and mu_au respectively.</span>
+
+<span class="c1"># Given parameters in common units:</span>
 <span class="n">De_eV</span> <span class="o">=</span> <span class="mf">11.225</span>
-
-<span class="c1"># equilibrium bondlength in Angstroms</span>
 <span class="n">r_eq_ang</span> <span class="o">=</span> <span class="mf">1.1283</span>
-
-<span class="c1"># reduced mass in amu</span>
+<span class="n">beta_inv_ang</span> <span class="o">=</span> <span class="mf">2.5944</span>
 <span class="n">mu_amu</span> <span class="o">=</span> <span class="mf">6.8606</span>
 
-<span class="c1"># potential curvature in inverse angstromgs</span>
-<span class="n">beta_inv_ang</span> <span class="o">=</span> <span class="mf">2.5994</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="unit-conversion">
-<h2>Unit conversion<a class="headerlink" href="#unit-conversion" title="Link to this heading">#</a></h2>
-<p>We will use atomic units for our calculations and convert to spectroscopic units later.  In the following block, we will store different conversion factors as variables for later use.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># atomic mass units to kg</span>
-<span class="n">amu_to_kg</span> <span class="o">=</span> <span class="mf">1.66054e-27</span>
-
-<span class="c1"># angstroms to meters</span>
-<span class="n">ang_to_m</span> <span class="o">=</span> <span class="mf">1e-10</span>
-
-<span class="c1"># electron volts to Jouls</span>
-<span class="n">eV_to_J</span> <span class="o">=</span> <span class="mf">1.60218e-19</span>
-
-<span class="c1"># electron volts to atomic units of energy (Hartrees)</span>
-<span class="n">eV_to_au</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mf">27.211</span> <span class="c1">#0.0367493</span>
-
-<span class="c1"># angstroms to atomic units of length (Bohr radii)</span>
-<span class="n">au_to_ang</span> <span class="o">=</span> <span class="mf">0.52917721067121</span>
-
-<span class="c1"># atomic mass units to atomic units of mass</span>
+<span class="c1"># Conversion factors:</span>
 <span class="n">amu_to_au</span> <span class="o">=</span> <span class="mf">1822.89</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>The fllowing block will use the conversion factors above to store the Morse oscillator parameters in atomic units.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dissociation energy in au</span>
-<span class="n">De_au</span> <span class="o">=</span> <span class="n">De_eV</span> <span class="o">*</span> <span class="n">eV_to_au</span>
+<span class="n">ang_to_au</span> <span class="o">=</span> <span class="mf">0.52917721067121</span>
+<span class="n">eV_to_au</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mf">27.2114</span>
 
-<span class="c1"># reduced mass in SI</span>
-<span class="n">mu_au</span> <span class="o">=</span> <span class="n">mu_amu</span> <span class="o">*</span> <span class="n">amu_to_au</span>
+<span class="c1"># TODO: Add your code here to perform the conversions</span>
+<span class="c1"># De_au = ...</span>
+<span class="c1"># r_eq_au = ...</span>
+<span class="c1"># beta_au = ...</span>
+<span class="c1"># mu_au = ...</span>
 
-<span class="c1"># equilibrium bondlength in SI</span>
-<span class="n">r_eq_au</span> <span class="o">=</span> <span class="n">r_eq_ang</span> <span class="o">/</span> <span class="n">au_to_ang</span>
-
-<span class="c1"># beta in SI</span>
-<span class="n">beta_au</span> <span class="o">=</span> <span class="n">beta_inv_ang</span> <span class="o">*</span> <span class="n">au_to_ang</span>
-
-<span class="c1"># hbar in SI</span>
-<span class="n">hbar_au</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="c1"># h in SI</span>
-<span class="n">h_SI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="c1"># Uncomment below to print your results for verification</span>
+<span class="c1"># print(f&quot;Dissociation energy in atomic units: {De_au}&quot;)</span>
+<span class="c1"># print(f&quot;Equilibrium bond length in atomic units: {r_eq_au}&quot;)</span>
+<span class="c1"># print(f&quot;Beta in atomic units: {beta_au}&quot;)</span>
+<span class="c1"># print(f&quot;Reduced mass in atomic units: {mu_au}&quot;)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="evaluating-the-morse-potential-in-atomic-units">
-<h2>Evaluating the Morse potential in atomic units<a class="headerlink" href="#evaluating-the-morse-potential-in-atomic-units" title="Link to this heading">#</a></h2>
-<p>Here we will create an numpy array of bondlength values between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(2.5 r_{eq}\)</span></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">evaluate_Morse</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">De</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">r_eq</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Helper function to evaluate the Morse potential at a given value of r</span>
+<section id="reflection-questions">
+<h2>Reflection Questions<a class="headerlink" href="#reflection-questions" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Why do we convert molecular parameters into atomic units?</p></li>
+<li><p>How does the Morse potential capture anharmonicity?  What features does the harmonic oscillator fail to capture about molecular vibrational motion?</p></li>
+<li><p>What physical feature of the molecular system does the parameter <span class="math notranslate nohighlight">\(\beta\)</span> capture?</p></li>
+<li><p>What physical feature of the molecular system does <span class="math notranslate nohighlight">\(D_e\)</span> capture?</p></li>
+</ul>
+<section id="evaluating-the-morse-potential-using-python-functions">
+<h3>Evaluating the Morse Potential Using Python Functions<a class="headerlink" href="#evaluating-the-morse-potential-using-python-functions" title="Link to this heading">#</a></h3>
+<p>In this section, we will write a Python function to evaluate the Morse potential at given bond lengths using the Design Recipe approach we practiced earlier.</p>
+<p>Recall the Design Recipe steps for writing functions:</p>
+<ol class="arabic simple">
+<li><p><strong>Header:</strong> Define the function name, input parameters with types, and return type.</p></li>
+<li><p><strong>Purpose:</strong> Write a concise description of what the function does.</p></li>
+<li><p><strong>Examples:</strong> Provide example calls with expected outputs to clarify usage.</p></li>
+<li><p><strong>Body:</strong> Implement the function logic.</p></li>
+<li><p><strong>Test:</strong> Run your function against the examples to verify correctness.</p></li>
+<li><p><strong>Debug/Iterate:</strong> Fix any issues that arise in testing.</p></li>
+</ol>
+<hr class="docutils" />
+<p><strong>Function specification:</strong></p>
+<p>We want to create a function <code class="docutils literal notranslate"><span class="pre">evaluate_Morse</span></code> that takes as inputs:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> — a float or NumPy array of floats representing bond lengths (in atomic units)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">De</span></code> — dissociation energy (atomic units)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">beta</span></code> — Morse parameter related to curvature (atomic units)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r_eq</span></code> — equilibrium bond length (atomic units)</p></li>
+</ul>
+<p>The function returns the Morse potential value(s) <code class="docutils literal notranslate"><span class="pre">V_Morse</span></code> at <code class="docutils literal notranslate"><span class="pre">r</span></code>.</p>
+</section>
+<hr class="docutils" />
+<section id="writing-the-evaluate-morse-function-using-the-design-recipe">
+<h3>Writing the <code class="docutils literal notranslate"><span class="pre">evaluate_Morse</span></code> Function Using the Design Recipe<a class="headerlink" href="#writing-the-evaluate-morse-function-using-the-design-recipe" title="Link to this heading">#</a></h3>
+<p>We will create the <code class="docutils literal notranslate"><span class="pre">evaluate_Morse</span></code> function step-by-step following the Design Recipe. Try to answer each prompt on your own before clicking to reveal the suggested content.</p>
+<hr class="docutils" />
+<details>
+<summary><b>Step 1 and 2: Header and Purpose</b></summary>
+<p>Define the function name, input parameters with their expected types, and the return type.</p>
+<p><strong>Suggested header and purpose:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">evaluate_Morse</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">De</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">r_eq</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Evaluate the Morse potential at bond length(s) r.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
-<span class="sd">    r : float</span>
-<span class="sd">        value(s) of r to evaluate potential at</span>
-
+<span class="sd">    </span>
+<span class="sd">    r : float or np.ndarray</span>
+<span class="sd">        Bond length(s) in atomic units</span>
 <span class="sd">    De : float</span>
-<span class="sd">        dissociation energy of the Morse oscillator</span>
-
+<span class="sd">        Dissociation energy in atomic units</span>
 <span class="sd">    beta : float</span>
-<span class="sd">        related to the curvature of the Morse oscillator</span>
-
+<span class="sd">        Morse parameter in atomic units</span>
 <span class="sd">    r_eq : float</span>
-<span class="sd">        equilibrium bondlength of the Morse oscillator</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    V_m : float</span>
-<span class="sd">        value of the Morse potential at value(s) of r</span>
-
+<span class="sd">        Equilibrium bond length in atomic units</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># &lt;== inert code to compute Morse Oscillator potential and store to V_M</span>
-    <span class="k">return</span> <span class="n">V_M</span>
+</pre></div>
+</div>
+</details>
+<hr class="docutils" />
+<details> <summary><b>Step 3: Examples</b></summary>
+Write two example calls showing how the function should be used, including expected output comments.
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example 1:</span>
+<span class="n">evaluate_Morse</span><span class="p">(</span><span class="n">r_eq</span><span class="p">,</span> <span class="n">De</span><span class="o">=</span><span class="mf">0.4127</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">1.372</span><span class="p">,</span> <span class="n">r_eq</span><span class="o">=</span><span class="mf">2.132</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>  <span class="c1"># Expected output: ~0.0</span>
 
+<span class="c1"># Example 2:</span>
+<span class="n">evaluate_Morse</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">De</span><span class="o">=</span><span class="mf">0.4127</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">1.372</span><span class="p">,</span> <span class="n">r_eq</span><span class="o">=</span><span class="mf">2.132</span><span class="p">)</span>  <span class="c1"># &lt;==  complete with expected output</span>
+</pre></div>
+</div>
+</details>
+<hr class="docutils" />
+<details> <summary><b>Step 4: Body</b></summary>
+Implement the formula for the Morse potential:
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">V_Morse</span> <span class="o">=</span> <span class="n">De</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">beta</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">r_eq</span><span class="p">)))</span><span class="o">**</span><span class="mi">2</span>
+<span class="k">return</span> <span class="n">V_Morse</span>
+</pre></div>
+</div>
+</details>
+<hr class="docutils" />
+<details> 
+<summary><b>Step 5: Test</b></summary>
+<p>Test the function with your example inputs using assertions or print statements.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">evaluate_Morse</span><span class="p">(</span><span class="mf">2.132</span><span class="p">,</span> <span class="n">De_au</span><span class="p">,</span> <span class="n">beta_au</span><span class="p">,</span> <span class="n">r_eq_au</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
 
-<span class="c1"># array of bondlength values</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">2.5</span> <span class="o">*</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="c1"># TODO: Calculate by hand the expected Morse potential value at r = 3.0 au,</span>
+<span class="c1">#       and assign it to the variable expected_Morse_3_au, e.g.</span>
+<span class="c1"># expected_Morse_3_au = &lt;your calculated value&gt;</span>
 
-<span class="c1"># array of Morse potential values</span>
-<span class="n">V_Morse</span> <span class="o">=</span> <span class="n">evaluate_Morse</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">De_au</span><span class="p">,</span> <span class="n">beta_au</span><span class="p">,</span> <span class="n">r_eq_au</span><span class="p">)</span>
+<span class="c1"># TODO: Uncomment the line below after assigning expected_Morse_3_au</span>
+<span class="c1"># assert np.isclose(evaluate_Morse(3.0, De_au, beta_au, r_eq_au), expected_Morse_3_au, atol=1e-6)</span>
+</pre></div>
+</div>
+</details><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: Add the evaluate_Morse function here by following the Design Recipe steps above!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="plotting-the-morse-potential">
+<h2>Plotting the Morse potential<a class="headerlink" href="#plotting-the-morse-potential" title="Link to this heading">#</a></h2>
+<p>Now that you have defined the evaluate_Morse function, we will use it to create an array of potential values corresponding to an array of bond length values.  This will define the Morse potential energy surface (PES) for the CO molecule.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">r_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.2</span> <span class="o">*</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="mf">2.5</span> <span class="o">*</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">V_values</span> <span class="o">=</span> <span class="n">evaluate_Morse</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span> <span class="n">De_au</span><span class="p">,</span> <span class="n">beta_au</span><span class="p">,</span> <span class="n">r_eq_au</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span> <span class="n">V_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Morse Potential&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.4127</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$D_e$ (Dissociation Energy)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mf">2.132</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$r_</span><span class="si">{eq}</span><span class="s2">$ (Equilibrium Bond Length)&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Bond Length (au)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Potential Energy (au)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Morse Potential for CO Molecule&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">32</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">2.5</span> <span class="o">*</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="c1"># array of Morse potential values</span>
-<span class="ne">---&gt; </span><span class="mi">32</span> <span class="n">V_Morse</span> <span class="o">=</span> <span class="n">evaluate_Morse</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">De_au</span><span class="p">,</span> <span class="n">beta_au</span><span class="p">,</span> <span class="n">r_eq_au</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">r_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.2</span> <span class="o">*</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="mf">2.5</span> <span class="o">*</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">V_values</span> <span class="o">=</span> <span class="n">evaluate_Morse</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span> <span class="n">De_au</span><span class="p">,</span> <span class="n">beta_au</span><span class="p">,</span> <span class="n">r_eq_au</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span> <span class="n">V_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Morse Potential&quot;</span><span class="p">)</span>
 
-<span class="nn">Cell In[4], line 25,</span> in <span class="ni">evaluate_Morse</span><span class="nt">(r, De, beta, r_eq)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="w"> </span><span class="sd">&quot;&quot;&quot; Helper function to evaluate the Morse potential at a given value of r</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> </span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="sd"> Arguments</span>
-<span class="sd">   (...)     22 </span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="c1"># &lt;== inert code to compute Morse Oscillator potential and store to V_M</span>
-<span class="ne">---&gt; </span><span class="mi">25</span> <span class="k">return</span> <span class="n">V_M</span>
+<span class="ne">NameError</span>: name &#39;r_eq_au&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<section id="expanding-the-morse-potential-as-a-taylor-series">
+<h3>Expanding the Morse Potential as a Taylor Series<a class="headerlink" href="#expanding-the-morse-potential-as-a-taylor-series" title="Link to this heading">#</a></h3>
+<p>In the following block, we will compute the analytical <span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(g\)</span>, and <span class="math notranslate nohighlight">\(h\)</span> terms defined in the Taylor series expansion of the Morse potential. We will also compare the value of <span class="math notranslate nohighlight">\(k\)</span> computed analytically to the value computed numerically.</p>
+<p>Recall that <span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(g\)</span>, and <span class="math notranslate nohighlight">\(h\)</span> are the second, third, and fourth derivatives of the Morse potential with respect to <span class="math notranslate nohighlight">\(r\)</span> evaluated at <span class="math notranslate nohighlight">\(r_{eq}\)</span>. These derivatives can be expressed in terms of the Morse parameters as:</p>
+<p>\begin{align}
+k &amp;= 2 D_e \beta^2 \
+g &amp;= -6 D_e \beta^3 \
+h &amp;= 14 D_e \beta^4
+\end{align}</p>
+<p>Use the code block below to assign values to the variables <code class="docutils literal notranslate"><span class="pre">k_au</span></code>, <code class="docutils literal notranslate"><span class="pre">g_au</span></code>, and <code class="docutils literal notranslate"><span class="pre">h_au</span></code> (all in atomic units), utilizing the variables <code class="docutils literal notranslate"><span class="pre">De_au</span></code> and <code class="docutils literal notranslate"><span class="pre">beta_au</span></code> that hold the Morse parameters in atomic units.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: Assign values to k_au, g_au, and h_au using the formulas above</span>
+<span class="c1"># Use the variables De_au and beta_au for De and beta in atomic units.</span>
 
-<span class="ne">NameError</span>: name &#39;V_M&#39; is not defined
+<span class="c1"># Example:</span>
+<span class="c1"># k_au = 2 * De_au * beta_au**2</span>
+
+<span class="c1"># Your code here:</span>
+<span class="n">k_au</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">g_au</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">h_au</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># Print the results to check your work</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;k (2nd derivative) = </span><span class="si">{</span><span class="n">k_au</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2"> au&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;g (3rd derivative) = </span><span class="si">{</span><span class="n">g_au</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2"> au&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;h (4th derivative) = </span><span class="si">{</span><span class="n">h_au</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2"> au&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="expanding-the-morse-potential-as-a-taylor-series">
-<h2>Expanding the Morse potential as a Taylor series<a class="headerlink" href="#expanding-the-morse-potential-as-a-taylor-series" title="Link to this heading">#</a></h2>
-<p>In the following block, we will compute the analytical <span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(g\)</span>, and <span class="math notranslate nohighlight">\(h\)</span> terms defined in Equation 10.  We will compare the value of <span class="math notranslate nohighlight">\(k\)</span> computed analytically to the value computed numerically by Eq. (11), as well.</p>
-<p>Recall Equation (10) was:
-\begin{align}
-k = 2 D_e \beta^2 \
-g = -6 D_e \beta^3  \
-h = 14 D_e \beta^4.
+<section id="numerical-computation-of-derivatives-using-finite-differences">
+<h3>Numerical Computation of Derivatives Using Finite Differences<a class="headerlink" href="#numerical-computation-of-derivatives-using-finite-differences" title="Link to this heading">#</a></h3>
+<p>In many real-world cases, the analytical expressions for the derivatives of physical potentials are not available or are very complicated to obtain. For example, potentials obtained from quantum chemistry calculations or empirical fits often come only as discrete data points without closed-form formulas.</p>
+<p>Therefore, numerical differentiation techniques, such as finite difference methods, are invaluable tools to estimate these derivatives directly from computed potential energy values.</p>
+<p>In this exercise, we will use a centered finite difference approach with a 5-point stencil to numerically approximate the second, third, and fourth derivatives of the Morse potential at the equilibrium bond length, <span class="math notranslate nohighlight">\(r_{eq}\)</span>.</p>
+<p>The formulas for these derivatives at <span class="math notranslate nohighlight">\(r_{eq}\)</span> are:</p>
+<p>\begin{align}
+k_{\text{num}} &amp;= \frac{-f_{i-2} + 16 f_{i-1} - 30 f_i + 16 f_{i+1} - f_{i+2}}{12 h^2} \
+g_{\text{num}} &amp;= \frac{-f_{i-2} + 2 f_{i-1} - 2 f_{i+1} + f_{i+2}}{2 h^3} \
+h_{\text{num}} &amp;= \frac{f_{i-2} - 4 f_{i-1} + 6 f_i - 4 f_{i+1} + f_{i+2}}{h^4}
 \end{align}</p>
-<p>and (11) was:</p>
-<p>\begin{equation}
-k=\frac{V_{Morse}(r_{eq}+\Delta r)-2V_{Morse}(r_{eq})+V_{Morse}(r_{eq}-\Delta r)}{\Delta r^2}+O (\Delta r^2)
-\end{equation}</p>
+<p>Here:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h\)</span> is the step size between bond lengths (in atomic units)</p></li>
+<li><p><span class="math notranslate nohighlight">\(f_i\)</span> represents the Morse potential value at <span class="math notranslate nohighlight">\(r_{eq}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f_{i \pm 1}\)</span> and <span class="math notranslate nohighlight">\(f_{i \pm 2}\)</span> represent Morse potential values at points displaced by <span class="math notranslate nohighlight">\(h\)</span> and <span class="math notranslate nohighlight">\(2h\)</span> from <span class="math notranslate nohighlight">\(r_{eq}\)</span>, respectively</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>Step-by-step instructions:</strong></p>
+<ol class="arabic simple">
+<li><p>Choose a small step size <span class="math notranslate nohighlight">\(h\)</span> (e.g., <span class="math notranslate nohighlight">\(h = 0.01\)</span> au).</p></li>
+<li><p>Create a list <code class="docutils literal notranslate"><span class="pre">f</span></code> to hold the Morse potential values at five points:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">f[0]</span> <span class="pre">=</span> <span class="pre">V_{Morse}(r_{eq}</span> <span class="pre">-</span> <span class="pre">2h)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">f[1]</span> <span class="pre">=</span> <span class="pre">V_{Morse}(r_{eq}</span> <span class="pre">-</span> <span class="pre">h)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">f[2]</span> <span class="pre">=</span> <span class="pre">V_{Morse}(r_{eq})</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">f[3]</span> <span class="pre">=</span> <span class="pre">V_{Morse}(r_{eq}</span> <span class="pre">+</span> <span class="pre">h)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">f[4]</span> <span class="pre">=</span> <span class="pre">V_{Morse}(r_{eq}</span> <span class="pre">+</span> <span class="pre">2h)</span></code></p></li>
+</ul>
+</li>
+<li><p>Using the values in <code class="docutils literal notranslate"><span class="pre">f</span></code> and the step size <code class="docutils literal notranslate"><span class="pre">h</span></code>, evaluate the finite difference expressions above to compute <code class="docutils literal notranslate"><span class="pre">k_num_au</span></code>, <code class="docutils literal notranslate"><span class="pre">g_num_au</span></code>, and <code class="docutils literal notranslate"><span class="pre">h_num_au</span></code>.</p></li>
+<li><p>Store the computed derivatives in variables named <code class="docutils literal notranslate"><span class="pre">k_num_au</span></code>, <code class="docutils literal notranslate"><span class="pre">g_num_au</span></code>, and <code class="docutils literal notranslate"><span class="pre">h_num_au</span></code>.</p></li>
+</ol>
+<hr class="docutils" />
+<p>Once you complete these steps, you will have numerical estimates of the second, third, and fourth derivatives of the Morse potential at <span class="math notranslate nohighlight">\(r_{eq}\)</span> which you can compare with the analytical values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Insert analytical evaluation of k</span>
-<span class="c1"># ,== k =</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the step size h (in atomic units)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.01</span>
 
-<span class="c1"># Insert analytical evaluation of g</span>
-<span class="c1"># &lt;== g =</span>
+<span class="c1"># Compute the five r values centered at r_eq_au</span>
+<span class="n">r_values</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">r_eq_au</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">,</span>
+    <span class="n">r_eq_au</span> <span class="o">-</span> <span class="n">h</span><span class="p">,</span>
+    <span class="n">r_eq_au</span><span class="p">,</span>
+    <span class="n">r_eq_au</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span>
+    <span class="n">r_eq_au</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">h</span>
+<span class="p">]</span>
 
-<span class="c1"># analytical evalution of h</span>
-<span class="c1"># &lt;== h =</span>
+<span class="c1"># TODO: Evaluate the Morse potential at each r value in r_values</span>
+<span class="c1">#       and store the results in a list called f</span>
+<span class="c1"># Example:</span>
+<span class="c1"># f = [evaluate_Morse(r, De_au, beta_au, r_eq_au) for r in r_values]</span>
 
-<span class="c1"># numerical evaluation of k</span>
+<span class="c1"># TODO: Compute the numerical second derivative (k_num_au) using the 5-point stencil formula</span>
 
-<span class="c1"># small displacement along r</span>
-<span class="n">delta_r</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="o">*</span> <span class="n">r_eq_au</span>
+<span class="c1"># TODO: Compute the numerical third derivative (g_num_au) using the 5-point stencil formula</span>
 
-<span class="c1"># value of Morse potential at forward displacement</span>
-<span class="c1"># &lt;== V_f =</span>
+<span class="c1"># TODO: Compute the numerical fourth derivative (h_num_au) using the 5-point stencil formula</span>
 
-<span class="c1"># value of Morse potential at equilibrium</span>
-<span class="c1">#&lt;== V_eq =</span>
-
-<span class="c1"># value of Morse potential at backward displacement</span>
-<span class="c1"># &lt;== V_b =</span>
-
-<span class="c1"># CFD approximation to k</span>
-<span class="c1"># &lt;== k_num =</span>
-
-<span class="c1"># compare the numerical and analytic evaluation of k</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">k_num</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">k_num</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; The numerical and analytical values for k agree to within +/- 0.0001 atomic units.&quot;</span><span class="p">)</span>
+<span class="c1"># TODO: Print the numerical derivatives for inspection</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Next we will evaluate the Harmonic, cubic, and quartic models for the interatomic potential and plot all against the Morse potential.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Harmonic potential</span>
-<span class="n">V_H</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span><span class="n">r_eq_au</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare numerical derivatives to analytical values with error reporting</span>
 
-<span class="c1"># cubic</span>
-<span class="n">V_C</span> <span class="o">=</span> <span class="n">V_H</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">r_eq_au</span><span class="p">)</span> <span class="o">**</span> <span class="mi">3</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">print_comparison</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">analytical</span><span class="p">,</span> <span class="n">numerical</span><span class="p">):</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">analytical</span> <span class="o">-</span> <span class="n">numerical</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Analytical value = </span><span class="si">{</span><span class="n">analytical</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> au&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Numerical value  = </span><span class="si">{</span><span class="n">numerical</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> au&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Absolute error   = </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2"> au</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="c1"># quartic</span>
-<span class="n">V_Q</span> <span class="o">=</span> <span class="n">V_C</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">24</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">r_eq_au</span><span class="p">)</span> <span class="o">**</span> <span class="mi">4</span>
+<span class="n">print_comparison</span><span class="p">(</span><span class="s2">&quot;Second derivative (k)&quot;</span><span class="p">,</span> <span class="n">k_au</span><span class="p">,</span> <span class="n">k_num_au</span><span class="p">)</span>
+<span class="n">print_comparison</span><span class="p">(</span><span class="s2">&quot;Third derivative (g)&quot;</span><span class="p">,</span> <span class="n">g_au</span><span class="p">,</span> <span class="n">g_num_au</span><span class="p">)</span>
+<span class="n">print_comparison</span><span class="p">(</span><span class="s2">&quot;Fourth derivative (h)&quot;</span><span class="p">,</span> <span class="n">h_au</span><span class="p">,</span> <span class="n">h_num_au</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">V_Morse</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Morse Potential&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Note: Numerical derivatives are approximations that depend on the chosen step size (h).</span>
+<span class="s2">A smaller h generally reduces truncation error but may increase rounding error.</span>
+<span class="s2">Choosing an optimal step size is important for balancing accuracy and numerical stability.</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="comparing-taylor-expansions-of-the-morse-potential">
+<h3>Comparing Taylor Expansions of the Morse Potential<a class="headerlink" href="#comparing-taylor-expansions-of-the-morse-potential" title="Link to this heading">#</a></h3>
+<p>The Morse potential provides an exact analytical form that realistically models the anharmonic vibrational behavior of diatomic molecules. However, in practice, we often approximate potentials using Taylor expansions truncated at various orders — harmonic (quadratic), cubic, quartic, etc.</p>
+<p>Comparing these truncated potentials to the full Morse potential helps us understand:</p>
+<ul class="simple">
+<li><p>How well simpler approximations capture key physical features</p></li>
+<li><p>The impact of including anharmonic corrections beyond the harmonic approximation</p></li>
+<li><p>The range of bond lengths over which each approximation remains accurate</p></li>
+</ul>
+<p>Visualizing these potentials together illustrates the trade-offs between computational simplicity and physical accuracy.</p>
+<hr class="docutils" />
+<p>Below is the plot comparing the full Morse potential with its quadratic, cubic, and quartic Taylor expansions. The vertical green dashed line marks the equilibrium bond length <span class="math notranslate nohighlight">\(r_{eq}\)</span>, and the horizontal red dashed line shows the dissociation energy <span class="math notranslate nohighlight">\(D_e\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate potentials</span>
+<span class="n">V_H</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">k_au</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">r_eq_au</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">V_C</span> <span class="o">=</span> <span class="n">V_H</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span> <span class="o">*</span> <span class="n">g_au</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">r_eq_au</span><span class="p">)</span> <span class="o">**</span> <span class="mi">3</span>
+<span class="n">V_Q</span> <span class="o">=</span> <span class="n">V_C</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">)</span> <span class="o">*</span> <span class="n">h_au</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">r_eq_au</span><span class="p">)</span> <span class="o">**</span> <span class="mi">4</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">V_Morse</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Morse Potential&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">V_H</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Harmonic Potential&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">V_C</span><span class="p">,</span> <span class="s1">&#39;b--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Cubic Potential&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">V_Q</span><span class="p">,</span> <span class="s1">&#39;g--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Quartic Potential&quot;</span><span class="p">)</span>
+
+<span class="c1"># Mark equilibrium bond length (r_eq)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">r_eq_au</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$r_</span><span class="si">{eq}</span><span class="s1">$&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mark dissociation energy (D_e)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">De_au</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$D_e$&#39;</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="mf">2.5</span> <span class="o">*</span> <span class="n">r_eq_au</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Bondlength (Bohr radii)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Bond Length (Bohr radii)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Energy (Hartrees)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Comparison of Morse Potential and Taylor Expansions&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -798,312 +1037,170 @@ k=\frac{V_{Morse}(r_{eq}+\Delta r)-2V_{Morse}(r_{eq})+V_{Morse}(r_{eq}-\Delta r)
 </div>
 </div>
 </section>
-<section id="compute-e-1-and-e-2-using-perturbation-theory">
-<h2>Compute <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span> using Perturbation Theory<a class="headerlink" href="#compute-e-1-and-e-2-using-perturbation-theory" title="Link to this heading">#</a></h2>
-<p>We will need access to the zeroth-order states <span class="math notranslate nohighlight">\(\psi_n^{(0)}(r)\)</span> to compute the 1st and 2nd order energy corrections.
-The following helper functions will give us access to these states and will also perform the operations necessary to compute the perturbative corrections.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_alpha</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">hbar</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Helper function to compute \alpha = \sqrt{k * \omega / \hbar}</span>
-
-<span class="sd">    Arguments</span>
-<span class="sd">    ---------</span>
-<span class="sd">    k : float</span>
-<span class="sd">        the Harmonic force constant</span>
-
-<span class="sd">    mu : float</span>
-<span class="sd">        the reduced mass</span>
-
-<span class="sd">    hbar : float</span>
-<span class="sd">        reduced planck&#39;s constant</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    alpha : float</span>
-<span class="sd">        \alpha = \sqrt{k * \omega / \hbar}</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># compute omega</span>
-    <span class="c1"># &lt;== omega =</span>
-
-    <span class="c1"># compute alpha</span>
-    <span class="c1"># &lt;== alpha</span>
-
-    <span class="c1"># return alpha</span>
-    <span class="k">return</span> <span class="n">alpha</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">N</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Helper function to take the quantum number n of the Harmonic Oscillator and return the normalization constant</span>
-
-<span class="sd">    Arguments</span>
-<span class="sd">    ---------</span>
-<span class="sd">    n : int</span>
-<span class="sd">        the quantum state of the harmonic oscillator</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    N_n : float</span>
-<span class="sd">        the normalization constant</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">return</span>  <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">alpha</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">psi</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Helper function to evaluate the Harmonic Oscillator energy eigenfunction for state n</span>
-
-<span class="sd">    Arguments</span>
-<span class="sd">    ---------</span>
-<span class="sd">    n : int</span>
-<span class="sd">        the quantum state of the harmonic oscillator</span>
-
-<span class="sd">    alpha : float</span>
-<span class="sd">        alpha value</span>
-
-
-<span class="sd">    r : float</span>
-<span class="sd">        position at which psi_n will be evaluated</span>
-
-<span class="sd">    r_eq : float</span>
-<span class="sd">        equilibrium bondlength</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    psi_n : float</span>
-<span class="sd">        value of the harmonic oscillator energy eigenfunction</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">Hr</span> <span class="o">=</span> <span class="n">hermite</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-
-    <span class="n">psi_n</span> <span class="o">=</span> <span class="n">N</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">Hr</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">r</span> <span class="o">-</span> <span class="n">r_eq</span> <span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">alpha</span>  <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">r_eq</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">psi_n</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">harmonic_eigenvalue</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">hbar</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Helper function to evaluate the energy eigenvalue of the harmonic oscillator for state n&quot;&quot;&quot;</span>
-
-    <span class="k">return</span> <span class="n">hbar</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="n">mu</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">morse_eigenvalue</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">De</span><span class="p">,</span> <span class="n">hbar</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Helper function to evaluate the energy eigenvalue of the Morse oscillator for state n&quot;&quot;&quot;</span>
-
-    <span class="n">omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">k</span> <span class="o">/</span> <span class="n">mu</span> <span class="p">)</span>
-    <span class="n">xi</span> <span class="o">=</span> <span class="n">hbar</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">De</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">hbar</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="p">(</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">xi</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">potential_matrix_element</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq</span><span class="p">,</span> <span class="n">V_p</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Helper function to compute &lt;n|V_p|m&gt; where V_p is the perturbing potential</span>
-
-<span class="sd">    Arguments</span>
-<span class="sd">    ---------</span>
-<span class="sd">    n : int</span>
-<span class="sd">        quantum number of the bra state</span>
-
-<span class="sd">    m : int</span>
-<span class="sd">        quantum number of the ket state</span>
-
-<span class="sd">    alpha : float</span>
-<span class="sd">        alpha constant for bra/ket states</span>
-
-<span class="sd">    r : float</span>
-<span class="sd">        position grid for bra/ket states</span>
-
-<span class="sd">    r_eq : float</span>
-<span class="sd">        equilibrium bondlength for bra/ket states</span>
-
-<span class="sd">    V_p : float</span>
-<span class="sd">        potential array</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    V_nm : float</span>
-<span class="sd">        &lt;n | V_p | m &gt;</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># bra</span>
-    <span class="n">psi_n</span> <span class="o">=</span> <span class="n">psi</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq</span><span class="p">)</span>
-
-    <span class="c1"># ket</span>
-    <span class="n">psi_m</span> <span class="o">=</span> <span class="n">psi</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq</span><span class="p">)</span>
-
-    <span class="c1"># integrand</span>
-    <span class="n">integrand</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">psi_n</span><span class="p">)</span> <span class="o">*</span> <span class="n">V_p</span> <span class="o">*</span> <span class="n">psi_m</span>
-
-    <span class="c1"># integrate</span>
-    <span class="n">V_nm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">V_nm</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="test-out-the-eigenfunctions">
-<h1>Test out the eigenfunctions<a class="headerlink" href="#test-out-the-eigenfunctions" title="Link to this heading">#</a></h1>
-<p>Here we will plot <span class="math notranslate nohighlight">\(\psi_0^{(0)}\)</span> against the Harmonic potential and will also test to make sure it is properly normalized.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute alpha</span>
-<span class="n">alpha</span> <span class="o">=</span> <span class="n">compute_alpha</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">mu_au</span><span class="p">,</span> <span class="n">hbar_au</span><span class="p">)</span>
-
-<span class="c1"># compute psi_0 along the r grid</span>
-<span class="n">psi_0</span> <span class="o">=</span><span class="n">psi</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq_au</span><span class="p">)</span>
-
-<span class="c1"># is it normalized?</span>
-<span class="n">Integral</span> <span class="o">=</span> <span class="n">trapz</span><span class="p">(</span><span class="n">psi_0</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
-
-<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">Integral</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-
-
-<span class="c1"># Harmonic potential</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">psi_0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\psi_0$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">V_H</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Harmonic Potential&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">r_eq_au</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="compute-the-fundamental-transition-energies">
-<h1>Compute the fundamental transition energies<a class="headerlink" href="#compute-the-fundamental-transition-energies" title="Link to this heading">#</a></h1>
-<p>Now we will compute the fundamental transition energies at all levels of theory and plot the results in both atomic units and in wavenumbers.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fundamental transition energy at HO level</span>
-<span class="n">fundamental_HO</span> <span class="o">=</span> <span class="n">harmonic_eigenvalue</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">mu_au</span><span class="p">,</span> <span class="n">hbar_au</span><span class="p">)</span> <span class="o">-</span> <span class="n">harmonic_eigenvalue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">mu_au</span><span class="p">,</span> <span class="n">hbar_au</span><span class="p">)</span>
-
-<span class="c1"># fundamental transition energy at Morse level</span>
-<span class="n">fundamental_Morse</span> <span class="o">=</span> <span class="n">morse_eigenvalue</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">mu_au</span><span class="p">,</span> <span class="n">De_au</span><span class="p">,</span> <span class="n">hbar_au</span><span class="p">)</span> <span class="o">-</span> <span class="n">morse_eigenvalue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">mu_au</span><span class="p">,</span> <span class="n">De_au</span><span class="p">,</span> <span class="n">hbar_au</span><span class="p">)</span>
-
-<span class="c1"># 1st order correction using the cubic potential</span>
-<span class="n">pt1_cubic</span> <span class="o">=</span> <span class="n">potential_matrix_element</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="p">(</span><span class="n">V_C</span> <span class="o">-</span> <span class="n">V_H</span><span class="p">))</span>
-
-<span class="c1"># 1st order correction using the quartic potential</span>
-<span class="n">pt1_quartic</span> <span class="o">=</span> <span class="n">potential_matrix_element</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="p">(</span><span class="n">V_Q</span> <span class="o">-</span> <span class="n">V_H</span><span class="p">))</span>
-
-<span class="c1"># 2nd order corrections using cubic and quartic potentials</span>
-<span class="n">pt2_cubic</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">pt2_quartic</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="c1"># sum over |&lt;j|V&#39;|n&gt;|^2/(Ej-En)</span>
-<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">):</span>
-    <span class="n">E_j</span> <span class="o">=</span> <span class="n">harmonic_eigenvalue</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">mu_au</span><span class="p">,</span> <span class="n">hbar_au</span><span class="p">)</span>
-    <span class="n">Vc_j0</span> <span class="o">=</span> <span class="n">potential_matrix_element</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="p">(</span><span class="n">V_C</span> <span class="o">-</span> <span class="n">V_H</span><span class="p">))</span>
-    <span class="n">pt2_cubic</span> <span class="o">+=</span> <span class="n">Vc_j0</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">fundamental_HO</span> <span class="o">-</span> <span class="n">E_j</span><span class="p">)</span>
-    <span class="n">Vq_j0</span> <span class="o">=</span> <span class="n">potential_matrix_element</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="p">(</span><span class="n">V_Q</span> <span class="o">-</span> <span class="n">V_H</span><span class="p">))</span>
-    <span class="n">pt2_quartic</span> <span class="o">+=</span> <span class="n">Vq_j0</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">fundamental_HO</span> <span class="o">-</span> <span class="n">E_j</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="n">cubic_fo</span> <span class="o">=</span> <span class="n">fundamental_HO</span> <span class="o">+</span> <span class="n">pt1_cubic</span>
-<span class="n">quartic_fo</span> <span class="o">=</span> <span class="n">fundamental_HO</span> <span class="o">+</span> <span class="n">pt1_quartic</span>
-
-<span class="n">cubic_so</span> <span class="o">=</span> <span class="n">cubic_fo</span> <span class="o">+</span> <span class="n">pt2_cubic</span>
-<span class="n">quartic_so</span> <span class="o">=</span> <span class="n">quartic_fo</span> <span class="o">+</span> <span class="n">pt2_quartic</span>
-
-<span class="n">au_to_wn</span> <span class="o">=</span> <span class="mf">219474.63068</span>
-
-<span class="n">morse_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">fundamental_Morse</span> <span class="o">*</span> <span class="n">au_to_wn</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
-<span class="n">HO_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">fundamental_HO</span> <span class="o">*</span> <span class="n">au_to_wn</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
-<span class="n">cubic_so_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">cubic_so</span> <span class="o">*</span> <span class="n">au_to_wn</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
-<span class="n">quartic_so_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">quartic_so</span> <span class="o">*</span> <span class="n">au_to_wn</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
-
-
-
-
-
-
-<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">morse_plot</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">morse_plot</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Morse&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">HO_plot</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">HO_plot</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Harmonic&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">cubic_so_plot</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cubic_so_plot</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Cubic - PT2&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">quartic_so_plot</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">quartic_so_plot</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Quartic - PT2&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">2400</span><span class="p">,</span> <span class="mi">2500</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Transition Energy (cm$^{-1}$)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Create and fit Morse potential in atomic units</p>
-<p>Now plot the potential and compute some eigenvalues</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">psi4</span> 
-<span class="n">mol_tmpl</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">C</span>
-<span class="s2">O 1 **R**</span>
-<span class="s2">symmetry c2v</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">r_angstrom</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="mf">1.9</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">])</span>
-<span class="n">options_dict</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;basis&quot;</span><span class="p">:</span> <span class="s2">&quot;cc-pVTZ&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;e_convergence&quot;</span><span class="p">:</span> <span class="mf">1e-10</span><span class="p">,</span>
-    <span class="s2">&quot;d_convergence&quot;</span><span class="p">:</span> <span class="mf">1e-10</span><span class="p">,</span>
-<span class="p">}</span>
-
-<span class="n">psi4</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="n">options_dict</span><span class="p">)</span>
-<span class="c1">#mol = psi4.geometry(mol_tmpl)</span>
-
-<span class="c1">#ccsdt_e = psi4.energy(&#39;ccsd&#39;)</span>
-
-<span class="n">ccsdt_energy</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">r_val</span> <span class="ow">in</span> <span class="n">r_angstrom</span><span class="p">:</span>
-    <span class="n">mol_str</span> <span class="o">=</span> <span class="n">mol_tmpl</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;**R**&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">r_val</span><span class="p">))</span>
-    <span class="n">mol</span> <span class="o">=</span> <span class="n">psi4</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="n">mol_str</span><span class="p">)</span>
-    <span class="n">ccsdt_e</span> <span class="o">=</span> <span class="n">psi4</span><span class="o">.</span><span class="n">energy</span><span class="p">(</span><span class="s1">&#39;ccsd&#39;</span><span class="p">)</span>
-    <span class="n">ccsdt_energy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ccsdt_e</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V_min_ccsdt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">ccsdt_energy</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">V_min_ccsdt</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">V_Morse</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Morse Potential&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r_angstrom</span> <span class="o">/</span> <span class="n">au_to_ang</span><span class="p">,</span> <span class="n">ccsdt_energy</span><span class="o">-</span><span class="n">V_min_ccsdt</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;CCSD(T)/cc-pVTZ&quot;</span><span class="p">)</span>
-<span class="c1">#plt.plot(r, V_H, &#39;r--&#39;, label=&quot;Harmonic Potential&quot;)</span>
-<span class="c1">#plt.plot(r, V_C, &#39;b--&#39;, label=&quot;Cubic Potential&quot;)</span>
-<span class="c1">#plt.plot(r, V_Q, &#39;g--&#39;, label=&quot;Quartic Potential&quot;)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="mf">2.5</span> <span class="o">*</span> <span class="n">r_eq_au</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Bondlength (Bohr radii)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Energy (Hartrees)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="assignment">
-<h1>Assignment<a class="headerlink" href="#assignment" title="Link to this heading">#</a></h1>
+<section id="guided-questions-interpreting-the-potential-energy-plot">
+<h3>Guided Questions: Interpreting the Potential Energy Plot<a class="headerlink" href="#guided-questions-interpreting-the-potential-energy-plot" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>Locate the equilibrium bondlength at the CCSD/cc-pVTZ level and report it in Angstroms and Bohr units.  Report the error and percentage error compared to the <span class="math notranslate nohighlight">\(R_{eq}\)</span> used in the Morse potential.</p></li>
-<li><p>Utilize second-order schemes for <a class="reference external" href="https://www.mech.kth.se/~ardeshir/courses/literature/fd.pdf">finite differences</a> to approximate <span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(g\)</span>, and <span class="math notranslate nohighlight">\(h\)</span> at the CCSD/cc-pVTZ level and report these in atomic units.  <strong>Hint</strong> Make sure your displacements are in atomic units!  Report the error and percentage error compared to these values that were derived from the Morse potential.</p></li>
-<li><p>Build a quartic potential model for CO using coefficients <span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(g\)</span>, and <span class="math notranslate nohighlight">\(h\)</span> derived from the previous step.  Plot the Harmonic, Cubic, Quartic components along with the raw CCSD/cc-pVTZ data and the original Morse potential.</p></li>
-<li><p>Compute the fundamental transition energy from CO using the quartic potential and 2nd-order perturbation theory.  Make a table that includes the fundamental computed using this approximation, the fundamental from the Morse model, and the experimental value for the CO fundamental.  Include a column for the percentage error of both approximations relative to the experimental value.</p></li>
+<li><p><strong>Dissociation Behavior:</strong></p>
+<ul class="simple">
+<li><p>Which of the potentials shown (Morse, Harmonic, Cubic, Quartic) correctly predict the dissociation of the molecule (i.e., energy leveling off at large bond lengths rather than increasing without bound)?</p></li>
+<li><p>Why is correct dissociation behavior important for modeling molecular vibrations and reactions?</p></li>
+</ul>
+</li>
+<li><p><strong>Anharmonicity:</strong></p>
+<ul class="simple">
+<li><p>Which potentials exhibit anharmonic behavior? How can you tell by looking at the shape of each curve?</p></li>
+<li><p>How does including cubic and quartic terms improve the approximation beyond the harmonic potential?</p></li>
+</ul>
+</li>
+<li><p><strong>Approximation Validity:</strong></p>
+<ul class="simple">
+<li><p>Over which range of bond lengths do the harmonic and truncated Taylor expansions provide a good approximation to the Morse potential?</p></li>
+<li><p>At what point do these approximations break down, and what physical consequences might that have?</p></li>
+</ul>
+</li>
+<li><p><strong>Practical Considerations:</strong></p>
+<ul class="simple">
+<li><p>Considering computational cost and accuracy, when might it be acceptable to use a harmonic approximation instead of a full Morse potential?</p></li>
+<li><p>How might the inclusion of cubic and quartic terms in the potential affect vibrational frequency calculations?</p></li>
+</ul>
+</li>
 </ol>
+<hr class="docutils" />
+<p>Reflect on these questions as you examine the plot and the differences among the potentials.</p>
+</section>
+<section id="computing-vibrational-transition-energies">
+<h3>Computing Vibrational Transition Energies<a class="headerlink" href="#computing-vibrational-transition-energies" title="Link to this heading">#</a></h3>
+<p>Using the Morse and Harmonic oscillator models, we will compute three key vibrational transition energies for CO:</p>
+<ul class="simple">
+<li><p><strong>Fundamental transition:</strong> from <span class="math notranslate nohighlight">\(n=0\)</span> to <span class="math notranslate nohighlight">\(n=1\)</span></p></li>
+<li><p><strong>First overtone transition:</strong> from <span class="math notranslate nohighlight">\(n=0\)</span> to <span class="math notranslate nohighlight">\(n=2\)</span></p></li>
+<li><p><strong>First hot band:</strong> from <span class="math notranslate nohighlight">\(n=1\)</span> to <span class="math notranslate nohighlight">\(n=2\)</span></p></li>
+</ul>
+<hr class="docutils" />
+<section id="reminder-energy-level-formulas">
+<h4>Reminder: Energy Level Formulas<a class="headerlink" href="#reminder-energy-level-formulas" title="Link to this heading">#</a></h4>
+<p>For the Morse oscillator, the energy levels are given by:</p>
+<div class="math notranslate nohighlight">
+\[
+E_n = \hbar \omega \left( n + \frac{1}{2} - \chi_e \left( n + \frac{1}{2} \right)^2 \right),
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+\omega = \sqrt{\frac{2 D_e \beta^2}{\mu}}, \quad \chi_e = \frac{\hbar \omega}{4 D_e}.
+\]</div>
+<hr class="docutils" />
+<p>For the Harmonic oscillator, the energy levels simplify to:</p>
+<div class="math notranslate nohighlight">
+\[
+E_n = \hbar \omega \left( n + \frac{1}{2} \right).
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="task">
+<h4>Task:<a class="headerlink" href="#task" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Compute <span class="math notranslate nohighlight">\(E_0\)</span>, <span class="math notranslate nohighlight">\(E_1\)</span>, and <span class="math notranslate nohighlight">\(E_2\)</span> for both models.</p></li>
+<li><p>Calculate the transition energies corresponding to the three transitions listed above.</p></li>
+<li><p>Convert all energies from atomic units (Hartrees) to wavenumbers in cm<span class="math notranslate nohighlight">\(^{-1}\)</span>.</p></li>
+</ol>
+<p>Use the conversion factor:</p>
+<div class="math notranslate nohighlight">
+\[
+1\, \text{Hartree} = 219474.63 \, \text{cm}^{-1}.
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conversion factor from Hartree to cm^-1</span>
+<span class="n">hartree_to_cm</span> <span class="o">=</span> <span class="mf">219474.63</span>
+
+<span class="c1"># Compute omega and chi_e using the Morse parameters</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">De_au</span> <span class="o">*</span> <span class="n">beta_au</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">mu_au</span><span class="p">)</span>
+<span class="n">chi_e</span> <span class="o">=</span> <span class="p">(</span><span class="n">omega</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">De_au</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">E_morse</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute Morse oscillator energy level E_n (in atomic units)&quot;&quot;&quot;</span>
+    <span class="c1"># TODO: Implement formula:</span>
+    <span class="c1"># E_n = omega * (n + 0.5 - chi_e * (n + 0.5)**2)</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">E_harmonic</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute Harmonic oscillator energy level E_n (in atomic units)&quot;&quot;&quot;</span>
+    <span class="c1"># TODO: Implement formula:</span>
+    <span class="c1"># E_n = omega * (n + 0.5)</span>
+    <span class="k">pass</span>
+
+<span class="c1"># TODO: Compute energy levels for n = 0, 1, 2 using your functions and assign:</span>
+<span class="c1"># E0_morse = ...</span>
+<span class="c1"># E1_morse = ...</span>
+<span class="c1"># E2_morse = ...</span>
+<span class="c1">#</span>
+<span class="c1"># E0_harm = ...</span>
+<span class="c1"># E1_harm = ...</span>
+<span class="c1"># E2_harm = ...</span>
+
+<span class="c1"># TODO: Calculate transition energies (in atomic units):</span>
+<span class="c1"># Fundamental transition (0 -&gt; 1)</span>
+<span class="c1"># fund_morse = ...</span>
+<span class="c1"># fund_harm = ...</span>
+<span class="c1">#</span>
+<span class="c1"># First overtone (0 -&gt; 2)</span>
+<span class="c1"># overtone_morse = ...</span>
+<span class="c1"># overtone_harm = ...</span>
+<span class="c1">#</span>
+<span class="c1"># First hot band (1 -&gt; 2)</span>
+<span class="c1"># hotband_morse = ...</span>
+<span class="c1"># hotband_harm = ...</span>
+
+<span class="c1"># TODO: Convert all transition energies from atomic units to cm^-1:</span>
+<span class="c1"># fund_morse_cm = ...</span>
+<span class="c1"># fund_harm_cm = ...</span>
+<span class="c1">#</span>
+<span class="c1"># overtone_morse_cm = ...</span>
+<span class="c1"># overtone_harm_cm = ...</span>
+<span class="c1">#</span>
+<span class="c1"># hotband_morse_cm = ...</span>
+<span class="c1"># hotband_harm_cm = ...</span>
+
+<span class="c1"># Print the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Transition Energies (cm^-1):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Transition&#39;</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}{</span><span class="s1">&#39;Morse&#39;</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}{</span><span class="s1">&#39;Harmonic&#39;</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fundamental (0-&gt;1): </span><span class="si">{</span><span class="n">fund_morse_cm</span><span class="si">:</span><span class="s2">12.2f</span><span class="si">}{</span><span class="n">fund_harm_cm</span><span class="si">:</span><span class="s2">12.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First overtone (0-&gt;2): </span><span class="si">{</span><span class="n">overtone_morse_cm</span><span class="si">:</span><span class="s2">12.2f</span><span class="si">}{</span><span class="n">overtone_harm_cm</span><span class="si">:</span><span class="s2">12.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First hot band (1-&gt;2): </span><span class="si">{</span><span class="n">hotband_morse_cm</span><span class="si">:</span><span class="s2">12.2f</span><span class="si">}{</span><span class="n">hotband_harm_cm</span><span class="si">:</span><span class="s2">12.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="reflection-questions-vibrational-transition-energies">
+<h3>Reflection Questions: Vibrational Transition Energies<a class="headerlink" href="#reflection-questions-vibrational-transition-energies" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Harmonic Approximation &amp; Hot Band:</strong></p>
+<ul class="simple">
+<li><p>Notice that in the harmonic oscillator model, the energy difference for the first hot band (transition from <span class="math notranslate nohighlight">\(n=1\)</span> to <span class="math notranslate nohighlight">\(n=2\)</span>) is identical to the fundamental transition (<span class="math notranslate nohighlight">\(n=0\)</span> to <span class="math notranslate nohighlight">\(n=1\)</span>). Why does this happen?</p></li>
+<li><p>Were you expecting this result based on what you know about the harmonic oscillator? Explain your reasoning.</p></li>
+</ul>
+</li>
+<li><p><strong>Comparing Energy Levels:</strong></p>
+<ul class="simple">
+<li><p>Compare the fundamental transition predicted by the Morse model and the harmonic approximation. Which one is higher or lower in energy / wavenumber? Which is closer to the experimentally measured value for the fundamental in CO?  What physical effects cause these differences?</p></li>
+<li><p>Order the positions of the Morse fundamental, harmonic fundamental, Morse first overtone, and Morse first hot band from smallest to largest in terms of wavenumbers.  Briefly explain what gives rise to this observed relative ordering.</p></li>
+</ul>
+</li>
+<li><p><strong>Selection Rules:</strong></p>
+<ul class="simple">
+<li><p>Recall the harmonic oscillator selection rules you learned earlier, which typically allow transitions with <span class="math notranslate nohighlight">\(\Delta n = \pm 1\)</span>. Based on these rules, is the first overtone (<span class="math notranslate nohighlight">\(n=0\)</span> to <span class="math notranslate nohighlight">\(n=2\)</span>) allowed or forbidden?</p></li>
+<li><p>How do selection rules differ in the Morse oscillator? Is the first overtone allowed there, and why?</p></li>
+<li><p>Reflect on how anharmonicity affects vibrational spectroscopy and the appearance of overtones and hot bands in real molecular spectra.</p></li>
+</ul>
+</li>
+</ol>
+<hr class="docutils" />
+<p>Take some time to write detailed answers, using your calculations and prior knowledge of quantum vibrational transitions.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1152,21 +1249,30 @@ The following helper functions will give us access to these states and will also
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Computing Fundamental Transition of CO under different levels of approximation</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perturbation-theory">Perturbation Theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-morse-oscillator-parameters">Setting up Morse Oscillator Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-conversion">Unit conversion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-the-morse-potential-in-atomic-units">Evaluating the Morse potential in atomic units</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expanding-the-morse-potential-as-a-taylor-series">Expanding the Morse potential as a Taylor series</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-e-1-and-e-2-using-perturbation-theory">Compute <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span> using Perturbation Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-and-theory">Background and Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-parameters-and-unit-conversion-factors">Molecular Parameters and Unit Conversion Factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-convert-molecular-parameters-to-atomic-units">Exercise: Convert Molecular Parameters to Atomic Units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-questions">Reflection Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-the-morse-potential-using-python-functions">Evaluating the Morse Potential Using Python Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-the-evaluate-morse-function-using-the-design-recipe">Writing the <code class="docutils literal notranslate"><span class="pre">evaluate_Morse</span></code> Function Using the Design Recipe</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#test-out-the-eigenfunctions">Test out the eigenfunctions</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-fundamental-transition-energies">Compute the fundamental transition energies</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment">Assignment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-morse-potential">Plotting the Morse potential</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expanding-the-morse-potential-as-a-taylor-series">Expanding the Morse Potential as a Taylor Series</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-computation-of-derivatives-using-finite-differences">Numerical Computation of Derivatives Using Finite Differences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-taylor-expansions-of-the-morse-potential">Comparing Taylor Expansions of the Morse Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#guided-questions-interpreting-the-potential-energy-plot">Guided Questions: Interpreting the Potential Energy Plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-vibrational-transition-energies">Computing Vibrational Transition Energies</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reminder-energy-level-formulas">Reminder: Energy Level Formulas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task">Task:</a></li>
 </ul>
-
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-questions-vibrational-transition-energies">Reflection Questions: Vibrational Transition Energies</a></li>
+</ul>
+</li>
+</ul>
   </nav></div>
 
 </div></div>
