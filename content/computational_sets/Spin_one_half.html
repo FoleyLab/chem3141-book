@@ -183,14 +183,21 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture Notes</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/hydrogen.html">The Hydrogen Atom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/perturbation.html">Perturbation Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates.html">Chapter 1: The Postulates of Quantum Mechanics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/rotation.html">Angular Momentum, Rotational Motion, and Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates_two_level.html">Chapter 1: Introduction to Quantum Phenomena</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/translation.html">Chapter 3: Translational Motion</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/vibration.html">Chapter 4: Vibrational Motion</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/hydrogen.html">Chapter 6: The Hydrogen Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/variation.html">Chapter 7: The Variation Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/perturbation.html">Chapter 8: Perturbation Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/SphHarm_visualize.html">Visualizing Spherical harmonics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/translation.html">Translational Motion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/variation.html">The Variation Theorem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/vibration.html">Vibrational Motion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
 <ul class="nav bd-sidenav">
@@ -198,9 +205,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">Run the next two cells before beginning!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/HF_Coupled_to_Cavity_Tensor_To_Complete.html">Introduction to Molecular CQED</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Zeeman_Effect_Hydrogen_Atom.html">Solution</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">Linear Variational Method - Anharmonic Oscillator</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Zeeman_Effect_Hydrogen_Atom.html">Zeeman Effect</a></li>
+
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
@@ -746,26 +762,27 @@ bra state and any arbitrary ket state.</p>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">bra_ket_solve</span><span class="p">(</span><span class="n">choose_bra</span><span class="p">,</span> <span class="n">choose_ket</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_bra_ket_solve</span><span class="p">(</span><span class="n">my_bra</span><span class="p">,</span> <span class="n">my_ket</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot; A function to compute the bra-ket between choose_bra and choose_ket and return the value</span>
 
 <span class="sd">  Arguments</span>
 <span class="sd">  ---------</span>
-<span class="sd">  choose_bra : a row vector representing &lt;choose_bra|</span>
+<span class="sd">  my_bra : a row vector representing &lt;my_bra|</span>
 
-<span class="sd">  choose_ket : a column vector representing |choose_ket&gt;</span>
+<span class="sd">  my_ket : a column vector representing |my_ket&gt;</span>
 
 <span class="sd">  Returns</span>
 <span class="sd">  -------</span>
-<span class="sd">  bra_ket_val : a number representing the value of &lt;choose_bra | choose_ket&gt;</span>
+<span class="sd">  bra_ket_val : a number representing the value of &lt;my_bra | my_ket&gt;</span>
 
 <span class="sd">  Examples</span>
 <span class="sd">  --------</span>
-<span class="sd">  bra_ket_solve(np.matrix(&#39;1 0&#39;), np.matrix(&#39;1 ; 0&#39;)) == 1</span>
-<span class="sd">  bra_ket_solve(np.matrix(&#39;0 1&#39;), np.matrix(&#39;1 ; 0&#39;)) == 0</span>
+<span class="sd">  compute_bra_ket(np.matrix(&#39;1 0&#39;), np.matrix(&#39;1 ; 0&#39;)) == 1</span>
+<span class="sd">  compute_bra_ket(np.matrix(&#39;0 1&#39;), np.matrix(&#39;1 ; 0&#39;)) == 0</span>
+<span class="sd">  # &lt;== Add two additional examples of bra-kets with expected outcomes</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="n">bra_ket_val</span> <span class="o">=</span> <span class="n">choose_bra</span> <span class="o">*</span> <span class="n">choose_ket</span>
-  <span class="k">return</span> <span class="n">bra_ket_val</span>
+  <span class="c1"># &lt;== insert code to compute the bra-ket and store it to the variable bra_ket</span>
+  <span class="k">return</span> <span class="n">bra_ket</span> <span class="c1"># return statement</span>
 </pre></div>
 </div>
 </div>
@@ -809,6 +826,19 @@ bra state and any arbitrary ket state.</p>
 
 <span class="c1"># add test 4</span>
 <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">bra_ket_bb</span><span class="p">,</span> <span class="n">_expected_bra_ket_bb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># insert code to compute &lt;alpha|alpha&gt; and store to bra_ket_aa</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">bra_ket_aa</span> <span class="o">=</span> <span class="n">bra_ket_solve</span><span class="p">(</span><span class="n">bra_alpha</span><span class="p">,</span> <span class="n">ket_alpha</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># insert code to compute &lt;alpha|beta&gt; and store to bra_ket_ab</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">bra_ket_ab</span> <span class="o">=</span> <span class="n">bra_ket_solve</span><span class="p">(</span><span class="n">bra_alpha</span><span class="p">,</span> <span class="n">ket_beta</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;bra_ket_solve&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1072,11 +1102,12 @@ eigenvectors[:, i] is the normalized eigenvector corresponding to the eigenvalue
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">13</span>
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">13</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># compute eigenvectors and eigenvalues of Sx, store them to vals_x, vecs_x</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> 
 <span class="g g-Whitespace">      </span><span class="mi">3</span> 
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>      <span class="mi">9</span> 
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> 
 <span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># print shape of vecs_x</span>
 <span class="ne">---&gt; </span><span class="mi">13</span> <span class="nb">print</span><span class="p">(</span><span class="n">vals_x</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="nb">print</span><span class="p">(</span><span class="n">vecs_x</span><span class="p">)</span>

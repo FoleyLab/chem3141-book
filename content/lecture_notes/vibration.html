@@ -508,8 +508,12 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#morse-oscillator-model">Morse Oscillator model</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perturbation-theory">Perturbation Theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#morse-oscillator-eigenfunctions">Morse Oscillator Eigenfunctions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-morse-eigenfunctions">Plotting Morse eigenfunctions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-symmetry-of-the-vibrational-probability-density">Reflection: Symmetry of the Vibrational Probability Density</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-comparing-r-in-harmonic-vs-morse-oscillators">Reflection: Comparing ⟨r⟩ in Harmonic vs. Morse Oscillators</a></li>
 </ul>
 </li>
 </ul>
@@ -577,7 +581,9 @@ Requirement already satisfied: setuptools in /Users/jfoley19/miniconda3/envs/jbo
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: geometric in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (1.1)
 Requirement already satisfied: numpy&gt;=1.11 in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (from geometric) (1.26.4)
-Requirement already satisfied: networkx in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (from geometric) (3.4.2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: networkx in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (from geometric) (3.4.2)
 Requirement already satisfied: six in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (from geometric) (1.17.0)
 Requirement already satisfied: scipy in /Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages (from geometric) (1.15.3)
 </pre></div>
@@ -1916,9 +1922,12 @@ For CO, we only have one frequency, so we will only be interested in element 0 o
 \text{HCN} \longleftrightarrow \text{HNC} \nonumber
 \end{align}\]</div>
 <p>The transition state for this reaction should be found at an H-C-N bond angle of roughly 70<span class="math notranslate nohighlight">\(\degree\)</span>. The following code will identify this transition state and perform a frequency analysis on the optimized structure.</p>
+<p><strong>Note</strong> This example involves using another open-source quantum chemistry package, <a class="reference external" href="https://psicode.org/">Psi4</a>.  This can be installed on Mac and Linux systems with relative ease, but cannot be installed in a Google Colab environment like PySCF can.  You may utilize the free, web-based <a class="reference external" href="https://chemcompute.org/">ChemCompute</a> server to run this calculation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set molecule</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">psi4</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="c1"># set molecule</span>
 <span class="n">mol</span> <span class="o">=</span> <span class="n">psi4</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">h</span>
 <span class="s2">c 1 1.2</span>
@@ -2008,7 +2017,7 @@ V_{Morse}(r) = D_e \left(1 - e^{-\beta(r-r_{eq})} \right)^2. \tag{2}
 and <span class="math notranslate nohighlight">\(\mu = 6.8606 \: {\rm amu}\)</span>.</p>
 <p>The exact energy eigenvalues for Equation (1) can be written as
 \begin{equation}
-E_n = \hbar \omega \left( \left(n+ \frac{1}{2} \right) - \chi_e \left(n+ \frac{1}{2} \right)^2 \right) \tag{3}
+E_v = \hbar \omega \left( \left(v+ \frac{1}{2} \right) - \chi_e \left(v+ \frac{1}{2} \right)^2 \right) \tag{3}
 \end{equation}
 where
 \begin{equation}
@@ -2018,88 +2027,302 @@ and
 \begin{equation}
 \chi_e = \frac{\hbar \omega}{4 D_e}. \tag{5}
 \end{equation}</p>
-<p>We can see these as subsequent corrections to the harmonic oscillator model, or alternatively, we can view them as approximations to the Morse model.</p>
-<p>We will use the Morse potential as a model for the “exact” interatomic potential, and we will approximate this potential by different orders of a Taylor expansion: including up to quadratic (which is the harmonic oscillator approximation), cubic, and quartic terms.  The harmonic and Morse potentials are exactly solvable, and the eigenfunctions and eigenvalues of the vibrational Hamiltonian with cubic and quartic potentials can be approximated using perturbation theory.  Therefore, we will
-compare the fundamental  transition computed exactly for harmonic and Morse potentials, and approximately at 2nd order of perturbation theory for cubic and quartic potentials to see the impact of various levels of potential truncation and approximation.</p>
-<p>Within the Morse model, the vibrational Hamiltonian can be written as
-\begin{equation}
-\hat{H}<em>{vib} = -\frac{\hbar^2}{2\mu} \frac{d^2}{dr^2} + V</em>{Morse}(r), \tag{1}
-\end{equation}
-where
-\begin{equation}
-V_{Morse}(r) = D_e \left(1 - e^{-\beta(r-r_{eq})} \right)^2. \tag{2}
-\end{equation}</p>
-<p>The Morse parameters for <span class="math notranslate nohighlight">\({\rm CO}\)</span> are as follows: <span class="math notranslate nohighlight">\(D_e = 11.225 \: {\rm eV}\)</span>, <span class="math notranslate nohighlight">\(r_{eq} = 1.1283 \: {\rm Ang.}\)</span>, <span class="math notranslate nohighlight">\(\beta = 2.5944 \: {\rm Ang.}^{-1}\)</span>,
-and <span class="math notranslate nohighlight">\(\mu = 6.8606 \: {\rm amu}\)</span>.</p>
-<p>The exact energy eigenvalues for Equation (1) can be written as
-\begin{equation}
-E_n = \hbar \omega \left( \left(n+ \frac{1}{2} \right) - \chi_e \left(n+ \frac{1}{2} \right)^2 \right) \tag{3}
-\end{equation}
-where
-\begin{equation}
-\omega = \sqrt{\frac{2D_e \beta^2}{\mu}} \tag{4}
-\end{equation}
-and
-\begin{equation}
-\chi_e = \frac{\hbar \omega}{4 D_e}. \tag{5}
-\end{equation}</p>
-<p>The Morse potential can be approximated by a Taylor expansion as follows:
-\begin{equation}
-V_T(r) = \sum_{n=0}^{\infty} \frac{ f^{(n)}(r_{eq})}{n!} \left(r-r_{eq} \right)^n, \tag{6}
-\end{equation}
-where <span class="math notranslate nohighlight">\(f^{(n)}(r_{eq})\)</span> is the <span class="math notranslate nohighlight">\(n^{th}\)</span>-order derivative of the Morse potential evaluated at the equilibrium bondlength, e.g. <span class="math notranslate nohighlight">\(f^{(1)}(r_{eq}) = \frac{d}{dr}V_{Morse}(r_{eq}).\)</span></p>
-<p>We will define the Harmonic approximation to the potential as
-\begin{equation}
-V_H(r) =  \frac{ f^{‘’}(r_{eq})}{2} \left(r-r_{eq} \right)^2 = \frac{1}{2} k \left(r-r_{eq} \right)^2 \tag{7}
-\end{equation}
-the cubic approximation to the potential as
-\begin{equation}
-V_C(r) =  V_H(r) + \frac{ f^{‘’’}(r_{eq})}{6} \left(r-r_{eq} \right)^3 = V_H(r) + \frac{1}{6} g \left(r-r_{eq} \right)^3,   \tag{8}
-\end{equation}
-and the quartic approximation as
-\begin{equation}
-V_Q(r) =  V_C(r) + \frac{ f^{‘’’’}(r_{eq})}{24} \left(r-r_{eq} \right)^4 =  V_C(r) + \frac{1}{24}h(r-r_{eq})^4.  \tag{9}
-\end{equation}</p>
-<p>Because we are using the Morse model as the “exact” interatomic potential in this notebook, we can compute these derivatives at <span class="math notranslate nohighlight">\(r_{eq}\)</span> analytically:
-\begin{align}
-k = 2 D_e \beta^2 \
-g = -6 D_e \beta^3 \tag{10} \
-h = 14 D_e \beta^4.
-\end{align}
-However, in general we do not have an analytical form for the interatomic potential, so we must rely on numerical derivatives of the potential evaluated at the <span class="math notranslate nohighlight">\(r_{eq}\)</span>.  In the context of interatomic potentials computed by quantum chemistry methods (e.g. CCSD(T)), one must first identify the equilibrium geometry, and then compute derivatives by taking a number of single point calculations along all displacement coordinates to compute differences among.  We will write the explicit expression for the second derivative using centered finite differences along the one displacement coordinate relevant for our <span class="math notranslate nohighlight">\({\rm CO}\)</span> molecule:
-\begin{equation}
-k=\frac{V_{Morse}(r_{eq}+\Delta r)-2V_{Morse}(r_{eq})+V_{Morse}(r_{eq}-\Delta r)}{\Delta r^2}+\mathcal O (\Delta r^2) \tag{11}
-\end{equation}
-where <span class="math notranslate nohighlight">\(\Delta r\)</span> represents a small displacement along the coordinate <span class="math notranslate nohighlight">\(r\)</span>.  Higher-order derivatives can also be computed, but will require larger numbers of displacements and therefore more energy evaluations by your quantum chemistry method.  Expressions for higher-order derivatives along a single coordinate can be found <a class="reference external" href="https://sameradeeb.srv.ualberta.ca/introduction-to-numerical-analysis/numerical-differentiation/#centred-finite-difference9">here</a>. Note that the number of displacement coordinates <span class="math notranslate nohighlight">\(N\)</span> grows linearly with the number of atoms, and that the number of displacements required to form the <span class="math notranslate nohighlight">\(n^{{\rm th}}\)</span>-order approximation to the potential grows as <span class="math notranslate nohighlight">\(N^n\)</span>.</p>
-<section id="perturbation-theory">
-<h2>Perturbation Theory<a class="headerlink" href="#perturbation-theory" title="Link to this heading">#</a></h2>
-<p>We can compute the exact vibrational transition energies for the Morse oscillator and the Harmonic oscillator using Equation (3), where the Harmonic oscillator transition energies come from Equation (3) with <span class="math notranslate nohighlight">\(\chi_e = 0\)</span>.  However, the transition energies when the potential is approximated as <span class="math notranslate nohighlight">\(V_C(r)\)</span> or <span class="math notranslate nohighlight">\(V_Q(r)\)</span> must be approximated.  We will illustrate the use of Perturbation Theory approximate these transition energies.</p>
-<p>Here we will consider the Hamiltonian
-\begin{equation}
-\hat{H}<em>{vib} = -\frac{\hbar^2}{2\mu} \frac{d^2}{dr^2} + V</em>{H}(r) + V’(r) = \hat{H}_0 + V’(r) \tag{12},
-\end{equation}
-where <span class="math notranslate nohighlight">\(\hat{H}_0\)</span> is exactly solved by the Harmonic oscillator energy eigenfunctions and eigenvalues (<span class="math notranslate nohighlight">\(\psi^{(0)}_n(r)\)</span>, <span class="math notranslate nohighlight">\(E^{(0)}_n\)</span>), and <span class="math notranslate nohighlight">\(V'(r)\)</span> is the perturbation which will take the form of either
-<span class="math notranslate nohighlight">\(V'(r) = \frac{1}{6}g(r-r_{eq})^3\)</span> or <span class="math notranslate nohighlight">\(V'(r) = \frac{1}{6}g(r-r_{eq})^3 + \frac{1}{24}h(r-r_{eq})^4\)</span> in the cubic and quartic approximations, respectively.</p>
-<p>We can calculate the energy of state <span class="math notranslate nohighlight">\(n\)</span> at 2nd order of perturbation theory as follows:
-\begin{equation}
-E_n = E_n^{(0)} +  \langle \psi_n^{(0)} | V’(r) | \psi_n^{(0)} \rangle + \sum_{k \neq n} \frac{|\langle \psi_k^{(0)} | V’(r) | \psi_n^{(0)}|^2}{E_n^{(0)}-E_k^{(0)}}. \tag{13}
-\end{equation}</p>
-<p>Recall that for the zeroth-order functions have the form
-\begin{align}
-\psi_n^{(0)}(r) &amp;= \sqrt{\frac{1}{2^n n!}} \cdot \left(\frac{\alpha}{\pi} \right)^{1/4} \cdot H_n \left(\sqrt{\alpha} r \right) \cdot {\rm exp}\left(\frac{-\alpha }{2} r^2 \right) \
-\alpha &amp;= \frac{\mu \omega}{\hbar} \
-\omega &amp;= \sqrt{\frac{k}{\mu}}
-\end{align}</p>
-</section>
-<section id="approach">
-<h2>Approach<a class="headerlink" href="#approach" title="Link to this heading">#</a></h2>
-<p>We will compute the fundamental transition (<span class="math notranslate nohighlight">\(E_1 - E_0\)</span>) using the following approaches:</p>
+<section id="morse-oscillator-eigenfunctions">
+<h2>Morse Oscillator Eigenfunctions<a class="headerlink" href="#morse-oscillator-eigenfunctions" title="Link to this heading">#</a></h2>
+<p>The bound‐state eigenfunctions of the 1D Morse oscillator can be written in closed form using a scaled exponential coordinate and associated Laguerre polynomials.</p>
 <ol class="arabic simple">
-<li><p>Harmonic approximation: <span class="math notranslate nohighlight">\(E_1 - E_0 = \hbar \omega\)</span></p></li>
-<li><p>Exact solution for Morse Hamiltonian: <span class="math notranslate nohighlight">\(E_1 - E_0 = \hbar \omega (1 - 2\chi_e)\)</span></p></li>
-<li><p>Evaluation of Eq. (13) for <span class="math notranslate nohighlight">\(n=0\)</span> and <span class="math notranslate nohighlight">\(n=1\)</span> utilizing the cubic contribution for <span class="math notranslate nohighlight">\(V'(r)\)</span></p></li>
-<li><p>Evaluation of Eq. (13) for <span class="math notranslate nohighlight">\(n=0\)</span> and <span class="math notranslate nohighlight">\(n=1\)</span> utilizing the cubic and quartic contribution for <span class="math notranslate nohighlight">\(V'(r)\)</span></p></li>
+<li><p><strong>Dimensionless coordinate</strong><br />
+$<span class="math notranslate nohighlight">\(y = 2\,s\,e^{-\beta\,(r - r_{eq})},\)</span><span class="math notranslate nohighlight">\(  
+where  
+\)</span><span class="math notranslate nohighlight">\(s = \frac{D_e}{\hbar\,\omega},\quad 
+  \omega = \sqrt{\frac{2\,D_e\,\beta^2}{\mu}}.\)</span>$</p></li>
+<li><p><strong>Eigenfunctions</strong><br />
+For each quantum number <span class="math notranslate nohighlight">\(v\)</span>,<br />
+$<span class="math notranslate nohighlight">\(
+  \psi_v(r)
+  \;=\; N_v\;y^{\,s - v - \tfrac12}\;e^{-y/2}\;
+    L_v^{\bigl(2s - 2v - 1\bigr)}(y),
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>L_v^{(\alpha)}(y)<span class="math notranslate nohighlight">\( is the associated Laguerre polynomial of order \)</span>v<span class="math notranslate nohighlight">\( and parameter \)</span>\alpha<span class="math notranslate nohighlight">\(, and the normalization constant is  
+\)</span><span class="math notranslate nohighlight">\(
+  N_v = \sqrt{\frac{\beta\,\bigl(2s - 2v - 1\bigr)\,\;n!}{\Gamma(2s - v)}}\,.  
+\)</span><span class="math notranslate nohighlight">\(  
+These \)</span>\psi_v(r)<span class="math notranslate nohighlight">\( satisfy  
+\)</span>\int_0^\infty |\psi_v(r)|^2,dr = 1<span class="math notranslate nohighlight">\(, and the bound‐state quantum numbers run \)</span>v=0,1,\dots,\bigl\lfloor s-\tfrac12\bigr\rfloor$.</p></li>
 </ol>
+</section>
+<section id="plotting-morse-eigenfunctions">
+<h2>Plotting Morse eigenfunctions<a class="headerlink" href="#plotting-morse-eigenfunctions" title="Link to this heading">#</a></h2>
+<p>The following cell will plot a few of the Morse oscillator eigenfunctions</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">h</span><span class="p">,</span> <span class="n">hbar</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">u</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">genlaguerre</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">factorial</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Factor for conversion from cm⁻¹ to J</span>
+<span class="n">FAC</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">c</span>
+
+<span class="c1"># ——— Utility Functions ———</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">reduced_mass</span><span class="p">(</span><span class="n">mA</span><span class="p">,</span> <span class="n">mB</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return reduced mass (kg) for atoms of mass mA, mB in amu.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">mA</span> <span class="o">*</span> <span class="n">mB</span> <span class="o">/</span> <span class="p">(</span><span class="n">mA</span> <span class="o">+</span> <span class="n">mB</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dissociation_energy</span><span class="p">(</span><span class="n">we</span><span class="p">,</span> <span class="n">wexe</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return De (J) from vibrational constants we, wexe in cm⁻¹.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">we</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">wexe</span><span class="p">)</span> <span class="o">*</span> <span class="n">FAC</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">morse_ke</span><span class="p">(</span><span class="n">we</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return effective spring constant ke (kg·s⁻²).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">c</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">we</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mu</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">morse_a</span><span class="p">(</span><span class="n">we</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">De</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return Morse parameter a (m⁻¹).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">we</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mu</span> <span class="o">/</span> <span class="n">De</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">c</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">morse_lambda</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">De</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return λ = sqrt(2µDe)/(aħ).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">De</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">hbar</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">vmax</span><span class="p">(</span><span class="n">lam</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Maximum bound-state quantum number.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lam</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">make_rgrid</span><span class="p">(</span><span class="n">re</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="mf">0.999</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build an r–grid (m) from rmin to rmax where V(rmin)=De and V(rmax)=f·De.</span>
+<span class="sd">    Returns (r_array, dr).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rmin</span> <span class="o">=</span> <span class="n">re</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">a</span>
+    <span class="n">rmax</span> <span class="o">=</span> <span class="n">re</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">f</span><span class="p">)</span> <span class="o">/</span> <span class="n">a</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">rmin</span><span class="p">,</span> <span class="n">rmax</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">retstep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">morse_potential</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">De</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">re</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Morse potential V(r) in joules.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">De</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">re</span><span class="p">)))</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">energy_morse_J</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">we</span><span class="p">,</span> <span class="n">wexe</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Morse oscillator level E_v in joules.&quot;&quot;&quot;</span>
+    <span class="n">vp</span> <span class="o">=</span> <span class="n">v</span> <span class="o">+</span> <span class="mf">0.5</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">we</span> <span class="o">*</span> <span class="n">vp</span> <span class="o">-</span> <span class="n">wexe</span> <span class="o">*</span> <span class="n">vp</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">FAC</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">turning_points</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">De</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">re</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Classical turning points (rm, rp) at energy E (J).&quot;&quot;&quot;</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">E</span> <span class="o">/</span> <span class="n">De</span><span class="p">)</span>
+    <span class="n">rm</span> <span class="o">=</span> <span class="n">re</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="n">a</span>
+    <span class="n">rp</span> <span class="o">=</span> <span class="n">re</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="n">a</span>
+    <span class="k">return</span> <span class="n">rm</span><span class="p">,</span> <span class="n">rp</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">morse_wavefunction</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">re</span><span class="p">,</span> <span class="n">norm_peak</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Unnormalized Morse wavefunction ψ_v(r), scaled to `norm_peak`.</span>
+<span class="sd">    Returns ψ(r).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">lam</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">re</span><span class="p">))</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">lam</span> <span class="o">-</span> <span class="n">v</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">genlaguerre</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+    <span class="n">psi</span> <span class="o">=</span> <span class="p">(</span><span class="n">z</span><span class="o">**</span><span class="p">(</span><span class="n">lam</span> <span class="o">-</span> <span class="n">v</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">L</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+    <span class="c1"># scale to peak value norm_peak</span>
+    <span class="k">return</span> <span class="n">psi</span> <span class="o">*</span> <span class="p">(</span><span class="n">norm_peak</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">psi</span><span class="p">)))</span> <span class="o">/</span> <span class="mi">30</span>
+
+<span class="c1"># ——— Example: CO molecule ———</span>
+
+<span class="c1"># Input data</span>
+<span class="n">mA</span><span class="p">,</span> <span class="n">mB</span>    <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">35.0</span>          <span class="c1"># masses (amu)</span>
+<span class="n">we</span><span class="p">,</span> <span class="n">wexe</span>  <span class="o">=</span> <span class="mf">2990.945</span><span class="p">,</span> <span class="mf">52.818595</span> <span class="c1"># vibrational constants (cm⁻¹)</span>
+<span class="n">re</span><span class="p">,</span> <span class="n">Te</span>    <span class="o">=</span> <span class="mf">1.27455e-10</span><span class="p">,</span> <span class="mf">0.0</span>   <span class="c1"># equilibrium bond length (m), electronic energy (arbitrary zero)</span>
+
+<span class="c1"># Derived parameters</span>
+<span class="n">mu</span>   <span class="o">=</span> <span class="n">reduced_mass</span><span class="p">(</span><span class="n">mA</span><span class="p">,</span> <span class="n">mB</span><span class="p">)</span>
+<span class="n">De</span>   <span class="o">=</span> <span class="n">dissociation_energy</span><span class="p">(</span><span class="n">we</span><span class="p">,</span> <span class="n">wexe</span><span class="p">)</span>
+<span class="n">ke</span>   <span class="o">=</span> <span class="n">morse_ke</span><span class="p">(</span><span class="n">we</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
+<span class="n">a</span>    <span class="o">=</span> <span class="n">morse_a</span><span class="p">(</span><span class="n">we</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">De</span><span class="p">)</span>
+<span class="n">lam</span>  <span class="o">=</span> <span class="n">morse_lambda</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">De</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">vmax</span> <span class="o">=</span> <span class="n">vmax</span><span class="p">(</span><span class="n">lam</span><span class="p">)</span>
+
+<span class="c1"># Build grid and compute potential</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">dr</span> <span class="o">=</span> <span class="n">make_rgrid</span><span class="p">(</span><span class="n">re</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">morse_potential</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">De</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">re</span><span class="p">)</span>
+
+<span class="c1"># ——— Plotting ———</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Morse potential (converted back to cm⁻¹ for plotting + Te offset)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="mf">1e10</span><span class="p">,</span> <span class="n">V</span><span class="o">/</span><span class="n">FAC</span> <span class="o">+</span> <span class="n">Te</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Morse Potential&#39;</span><span class="p">)</span>
+
+<span class="c1"># Energy levels and turning points</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vmax</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="n">energy_morse_J</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">we</span><span class="p">,</span> <span class="n">wexe</span><span class="p">)</span>
+    <span class="n">rm</span><span class="p">,</span> <span class="n">rp</span> <span class="o">=</span> <span class="n">turning_points</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">De</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">re</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">E</span><span class="o">/</span><span class="n">FAC</span> <span class="o">+</span> <span class="n">Te</span><span class="p">,</span> <span class="n">rm</span><span class="o">*</span><span class="mf">1e10</span><span class="p">,</span> <span class="n">rp</span><span class="o">*</span><span class="mf">1e10</span><span class="p">,</span>
+              <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Plot two selected wavefunctions (v=0 and v=3)</span>
+<span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;tab:orange&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;tab:purple&#39;</span><span class="p">)]:</span>
+    <span class="n">psi</span> <span class="o">=</span> <span class="n">morse_wavefunction</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">re</span><span class="p">,</span> <span class="n">norm_peak</span><span class="o">=</span><span class="n">we</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">psi_plot</span> <span class="o">=</span> <span class="n">psi</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">energy_morse_J</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">we</span><span class="p">,</span> <span class="n">wexe</span><span class="p">)</span><span class="o">/</span><span class="n">FAC</span> <span class="o">+</span> <span class="n">Te</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="mf">1e10</span><span class="p">,</span> <span class="n">psi_plot</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;ψ₍</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">₎ + E₍</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">₎&#39;</span><span class="p">)</span>
+
+<span class="c1"># Formatting</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$r$ (Å)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Energy (cm⁻¹) + ψ(r)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="reflection-symmetry-of-the-vibrational-probability-density">
+<h3>Reflection: Symmetry of the Vibrational Probability Density<a class="headerlink" href="#reflection-symmetry-of-the-vibrational-probability-density" title="Link to this heading">#</a></h3>
+<p>Consider the probability density<br />
+$<span class="math notranslate nohighlight">\(
+|\psi_n(r)|^2
+\)</span>$<br />
+for the Morse‐oscillator eigenstates you just plotted.</p>
+<ol class="arabic simple">
+<li><p><strong>Symmetry Question:</strong></p>
+<ul class="simple">
+<li><p>Is the probability density <span class="math notranslate nohighlight">\(|\psi_n(r)|^2\)</span> symmetric about the equilibrium bond length <span class="math notranslate nohighlight">\(r_{eq}\)</span>?</p></li>
+<li><p>How does this compare to the harmonic oscillator eigenstates you studied earlier?</p></li>
+</ul>
+</li>
+<li><p><strong>Physical Interpretation:</strong></p>
+<ul class="simple">
+<li><p>If the probability density is not perfectly symmetric, what physical feature of the Morse potential causes this asymmetry?</p></li>
+<li><p>How does anharmonicity influence the shape and location of the vibrational wavefunction peaks?</p></li>
+</ul>
+</li>
+</ol>
+<p>Take a moment to sketch or describe qualitatively what you expect for <span class="math notranslate nohighlight">\(|\psi_0(r)|^2\)</span> and <span class="math notranslate nohighlight">\(|\psi_1(r)|^2\)</span> in the Morse model, and compare with the harmonic oscillator case.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ——— Expectation values ⟨r⟩ for v = 0…4 ———</span>
+
+<span class="n">states</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">expectation_r</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">states</span><span class="p">:</span>
+    <span class="c1"># get the (unnormalized) wavefunction on the same grid</span>
+    <span class="n">psi</span> <span class="o">=</span> <span class="n">morse_wavefunction</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">re</span><span class="p">)</span>
+    <span class="n">prob</span> <span class="o">=</span> <span class="n">psi</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="c1"># normalize</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+    <span class="n">prob_norm</span> <span class="o">=</span> <span class="n">prob</span> <span class="o">/</span> <span class="n">norm</span>
+
+    <span class="c1"># compute ⟨r⟩</span>
+    <span class="n">exp_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">prob_norm</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+    <span class="n">expectation_r</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">exp_r</span> <span class="o">*</span> <span class="mf">1e10</span><span class="p">)</span>  <span class="c1"># convert to Å</span>
+
+<span class="c1"># ——— Plot ⟨r⟩ vs v ———</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="n">expectation_r</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Vibrational quantum number $v$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\langle r \rangle$ (Å)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Expectation Value of Bond Length&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Compute ⟨r⟩ and corresponding energies for v = 0…4</span>
+<span class="n">states</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">expectation_r</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">harmonic_expectation_r</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">expectation_E</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">F</span><span class="s2">&quot; re is </span><span class="si">{</span><span class="n">re</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">states</span><span class="p">:</span>
+    <span class="c1"># get wavefunction on grid</span>
+    <span class="n">psi</span> <span class="o">=</span> <span class="n">morse_wavefunction</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">re</span><span class="p">)</span>
+    <span class="n">prob</span> <span class="o">=</span> <span class="n">psi</span><span class="o">**</span><span class="mi">2</span>
+    <span class="c1"># normalize</span>
+    <span class="n">prob</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+    <span class="c1"># expectation ⟨r⟩ (convert to Å)</span>
+    <span class="n">exp_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">prob</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e10</span>
+    <span class="n">expectation_r</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">exp_r</span><span class="p">)</span>
+    <span class="c1"># energy level in cm⁻¹ plus Te</span>
+    <span class="n">Ev</span> <span class="o">=</span> <span class="n">energy_morse_J</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">we</span><span class="p">,</span> <span class="n">wexe</span><span class="p">)</span> <span class="o">/</span> <span class="n">FAC</span> <span class="o">+</span> <span class="n">Te</span>
+    <span class="n">expectation_E</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Ev</span><span class="p">)</span>
+    <span class="n">harmonic_expectation_r</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">re</span> <span class="o">*</span> <span class="mf">1e10</span><span class="p">)</span>
+
+<span class="c1"># Now plot everything</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># 1. Morse potential (black)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="mf">1e10</span><span class="p">,</span> <span class="n">V</span><span class="o">/</span><span class="n">FAC</span> <span class="o">+</span> <span class="n">Te</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Morse Potential&#39;</span><span class="p">)</span>
+
+<span class="c1"># 2. Energy levels (blue lines)</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="n">energy_morse_J</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">we</span><span class="p">,</span> <span class="n">wexe</span><span class="p">)</span>
+    <span class="n">rm</span><span class="p">,</span> <span class="n">rp</span> <span class="o">=</span> <span class="n">turning_points</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">De</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">re</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">E</span><span class="o">/</span><span class="n">FAC</span> <span class="o">+</span> <span class="n">Te</span><span class="p">,</span> <span class="n">rm</span><span class="o">*</span><span class="mf">1e10</span><span class="p">,</span> <span class="n">rp</span><span class="o">*</span><span class="mf">1e10</span><span class="p">,</span>
+              <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 3. Two example wavefunctions (v=0,3)</span>
+<span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;tab:orange&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;tab:purple&#39;</span><span class="p">)]:</span>
+    <span class="n">psi</span> <span class="o">=</span> <span class="n">morse_wavefunction</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">re</span><span class="p">,</span> <span class="n">norm_peak</span><span class="o">=</span><span class="n">we</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">psi_plot</span> <span class="o">=</span> <span class="n">psi</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">energy_morse_J</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">we</span><span class="p">,</span> <span class="n">wexe</span><span class="p">)</span><span class="o">/</span><span class="n">FAC</span> <span class="o">+</span> <span class="n">Te</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="mf">1e10</span><span class="p">,</span> <span class="n">psi_plot</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;ψ₍</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">₎ + E₍</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">₎&#39;</span><span class="p">)</span>
+
+<span class="c1"># 4. Expectation values ⟨r⟩ as red dots</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">expectation_r</span><span class="p">,</span> <span class="n">expectation_E</span><span class="p">,</span>
+           <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\langle r\rangle$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">harmonic_expectation_r</span><span class="p">,</span> <span class="n">expectation_E</span><span class="p">,</span>
+           <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\langle r\rangle_</span><span class="si">{harmonic}</span><span class="s1">$&#39;</span><span class="p">)</span>
+
+<span class="c1"># Formatting</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$r$ (Å)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Energy (cm⁻¹) + ψ(r)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="reflection-comparing-r-in-harmonic-vs-morse-oscillators">
+<h2>Reflection: Comparing ⟨r⟩ in Harmonic vs. Morse Oscillators<a class="headerlink" href="#reflection-comparing-r-in-harmonic-vs-morse-oscillators" title="Link to this heading">#</a></h2>
+<p>Take a moment to think about how the expectation value of the bond length, ⟨r⟩, changes as you go to higher vibrational states in each model.</p>
+<ol class="arabic simple">
+<li><p><strong>Harmonic Oscillator</strong></p>
+<ul class="simple">
+<li><p>What is the qualitative behavior of ⟨r⟩ as you increase the quantum number (v)?</p></li>
+<li><p>Why does a purely quadratic potential lead to that trend?</p></li>
+</ul>
+</li>
+<li><p><strong>Morse Oscillator</strong></p>
+<ul class="simple">
+<li><p>How does the anharmonicity of the Morse potential modify the growth of ⟨r⟩ with (v)?</p></li>
+<li><p>At high (v), how does ⟨r⟩ reflect the finite dissociation limit of the bond?</p></li>
+</ul>
+</li>
+<li><p><strong>Comparison &amp; Implications</strong></p>
+<ul class="simple">
+<li><p>In which regime (low vs. high (v)) do the two models agree most closely, and why?</p></li>
+<li><p>How might differences in ⟨r⟩ affect predictions of spectroscopic transitions or bond dissociation?</p></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<div><p><em>Use these questions to guide a short discussion or to prompt your own notes on the physical significance of ⟨r⟩ in anharmonic versus harmonic vibrational models.</em></p>
+</div></blockquote>
 </section>
 </section>
 
@@ -2204,8 +2427,12 @@ E_n = E_n^{(0)} +  \langle \psi_n^{(0)} | V’(r) | \psi_n^{(0)} \rangle + \sum_
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#morse-oscillator-model">Morse Oscillator model</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perturbation-theory">Perturbation Theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#morse-oscillator-eigenfunctions">Morse Oscillator Eigenfunctions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-morse-eigenfunctions">Plotting Morse eigenfunctions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-symmetry-of-the-vibrational-probability-density">Reflection: Symmetry of the Vibrational Probability Density</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-comparing-r-in-harmonic-vs-morse-oscillators">Reflection: Comparing ⟨r⟩ in Harmonic vs. Morse Oscillators</a></li>
 </ul>
 </li>
 </ul>
