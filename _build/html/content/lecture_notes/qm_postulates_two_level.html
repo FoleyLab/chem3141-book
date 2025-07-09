@@ -187,9 +187,13 @@
 
 
 
+
 <li class="toctree-l1"><a class="reference internal" href="qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
 <li class="toctree-l1"><a class="reference internal" href="translation.html">Chapter 3: Translational Motion</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="vibration.html">Chapter 4: Vibrational Motion</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydrogen.html">Chapter 6: The Hydrogen Atom</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variation.html">Chapter 7: The Variation Theorem</a></li>
@@ -202,9 +206,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">Run the next two cells before beginning!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/HF_Coupled_to_Cavity_Tensor_To_Complete.html">Introduction to Molecular CQED</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Zeeman_Effect_Hydrogen_Atom.html">Solution</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">Linear Variational Method - Anharmonic Oscillator</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Zeeman_Effect_Hydrogen_Atom.html">Zeeman Effect</a></li>
+
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
@@ -221,7 +234,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Chapter 2: Introduction to Spin 1/2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
 
 
 </ul>
@@ -506,6 +519,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-angular-momentum">Spin Angular Momentum</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computational-notebook">Computational Notebook</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
 
@@ -806,11 +820,13 @@ The bra-ket <span class="math notranslate nohighlight">\(\langle\phi|\psi\rangle
 \sigma_y &amp;= \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \\ \end{pmatrix} \\
 \sigma_z &amp;= \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \\ \end{pmatrix} \\
 \end{align}\end{split}\]</div>
-<p>The spin state of an electron can then be represented as a two-component vector quantity. We have</p>
+<p>As we already saw, the spin state of an electron can then be represented as a two-component vector quantity. We reiterate this
+here and also introduce the <span class="math notranslate nohighlight">\(|\alpha\rangle\)</span> and <span class="math notranslate nohighlight">\(|\beta\rangle\)</span> notation that might be reminiscent of general chemistry and is
+also used fairly commonly in other contexts!</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
-|\alpha \rangle &amp;= \begin{pmatrix} 1 \\ 0 \end{pmatrix} \\
-|\beta \rangle &amp;= \begin{pmatrix} 0 \\ 1 \end{pmatrix} \\
+|\alpha \rangle &amp;= |\uparrow_z\rangle &amp;= \begin{pmatrix} 1 \\ 0 \end{pmatrix} \\
+|\beta \rangle &amp;= |\downarrow_z\rangle  &amp;=\begin{pmatrix} 0 \\ 1 \end{pmatrix} \\
 \end{align}\end{split}\]</div>
 <p>Are <span class="math notranslate nohighlight">\(|\alpha\rangle\)</span> and <span class="math notranslate nohighlight">\(|\beta \rangle\)</span> eigenfunctions (or eigenvectors) of the spin matrices? For <span class="math notranslate nohighlight">\(\hat{S}_x,\)</span> we have</p>
 <div class="math notranslate nohighlight">
@@ -897,6 +913,10 @@ $<span class="math notranslate nohighlight">\(\begin{align}
 </div></blockquote>
 </div></blockquote>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="computational-notebook">
+<h1>Computational Notebook<a class="headerlink" href="#computational-notebook" title="Link to this heading">#</a></h1>
+<p><a class="reference internal" href="../computational_sets/Spin_one_half.html"><span class="std std-doc">Go to Computational Notebook</span></a></p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="references">
 <h1>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
@@ -1030,6 +1050,7 @@ Physics. Phys. T oday 2003, 56, 53–59.</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-angular-momentum">Spin Angular Momentum</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computational-notebook">Computational Notebook</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
 
