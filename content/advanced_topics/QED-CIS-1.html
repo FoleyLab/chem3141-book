@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -187,9 +187,13 @@
 
 
 
+
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/translation.html">Chapter 3: Translational Motion</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/vibration.html">Chapter 4: Vibrational Motion</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/hydrogen.html">Chapter 6: The Hydrogen Atom</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/variation.html">Chapter 7: The Variation Theorem</a></li>
@@ -199,14 +203,6 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_1.html">Problem Set 1</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">The Zeeman Effect</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="Zeeman_Effect_Hydrogen_Atom.html">Solution</a></li>
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
 <ul class="nav bd-sidenav">
@@ -222,7 +218,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Chapter 2: Introduction to Spin 1/2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
 
 
 </ul>
@@ -718,25 +714,25 @@ to help us get 1 and 2-electron integrals.  We will also use the helper_cqed_rhf
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Start SCF iterations:
 
-Canonical RHF One-electron energy = -281.6658725092592022
-CQED-RHF One-electron energy      = -281.6660217365260337
+Canonical RHF One-electron energy = -281.6658725092590316
+CQED-RHF One-electron energy      = -281.6660217365257495
 Nuclear repulsion energy          = 2.8864211491090908
-Dipole energy                     = 0.0009465637016117
-SCF Iteration   1: Energy = -199.8633303817346984   dE = -1.99863E+02   dRMS = 2.52850E-05
-SCF Iteration   2: Energy = -199.8633315502316918   dE = -1.16850E-06   dRMS = 9.55045E-06
-SCF Iteration   3: Energy = -199.8633316895825658   dE = -1.39351E-07   dRMS = 3.61517E-06
-SCF Iteration   4: Energy = -199.8633317095170980   dE = -1.99345E-08   dRMS = 1.37921E-06
-SCF Iteration   5: Energy = -199.8633317124263726   dE = -2.90927E-09   dRMS = 5.28065E-07
-SCF Iteration   6: Energy = -199.8633317128550573   dE = -4.28685E-10   dRMS = 2.02751E-07
-SCF Iteration   7: Energy = -199.8633317129182956   dE = -6.32383E-11   dRMS = 7.79875E-08
-SCF Iteration   8: Energy = -199.8633317129275611   dE = -9.26548E-12   dRMS = 3.00308E-08
-SCF Iteration   9: Energy = -199.8633317129292379   dE = -1.67688E-12   dRMS = 1.15716E-08
-SCF Iteration  10: Energy = -199.8633317129294369   dE = -1.98952E-13   dRMS = 4.46056E-09
-SCF Iteration  11: Energy = -199.8633317129294369   dE =  0.00000E+00   dRMS = 1.71984E-09
-SCF Iteration  12: Energy = -199.8633317129293516   dE =  8.52651E-14   dRMS = 6.63204E-10
-SCF Iteration  13: Energy = -199.8633317129294085   dE = -5.68434E-14   dRMS = 2.55767E-10
-SCF Iteration  14: Energy = -199.8633317129292379   dE =  1.70530E-13   dRMS = 9.86428E-11
-Total time for SCF iterations: 0.015 seconds 
+Dipole energy                     = 0.0009465637016116
+SCF Iteration   1: Energy = -199.8633303817345563   dE = -1.99863E+02   dRMS = 2.52850E-05
+SCF Iteration   2: Energy = -199.8633315502315213   dE = -1.16850E-06   dRMS = 9.55045E-06
+SCF Iteration   3: Energy = -199.8633316895823668   dE = -1.39351E-07   dRMS = 3.61517E-06
+SCF Iteration   4: Energy = -199.8633317095170696   dE = -1.99347E-08   dRMS = 1.37921E-06
+SCF Iteration   5: Energy = -199.8633317124264011   dE = -2.90933E-09   dRMS = 5.28065E-07
+SCF Iteration   6: Energy = -199.8633317128550289   dE = -4.28628E-10   dRMS = 2.02751E-07
+SCF Iteration   7: Energy = -199.8633317129181535   dE = -6.31246E-11   dRMS = 7.79875E-08
+SCF Iteration   8: Energy = -199.8633317129277032   dE = -9.54969E-12   dRMS = 3.00308E-08
+SCF Iteration   9: Energy = -199.8633317129291811   dE = -1.47793E-12   dRMS = 1.15716E-08
+SCF Iteration  10: Energy = -199.8633317129295222   dE = -3.41061E-13   dRMS = 4.46056E-09
+SCF Iteration  11: Energy = -199.8633317129294085   dE =  1.13687E-13   dRMS = 1.71984E-09
+SCF Iteration  12: Energy = -199.8633317129293516   dE =  5.68434E-14   dRMS = 6.63204E-10
+SCF Iteration  13: Energy = -199.8633317129293800   dE = -2.84217E-14   dRMS = 2.55767E-10
+SCF Iteration  14: Energy = -199.8633317129292095   dE =  1.70530E-13   dRMS = 9.86428E-11
+Total time for SCF iterations: 0.014 seconds 
 
 QED-RHF   energy: -199.86333171 hartree
 Psi4  SCF energy: -199.86395910 hartree

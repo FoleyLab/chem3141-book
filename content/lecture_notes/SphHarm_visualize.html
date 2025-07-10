@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Problem Set 1" href="../problem_sets/ps_1.html" />
-    <link rel="prev" title="Perturbation Theory" href="perturbation.html" />
+    <link rel="prev" title="Chapter 8: Perturbation Theory" href="perturbation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -187,25 +187,22 @@
 
 
 
+
 <li class="toctree-l1"><a class="reference internal" href="qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
 <li class="toctree-l1"><a class="reference internal" href="translation.html">Chapter 3: Translational Motion</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="vibration.html">Chapter 4: Vibrational Motion</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydrogen.html">The Hydrogen Atom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="variation.html">The Variation Theorem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="perturbation.html">Perturbation Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydrogen.html">Chapter 6: The Hydrogen Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variation.html">Chapter 7: The Variation Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="perturbation.html">Chapter 8: Perturbation Theory</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualizing Spherical harmonics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_1.html">Problem Set 1</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">Run the next two cells before beginning!</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Zeeman_Effect_Hydrogen_Atom.html">Solution</a></li>
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
 <ul class="nav bd-sidenav">
@@ -221,7 +218,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Chapter 2: Introduction to Spin 1/2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
 
 
 </ul>
@@ -557,12 +554,8 @@ Polar (colatitudinal) coordinate; must be in <span class="math notranslate nohig
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_60960/2655294372.py:5: DeprecationWarning: `scipy.special.sph_harm` is deprecated as of SciPy 1.15.0 and will be removed in SciPy 1.17.0. Please use `scipy.special.sph_harm_y` instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_33751/2655294372.py:5: DeprecationWarning: `scipy.special.sph_harm` is deprecated as of SciPy 1.15.0 and will be removed in SciPy 1.17.0. Please use `scipy.special.sph_harm_y` instead.
   Ylm  = sph_harm(m, l, theta, phi).real
-/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/mpl_toolkits/mplot3d/art3d.py:1403: RuntimeWarning: divide by zero encountered in matmul
-  shade = ((normals / np.linalg.norm(normals, axis=1, keepdims=True))
-/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/mpl_toolkits/mplot3d/art3d.py:1403: RuntimeWarning: overflow encountered in matmul
-  shade = ((normals / np.linalg.norm(normals, axis=1, keepdims=True))
 </pre></div>
 </div>
 </div>
@@ -593,7 +586,7 @@ Polar (colatitudinal) coordinate; must be in <span class="math notranslate nohig
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "0ee30d8bb79b485ab6c96340202715ec"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "7daa2243fea2439a82a13b327b1fd2ce"}</script></div>
 </div>
 </section>
 <section id="making-volume-plot-with-ipyvolumes">
@@ -681,7 +674,7 @@ Polar (colatitudinal) coordinate; must be in <span class="math notranslate nohig
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Perturbation Theory</p>
+        <p class="prev-next-title">Chapter 8: Perturbation Theory</p>
       </div>
     </a>
     <a class="right-next"

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -187,9 +187,13 @@
 
 
 
+
 <li class="toctree-l1"><a class="reference internal" href="qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
 <li class="toctree-l1"><a class="reference internal" href="translation.html">Chapter 3: Translational Motion</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="vibration.html">Chapter 4: Vibrational Motion</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 6: The Hydrogen Atom</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variation.html">Chapter 7: The Variation Theorem</a></li>
@@ -199,14 +203,6 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_1.html">Problem Set 1</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">The Zeeman Effect</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Zeeman_Effect_Hydrogen_Atom.html">Solution</a></li>
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
 <ul class="nav bd-sidenav">
@@ -222,7 +218,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Chapter 2: Introduction to Spin 1/2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
 
 
 </ul>
@@ -979,7 +975,7 @@ V(r) = -\frac{1}{r}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "9e3eff7dfd554f48bc2a59e00819be22"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.plot_effective_potential(l=1)&gt;
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1437e751a5444b3eb3202c2816db8af0"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.plot_effective_potential(l=1)&gt;
 </pre></div>
 </div>
 </div>
@@ -1406,14 +1402,6 @@ The most likely radius for a 3s electron is 13.1 a0
 &lt;r&gt; for a 3s electron is 11.6 a0
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_36602/2882782782.py:30: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
-  average_r_1 = np.trapz(P10 * r, x = r)
-/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_36602/2882782782.py:31: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
-  average_r_2 = np.trapz(P20 * r, x = r)
-/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_36602/2882782782.py:32: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
-  average_r_3 = np.trapz(P30 * r, x = r)
-</pre></div>
-</div>
 </div>
 </div>
 <p>These distribution functions fit our general chemistry intuition for how far electrons in different shells should lie from the nucleus. The <span class="math notranslate nohighlight">\(1s\)</span> electron is most likely to be found closer to the nucleus than the <span class="math notranslate nohighlight">\(2s\)</span> electron, which, in turn, is more likely to be found closer to the nucleus than the <span class="math notranslate nohighlight">\(3s\)</span> electron. Interestingly, the most likely position for the <span class="math notranslate nohighlight">\(1s\)</span> electron (<span class="math notranslate nohighlight">\(r_\text{max}\)</span>) is 1 <span class="math notranslate nohighlight">\(a_0,\)</span> which agrees with the prediction made by Bohr’s model. The average <span class="math notranslate nohighlight">\(r\)</span> values (the expectation value of <span class="math notranslate nohighlight">\(r\)</span>) show similar qualitative trends. <span class="math notranslate nohighlight">\(\langle r \rangle\)</span> for the <span class="math notranslate nohighlight">\(1s\)</span> state is smaller than that for the <span class="math notranslate nohighlight">\(2s\)</span> state, which is smaller than that for the <span class="math notranslate nohighlight">\(3s\)</span> state. For the <span class="math notranslate nohighlight">\(1s\)</span> state, in particular, note that the average <span class="math notranslate nohighlight">\(r\)</span> value is a bit larger than the most probable <span class="math notranslate nohighlight">\(r\)</span>. We can rationalize this result based on the assymetry of the radial distribution function; it is clear that more density lies at <span class="math notranslate nohighlight">\(r &gt; r_\text{max}\)</span> than <span class="math notranslate nohighlight">\(r &lt; r_\text{max}\)</span>. Lastly, we note that the radial distribution functions for the <span class="math notranslate nohighlight">\(2s\)</span> and <span class="math notranslate nohighlight">\(3s\)</span> electrons go to zero once and twice, respectively, at <span class="math notranslate nohighlight">\(r\)</span> values greater than zero. These points correspond to radial nodes.</p>
@@ -1472,14 +1460,6 @@ The most likely radius for a 3d electron is  9.0 a0
 &lt;r&gt; for a 3s electron is 11.6 a0
 &lt;r&gt; for a 3p electron is 11.2 a0
 &lt;r&gt; for a 3d electron is 10.0 a0
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_36602/2638921719.py:34: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
-  average_r_s = np.trapz(P30 * r, x = r)
-/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_36602/2638921719.py:35: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
-  average_r_p = np.trapz(P31 * r, x = r)
-/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_36602/2638921719.py:36: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
-  average_r_d = np.trapz(P32 * r, x = r)
 </pre></div>
 </div>
 </div>

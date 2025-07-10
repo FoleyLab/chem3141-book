@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -183,25 +183,26 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture Notes</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/hydrogen.html">The Hydrogen Atom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/perturbation.html">Perturbation Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates.html">Chapter 1: The Postulates of Quantum Mechanics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/rotation.html">Angular Momentum, Rotational Motion, and Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates_two_level.html">Chapter 1: Introduction to Quantum Phenomena</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/translation.html">Chapter 3: Translational Motion</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/vibration.html">Chapter 4: Vibrational Motion</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/hydrogen.html">Chapter 6: The Hydrogen Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/variation.html">Chapter 7: The Variation Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/perturbation.html">Chapter 8: Perturbation Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/SphHarm_visualize.html">Visualizing Spherical harmonics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/translation.html">Translational Motion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/variation.html">The Variation Theorem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/vibration.html">Vibrational Motion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_1.html">Problem Set 1</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">Run the next two cells before beginning!</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Zeeman_Effect_Hydrogen_Atom.html">Solution</a></li>
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
 <ul class="current nav bd-sidenav">
@@ -217,7 +218,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="Spin_one_half.html">Chapter 2: Introduction to Spin 1/2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
 
 
 </ul>
@@ -542,17 +543,7 @@ in the next cell using the python library <code class="docutils literal notransl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">signal</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># create an array of x-values between 0 and 10</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
-</pre></div>
-</div>
+<img alt="../../_images/fb730b9cdfd66744129b036b571f3ff2be754c33616e5396d56875fea53c6ecd.png" src="../../_images/fb730b9cdfd66744129b036b571f3ff2be754c33616e5396d56875fea53c6ecd.png" />
 </div>
 </div>
 </section>
@@ -883,10 +874,10 @@ The ground-state eigenvector can be accessed as a slice of <code class="docutils
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1379622b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x127a65310&gt;
 </pre></div>
 </div>
-<img alt="../../_images/968de3bc08b10d3e6579257c79bc56da3be5f575540871558fa12401110fa6b5.png" src="../../_images/968de3bc08b10d3e6579257c79bc56da3be5f575540871558fa12401110fa6b5.png" />
+<img alt="../../_images/e7b40d6cf8e322020f65f973b0ed39c1822f2fe83b16eea13d9d3e1d466fccae.png" src="../../_images/e7b40d6cf8e322020f65f973b0ed39c1822f2fe83b16eea13d9d3e1d466fccae.png" />
 </div>
 </div>
 </section>
@@ -961,10 +952,10 @@ ground state and first excited state of the ordinary particle in a box (<span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1267b3af0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1112d5310&gt;
 </pre></div>
 </div>
-<img alt="../../_images/f24c17f36bb4cdd550c7a4d71d26227ad6ae08afe4cbafb47cc2eb0630d8b1e7.png" src="../../_images/f24c17f36bb4cdd550c7a4d71d26227ad6ae08afe4cbafb47cc2eb0630d8b1e7.png" />
+<img alt="../../_images/55784b923dfc6fca4c4b7034c72ef5677531c9445db605ebff0195d3115d9dc2.png" src="../../_images/55784b923dfc6fca4c4b7034c72ef5677531c9445db605ebff0195d3115d9dc2.png" />
 </div>
 </div>
 </section>
