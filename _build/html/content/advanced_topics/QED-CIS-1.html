@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -187,9 +187,13 @@
 
 
 
+
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/translation.html">Chapter 3: Translational Motion</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/vibration.html">Chapter 4: Vibrational Motion</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/hydrogen.html">Chapter 6: The Hydrogen Atom</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/variation.html">Chapter 7: The Variation Theorem</a></li>
@@ -202,10 +206,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">The Zeeman Effect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HF_Coupled_to_Cavity_Tensor_To_Complete.html">Introduction to Molecular CQED</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="Zeeman_Effect_Hydrogen_Atom.html">Solution</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">Linear Variational Method - Anharmonic Oscillator</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Zeeman_Effect_Hydrogen_Atom.html">Zeeman Effect</a></li>
+
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
@@ -222,7 +234,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Chapter 2: Introduction to Spin 1/2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
 
 
 </ul>
@@ -649,7 +661,23 @@ will perform an intial QED-HF calculation to get the orbital basis for the subse
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Memory set to 476.837 MiB by Python driver.
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># ==&gt; Import Psi4, NumPy, linear algebra package from scipy, time,</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#     and helper_cqed_rhf to perform the requisite HF-PF calculation &lt;==</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">psi4</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">Code</span><span class="o">/</span><span class="n">psi4</span><span class="o">/</span><span class="n">objdir</span><span class="o">-</span><span class="n">Release</span><span class="o">/</span><span class="n">stage</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">psi4</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">71</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span> <span class="n">data_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span> <span class="c1"># Init core</span>
+<span class="ne">---&gt; </span><span class="mi">71</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">core</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="kn">from</span><span class="w"> </span><span class="nn">psi4.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_num_threads</span><span class="p">,</span> <span class="n">set_num_threads</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span> <span class="n">core</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;core&#39; from partially initialized module &#39;psi4&#39; (most likely due to a circular import) (/Users/jfoley19/Code/psi4/objdir-Release/stage/lib/psi4/__init__.py)
 </pre></div>
 </div>
 </div>
@@ -718,25 +746,25 @@ to help us get 1 and 2-electron integrals.  We will also use the helper_cqed_rhf
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Start SCF iterations:
 
-Canonical RHF One-electron energy = -281.6658725092592022
-CQED-RHF One-electron energy      = -281.6660217365260337
+Canonical RHF One-electron energy = -281.6658725092592590
+CQED-RHF One-electron energy      = -281.6660217365259200
 Nuclear repulsion energy          = 2.8864211491090908
 Dipole energy                     = 0.0009465637016117
-SCF Iteration   1: Energy = -199.8633303817346984   dE = -1.99863E+02   dRMS = 2.52850E-05
-SCF Iteration   2: Energy = -199.8633315502316918   dE = -1.16850E-06   dRMS = 9.55045E-06
-SCF Iteration   3: Energy = -199.8633316895825658   dE = -1.39351E-07   dRMS = 3.61517E-06
-SCF Iteration   4: Energy = -199.8633317095170980   dE = -1.99345E-08   dRMS = 1.37921E-06
-SCF Iteration   5: Energy = -199.8633317124263726   dE = -2.90927E-09   dRMS = 5.28065E-07
-SCF Iteration   6: Energy = -199.8633317128550573   dE = -4.28685E-10   dRMS = 2.02751E-07
-SCF Iteration   7: Energy = -199.8633317129182956   dE = -6.32383E-11   dRMS = 7.79875E-08
-SCF Iteration   8: Energy = -199.8633317129275611   dE = -9.26548E-12   dRMS = 3.00308E-08
-SCF Iteration   9: Energy = -199.8633317129292379   dE = -1.67688E-12   dRMS = 1.15716E-08
-SCF Iteration  10: Energy = -199.8633317129294369   dE = -1.98952E-13   dRMS = 4.46056E-09
-SCF Iteration  11: Energy = -199.8633317129294369   dE =  0.00000E+00   dRMS = 1.71984E-09
-SCF Iteration  12: Energy = -199.8633317129293516   dE =  8.52651E-14   dRMS = 6.63204E-10
-SCF Iteration  13: Energy = -199.8633317129294085   dE = -5.68434E-14   dRMS = 2.55767E-10
-SCF Iteration  14: Energy = -199.8633317129292379   dE =  1.70530E-13   dRMS = 9.86428E-11
-Total time for SCF iterations: 0.015 seconds 
+SCF Iteration   1: Energy = -199.8633303817347553   dE = -1.99863E+02   dRMS = 2.52850E-05
+SCF Iteration   2: Energy = -199.8633315502312939   dE = -1.16850E-06   dRMS = 9.55045E-06
+SCF Iteration   3: Energy = -199.8633316895820826   dE = -1.39351E-07   dRMS = 3.61517E-06
+SCF Iteration   4: Energy = -199.8633317095166433   dE = -1.99346E-08   dRMS = 1.37921E-06
+SCF Iteration   5: Energy = -199.8633317124261168   dE = -2.90947E-09   dRMS = 5.28065E-07
+SCF Iteration   6: Energy = -199.8633317128546310   dE = -4.28514E-10   dRMS = 2.02751E-07
+SCF Iteration   7: Energy = -199.8633317129178977   dE = -6.32667E-11   dRMS = 7.79875E-08
+SCF Iteration   8: Energy = -199.8633317129273053   dE = -9.40759E-12   dRMS = 3.00308E-08
+SCF Iteration   9: Energy = -199.8633317129288400   dE = -1.53477E-12   dRMS = 1.15716E-08
+SCF Iteration  10: Energy = -199.8633317129289537   dE = -1.13687E-13   dRMS = 4.46056E-09
+SCF Iteration  11: Energy = -199.8633317129291811   dE = -2.27374E-13   dRMS = 1.71984E-09
+SCF Iteration  12: Energy = -199.8633317129291811   dE =  0.00000E+00   dRMS = 6.63203E-10
+SCF Iteration  13: Energy = -199.8633317129290958   dE =  8.52651E-14   dRMS = 2.55767E-10
+SCF Iteration  14: Energy = -199.8633317129289253   dE =  1.70530E-13   dRMS = 9.86428E-11
+Total time for SCF iterations: 0.020 seconds 
 
 QED-RHF   energy: -199.86333171 hartree
 Psi4  SCF energy: -199.86395910 hartree
@@ -1170,12 +1198,8 @@ eigenvalues and eigenvectors from these 4 related levels of theory.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    QED-CIS-1 Ground State................................................................PASSED
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    QED-CIS-1 Lower Polariton State.......................................................PASSED
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    QED-CIS-1 Upper Polariton State.......................................................PASSED
+    QED-CIS-1 Lower Polariton State.......................................................PASSED
+    QED-CIS-1 Upper Polariton State.......................................................PASSED
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True

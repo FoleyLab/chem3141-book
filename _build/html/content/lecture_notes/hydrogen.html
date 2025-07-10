@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -187,9 +187,13 @@
 
 
 
+
 <li class="toctree-l1"><a class="reference internal" href="qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
 <li class="toctree-l1"><a class="reference internal" href="translation.html">Chapter 3: Translational Motion</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="vibration.html">Chapter 4: Vibrational Motion</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 6: The Hydrogen Atom</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variation.html">Chapter 7: The Variation Theorem</a></li>
@@ -202,10 +206,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">The Zeeman Effect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/HF_Coupled_to_Cavity_Tensor_To_Complete.html">Introduction to Molecular CQED</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Zeeman_Effect_Hydrogen_Atom.html">Solution</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">Linear Variational Method - Anharmonic Oscillator</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics/Zeeman_Effect_Hydrogen_Atom.html">Zeeman Effect</a></li>
+
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
@@ -222,7 +234,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Chapter 2: Introduction to Spin 1/2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
 
 
 </ul>
@@ -979,7 +991,7 @@ V(r) = -\frac{1}{r}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "9e3eff7dfd554f48bc2a59e00819be22"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.plot_effective_potential(l=1)&gt;
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "580ed43ad99e4063a3757e506a209d0d"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.plot_effective_potential(l=1)&gt;
 </pre></div>
 </div>
 </div>
@@ -1406,11 +1418,11 @@ The most likely radius for a 3s electron is 13.1 a0
 &lt;r&gt; for a 3s electron is 11.6 a0
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_36602/2882782782.py:30: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_16919/2882782782.py:30: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   average_r_1 = np.trapz(P10 * r, x = r)
-/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_36602/2882782782.py:31: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_16919/2882782782.py:31: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   average_r_2 = np.trapz(P20 * r, x = r)
-/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_36602/2882782782.py:32: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_16919/2882782782.py:32: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   average_r_3 = np.trapz(P30 * r, x = r)
 </pre></div>
 </div>
@@ -1474,11 +1486,11 @@ The most likely radius for a 3d electron is  9.0 a0
 &lt;r&gt; for a 3d electron is 10.0 a0
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_36602/2638921719.py:34: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_16919/2638921719.py:34: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   average_r_s = np.trapz(P30 * r, x = r)
-/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_36602/2638921719.py:35: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_16919/2638921719.py:35: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   average_r_p = np.trapz(P31 * r, x = r)
-/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_36602/2638921719.py:36: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_16919/2638921719.py:36: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   average_r_d = np.trapz(P32 * r, x = r)
 </pre></div>
 </div>
@@ -1555,7 +1567,7 @@ The most likely radius for a 3d electron is  9.0 a0
 <span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=-</span><span class="mi">1</span><span class="o">/</span><span class="mi">9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Energy (E$_h$)&#39;</span><span class="p">)</span>
 
-<span class="nn">File ~/miniconda3/envs/jbook/lib/python3.11/site-packages/matplotlib/axes/_axes.py:1777,</span> in <span class="ni">Axes.plot</span><span class="nt">(self, scalex, scaley, data, *args, **kwargs)</span>
+<span class="nn">File ~/miniforge3/envs/jbook/lib/python3.12/site-packages/matplotlib/axes/_axes.py:1777,</span> in <span class="ni">Axes.plot</span><span class="nt">(self, scalex, scaley, data, *args, **kwargs)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1534</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">   </span><span class="mi">1535</span><span class="sd"> Plot y versus x as lines and/or markers.</span>
 <span class="g g-Whitespace">   </span><span class="mi">1536</span><span class="sd"> </span>
@@ -1566,7 +1578,7 @@ The most likely radius for a 3d electron is  9.0 a0
 <span class="g g-Whitespace">   </span><span class="mi">1778</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">1779</span>     <span class="bp">self</span><span class="o">.</span><span class="n">add_line</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
-<span class="nn">File ~/miniconda3/envs/jbook/lib/python3.11/site-packages/matplotlib/axes/_base.py:297,</span> in <span class="ni">_process_plot_var_args.__call__</span><span class="nt">(self, axes, data, return_kwargs, *args, **kwargs)</span>
+<span class="nn">File ~/miniforge3/envs/jbook/lib/python3.12/site-packages/matplotlib/axes/_base.py:297,</span> in <span class="ni">_process_plot_var_args.__call__</span><span class="nt">(self, axes, data, return_kwargs, *args, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">295</span>     <span class="n">this</span> <span class="o">+=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
 <span class="g g-Whitespace">    </span><span class="mi">296</span>     <span class="n">args</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 <span class="ne">--&gt; </span><span class="mi">297</span> <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plot_args</span><span class="p">(</span>
@@ -1574,7 +1586,7 @@ The most likely radius for a 3d electron is  9.0 a0
 <span class="g g-Whitespace">    </span><span class="mi">299</span>     <span class="n">return_kwargs</span><span class="o">=</span><span class="n">return_kwargs</span>
 <span class="g g-Whitespace">    </span><span class="mi">300</span> <span class="p">)</span>
 
-<span class="nn">File ~/miniconda3/envs/jbook/lib/python3.11/site-packages/matplotlib/axes/_base.py:494,</span> in <span class="ni">_process_plot_var_args._plot_args</span><span class="nt">(self, axes, tup, kwargs, return_kwargs, ambiguous_fmt_datakey)</span>
+<span class="nn">File ~/miniforge3/envs/jbook/lib/python3.12/site-packages/matplotlib/axes/_base.py:494,</span> in <span class="ni">_process_plot_var_args._plot_args</span><span class="nt">(self, axes, tup, kwargs, return_kwargs, ambiguous_fmt_datakey)</span>
 <span class="g g-Whitespace">    </span><span class="mi">491</span>     <span class="n">axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">update_units</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">493</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
 <span class="ne">--&gt; </span><span class="mi">494</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x and y must have same first dimension, but &quot;</span>

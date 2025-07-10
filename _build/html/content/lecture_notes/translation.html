@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -187,6 +187,7 @@
 
 
 
+
 <li class="toctree-l1"><a class="reference internal" href="qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 3: Translational Motion</a></li>
 
@@ -233,7 +234,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Chapter 2: Introduction to Spin 1/2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
 
 
 </ul>
@@ -1769,7 +1770,7 @@ E = \frac{h^2}{8ma^2} \left ( n_x^2 + n_y^2 \right )
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x11721d610&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x10a78ae10&gt;
 </pre></div>
 </div>
 <img alt="../../_images/ce2a05565d6c2eac2155db63ce3d0c460580a2d09755f331238d423bd1f7a7b7.png" src="../../_images/ce2a05565d6c2eac2155db63ce3d0c460580a2d09755f331238d423bd1f7a7b7.png" />
@@ -2070,7 +2071,7 @@ E - V(x) &amp;= T_x \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_39694/4185230906.py:9: RuntimeWarning: divide by zero encountered in divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_16937/4185230906.py:9: RuntimeWarning: divide by zero encountered in divide
   rhs = 2 * np.sqrt(V0-E) * np.sqrt(E) / (2 * E - V0)
 </pre></div>
 </div>
@@ -2174,6 +2175,12 @@ E - V(x) &amp;= T_x \\
     <span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">psi2</span><span class="p">[:,</span> <span class="n">state</span><span class="p">],</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">))</span>
     <span class="n">psi</span><span class="p">[:,</span> <span class="n">state</span><span class="p">]</span> <span class="o">*=</span> <span class="n">N</span>
     <span class="n">psi2</span><span class="p">[:,</span> <span class="n">state</span><span class="p">]</span> <span class="o">*=</span> <span class="n">N</span><span class="o">*</span><span class="n">N</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_16937/337456428.py:7: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  N = np.sqrt(1.0 / np.trapz(psi2[:, state], x = x))
 </pre></div>
 </div>
 </div>

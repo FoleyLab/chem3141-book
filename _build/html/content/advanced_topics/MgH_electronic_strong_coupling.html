@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -187,9 +187,13 @@
 
 
 
+
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/translation.html">Chapter 3: Translational Motion</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/vibration.html">Chapter 4: Vibrational Motion</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/hydrogen.html">Chapter 6: The Hydrogen Atom</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/variation.html">Chapter 7: The Variation Theorem</a></li>
@@ -202,10 +206,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Topics</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">The Zeeman Effect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HF_Coupled_to_Cavity_Tensor_To_Complete.html">Introduction to Molecular CQED</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="Zeeman_Effect_Hydrogen_Atom.html">Solution</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Linear_Variational_Method_Quartic_Oscillator_and_Zeeman_Effect.html">Linear Variational Method - Anharmonic Oscillator</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Zeeman_Effect_Hydrogen_Atom.html">Zeeman Effect</a></li>
+
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
@@ -222,7 +234,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Chapter 2: Introduction to Spin 1/2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
 
 
 </ul>
@@ -565,6 +577,28 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">13</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">__date__</span>      <span class="o">=</span> <span class="s2">&quot;2021-02-11&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1">### Import libraries to be used throughout</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># basic psi4 library</span>
+<span class="ne">---&gt; </span><span class="mi">13</span> <span class="kn">import</span><span class="w"> </span><span class="nn">psi4</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="c1"># pyplot</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">Code</span><span class="o">/</span><span class="n">psi4</span><span class="o">/</span><span class="n">objdir</span><span class="o">-</span><span class="n">Release</span><span class="o">/</span><span class="n">stage</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">psi4</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">71</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span> <span class="n">data_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span> <span class="c1"># Init core</span>
+<span class="ne">---&gt; </span><span class="mi">71</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">core</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="kn">from</span><span class="w"> </span><span class="nn">psi4.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_num_threads</span><span class="p">,</span> <span class="n">set_num_threads</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span> <span class="n">core</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;core&#39; from partially initialized module &#39;psi4&#39; (most likely due to a circular import) (/Users/jfoley19/Code/psi4/objdir-Release/stage/lib/psi4/__init__.py)
+</pre></div>
+</div>
+</div>
 </div>
 <section id="polaritonic-chemistry-for-a-simple-diatomic-molecule-strongly-interacting-with-light">
 <h1>Polaritonic chemistry for a simple diatomic molecule strongly interacting with light<a class="headerlink" href="#polaritonic-chemistry-for-a-simple-diatomic-molecule-strongly-interacting-with-light" title="Link to this heading">#</a></h1>
@@ -629,11 +663,6 @@ MgH+ by placing it in a cavity.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The photon wavelength is 309.960 nm
-</pre></div>
-</div>
-</div>
 </div>
 <p>Let’s consider the second criteria that the interaction energy scale must be large compared to the dissipation energy scales of the individual molecular and photonic system. Specifically, we have the criteria
 $<span class="math notranslate nohighlight">\( 4g &gt; \gamma \tag{1}\)</span>$</p>
@@ -675,12 +704,6 @@ If we can assume that (in atomic units) <span class="math notranslate nohighligh
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The cavity volume is </span><span class="si">{</span><span class="n">V_nm</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> nm^3&#39;</span><span class="p">)</span>
 
 <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">V_nm</span><span class="p">,</span> <span class="n">_expected_V</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The magnitude of A is 4.000e-04 atomic units
-The cavity volume is 853.982 nm^3
 </pre></div>
 </div>
 </div>
@@ -828,18 +851,6 @@ The key <code class="docutils literal notranslate"><span class="pre">&quot;EXCIT
 <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">Eg_array</span><span class="p">,</span> <span class="n">_expected_Eg_array</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">Ee_array</span><span class="p">,</span> <span class="n">_expected_Ee_array</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">tdm_array</span><span class="p">,</span> <span class="n">_expected_tdm_array</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">Eg_array</span><span class="p">,</span> <span class="n">_expected_Eg_array</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">Ee_array</span><span class="p">,</span> <span class="n">_expected_Ee_array</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">tdm_array</span><span class="p">,</span> <span class="n">_expected_tdm_array</span><span class="p">)</span>
-
-<span class="ne">AssertionError</span>: 
 </pre></div>
 </div>
 </div>

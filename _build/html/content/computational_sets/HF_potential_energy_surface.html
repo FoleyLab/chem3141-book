@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -185,6 +185,7 @@
 
 
 
+
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/translation.html">Chapter 3: Translational Motion</a></li>
 
@@ -231,7 +232,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="Spin_one_half.html">Chapter 2: Introduction to Spin 1/2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
 
 
 </ul>
@@ -490,6 +491,26 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">psi4</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span><span class="w"> </span><span class="nn">psi4.driver.procrouting.response.scf_response</span><span class="w"> </span><span class="kn">import</span> <span class="n">tdscf_excitations</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">Code</span><span class="o">/</span><span class="n">psi4</span><span class="o">/</span><span class="n">objdir</span><span class="o">-</span><span class="n">Release</span><span class="o">/</span><span class="n">stage</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">psi4</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">71</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span> <span class="n">data_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span> <span class="c1"># Init core</span>
+<span class="ne">---&gt; </span><span class="mi">71</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">core</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="kn">from</span><span class="w"> </span><span class="nn">psi4.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_num_threads</span><span class="p">,</span> <span class="n">set_num_threads</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span> <span class="n">core</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;core&#39; from partially initialized module &#39;psi4&#39; (most likely due to a circular import) (/Users/jfoley19/Code/psi4/objdir-Release/stage/lib/psi4/__init__.py)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -542,9 +563,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimizer: Optimization complete!
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ground state energy: -100.43557891730518 Hartrees
+Ground state energy: -100.43557891730518 Hartrees
 Excited state energy: -99.90357778925836 Hartrees
 Equilibrium bond length: 0.926704041193929 Angstroms
 </pre></div>
@@ -586,7 +605,7 @@ Equilibrium bond length: 0.926704041193929 Angstroms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.651551598859697
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.651551598961011
 </pre></div>
 </div>
 </div>
@@ -656,7 +675,7 @@ Equilibrium bond length: 0.926704041193929 Angstroms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.586551731760287
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5865548436859783
 </pre></div>
 </div>
 </div>
@@ -696,7 +715,7 @@ Equilibrium bond length: 0.926704041193929 Angstroms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2.2877436487083953
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2.287508848506965
 </pre></div>
 </div>
 </div>
@@ -736,7 +755,7 @@ Equilibrium bond length: 0.926704041193929 Angstroms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.94453068456812
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.223268477966221
 </pre></div>
 </div>
 </div>
@@ -764,12 +783,12 @@ Equilibrium bond length: 0.926704041193929 Angstroms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.300109052525626
-0.17350690429869212
-0.018335863089845153
-0.00048442434698559733
-4024.256217298529
-106.31883978492519
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.299968720249014
+0.1735452873680237
+0.018335911729858174
+0.00048431977621522207
+4024.2668925459307
+106.29588915692538
 </pre></div>
 </div>
 </div>
@@ -777,16 +796,6 @@ Equilibrium bond length: 0.926704041193929 Angstroms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">D</span>
-
-<span class="ne">NameError</span>: name &#39;D&#39; is not defined
 </pre></div>
 </div>
 </div>
