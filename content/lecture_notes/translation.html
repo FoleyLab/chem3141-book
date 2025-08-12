@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -203,6 +203,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_1.html">Problem Set 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_2.html">Problem Set 2</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
 <ul class="nav bd-sidenav">
@@ -579,13 +580,9 @@ Then click below to reveal the full worked-out solution.</p>
 <p>This result indicates that the state described by this function has a well-defined (or definite) value of the momentum in the <span class="math notranslate nohighlight">\(x\)</span>-direction. Recall, <span class="math notranslate nohighlight">\(k = +\left ( \frac{2mE}{\hbar^2} \right )^{1/2},\)</span> so, <span class="math notranslate nohighlight">\(k \ge 0\)</span> and <span class="math notranslate nohighlight">\(\hbar k \ge 0\)</span>, which implies that <span class="math notranslate nohighlight">\(p_x \ge 0\)</span>. Since the momentum of the particle is positive and well-defined, the state described by <span class="math notranslate nohighlight">\(\psi(x) = Ae^{ikx}\)</span> corresponds to the case where the free particle is traveling in the <span class="math notranslate nohighlight">\(+x\)</span> direction, with momentum <span class="math notranslate nohighlight">\(\hbar k\)</span>. If this interpretation is not clear, recall the following</p>
 <ol class="arabic simple">
 <li><p>Any function can be expanded in terms of eigenfunctions of a Hermitian operator, <span class="math notranslate nohighlight">\(\hat{B}\)</span>, as
-$<span class="math notranslate nohighlight">\( \begin{align}
-\psi = \sum_i c_i g_i
-\end{align}\)</span><span class="math notranslate nohighlight">\(
+<span class="math notranslate nohighlight">\(\psi = \sum_i c_i g_i\)</span>
 where
-\)</span><span class="math notranslate nohighlight">\(\begin{align}
-\hat{B} g_i = b_i g_i 
-\end{align}\)</span>$</p></li>
+<span class="math notranslate nohighlight">\(\hat{B} g_i = b_i g_i\)</span></p></li>
 <li><p>Any measurement of <span class="math notranslate nohighlight">\(B\)</span> results in one of the eigenvalues, <span class="math notranslate nohighlight">\(b_i\)</span>. The probability with which we observe <span class="math notranslate nohighlight">\(b_i\)</span> is proportional to <span class="math notranslate nohighlight">\(|c_i|^2\)</span>. The proportionality becomes an equality of the wave function is normalized.</p></li>
 <li><p>If <span class="math notranslate nohighlight">\(\psi\)</span> is exactly equal to an eigenfunction of <span class="math notranslate nohighlight">\(\hat{B}\)</span>, then there is only one term in the sum above, and the only value of <span class="math notranslate nohighlight">\(B\)</span> that would ever be observed would be the corresponding eigenvalue. In the case above, we have <span class="math notranslate nohighlight">\(\psi(x) = A e^{ikx}\)</span>, which we showed is an eigenfunction of <span class="math notranslate nohighlight">\(\hat{p}_x\)</span>.</p></li>
 </ol>
@@ -790,46 +787,46 @@ f = \sum_k c_k g_k
 \end{align}\end{split}\]</div>
 <p>because, as we learned in the last notebook, the commutator of any operator with any power of itself is zero.</p>
 <blockquote>
-<div><p>Practice</p>
-<p>Question 1: Derive the result</p>
+<div><p><strong>Practice</strong></p>
+<p><strong>Question 1:</strong> Derive the result</p>
 <div class="math notranslate nohighlight">
-\[\begin{align}
-\Delta x \Delta p_x \ge \frac{1}{2} \hbar
-\end{align}\]</div>
-<p>using the general expression for Heisenberg’s Uncertainty principle</p>
+\[\Delta x \, \Delta p_x \ge \frac{1}{2} \hbar\]</div>
+<p>using the general expression for Heisenberg’s Uncertainty principle:</p>
 <div class="math notranslate nohighlight">
-\[\begin{align}
-\Delta x \Delta p_x \ge \frac{1}{2} | \langle [ \hat{x}, \hat{p}_x ] \rangle |
-\end{align}\]</div>
-<details>
-<summary>Answer 1</summary> 
-Let us first evaluate the commutator of $\hat{x}$ and $\hat{p}_x$:
-$$\begin{align}
+\[\Delta x \, \Delta p_x \ge \frac{1}{2} \left| \langle [ \hat{x}, \hat{p}_x ] \rangle \right|\]</div>
 </div></blockquote>
-<p>[\hat{x}, \hat{p}_x]f &amp;= x \left ( -i\hbar \frac{d}{dx}\right ) f - \left (-i\hbar \frac{d}{dx}\right ) x f \
-&amp;= -i\hbar x f^\prime + i\hbar( f + x f^\prime) \
-[\hat{x}, \hat{p}_x]f &amp;= i\hbar f
-\end{align}$$</p>
-<blockquote>
-<div><p>Therefore <span class="math notranslate nohighlight">\([\hat{x}, \hat{p}_x] = i\hbar\)</span>. Now, insert this result into the expression for the joint uncertainty in <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(p_x\)</span>
-$<span class="math notranslate nohighlight">\(\begin{align}
-\Delta x \Delta p_x \ge \frac{1}{2} | \langle i\hbar \rangle |
-\end{align}\)</span><span class="math notranslate nohighlight">\(
-For the expectation value, we have
-\)</span><span class="math notranslate nohighlight">\(\begin{align}
-\langle i\hbar \rangle &amp;= \frac{\langle \psi | i \hbar | \psi \rangle }{\langle \psi | \psi \rangle }\\
-&amp;= i \hbar \frac{\langle \psi | \psi \rangle }{\langle \psi | \psi \rangle } \\
-&amp;= i\hbar
-\end{align}\)</span><span class="math notranslate nohighlight">\(
-For any non-zero wave function, \)</span>\psi<span class="math notranslate nohighlight">\(. So
-\)</span><span class="math notranslate nohighlight">\(\begin{align}\Delta x \Delta p_x &amp;\ge \frac{1}{2} | i\hbar |\\
-&amp;\ge \frac{1}{2} \hbar
-\end{align}\)</span><span class="math notranslate nohighlight">\(
-because
-\)</span><span class="math notranslate nohighlight">\(\begin{align}
-|i\hbar| = \left [ (-i\hbar)(i\hbar) \right]^{1/2} = \left [ \hbar^2 \right ]^{1/2} = \hbar
-\end{align}\)</span>$</p>
-</details></div></blockquote>
+<details>
+<summary><strong>Answer 1</strong></summary>
+<p>Let us first evaluate the commutator of <span class="math notranslate nohighlight">\(\hat{x}\)</span> and <span class="math notranslate nohighlight">\(\hat{p}_x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[[\hat{x}, \hat{p}_x]f = x\left(-i\hbar \frac{d}{dx}\right)f - \left(-i\hbar \frac{d}{dx}\right)xf\]</div>
+<div class="math notranslate nohighlight">
+\[= -i\hbar x f' + i\hbar \left(f + x f'\right)\]</div>
+<div class="math notranslate nohighlight">
+\[[\hat{x}, \hat{p}_x]f = i\hbar f\]</div>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[[\hat{x}, \hat{p}_x] = i\hbar\]</div>
+<p>Now, insert this result into the expression for the joint uncertainty in <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(p_x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\Delta x \, \Delta p_x \ge \frac{1}{2} \left| \langle i\hbar \rangle \right|\]</div>
+<p>For the expectation value, we have:</p>
+<div class="math notranslate nohighlight">
+\[\langle i\hbar \rangle = \frac{\langle \psi | i\hbar | \psi \rangle}{\langle \psi | \psi \rangle}\]</div>
+<div class="math notranslate nohighlight">
+\[= i\hbar \frac{\langle \psi | \psi \rangle}{\langle \psi | \psi \rangle}\]</div>
+<div class="math notranslate nohighlight">
+\[= i\hbar\]</div>
+<p>For any non-zero wave function <span class="math notranslate nohighlight">\(\psi\)</span>.</p>
+<p>So:</p>
+<div class="math notranslate nohighlight">
+\[\Delta x \, \Delta p_x \ge \frac{1}{2} | i\hbar |\]</div>
+<div class="math notranslate nohighlight">
+\[= \frac{1}{2} \hbar\]</div>
+<p>because:</p>
+<div class="math notranslate nohighlight">
+\[|i\hbar| = \left[ (-i\hbar)(i\hbar) \right]^{1/2} = \left[ \hbar^2 \right]^{1/2} = \hbar\]</div>
+</details>
 </section>
 </section>
 </section>
@@ -1743,7 +1740,7 @@ E = \frac{h^2}{8ma^2} \left ( n_x^2 + n_y^2 \right )
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x11c10b450&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x11f6c0290&gt;
 </pre></div>
 </div>
 <img alt="../../_images/ce2a05565d6c2eac2155db63ce3d0c460580a2d09755f331238d423bd1f7a7b7.png" src="../../_images/ce2a05565d6c2eac2155db63ce3d0c460580a2d09755f331238d423bd1f7a7b7.png" />
@@ -2044,7 +2041,7 @@ E - V(x) &amp;= T_x \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_34673/4185230906.py:9: RuntimeWarning: divide by zero encountered in divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_12369/4185230906.py:9: RuntimeWarning: divide by zero encountered in divide
   rhs = 2 * np.sqrt(V0-E) * np.sqrt(E) / (2 * E - V0)
 </pre></div>
 </div>
