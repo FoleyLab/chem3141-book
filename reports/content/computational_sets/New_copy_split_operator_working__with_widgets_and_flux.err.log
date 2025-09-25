@@ -1,0 +1,143 @@
+Traceback (most recent call last):
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/asyncio/base_events.py", line 650, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/nbclient/client.py", line 654, in async_setup_kernel
+    yield
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/jfoley19/miniconda3/envs/jbook/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# === Feature 1: Interactive potential builder (rectangle/triangle/trapezoid) ===
+import numpy as np
+import ipywidgets as w
+import matplotlib.pyplot as plt
+from IPython.display import display, clear_output
+
+def rectangular_potential(x, x_left, width, height):
+    x_right = x_left + width
+    return np.where((x >= x_left) & (x <= x_right), height, 0.0)
+
+def triangular_potential(x, x_left, width, height, apex_pos=0.5):
+    x_right = x_left + width
+    V = np.zeros_like(x, dtype=float)
+    apex_x = x_left + apex_pos * width
+    left_mask = (x >= x_left) & (x <= apex_x)
+    if np.any(left_mask):
+        V[left_mask] = height * (x[left_mask] - x_left) / max(apex_x - x_left, 1e-15)
+    right_mask = (x > apex_x) & (x <= x_right)
+    if np.any(right_mask):
+        V[right_mask] = height * (x_right - x[right_mask]) / max(x_right - apex_x, 1e-15)
+    return V
+
+def trapezoid_potential(x, x_left, width, height_left, height_right, ramp_frac=0.2):
+    w_ramp = max(ramp_frac * width, 1e-15)
+    x_rise_end = x_left + w_ramp
+    x_fall_start = x_left + width - w_ramp
+    x_right = x_left + width
+    V = np.zeros_like(x, dtype=float)
+    mask_rise = (x >= x_left) & (x < x_rise_end)
+    if np.any(mask_rise):
+        V[mask_rise] = height_left * (x[mask_rise] - x_left) / w_ramp
+    mask_mid = (x >= x_rise_end) & (x <= x_fall_start)
+    if np.any(mask_mid):
+        mid_len = max(x_fall_start - x_rise_end, 1e-15)
+        V[mask_mid] = height_left + (height_right - height_left) * (x[mask_mid] - x_rise_end) / mid_len
+    mask_fall = (x > x_fall_start) & (x <= x_right)
+    if np.any(mask_fall):
+        V[mask_fall] = height_right * (x_right - x[mask_fall]) / w_ramp
+    return V
+
+def build_potential(x, shape, params):
+    if shape == "Rectangle":
+        return rectangular_potential(x, params["x_left"], params["width"], params["height"])
+    elif shape == "Triangle":
+        return triangular_potential(x, params["x_left"], params["width"], params["height"], params["apex_pos"])
+    elif shape == "Trapezoid":
+        return trapezoid_potential(x, params["x_left"], params["width"], params["height_left"], params["height_right"], params["ramp_frac"])
+    else:
+        return np.zeros_like(x)
+
+shape_dd      = w.Dropdown(options=["Rectangle", "Triangle", "Trapezoid"], value="Rectangle", description="Shape:")
+x_left_sl     = w.FloatSlider(value=float(x.min()) + 0.2*(x.max()-x.min()), min=float(x.min()), max=float(x.max()), step=float((x[1]-x[0])), description="x_left:", continuous_update=False)
+width_sl      = w.FloatSlider(value=0.2*(x.max()-x.min()), min=float((x[1]-x[0])*2), max=float(x.max()-x.min()), step=float((x[1]-x[0])), description="Width:", continuous_update=False)
+height_sl     = w.FloatSlider(value=1.0, min=0.0, max=10.0, step=0.01, description="Height:", continuous_update=False)
+apex_pos_sl   = w.FloatSlider(value=0.5, min=0.0, max=1.0, step=0.01, description="Apex pos:", continuous_update=False)
+height_l_sl   = w.FloatSlider(value=1.0, min=0.0, max=10.0, step=0.01, description="Left H:", continuous_update=False)
+height_r_sl   = w.FloatSlider(value=0.5, min=0.0, max=10.0, step=0.01, description="Right H:", continuous_update=False)
+ramp_frac_sl  = w.FloatSlider(value=0.2, min=0.0, max=0.45, step=0.01, description="Ramp frac:", continuous_update=False)
+
+pot_out = w.Output()
+V_current = {"V": np.zeros_like(x)}
+
+def update_plot(*_):
+    with pot_out:
+        clear_output(wait=True)
+        shape = shape_dd.value
+        params = dict(
+            x_left=x_left_sl.value,
+            width=width_sl.value,
+            height=height_sl.value,
+            apex_pos=apex_pos_sl.value,
+            height_left=height_l_sl.value,
+            height_right=height_r_sl.value,
+            ramp_frac=ramp_frac_sl.value
+        )
+        V = build_potential(x, shape, params)
+        V_current["V"] = V
+        fig, ax = plt.subplots(figsize=(6,3))
+        ax.plot(x, V)
+        ax.set_title(f"{shape} potential")
+        ax.set_xlabel("x")
+        ax.set_ylabel("V(x)")
+        ax.grid(True, alpha=0.3)
+        plt.show()
+
+def _toggle_controls(*_):
+    shape = shape_dd.value
+    height_sl.layout.display   = "flex" if shape == "Rectangle" else "none"
+    apex_pos_sl.layout.display = "flex" if shape == "Triangle"  else "none"
+    height_l_sl.layout.display = "flex" if shape == "Trapezoid" else "none"
+    height_r_sl.layout.display = "flex" if shape == "Trapezoid" else "none"
+    ramp_frac_sl.layout.display= "flex" if shape == "Trapezoid" else "none"
+    update_plot()
+
+for wid in [shape_dd, x_left_sl, width_sl, height_sl, apex_pos_sl, height_l_sl, height_r_sl, ramp_frac_sl]:
+    wid.observe(update_plot, names="value")
+shape_dd.observe(_toggle_controls, names="value")
+_toggle_controls()
+
+controls = w.VBox([shape_dd, x_left_sl, width_sl, height_sl, apex_pos_sl, height_l_sl, height_r_sl, ramp_frac_sl])
+ui = w.HBox([controls, pot_out])
+display(ui)
+
+# To use in your solver: replace your V with V_current["V"] before the time loop.
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mNameError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 52[39m
+[32m     49[39m         [38;5;28;01mreturn[39;00m np.zeros_like(x)
+[32m     51[39m shape_dd      = w.Dropdown(options=[[33m"[39m[33mRectangle[39m[33m"[39m, [33m"[39m[33mTriangle[39m[33m"[39m, [33m"[39m[33mTrapezoid[39m[33m"[39m], value=[33m"[39m[33mRectangle[39m[33m"[39m, description=[33m"[39m[33mShape:[39m[33m"[39m)
+[32m---> [39m[32m52[39m x_left_sl     = w.FloatSlider(value=[38;5;28mfloat[39m(x.min()) + [32m0.2[39m*(x.max()-x.min()), [38;5;28mmin[39m=[38;5;28mfloat[39m(x.min()), [38;5;28mmax[39m=[38;5;28mfloat[39m(x.max()), step=[38;5;28mfloat[39m((x[[32m1[39m]-x[[32m0[39m])), description=[33m"[39m[33mx_left:[39m[33m"[39m, continuous_update=[38;5;28;01mFalse[39;00m)
+[32m     53[39m width_sl      = w.FloatSlider(value=[32m0.2[39m*(x.max()-x.min()), [38;5;28mmin[39m=[38;5;28mfloat[39m((x[[32m1[39m]-x[[32m0[39m])*[32m2[39m), [38;5;28mmax[39m=[38;5;28mfloat[39m(x.max()-x.min()), step=[38;5;28mfloat[39m((x[[32m1[39m]-x[[32m0[39m])), description=[33m"[39m[33mWidth:[39m[33m"[39m, continuous_update=[38;5;28;01mFalse[39;00m)
+[32m     54[39m height_sl     = w.FloatSlider(value=[32m1.0[39m, [38;5;28mmin[39m=[32m0.0[39m, [38;5;28mmax[39m=[32m10.0[39m, step=[32m0.01[39m, description=[33m"[39m[33mHeight:[39m[33m"[39m, continuous_update=[38;5;28;01mFalse[39;00m)
+
+[31mNameError[39m: name 'x' is not defined
+
