@@ -457,8 +457,21 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-regarding-uncertainty">A Note Regarding Uncertainty</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rigid-rotor">The Rigid Rotor</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection Rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rigid-rotor">The Rigid Rotor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules-for-molecular-rotations">⚙️ Selection Rules for Molecular Rotations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fermis-golden-rule-for-rotational-transitions">⚛️ Fermi’s Golden Rule for Rotational Transitions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-m-selection-rules">🧮 Derivation of the Δm Selection Rules</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-key-commutators">Step 1. Key commutators</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-derivation-for-z-polarized-light">Step 2. Derivation for z-polarized light</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-derivation-for-x-and-y">Step 3. Derivation for x and y</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-m-rules-by-polarization">📦 Summary of Δm Rules by Polarization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-tensor-view-l-selection-rule">🌐 Spherical-Tensor View (Δl Selection Rule)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-interpretation">💡 Physical Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirement-of-a-permanent-dipole">🌟 Requirement of a Permanent Dipole</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-electric-dipole-selection-rules-linear-rigid-rotor">🧭 Full Electric-Dipole Selection Rules (Linear Rigid Rotor)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-problems">🔍 Practice Problems</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ladder-operators">Ladder Operators</a></li>
@@ -1287,70 +1300,223 @@ m &amp;= 0, \pm 1, \pm 2, ... \pm l
 \end{align}\end{split}\]</div>
 <p>As such, each energy level is <span class="math notranslate nohighlight">\((2l+1)\)</span>-fold degenerate.</p>
 <p>Note that this result is generalizable to rotating molecules with more than two atoms. Rotational energy levels are given by the energy expression above, augmented by the appropriate moment of inertia.</p>
-<section id="selection-rules">
-<h3>Selection Rules<a class="headerlink" href="#selection-rules" title="Link to this heading">#</a></h3>
-<p>The rigid rotor model can be used to predict both rotational energy levels and spectra for rotations in molecules. Here, we derive rules for which rotational transitions will be “allowed” or “forbidden.”</p>
-<p><strong>Fermi’s Golden Rule for Molecular Rotations</strong></p>
-<p>Recall that Fermi’s Golden Rule allows us to predict the probability that a system will transition between energy states when interacting with a time-dependent external perturbation. For a rigid rotor interacting with an oscillating electric field, a transition between states characterized by the wave functions <span class="math notranslate nohighlight">\(Y^m_l(\theta, \phi)\)</span> and <span class="math notranslate nohighlight">\(Y^{m^\prime}_{l^\prime}(\theta, \phi)\)</span> will be proportional to the square modulus of the transition dipole moment involving these wave functions,</p>
+</section>
+<section id="selection-rules-for-molecular-rotations">
+<h2>⚙️ Selection Rules for Molecular Rotations<a class="headerlink" href="#selection-rules-for-molecular-rotations" title="Link to this heading">#</a></h2>
+<p>The rigid rotor model can be used to predict both rotational energy levels and the spectra arising from molecular rotations.<br />
+Here, we derive which rotational transitions are <em>allowed</em> or <em>forbidden</em> according to quantum mechanics.</p>
+<hr class="docutils" />
+<section id="fermis-golden-rule-for-rotational-transitions">
+<h3>⚛️ Fermi’s Golden Rule for Rotational Transitions<a class="headerlink" href="#fermis-golden-rule-for-rotational-transitions" title="Link to this heading">#</a></h3>
+<p>When a molecule interacts with an oscillating electric field, transitions between rigid-rotor states occur with a probability proportional to the square modulus of the <strong>transition dipole moment</strong>:</p>
 <div class="math notranslate nohighlight">
-\[\begin{align}
-P_{m,l \to m^\prime, l^\prime} \propto |\langle Y^m_l(\theta, \phi) | \hat{\mu} | Y^{m^\prime}_{l^\prime}(\theta, \phi) \rangle |^2
-\end{align}\]</div>
-<p>For the quantum harmonic oscillator model, we were able to derive selection rules from the recursion relations for Hermite polynomials. It turns out that we can derive selection rules for the rigid rotor that are related to the change in <span class="math notranslate nohighlight">\(m,\)</span> <span class="math notranslate nohighlight">\(\Delta m = m - m^{\prime},\)</span> from commutator relations involving the operators <span class="math notranslate nohighlight">\(\hat{L}_z\)</span>, <span class="math notranslate nohighlight">\(x,\)</span>, <span class="math notranslate nohighlight">\(y,\)</span> and <span class="math notranslate nohighlight">\(z.\)</span></p>
-<blockquote>
-<div><p>Practice</p>
-<blockquote>
-<div><p>Question 6.</p>
-<p>Show that <span class="math notranslate nohighlight">\([\hat{L}_z, x] = i\hbar y\)</span></p>
-</div></blockquote>
-<blockquote>
-<div><p>Question 7.</p>
-<p>Show that <span class="math notranslate nohighlight">\([\hat{L}_z, y] = -i\hbar x\)</span></p>
-</div></blockquote>
-<blockquote>
-<div><p>Question 8.</p>
-<p>Show that <span class="math notranslate nohighlight">\([\hat{L}_z, z] = 0\)</span></p>
-</div></blockquote>
-</div></blockquote>
-<p>Let us insert <span class="math notranslate nohighlight">\([\hat{L}_z, z] = 0\)</span> into an integral involving the states <span class="math notranslate nohighlight">\(Y^m_l\)</span> and <span class="math notranslate nohighlight">\(Y^{m^\prime}_{l^\prime}\)</span>, where we suppress the notation for the dependence on the coordinates <span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span></p>
+\[
+P_{m,l \to m',l'} \propto 
+\big|
+\langle Y_l^m(\theta,\phi) \,|\, 
+\hat{\mu} \,
+|\, Y_{l'}^{m'}(\theta,\phi)
+\rangle
+\big|^2
+\]</div>
+<p>The form of this matrix element determines which transitions are <strong>allowed</strong> (non-zero integral) or <strong>forbidden</strong> (zero integral).</p>
+</section>
+<hr class="docutils" />
+<section id="derivation-of-the-m-selection-rules">
+<h3>🧮 Derivation of the Δm Selection Rules<a class="headerlink" href="#derivation-of-the-m-selection-rules" title="Link to this heading">#</a></h3>
+<p>For the harmonic oscillator, we obtained selection rules using recursion relations for Hermite polynomials.<br />
+Here, we use <strong>commutator relations</strong> for angular momentum operators and coordinates.</p>
+<hr class="docutils" />
+<section id="step-1-key-commutators">
+<h4>Step 1. Key commutators<a class="headerlink" href="#step-1-key-commutators" title="Link to this heading">#</a></h4>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}
-\langle Y^m_l | [\hat{L}_z, z] | Y^{m^\prime}_{l^\prime} \rangle &amp;= 0 \\
-&amp;= \langle Y^m_l | \hat{L}_z z | Y^{m^\prime}_{l^\prime} \rangle - \langle Y^m_l | z\hat{L}_z | Y^{m^\prime}_{l^\prime} \rangle \\
-&amp;= \langle Y^m_l | \hat{L}_z | f \rangle - m^\prime \hbar \langle Y^m_l | z | Y^{m^\prime}_{l^\prime} \rangle \\
-&amp;= \langle f | \hat{L}_z | Y^m_l \rangle^* - m^\prime \hbar \langle Y^m_l | z | Y^{m^\prime}_{l^\prime} \rangle \\
-&amp;= m^* \hbar \langle f | Y^m_l \rangle^* - m^\prime \hbar \langle Y^m_l | z | Y^{m^\prime}_{l^\prime} \rangle \\
-&amp;= m \hbar \langle Y^m_l | f \rangle - m^\prime \hbar \langle Y^m_l | z | Y^{m^\prime}_{l^\prime} \rangle \\
-&amp;= (m - m^\prime) \hbar \langle Y^m_l | z | Y^{m^\prime}_{l^\prime} \rangle 
-\end{align}\end{split}\]</div>
-<p>Where, on the third line, we have introduced a function, <span class="math notranslate nohighlight">\(|f\rangle = z|Y^{m^\prime}_{l^\prime}\rangle\)</span> to make the manipulation in the fourth line, based on the Hermiticity of the operator <span class="math notranslate nohighlight">\(\hat{L}_z\)</span> a little easier to see. Note also that we also took advantage of the fact that <span class="math notranslate nohighlight">\(m\)</span> is a real number, i.e., <span class="math notranslate nohighlight">\(m = m^*.\)</span> Now, we are left with</p>
-<div class="math notranslate nohighlight">
-\[\begin{align}
-(m - m^\prime) \langle Y^m_l | z | Y^{m^\prime}_{l^\prime} \rangle = 0
-\end{align}\]</div>
-<p>For <span class="math notranslate nohighlight">\(z\)</span> polarized light, a transition between states <span class="math notranslate nohighlight">\(Y^m_l\)</span> and <span class="math notranslate nohighlight">\(Y^{m^\prime}_{l^\prime}\)</span> will only occur if the integral <span class="math notranslate nohighlight">\(\langle Y^m_l | z | Y^{m^\prime}_{l^\prime} \rangle\)</span> is non-zero. If this integral is non-zero, then this equation can only be satisfied if</p>
-<div class="math notranslate nohighlight">
-\[\begin{align}
-\Delta m =  m - m^\prime = 0
-\end{align}\]</div>
-<p>If we perform a similar exercise involving the commutators <span class="math notranslate nohighlight">\([\hat{L}_z, x]\)</span> and <span class="math notranslate nohighlight">\([\hat{L}_z, y],\)</span> we would find two additional selection rules. In total, we have three selection rules for allowed changes in the <span class="math notranslate nohighlight">\(m\)</span> quantum number:</p>
-<div class="math notranslate nohighlight">
-\[\begin{align}
-\Delta m = 0, \pm 1 
-\end{align}\]</div>
-<p>There is also a selection rule on the change in the quantum number, <span class="math notranslate nohighlight">\(l,\)</span> that we will not derive:</p>
-<div class="math notranslate nohighlight">
-\[\begin{align}
-\Delta l = \pm 1
-\end{align}\]</div>
-<p>In addition to these rules, non-zero transitions in “pure” rotational spectra (with no changes in vibrational energy levels) require that the molecule have a permanent dipole moment.</p>
+\[
+[\hat{L}_z, x] = i\hbar y, \qquad
+[\hat{L}_z, y] = -i\hbar x, \qquad
+[\hat{L}_z, z] = 0
+\]</div>
 <blockquote>
-<div><p>Practice</p>
+<div><p><strong>Practice</strong></p>
+<ul class="simple">
+<li><p><strong>Q6.</strong> Show that <span class="math notranslate nohighlight">\( [\hat{L}_z, x] = i\hbar y \)</span></p></li>
+<li><p><strong>Q7.</strong> Show that <span class="math notranslate nohighlight">\( [\hat{L}_z, y] = -i\hbar x \)</span></p></li>
+<li><p><strong>Q8.</strong> Show that <span class="math notranslate nohighlight">\( [\hat{L}_z, z] = 0 \)</span></p></li>
+</ul>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="step-2-derivation-for-z-polarized-light">
+<h4>Step 2. Derivation for z-polarized light<a class="headerlink" href="#step-2-derivation-for-z-polarized-light" title="Link to this heading">#</a></h4>
+<p>Inserting <span class="math notranslate nohighlight">\([\hat{L}_z, z] = 0 \)</span> into an integral involving the spherical harmonics gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+0 &amp;= \langle Y^m_l | [\hat{L}_z, z] | Y^{m'}_{l'} \rangle \\
+  &amp;= (m - m') \hbar \, \langle Y^m_l | z | Y^{m'}_{l'} \rangle
+\end{aligned}
+\end{split}\]</div>
+<p>A non-zero transition moment requires <span class="math notranslate nohighlight">\( \langle Y^m_l | z | Y^{m'}_{l'} \rangle \neq 0 \)</span>, so this can only hold if</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{\Delta m = m - m' = 0}
+\]</div>
+<p>Thus, <strong>z-polarized light</strong> (a “π” transition) induces only transitions with<br />
+<span class="math notranslate nohighlight">\(\Delta m = 0\)</span>.</p>
+</section>
+<hr class="docutils" />
+<section id="step-3-derivation-for-x-and-y">
+<h4>Step 3. Derivation for x and y<a class="headerlink" href="#step-3-derivation-for-x-and-y" title="Link to this heading">#</a></h4>
+<p>A similar argument using
+<span class="math notranslate nohighlight">\([ \hat{L}_z, x ] = i\hbar y\)</span> and <span class="math notranslate nohighlight">\([ \hat{L}_z, y ] = -i\hbar x\)</span>
+shows that transitions involving <span class="math notranslate nohighlight">\(x\)</span> or <span class="math notranslate nohighlight">\(y\)</span> components require</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{\Delta m = \pm 1}
+\]</div>
+<p>These correspond to <strong>circularly polarized</strong> light:<br />
+right-handed (<span class="math notranslate nohighlight">\(\sigma^+\)</span>) with <span class="math notranslate nohighlight">\(\Delta m = +1\)</span>,<br />
+and left-handed (<span class="math notranslate nohighlight">\(\sigma^-\)</span>) with <span class="math notranslate nohighlight">\(\Delta m = -1\)</span>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="summary-of-m-rules-by-polarization">
+<h3>📦 Summary of Δm Rules by Polarization<a class="headerlink" href="#summary-of-m-rules-by-polarization" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Light polarization</p></th>
+<th class="head"><p>Operator component</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Allowed Δm</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>Linear (‖ z)</p></td>
+<td><p>(z)</p></td>
+<td><p>π</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>Circular (+)</p></td>
+<td><p>(x + i y)</p></td>
+<td><p>σ⁺</p></td>
+<td><p>+1</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>Circular (–)</p></td>
+<td><p>(x - i y)</p></td>
+<td><p>σ⁻</p></td>
+<td><p>−1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For <strong>unpolarized</strong> light in an isotropic sample, all three occur, so<br />
+$<span class="math notranslate nohighlight">\(
+\boxed{\Delta m = 0, \pm 1}
+\)</span>$</p>
+</section>
+<hr class="docutils" />
+<section id="spherical-tensor-view-l-selection-rule">
+<h3>🌐 Spherical-Tensor View (Δl Selection Rule)<a class="headerlink" href="#spherical-tensor-view-l-selection-rule" title="Link to this heading">#</a></h3>
+<p>We can combine <span class="math notranslate nohighlight">\(x, y, z\)</span> into spherical components:</p>
+<div class="math notranslate nohighlight">
+\[
+\mu_{0}= \mu_z,\qquad 
+\mu_{\pm1}= \mp\frac{1}{\sqrt{2}}(\mu_x \pm i\mu_y)
+\]</div>
+<p>These transform like the rank-1 spherical harmonic <span class="math notranslate nohighlight">\(Y_1^q(\theta,\phi)\)</span>.
+The relevant integral is</p>
+<div class="math notranslate nohighlight">
+\[
+\int Y_{l}^{m*} Y_1^{q} Y_{l'}^{m'} d\Omega
+\]</div>
+<p>which is non-zero only if the angular-momentum coupling conditions are met:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{\Delta l = \pm 1, \qquad \Delta m = q = 0, \pm 1}
+\]</div>
+<p>The <span class="math notranslate nohighlight">\(\Delta l = 0\)</span> case is forbidden because electric-dipole transitions must change <strong>parity</strong>, and spherical harmonics of the same <span class="math notranslate nohighlight">\(l\)</span> have the same parity.</p>
+</section>
+<hr class="docutils" />
+<section id="physical-interpretation">
+<h3>💡 Physical Interpretation<a class="headerlink" href="#physical-interpretation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>z-polarized (“π”) radiation → transitions where the projection of angular momentum is unchanged <span class="math notranslate nohighlight">\((\Delta m = 0\)</span>).</p></li>
+<li><p>Circularly polarized (“σ±”) radiation → transitions that raise or lower the projection of angular momentum by one unit (<span class="math notranslate nohighlight">\(\Delta m = \pm1\)</span>).</p></li>
+<li><p>For isotropic or unpolarized fields, all three are possible.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="requirement-of-a-permanent-dipole">
+<h3>🌟 Requirement of a Permanent Dipole<a class="headerlink" href="#requirement-of-a-permanent-dipole" title="Link to this heading">#</a></h3>
+<p>For a <em>pure rotational</em> electric-dipole transition to be <strong>observable</strong>, the molecule must have a <strong>permanent dipole moment</strong>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Molecule</p></th>
+<th class="head"><p>Permanent dipole?</p></th>
+<th class="head"><p>Rotational spectrum?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CO</p></td>
+<td><p>✅ Yes</p></td>
+<td><p>✔ Allowed</p></td>
+</tr>
+<tr class="row-odd"><td><p>HCl</p></td>
+<td><p>✅ Yes</p></td>
+<td><p>✔ Allowed</p></td>
+</tr>
+<tr class="row-even"><td><p>N₂</p></td>
+<td><p>❌ No</p></td>
+<td><p>✖ Forbidden</p></td>
+</tr>
+<tr class="row-odd"><td><p>O₂</p></td>
+<td><p>❌ No</p></td>
+<td><p>✖ Forbidden</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Homonuclear diatomics (N₂, O₂) are microwave-silent but <em>do</em> show <strong>rotational Raman</strong> spectra, where the operator is the polarizability tensor (rank 2), giving different rules:<br />
+<span class="math notranslate nohighlight">\(\Delta J = 0, \pm 2\)</span>, <span class="math notranslate nohighlight">\(\Delta m = 0, \pm 2\)</span>.</p>
+</section>
+<hr class="docutils" />
+<section id="full-electric-dipole-selection-rules-linear-rigid-rotor">
+<h3>🧭 Full Electric-Dipole Selection Rules (Linear Rigid Rotor)<a class="headerlink" href="#full-electric-dipole-selection-rules-linear-rigid-rotor" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boxed{
+\begin{aligned}
+\Delta l &amp;= \pm 1 \\
+\Delta m &amp;= 0, \pm 1 \\
+\text{Transition requires} &amp;\ \mu_{\text{perm}} \neq 0
+\end{aligned}
+}
+\end{split}\]</div>
+</section>
+<hr class="docutils" />
+<section id="practice-problems">
+<h3>🔍 Practice Problems<a class="headerlink" href="#practice-problems" title="Link to this heading">#</a></h3>
 <blockquote>
-<div><p>Question 9:</p>
-<p>Derive the <span class="math notranslate nohighlight">\(\Delta m = \pm 1\)</span> selection rules from the commutators <span class="math notranslate nohighlight">\([\hat{L}_z, x]\)</span> and <span class="math notranslate nohighlight">\([\hat{L}_z, y]\)</span></p>
+<div><p><strong>Q9.</strong><br />
+Derive the <span class="math notranslate nohighlight">\(\Delta m = \pm 1\)</span> selection rules explicitly using<br />
+<span class="math notranslate nohighlight">\( [\hat{L}_z, x] = i\hbar y \)</span> and <span class="math notranslate nohighlight">\( [\hat{L}_z, y] = -i\hbar x \)</span>.<br />
+<em>Hint:</em> Combine <span class="math notranslate nohighlight">\(x \pm i y\)</span> to show <span class="math notranslate nohighlight">\([\hat{L}_z, x \pm i y] = \pm \hbar (x \pm i y)\)</span>.</p>
+<p><strong>Q10.</strong><br />
+Express <span class="math notranslate nohighlight">\(z\)</span> and <span class="math notranslate nohighlight">\(x \pm i y\)</span> in terms of spherical harmonics <span class="math notranslate nohighlight">\(Y_1^q\)</span>, and use the orthogonality of <span class="math notranslate nohighlight">\(Y_l^m\)</span> to show that <span class="math notranslate nohighlight">\(M' = M + q\)</span> and <span class="math notranslate nohighlight">\(l' = l \pm 1\)</span>.</p>
+<p><strong>Q11.</strong><br />
+Explain, using parity, why <span class="math notranslate nohighlight">\(\Delta l = 0\)</span> is forbidden for <em>electric-dipole</em> rotational transitions, but allowed for <em>Raman</em> transitions.</p>
+<p><strong>Q12.</strong><br />
+Which of the following molecules have pure rotational microwave spectra: CO, CS₂, H₂O, N₂?<br />
+Justify your answer based on molecular symmetry and permanent dipole moment.</p>
 </div></blockquote>
-</div></blockquote>
+<hr class="docutils" />
+<p>✅ <strong>Key Takeaways</strong></p>
+<ul class="simple">
+<li><p>Transitions are governed by angular momentum and parity conservation.</p></li>
+<li><p>Electric-dipole rotational transitions follow<br />
+<span class="math notranslate nohighlight">\(\Delta l = \pm 1,\ \Delta m = 0, \pm 1\)</span>.</p></li>
+<li><p>Observability requires a permanent dipole moment.</p></li>
+<li><p>Light polarization dictates which <span class="math notranslate nohighlight">\(\Delta m\)</span> branches are active.</p></li>
+</ul>
 </section>
 </section>
 <section id="ladder-operators">
@@ -1803,8 +1969,21 @@ $<span class="math notranslate nohighlight">\(\begin{align}
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-regarding-uncertainty">A Note Regarding Uncertainty</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rigid-rotor">The Rigid Rotor</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules">Selection Rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rigid-rotor">The Rigid Rotor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-rules-for-molecular-rotations">⚙️ Selection Rules for Molecular Rotations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fermis-golden-rule-for-rotational-transitions">⚛️ Fermi’s Golden Rule for Rotational Transitions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-m-selection-rules">🧮 Derivation of the Δm Selection Rules</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-key-commutators">Step 1. Key commutators</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-derivation-for-z-polarized-light">Step 2. Derivation for z-polarized light</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-derivation-for-x-and-y">Step 3. Derivation for x and y</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-m-rules-by-polarization">📦 Summary of Δm Rules by Polarization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-tensor-view-l-selection-rule">🌐 Spherical-Tensor View (Δl Selection Rule)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-interpretation">💡 Physical Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirement-of-a-permanent-dipole">🌟 Requirement of a Permanent Dipole</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-electric-dipole-selection-rules-linear-rigid-rotor">🧭 Full Electric-Dipole Selection Rules (Linear Rigid Rotor)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-problems">🔍 Practice Problems</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ladder-operators">Ladder Operators</a></li>

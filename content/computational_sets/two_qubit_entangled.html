@@ -1,0 +1,1308 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Liouville Equation Solver &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/computational_sets/two_qubit_entangled';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    5. Hydrogen Atom
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture Notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates_two_level.html">Chapter 1: Introduction to Quantum Phenomena</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/translation.html">Chapter 3: Translational Motion</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/vibration.html">Chapter 4: Vibrational Motion</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/hydrogen.html">Chapter 6: The Hydrogen Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/variation.html">Chapter 7: The Variation Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/perturbation.html">Chapter 8: Perturbation Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/SphHarm_visualize.html">Visualizing Spherical harmonics</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_1.html">Problem Set 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_2.html">Problem Set 2</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="note05.html">Additional Notes on Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/formula_sheet.html">Useful Formulae</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note01.html">Hydrogenlike atoms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note03.html">Atomic orbitals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note05.html">Additional Notes on Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/spin_background.html">Spin</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/FoleyLab/chem3141-book/blob/main/content/computational_sets/two_qubit_entangled.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/FoleyLab/chem3141-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FoleyLab/chem3141-book/issues/new?title=Issue%20on%20page%20%2Fcontent/computational_sets/two_qubit_entangled.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/computational_sets/two_qubit_entangled.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Liouville Equation Solver</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Liouville Equation Solver</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-defining-the-hamiltonian">🧩 Step 1: Defining the Hamiltonian</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">🎯 Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representing-the-states-of-our-system">🧮 Representing the states of our system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-taviscummings-hamiltonian">🔬 The Tavis–Cummings Hamiltonian</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#term-1-bare-qubit-hamiltonian">⚡ Term 1: Bare qubit Hamiltonian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#term-2-bare-cavity-hamiltonian">📡 Term 2: Bare cavity Hamiltonian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#term-3-interaction-hamiltonian">🔄 Term 3: Interaction Hamiltonian</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-picture-generating-bell-states-via-cavity-coupling">⚡ Physical Picture: Generating Bell states via cavity coupling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checkpoint-question">❓ Checkpoint Question</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-building-the-basis-states">🧮 Step 2: Building the Basis States</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-constructing-the-hamiltonian">Step 2: Constructing the Hamiltonian</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p>The next cell defines some helper functions that we can use to run the simulation and (if desired),
+print various quantities with nice formating.</p>
+<section id="liouville-equation-solver">
+<h1>Liouville Equation Solver<a class="headerlink" href="#liouville-equation-solver" title="Link to this heading">#</a></h1>
+<p>Similar to <code class="docutils literal notranslate"><span class="pre">qutips</span></code> mesolve, I have implemented a method that solves the Liouville equation of motion for the density matrix using a 4th-order Runge-Kutta algorithm.  The Lioville equation gives how a given quantum state, represented by a density matrix, evoles with time:</p>
+<div class="math notranslate nohighlight">
+\[ i \hbar \frac{\partial}{\partial t} D = [H, D] \]</div>
+<p>where <span class="math notranslate nohighlight">\(H\)</span> is a matrix representation of the Hamiltonian and <span class="math notranslate nohighlight">\(D\)</span> is the density matrix defined as</p>
+<div class="math notranslate nohighlight">
+\[ D = |\Psi \rangle \langle \Psi | \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to compute the expectation value of the Hamiltonian for a given state</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_expectation_value</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">vdot</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">H</span> <span class="o">@</span> <span class="n">state</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">print_operator_action</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">ket</span><span class="p">,</span> <span class="n">op_name</span><span class="o">=</span><span class="s2">&quot;Operator&quot;</span><span class="p">,</span> <span class="n">ket_name</span><span class="o">=</span><span class="s2">&quot;Ket&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; prints the action of an operator on a ket in a formatted way &quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">op</span> <span class="o">@</span> <span class="n">ket</span>
+
+    <span class="c1"># Formatters</span>
+    <span class="n">fmt</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;all&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2"> 6.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== </span><span class="si">{</span><span class="n">op_name</span><span class="si">}</span><span class="s2"> acting on </span><span class="si">{</span><span class="n">ket_name</span><span class="si">}</span><span class="s2"> ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">op_name</span><span class="si">}</span><span class="s2"> matrix in tensor product space:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array2string</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">formatter</span><span class="o">=</span><span class="n">fmt</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">ket_name</span><span class="si">}</span><span class="s2"> vector in tensor product space:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array2string</span><span class="p">(</span><span class="n">ket</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">formatter</span><span class="o">=</span><span class="n">fmt</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Resulting vector in tensor product space (</span><span class="si">{</span><span class="n">op_name</span><span class="si">}</span><span class="s2"> ⋅ </span><span class="si">{</span><span class="n">ket_name</span><span class="si">}</span><span class="s2">):&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array2string</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">formatter</span><span class="o">=</span><span class="n">fmt</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">represent_basis_in_eigen</span><span class="p">(</span><span class="n">basis_names</span><span class="p">,</span> <span class="n">eigvecs</span><span class="p">,</span> <span class="n">energies</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    For each original basis state |b_j&gt;, prints its expansion</span>
+<span class="sd">      |b_j&gt; = sum_i c_{j,i} |ψ_i&gt;</span>
+<span class="sd">    where c_{j,i} = &lt;ψ_i|b_j&gt; = conj(eigvecs[j, i]) for a unitary eigvecs.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    basis_names : list of str</span>
+<span class="sd">        Names of the basis kets in the same order as the rows of eigvecs.</span>
+<span class="sd">    eigvecs : np.ndarray, shape (N, N)</span>
+<span class="sd">        Columns are the eigenvectors |ψ_i&gt; expressed in the original basis.</span>
+<span class="sd">    energies : array-like, optional</span>
+<span class="sd">        If provided, labels the eigenstates by energy order.</span>
+<span class="sd">    tol : float</span>
+<span class="sd">        Threshold below which coefficients are treated as zero.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">eigvecs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">eigvecs</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">basis_names</span><span class="p">)</span> <span class="o">==</span> <span class="n">N</span>
+
+    <span class="c1"># If energies given, label states by E; otherwise by index</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">energies</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">E</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">energies</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ψ_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> (E=</span><span class="si">{</span><span class="n">E</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;ψ_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">basis_names</span><span class="p">):</span>
+        <span class="c1"># coefficients c_{j,i} = &lt;ψ_i|b_j&gt; = conj(eigvecs[j,i])</span>
+        <span class="n">coefs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">eigvecs</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="p">:])</span>
+        <span class="n">terms</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">coefs</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="c1"># format complex; drop imaginary part if ~0</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+                <span class="n">terms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">real</span><span class="si">:</span><span class="s2">+.4f</span><span class="si">}</span><span class="s2">·|</span><span class="si">{</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&gt;&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">terms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">real</span><span class="si">:</span><span class="s2">+.4f</span><span class="si">}{</span><span class="n">c</span><span class="o">.</span><span class="n">imag</span><span class="si">:</span><span class="s2">+.4f</span><span class="si">}</span><span class="s2">j)·|</span><span class="si">{</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&gt;&quot;</span><span class="p">)</span>
+        <span class="n">combo</span> <span class="o">=</span> <span class="s2">&quot;  +  &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">terms</span><span class="p">)</span> <span class="k">if</span> <span class="n">terms</span> <span class="k">else</span> <span class="s2">&quot;0&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&gt; = </span><span class="si">{</span><span class="n">combo</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># simple function for printing real part of complex matrix</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">complex_formatter</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="si">:</span><span class="s2"> .2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="c1">#{x.imag:+.2f}j&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">commutator</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the commutator [A, B] = AB - BA&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">A</span> <span class="o">@</span> <span class="n">B</span> <span class="o">-</span> <span class="n">B</span> <span class="o">@</span> <span class="n">A</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">liouville_rhs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">hbar</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the right-hand side of the Liouville-von Neumann equation: -i/hbar * [H, rho]&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">/</span> <span class="n">hbar</span> <span class="o">*</span> <span class="n">commutator</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">rho</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">rk4_step</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">hbar</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Apply a single RK4 step to evolve the density matrix rho using a time-independent Hamiltonian H.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    - rho: numpy.ndarray, the current density matrix</span>
+<span class="sd">    - H: numpy.ndarray, the time-independent Hamiltonian</span>
+<span class="sd">    - dt: float, time step</span>
+<span class="sd">    - hbar: float, Planck&#39;s reduced constant (default = 1.0)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    - rho_next: numpy.ndarray, the updated density matrix after one time step</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">liouville_rhs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">hbar</span><span class="p">)</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">liouville_rhs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">rho</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">k1</span><span class="p">,</span> <span class="n">hbar</span><span class="p">)</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">liouville_rhs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">rho</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">k2</span><span class="p">,</span> <span class="n">hbar</span><span class="p">)</span>
+    <span class="n">k4</span> <span class="o">=</span> <span class="n">liouville_rhs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">rho</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">k3</span><span class="p">,</span> <span class="n">hbar</span><span class="p">)</span>
+
+    <span class="n">rho_next</span> <span class="o">=</span> <span class="n">rho</span> <span class="o">+</span> <span class="p">(</span><span class="n">dt</span> <span class="o">/</span> <span class="mf">6.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">k2</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">k3</span> <span class="o">+</span> <span class="n">k4</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">rho_next</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-1-defining-the-hamiltonian">
+<h1>🧩 Step 1: Defining the Hamiltonian<a class="headerlink" href="#step-1-defining-the-hamiltonian" title="Link to this heading">#</a></h1>
+<section id="learning-outcomes">
+<h2>🎯 Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Link to this heading">#</a></h2>
+<p>By the end of this step, you should be able to:</p>
+<ul class="simple">
+<li><p>Explain the terms in the Hamiltonian for two qubits (two independent two-level systems) coupled to a cavity (Tavis–Cummings model).</p></li>
+<li><p>Explain how cavity-mediated coupling enables excitation transfer between two qubits</p></li>
+<li><p>Represent the Hamiltonian in a tensor product basis between uncoupled qubit and cavity states</p></li>
+<li><p>Understand how coupling two qubits to a cavity can facilitate the generation of entangled states known as Bell states</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="representing-the-states-of-our-system">
+<h2>🧮 Representing the states of our system<a class="headerlink" href="#representing-the-states-of-our-system" title="Link to this heading">#</a></h2>
+<p>We will represent the states of our system in a basis of uncoupled qubit and photon occupation states.</p>
+<p>The basis states for the qubit are as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|g\rangle = 
+\begin{bmatrix}
+1 \\
+0
+\end{bmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|e\rangle =
+\begin{bmatrix}
+0 \\
+1
+\end{bmatrix},
+\end{split}\]</div>
+<p>and similarly for the cavity,
+$<span class="math notranslate nohighlight">\(
+|0\rangle = 
+\begin{bmatrix}
+1 \\
+0
+\end{bmatrix}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+|1\rangle = 
+\begin{bmatrix}
+0 \\
+1
+\end{bmatrix},
+\)</span><span class="math notranslate nohighlight">\(
+where we truncate caity states at \)</span>|1\rangle$.
+The <strong>uncoupled basis</strong> for the cavity and two qubits can be represented as:</p>
+<p>\begin{align}
+|0\rangle \otimes |g\rangle \otimes |g\rangle, \
+|0\rangle \otimes |g\rangle \otimes |e\rangle, \
+|0\rangle \otimes |e\rangle \otimes |g\rangle, \
+|0\rangle \otimes |e\rangle \otimes |e\rangle, \
+|1\rangle \otimes |g\rangle \otimes |g\rangle, \
+|1\rangle \otimes |g\rangle \otimes |e\rangle, \
+|1\rangle \otimes |e\rangle \otimes |g\rangle, \
+|1\rangle \otimes |e\rangle \otimes |e\rangle.
+\end{align}</p>
+<hr class="docutils" />
+<p>Next we will introduce the Tavis-Cummings model that includes an interaction between each qubit and the cavity.</p>
+</section>
+<section id="the-taviscummings-hamiltonian">
+<h2>🔬 The Tavis–Cummings Hamiltonian<a class="headerlink" href="#the-taviscummings-hamiltonian" title="Link to this heading">#</a></h2>
+<p>For two-level systems  coupled to an <span class="math notranslate nohighlight">\(N\)</span>-level cavity:</p>
+<div class="math notranslate nohighlight">
+\[
+H = \sum_i -\frac{\hbar \omega_i}{2} \sigma_{z,i} + \hbar \omega a^\dagger a 
+   + \sum_i \hbar g_i ( a \sigma_{+,i} + a^\dagger \sigma_{-,i} )
+\]</div>
+<hr class="docutils" />
+<section id="term-1-bare-qubit-hamiltonian">
+<h3>⚡ Term 1: Bare qubit Hamiltonian<a class="headerlink" href="#term-1-bare-qubit-hamiltonian" title="Link to this heading">#</a></h3>
+<p>Each two-level system (qubit) has an energy splitting described by:</p>
+<div class="math notranslate nohighlight">
+\[
+H_{\text{qubit},i} = -\frac{\hbar \omega_i}{2} \, \sigma_{z,i}
+\]</div>
+<p>with Pauli matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\sigma_z =
+\begin{bmatrix}
+1 &amp; 0 \\
+0 &amp; -1
+\end{bmatrix}
+\end{split}\]</div>
+<p>So for one qubit:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+H_{\text{qubit}} =
+\begin{bmatrix}
+-\frac{\hbar}{\omega} &amp; 0 \\
+0 &amp; \frac{\hbar}{\omega}
+\end{bmatrix}
+\end{split}\]</div>
+</section>
+<hr class="docutils" />
+<section id="term-2-bare-cavity-hamiltonian">
+<h3>📡 Term 2: Bare cavity Hamiltonian<a class="headerlink" href="#term-2-bare-cavity-hamiltonian" title="Link to this heading">#</a></h3>
+<p>The free Hamiltonian of the cavity mode is:</p>
+<div class="math notranslate nohighlight">
+\[
+H_{\text{cavity}} = \hbar \omega \, a^\dagger a
+\]</div>
+<p>If we truncate the Fock space to <span class="math notranslate nohighlight">\(|0\rangle, |1\rangle\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+a^\dagger a =
+\begin{bmatrix}
+0 &amp; 0 \\
+0 &amp; 1
+\end{bmatrix}
+\end{split}\]</div>
+<p>So:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+H_{\text{cavity}} =
+\begin{bmatrix}
+0 &amp; 0 \\
+0 &amp; \hbar \omega
+\end{bmatrix}
+\end{split}\]</div>
+</section>
+<hr class="docutils" />
+<section id="term-3-interaction-hamiltonian">
+<h3>🔄 Term 3: Interaction Hamiltonian<a class="headerlink" href="#term-3-interaction-hamiltonian" title="Link to this heading">#</a></h3>
+<p>The interaction term couples the cavity photons to the qubits through the exchange of an excitation.</p>
+<div class="math notranslate nohighlight">
+\[
+H_{\text{int}} = \hbar g \, \left( a \, \sigma_{+} + a^\dagger \, \sigma_{-} \right)
+\]</div>
+<p>where we can interpret the operator <span class="math notranslate nohighlight">\(\sigma_{+}\)</span> as an operator that takes the qubit from the ground to excited state, <span class="math notranslate nohighlight">\(\sigma_{-}\)</span> takes the qubit from the excited to ground state, <span class="math notranslate nohighlight">\(a^\dagger\)</span> takes excites the cavity by one, and <span class="math notranslate nohighlight">\(a\)</span> de-excites the cavity by one.  The matrix form of these operators follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\sigma_- =
+\begin{bmatrix}
+0 &amp; 1 \\
+0 &amp; 0
+\end{bmatrix}, \qquad
+\sigma_+ =
+\begin{bmatrix}
+0 &amp; 0 \\
+1 &amp; 0
+\end{bmatrix}
+\end{split}\]</div>
+<p>and the cavity ladder operators truncated to <span class="math notranslate nohighlight">\( |0\rangle, |1\rangle \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+a =
+\begin{bmatrix}
+0 &amp; 1 \\
+0 &amp; 0
+\end{bmatrix}, \qquad
+a^\dagger =
+\begin{bmatrix}
+0 &amp; 0 \\
+1 &amp; 0
+\end{bmatrix}
+\end{split}\]</div>
+<p>So the coupling block looks like:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\hbar g (a \sigma_+ + a^\dagger \sigma_-) \quad \longrightarrow \quad
+\begin{bmatrix}
+0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; \hbar g &amp; 0 \\
+0 &amp; \hbar g &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{bmatrix}
+\end{split}\]</div>
+<p>(in the truncated <span class="math notranslate nohighlight">\(|0\rangle \otimes |g\rangle, |0\rangle \otimes |e\rangle, |1\rangle \otimes g\rangle, |1\rangle \otimes e\rangle\)</span> basis).
+Physically, you can think of this interaction as moving excitations between the qubit and the cavity!</p>
+<hr class="docutils" />
+<p>✨ Putting all terms together gives the Tavis–Cummings Hamiltonian in block-matrix form, built from:</p>
+<ul class="simple">
+<li><p><strong>Qubit terms</strong>: diagonal blocks (<span class="math notranslate nohighlight">\(-\hbar \omega/2 \, \sigma_z\)</span>)</p></li>
+<li><p><strong>Cavity term</strong>: photon number operator (<span class="math notranslate nohighlight">\(\hbar \omega a^\dagger a\)</span>)</p></li>
+<li><p><strong>Interaction</strong>: off-diagonal couplings that exchange excitations between the cavity and qubit(s).</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="physical-picture-generating-bell-states-via-cavity-coupling">
+<h2>⚡ Physical Picture: Generating Bell states via cavity coupling<a class="headerlink" href="#physical-picture-generating-bell-states-via-cavity-coupling" title="Link to this heading">#</a></h2>
+<p>We model the following process to evolve an initial factorizable state to a non-factorizable (entangled) Bell state</p>
+<ol class="arabic">
+<li><p><strong>Initial excitation</strong>: At <span class="math notranslate nohighlight">\(t=0\)</span>, molecule 1 is excited and coupled to the cavity,</p>
+<div class="math notranslate nohighlight">
+\[|\Psi(t=0)\rangle = |0\rangle \otimes |e\rangle \otimes |g\rangle\]</div>
+</li>
+<li><p><strong>Excitation transfer</strong>: Over time <span class="math notranslate nohighlight">\(T_1\)</span>, molecule 1 exchanges energy with the cavity,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[|\Psi(t=T_1)\rangle = \left( c_{0e} |0\rangle \otimes |e\rangle + c_{1g} |1\rangle \otimes |g\rangle \right) \otimes |g\rangle \]</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Switch coupling</strong>: At <span class="math notranslate nohighlight">\(T_1\)</span>, molecule 1 decouples and molecule 2 couples.</p></li>
+<li><p><strong>Final exchange</strong>: By <span class="math notranslate nohighlight">\(T_2\)</span>, molecule 2 has exchanged energy with the cavity.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[|\Psi(t=T_2)\rangle = |0\rangle \otimes \left( c_{eg} |e\rangle \otimes |g\rangle + c_{ge} |g\rangle \otimes |e\rangle \right)\]</div>
+<p>If <span class="math notranslate nohighlight">\(T_1\)</span> and <span class="math notranslate nohighlight">\(T_2\)</span> are designed properly, the qubits end in a <strong>Bell state</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+|\Psi(t_f)\rangle = \sqrt{\tfrac{1}{2}} \left( |g\rangle \otimes |e\rangle \;-\; |e\rangle \otimes |g\rangle \right)
+\]</div>
+<hr class="docutils" />
+<p>💡 <strong>Note:</strong><br />
+We can gain intuition from <strong>polaritonic structure calculations</strong> (e.g., QED-CI).<br />
+It’s natural to represent molecule–cavity systems in the <strong>polariton basis</strong>, then add vibronic coupling on top.</p>
+<p>In this notebook, we’ll:</p>
+<ul class="simple">
+<li><p>Attempt an iSWAP implementation <em>without vibronic states</em>.</p></li>
+<li><p>Perform the simulation in both the <strong>polariton basis</strong> and the <strong>uncoupled basis</strong>.</p></li>
+<li><p>Show that they can yield the same results.</p></li>
+<li><p>Use only <code class="docutils literal notranslate"><span class="pre">numpy</span></code> (but you should compare to a <code class="docutils literal notranslate"><span class="pre">qutip</span></code> implementation).</p></li>
+</ul>
+<hr class="docutils" />
+<section id="checkpoint-question">
+<h3>❓ Checkpoint Question<a class="headerlink" href="#checkpoint-question" title="Link to this heading">#</a></h3>
+<p>What does truncating the cavity photon states at (|1\rangle) mean physically?</p>
+<ul class="simple">
+<li><p>Why is this a reasonable approximation for an iSWAP implementation?</p></li>
+</ul>
+<p>⬜ <em>Your answer:</em><br />
+…</p>
+<details>
+<summary><strong>Hint</strong> (click to expand)</summary>
+Think about energy conservation: in this model, you only ever need at most **one excitation** in the combined molecule–cavity system.
+</details>
+</section>
+</section>
+<section id="step-2-building-the-basis-states">
+<h2>🧮 Step 2: Building the Basis States<a class="headerlink" href="#step-2-building-the-basis-states" title="Link to this heading">#</a></h2>
+<p>Now we’ll explicitly construct the <strong>uncoupled basis states</strong> by taking tensor products of the cavity states (|0\rangle, |1\rangle) and the molecular states (|g\rangle, |e\rangle).</p>
+<p>🎯 Learning outcomes:</p>
+<ul class="simple">
+<li><p>Represent cavity and molecular states as column vectors.</p></li>
+<li><p>Use tensor products (<code class="docutils literal notranslate"><span class="pre">np.kron</span></code>) to build composite states.</p></li>
+<li><p>Confirm the basis matches the order written in the previous section.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.linalg</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">la</span>
+
+<span class="c1"># --- Basis vectors for individual subsystems ---</span>
+<span class="n">z_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">]])</span>  <span class="c1"># |0&gt; cavity state</span>
+<span class="n">o_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]])</span>  <span class="c1"># |1&gt; cavity state</span>
+
+<span class="n">g_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">]])</span>  <span class="c1"># |g&gt; ground state of a molecule</span>
+<span class="n">e_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]])</span>  <span class="c1"># |e&gt; excited state of a molecule</span>
+
+<span class="c1"># --- Tensor products to build composite states ---</span>
+<span class="n">zgg_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">z_ket</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">g_ket</span><span class="p">,</span> <span class="n">g_ket</span><span class="p">))</span>  <span class="c1"># |0&gt; ⊗ |g&gt; ⊗ |g&gt;</span>
+<span class="n">zge_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">z_ket</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">g_ket</span><span class="p">,</span> <span class="n">e_ket</span><span class="p">))</span>  <span class="c1"># |0&gt; ⊗ |g&gt; ⊗ |e&gt;</span>
+<span class="n">zeg_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">z_ket</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">e_ket</span><span class="p">,</span> <span class="n">g_ket</span><span class="p">))</span>  <span class="c1"># |0&gt; ⊗ |e&gt; ⊗ |g&gt;</span>
+<span class="n">zee_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">z_ket</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">e_ket</span><span class="p">,</span> <span class="n">e_ket</span><span class="p">))</span>  <span class="c1"># |0&gt; ⊗ |e&gt; ⊗ |e&gt;</span>
+
+<span class="n">ogg_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">o_ket</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">g_ket</span><span class="p">,</span> <span class="n">g_ket</span><span class="p">))</span>  <span class="c1"># |1&gt; ⊗ |g&gt; ⊗ |g&gt;</span>
+<span class="n">oge_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">o_ket</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">g_ket</span><span class="p">,</span> <span class="n">e_ket</span><span class="p">))</span>  <span class="c1"># |1&gt; ⊗ |g&gt; ⊗ |e&gt;</span>
+<span class="n">oeg_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">o_ket</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">e_ket</span><span class="p">,</span> <span class="n">g_ket</span><span class="p">))</span>  <span class="c1"># |1&gt; ⊗ |e&gt; ⊗ |g&gt;</span>
+<span class="n">oee_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">o_ket</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">e_ket</span><span class="p">,</span> <span class="n">e_ket</span><span class="p">))</span>  <span class="c1"># |1&gt; ⊗ |e&gt; ⊗ |e&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-constructing-the-hamiltonian">
+<h2>Step 2: Constructing the Hamiltonian<a class="headerlink" href="#step-2-constructing-the-hamiltonian" title="Link to this heading">#</a></h2>
+<p>We’ll now set up the Hamiltonian matrix in Python for the 2-level atom and 2-level cavity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the Hamiltonian parameters</span>
+<span class="n">omega_0</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># Atomic frequency (in arbitrary units)</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="mf">1.0</span>    <span class="c1"># Cavity frequency (in arbitrary units)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">0.1</span>        <span class="c1"># Coupling strength (in arbitrary units)</span>
+<span class="n">hbar</span> <span class="o">=</span> <span class="mf">1.0</span>     <span class="c1"># Reduced Planck&#39;s constant (set to 1 for simplicity)</span>
+
+<span class="c1"># Gate times</span>
+<span class="n">T1_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">g</span><span class="p">)</span>
+<span class="n">T2_time</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">g</span><span class="p">)</span>
+
+
+<span class="c1"># Define the Pauli matrices for the atom Hilbert space (N = 2)</span>
+<span class="n">sigma_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">sigma_minus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>  <span class="c1"># this is defined such that sigma_minus |e&gt; = |g&gt;</span>
+<span class="n">sigma_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>   <span class="c1"># this is defined such that sigma_plus |g&gt; = |e&gt;</span>
+
+<span class="c1"># Define the creation and annihilation operators for the cavity Hilber space (N=2)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>                <span class="c1"># annihilation operator, defined such that a |1&gt; = |0&gt;</span>
+<span class="n">a_dagger</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>         <span class="c1"># creation operator, defined such that a_dagger |0&gt; = |1&gt;</span>
+
+<span class="c1"># create identities for each Hilbert space</span>
+<span class="n">Icav</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">Iq</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># create operators in tripartitie space</span>
+<span class="n">sz1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span> <span class="n">Icav</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">sigma_z</span><span class="p">,</span> <span class="n">Iq</span><span class="p">))</span>
+<span class="n">sp1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span> <span class="n">Icav</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">sigma_plus</span><span class="p">,</span> <span class="n">Iq</span><span class="p">))</span>
+<span class="n">sm1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span> <span class="n">Icav</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">sigma_minus</span><span class="p">,</span> <span class="n">Iq</span><span class="p">))</span>
+
+<span class="n">sz2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span> <span class="n">Icav</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Iq</span><span class="p">,</span> <span class="n">sigma_z</span><span class="p">))</span>
+<span class="n">sp2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span> <span class="n">Icav</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Iq</span><span class="p">,</span> <span class="n">sigma_plus</span><span class="p">))</span>
+<span class="n">sm2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span> <span class="n">Icav</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Iq</span><span class="p">,</span> <span class="n">sigma_minus</span><span class="p">))</span>
+
+<span class="n">am</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span> <span class="n">a</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Iq</span><span class="p">,</span> <span class="n">Iq</span><span class="p">))</span>
+<span class="n">ap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span> <span class="n">a_dagger</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Iq</span><span class="p">,</span> <span class="n">Iq</span><span class="p">))</span>
+
+<span class="c1"># build Hamiltonian for coupling molecule 1 to the cavity in the composite space</span>
+<span class="n">H1</span> <span class="o">=</span>  <span class="o">-</span><span class="n">hbar</span> <span class="o">*</span> <span class="n">omega_0</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sz1</span> 
+<span class="n">H1</span> <span class="o">-=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">omega_0</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sz2</span>
+<span class="n">H1</span> <span class="o">+=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">ap</span> <span class="o">@</span> <span class="n">am</span>
+<span class="n">H1</span> <span class="o">+=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">am</span> <span class="o">@</span> <span class="n">sp1</span>
+<span class="n">H1</span> <span class="o">+=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">ap</span> <span class="o">@</span> <span class="n">sm1</span>
+
+<span class="c1"># build the Hamiltonian for coupling molecule 2 to the cavity in the composite space</span>
+<span class="n">H2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">H1</span><span class="p">)</span>
+<span class="n">H</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">H1</span><span class="p">)</span>
+<span class="n">H2</span> <span class="o">+=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">am</span> <span class="o">@</span> <span class="n">sp2</span>
+<span class="n">H2</span> <span class="o">+=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">ap</span> <span class="o">@</span> <span class="n">sm2</span>
+<span class="n">H2</span> <span class="o">-=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">am</span> <span class="o">@</span> <span class="n">sp1</span>
+<span class="n">H2</span> <span class="o">-=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">ap</span> <span class="o">@</span> <span class="n">sm1</span>
+
+<span class="c1"># This hamiltonian captures coupling of molecule 1 and molecule 2 to the cavity; not currently used</span>
+<span class="c1"># but maybe it will come in handy later</span>
+<span class="n">H</span> <span class="o">+=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">am</span> <span class="o">@</span> <span class="n">sp2</span>
+<span class="n">H</span> <span class="o">+=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">ap</span> <span class="o">@</span> <span class="n">sm2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">sigma_plus</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">sigma_minus</span><span class="p">,</span> <span class="n">a_dagger</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 0, 0, 0],
+       [0, 0, 1, 0],
+       [0, 0, 0, 0],
+       [0, 0, 0, 0]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute eigenvalues and eigenvectors of the Hamiltonian</span>
+<span class="n">eigenvalues_1</span><span class="p">,</span> <span class="n">polariton_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">H1</span><span class="p">)</span>
+<span class="n">eigenvalues_2</span><span class="p">,</span> <span class="n">polariton_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">H2</span><span class="p">)</span>
+
+
+
+<span class="c1"># Express H1 and H2 in the basis that diagonalizes H1</span>
+<span class="n">H_pol1</span> <span class="o">=</span> <span class="n">polariton_1</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">H1</span> <span class="o">@</span> <span class="n">polariton_1</span>
+<span class="n">H_pol2</span> <span class="o">=</span> <span class="n">polariton_1</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">H2</span> <span class="o">@</span> <span class="n">polariton_1</span> <span class="c1"># This is not a typoe, I want to do everything in the basis that diagonalizes H1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># You can run this to see what the eigenstates of H1 look like in terms of basis states!</span>
+<span class="n">basis_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;zgg&#39;</span><span class="p">,</span> <span class="s1">&#39;zge&#39;</span><span class="p">,</span> <span class="s1">&#39;zeg&#39;</span><span class="p">,</span> <span class="s1">&#39;zee&#39;</span><span class="p">,</span> <span class="s1">&#39;ogg&#39;</span><span class="p">,</span> <span class="s1">&#39;oge&#39;</span><span class="p">,</span> <span class="s1">&#39;oeg&#39;</span><span class="p">,</span> <span class="s1">&#39;oee&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">vec</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">eigenvalues_1</span><span class="p">,</span> <span class="n">polariton_1</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Eigenstate #</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">:  E = </span><span class="si">{</span><span class="n">E</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">amp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">basis_names</span><span class="p">,</span> <span class="n">vec</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   ⟨</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">|ψ_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">⟩ = </span><span class="si">{</span><span class="n">amp</span><span class="si">:</span><span class="s2">+.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Eigenstate #1:  E = -1.000000
+   ⟨zgg|ψ_1⟩ = +1.0000
+   ⟨zge|ψ_1⟩ = +0.0000
+   ⟨zeg|ψ_1⟩ = +0.0000
+   ⟨zee|ψ_1⟩ = +0.0000
+   ⟨ogg|ψ_1⟩ = +0.0000
+   ⟨oge|ψ_1⟩ = +0.0000
+   ⟨oeg|ψ_1⟩ = +0.0000
+   ⟨oee|ψ_1⟩ = +0.0000
+
+Eigenstate #2:  E = -0.100000
+   ⟨zgg|ψ_2⟩ = -0.0000
+   ⟨zge|ψ_2⟩ = -0.0000
+   ⟨zeg|ψ_2⟩ = -0.7071
+   ⟨zee|ψ_2⟩ = +0.0000
+   ⟨ogg|ψ_2⟩ = +0.7071
+   ⟨oge|ψ_2⟩ = -0.0000
+   ⟨oeg|ψ_2⟩ = -0.0000
+   ⟨oee|ψ_2⟩ = -0.0000
+
+Eigenstate #3:  E = 0.000000
+   ⟨zgg|ψ_3⟩ = +0.0000
+   ⟨zge|ψ_3⟩ = +1.0000
+   ⟨zeg|ψ_3⟩ = +0.0000
+   ⟨zee|ψ_3⟩ = +0.0000
+   ⟨ogg|ψ_3⟩ = +0.0000
+   ⟨oge|ψ_3⟩ = +0.0000
+   ⟨oeg|ψ_3⟩ = +0.0000
+   ⟨oee|ψ_3⟩ = +0.0000
+
+Eigenstate #4:  E = 0.100000
+   ⟨zgg|ψ_4⟩ = +0.0000
+   ⟨zge|ψ_4⟩ = +0.0000
+   ⟨zeg|ψ_4⟩ = -0.7071
+   ⟨zee|ψ_4⟩ = +0.0000
+   ⟨ogg|ψ_4⟩ = -0.7071
+   ⟨oge|ψ_4⟩ = +0.0000
+   ⟨oeg|ψ_4⟩ = +0.0000
+   ⟨oee|ψ_4⟩ = +0.0000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># you can run this to show how the uncoupled basis states are expressed in terms of polariton1 basis states</span>
+<span class="n">basis_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;zgg&#39;</span><span class="p">,</span> <span class="s1">&#39;zge&#39;</span><span class="p">,</span> <span class="s1">&#39;zeg&#39;</span><span class="p">,</span> <span class="s1">&#39;zee&#39;</span><span class="p">,</span> <span class="s1">&#39;ogg&#39;</span><span class="p">,</span> <span class="s1">&#39;oge&#39;</span><span class="p">,</span> <span class="s1">&#39;oeg&#39;</span><span class="p">,</span> <span class="s1">&#39;oee&#39;</span><span class="p">]</span>
+
+<span class="c1"># Print each original basis state in the eigenbasis:</span>
+<span class="n">represent_basis_in_eigen</span><span class="p">(</span><span class="n">basis_names</span><span class="p">,</span> <span class="n">polariton_1</span><span class="p">,</span> <span class="n">energies</span><span class="o">=</span><span class="n">eigenvalues_1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|zgg&gt; = +1.0000·|ψ_1 (E=-1.0000)&gt;
+
+|zge&gt; = +1.0000·|ψ_3 (E=0.0000)&gt;
+
+|zeg&gt; = -0.7071·|ψ_2 (E=-0.1000)&gt;  +  -0.7071·|ψ_4 (E=0.1000)&gt;
+
+|zee&gt; = +0.7071·|ψ_5 (E=0.9000)&gt;  +  +0.7071·|ψ_7 (E=1.1000)&gt;
+
+|ogg&gt; = +0.7071·|ψ_2 (E=-0.1000)&gt;  +  -0.7071·|ψ_4 (E=0.1000)&gt;
+
+|oge&gt; = -0.7071·|ψ_5 (E=0.9000)&gt;  +  +0.7071·|ψ_7 (E=1.1000)&gt;
+
+|oeg&gt; = +1.0000·|ψ_6 (E=1.0000)&gt;
+
+|oee&gt; = +1.0000·|ψ_8 (E=2.0000)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>This cell creates the initial state <span class="math notranslate nohighlight">\(|0\rangle \otimes |e\rangle \otimes |g\rangle \)</span> in the uncoupled
+basis and in terms of the polariton states.</p>
+<p>In the uncoupled basis, the initial density matrix can be computed as</p>
+<div class="math notranslate nohighlight">
+\[ |0\rangle \otimes |e\rangle \otimes |g\rangle  \langle g | \otimes \langle e | \otimes \langle 0 | \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the density matrix representation of this state</span>
+<span class="n">rho_zeg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">zeg_ket</span><span class="p">,</span> <span class="n">zeg_ket</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following block will do the following in the uncoupled basis:</p>
+<ol class="arabic simple">
+<li><p>Solve the Liouville equation using <span class="math notranslate nohighlight">\(H_1\)</span> until time <span class="math notranslate nohighlight">\(T_1\)</span></p></li>
+<li><p>Solve the Liouville equation using <span class="math notranslate nohighlight">\(H_2\)</span> until time <span class="math notranslate nohighlight">\(T_2\)</span></p></li>
+<li><p>At each time step, we will get the diagonals of the density matrix which represent the population in a
+given basis state at each point in time.</p></li>
+</ol>
+<p><strong>Question</strong> Explain in a few sentences what physical situation this is simulating.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># number of time steps</span>
+<span class="n">n_time</span> <span class="o">=</span> <span class="mi">400</span>
+
+<span class="c1"># make copies of initial density matrices</span>
+<span class="c1">### in uncoupled basis</span>
+<span class="n">rho_init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">rho_zeg</span><span class="p">)</span>
+
+
+<span class="c1"># define timestep</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">n_time_1</span> <span class="o">=</span> <span class="n">T1_time</span> <span class="o">/</span> <span class="n">dt</span>  <span class="c1"># number of time steps for the first gate</span>
+<span class="n">n_time_2</span> <span class="o">=</span> <span class="n">T2_time</span> <span class="o">/</span> <span class="n">dt</span>  <span class="c1"># number of time steps for the second gate</span>
+
+
+<span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># array to store the populations at each time-step</span>
+<span class="n">pops_uncoupled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_time</span><span class="p">,</span><span class="n">rho_init</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_time</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n_time_1</span><span class="p">:</span>
+        <span class="c1"># evolve in uncoupled basis by H1</span>
+        <span class="n">rho_new</span> <span class="o">=</span> <span class="n">rk4_step</span><span class="p">(</span><span class="n">rho_init</span><span class="p">,</span> <span class="n">H1</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">hbar</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">n_time_1</span> <span class="o">+</span> <span class="n">n_time_2</span><span class="p">):</span>
+        <span class="c1"># evolve in uncoupled basis by H2</span>
+        <span class="n">rho_new</span> <span class="o">=</span> <span class="n">rk4_step</span><span class="p">(</span><span class="n">rho_init</span><span class="p">,</span> <span class="n">H2</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">hbar</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+    <span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rho_init</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="c1"># store all populations</span>
+        <span class="n">pops_uncoupled</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">rho_new</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">k</span><span class="p">])</span>
+
+
+    <span class="c1"># copy updated rhos in each basis to the rho_init and rho_pol_init for next step</span>
+    <span class="n">rho_init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">rho_new</span><span class="p">)</span>
+
+
+    
+        
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pops_uncoupled</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$p_</span><span class="si">{22}</span><span class="s2">$ uncoupled&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pops_uncoupled</span><span class="p">[:,</span><span class="mi">4</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$p_</span><span class="si">{44}</span><span class="s2">$ uncoupled&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pops_uncoupled</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$p_</span><span class="si">{11}</span><span class="s2">$ uncoupled&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="c1">#plt.xlim(10,20)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ec5833bc5c067dea4751c54782df55972db4a52469779e4d5e84c05314a68552.png" src="../../_images/ec5833bc5c067dea4751c54782df55972db4a52469779e4d5e84c05314a68552.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array2string</span><span class="p">(</span><span class="n">rho_new</span><span class="p">,</span> <span class="n">formatter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;all&#39;</span><span class="p">:</span> <span class="n">complex_formatter</span><span class="p">}))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00  0.50 -0.50  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00 -0.50  0.50  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s see how this compares to the target Bell state</p>
+<div class="math notranslate nohighlight">
+\[ |\Psi\rangle = \sqrt{\frac{1}{2}} \left(|g\rangle \otimes |e\rangle - |e\rangle \otimes |g \rangle  \right) \]</div>
+<p>if we assume that the cavity is in the ground state for each term, i.e.</p>
+<div class="math notranslate nohighlight">
+\[ |\Psi\rangle = \sqrt{\frac{1}{2}} \left(  |0\rangle \otimes |g\rangle \otimes |e\rangle  - |0\rangle \otimes |e\rangle \otimes |g \rangle  \right) \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">zge_ket</span> <span class="o">-</span> <span class="n">zeg_ket</span><span class="p">)</span>
+<span class="n">target_rho</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">target_ket</span><span class="p">,</span> <span class="n">target_ket</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Target density matrix:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array2string</span><span class="p">(</span><span class="n">target_rho</span><span class="p">,</span> <span class="n">formatter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;all&#39;</span><span class="p">:</span> <span class="n">complex_formatter</span><span class="p">}))</span>
+
+<span class="n">fidelity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">la</span><span class="o">.</span><span class="n">sqrtm</span><span class="p">(</span><span class="n">la</span><span class="o">.</span><span class="n">sqrtm</span><span class="p">(</span><span class="n">target_rho</span><span class="p">)</span> <span class="o">@</span> <span class="n">rho_new</span> <span class="o">@</span> <span class="n">la</span><span class="o">.</span><span class="n">sqrtm</span><span class="p">(</span><span class="n">target_rho</span><span class="p">))))</span><span class="o">**</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Fidelity with target Bell state: </span><span class="si">{</span><span class="n">fidelity</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Target density matrix:
+[[ 0.00  0.00 -0.00  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00  0.50 -0.50  0.00  0.00  0.00  0.00  0.00]
+ [-0.00 -0.50  0.50 -0.00 -0.00 -0.00 -0.00 -0.00]
+ [ 0.00  0.00 -0.00  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00  0.00 -0.00  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00  0.00 -0.00  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00  0.00 -0.00  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00  0.00 -0.00  0.00  0.00  0.00  0.00  0.00]]
+
+Fidelity with target Bell state: 0.999979
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/computational_sets"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Liouville Equation Solver</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-defining-the-hamiltonian">🧩 Step 1: Defining the Hamiltonian</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">🎯 Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representing-the-states-of-our-system">🧮 Representing the states of our system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-taviscummings-hamiltonian">🔬 The Tavis–Cummings Hamiltonian</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#term-1-bare-qubit-hamiltonian">⚡ Term 1: Bare qubit Hamiltonian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#term-2-bare-cavity-hamiltonian">📡 Term 2: Bare cavity Hamiltonian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#term-3-interaction-hamiltonian">🔄 Term 3: Interaction Hamiltonian</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-picture-generating-bell-states-via-cavity-coupling">⚡ Physical Picture: Generating Bell states via cavity coupling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checkpoint-question">❓ Checkpoint Question</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-building-the-basis-states">🧮 Step 2: Building the Basis States</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-constructing-the-hamiltonian">Step 2: Constructing the Hamiltonian</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jay Foley
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
