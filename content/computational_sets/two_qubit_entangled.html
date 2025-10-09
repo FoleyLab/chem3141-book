@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Liouville Equation Solver &#8212; My sample book</title>
+    <title>Computational Set 2: Entangling Operations through strong light-matter coupling &#8212; My sample book</title>
   
   
   
@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/computational_sets/two_qubit_entangled';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Useful Formulae" href="../resources/formula_sheet.html" />
+    <link rel="prev" title="Computational Set 1: Introduction to Spin 1/2" href="Spin_one_half.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +125,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -194,6 +194,9 @@
 
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/vibration.html">Chapter 4: Vibrational Motion</a></li>
 
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/hydrogen.html">Chapter 6: The Hydrogen Atom</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/variation.html">Chapter 7: The Variation Theorem</a></li>
@@ -206,10 +209,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_2.html">Problem Set 2</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="note05.html">Additional Notes on Spin</a></li>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
 
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Computational Set 2: Entangling Operations through strong light-matter coupling</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
@@ -436,7 +440,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Liouville Equation Solver</h1>
+    <h1>Computational Set 2: Entangling Operations through strong light-matter coupling</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -446,7 +450,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Liouville Equation Solver</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Computational Set 2: Entangling Operations through strong light-matter coupling</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#liouville-equation-solver">Liouville Equation Solver</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-defining-the-hamiltonian">🧩 Step 1: Defining the Hamiltonian</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">🎯 Learning Outcomes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representing-the-states-of-our-system">🧮 Representing the states of our system</a></li>
@@ -456,12 +463,31 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#term-3-interaction-hamiltonian">🔄 Term 3: Interaction Hamiltonian</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-picture-generating-bell-states-via-cavity-coupling">⚡ Physical Picture: Generating Bell states via cavity coupling</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checkpoint-question">❓ Checkpoint Question</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-picture-generating-bell-states-via-cavity-coupling">⚡ Physical Picture: Generating Bell states via cavity coupling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-building-the-basis-states">🧮 Step 2: Building the Basis States</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-constructing-the-hamiltonian">Step 2: Constructing the Hamiltonian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-hamiltonian-in-the-composite-hilbert-space">🧱 Building the Hamiltonian in the Composite Hilbert Space</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-identities-for-each-subspace">⚙️ Step 1: Identities for Each Subspace</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-tensor-product-construction-of-operators">🧩 Step 2: Tensor-Product Construction of Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-hamiltonian-terms">⚡ Step 3: Hamiltonian Terms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-two-coupling-configurations">🔁 Step 4: Two Coupling Configurations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-defining-the-initial-state">🌱 Step: Defining the Initial State</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-uncoupled-basis">🧮 In the Uncoupled Basis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-picture">💡 Physical Picture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-polaritonic-viewpoint">🎓 Extension: Polaritonic Viewpoint</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-time-domain-simulation-sequential-coupling-dynamics">⏱️ Step: Time-Domain Simulation — Sequential Coupling Dynamics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-interpretation">🎓 Physical Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-question">💭 Reflection Question</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-comparing-to-the-target-bell-state">🎯 Step: Comparing to the Target Bell State</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">💭 Reflection Question</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -476,10 +502,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>The next cell defines some helper functions that we can use to run the simulation and (if desired),
+  <section class="tex2jax_ignore mathjax_ignore" id="computational-set-2-entangling-operations-through-strong-light-matter-coupling">
+<h1>Computational Set 2: Entangling Operations through strong light-matter coupling<a class="headerlink" href="#computational-set-2-entangling-operations-through-strong-light-matter-coupling" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://foleylab.github.io/">Jay Foley, University of North Carolina Charlotte</a></p>
+<p>The next cell defines some helper functions that we can use to run the simulation and (if desired),
 print various quantities with nice formating.</p>
 <section id="liouville-equation-solver">
-<h1>Liouville Equation Solver<a class="headerlink" href="#liouville-equation-solver" title="Link to this heading">#</a></h1>
+<h2>Liouville Equation Solver<a class="headerlink" href="#liouville-equation-solver" title="Link to this heading">#</a></h2>
 <p>Similar to <code class="docutils literal notranslate"><span class="pre">qutips</span></code> mesolve, I have implemented a method that solves the Liouville equation of motion for the density matrix using a 4th-order Runge-Kutta algorithm.  The Lioville equation gives how a given quantum state, represented by a density matrix, evoles with time:</p>
 <div class="math notranslate nohighlight">
 \[ i \hbar \frac{\partial}{\partial t} D = [H, D] \]</div>
@@ -591,6 +620,7 @@ print various quantities with nice formating.</p>
 </div>
 </div>
 </section>
+</section>
 <section class="tex2jax_ignore mathjax_ignore" id="step-1-defining-the-hamiltonian">
 <h1>🧩 Step 1: Defining the Hamiltonian<a class="headerlink" href="#step-1-defining-the-hamiltonian" title="Link to this heading">#</a></h1>
 <section id="learning-outcomes">
@@ -606,8 +636,8 @@ print various quantities with nice formating.</p>
 <hr class="docutils" />
 <section id="representing-the-states-of-our-system">
 <h2>🧮 Representing the states of our system<a class="headerlink" href="#representing-the-states-of-our-system" title="Link to this heading">#</a></h2>
-<p>We will represent the states of our system in a basis of uncoupled qubit and photon occupation states.</p>
-<p>The basis states for the qubit are as follows:</p>
+<p>We will represent the states of our system in a basis of uncoupled qubits and photon occupation states.</p>
+<p>The basis states for each individual qubit are as follows:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 |g\rangle = 
@@ -639,7 +669,7 @@ $<span class="math notranslate nohighlight">\(
 1
 \end{bmatrix},
 \)</span><span class="math notranslate nohighlight">\(
-where we truncate caity states at \)</span>|1\rangle$.
+where we truncate caivty states at \)</span>|1\rangle$.
 The <strong>uncoupled basis</strong> for the cavity and two qubits can be represented as:</p>
 <p>\begin{align}
 |0\rangle \otimes |g\rangle \otimes |g\rangle, \
@@ -656,7 +686,7 @@ The <strong>uncoupled basis</strong> for the cavity and two qubits can be repres
 </section>
 <section id="the-taviscummings-hamiltonian">
 <h2>🔬 The Tavis–Cummings Hamiltonian<a class="headerlink" href="#the-taviscummings-hamiltonian" title="Link to this heading">#</a></h2>
-<p>For two-level systems  coupled to an <span class="math notranslate nohighlight">\(N\)</span>-level cavity:</p>
+<p>For two (or more) qubits  coupled to an <span class="math notranslate nohighlight">\(N\)</span>-level cavity:</p>
 <div class="math notranslate nohighlight">
 \[
 H = \sum_i -\frac{\hbar \omega_i}{2} \sigma_{z,i} + \hbar \omega a^\dagger a 
@@ -684,8 +714,8 @@ H_{\text{qubit},i} = -\frac{\hbar \omega_i}{2} \, \sigma_{z,i}
 \[\begin{split}
 H_{\text{qubit}} =
 \begin{bmatrix}
--\frac{\hbar}{\omega} &amp; 0 \\
-0 &amp; \frac{\hbar}{\omega}
+-\frac{\hbar\omega}{2} &amp; 0 \\
+0 &amp; \frac{\hbar \omega}{2}
 \end{bmatrix}
 \end{split}\]</div>
 </section>
@@ -697,7 +727,7 @@ H_{\text{qubit}} =
 \[
 H_{\text{cavity}} = \hbar \omega \, a^\dagger a
 \]</div>
-<p>If we truncate the Fock space to <span class="math notranslate nohighlight">\(|0\rangle, |1\rangle\)</span>:</p>
+<p>If we truncate the cavity state space to <span class="math notranslate nohighlight">\(|0\rangle, |1\rangle\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 a^\dagger a =
@@ -798,35 +828,11 @@ Physically, you can think of this interaction as moving excitations between the 
 \[
 |\Psi(t_f)\rangle = \sqrt{\tfrac{1}{2}} \left( |g\rangle \otimes |e\rangle \;-\; |e\rangle \otimes |g\rangle \right)
 \]</div>
-<hr class="docutils" />
-<p>💡 <strong>Note:</strong><br />
-We can gain intuition from <strong>polaritonic structure calculations</strong> (e.g., QED-CI).<br />
-It’s natural to represent molecule–cavity systems in the <strong>polariton basis</strong>, then add vibronic coupling on top.</p>
-<p>In this notebook, we’ll:</p>
-<ul class="simple">
-<li><p>Attempt an iSWAP implementation <em>without vibronic states</em>.</p></li>
-<li><p>Perform the simulation in both the <strong>polariton basis</strong> and the <strong>uncoupled basis</strong>.</p></li>
-<li><p>Show that they can yield the same results.</p></li>
-<li><p>Use only <code class="docutils literal notranslate"><span class="pre">numpy</span></code> (but you should compare to a <code class="docutils literal notranslate"><span class="pre">qutip</span></code> implementation).</p></li>
-</ul>
-<hr class="docutils" />
-<section id="checkpoint-question">
-<h3>❓ Checkpoint Question<a class="headerlink" href="#checkpoint-question" title="Link to this heading">#</a></h3>
-<p>What does truncating the cavity photon states at (|1\rangle) mean physically?</p>
-<ul class="simple">
-<li><p>Why is this a reasonable approximation for an iSWAP implementation?</p></li>
-</ul>
-<p>⬜ <em>Your answer:</em><br />
-…</p>
-<details>
-<summary><strong>Hint</strong> (click to expand)</summary>
-Think about energy conservation: in this model, you only ever need at most **one excitation** in the combined molecule–cavity system.
-</details>
 </section>
-</section>
+<hr class="docutils" />
 <section id="step-2-building-the-basis-states">
 <h2>🧮 Step 2: Building the Basis States<a class="headerlink" href="#step-2-building-the-basis-states" title="Link to this heading">#</a></h2>
-<p>Now we’ll explicitly construct the <strong>uncoupled basis states</strong> by taking tensor products of the cavity states (|0\rangle, |1\rangle) and the molecular states (|g\rangle, |e\rangle).</p>
+<p>Now we’ll explicitly construct the <strong>uncoupled basis states</strong> by taking tensor products of the cavity states <span class="math notranslate nohighlight">\(|0\rangle, |1\rangle\)</span> and the qubit states <span class="math notranslate nohighlight">\(|g\rangle, |e\rangle\)</span>.</p>
 <p>🎯 Learning outcomes:</p>
 <ul class="simple">
 <li><p>Represent cavity and molecular states as column vectors.</p></li>
@@ -836,7 +842,7 @@ Think about energy conservation: in this model, you only ever need at most **one
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.linalg</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">la</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy.linalg</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">la</span>
 
 <span class="c1"># --- Basis vectors for individual subsystems ---</span>
 <span class="n">z_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">]])</span>  <span class="c1"># |0&gt; cavity state</span>
@@ -855,17 +861,8 @@ Think about energy conservation: in this model, you only ever need at most **one
 <span class="n">oge_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">o_ket</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">g_ket</span><span class="p">,</span> <span class="n">e_ket</span><span class="p">))</span>  <span class="c1"># |1&gt; ⊗ |g&gt; ⊗ |e&gt;</span>
 <span class="n">oeg_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">o_ket</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">e_ket</span><span class="p">,</span> <span class="n">g_ket</span><span class="p">))</span>  <span class="c1"># |1&gt; ⊗ |e&gt; ⊗ |g&gt;</span>
 <span class="n">oee_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">o_ket</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">e_ket</span><span class="p">,</span> <span class="n">e_ket</span><span class="p">))</span>  <span class="c1"># |1&gt; ⊗ |e&gt; ⊗ |e&gt;</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="step-2-constructing-the-hamiltonian">
-<h2>Step 2: Constructing the Hamiltonian<a class="headerlink" href="#step-2-constructing-the-hamiltonian" title="Link to this heading">#</a></h2>
-<p>We’ll now set up the Hamiltonian matrix in Python for the 2-level atom and 2-level cavity.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the Hamiltonian parameters</span>
+
+<span class="c1"># Define the Hamiltonian parameters</span>
 <span class="n">omega_0</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># Atomic frequency (in arbitrary units)</span>
 <span class="n">omega</span> <span class="o">=</span> <span class="mf">1.0</span>    <span class="c1"># Cavity frequency (in arbitrary units)</span>
 <span class="n">g</span> <span class="o">=</span> <span class="mf">0.1</span>        <span class="c1"># Coupling strength (in arbitrary units)</span>
@@ -874,270 +871,727 @@ Think about energy conservation: in this model, you only ever need at most **one
 <span class="c1"># Gate times</span>
 <span class="n">T1_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">g</span><span class="p">)</span>
 <span class="n">T2_time</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-constructing-the-hamiltonian">
+<h2>Step 2: Constructing the Hamiltonian<a class="headerlink" href="#step-2-constructing-the-hamiltonian" title="Link to this heading">#</a></h2>
+<p>We’ll now set up the Hamiltonian matrix in Python for the 2-level atom and 2-level cavity.</p>
+<p>The definitions of some of the key matrices follow.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\sigma_z =
+\begin{bmatrix}
+1 &amp; 0 \\
+0 &amp; -1
+\end{bmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\sigma_- =
+\begin{bmatrix}
+0 &amp; 1 \\
+0 &amp; 0
+\end{bmatrix}, \qquad
+\sigma_+ =
+\begin{bmatrix}
+0 &amp; 0 \\
+1 &amp; 0
+\end{bmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+a =
+\begin{bmatrix}
+0 &amp; 1 \\
+0 &amp; 0
+\end{bmatrix}, \qquad
+a^\dagger =
+\begin{bmatrix}
+0 &amp; 0 \\
+1 &amp; 0
+\end{bmatrix}
+\end{split}\]</div>
+<p>and with these definitions, we can build numpy arrays corresponding to each of these matrices using the following syntax demonstrated for <span class="math notranslate nohighlight">\(\sigma_z\)</span>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sigma_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 🧩 Step: Define Pauli and ladder operators in matrix form</span>
 
+<span class="c1"># --- Pauli matrices for the two-level system (qubit / molecule) ---</span>
 
-<span class="c1"># Define the Pauli matrices for the atom Hilbert space (N = 2)</span>
+<span class="c1"># ✏️ TODO 1: Define sigma_z using np.array([[1, 0], [0, -1]])</span>
 <span class="n">sigma_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
-<span class="n">sigma_minus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>  <span class="c1"># this is defined such that sigma_minus |e&gt; = |g&gt;</span>
-<span class="n">sigma_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>   <span class="c1"># this is defined such that sigma_plus |g&gt; = |e&gt;</span>
 
-<span class="c1"># Define the creation and annihilation operators for the cavity Hilber space (N=2)</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>                <span class="c1"># annihilation operator, defined such that a |1&gt; = |0&gt;</span>
-<span class="n">a_dagger</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>         <span class="c1"># creation operator, defined such that a_dagger |0&gt; = |1&gt;</span>
+<span class="c1"># ✏️ TODO 2: Define the lowering operator sigma_minus</span>
+<span class="c1"># (Hint: sigma_- = [[0, 1], [0, 0]])</span>
+<span class="n">sigma_minus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
 
-<span class="c1"># create identities for each Hilbert space</span>
+<span class="c1"># ✏️ TODO 3: Define the raising operator sigma_plus</span>
+<span class="c1"># (Hint: sigma_+ = [[0, 0], [1, 0]])</span>
+<span class="n">sigma_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="c1"># --- Ladder operators for the truncated cavity (|0&gt;, |1&gt; basis) ---</span>
+
+<span class="c1"># ✏️ TODO 4: Define the annihilation operator &#39;a&#39;</span>
+<span class="c1"># (Hint: a = [[0, 1], [0, 0]])</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+
+<span class="c1"># ✏️ TODO 5: Define the creation operator &#39;adag&#39;</span>
+<span class="c1"># (Hint: a† = [[0, 0], [1, 0]])</span>
+<span class="n">adag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+
+<span class="c1"># ✅ Quick sanity check</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sigma_z:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sigma_z</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sigma_minus:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sigma_minus</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sigma_plus:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sigma_plus</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;adag:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">adag</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sigma_z:
+ [[ 1  0]
+ [ 0 -1]]
+sigma_minus:
+ [[0 1]
+ [0 0]]
+sigma_plus:
+ [[0 0]
+ [1 0]]
+a:
+ [[0 1]
+ [0 0]]
+adag:
+ [[0 0]
+ [1 0]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 🧪 Step: Verify the properties of your operators</span>
+
+<span class="c1"># --- Pauli operator relationships ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🧭 Checking Pauli operator relationships...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Identity from Pauli matrices</span>
+<span class="n">identity_qubit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># ✏️ TODO 1: Verify that σ₊σ₋ + σ₋σ₊ = I (the identity matrix)</span>
+<span class="n">lhs_pauli</span> <span class="o">=</span> <span class="n">sigma_plus</span> <span class="o">@</span> <span class="n">sigma_minus</span> <span class="o">+</span> <span class="n">sigma_minus</span> <span class="o">@</span> <span class="n">sigma_plus</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;σ₊σ₋ + σ₋σ₊ =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">lhs_pauli</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">lhs_pauli</span><span class="p">,</span> <span class="n">identity_qubit</span><span class="p">),</span> <span class="s2">&quot;❌ Check your sigma_plus/sigma_minus definitions!&quot;</span>
+
+<span class="c1"># ✏️ TODO 2: Compute the commutator [σ₊, σ₋]</span>
+<span class="n">comm_pauli</span> <span class="o">=</span> <span class="n">sigma_plus</span> <span class="o">@</span> <span class="n">sigma_minus</span> <span class="o">-</span> <span class="n">sigma_minus</span> <span class="o">@</span> <span class="n">sigma_plus</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[σ₊, σ₋] =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">comm_pauli</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Expected result: σ_z</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Cavity operator relationships ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;💡 Checking cavity ladder operator relationships...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># ✏️ TODO 3: Verify that a†a is the number operator</span>
+<span class="n">num_op</span> <span class="o">=</span> <span class="n">adag</span> <span class="o">@</span> <span class="n">a</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a†a =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">num_op</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Expected result:</span><span class="se">\n</span><span class="s2">[[0, 0], [0, 1]]</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># ✏️ TODO 4: Compute the commutator [a, a†]</span>
+<span class="n">comm_cavity</span> <span class="o">=</span> <span class="n">a</span> <span class="o">@</span> <span class="n">adag</span> <span class="o">-</span> <span class="n">adag</span> <span class="o">@</span> <span class="n">a</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[a, a†] =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">comm_cavity</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Expected result:</span><span class="se">\n</span><span class="s2">[[1, 0], [0, -1]] (i.e., the Pauli σ_z equivalent for 2-level truncation)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># ✅ If no assertion failed, all is good!</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ All operator checks passed! 🎉&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🧭 Checking Pauli operator relationships...
+
+σ₊σ₋ + σ₋σ₊ =
+ [[1 0]
+ [0 1]]
+
+[σ₊, σ₋] =
+ [[-1  0]
+ [ 0  1]]
+Expected result: σ_z
+
+💡 Checking cavity ladder operator relationships...
+
+a†a =
+ [[0 0]
+ [0 1]]
+Expected result:
+[[0, 0], [0, 1]]
+
+[a, a†] =
+ [[ 1  0]
+ [ 0 -1]]
+Expected result:
+[[1, 0], [0, -1]] (i.e., the Pauli σ_z equivalent for 2-level truncation)
+
+✅ All operator checks passed! 🎉
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="building-the-hamiltonian-in-the-composite-hilbert-space">
+<h2>🧱 Building the Hamiltonian in the Composite Hilbert Space<a class="headerlink" href="#building-the-hamiltonian-in-the-composite-hilbert-space" title="Link to this heading">#</a></h2>
+<p>Now we’ll extend the operators you defined earlier into the <strong>full tripartite Hilbert space</strong>, which is the tensor product of:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{H}_{\text{total}} = 
+\mathcal{H}_{\text{cavity}} \otimes 
+\mathcal{H}_{\text{qubit 1}} \otimes 
+\mathcal{H}_{\text{qubit 2}}
+\]</div>
+<p>Each subsystem is <strong>two-dimensional</strong> (truncated to <span class="math notranslate nohighlight">\(|0\rangle, |1\rangle\)</span> for the cavity and <span class="math notranslate nohighlight">\(|g\rangle, |e\rangle\)</span> for each molecule), so the total dimension is <span class="math notranslate nohighlight">\(2 \times 2 \times 2 = 8\)</span>.</p>
+<ul class="simple">
+<li><p>The <strong>total Hamiltonian</strong>, however, is a <strong>sum of tensor-product–extended operators</strong>, not a tensor product of Hamiltonians:
+$$
+H_{\text{total}} =
+H_{\text{cavity}} \otimes I_1 \otimes I_2</p>
+<ul>
+<li><p>I_{\text{cav}} \otimes H_1 \otimes I_2</p></li>
+<li><p>I_{\text{cav}} \otimes I_1 \otimes H_2</p></li>
+<li><p>H_{\text{int}}
+$$
+Each term acts only on its subsystem but lives in the full composite space.</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<section id="step-1-identities-for-each-subspace">
+<h3>⚙️ Step 1: Identities for Each Subspace<a class="headerlink" href="#step-1-identities-for-each-subspace" title="Link to this heading">#</a></h3>
+<p>We start by defining the <span class="math notranslate nohighlight">\(2\times2\)</span> identity matrices for the cavity and for a generic qubit:
+$<span class="math notranslate nohighlight">\(
+I_{\text{cav}} = I_{\text{q}} = 
+\begin{bmatrix}
+1 &amp; 0 \\
+0 &amp; 1
+\end{bmatrix}
+\)</span>$
+These act as “placeholders” when we want an operator to act on one subsystem but leave the others unchanged.</p>
+</section>
+<hr class="docutils" />
+<section id="step-2-tensor-product-construction-of-operators">
+<h3>🧩 Step 2: Tensor-Product Construction of Operators<a class="headerlink" href="#step-2-tensor-product-construction-of-operators" title="Link to this heading">#</a></h3>
+<p>We build operators for each molecule and for the cavity in the <strong>composite space</strong> using the Kronecker product (<code class="docutils literal notranslate"><span class="pre">np.kron</span></code>):</p>
+<ul class="simple">
+<li><p>For <strong>molecule 1</strong>:
+$<span class="math notranslate nohighlight">\(
+\sigma_{z,1} = I_{\text{cav}} \otimes \sigma_z \otimes I_{\text{q}}, \quad
+\sigma_{+,1} = I_{\text{cav}} \otimes \sigma_+ \otimes I_{\text{q}}, \quad
+\sigma_{-,1} = I_{\text{cav}} \otimes \sigma_- \otimes I_{\text{q}}
+\)</span>$</p></li>
+<li><p>For <strong>molecule 2</strong>:
+$<span class="math notranslate nohighlight">\(
+\sigma_{z,2} = I_{\text{cav}} \otimes I_{\text{q}} \otimes \sigma_z, \quad
+\sigma_{+,2} = I_{\text{cav}} \otimes I_{\text{q}} \otimes \sigma_+, \quad
+\sigma_{-,2} = I_{\text{cav}} \otimes I_{\text{q}} \otimes \sigma_-
+\)</span>$</p></li>
+<li><p>For the <strong>cavity</strong>:
+$<span class="math notranslate nohighlight">\(
+a = a \otimes I_{\text{q}} \otimes I_{\text{q}}, \qquad
+a^\dagger = a^\dagger \otimes I_{\text{q}} \otimes I_{\text{q}}
+\)</span>$</p></li>
+</ul>
+<p>This ensures that each operator acts only on its subsystem while preserving the full system dimension.</p>
+</section>
+<hr class="docutils" />
+<section id="step-3-hamiltonian-terms">
+<h3>⚡ Step 3: Hamiltonian Terms<a class="headerlink" href="#step-3-hamiltonian-terms" title="Link to this heading">#</a></h3>
+<p>Using these building blocks, we define:</p>
+<ul class="simple">
+<li><p><strong>Bare energies</strong>:
+$$
+-\frac{\hbar \omega_0}{2}(\sigma_{z,1} + \sigma_{z,2})</p>
+<ul>
+<li><p>\hbar \omega, a^\dagger a
+$$
+which give the unperturbed qubit and cavity energies.</p></li>
+</ul>
+</li>
+<li><p><strong>Interaction terms</strong>:
+$<span class="math notranslate nohighlight">\(
+\hbar g \left(a\,\sigma_{+,i} + a^\dagger\,\sigma_{-,i}\right)
+\)</span>$
+representing exchange of an excitation between the cavity and molecule (i).</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="step-4-two-coupling-configurations">
+<h3>🔁 Step 4: Two Coupling Configurations<a class="headerlink" href="#step-4-two-coupling-configurations" title="Link to this heading">#</a></h3>
+<p>We’ll define:</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\(H_1\)</span></strong> — only molecule 1 coupled to the cavity (molecule 2 off).</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(H_2\)</span></strong> — only molecule 2 coupled to the cavity (molecule 1 off).</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(H\)</span></strong> — both molecules coupled simultaneously (used later).</p></li>
+</ul>
+<p>These Hamiltonians let us simulate the <strong>iSWAP protocol</strong>, where coupling is “switched” between molecules in time.</p>
+<hr class="docutils" />
+<p>💡 <em>Tip:</em><br />
+Try printing the shapes of <code class="docutils literal notranslate"><span class="pre">H1</span></code>, <code class="docutils literal notranslate"><span class="pre">H2</span></code>, and <code class="docutils literal notranslate"><span class="pre">H</span></code> — they should each be <span class="math notranslate nohighlight">\(8\times8\)</span> Hermitian matrices.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create identities for each Hilbert space</span>
 <span class="n">Icav</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">Iq</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="c1"># create operators in tripartitie space</span>
-<span class="n">sz1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span> <span class="n">Icav</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">sigma_z</span><span class="p">,</span> <span class="n">Iq</span><span class="p">))</span>
-<span class="n">sp1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span> <span class="n">Icav</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">sigma_plus</span><span class="p">,</span> <span class="n">Iq</span><span class="p">))</span>
-<span class="n">sm1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span> <span class="n">Icav</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">sigma_minus</span><span class="p">,</span> <span class="n">Iq</span><span class="p">))</span>
+<span class="c1"># 🧩 Step: Build operators in the composite (tripartite) Hilbert space</span>
+<span class="c1"># The total space is:  cavity ⊗ qubit 1 ⊗ qubit 2</span>
 
-<span class="n">sz2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span> <span class="n">Icav</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Iq</span><span class="p">,</span> <span class="n">sigma_z</span><span class="p">))</span>
-<span class="n">sp2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span> <span class="n">Icav</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Iq</span><span class="p">,</span> <span class="n">sigma_plus</span><span class="p">))</span>
-<span class="n">sm2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span> <span class="n">Icav</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Iq</span><span class="p">,</span> <span class="n">sigma_minus</span><span class="p">))</span>
+<span class="c1"># Hints:</span>
+<span class="c1"># - Use np.kron() to take Kronecker (tensor) products</span>
+<span class="c1"># - Remember: np.kron(A, B) ⊗ C = np.kron(A, np.kron(B, C))</span>
+<span class="c1"># - When an operator should act only on one subsystem,</span>
+<span class="c1">#   multiply it by identity matrices on the other two</span>
 
-<span class="n">am</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span> <span class="n">a</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Iq</span><span class="p">,</span> <span class="n">Iq</span><span class="p">))</span>
-<span class="n">ap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span> <span class="n">a_dagger</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Iq</span><span class="p">,</span> <span class="n">Iq</span><span class="p">))</span>
+<span class="c1"># --- Operators for molecule (qubit) 1 ---</span>
+<span class="c1"># ✏️ TODO 1: Define sigma_z for qubit 1</span>
+<span class="c1"># sz1 = np.kron( ..., np.kron( ..., ... ))</span>
+<span class="n">sz1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Icav</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">sigma_z</span><span class="p">,</span> <span class="n">Iq</span><span class="p">))</span>
 
-<span class="c1"># build Hamiltonian for coupling molecule 1 to the cavity in the composite space</span>
-<span class="n">H1</span> <span class="o">=</span>  <span class="o">-</span><span class="n">hbar</span> <span class="o">*</span> <span class="n">omega_0</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sz1</span> 
-<span class="n">H1</span> <span class="o">-=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">omega_0</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sz2</span>
-<span class="n">H1</span> <span class="o">+=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">ap</span> <span class="o">@</span> <span class="n">am</span>
-<span class="n">H1</span> <span class="o">+=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">am</span> <span class="o">@</span> <span class="n">sp1</span>
-<span class="n">H1</span> <span class="o">+=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">ap</span> <span class="o">@</span> <span class="n">sm1</span>
+<span class="c1"># ✏️ TODO 2: Define sigma_plus for qubit 1</span>
+<span class="c1"># sp1 = np.kron( ..., np.kron( ..., ... ))</span>
+<span class="n">sp1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Icav</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">sigma_plus</span><span class="p">,</span> <span class="n">Iq</span><span class="p">))</span>
 
-<span class="c1"># build the Hamiltonian for coupling molecule 2 to the cavity in the composite space</span>
+<span class="c1"># ✏️ TODO 3: Define sigma_minus for qubit 1</span>
+<span class="c1"># sm1 = np.kron( ..., np.kron( ..., ... ))</span>
+<span class="n">sm1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Icav</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">sigma_minus</span><span class="p">,</span> <span class="n">Iq</span><span class="p">))</span>
+
+<span class="c1"># --- Operators for molecule (qubit) 2 ---</span>
+<span class="c1"># ✏️ TODO 4: Define sigma_z for qubit 2</span>
+<span class="c1"># sz2 = np.kron( ..., np.kron( ..., ... ))</span>
+<span class="n">sz2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Icav</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Iq</span><span class="p">,</span> <span class="n">sigma_z</span><span class="p">))</span>
+
+<span class="c1"># ✏️ TODO 5: Define sigma_plus for qubit 2</span>
+<span class="c1"># sp2 = np.kron( ..., np.kron( ..., ... ))</span>
+<span class="n">sp2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Icav</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Iq</span><span class="p">,</span> <span class="n">sigma_plus</span><span class="p">))</span>
+
+<span class="c1"># ✏️ TODO 6: Define sigma_minus for qubit 2</span>
+<span class="c1"># sm2 = np.kron( ..., np.kron( ..., ... ))</span>
+<span class="n">sm2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Icav</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Iq</span><span class="p">,</span> <span class="n">sigma_minus</span><span class="p">))</span>
+
+<span class="c1"># --- Operators for the cavity mode ---</span>
+<span class="c1"># ✏️ TODO 7: Define the annihilation operator (a) in full space</span>
+<span class="c1"># am = np.kron( ..., np.kron( ..., ... ))</span>
+<span class="n">am</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Iq</span><span class="p">,</span> <span class="n">Iq</span><span class="p">))</span>
+
+<span class="c1"># ✏️ TODO 8: Define the creation operator (a†) in full space</span>
+<span class="c1"># ap = np.kron( ..., np.kron( ..., ... ))</span>
+<span class="n">ap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">adag</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Iq</span><span class="p">,</span> <span class="n">Iq</span><span class="p">))</span>
+
+<span class="c1"># 💡 Hint:</span>
+<span class="c1"># For the cavity operators, they should act only on the cavity subspace,</span>
+<span class="c1"># so they go in the first tensor position, followed by identities for both qubits.</span>
+<span class="c1">#</span>
+<span class="c1"># For qubit 1, the operator acts on the middle subspace.</span>
+<span class="c1"># For qubit 2, it acts on the last subspace.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 🧮 Step: Build the composite Hamiltonians</span>
+
+<span class="c1"># The total Hamiltonian acts on the full 8×8 composite space:</span>
+<span class="c1">#   cavity ⊗ qubit 1 ⊗ qubit 2</span>
+<span class="c1"># We’ll build:</span>
+<span class="c1">#   - H1 : only molecule 1 coupled to the cavity</span>
+<span class="c1">#   - H2 : only molecule 2 coupled to the cavity</span>
+<span class="c1">#   - H  : both molecules coupled (not used here, but useful later)</span>
+
+<span class="c1"># --- Example: H1 (Molecule 1 coupled) ---</span>
+<span class="c1"># This Hamiltonian includes:</span>
+<span class="c1">#   1. Bare qubit energies (σ_z terms)</span>
+<span class="c1">#   2. Bare cavity energy (a†a term)</span>
+<span class="c1">#   3. Coupling between the cavity and molecule 1 (a σ_+ + a† σ_-)</span>
+
+<span class="n">H1</span> <span class="o">=</span> <span class="o">-</span><span class="n">hbar</span> <span class="o">*</span> <span class="n">omega_0</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sz1</span>        <span class="c1"># qubit 1 Hamiltonian</span>
+<span class="n">H1</span> <span class="o">-=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">omega_0</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sz2</span>        <span class="c1"># qubit 2 Hamiltonian</span>
+<span class="n">H1</span> <span class="o">+=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">ap</span> <span class="o">@</span> <span class="n">am</span>          <span class="c1"># cavity Hamiltonian</span>
+<span class="n">H1</span> <span class="o">+=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="p">(</span> <span class="n">am</span> <span class="o">@</span> <span class="n">sp1</span> <span class="o">+</span> <span class="n">ap</span> <span class="o">@</span> <span class="n">sm1</span> <span class="p">)</span>  <span class="c1"># coupling: cavity ↔ molecule 1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ H1 constructed successfully! Dimension:&quot;</span><span class="p">,</span> <span class="n">H1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># --- ✏️ TODO: Build H2 (Molecule 2 coupled) ---</span>
+<span class="c1"># 💡 HINTS:</span>
+<span class="c1"># - Start from a copy of H1 (use np.copy())</span>
+<span class="c1"># - Add coupling terms for molecule 2: (a σ_+₂ + a† σ_-₂)</span>
+<span class="c1"># - Remove coupling terms for molecule 1 (subtract them)</span>
+
 <span class="n">H2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">H1</span><span class="p">)</span>
-<span class="n">H</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">H1</span><span class="p">)</span>
-<span class="n">H2</span> <span class="o">+=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">am</span> <span class="o">@</span> <span class="n">sp2</span>
-<span class="n">H2</span> <span class="o">+=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">ap</span> <span class="o">@</span> <span class="n">sm2</span>
-<span class="n">H2</span> <span class="o">-=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">am</span> <span class="o">@</span> <span class="n">sp1</span>
-<span class="n">H2</span> <span class="o">-=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">ap</span> <span class="o">@</span> <span class="n">sm1</span>
-
-<span class="c1"># This hamiltonian captures coupling of molecule 1 and molecule 2 to the cavity; not currently used</span>
-<span class="c1"># but maybe it will come in handy later</span>
-<span class="n">H</span> <span class="o">+=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">am</span> <span class="o">@</span> <span class="n">sp2</span>
-<span class="n">H</span> <span class="o">+=</span>  <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">ap</span> <span class="o">@</span> <span class="n">sm2</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">sigma_plus</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">sigma_minus</span><span class="p">,</span> <span class="n">a_dagger</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 0, 0, 0],
-       [0, 0, 1, 0],
-       [0, 0, 0, 0],
-       [0, 0, 0, 0]])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute eigenvalues and eigenvectors of the Hamiltonian</span>
-<span class="n">eigenvalues_1</span><span class="p">,</span> <span class="n">polariton_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">H1</span><span class="p">)</span>
-<span class="n">eigenvalues_2</span><span class="p">,</span> <span class="n">polariton_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">H2</span><span class="p">)</span>
+<span class="n">H2</span> <span class="o">+=</span> <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="p">(</span> <span class="n">am</span> <span class="o">@</span> <span class="n">sp2</span> <span class="o">+</span> <span class="n">ap</span> <span class="o">@</span> <span class="n">sm2</span> <span class="p">)</span>
+<span class="n">H2</span> <span class="o">-=</span> <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="p">(</span> <span class="n">am</span> <span class="o">@</span> <span class="n">sp1</span> <span class="o">+</span> <span class="n">ap</span> <span class="o">@</span> <span class="n">sm1</span> <span class="p">)</span>
 
 
+<span class="c1"># --- ✏️ TODO: Build H (Both molecules coupled) ---</span>
+<span class="c1"># 💡 HINTS:</span>
+<span class="c1"># - Start again from H1</span>
+<span class="c1"># - Add both molecule 1 and molecule 2 coupling terms (no subtractions this time)</span>
+<span class="c1"># - This represents the case when both qubits are simultaneously interacting with the cavity</span>
 
-<span class="c1"># Express H1 and H2 in the basis that diagonalizes H1</span>
-<span class="n">H_pol1</span> <span class="o">=</span> <span class="n">polariton_1</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">H1</span> <span class="o">@</span> <span class="n">polariton_1</span>
-<span class="n">H_pol2</span> <span class="o">=</span> <span class="n">polariton_1</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">H2</span> <span class="o">@</span> <span class="n">polariton_1</span> <span class="c1"># This is not a typoe, I want to do everything in the basis that diagonalizes H1</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># You can run this to see what the eigenstates of H1 look like in terms of basis states!</span>
-<span class="n">basis_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;zgg&#39;</span><span class="p">,</span> <span class="s1">&#39;zge&#39;</span><span class="p">,</span> <span class="s1">&#39;zeg&#39;</span><span class="p">,</span> <span class="s1">&#39;zee&#39;</span><span class="p">,</span> <span class="s1">&#39;ogg&#39;</span><span class="p">,</span> <span class="s1">&#39;oge&#39;</span><span class="p">,</span> <span class="s1">&#39;oeg&#39;</span><span class="p">,</span> <span class="s1">&#39;oee&#39;</span><span class="p">]</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">H1</span><span class="p">)</span>
+<span class="n">H</span> <span class="o">+=</span> <span class="n">hbar</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="p">(</span> <span class="n">am</span> <span class="o">@</span> <span class="n">sp2</span> <span class="o">+</span> <span class="n">ap</span> <span class="o">@</span> <span class="n">sm2</span> <span class="p">)</span>
 
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">vec</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">eigenvalues_1</span><span class="p">,</span> <span class="n">polariton_1</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="mi">1</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Eigenstate #</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">:  E = </span><span class="si">{</span><span class="n">E</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">amp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">basis_names</span><span class="p">,</span> <span class="n">vec</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   ⟨</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">|ψ_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">⟩ = </span><span class="si">{</span><span class="n">amp</span><span class="si">:</span><span class="s2">+.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">()</span>
+<span class="c1"># --- Optional sanity checks ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;H2 shape:&quot;</span><span class="p">,</span> <span class="n">H2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;H shape:&quot;</span><span class="p">,</span> <span class="n">H</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hermitian check H1:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">H1</span><span class="p">,</span> <span class="n">H1</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Eigenstate #1:  E = -1.000000
-   ⟨zgg|ψ_1⟩ = +1.0000
-   ⟨zge|ψ_1⟩ = +0.0000
-   ⟨zeg|ψ_1⟩ = +0.0000
-   ⟨zee|ψ_1⟩ = +0.0000
-   ⟨ogg|ψ_1⟩ = +0.0000
-   ⟨oge|ψ_1⟩ = +0.0000
-   ⟨oeg|ψ_1⟩ = +0.0000
-   ⟨oee|ψ_1⟩ = +0.0000
-
-Eigenstate #2:  E = -0.100000
-   ⟨zgg|ψ_2⟩ = -0.0000
-   ⟨zge|ψ_2⟩ = -0.0000
-   ⟨zeg|ψ_2⟩ = -0.7071
-   ⟨zee|ψ_2⟩ = +0.0000
-   ⟨ogg|ψ_2⟩ = +0.7071
-   ⟨oge|ψ_2⟩ = -0.0000
-   ⟨oeg|ψ_2⟩ = -0.0000
-   ⟨oee|ψ_2⟩ = -0.0000
-
-Eigenstate #3:  E = 0.000000
-   ⟨zgg|ψ_3⟩ = +0.0000
-   ⟨zge|ψ_3⟩ = +1.0000
-   ⟨zeg|ψ_3⟩ = +0.0000
-   ⟨zee|ψ_3⟩ = +0.0000
-   ⟨ogg|ψ_3⟩ = +0.0000
-   ⟨oge|ψ_3⟩ = +0.0000
-   ⟨oeg|ψ_3⟩ = +0.0000
-   ⟨oee|ψ_3⟩ = +0.0000
-
-Eigenstate #4:  E = 0.100000
-   ⟨zgg|ψ_4⟩ = +0.0000
-   ⟨zge|ψ_4⟩ = +0.0000
-   ⟨zeg|ψ_4⟩ = -0.7071
-   ⟨zee|ψ_4⟩ = +0.0000
-   ⟨ogg|ψ_4⟩ = -0.7071
-   ⟨oge|ψ_4⟩ = +0.0000
-   ⟨oeg|ψ_4⟩ = +0.0000
-   ⟨oee|ψ_4⟩ = +0.0000
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ H1 constructed successfully! Dimension: (8, 8)
+H2 shape: (8, 8)
+H shape: (8, 8)
+Hermitian check H1: True
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># you can run this to show how the uncoupled basis states are expressed in terms of polariton1 basis states</span>
-<span class="n">basis_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;zgg&#39;</span><span class="p">,</span> <span class="s1">&#39;zge&#39;</span><span class="p">,</span> <span class="s1">&#39;zeg&#39;</span><span class="p">,</span> <span class="s1">&#39;zee&#39;</span><span class="p">,</span> <span class="s1">&#39;ogg&#39;</span><span class="p">,</span> <span class="s1">&#39;oge&#39;</span><span class="p">,</span> <span class="s1">&#39;oeg&#39;</span><span class="p">,</span> <span class="s1">&#39;oee&#39;</span><span class="p">]</span>
-
-<span class="c1"># Print each original basis state in the eigenbasis:</span>
-<span class="n">represent_basis_in_eigen</span><span class="p">(</span><span class="n">basis_names</span><span class="p">,</span> <span class="n">polariton_1</span><span class="p">,</span> <span class="n">energies</span><span class="o">=</span><span class="n">eigenvalues_1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|zgg&gt; = +1.0000·|ψ_1 (E=-1.0000)&gt;
-
-|zge&gt; = +1.0000·|ψ_3 (E=0.0000)&gt;
-
-|zeg&gt; = -0.7071·|ψ_2 (E=-0.1000)&gt;  +  -0.7071·|ψ_4 (E=0.1000)&gt;
-
-|zee&gt; = +0.7071·|ψ_5 (E=0.9000)&gt;  +  +0.7071·|ψ_7 (E=1.1000)&gt;
-
-|ogg&gt; = +0.7071·|ψ_2 (E=-0.1000)&gt;  +  -0.7071·|ψ_4 (E=0.1000)&gt;
-
-|oge&gt; = -0.7071·|ψ_5 (E=0.9000)&gt;  +  +0.7071·|ψ_7 (E=1.1000)&gt;
-
-|oeg&gt; = +1.0000·|ψ_6 (E=1.0000)&gt;
-
-|oee&gt; = +1.0000·|ψ_8 (E=2.0000)&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p>This cell creates the initial state <span class="math notranslate nohighlight">\(|0\rangle \otimes |e\rangle \otimes |g\rangle \)</span> in the uncoupled
-basis and in terms of the polariton states.</p>
-<p>In the uncoupled basis, the initial density matrix can be computed as</p>
+</section>
+</section>
+<section id="step-defining-the-initial-state">
+<h2>🌱 Step: Defining the Initial State<a class="headerlink" href="#step-defining-the-initial-state" title="Link to this heading">#</a></h2>
+<p>We’ll start with the system in a <strong>single-excitation configuration</strong>:</p>
+<ul class="simple">
+<li><p>The <strong>cavity</strong> is empty <span class="math notranslate nohighlight">\((|0\rangle\)</span>),</p></li>
+<li><p><strong>Qubit 1</strong> is excited (<span class="math notranslate nohighlight">\(|e\rangle\)</span>),</p></li>
+<li><p><strong>Qubit 2</strong> is in its ground state (<span class="math notranslate nohighlight">\(|g\rangle\)</span>).</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[ |0\rangle \otimes |e\rangle \otimes |g\rangle  \langle g | \otimes \langle e | \otimes \langle 0 | \]</div>
+\[
+|\psi(0)\rangle = |0\rangle_{\text{cav}} \otimes |e\rangle_1 \otimes |g\rangle_2
+\]</div>
+<hr class="docutils" />
+<section id="in-the-uncoupled-basis">
+<h3>🧮 In the Uncoupled Basis<a class="headerlink" href="#in-the-uncoupled-basis" title="Link to this heading">#</a></h3>
+<p>The corresponding <strong>density matrix</strong> is formed as the outer product:
+$<span class="math notranslate nohighlight">\(
+\rho(0) = 
+\left(|0\rangle \otimes |e\rangle \otimes |g\rangle\right)
+\left(\langle g| \otimes \langle e| \otimes \langle 0|\right)
+\)</span><span class="math notranslate nohighlight">\(
+This state is often written compactly as:
+\)</span><span class="math notranslate nohighlight">\(
+\rho(0) = |0eg\rangle \langle 0eg|
+\)</span>$
+and represents a <em>pure state localized on molecule 1</em>.</p>
+</section>
+<hr class="docutils" />
+<section id="physical-picture">
+<h3>💡 Physical Picture<a class="headerlink" href="#physical-picture" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>At <span class="math notranslate nohighlight">\(t=0\)</span>, <strong>the energy resides entirely in qubit 1</strong>.</p></li>
+<li><p>The cavity and qubit 2 begin in their <strong>ground states</strong>.</p></li>
+<li><p>As time evolves, this excitation can be exchanged through the cavity mode —
+forming superpositions that resemble the <strong>lower and upper polaritons</strong> seen earlier.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="extension-polaritonic-viewpoint">
+<h3>🎓 Extension: Polaritonic Viewpoint<a class="headerlink" href="#extension-polaritonic-viewpoint" title="Link to this heading">#</a></h3>
+<p>In the <strong>polaritonic basis</strong>, this same initial state can be expressed as a superposition of the <em>bright</em> and <em>dark</em> states we identified earlier:
+$<span class="math notranslate nohighlight">\(
+|0eg\rangle = \frac{1}{\sqrt{2}}\left(|0B\rangle + |0D\rangle\right)
+\)</span>$
+This decomposition is useful for understanding how the excitation evolves:</p>
+<ul class="simple">
+<li><p>The <strong>bright</strong> part couples to the cavity mode.</p></li>
+<li><p>The <strong>dark</strong> part remains stationary at the bare molecular energy.</p></li>
+</ul>
+<hr class="docutils" />
+<blockquote>
+<div><p>💭 <strong>Checkpoint Question:</strong><br />
+What physical process causes population transfer between (|0eg\rangle) and (|0ge\rangle) during the iSWAP sequence?</p>
+<details>
+<summary><strong>Hint</strong> (click to expand)</summary>
+Think about how each molecule interacts *sequentially* with the cavity field through their coupling strengths \(g_i\).
+</details>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the density matrix representation of this state</span>
-<span class="n">rho_zeg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">zeg_ket</span><span class="p">,</span> <span class="n">zeg_ket</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 🧩 Step: Construct the initial state |0&gt; ⊗ |e&gt; ⊗ |g&gt;</span>
+
+<span class="c1"># Recall:</span>
+<span class="c1"># |0&gt;_cavity  = z_ket</span>
+<span class="c1"># |1&gt;_cavity  = o_ket</span>
+<span class="c1"># |g&gt;_qubit   = g_ket</span>
+<span class="c1"># |e&gt;_qubit   = e_ket</span>
+
+<span class="c1"># ✏️ TODO 1: Use np.kron() to form the composite state vector |0eg&gt;</span>
+<span class="c1"># 💡 Hint: The order of tensor products matters! </span>
+<span class="c1">#          (cavity ⊗ qubit1 ⊗ qubit2)</span>
+<span class="c1"># psi0 = np.kron( ..., np.kron( ..., ... ))</span>
+<span class="n">psi0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">z_ket</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">e_ket</span><span class="p">,</span> <span class="n">g_ket</span><span class="p">))</span>
+
+<span class="c1"># --- Example check (uncomment after building your vector) ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape of psi0:&quot;</span><span class="p">,</span> <span class="n">psi0</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Norm squared:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">vdot</span><span class="p">(</span><span class="n">psi0</span><span class="p">,</span> <span class="n">psi0</span><span class="p">))</span>
+
+
+<span class="c1"># ✅ Step: Construct the density matrix ρ = |ψ⟩⟨ψ|</span>
+<span class="c1"># ✏️ TODO 2: Use outer product (np.outer or psi @ psi.conj().T)</span>
+<span class="n">rho0</span> <span class="o">=</span> <span class="n">psi0</span> <span class="o">@</span> <span class="n">psi0</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># --- Sanity checks ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Density matrix shape:&quot;</span><span class="p">,</span> <span class="n">rho0</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trace(ρ) =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">rho0</span><span class="p">))</span>   <span class="c1"># should be 1 for a pure normalized state</span>
+
+<span class="c1"># 💡 Tip:</span>
+<span class="c1"># Try visualizing which basis states have nonzero amplitudes.</span>
+<span class="c1"># Since this is |0eg&gt;, only one entry in the 8-element state vector should be 1.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape of psi0: (8, 1)
+Norm squared: 1
+Density matrix shape: (8, 8)
+Trace(ρ) = 1
 </pre></div>
 </div>
 </div>
 </div>
-<p>The following block will do the following in the uncoupled basis:</p>
+</section>
+</section>
+<section id="step-time-domain-simulation-sequential-coupling-dynamics">
+<h2>⏱️ Step: Time-Domain Simulation — Sequential Coupling Dynamics<a class="headerlink" href="#step-time-domain-simulation-sequential-coupling-dynamics" title="Link to this heading">#</a></h2>
+<p>In the next section, we’ll simulate the time evolution of our system in the <strong>uncoupled basis</strong> by solving the <strong>Liouville–von Neumann equation</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\rho}{dt} = -\frac{i}{\hbar} [H, \rho]
+\]</div>
+<p>We will perform this in two stages:</p>
 <ol class="arabic simple">
-<li><p>Solve the Liouville equation using <span class="math notranslate nohighlight">\(H_1\)</span> until time <span class="math notranslate nohighlight">\(T_1\)</span></p></li>
-<li><p>Solve the Liouville equation using <span class="math notranslate nohighlight">\(H_2\)</span> until time <span class="math notranslate nohighlight">\(T_2\)</span></p></li>
-<li><p>At each time step, we will get the diagonals of the density matrix which represent the population in a
-given basis state at each point in time.</p></li>
+<li><p><strong>Stage 1:</strong><br />
+Evolve under <span class="math notranslate nohighlight">\( H_1 \)</span> for a duration <span class="math notranslate nohighlight">\(T_1 \)</span>,<br />
+where <strong>molecule 1</strong> is coupled to the cavity (and molecule 2 is effectively off).</p></li>
+<li><p><strong>Stage 2:</strong><br />
+Evolve under <span class="math notranslate nohighlight">\(H_2 \)</span> for a duration <span class="math notranslate nohighlight">\(T_2 \)</span>,<br />
+where <strong>molecule 2</strong> is coupled to the cavity (and molecule 1 is now off).</p></li>
 </ol>
-<p><strong>Question</strong> Explain in a few sentences what physical situation this is simulating.</p>
+<p>At each time step, we’ll extract the <strong>diagonal elements of the density matrix</strong>,<br />
+which represent the <strong>population of each basis state</strong>.</p>
+<hr class="docutils" />
+<section id="physical-interpretation">
+<h3>🎓 Physical Interpretation<a class="headerlink" href="#physical-interpretation" title="Link to this heading">#</a></h3>
+<p>This two-step simulation models the process of <strong>sequential energy transfer via the cavity mode</strong>:</p>
+<ul class="simple">
+<li><p>Initially, qubit 1 (molecule 1) exchanges its excitation with the cavity.</p></li>
+<li><p>After time <span class="math notranslate nohighlight">\(T_1\)</span>, qubit 1 decouples and qubit 2 couples in.</p></li>
+<li><p>The cavity then transfers its excitation to qubit 2.</p></li>
+</ul>
+<p>If the timing is chosen properly, the excitation is <strong>fully swapped</strong> from molecule 1 to molecule 2 —
+realizing an <strong>iSWAP gate</strong> between the two molecular qubits.</p>
+</section>
+<hr class="docutils" />
+<section id="reflection-question">
+<h3>💭 Reflection Question<a class="headerlink" href="#reflection-question" title="Link to this heading">#</a></h3>
+<p><strong>Q:</strong> Explain in your own words what physical situation this simulation represents.<br />
+What observable process in the system corresponds to the change in the diagonal elements of the density matrix over time?</p>
+<details>
+<summary><strong>Hint</strong> (click to expand)</summary>
+Think about how population moves among $|0eg\rangle$, $|1gg\rangle$, and $|0ge\rangle$ during each stage —  
+and how this corresponds to an excitation hopping from molecule 1 → cavity → molecule 2.
+</details>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># number of time steps</span>
-<span class="n">n_time</span> <span class="o">=</span> <span class="mi">400</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 🕒 Step: Time evolution of the system (uncoupled basis)</span>
 
-<span class="c1"># make copies of initial density matrices</span>
-<span class="c1">### in uncoupled basis</span>
-<span class="n">rho_init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">rho_zeg</span><span class="p">)</span>
+<span class="c1"># -------------------------------------------------------</span>
+<span class="c1"># This simulation will:</span>
+<span class="c1"># 1️⃣  Evolve the density matrix under H1 (molecule 1 coupled) for time T1</span>
+<span class="c1"># 2️⃣  Evolve under H2 (molecule 2 coupled) for time T2</span>
+<span class="c1"># 3️⃣  Record populations (diagonal elements of ρ) over time</span>
+<span class="c1"># -------------------------------------------------------</span>
 
+<span class="c1"># --- Parameters ---</span>
+<span class="n">n_time</span> <span class="o">=</span> <span class="mi">800</span>          <span class="c1"># total number of time steps</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.05</span>             <span class="c1"># timestep (in whatever time units we’re using)</span>
+<span class="n">n_time_1</span> <span class="o">=</span> <span class="n">T1_time</span> <span class="o">/</span> <span class="n">dt</span>   <span class="c1"># steps for first stage (H1)</span>
+<span class="n">n_time_2</span> <span class="o">=</span> <span class="n">T2_time</span> <span class="o">/</span> <span class="n">dt</span>   <span class="c1"># steps for second stage (H2)</span>
 
-<span class="c1"># define timestep</span>
-<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="c1"># --- Initial condition ---</span>
+<span class="c1"># Make a copy of the initial density matrix (uncoupled basis)</span>
+<span class="n">rho_init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">rho0</span><span class="p">)</span>
 
-<span class="n">n_time_1</span> <span class="o">=</span> <span class="n">T1_time</span> <span class="o">/</span> <span class="n">dt</span>  <span class="c1"># number of time steps for the first gate</span>
-<span class="n">n_time_2</span> <span class="o">=</span> <span class="n">T2_time</span> <span class="o">/</span> <span class="n">dt</span>  <span class="c1"># number of time steps for the second gate</span>
-
-
+<span class="c1"># --- Time array and population storage ---</span>
 <span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">pops_uncoupled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_time</span><span class="p">,</span> <span class="n">rho_init</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  <span class="c1"># store populations for each basis state</span>
 
-<span class="c1"># array to store the populations at each time-step</span>
-<span class="n">pops_uncoupled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_time</span><span class="p">,</span><span class="n">rho_init</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-
+<span class="c1"># --- ✏️ TODO 1: Loop over time steps ---</span>
+<span class="c1"># 💡 Hint: Use rk4_step(rho_init, H, dt, hbar=...) to propagate the density matrix.</span>
+<span class="c1">#          Choose H1 or H2 depending on the stage of evolution.</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_time</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n_time_1</span><span class="p">:</span>
-        <span class="c1"># evolve in uncoupled basis by H1</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n_time_1</span><span class="p">:</span>
+        <span class="c1"># Stage 1: molecule 1 coupled</span>
+        <span class="c1"># evolve using H1</span>
         <span class="n">rho_new</span> <span class="o">=</span> <span class="n">rk4_step</span><span class="p">(</span><span class="n">rho_init</span><span class="p">,</span> <span class="n">H1</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">hbar</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 
     <span class="k">elif</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">n_time_1</span> <span class="o">+</span> <span class="n">n_time_2</span><span class="p">):</span>
-        <span class="c1"># evolve in uncoupled basis by H2</span>
-        <span class="n">rho_new</span> <span class="o">=</span> <span class="n">rk4_step</span><span class="p">(</span><span class="n">rho_init</span><span class="p">,</span> <span class="n">H2</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">hbar</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Stage 2: molecule 2 coupled</span>
+        <span class="c1"># evolve using H2</span>
+        <span class="n">rho_new</span> <span class="o">=</span> <span class="n">rk4_step</span><span class="p">(</span><span class="n">rho_init</span><span class="p">,</span> <span class="n">H2</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">hbar</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 
-
-    <span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="c1"># --- ✏️ TODO 2: Record populations (diagonal elements of ρ) ---</span>
+    <span class="c1"># 💡 Hint: np.real(rho_new[k,k]) gives the population of basis state k</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rho_init</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-        <span class="c1"># store all populations</span>
-        <span class="n">pops_uncoupled</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">rho_new</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">k</span><span class="p">])</span>
+        <span class="n">pops_uncoupled</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">rho_new</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">])</span>
 
-
-    <span class="c1"># copy updated rhos in each basis to the rho_init and rho_pol_init for next step</span>
+    <span class="c1"># --- Update for next step ---</span>
     <span class="n">rho_init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">rho_new</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
 
-
-    
-        
+<span class="c1"># --- ✅ Sanity checks ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simulation complete!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final time:&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape of population array:&quot;</span><span class="p">,</span> <span class="n">pops_uncoupled</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulation complete!
+Final time: 39.95
+Shape of population array: (800, 8)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pops_uncoupled</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$p_</span><span class="si">{22}</span><span class="s2">$ uncoupled&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pops_uncoupled</span><span class="p">[:,</span><span class="mi">4</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$p_</span><span class="si">{44}</span><span class="s2">$ uncoupled&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pops_uncoupled</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$p_</span><span class="si">{11}</span><span class="s2">$ uncoupled&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="c1">#plt.xlim(10,20)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 🎨 Step: Visualize population dynamics during iSWAP evolution</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># --- Plot populations for key states ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pops_uncoupled</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span>  <span class="n">lw</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$|0eg\rangle$ (qubit 1 excited)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pops_uncoupled</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$|1gg\rangle$ (cavity excited)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pops_uncoupled</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span>  <span class="n">lw</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$|0ge\rangle$ (qubit 2 excited)&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Aesthetic settings ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Time $t$ (arb. units)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Population&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Population Dynamics in the Uncoupled Basis&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="c1"># --- Optional: mark the gate switching points ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">T1_time</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">T1_time</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$T_1$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">T1_time</span><span class="o">+</span> <span class="n">T2_time</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">T1_time</span> <span class="o">+</span> <span class="n">T2_time</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$T_2$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+<span class="c1"># --- Show the result ---</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ec5833bc5c067dea4751c54782df55972db4a52469779e4d5e84c05314a68552.png" src="../../_images/ec5833bc5c067dea4751c54782df55972db4a52469779e4d5e84c05314a68552.png" />
+<img alt="../../_images/5e65fc93e32b18efe8d2e8d5a7d5896f0cf68fd1945a0a486aa92df9ef55331c.png" src="../../_images/5e65fc93e32b18efe8d2e8d5a7d5896f0cf68fd1945a0a486aa92df9ef55331c.png" />
 </div>
 </div>
+</section>
+</section>
+<section id="step-comparing-to-the-target-bell-state">
+<h2>🎯 Step: Comparing to the Target Bell State<a class="headerlink" href="#step-comparing-to-the-target-bell-state" title="Link to this heading">#</a></h2>
+<p>At the end of our simulation, the system should ideally reach an <strong>entangled Bell state</strong>
+between the two molecular qubits while the cavity returns to its ground state.</p>
+<div class="math notranslate nohighlight">
+\[
+|\Psi\rangle = 
+\frac{1}{\sqrt{2}}
+\left( 
+|g\rangle_1 |e\rangle_2 - |e\rangle_1 |g\rangle_2
+\right)
+\]</div>
+<p>Since the cavity should end in <span class="math notranslate nohighlight">\(|0\rangle\)</span>, the full tripartite state is:</p>
+<div class="math notranslate nohighlight">
+\[
+|\Psi\rangle = 
+\frac{1}{\sqrt{2}}
+\left( 
+|0\rangle |g\rangle |e\rangle 
+- 
+|0\rangle |e\rangle |g\rangle
+\right)
+\]</div>
+<p>This is the <strong>antisymmetric (singlet-like) Bell state</strong>, which should result
+if the excitation transfer via the cavity performs an ideal <em>iSWAP</em> operation.</p>
+<hr class="docutils" />
+<section id="id1">
+<h3>💭 Reflection Question<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>What does it mean physically if the final fidelity is less than 1?</p></li>
+<li><p>Which factors in our model (timing, coupling, truncation, etc.) might cause deviations from the perfect Bell state?</p></li>
+</ul>
+<details>
+<summary><strong>Hint</strong></summary>
+Remember: in this protocol, the cavity acts as a **quantum bus**.  
+If it doesn’t fully return to $|0\rangl$, or if the timings $T_1, T_2$ aren’t perfectly tuned,  
+you’ll lose coherence and the Bell state fidelity will drop.
+</details>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array2string</span><span class="p">(</span><span class="n">rho_new</span><span class="p">,</span> <span class="n">formatter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;all&#39;</span><span class="p">:</span> <span class="n">complex_formatter</span><span class="p">}))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 🧮 Step: Compute fidelity with the target Bell state</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">linalg</span> <span class="k">as</span> <span class="n">la</span>
+
+<span class="c1"># --- ✏️ TODO 1: Construct the target Bell state |Ψ&gt; ---</span>
+<span class="c1"># 💡 Hint: It’s the antisymmetric superposition of |0ge&gt; and |0eg&gt;.</span>
+<span class="n">target_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">z_ket</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">g_ket</span><span class="p">,</span> <span class="n">e_ket</span><span class="p">))</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">z_ket</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">e_ket</span><span class="p">,</span> <span class="n">g_ket</span><span class="p">)))</span>
+
+<span class="c1"># --- ✏️ TODO 2: Form the corresponding density matrix ρ_target = |Ψ⟩⟨Ψ| ---</span>
+<span class="n">target_rho</span> <span class="o">=</span> <span class="n">target_ket</span> <span class="o">@</span> <span class="n">target_ket</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># --- Inspect both final and target density matrices ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Final density matrix (ρ_final):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array2string</span><span class="p">(</span><span class="n">rho_new</span><span class="p">,</span> <span class="n">formatter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;all&#39;</span><span class="p">:</span> <span class="n">complex_formatter</span><span class="p">}))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Target density matrix (ρ_target):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array2string</span><span class="p">(</span><span class="n">target_rho</span><span class="p">,</span> <span class="n">formatter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;all&#39;</span><span class="p">:</span> <span class="n">complex_formatter</span><span class="p">}))</span>
+
+<span class="c1"># --- ✏️ TODO 3: Compute fidelity using the Uhlmann formula ---</span>
+<span class="c1"># 💡 Hint: Fidelity F(ρ, σ) = [Tr(√(√ρ σ √ρ))]^2</span>
+<span class="c1"># fidelity = np.real(np.trace(...))**2</span>
+
+<span class="c1"># --- Display result ---</span>
+<span class="c1">#print(f&quot;\n🔹 Fidelity with target Bell state: {fidelity:.6f}&quot;)</span>
+
+<span class="c1"># 🧭 Optional check:</span>
+<span class="c1"># If the fidelity is close to 1 → ideal iSWAP achieved!</span>
+<span class="c1"># If it’s noticeably lower → consider timing or truncation effects.</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Final density matrix (ρ_final):
+[[ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00  0.50 -0.50  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00 -0.50  0.50  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
+ [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]]
+
+Target density matrix (ρ_target):
+[[ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
  [ 0.00  0.50 -0.50  0.00  0.00  0.00  0.00  0.00]
  [ 0.00 -0.50  0.50  0.00  0.00  0.00  0.00  0.00]
  [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
@@ -1149,40 +1603,7 @@ given basis state at each point in time.</p></li>
 </div>
 </div>
 </div>
-<p>Let’s see how this compares to the target Bell state</p>
-<div class="math notranslate nohighlight">
-\[ |\Psi\rangle = \sqrt{\frac{1}{2}} \left(|g\rangle \otimes |e\rangle - |e\rangle \otimes |g \rangle  \right) \]</div>
-<p>if we assume that the cavity is in the ground state for each term, i.e.</p>
-<div class="math notranslate nohighlight">
-\[ |\Psi\rangle = \sqrt{\frac{1}{2}} \left(  |0\rangle \otimes |g\rangle \otimes |e\rangle  - |0\rangle \otimes |e\rangle \otimes |g \rangle  \right) \]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">zge_ket</span> <span class="o">-</span> <span class="n">zeg_ket</span><span class="p">)</span>
-<span class="n">target_rho</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">target_ket</span><span class="p">,</span> <span class="n">target_ket</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Target density matrix:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array2string</span><span class="p">(</span><span class="n">target_rho</span><span class="p">,</span> <span class="n">formatter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;all&#39;</span><span class="p">:</span> <span class="n">complex_formatter</span><span class="p">}))</span>
-
-<span class="n">fidelity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">la</span><span class="o">.</span><span class="n">sqrtm</span><span class="p">(</span><span class="n">la</span><span class="o">.</span><span class="n">sqrtm</span><span class="p">(</span><span class="n">target_rho</span><span class="p">)</span> <span class="o">@</span> <span class="n">rho_new</span> <span class="o">@</span> <span class="n">la</span><span class="o">.</span><span class="n">sqrtm</span><span class="p">(</span><span class="n">target_rho</span><span class="p">))))</span><span class="o">**</span><span class="mi">2</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Fidelity with target Bell state: </span><span class="si">{</span><span class="n">fidelity</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Target density matrix:
-[[ 0.00  0.00 -0.00  0.00  0.00  0.00  0.00  0.00]
- [ 0.00  0.50 -0.50  0.00  0.00  0.00  0.00  0.00]
- [-0.00 -0.50  0.50 -0.00 -0.00 -0.00 -0.00 -0.00]
- [ 0.00  0.00 -0.00  0.00  0.00  0.00  0.00  0.00]
- [ 0.00  0.00 -0.00  0.00  0.00  0.00  0.00  0.00]
- [ 0.00  0.00 -0.00  0.00  0.00  0.00  0.00  0.00]
- [ 0.00  0.00 -0.00  0.00  0.00  0.00  0.00  0.00]
- [ 0.00  0.00 -0.00  0.00  0.00  0.00  0.00  0.00]]
-
-Fidelity with target Bell state: 0.999979
-</pre></div>
-</div>
-</div>
-</div>
+</section>
 </section>
 </section>
 
@@ -1216,6 +1637,24 @@ Fidelity with target Bell state: 0.999979
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Spin_one_half.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Computational Set 1: Introduction to Spin 1/2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../resources/formula_sheet.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Useful Formulae</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1232,7 +1671,10 @@ Fidelity with target Bell state: 0.999979
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Liouville Equation Solver</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Computational Set 2: Entangling Operations through strong light-matter coupling</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#liouville-equation-solver">Liouville Equation Solver</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-defining-the-hamiltonian">🧩 Step 1: Defining the Hamiltonian</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">🎯 Learning Outcomes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representing-the-states-of-our-system">🧮 Representing the states of our system</a></li>
@@ -1242,12 +1684,31 @@ Fidelity with target Bell state: 0.999979
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#term-3-interaction-hamiltonian">🔄 Term 3: Interaction Hamiltonian</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-picture-generating-bell-states-via-cavity-coupling">⚡ Physical Picture: Generating Bell states via cavity coupling</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checkpoint-question">❓ Checkpoint Question</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-picture-generating-bell-states-via-cavity-coupling">⚡ Physical Picture: Generating Bell states via cavity coupling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-building-the-basis-states">🧮 Step 2: Building the Basis States</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-constructing-the-hamiltonian">Step 2: Constructing the Hamiltonian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-hamiltonian-in-the-composite-hilbert-space">🧱 Building the Hamiltonian in the Composite Hilbert Space</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-identities-for-each-subspace">⚙️ Step 1: Identities for Each Subspace</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-tensor-product-construction-of-operators">🧩 Step 2: Tensor-Product Construction of Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-hamiltonian-terms">⚡ Step 3: Hamiltonian Terms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-two-coupling-configurations">🔁 Step 4: Two Coupling Configurations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-defining-the-initial-state">🌱 Step: Defining the Initial State</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-uncoupled-basis">🧮 In the Uncoupled Basis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-picture">💡 Physical Picture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-polaritonic-viewpoint">🎓 Extension: Polaritonic Viewpoint</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-time-domain-simulation-sequential-coupling-dynamics">⏱️ Step: Time-Domain Simulation — Sequential Coupling Dynamics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-interpretation">🎓 Physical Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-question">💭 Reflection Question</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-comparing-to-the-target-bell-state">🎯 Step: Comparing to the Target Bell State</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">💭 Reflection Question</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
