@@ -1034,28 +1034,23 @@ adag:
 <section id="building-the-hamiltonian-in-the-composite-hilbert-space">
 <h2>🧱 Building the Hamiltonian in the Composite Hilbert Space<a class="headerlink" href="#building-the-hamiltonian-in-the-composite-hilbert-space" title="Link to this heading">#</a></h2>
 <p>Now we’ll extend the operators you defined earlier into the <strong>full tripartite Hilbert space</strong>, which is the tensor product of:</p>
+<p>$<span class="math notranslate nohighlight">\(
+\mathscr{H}_{\text{total}} =
+\mathscr{H}_{\text{cavity}} \otimes
+\mathscr{H}_{\text{qubit 1}} \otimes
+\mathscr{H}_{\text{qubit 2}} 
+\)</span>$.</p>
+<p>Each subsystem is <strong>two-dimensional</strong> (truncated to <span class="math notranslate nohighlight">\(|0\rangle, |1\rangle\)</span> for the cavity and <span class="math notranslate nohighlight">\(|g\rangle, |e\rangle\)</span> for each molecule), so the total dimension is <span class="math notranslate nohighlight">\(2 \times 2 \times 2 = 8\)</span>.</p>
+<p>The <strong>total Hamiltonian</strong>, however, is a <strong>sum of tensor-product–extended operators</strong>, not a tensor product of Hamiltonians:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{H}_{\text{total}} = 
-\mathcal{H}_{\text{cavity}} \otimes 
-\mathcal{H}_{\text{qubit 1}} \otimes 
-\mathcal{H}_{\text{qubit 2}}
-\]</div>
-<p>Each subsystem is <strong>two-dimensional</strong> (truncated to <span class="math notranslate nohighlight">\(|0\rangle, |1\rangle\)</span> for the cavity and <span class="math notranslate nohighlight">\(|g\rangle, |e\rangle\)</span> for each molecule), so the total dimension is <span class="math notranslate nohighlight">\(2 \times 2 \times 2 = 8\)</span>.</p>
-<ul class="simple">
-<li><p>The <strong>total Hamiltonian</strong>, however, is a <strong>sum of tensor-product–extended operators</strong>, not a tensor product of Hamiltonians:
-$$
 H_{\text{total}} =
-H_{\text{cavity}} \otimes I_1 \otimes I_2</p>
-<ul>
-<li><p>I_{\text{cav}} \otimes H_1 \otimes I_2</p></li>
-<li><p>I_{\text{cav}} \otimes I_1 \otimes H_2</p></li>
-<li><p>H_{\text{int}}
-$$
-Each term acts only on its subsystem but lives in the full composite space.</p></li>
-</ul>
-</li>
-</ul>
+H_{\text{cavity}} \otimes I_1 \otimes I_2
++ I_{\text{cav}} \otimes H_1 \otimes I_2
++ I_{\text{cav}} \otimes I_1 \otimes H_2
++ H_{\text{int}}
+\]</div>
+<p>Each term acts only on its subsystem but lives in the full composite space.</p>
 <hr class="docutils" />
 <section id="step-1-identities-for-each-subspace">
 <h3>⚙️ Step 1: Identities for Each Subspace<a class="headerlink" href="#step-1-identities-for-each-subspace" title="Link to this heading">#</a></h3>
