@@ -1034,59 +1034,46 @@ adag:
 <section id="building-the-hamiltonian-in-the-composite-hilbert-space">
 <h2>🧱 Building the Hamiltonian in the Composite Hilbert Space<a class="headerlink" href="#building-the-hamiltonian-in-the-composite-hilbert-space" title="Link to this heading">#</a></h2>
 <p>Now we’ll extend the operators you defined earlier into the <strong>full tripartite Hilbert space</strong>, which is the tensor product of:</p>
-<p>$<span class="math notranslate nohighlight">\(
-\mathscr{H}_{\text{total}} =
-\mathscr{H}_{\text{cavity}} \otimes
-\mathscr{H}_{\text{qubit 1}} \otimes
-\mathscr{H}_{\text{qubit 2}} 
-\)</span>$.</p>
+<p><span class="math notranslate nohighlight">\(\mathscr{H}_{\text{total}} = \mathscr{H}_{\text{cavity}} \otimes \mathscr{H}_{\text{qubit 1}} \otimes \mathscr{H}_{\text{qubit 2}} \)</span></p>
 <p>Each subsystem is <strong>two-dimensional</strong> (truncated to <span class="math notranslate nohighlight">\(|0\rangle, |1\rangle\)</span> for the cavity and <span class="math notranslate nohighlight">\(|g\rangle, |e\rangle\)</span> for each molecule), so the total dimension is <span class="math notranslate nohighlight">\(2 \times 2 \times 2 = 8\)</span>.</p>
 <p>The <strong>total Hamiltonian</strong>, however, is a <strong>sum of tensor-product–extended operators</strong>, not a tensor product of Hamiltonians:</p>
-<div class="math notranslate nohighlight">
-\[
-H_{\text{total}} =
-H_{\text{cavity}} \otimes I_1 \otimes I_2
-+ I_{\text{cav}} \otimes H_1 \otimes I_2
-+ I_{\text{cav}} \otimes I_1 \otimes H_2
-+ H_{\text{int}}
-\]</div>
+<p><span class="math notranslate nohighlight">\(H_{\text{total}} = H_{\text{cavity}} \otimes I_1 \otimes I_2 + I_{\text{cav}} \otimes H_1 \otimes I_2 + I_{\text{cav}} \otimes I_1 \otimes H_2 + H_{\text{int}} \)</span></p>
 <p>Each term acts only on its subsystem but lives in the full composite space.</p>
 <hr class="docutils" />
 <section id="step-1-identities-for-each-subspace">
 <h3>⚙️ Step 1: Identities for Each Subspace<a class="headerlink" href="#step-1-identities-for-each-subspace" title="Link to this heading">#</a></h3>
-<p>We start by defining the <span class="math notranslate nohighlight">\(2\times2\)</span> identity matrices for the cavity and for a generic qubit:
-$<span class="math notranslate nohighlight">\(
+<p>We start by defining the <span class="math notranslate nohighlight">\(2\times2\)</span> identity matrices for the cavity and for a generic qubit:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 I_{\text{cav}} = I_{\text{q}} = 
 \begin{bmatrix}
 1 &amp; 0 \\
 0 &amp; 1
 \end{bmatrix}
-\)</span>$
-These act as “placeholders” when we want an operator to act on one subsystem but leave the others unchanged.</p>
+\end{split}\]</div>
+<p>These act as “placeholders” when we want an operator to act on one subsystem but leave the others unchanged.</p>
 </section>
 <hr class="docutils" />
 <section id="step-2-tensor-product-construction-of-operators">
 <h3>🧩 Step 2: Tensor-Product Construction of Operators<a class="headerlink" href="#step-2-tensor-product-construction-of-operators" title="Link to this heading">#</a></h3>
 <p>We build operators for each molecule and for the cavity in the <strong>composite space</strong> using the Kronecker product (<code class="docutils literal notranslate"><span class="pre">np.kron</span></code>):</p>
-<ul class="simple">
-<li><p>For <strong>molecule 1</strong>:
+<p>For <strong>molecule 1</strong>:
 $<span class="math notranslate nohighlight">\(
-\sigma_{z,1} = I_{\text{cav}} \otimes \sigma_z \otimes I_{\text{q}}, \quad
-\sigma_{+,1} = I_{\text{cav}} \otimes \sigma_+ \otimes I_{\text{q}}, \quad
-\sigma_{-,1} = I_{\text{cav}} \otimes \sigma_- \otimes I_{\text{q}}
-\)</span>$</p></li>
-<li><p>For <strong>molecule 2</strong>:
+  \sigma_{z,1} = I_{\text{cav}} \otimes \sigma_z \otimes I_{\text{q}}, \quad
+  \sigma_{+,1} = I_{\text{cav}} \otimes \sigma_+ \otimes I_{\text{q}}, \quad
+  \sigma_{-,1} = I_{\text{cav}} \otimes \sigma_- \otimes I_{\text{q}}
+\)</span>$</p>
+<p>For <strong>molecule 2</strong>:
 $<span class="math notranslate nohighlight">\(
-\sigma_{z,2} = I_{\text{cav}} \otimes I_{\text{q}} \otimes \sigma_z, \quad
-\sigma_{+,2} = I_{\text{cav}} \otimes I_{\text{q}} \otimes \sigma_+, \quad
-\sigma_{-,2} = I_{\text{cav}} \otimes I_{\text{q}} \otimes \sigma_-
-\)</span>$</p></li>
-<li><p>For the <strong>cavity</strong>:
+  \sigma_{z,2} = I_{\text{cav}} \otimes I_{\text{q}} \otimes \sigma_z, \quad
+  \sigma_{+,2} = I_{\text{cav}} \otimes I_{\text{q}} \otimes \sigma_+, \quad
+  \sigma_{-,2} = I_{\text{cav}} \otimes I_{\text{q}} \otimes \sigma_-
+\)</span>$</p>
+<p>For the <strong>cavity</strong>:
 $<span class="math notranslate nohighlight">\(
-a = a \otimes I_{\text{q}} \otimes I_{\text{q}}, \qquad
-a^\dagger = a^\dagger \otimes I_{\text{q}} \otimes I_{\text{q}}
-\)</span>$</p></li>
-</ul>
+  a = a \otimes I_{\text{q}} \otimes I_{\text{q}}, \qquad
+  a^\dagger = a^\dagger \otimes I_{\text{q}} \otimes I_{\text{q}}
+\)</span>$</p>
 <p>This ensures that each operator acts only on its subsystem while preserving the full system dimension.</p>
 </section>
 <hr class="docutils" />
