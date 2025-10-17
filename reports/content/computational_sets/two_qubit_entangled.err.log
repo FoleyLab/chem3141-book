@@ -64,7 +64,7 @@ print("✅ All operator checks passed! 🎉")
 
 [31m---------------------------------------------------------------------------[39m
 [31mTypeError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 10[39m
+[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 10[39m
 [32m      7[39m identity_qubit = np.eye([32m2[39m)
 [32m      9[39m [38;5;66;03m# ✏️ TODO 1: Verify that σ₊σ₋ + σ₋σ₊ = I (the identity matrix)[39;00m
 [32m---> [39m[32m10[39m lhs_pauli = sigma_plus @ sigma_minus + sigma_minus @ sigma_plus
