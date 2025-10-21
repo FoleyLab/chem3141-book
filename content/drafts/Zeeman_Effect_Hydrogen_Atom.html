@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -194,6 +194,9 @@
 
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/vibration.html">Chapter 4: Vibrational Motion</a></li>
 
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/hydrogen.html">Chapter 6: The Hydrogen Atom</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/variation.html">Chapter 7: The Variation Theorem</a></li>
@@ -203,11 +206,16 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_1.html">Problem Set 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_2.html">Problem Set 2</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../computational_sets/note05.html">Additional Notes on Spin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/two_qubit_entangled.html">Computational Set 2: Entangling Operations through strong light-matter coupling</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/CO_Perturbation_Theory_Quartic.html">Vibrational Transitions in CO Using Perturbation THeory</a></li>
 
 
 </ul>
@@ -558,7 +566,7 @@ Using this, we can see that the units of the perturbation work out as follows:
 <h2>Finally, compute the energies to first order!<a class="headerlink" href="#finally-compute-the-energies-to-first-order" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">constants</span>
 
 
@@ -598,14 +606,15 @@ Using this, we can see that the units of the perturbation work out as follows:
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;E_2,1,1  = </span><span class="si">{</span><span class="n">E_211</span><span class="si">}</span><span class="s2"> J&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;E_2,1,0  = </span><span class="si">{</span><span class="n">E_210</span><span class="si">}</span><span class="s2"> J&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;E_2,1,-1 = </span><span class="si">{</span><span class="n">E_21m1</span><span class="si">}</span><span class="s2"> J&quot;</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Printing Energies to first order
-E_2,1,1  = -5.465548020131476e-19 J
+E_2,1,1  = -5.465548020156724e-19 J
 E_2,1,0  = -5.447e-19 J
-E_2,1,-1 = -5.4284519798685235e-19 J
+E_2,1,-1 = -5.428451979843276e-19 J
 </pre></div>
 </div>
 </div>
@@ -624,7 +633,7 @@ E_2,1,-1 = -5.4284519798685235e-19 J
 <p>$<span class="math notranslate nohighlight">\( H_{nlm; n'l'm'} = (E_{n'} - \hbar m \frac{e B}{2 m_e}) \delta_{nn'} \delta_{ll'} \delta_{mm'} \)</span>$.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># prompt: Generate a list of tuples containing values of n between 1 and 4, l between 0 and n, and m between -l and l</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># prompt: Generate a list of tuples containing values of n between 1 and 4, l between 0 and n, and m between -l and l</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_nlm_tuples</span><span class="p">(</span><span class="n">n_max</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;Generates a list of tuples (n, l, m) for hydrogen atom states.</span>
@@ -673,7 +682,7 @@ E_2,1,-1 = -5.4284519798685235e-19 J
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Hamiltonian_Matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">nlm_list</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">nlm_list</span><span class="p">)))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Hamiltonian_Matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">nlm_list</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">nlm_list</span><span class="p">)))</span>
 
 <span class="n">i_ctr</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 <span class="k">for</span> <span class="n">nlm_tuple</span> <span class="ow">in</span> <span class="n">nlm_list</span><span class="p">:</span>
@@ -694,7 +703,7 @@ E_2,1,-1 = -5.4284519798685235e-19 J
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Hamiltonian_Matrix</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Hamiltonian_Matrix</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

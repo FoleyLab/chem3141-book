@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -194,6 +194,9 @@
 
 <li class="toctree-l1"><a class="reference internal" href="vibration.html">Chapter 4: Vibrational Motion</a></li>
 
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydrogen.html">Chapter 6: The Hydrogen Atom</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variation.html">Chapter 7: The Variation Theorem</a></li>
@@ -203,11 +206,16 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_1.html">Problem Set 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_2.html">Problem Set 2</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../computational_sets/note05.html">Additional Notes on Spin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/two_qubit_entangled.html">Computational Set 2: Entangling Operations through strong light-matter coupling</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/CO_Perturbation_Theory_Quartic.html">Vibrational Transitions in CO Using Perturbation THeory</a></li>
 
 
 </ul>
@@ -542,12 +550,6 @@ Polar (colatitudinal) coordinate; must be in <span class="math notranslate nohig
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dp/63x0n7nd4_q9b8cbskjk1xpr0000gp/T/ipykernel_34632/2655294372.py:5: DeprecationWarning: `scipy.special.sph_harm` is deprecated as of SciPy 1.15.0 and will be removed in SciPy 1.17.0. Please use `scipy.special.sph_harm_y` instead.
-  Ylm  = sph_harm(m, l, theta, phi).real
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -574,8 +576,6 @@ Polar (colatitudinal) coordinate; must be in <span class="math notranslate nohig
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b70f2183175b497fae6dbbe25fd51912"}</script></div>
 </div>
 </section>
 <section id="making-volume-plot-with-ipyvolumes">
@@ -586,16 +586,6 @@ Polar (colatitudinal) coordinate; must be in <span class="math notranslate nohig
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ipyvolume</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ipv</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">ipyvolume</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ipv</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;ipyvolume&#39;
 </pre></div>
 </div>
 </div>

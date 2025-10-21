@@ -215,6 +215,9 @@
 
 <li class="toctree-l1"><a class="reference internal" href="two_qubit_entangled.html">Computational Set 2: Entangling Operations through strong light-matter coupling</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="CO_Perturbation_Theory_Quartic.html">Vibrational Transitions in CO Using Perturbation THeory</a></li>
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
@@ -834,25 +837,6 @@ a^\dagger =
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sigma_z:
- [[ 1  0]
- [ 0 -1]]
-sigma_minus:
- [[0 1]
- [0 0]]
-sigma_plus:
- [[0 0]
- [1 0]]
-a:
- [[0 1]
- [0 0]]
-adag:
- [[0 0]
- [1 0]]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -889,36 +873,6 @@ adag:
 
 <span class="c1"># ✅ If no assertion failed, all is good!</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ All operator checks passed! 🎉&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🧭 Checking Pauli operator relationships...
-
-σ₊σ₋ + σ₋σ₊ =
- [[1 0]
- [0 1]]
-
-[σ₊, σ₋] =
- [[-1  0]
- [ 0  1]]
-Expected result: σ_z
-
-💡 Checking cavity ladder operator relationships...
-
-a†a =
- [[0 0]
- [0 1]]
-Expected result:
-[[0, 0], [0, 1]]
-
-[a, a†] =
- [[ 1  0]
- [ 0 -1]]
-Expected result:
-[[1, 0], [0, -1]] (i.e., the Pauli σ_z equivalent for 2-level truncation)
-
-✅ All operator checks passed! 🎉
 </pre></div>
 </div>
 </div>
@@ -1132,14 +1086,6 @@ Try printing the shapes of <code class="docutils literal notranslate"><span clas
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ H1 constructed successfully! Dimension: (8, 8)
-H2 shape: (8, 8)
-H shape: (8, 8)
-Hermitian check H1: True
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -1212,14 +1158,6 @@ forming superpositions that resemble the <strong>lower and upper polaritons</str
 <span class="c1"># 💡 Tip:</span>
 <span class="c1"># Try visualizing which basis states have nonzero amplitudes.</span>
 <span class="c1"># Since this is |0eg&gt;, only one entry in the 8-element state vector should be 1.</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape of psi0: (8, 1)
-Norm squared: 1
-Density matrix shape: (8, 8)
-Trace(ρ) = 1
 </pre></div>
 </div>
 </div>
@@ -1427,13 +1365,6 @@ and how this corresponds to an excitation hopping from molecule 1 → cavity →
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulation complete!
-Final time: 39.95
-Shape of population array: (800, 8)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1466,9 +1397,6 @@ Shape of population array: (800, 8)
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/5e65fc93e32b18efe8d2e8d5a7d5896f0cf68fd1945a0a486aa92df9ef55331c.png" src="../../_images/5e65fc93e32b18efe8d2e8d5a7d5896f0cf68fd1945a0a486aa92df9ef55331c.png" />
 </div>
 </div>
 </section>
@@ -1541,29 +1469,6 @@ you’ll lose coherence and the Bell state fidelity will drop.
 <span class="c1"># 🧭 Optional check:</span>
 <span class="c1"># If the fidelity is close to 1 → ideal iSWAP achieved!</span>
 <span class="c1"># If it’s noticeably lower → consider timing or truncation effects.</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Final density matrix (ρ_final):
-[[ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
- [ 0.00  0.50 -0.50  0.00  0.00  0.00  0.00  0.00]
- [ 0.00 -0.50  0.50  0.00  0.00  0.00  0.00  0.00]
- [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
- [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
- [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
- [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
- [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]]
-
-Target density matrix (ρ_target):
-[[ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
- [ 0.00  0.50 -0.50  0.00  0.00  0.00  0.00  0.00]
- [ 0.00 -0.50  0.50  0.00  0.00  0.00  0.00  0.00]
- [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
- [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
- [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
- [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]
- [ 0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00]]
 </pre></div>
 </div>
 </div>

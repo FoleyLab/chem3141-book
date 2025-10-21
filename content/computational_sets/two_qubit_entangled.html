@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/computational_sets/two_qubit_entangled';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Useful Formulae" href="../resources/formula_sheet.html" />
+    <link rel="next" title="Vibrational Transitions in CO Using Perturbation THeory" href="CO_Perturbation_Theory_Quartic.html" />
     <link rel="prev" title="Computational Set 1: Introduction to Spin 1/2" href="Spin_one_half.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -214,6 +214,9 @@
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Computational Set 2: Entangling Operations through strong light-matter coupling</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="CO_Perturbation_Theory_Quartic.html">Vibrational Transitions in CO Using Perturbation THeory</a></li>
+
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
@@ -841,20 +844,6 @@ a^\dagger =
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sigma_z:
- Ellipsis
-sigma_minus:
- Ellipsis
-sigma_plus:
- Ellipsis
-a:
- Ellipsis
-adag:
- Ellipsis
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -891,23 +880,6 @@ adag:
 
 <span class="c1"># ✅ If no assertion failed, all is good!</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ All operator checks passed! 🎉&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🧭 Checking Pauli operator relationships...
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">identity_qubit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># ✏️ TODO 1: Verify that σ₊σ₋ + σ₋σ₊ = I (the identity matrix)</span>
-<span class="ne">---&gt; </span><span class="mi">10</span> <span class="n">lhs_pauli</span> <span class="o">=</span> <span class="n">sigma_plus</span> <span class="o">@</span> <span class="n">sigma_minus</span> <span class="o">+</span> <span class="n">sigma_minus</span> <span class="o">@</span> <span class="n">sigma_plus</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;σ₊σ₋ + σ₋σ₊ =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">lhs_pauli</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">lhs_pauli</span><span class="p">,</span> <span class="n">identity_qubit</span><span class="p">),</span> <span class="s2">&quot;❌ Check your sigma_plus/sigma_minus definitions!&quot;</span>
-
-<span class="ne">TypeError</span>: unsupported operand type(s) for @: &#39;ellipsis&#39; and &#39;ellipsis&#39;
 </pre></div>
 </div>
 </div>
@@ -1541,11 +1513,11 @@ you’ll lose coherence and the Bell state fidelity will drop.
       </div>
     </a>
     <a class="right-next"
-       href="../resources/formula_sheet.html"
+       href="CO_Perturbation_Theory_Quartic.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Useful Formulae</p>
+        <p class="prev-next-title">Vibrational Transitions in CO Using Perturbation THeory</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

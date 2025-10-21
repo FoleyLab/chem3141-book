@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -194,6 +194,9 @@
 
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/vibration.html">Chapter 4: Vibrational Motion</a></li>
 
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/hydrogen.html">Chapter 6: The Hydrogen Atom</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture_notes/variation.html">Chapter 7: The Variation Theorem</a></li>
@@ -203,11 +206,16 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_1.html">Problem Set 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_2.html">Problem Set 2</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../computational_sets/note05.html">Additional Notes on Spin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computational_sets/Spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/two_qubit_entangled.html">Computational Set 2: Entangling Operations through strong light-matter coupling</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/CO_Perturbation_Theory_Quartic.html">Vibrational Transitions in CO Using Perturbation THeory</a></li>
 
 
 </ul>
@@ -738,34 +746,34 @@ V_{Quartic}(r) = \frac{1}{2} k (r - r_{eq})^2 + \frac{1}{6}g (r - r_{eq})^3 + \f
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total Hamiltonian
 [[ 5.61932217e-03 -6.89496986e-04  9.36093827e-05 -5.62971931e-04
-   5.40454023e-05 -2.22970871e-20 -2.80608374e-20 -5.04889846e-20
-   1.85653683e-20 -2.26777019e-20]
+   5.40454023e-05 -1.96829634e-21 -3.29312768e-20 -3.09542873e-20
+  -7.26913654e-21 -1.25133066e-20]
  [-6.89496986e-04  1.69241583e-02 -1.95019198e-03  2.70227012e-04
-  -1.12594386e-03  1.20849193e-04 -1.83354571e-19  5.64028855e-20
-  -1.31763429e-19  9.69728934e-20]
+  -1.12594386e-03  1.20849193e-04 -1.14744902e-19  1.27977170e-19
+   2.07025017e-20  6.47856416e-20]
  [ 9.36093827e-05 -1.95019198e-03  2.83613782e-02 -3.58273143e-03
-   5.35022187e-04 -1.78027356e-03  2.09316943e-04 -6.79256614e-19
-   2.07789320e-19 -1.60713571e-20]
+   5.35022187e-04 -1.78027356e-03  2.09316943e-04 -3.98041676e-19
+   1.29717426e-20 -1.70231352e-19]
  [-5.62971931e-04  2.70227012e-04 -3.58273143e-03  3.99309816e-02
   -5.51597588e-03  8.88056579e-04 -2.51768702e-03  3.19736912e-04
-  -1.18250647e-18 -6.22638951e-19]
+  -6.60310656e-19 -7.81881139e-19]
  [ 5.40454023e-05 -1.12594386e-03  5.35022187e-04 -5.51597588e-03
    5.16329688e-02 -7.70881065e-03  1.32934113e-03 -3.33058686e-03
-   4.52176277e-04 -1.22735555e-18]
- [-2.18735706e-20  1.20849193e-04 -1.78027356e-03  8.88056579e-04
+   4.52176277e-04 -1.86432434e-18]
+ [-4.08587871e-21  1.20849193e-04 -1.78027356e-03  8.88056579e-04
   -7.70881065e-03  6.34673396e-02 -1.01334948e-02  1.85887902e-03
   -4.21289617e-03  6.06658136e-04]
- [ 5.82048054e-21 -2.13000724e-19  2.09316943e-04 -2.51768702e-03
+ [-1.04849037e-20 -9.18750123e-20  2.09316943e-04 -2.51768702e-03
    1.32934113e-03 -1.01334948e-02  7.54340940e-02 -1.27696629e-02
    2.47667147e-03 -5.15972298e-03]
- [-3.72540948e-20  8.12200754e-21 -6.41987164e-19  3.19736912e-04
+ [-3.09542873e-20  8.98606869e-20 -4.48863653e-19  3.19736912e-04
   -3.33058686e-03  1.85887902e-03 -1.27696629e-02  8.75332321e-02
   -1.56015358e-02  3.18271901e-03]
- [ 1.89888848e-20 -1.41927824e-19  2.28118110e-19 -1.10288537e-18
+ [-1.80688066e-20  1.73143699e-20 -1.12389134e-19 -5.56549120e-19
    4.52176277e-04 -4.21289617e-03  2.47667147e-03 -1.56015358e-02
    9.97647539e-02 -1.86164186e-02]
- [-5.73704300e-21  6.81737734e-20 -7.36695976e-20 -6.04004227e-19
-  -1.28156566e-18  6.06658136e-04 -5.15972298e-03  3.18271901e-03
+ [ 6.12141829e-21  3.17513568e-20 -2.19359263e-19 -7.98821798e-19
+  -1.81011423e-18  6.06658136e-04 -5.15972298e-03  3.18271901e-03
   -1.86164186e-02  1.12128659e-01]]
 Harmonic Hamiltonian
 [[0.00558623 0.         0.         0.         0.         0.
@@ -788,7 +796,7 @@ Harmonic Hamiltonian
   0.         0.         0.09496585 0.        ]
  [0.         0.         0.         0.         0.         0.
   0.         0.         0.         0.1061383 ]]
-The fundamental is 2420.691660943122 cm^-1
+The fundamental is 2420.6916609431296 cm^-1
 The fundamental harmonic is 2452.069887228941
 </pre></div>
 </div>
@@ -809,7 +817,7 @@ The fundamental harmonic is 2452.069887228941
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/52a4ef56b5f68330b5eac9b42dd4bfe64e3017d51d3ae4c0cf2a347aab9670e5.png" src="../../_images/52a4ef56b5f68330b5eac9b42dd4bfe64e3017d51d3ae4c0cf2a347aab9670e5.png" />
+<img alt="../../_images/9b736a4bd25bf2ac6d830201013207f098d54f3ae518bafac4971c2f16795700.png" src="../../_images/9b736a4bd25bf2ac6d830201013207f098d54f3ae518bafac4971c2f16795700.png" />
 </div>
 </div>
 </section>
