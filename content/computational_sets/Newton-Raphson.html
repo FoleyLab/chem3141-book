@@ -221,6 +221,8 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</a></li>
 
 
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
@@ -469,6 +471,15 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-iterate-until-convergence">🔄 Step 2: Iterate until convergence</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#guided-exercise-newtonraphson-method-in-two-dimensions">🧭 Guided Exercise: Newton–Raphson Method in Two Dimensions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-perfectly-quadratic-2d-function">✏️ Step 1: Perfectly Quadratic 2D Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-perform-one-newtonraphson-step">🔁 Step 2: Perform one Newton–Raphson step</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-newtonraphson-on-a-non-quadratic-2d-function">🌊 Step 3: Newton–Raphson on a Non-Quadratic 2D Function</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-iterate-newtonraphson-updates">🔄 Step 4: Iterate Newton–Raphson updates</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -703,6 +714,175 @@ How close is your updated value <span class="math notranslate nohighlight">\( x_
 </div>
 </section>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="guided-exercise-newtonraphson-method-in-two-dimensions">
+<h1>🧭 Guided Exercise: Newton–Raphson Method in Two Dimensions<a class="headerlink" href="#guided-exercise-newtonraphson-method-in-two-dimensions" title="Link to this heading">#</a></h1>
+<p>In one dimension, we wrote the Newton–Raphson update for finding a stationary point as</p>
+<div class="math notranslate nohighlight">
+\[
+x_{n+1} = x_n - \frac{f'(x_n)}{f''(x_n)}.
+\]</div>
+<p>In <strong>two dimensions (and higher)</strong>, this generalizes to:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}_{n+1} = \mathbf{x}_n - \mathbf{H}^{-1}(\mathbf{x}_n) \, \nabla f(\mathbf{x}_n)
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \nabla f(\mathbf{x}) \)</span> is the <strong>gradient vector</strong>, and</p></li>
+<li><p><span class="math notranslate nohighlight">\( \mathbf{H}(\mathbf{x}) \)</span> is the <strong>Hessian matrix</strong> (matrix of second derivatives).</p></li>
+</ul>
+<p>We’ll begin with a <strong>perfectly quadratic function</strong> where Newton’s method finds the minimum in a single step.</p>
+<section id="step-1-perfectly-quadratic-2d-function">
+<h2>✏️ Step 1: Perfectly Quadratic 2D Function<a class="headerlink" href="#step-1-perfectly-quadratic-2d-function" title="Link to this heading">#</a></h2>
+<p>Let’s consider</p>
+<p><span class="math notranslate nohighlight">\(
+f(x, y) = (x - 1)^2 + 2(y - 2)^2.
+\)</span></p>
+<p>This function has its stationary point (and minimum) at <span class="math notranslate nohighlight">\( (x_s, y_s) = (1, 2) \)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Define the function, gradient, and Hessian</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">fxy</span> <span class="o">=</span> <span class="c1">### Complete with 2D function computing (x-1)^2 + 2(y-2)^2</span>
+    <span class="k">return</span> <span class="n">fxy</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">grad_f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gradient vector ∇f = [∂f/∂x, ∂f/∂y]&quot;&quot;&quot;</span>
+    <span class="n">dfdx</span> <span class="o">=</span> <span class="c1">### complete with partial first derivative of f(x,y) wrt x</span>
+    <span class="n">dfdy</span> <span class="o">=</span> <span class="c1">### complete with partial first derivative of f(x,y) wrt y</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dfdx</span><span class="p">,</span> <span class="n">dfdy</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hessian_f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hessian matrix H = [[∂²f/∂x², ∂²f/∂x∂y], [∂²f/∂y∂x, ∂²f/∂y²]]&quot;&quot;&quot;</span>
+    <span class="n">d2fx2</span> <span class="o">=</span> <span class="c1">### complete with ∂²f/∂x²</span>
+    <span class="n">d2fxy</span> <span class="o">=</span> <span class="c1">### complete with ∂²f/∂x∂y</span>
+    <span class="n">d2fyx</span> <span class="o">=</span> <span class="c1">### complete with ∂²f/∂y∂x</span>
+    <span class="n">d2fy2</span> <span class="o">=</span> <span class="c1">### complete with ∂²f/∂y²</span>
+    
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">d2fx2</span><span class="p">,</span> <span class="n">d2fxy</span><span class="p">],</span>
+                     <span class="p">[</span><span class="n">d2fyx</span><span class="p">,</span> <span class="n">d2fy2</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-perform-one-newtonraphson-step">
+<h2>🔁 Step 2: Perform one Newton–Raphson step<a class="headerlink" href="#step-2-perform-one-newtonraphson-step" title="Link to this heading">#</a></h2>
+<p>Start from an initial point <span class="math notranslate nohighlight">\(\mathbf{x}_0 = (0, 0) \)</span> and compute one Newton update:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}_1 = \mathbf{x}_0 - \mathbf{H}^{-1}(\mathbf{x}_0) \nabla f(\mathbf{x}_0)
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xy0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+
+<span class="c1"># Compute gradient and Hessian</span>
+<span class="n">g</span> <span class="o">=</span> <span class="c1">## call function to compute grad of f(x,y) at point given by xy0 </span>
+<span class="n">H</span> <span class="o">=</span> <span class="c1">## call function to compute Hessian of f(x,y) at point given by xy0</span>
+
+<span class="c1"># Newton update</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">xy0</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">H</span><span class="p">)</span> <span class="o">@</span> <span class="n">g</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x0 =&quot;</span><span class="p">,</span> <span class="n">xy0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gradient =&quot;</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x1 =&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅ <strong>Question:</strong><br />
+Does your single update step land exactly on the stationary point <span class="math notranslate nohighlight">\( (1, 2) \)</span>?<br />
+Why does it only take one step for this function?</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-3-newtonraphson-on-a-non-quadratic-2d-function">
+<h1>🌊 Step 3: Newton–Raphson on a Non-Quadratic 2D Function<a class="headerlink" href="#step-3-newtonraphson-on-a-non-quadratic-2d-function" title="Link to this heading">#</a></h1>
+<p>Now let’s consider a <em>non-quadratic</em> function, where the curvature changes with position:</p>
+<div class="math notranslate nohighlight">
+\[
+f(x, y) = \sin(x) + \cos(y)
+\]</div>
+<p>This function has stationary points where both partial derivatives vanish:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial f}{\partial x} = \cos(x) = 0, \quad \frac{\partial f}{\partial y} = -\sin(y) = 0.
+\]</div>
+<p>That means stationary points occur when <span class="math notranslate nohighlight">\( x = \pi/2 + n\pi \)</span> and <span class="math notranslate nohighlight">\( y = n\pi \)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the function, gradient, and Hessian for the sinusoidal surface</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">fxy</span> <span class="o">=</span> <span class="c1">### complete with f(x,y) = sin(x) + cos(y)</span>
+    <span class="k">return</span> <span class="n">fxy</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">grad_f2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">dfdx</span> <span class="o">=</span> <span class="c1">### complete with dfdx</span>
+    <span class="n">dfdy</span> <span class="o">=</span> <span class="c1">### complete with dfdy</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dfdx</span><span class="p">,</span> <span class="n">dfdy</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hessian_f2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">d2fx2</span> <span class="o">=</span> <span class="c1">### complete with ∂²f/∂x²</span>
+    <span class="n">d2fxy</span> <span class="o">=</span> <span class="c1">### complete with ∂²f/∂x∂y</span>
+    <span class="n">d2fyx</span> <span class="o">=</span> <span class="c1">### complete with ∂²f/∂y∂x</span>
+    <span class="n">d2fy2</span> <span class="o">=</span> <span class="c1">### complete with ∂²f/∂y²</span>
+    
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">d2fx2</span><span class="p">,</span> <span class="n">d2fxy</span><span class="p">],</span>
+                     <span class="p">[</span><span class="n">d2fyx</span><span class="p">,</span> <span class="n">d2fy2</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="step-4-iterate-newtonraphson-updates">
+<h2>🔄 Step 4: Iterate Newton–Raphson updates<a class="headerlink" href="#step-4-iterate-newtonraphson-updates" title="Link to this heading">#</a></h2>
+<p>The next block will put these updated functions for <span class="math notranslate nohighlight">\(f(x,y) = {\rm sin}(x) + {\rm cos}(y)\)</span> starting from <span class="math notranslate nohighlight">\( (x_0, y_0) = (2, 1) \)</span> and apply a few Newton steps to find a nearby stationary point.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+<span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-6</span>
+<span class="n">max_iter</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">grad_f2</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">hessian_f2</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>  <span class="c1"># equivalent to inv(H) @ g but more stable</span>
+    <span class="n">x_new</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">step</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iter </span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">2d</span><span class="si">}</span><span class="s2">: x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">, f(x) = </span><span class="si">{</span><span class="n">f2</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x_new</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Converged to stationary point: </span><span class="si">{</span><span class="n">x_new</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x_new</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅ <strong>Questions:</strong></p>
+<ol class="arabic simple">
+<li><p>Which stationary point does the iteration converge to?</p></li>
+<li><p>What happens if you start from a different initial guess — e.g. <span class="math notranslate nohighlight">\( (x_0, y_0) = (0, 0) \)</span>?</p></li>
+<li><p>Does the algorithm always converge to a minimum, or can it find a maximum or saddle point?</p></li>
+</ol>
+<hr class="docutils" />
+<p>💡 <strong>Discussion</strong></p>
+<p>In 2D, the Newton–Raphson method uses the <strong>Hessian matrix</strong> to locally approximate the curvature in all directions.<br />
+If the Hessian is positive definite, you’re near a <strong>minimum</strong>;<br />
+if it’s negative definite, you’re near a <strong>maximum</strong>;<br />
+and if it has both positive and negative eigenvalues, you’ve found a <strong>saddle point</strong>.</p>
+<hr class="docutils" />
+<p>🎯 <strong>Challenge Extension</strong></p>
+<p>Implement a general function <code class="docutils literal notranslate"><span class="pre">newton_2d(f,</span> <span class="pre">grad_f,</span> <span class="pre">hessian_f,</span> <span class="pre">x0,</span> <span class="pre">tol,</span> <span class="pre">max_iter)</span></code><br />
+that performs these updates automatically and returns:</p>
+<ul class="simple">
+<li><p>the final point,</p></li>
+<li><p>the number of iterations, and</p></li>
+<li><p>the trajectory of points for visualization.</p></li>
+</ul>
+<p>(You can, in principle, then plot the path of iterations on a contour plot of <span class="math notranslate nohighlight">\( f(x, y) \)</span>!)</p>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -779,6 +959,15 @@ How close is your updated value <span class="math notranslate nohighlight">\( x_
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#guided-exercise-newtonraphson-method-for-a-non-quadratic-function">🚀 Guided Exercise: Newton–Raphson Method for a Non-Quadratic Function</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-compute-the-newtonraphson-update">🔁 Step 1: Compute the Newton–Raphson update</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-iterate-until-convergence">🔄 Step 2: Iterate until convergence</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#guided-exercise-newtonraphson-method-in-two-dimensions">🧭 Guided Exercise: Newton–Raphson Method in Two Dimensions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-perfectly-quadratic-2d-function">✏️ Step 1: Perfectly Quadratic 2D Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-perform-one-newtonraphson-step">🔁 Step 2: Perform one Newton–Raphson step</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-newtonraphson-on-a-non-quadratic-2d-function">🌊 Step 3: Newton–Raphson on a Non-Quadratic 2D Function</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-iterate-newtonraphson-updates">🔄 Step 4: Iterate Newton–Raphson updates</a></li>
 </ul>
 </li>
 </ul>

@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/computational_sets/CO_Perturbation_Theory_Quartic';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Useful Formulae" href="../resources/formula_sheet.html" />
+    <link rel="next" title="🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function" href="Newton-Raphson.html" />
     <link rel="prev" title="Computational Set 2: Entangling Operations through strong light-matter coupling" href="two_qubit_entangled.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -216,6 +216,11 @@
 <li class="toctree-l1"><a class="reference internal" href="two_qubit_entangled.html">Computational Set 2: Entangling Operations through strong light-matter coupling</a></li>
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Vibrational Transitions in CO Using Perturbation THeory</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Newton-Raphson.html">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</a></li>
+
+
 
 
 </ul>
@@ -459,6 +464,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-model-potentials">Plot of model potentials</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-quartic-oscillator-hamiltonian">Full Quartic Oscillator Hamiltonian</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-oscillator-reference">Harmonic Oscillator Reference</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">Question 2</a></li>
@@ -621,12 +627,39 @@ Quartic constant h: 12.672998 a.u.
 </div>
 </div>
 <hr class="docutils" />
+<section id="full-quartic-oscillator-hamiltonian">
+<h2>Full Quartic Oscillator Hamiltonian<a class="headerlink" href="#full-quartic-oscillator-hamiltonian" title="Link to this heading">#</a></h2>
+<p>We can express the quartic oscillator Hamiltonian as
+$<span class="math notranslate nohighlight">\(
+\hat{H} = -\frac{\hbar^2}{2\mu} \frac{d^2}{dx^2} + \frac{1}{2}k x^2 + \frac{1}{6} g x^3 + \frac{1}{24} h x^4.
+\)</span>$</p>
+<p>To draw some correspondence to the Morse oscillator model, we can write the Taylor expansion of the Morse potential around <span class="math notranslate nohighlight">\(r-r_{eq}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+V_T(r) = \sum_{n=0}^\infty \frac{f^{(n)}(r_{eq})}{n!} (r - r_{eq})^n,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(f^{(n)}(r_{eq})\)</span> is the <span class="math notranslate nohighlight">\(n^{th}\)</span>-order derivative of the Morse potential evaluated at the equilibrium bondlength, e.g. <span class="math notranslate nohighlight">\(f^{(1)}(r_{eq}) = \frac{d}{dr}V_{Morse}(r_{eq})\)</span>.</p>
+<p>This leads to the following relations for each termin the quartic oscillator in terms of the Morse oscillator model</p>
+<div class="math notranslate nohighlight">
+\[
+k = \frac{d}{dr} V_{Morse}(r_{eq}) =  2  De  \beta^2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+g = \frac{d^2}{dr^2} V_{Morse}(r_{eq}) = -6  De \beta^3
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+h = \frac{d^3}{dr^3} V_{Morse}(r_{eq}) = 14  De \beta^4
+\]</div>
+<hr class="docutils" />
+</section>
 <section id="harmonic-oscillator-reference">
 <h2>Harmonic Oscillator Reference<a class="headerlink" href="#harmonic-oscillator-reference" title="Link to this heading">#</a></h2>
 <p>We choose the harmonic oscillator as the zeroth-order Hamiltonian:</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{H}_0 = -\frac{\hbar^2}{2\mu} \frac{d^2}{dx^2} + \frac{1}{2} x^2, \qquad \omega=\sqrt{\frac{k}{\mu}},
+\hat{H}_0 = -\frac{\hbar^2}{2\mu} \frac{d^2}{dx^2} + \frac{1}{2} k x^2, \qquad \omega=\sqrt{\frac{k}{\mu}},
 \]</div>
 <p>and define</p>
 <div class="math notranslate nohighlight">
@@ -672,9 +705,9 @@ E_v^{(0)} = \hbar \omega \left(v + \frac{1}{2}\right)
 \]</div>
 <p>an appropriate zeroth-order energy expression for the quartic oscillator?</p>
 <p><strong>a.</strong> This is an appropriate zeroth-order energy expression because <span class="math notranslate nohighlight">\(v = 0 \)</span> is the ground state<br />
-<strong>b.</strong> This is the expression for the exact energy eigenvalues of the unperturbed problem<br />
-<strong>c.</strong> This is the expression for the Morse oscillator energy eigenvalues<br />
-<strong>d.</strong> This is the expression for the quartic oscillator energy eigenvalues</p>
+<strong>b.</strong> This is the expression for the Morse oscillator energy eigenvalues<br />
+<strong>c.</strong> This is the expression for the quartic oscillator energy eigenvalues
+<strong>d.</strong> This is the expression for the exact energy eigenvalues of the unperturbed problem</p>
 </section>
 <section id="question-2">
 <h2>Question 2<a class="headerlink" href="#question-2" title="Link to this heading">#</a></h2>
@@ -1028,11 +1061,11 @@ and then these are utilized in the subsequent code blocks to compute the fundame
       </div>
     </a>
     <a class="right-next"
-       href="../resources/formula_sheet.html"
+       href="Newton-Raphson.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Useful Formulae</p>
+        <p class="prev-next-title">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1058,6 +1091,7 @@ and then these are utilized in the subsequent code blocks to compute the fundame
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-model-potentials">Plot of model potentials</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-quartic-oscillator-hamiltonian">Full Quartic Oscillator Hamiltonian</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-oscillator-reference">Harmonic Oscillator Reference</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">Question 2</a></li>
