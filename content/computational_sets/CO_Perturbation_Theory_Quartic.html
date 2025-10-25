@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Vibrational Transitions in CO Using Perturbation THeory &#8212; My sample book</title>
+    <title>Vibrational Transitions in CO Using Perturbation Theory &#8212; My sample book</title>
   
   
   
@@ -215,7 +215,7 @@
 
 <li class="toctree-l1"><a class="reference internal" href="two_qubit_entangled.html">Computational Set 2: Entangling Operations through strong light-matter coupling</a></li>
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Vibrational Transitions in CO Using Perturbation THeory</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Vibrational Transitions in CO Using Perturbation Theory</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="Newton-Raphson.html">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</a></li>
@@ -448,7 +448,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Vibrational Transitions in CO Using Perturbation THeory</h1>
+    <h1>Vibrational Transitions in CO Using Perturbation Theory</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -458,7 +458,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Vibrational Transitions in CO Using Perturbation THeory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Vibrational Transitions in CO Using Perturbation Theory</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
@@ -489,7 +489,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="vibrational-transitions-in-co-using-perturbation-theory">
-<h1>Vibrational Transitions in CO Using Perturbation THeory<a class="headerlink" href="#vibrational-transitions-in-co-using-perturbation-theory" title="Link to this heading">#</a></h1>
+<h1>Vibrational Transitions in CO Using Perturbation Theory<a class="headerlink" href="#vibrational-transitions-in-co-using-perturbation-theory" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://foleylab.github.io/">Jay Foley, University of North Carolina Charlotte</a></p>
 <section id="learning-outcomes">
 <h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Link to this heading">#</a></h2>
@@ -598,6 +598,7 @@ document.write(`
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Quartic.png&quot;</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 
@@ -632,7 +633,8 @@ Quartic constant h: 12.672998 a.u.
 <p>We can express the quartic oscillator Hamiltonian as
 $<span class="math notranslate nohighlight">\(
 \hat{H} = -\frac{\hbar^2}{2\mu} \frac{d^2}{dx^2} + \frac{1}{2}k x^2 + \frac{1}{6} g x^3 + \frac{1}{24} h x^4.
-\)</span>$</p>
+\)</span><span class="math notranslate nohighlight">\(
+where here we understand \)</span>x \equiv r - r_{eq}<span class="math notranslate nohighlight">\( to be the bond length displaced by the equilibrium bond length such that the potential has a minumum at \)</span>x = 0 \rightarrow r = r_{eq}$.</p>
 <p>To draw some correspondence to the Morse oscillator model, we can write the Taylor expansion of the Morse potential around <span class="math notranslate nohighlight">\(r-r_{eq}\)</span></p>
 <div class="math notranslate nohighlight">
 \[
@@ -642,15 +644,15 @@ V_T(r) = \sum_{n=0}^\infty \frac{f^{(n)}(r_{eq})}{n!} (r - r_{eq})^n,
 <p>This leads to the following relations for each termin the quartic oscillator in terms of the Morse oscillator model</p>
 <div class="math notranslate nohighlight">
 \[
-k = \frac{d}{dr} V_{Morse}(r_{eq}) =  2  De  \beta^2
+k = \left. \frac{dV_{\text{Morse}}(r)}{dr} \right|_{r = r_{\text{eq}}} = 2 D_e \beta^2
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-g = \frac{d^2}{dr^2} V_{Morse}(r_{eq}) = -6  De \beta^3
+g = \left. \frac{d^2V_{\text{Morse}}(r)}{dr^2} \right|_{r = r_{\text{eq}}}= -6  De \beta^3
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-h = \frac{d^3}{dr^3} V_{Morse}(r_{eq}) = 14  De \beta^4
+h = \left. \frac{d^3V_{\text{Morse}}(r)}{dr^3} \right|_{r = r_{\text{eq}}} = 14  De \beta^4
 \]</div>
 <hr class="docutils" />
 </section>
@@ -983,8 +985,22 @@ and then these are utilized in the subsequent code blocks to compute the fundame
 <span class="nb">print</span><span class="p">(</span><span class="sa">F</span><span class="s2">&quot;First order correction to first excited state energy: </span><span class="si">{</span><span class="n">E1_fo_correction</span><span class="si">}</span><span class="s2"> au&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">F</span><span class="s2">&quot;First order correction to first excited state energy: </span><span class="si">{</span><span class="n">E1_fo_correction</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">au_to_invcm</span><span class="si">}</span><span class="s2"> cm^-1&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fundamental Frequency (Harmonic) : &quot;</span><span class="p">,</span> <span class="n">fundamental_harmonic_au</span> <span class="o">*</span> <span class="n">au_to_invcm</span><span class="p">,</span> <span class="s2">&quot; cm^-1&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fundeamental Frequency in au (Harmonic): &quot;</span><span class="p">,</span> <span class="n">fundamental_harmonic_au</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fundamental Frequency (Morse)    : &quot;</span><span class="p">,</span> <span class="n">fundamental_morse_au</span> <span class="o">*</span> <span class="n">au_to_invcm</span><span class="p">,</span> <span class="s2">&quot; cm^-1&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fundamental Frequency (PT1)      : &quot;</span><span class="p">,</span> <span class="n">fundamental_pt1_au</span> <span class="o">*</span> <span class="n">au_to_invcm</span><span class="p">,</span> <span class="s2">&quot; cm^-1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First order correction to ground state energy: 5.686802216774283 cm^-1
+Expected first order correction to ground state energy: 5.686802216774276 cm^-1
+Difference between computed and expected: 6.692480737072095e-15 cm^-1
+First order correction to first excited state energy: 0.00012955488788782298 au
+First order correction to first excited state energy: 28.434011083871432 cm^-1
+Fundamental Frequency (Harmonic) :  2169.626233701669  cm^-1
+Fundeamental Frequency in au (Harmonic):  0.009885544555658526
+Fundamental Frequency (Morse)    :  2143.6294235678447  cm^-1
+Fundamental Frequency (PT1)      :  2192.3734425687667  cm^-1
 </pre></div>
 </div>
 </div>
@@ -1085,7 +1101,7 @@ and then these are utilized in the subsequent code blocks to compute the fundame
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Vibrational Transitions in CO Using Perturbation THeory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Vibrational Transitions in CO Using Perturbation Theory</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
