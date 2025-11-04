@@ -59,11 +59,9 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/computational_sets/CO_Perturbation_Theory_Quartic';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/computational_sets/CO_Perturbation_vs_Variational_vs_fd_Theory_Quartic';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="🧰 Helper Functions You’ll Need" href="CO_Variational.html" />
-    <link rel="prev" title="Computational Set 2: Entangling Operations through strong light-matter coupling" href="two_qubit_entangled.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,6 +123,8 @@
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -210,13 +210,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_2.html">Problem Set 2</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="two_qubit_entangled.html">Computational Set 2: Entangling Operations through strong light-matter coupling</a></li>
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Vibrational Transitions in CO Using Perturbation Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CO_Perturbation_Theory_Quartic.html">Vibrational Transitions in CO Using Perturbation Theory</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="CO_Variational.html">🧰 Helper Functions You’ll Need</a></li>
@@ -290,7 +290,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/FoleyLab/chem3141-book/blob/main/content/computational_sets/CO_Perturbation_Theory_Quartic.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/FoleyLab/chem3141-book/blob/main/content/computational_sets/CO_Perturbation_vs_Variational_vs_fd_Theory_Quartic.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -338,7 +338,7 @@
       
       
       
-      <li><a href="https://github.com/FoleyLab/chem3141-book/issues/new?title=Issue%20on%20page%20%2Fcontent/computational_sets/CO_Perturbation_Theory_Quartic.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/FoleyLab/chem3141-book/issues/new?title=Issue%20on%20page%20%2Fcontent/computational_sets/CO_Perturbation_vs_Variational_vs_fd_Theory_Quartic.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -368,7 +368,7 @@
       
       
       
-      <li><a href="../../_sources/content/computational_sets/CO_Perturbation_Theory_Quartic.ipynb" target="_blank"
+      <li><a href="../../_sources/content/computational_sets/CO_Perturbation_vs_Variational_vs_fd_Theory_Quartic.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -537,6 +537,9 @@ document.write(`
 <span class="n">r_eq_au</span> <span class="o">=</span> <span class="n">r_eq_ang</span> <span class="o">/</span> <span class="n">au_to_ang</span>
 <span class="n">mu_au</span>   <span class="o">=</span> <span class="n">mu_amu</span> <span class="o">*</span> <span class="n">amu_to_au</span>
 <span class="n">beta_au</span> <span class="o">=</span> <span class="n">beta_inv_ang</span> <span class="o">*</span> <span class="n">au_to_ang</span>
+
+<span class="c1"># hbar in a.u.</span>
+<span class="n">hbar</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="c1"># ——— Helper function ———</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">morse_potential</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">De</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">r_eq</span><span class="p">):</span>
@@ -944,12 +947,12 @@ and then these are utilized in the subsequent code blocks to compute the fundame
     <span class="k">return</span> <span class="n">V_nm</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">build_hamiltonian_matrix</span><span class="p">(</span><span class="n">n_basis</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq</span><span class="p">,</span> <span class="n">V_total</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">hbar</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_hamiltonian_matrix</span><span class="p">(</span><span class="n">n_basis</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq</span><span class="p">,</span> <span class="n">V_prime</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">hbar</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Build the Hamiltonian matrix in the harmonic oscillator basis.</span>
 <span class="sd">    </span>
 <span class="sd">    H = T + V, where matrix elements are:</span>
-<span class="sd">    H_nm = &lt;n|T|m&gt; + &lt;n|V|m&gt;</span>
+<span class="sd">    H_nm = E_m^{harm} d_nm + &lt;n|V_prime|m&gt;</span>
 <span class="sd">    </span>
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
@@ -963,7 +966,7 @@ and then these are utilized in the subsequent code blocks to compute the fundame
 <span class="sd">        position grid</span>
 <span class="sd">    r_eq : float</span>
 <span class="sd">        equilibrium bond length</span>
-<span class="sd">    V_total : array</span>
+<span class="sd">    V_prime : array</span>
 <span class="sd">        total potential energy along r grid</span>
 <span class="sd">    mu : float</span>
 <span class="sd">        reduced mass</span>
@@ -980,18 +983,18 @@ and then these are utilized in the subsequent code blocks to compute the fundame
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_basis</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_basis</span><span class="p">):</span>
             <span class="c1"># Kinetic energy contribution</span>
-            <span class="n">T_nm</span> <span class="o">=</span> <span class="n">kinetic_matrix_element</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">hbar</span><span class="p">)</span>
+            <span class="n">E_m</span> <span class="o">=</span> <span class="n">harmonic_eigenvalue</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">hbar</span><span class="p">)</span>
             
             <span class="c1"># Potential energy contribution (using your existing function)</span>
-            <span class="n">V_nm</span> <span class="o">=</span> <span class="n">potential_matrix_element</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq</span><span class="p">,</span> <span class="n">V_total</span><span class="p">)</span>
+            <span class="n">V_nm</span> <span class="o">=</span> <span class="n">potential_matrix_element</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq</span><span class="p">,</span> <span class="n">V_prime</span><span class="p">)</span>
             
             <span class="c1"># Total Hamiltonian matrix element</span>
-            <span class="n">H</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">]</span> <span class="o">=</span> <span class="n">T_nm</span> <span class="o">+</span> <span class="n">V_nm</span>
+            <span class="n">H</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">]</span> <span class="o">=</span> <span class="n">E_m</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="n">m</span><span class="p">)</span> <span class="o">+</span> <span class="n">V_nm</span>
     
     <span class="k">return</span> <span class="n">H</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">solve_variational</span><span class="p">(</span><span class="n">n_basis</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq</span><span class="p">,</span> <span class="n">V_total</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">hbar</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_variational</span><span class="p">(</span><span class="n">n_basis</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq</span><span class="p">,</span> <span class="n">V_prime</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">hbar</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Solve for eigenvalues and eigenvectors using the linear variational method.</span>
 <span class="sd">    </span>
@@ -1020,7 +1023,7 @@ and then these are utilized in the subsequent code blocks to compute the fundame
 <span class="sd">        corresponding eigenvectors (columns)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Build Hamiltonian matrix</span>
-    <span class="n">H</span> <span class="o">=</span> <span class="n">build_hamiltonian_matrix</span><span class="p">(</span><span class="n">n_basis</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq</span><span class="p">,</span> <span class="n">V_total</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">hbar</span><span class="p">)</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">build_hamiltonian_matrix</span><span class="p">(</span><span class="n">n_basis</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq</span><span class="p">,</span> <span class="n">V_prime</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">hbar</span><span class="p">)</span>
     
     <span class="c1"># Diagonalize</span>
     <span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
@@ -1028,7 +1031,133 @@ and then these are utilized in the subsequent code blocks to compute the fundame
     <span class="k">return</span> <span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span>
 
 
-<span class="c1"># compute alpha</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_kinetic_matrix_fd</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">hbar</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build kinetic energy matrix using 5-point stencil finite difference.</span>
+<span class="sd">    </span>
+<span class="sd">    The kinetic energy operator is:</span>
+<span class="sd">    T = -hbar^2 / (2*mu) * d^2/dr^2</span>
+<span class="sd">    </span>
+<span class="sd">    5-point stencil for second derivative:</span>
+<span class="sd">    d^2f/dr^2|_i ≈ (-f_{i-2} + 16*f_{i-1} - 30*f_i + 16*f_{i+1} - f_{i+2}) / (12*h^2)</span>
+<span class="sd">    </span>
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    r : array</span>
+<span class="sd">        position grid (equally spaced)</span>
+<span class="sd">    mu : float</span>
+<span class="sd">        reduced mass</span>
+<span class="sd">    hbar : float</span>
+<span class="sd">        reduced Planck&#39;s constant</span>
+<span class="sd">        </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    T : ndarray (n_grid x n_grid)</span>
+<span class="sd">        Kinetic energy matrix</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n_grid</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># grid spacing (assumes uniform grid)</span>
+    
+    <span class="c1"># Initialize kinetic energy matrix</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_grid</span><span class="p">,</span> <span class="n">n_grid</span><span class="p">))</span>
+    
+    <span class="c1"># Prefactor for kinetic energy</span>
+    <span class="n">prefactor</span> <span class="o">=</span> <span class="o">-</span><span class="n">hbar</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mu</span> <span class="o">*</span> <span class="mi">12</span> <span class="o">*</span> <span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># Fill in the matrix using 5-point stencil</span>
+    <span class="c1"># Note: We use boundary conditions where wavefunction goes to zero at edges</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_grid</span><span class="p">):</span>
+        <span class="c1"># Diagonal term (coefficient of psi_i)</span>
+        <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">)</span>
+        
+        <span class="c1"># Off-diagonal terms</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">*</span> <span class="mi">16</span>  <span class="c1"># coefficient of psi_{i-1}</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n_grid</span> <span class="o">-</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">*</span> <span class="mi">16</span>  <span class="c1"># coefficient of psi_{i+1}</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># coefficient of psi_{i-2}</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n_grid</span> <span class="o">-</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># coefficient of psi_{i+2}</span>
+    
+    <span class="k">return</span> <span class="n">T</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build_potential_matrix_fd</span><span class="p">(</span><span class="n">V</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build potential energy matrix (diagonal).</span>
+<span class="sd">    </span>
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    V : array</span>
+<span class="sd">        potential energy values along the grid</span>
+<span class="sd">        </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    V_mat : ndarray (n_grid x n_grid)</span>
+<span class="sd">        Potential energy matrix (diagonal)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_finite_difference</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">hbar</span><span class="p">,</span> <span class="n">n_states</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Solve Schrödinger equation using finite difference method.</span>
+<span class="sd">    </span>
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    r : array</span>
+<span class="sd">        position grid</span>
+<span class="sd">    V : array</span>
+<span class="sd">        potential energy along grid</span>
+<span class="sd">    mu : float</span>
+<span class="sd">        reduced mass</span>
+<span class="sd">    hbar : float</span>
+<span class="sd">        reduced Planck&#39;s constant</span>
+<span class="sd">    n_states : int</span>
+<span class="sd">        number of lowest eigenvalues/eigenvectors to return</span>
+<span class="sd">        </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    eigenvalues : ndarray</span>
+<span class="sd">        energy eigenvalues (sorted, lowest n_states)</span>
+<span class="sd">    eigenvectors : ndarray</span>
+<span class="sd">        corresponding eigenvectors (columns, normalized)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Build kinetic and potential matrices</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">build_kinetic_matrix_fd</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">hbar</span><span class="p">)</span>
+    <span class="n">V_mat</span> <span class="o">=</span> <span class="n">build_potential_matrix_fd</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+    
+    <span class="c1"># Total Hamiltonian</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">T</span> <span class="o">+</span> <span class="n">V_mat</span>
+    
+    <span class="c1"># Diagonalize (eigh for symmetric/Hermitian matrices)</span>
+    <span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+    
+    <span class="c1"># Normalize eigenvectors properly (account for grid spacing)</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">eigenvectors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">eigenvectors</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">r</span><span class="p">))</span>
+        <span class="n">eigenvectors</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">/=</span> <span class="n">norm</span>
+    
+    <span class="c1"># Return only the lowest n_states</span>
+    <span class="k">return</span> <span class="n">eigenvalues</span><span class="p">[:</span><span class="n">n_states</span><span class="p">],</span> <span class="n">eigenvectors</span><span class="p">[:,</span> <span class="p">:</span><span class="n">n_states</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\s&#39;
+&lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\s&#39;
+/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_43583/3869768795.py:6: SyntaxWarning: invalid escape sequence &#39;\s&#39;
+  &quot;&quot;&quot; Helper function to compute \alpha = \sqrt{k * \omega / \hbar}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute alpha</span>
 <span class="n">alpha</span> <span class="o">=</span> <span class="n">compute_alpha</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">mu_au</span><span class="p">,</span> <span class="n">hbar_au</span><span class="p">)</span>
 
 <span class="c1"># compute psi_0 along the r grid</span>
@@ -1042,11 +1171,7 @@ and then these are utilized in the subsequent code blocks to compute the fundame
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\s&#39;
-&lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\s&#39;
-/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_43430/1733439826.py:6: SyntaxWarning: invalid escape sequence &#39;\s&#39;
-  &quot;&quot;&quot; Helper function to compute \alpha = \sqrt{k * \omega / \hbar}
-/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_43430/1733439826.py:144: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_43583/2482857556.py:8: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   Integral = trapz(psi_0 ** 2, r)
 </pre></div>
 </div>
@@ -1102,7 +1227,7 @@ Fundamental Frequency (Morse)    :  2143.6294235678447  cm^-1
 Fundamental Frequency (PT1)      :  2192.3734425687667  cm^-1
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_43430/1733439826.py:133: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_43583/3869768795.py:133: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   V_nm = np.trapz(integrand, r)
 </pre></div>
 </div>
@@ -1161,7 +1286,7 @@ Second order correction to first excited state energy: -58.22696349450612 cm^-1
 Fundamental Frequency (PT2)      :  2143.1524423226824  cm^-1
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_43430/1733439826.py:133: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_43583/3869768795.py:133: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   V_nm = np.trapz(integrand, r)
 </pre></div>
 </div>
@@ -1181,7 +1306,7 @@ Fundamental Frequency (PT2)      :  2143.1524423226824  cm^-1
 <span class="k">for</span> <span class="n">n_basis</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">]:</span>
     <span class="c1"># Solve using variational method with V_Q (quartic potential)</span>
     <span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">solve_variational</span><span class="p">(</span>
-        <span class="n">n_basis</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="n">V_Q</span><span class="p">,</span> <span class="n">mu_au</span><span class="p">,</span> <span class="n">hbar_au</span>
+        <span class="n">n_basis</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="n">V_pert</span><span class="p">,</span> <span class="n">mu_au</span><span class="p">,</span> <span class="n">hbar_au</span>
     <span class="p">)</span>
     
     <span class="n">E0_var</span> <span class="o">=</span> <span class="n">eigenvalues</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1196,7 +1321,7 @@ Fundamental Frequency (PT2)      :  2143.1524423226824  cm^-1
 <span class="c1"># Use largest basis for comparison</span>
 <span class="n">n_basis</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">solve_variational</span><span class="p">(</span>
-    <span class="n">n_basis</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="n">V_Q</span><span class="p">,</span> <span class="n">mu_au</span><span class="p">,</span> <span class="n">hbar_au</span>
+    <span class="n">n_basis</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="n">V_pert</span><span class="p">,</span> <span class="n">mu_au</span><span class="p">,</span> <span class="n">hbar_au</span>
 <span class="p">)</span>
 
 <span class="n">E0_var</span> <span class="o">=</span> <span class="n">eigenvalues</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1246,24 +1371,24 @@ LINEAR VARIATIONAL METHOD RESULTS
 ======================================================================
 
 Basis size: 5
-  E0 (variational)     : 1529.5581 cm^-1
-  E1 (variational)     : 4588.3054 cm^-1
-  Fundamental (var)    : 3058.7473 cm^-1
+  E0 (variational)     : 1081.7028 cm^-1
+  E1 (variational)     : 3227.2117 cm^-1
+  Fundamental (var)    : 2145.5089 cm^-1
 
 Basis size: 10
-  E0 (variational)     : 1528.0493 cm^-1
-  E1 (variational)     : 4548.2488 cm^-1
-  Fundamental (var)    : 3020.1995 cm^-1
+  E0 (variational)     : 1081.6993 cm^-1
+  E1 (variational)     : 3226.5857 cm^-1
+  Fundamental (var)    : 2144.8865 cm^-1
 
 Basis size: 15
-  E0 (variational)     : 1528.0451 cm^-1
-  E1 (variational)     : 4547.9982 cm^-1
-  Fundamental (var)    : 3019.9530 cm^-1
+  E0 (variational)     : 1081.6993 cm^-1
+  E1 (variational)     : 3226.5856 cm^-1
+  Fundamental (var)    : 2144.8863 cm^-1
 
 Basis size: 20
-  E0 (variational)     : 1528.0451 cm^-1
-  E1 (variational)     : 4547.9969 cm^-1
-  Fundamental (var)    : 3019.9518 cm^-1
+  E0 (variational)     : 1081.6993 cm^-1
+  E1 (variational)     : 3226.5856 cm^-1
+  Fundamental (var)    : 2144.8863 cm^-1
 
 ======================================================================
 COMPARISON OF METHODS (n_basis = 20)
@@ -1272,43 +1397,43 @@ Ground state energy:
   Harmonic             : 1084.8131 cm^-1
   PT1                  : 1090.4999 cm^-1
   PT2                  : 1081.4940 cm^-1
-  Variational          : 1528.0451 cm^-1
+  Variational          : 1081.6993 cm^-1
   Morse (exact)        : 1081.5635 cm^-1
 
 First excited state energy:
   Harmonic             : 3254.4394 cm^-1
   PT1                  : 3282.8734 cm^-1
   PT2                  : 3224.6464 cm^-1
-  Variational          : 4547.9969 cm^-1
+  Variational          : 3226.5856 cm^-1
   Morse (exact)        : 3225.1929 cm^-1
 
 Fundamental transition:
   Harmonic             : 2169.6262 cm^-1
   PT1                  : 2192.3734 cm^-1
   PT2                  : 2143.1524 cm^-1
-  Variational          : 3019.9518 cm^-1
+  Variational          : 2144.8863 cm^-1
   Morse (exact)        : 2143.6294 cm^-1
 
 Error in fundamental vs Morse:
   Harmonic             : 25.9968 cm^-1
   PT1                  : 48.7440 cm^-1
   PT2                  : -0.4770 cm^-1
-  Variational          : 876.3224 cm^-1
+  Variational          : 1.2569 cm^-1
 
 Ground state expansion coefficients (first 10):
-  c_0 = 0.989566
-  c_1 = 0.062785
-  c_2 = 0.123691
-  c_3 = 0.030783
-  c_4 = 0.021239
-  c_5 = 0.009367
-  c_6 = 0.004791
-  c_7 = 0.002511
-  c_8 = 0.001269
-  c_9 = 0.000674
+  c_0 = 0.998214
+  c_1 = 0.057508
+  c_2 = 0.003290
+  c_3 = 0.015691
+  c_4 = 0.002038
+  c_5 = 0.000115
+  c_6 = 0.000526
+  c_7 = 0.000099
+  c_8 = 0.000003
+  c_9 = 0.000023
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_43430/1733439826.py:133: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_43583/3869768795.py:133: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   V_nm = np.trapz(integrand, r)
 </pre></div>
 </div>
@@ -1502,7 +1627,7 @@ Error vs Morse:
 ======================================================================
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_43430/1733439826.py:133: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_43583/756475885.py:133: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   V_nm = np.trapz(integrand, r)
 </pre></div>
 </div>
@@ -1510,120 +1635,7 @@ Error vs Morse:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">build_kinetic_matrix_fd</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">hbar</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Build kinetic energy matrix using 5-point stencil finite difference.</span>
-<span class="sd">    </span>
-<span class="sd">    The kinetic energy operator is:</span>
-<span class="sd">    T = -hbar^2 / (2*mu) * d^2/dr^2</span>
-<span class="sd">    </span>
-<span class="sd">    5-point stencil for second derivative:</span>
-<span class="sd">    d^2f/dr^2|_i ≈ (-f_{i-2} + 16*f_{i-1} - 30*f_i + 16*f_{i+1} - f_{i+2}) / (12*h^2)</span>
-<span class="sd">    </span>
-<span class="sd">    Arguments</span>
-<span class="sd">    ---------</span>
-<span class="sd">    r : array</span>
-<span class="sd">        position grid (equally spaced)</span>
-<span class="sd">    mu : float</span>
-<span class="sd">        reduced mass</span>
-<span class="sd">    hbar : float</span>
-<span class="sd">        reduced Planck&#39;s constant</span>
-<span class="sd">        </span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    T : ndarray (n_grid x n_grid)</span>
-<span class="sd">        Kinetic energy matrix</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">n_grid</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># grid spacing (assumes uniform grid)</span>
-    
-    <span class="c1"># Initialize kinetic energy matrix</span>
-    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_grid</span><span class="p">,</span> <span class="n">n_grid</span><span class="p">))</span>
-    
-    <span class="c1"># Prefactor for kinetic energy</span>
-    <span class="n">prefactor</span> <span class="o">=</span> <span class="o">-</span><span class="n">hbar</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mu</span> <span class="o">*</span> <span class="mi">12</span> <span class="o">*</span> <span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-    
-    <span class="c1"># Fill in the matrix using 5-point stencil</span>
-    <span class="c1"># Note: We use boundary conditions where wavefunction goes to zero at edges</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_grid</span><span class="p">):</span>
-        <span class="c1"># Diagonal term (coefficient of psi_i)</span>
-        <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">)</span>
-        
-        <span class="c1"># Off-diagonal terms</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">*</span> <span class="mi">16</span>  <span class="c1"># coefficient of psi_{i-1}</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n_grid</span> <span class="o">-</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">*</span> <span class="mi">16</span>  <span class="c1"># coefficient of psi_{i+1}</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># coefficient of psi_{i-2}</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n_grid</span> <span class="o">-</span> <span class="mi">3</span><span class="p">:</span>
-            <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># coefficient of psi_{i+2}</span>
-    
-    <span class="k">return</span> <span class="n">T</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">build_potential_matrix_fd</span><span class="p">(</span><span class="n">V</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Build potential energy matrix (diagonal).</span>
-<span class="sd">    </span>
-<span class="sd">    Arguments</span>
-<span class="sd">    ---------</span>
-<span class="sd">    V : array</span>
-<span class="sd">        potential energy values along the grid</span>
-<span class="sd">        </span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    V_mat : ndarray (n_grid x n_grid)</span>
-<span class="sd">        Potential energy matrix (diagonal)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">solve_finite_difference</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">hbar</span><span class="p">,</span> <span class="n">n_states</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Solve Schrödinger equation using finite difference method.</span>
-<span class="sd">    </span>
-<span class="sd">    Arguments</span>
-<span class="sd">    ---------</span>
-<span class="sd">    r : array</span>
-<span class="sd">        position grid</span>
-<span class="sd">    V : array</span>
-<span class="sd">        potential energy along grid</span>
-<span class="sd">    mu : float</span>
-<span class="sd">        reduced mass</span>
-<span class="sd">    hbar : float</span>
-<span class="sd">        reduced Planck&#39;s constant</span>
-<span class="sd">    n_states : int</span>
-<span class="sd">        number of lowest eigenvalues/eigenvectors to return</span>
-<span class="sd">        </span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    eigenvalues : ndarray</span>
-<span class="sd">        energy eigenvalues (sorted, lowest n_states)</span>
-<span class="sd">    eigenvectors : ndarray</span>
-<span class="sd">        corresponding eigenvectors (columns, normalized)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Build kinetic and potential matrices</span>
-    <span class="n">T</span> <span class="o">=</span> <span class="n">build_kinetic_matrix_fd</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">hbar</span><span class="p">)</span>
-    <span class="n">V_mat</span> <span class="o">=</span> <span class="n">build_potential_matrix_fd</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
-    
-    <span class="c1"># Total Hamiltonian</span>
-    <span class="n">H</span> <span class="o">=</span> <span class="n">T</span> <span class="o">+</span> <span class="n">V_mat</span>
-    
-    <span class="c1"># Diagonalize (eigh for symmetric/Hermitian matrices)</span>
-    <span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
-    
-    <span class="c1"># Normalize eigenvectors properly (account for grid spacing)</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">eigenvectors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
-        <span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">eigenvectors</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">r</span><span class="p">))</span>
-        <span class="n">eigenvectors</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">/=</span> <span class="n">norm</span>
-    
-    <span class="c1"># Return only the lowest n_states</span>
-    <span class="k">return</span> <span class="n">eigenvalues</span><span class="p">[:</span><span class="n">n_states</span><span class="p">],</span> <span class="n">eigenvectors</span><span class="p">[:,</span> <span class="p">:</span><span class="n">n_states</span><span class="p">]</span>
-
-
-<span class="c1"># ============================================================================</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================================</span>
 <span class="c1"># Apply finite difference method to quartic oscillator</span>
 <span class="c1"># ============================================================================</span>
 
@@ -1659,7 +1671,7 @@ Error vs Morse:
 
 <span class="c1"># Variational with N=20 for comparison</span>
 <span class="n">eigenvalues_var</span><span class="p">,</span> <span class="n">eigenvectors_var</span> <span class="o">=</span> <span class="n">solve_variational</span><span class="p">(</span>
-    <span class="mi">20</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="n">V_Q</span><span class="p">,</span> <span class="n">mu_au</span><span class="p">,</span> <span class="n">hbar_au</span>
+    <span class="mi">20</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_eq_au</span><span class="p">,</span> <span class="n">V_pert</span><span class="p">,</span> <span class="n">mu_au</span><span class="p">,</span> <span class="n">hbar_au</span>
 <span class="p">)</span>
 <span class="n">E0_var</span> <span class="o">=</span> <span class="n">eigenvalues_var</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">E1_var</span> <span class="o">=</span> <span class="n">eigenvalues_var</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -1753,7 +1765,7 @@ Ground state energy (E0):
   Harmonic                 :  1084.8131 cm^-1
   PT1                      :  1090.4999 cm^-1
   PT2                      :  1081.4940 cm^-1
-  Variational (N=20)       :  1528.0451 cm^-1
+  Variational (N=20)       :  1081.6993 cm^-1
   Finite Difference        :  1081.6974 cm^-1
   Morse (reference)        :  1081.5635 cm^-1
 
@@ -1761,7 +1773,7 @@ First excited state energy (E1):
   Harmonic                 :  3254.4394 cm^-1
   PT1                      :  3282.8734 cm^-1
   PT2                      :  3224.6464 cm^-1
-  Variational (N=20)       :  4547.9969 cm^-1
+  Variational (N=20)       :  3226.5856 cm^-1
   Finite Difference        :  3226.5732 cm^-1
   Morse (reference)        :  3225.1929 cm^-1
 
@@ -1769,7 +1781,7 @@ Fundamental transition:
   Harmonic                 :  2169.6262 cm^-1
   PT1                      :  2192.3734 cm^-1
   PT2                      :  2143.1524 cm^-1
-  Variational (N=20)       :  3019.9518 cm^-1
+  Variational (N=20)       :  2144.8863 cm^-1
   Finite Difference        :  2144.8757 cm^-1
   Morse (reference)        :  2143.6294 cm^-1
 
@@ -1777,15 +1789,15 @@ Error in fundamental vs Morse:
   Harmonic                 :   +25.9968 cm^-1
   PT1                      :   +48.7440 cm^-1
   PT2                      :    -0.4770 cm^-1
-  Variational (N=20)       :  +876.3224 cm^-1
+  Variational (N=20)       :    +1.2569 cm^-1
   Finite Difference        :    +1.2463 cm^-1
 
 ======================================================================
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_43430/1192904635.py:107: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_43583/3869768795.py:329: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   norm = np.sqrt(np.trapz(eigenvectors[:, i]**2, r))
-/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_43430/1733439826.py:133: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+/var/folders/x2/ggtknn9s49s3dcq96ckcgfgh0000gn/T/ipykernel_43583/3869768795.py:133: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   V_nm = np.trapz(integrand, r)
 </pre></div>
 </div>
@@ -1827,24 +1839,6 @@ Error in fundamental vs Morse:
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="two_qubit_entangled.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Computational Set 2: Entangling Operations through strong light-matter coupling</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="CO_Variational.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">🧰 Helper Functions You’ll Need</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
