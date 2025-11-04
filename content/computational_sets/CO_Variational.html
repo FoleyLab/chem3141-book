@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>🧰 Helper Functions You’ll Need &#8212; My sample book</title>
+    <title>Vibrational Transitions in CO Using Variational Method &#8212; My sample book</title>
   
   
   
@@ -219,7 +219,7 @@
 <li class="toctree-l1"><a class="reference internal" href="CO_Perturbation_Theory_Quartic.html">Vibrational Transitions in CO Using Perturbation Theory</a></li>
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">🧰 Helper Functions You’ll Need</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Vibrational Transitions in CO Using Variational Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Newton-Raphson.html">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</a></li>
 
 
@@ -452,7 +452,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>🧰 Helper Functions You’ll Need</h1>
+    <h1>Vibrational Transitions in CO Using Variational Method</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -462,8 +462,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-eigenvalue-n-k-mu-hbar-au">⚙️ <code class="docutils literal notranslate"><span class="pre">harmonic_eigenvalue(n,</span> <span class="pre">k,</span> <span class="pre">mu,</span> <span class="pre">hbar_au)</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-matrix-element-n-m-alpha-r-r-eq-v-prime">⚙️ <code class="docutils literal notranslate"><span class="pre">potential_matrix_element(n,</span> <span class="pre">m,</span> <span class="pre">alpha,</span> <span class="pre">r,</span> <span class="pre">r_eq,</span> <span class="pre">V_prime)</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#helper-functions-youll-need">🧰 Helper Functions You’ll Need</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-eigenvalue-n-k-mu-hbar-au">⚙️ <code class="docutils literal notranslate"><span class="pre">harmonic_eigenvalue(n,</span> <span class="pre">k,</span> <span class="pre">mu,</span> <span class="pre">hbar_au)</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-matrix-element-n-m-alpha-r-r-eq-v-prime">⚙️ <code class="docutils literal notranslate"><span class="pre">potential_matrix_element(n,</span> <span class="pre">m,</span> <span class="pre">alpha,</span> <span class="pre">r,</span> <span class="pre">r_eq,</span> <span class="pre">V_prime)</span></code></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -475,7 +479,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="vibrational-transitions-in-co-using-variational-method">
+<h1>Vibrational Transitions in CO Using Variational Method<a class="headerlink" href="#vibrational-transitions-in-co-using-variational-method" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://foleylab.github.io/">Jay Foley, University of North Carolina Charlotte</a></p>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>In this activity, we study vibrational transitions of the carbon monoxide (CO) molecule using a quartic (fourth-order) polynomial approximation to the Morse potential.  While this potential appears simpler than the Morse potential, the quartic oscillator energy eigenvalue equation cannot be solved analytically (even though the Morse oscillator can be).  Nevertheless, it will give us some experience using approximate methods.  In a related notebook, we computed perturbative corrections to vibrational energies using an anharmonic potential.  Here, we will utilize the linear variational method to approximate the first fiew states of the quartic oscillator.  Importantly, we will highlight the use of parity arguments to simplify computation of matrix elements in this approach.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Quartic Oscillator Variational Method</span>
 <span class="c1"># Using Harmonic Oscillator Basis</span>
@@ -602,13 +613,14 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
 <section id="helper-functions-youll-need">
-<h1>🧰 Helper Functions You’ll Need<a class="headerlink" href="#helper-functions-youll-need" title="Link to this heading">#</a></h1>
+<h2>🧰 Helper Functions You’ll Need<a class="headerlink" href="#helper-functions-youll-need" title="Link to this heading">#</a></h2>
 <p>In this exercise, you’ll build each element of the <span class="math notranslate nohighlight">\( 3 \times 3 \)</span> Hamiltonian matrix <strong>by hand</strong>.<br />
 To do this, you will need to call two helper functions that are already defined for you.</p>
 <hr class="docutils" />
 <section id="harmonic-eigenvalue-n-k-mu-hbar-au">
-<h2>⚙️ <code class="docutils literal notranslate"><span class="pre">harmonic_eigenvalue(n,</span> <span class="pre">k,</span> <span class="pre">mu,</span> <span class="pre">hbar_au)</span></code><a class="headerlink" href="#harmonic-eigenvalue-n-k-mu-hbar-au" title="Link to this heading">#</a></h2>
+<h3>⚙️ <code class="docutils literal notranslate"><span class="pre">harmonic_eigenvalue(n,</span> <span class="pre">k,</span> <span class="pre">mu,</span> <span class="pre">hbar_au)</span></code><a class="headerlink" href="#harmonic-eigenvalue-n-k-mu-hbar-au" title="Link to this heading">#</a></h3>
 <p><strong>Purpose:</strong><br />
 Returns the <strong>energy eigenvalue</strong> of the <em>unperturbed harmonic oscillator</em> for a given quantum number <span class="math notranslate nohighlight">\( n \)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -633,7 +645,7 @@ A single float value for the harmonic energy $ E_n^{(0)} $ in atomic units.</p>
 </div>
 </section>
 <section id="potential-matrix-element-n-m-alpha-r-r-eq-v-prime">
-<h2>⚙️ <code class="docutils literal notranslate"><span class="pre">potential_matrix_element(n,</span> <span class="pre">m,</span> <span class="pre">alpha,</span> <span class="pre">r,</span> <span class="pre">r_eq,</span> <span class="pre">V_prime)</span></code><a class="headerlink" href="#potential-matrix-element-n-m-alpha-r-r-eq-v-prime" title="Link to this heading">#</a></h2>
+<h3>⚙️ <code class="docutils literal notranslate"><span class="pre">potential_matrix_element(n,</span> <span class="pre">m,</span> <span class="pre">alpha,</span> <span class="pre">r,</span> <span class="pre">r_eq,</span> <span class="pre">V_prime)</span></code><a class="headerlink" href="#potential-matrix-element-n-m-alpha-r-r-eq-v-prime" title="Link to this heading">#</a></h3>
 <p><strong>Purpose:</strong><br />
 Computes the matrix element<br />
 $<span class="math notranslate nohighlight">\(
@@ -783,6 +795,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -848,8 +861,12 @@ $<span class="math notranslate nohighlight">\(
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-eigenvalue-n-k-mu-hbar-au">⚙️ <code class="docutils literal notranslate"><span class="pre">harmonic_eigenvalue(n,</span> <span class="pre">k,</span> <span class="pre">mu,</span> <span class="pre">hbar_au)</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-matrix-element-n-m-alpha-r-r-eq-v-prime">⚙️ <code class="docutils literal notranslate"><span class="pre">potential_matrix_element(n,</span> <span class="pre">m,</span> <span class="pre">alpha,</span> <span class="pre">r,</span> <span class="pre">r_eq,</span> <span class="pre">V_prime)</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#helper-functions-youll-need">🧰 Helper Functions You’ll Need</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#harmonic-eigenvalue-n-k-mu-hbar-au">⚙️ <code class="docutils literal notranslate"><span class="pre">harmonic_eigenvalue(n,</span> <span class="pre">k,</span> <span class="pre">mu,</span> <span class="pre">hbar_au)</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-matrix-element-n-m-alpha-r-r-eq-v-prime">⚙️ <code class="docutils literal notranslate"><span class="pre">potential_matrix_element(n,</span> <span class="pre">m,</span> <span class="pre">alpha,</span> <span class="pre">r,</span> <span class="pre">r_eq,</span> <span class="pre">V_prime)</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
