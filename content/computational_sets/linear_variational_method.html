@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/computational_sets/linear_variational_method';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Useful Formulae" href="../resources/formula_sheet.html" />
+    <link rel="prev" title="🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function" href="Newton-Raphson.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +125,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -210,7 +210,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_2.html">Problem Set 2</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
 
 
@@ -223,6 +223,8 @@
 
 
 
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear Variational Method</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
@@ -477,6 +479,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-part-2">Questions Part 2:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-of-total-energy-kinetic-energy-and-potential-energy-functionals-with-basis-set-size">Behavior of Total Energy, Kinetic Energy, and Potential Energy functionals with basis set size.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-convergence-with-increasing-basis-set-size">Variational Convergence with Increasing Basis Set Size</a></li>
 </ul>
 </li>
 </ul>
@@ -546,7 +549,7 @@ in the next cell using the python library <code class="docutils literal notransl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6bcbff62ef86e7ebb52187aff861ced80797f0a070a2f21beab80b240b3b1311.png" src="../../_images/6bcbff62ef86e7ebb52187aff861ced80797f0a070a2f21beab80b240b3b1311.png" />
+<img alt="../../_images/d6c827b4e651d022baee2740859e35c12f6f49232cd7463ae2524a77d9809989.png" src="../../_images/d6c827b4e651d022baee2740859e35c12f6f49232cd7463ae2524a77d9809989.png" />
 </div>
 </div>
 </section>
@@ -819,7 +822,7 @@ size of the resulsing matrices will be <code class="docutils literal notranslate
 We will call the array that stores <span class="math notranslate nohighlight">\({\bf H}\)</span> <code class="docutils literal notranslate"><span class="pre">Hamiltonian_matrix</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_basis</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_basis</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">Hamiltonian_matrix</span><span class="p">,</span> <span class="n">Kinetic_matrix</span><span class="p">,</span> <span class="n">Potential_matrix</span> <span class="o">=</span> <span class="n">build_matrices</span><span class="p">(</span><span class="n">n_basis</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -841,7 +844,91 @@ will be the variational estimate of the ground-state wavefunction.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The variational ground state energy with 3 basis functions is 0.165735 atomic units
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The variational ground state energy with 50 basis functions is 0.142403 atomic units
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute eigenvalues and eigenvectors of the Hamiltonian matrix</span>
+<span class="n">E_opt</span><span class="p">,</span> <span class="n">c_opt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">Hamiltonian_matrix</span><span class="p">)</span>
+
+<span class="c1"># conversion factor: 1 Hartree = 27.211386 eV</span>
+<span class="n">hartree_to_ev</span> <span class="o">=</span> <span class="mf">27.211386</span>
+
+<span class="c1"># print lowest eigenvalue</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The variational ground state energy with </span><span class="si">{</span><span class="n">n_basis</span><span class="si">}</span><span class="s2"> basis functions is </span><span class="si">{</span><span class="n">E_opt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> a.u.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># compare to ordinary particle-in-a-box energies for the same box length</span>
+<span class="c1"># assume box length L (should match the one used to build your Hamiltonian)</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mf">10.0</span>  <span class="c1"># modify if your problem uses a different box length</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="c1"># analytic particle-in-a-box energies: E_n = n^2 * pi^2 / (2 * L^2)</span>
+<span class="n">n_levels</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">E_box</span> <span class="o">=</span> <span class="n">energy_eigenvalue</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span> <span class="n">L</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+
+<span class="c1"># format header</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Comparison of Energy Levels:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;State&#39;</span><span class="si">:</span><span class="s2">&gt;5</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;E_var (a.u.)&#39;</span><span class="si">:</span><span class="s2">&gt;15</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;E_box (a.u.)&#39;</span><span class="si">:</span><span class="s2">&gt;15</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;E_var (eV)&#39;</span><span class="si">:</span><span class="s2">&gt;15</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="s1">&#39;E_box (eV)&#39;</span><span class="si">:</span><span class="s2">&gt;15</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+
+<span class="c1"># print first 3 variational and analytic energies</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_levels</span><span class="p">):</span>
+    <span class="n">E_var_au</span> <span class="o">=</span> <span class="n">E_opt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">E_var_ev</span> <span class="o">=</span> <span class="n">E_var_au</span> <span class="o">*</span> <span class="n">hartree_to_ev</span>
+    <span class="n">E_box_au</span> <span class="o">=</span> <span class="n">E_box</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">E_box_ev</span> <span class="o">=</span> <span class="n">E_box_au</span> <span class="o">*</span> <span class="n">hartree_to_ev</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">:</span><span class="s2">5d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">E_var_au</span><span class="si">:</span><span class="s2">15.6f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">E_box_au</span><span class="si">:</span><span class="s2">15.6f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">E_var_ev</span><span class="si">:</span><span class="s2">15.3f</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">E_box_ev</span><span class="si">:</span><span class="s2">15.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># --- Print coefficients for first 3 variational eigenstates ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Expansion Coefficients for Variational Eigenstates:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">state_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_levels</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">State </span><span class="si">{</span><span class="n">state_index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> (E_var = </span><span class="si">{</span><span class="n">E_opt</span><span class="p">[</span><span class="n">state_index</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> a.u.):&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Basis |ψ_n⟩&#39;</span><span class="si">:</span><span class="s2">&gt;10</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Coefficient |c_n|^2&#39;</span><span class="si">:</span><span class="s2">&gt;20</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">35</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">basis_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_basis</span><span class="p">):</span>
+        <span class="n">coeff</span> <span class="o">=</span> <span class="n">c_opt</span><span class="p">[</span><span class="n">basis_index</span><span class="p">,</span> <span class="n">state_index</span><span class="p">]</span>
+        <span class="n">coeff</span> <span class="o">*=</span> <span class="n">coeff</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">coeff</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1e-3</span><span class="p">:</span>  <span class="c1"># Only print significant contributions</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">basis_index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">:</span><span class="s2">10d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">coeff</span><span class="si">:</span><span class="s2">20.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The variational ground state energy with 50 basis functions is 0.142403 a.u.
+
+Comparison of Energy Levels:
+State    E_var (a.u.)    E_box (a.u.)      E_var (eV)       E_box (eV)
+----------------------------------------------------------------------
+    1        0.142403        0.049348           3.875            1.343
+    2        0.197392        0.197392           5.371            5.371
+    3        0.599139        0.444132          16.303           12.085
+
+Expansion Coefficients for Variational Eigenstates:
+
+State 1 (E_var = 0.142403 a.u.):
+Basis |ψ_n⟩  Coefficient |c_n|^2
+-----------------------------------
+         1             0.904784
+         3             0.086058
+         5             0.006579
+         7             0.001513
+
+State 2 (E_var = 0.197392 a.u.):
+Basis |ψ_n⟩  Coefficient |c_n|^2
+-----------------------------------
+         2             1.000000
+
+State 3 (E_var = 0.599139 a.u.):
+Basis |ψ_n⟩  Coefficient |c_n|^2
+-----------------------------------
+         1             0.069099
+         3             0.869292
+         5             0.051870
+         7             0.006313
+         9             0.001809
 </pre></div>
 </div>
 </div>
@@ -877,10 +964,73 @@ The ground-state eigenvector can be accessed as a slice of <code class="docutils
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1379622b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x15eed9a50&gt;
 </pre></div>
 </div>
-<img alt="../../_images/968de3bc08b10d3e6579257c79bc56da3be5f575540871558fa12401110fa6b5.png" src="../../_images/968de3bc08b10d3e6579257c79bc56da3be5f575540871558fa12401110fa6b5.png" />
+<img alt="../../_images/c68955460827c57444b69da5f7808f9a9b25d0663a68c9815b70e34d9e440207.png" src="../../_images/c68955460827c57444b69da5f7808f9a9b25d0663a68c9815b70e34d9e440207.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Define number of plotted states</span>
+<span class="n">n_plot</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># ground + 2 excited</span>
+
+<span class="c1"># Initialize an array to hold the reconstructed variational eigenfunctions</span>
+<span class="n">Phi_var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_plot</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+
+<span class="c1"># Build each variational eigenfunction as a linear combination of basis functions</span>
+<span class="k">for</span> <span class="n">state_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_plot</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_basis</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">Phi_var</span><span class="p">[</span><span class="n">state_index</span><span class="p">]</span> <span class="o">+=</span> <span class="n">c_opt</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">state_index</span><span class="p">]</span> <span class="o">*</span> <span class="n">energy_eigenfunction</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Normalize each variational state (optional, for visual consistency)</span>
+<span class="n">Phi_var</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">Phi_var</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+
+<span class="c1"># Compute unperturbed particle-in-a-box states for comparison</span>
+<span class="n">Phi_pib</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">energy_eigenfunction</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_plot</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)])</span>
+
+<span class="c1"># Scale potential and add vertical offset so it fits nicely on the same axes</span>
+<span class="n">V_scaled</span> <span class="o">=</span> <span class="p">(</span><span class="n">V</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">V</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">V</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">V</span><span class="p">))</span> <span class="o">*</span> <span class="mf">100.0</span>  <span class="c1"># normalized to small vertical scale</span>
+
+<span class="c1"># --- Plot setup ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">colors_var</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;navy&quot;</span><span class="p">,</span> <span class="s2">&quot;darkgreen&quot;</span><span class="p">,</span> <span class="s2">&quot;firebrick&quot;</span><span class="p">]</span>
+<span class="n">colors_pib</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;skyblue&quot;</span><span class="p">,</span> <span class="s2">&quot;limegreen&quot;</span><span class="p">,</span> <span class="s2">&quot;salmon&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_plot</span><span class="p">):</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mf">0.25</span>  <span class="c1"># vertical offset for readability</span>
+    <span class="c1"># Variational probability density</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Phi_var</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors_var</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+             <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Variational State </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># PIB probability density</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Phi_pib</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors_pib</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+             <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;PIB State </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plot scaled potential (offset slightly below ground state)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">V_scaled</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Potential (scaled)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Annotate energy level guide lines (optional)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_plot</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">i</span> <span class="o">*</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Formatting ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Variational vs. Particle-in-a-Box Eigenstates with Delta Potential&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x (a.u.)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Probability Density + offset&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">n_plot</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1dc156a7d3a2a71f4307360f7cff413dc74bf0b2fa675d83e56e5dac0968e696.png" src="../../_images/1dc156a7d3a2a71f4307360f7cff413dc74bf0b2fa675d83e56e5dac0968e696.png" />
 </div>
 </div>
 </section>
@@ -895,70 +1045,97 @@ The ground-state eigenvector can be accessed as a slice of <code class="docutils
 </section>
 <section id="behavior-of-total-energy-kinetic-energy-and-potential-energy-functionals-with-basis-set-size">
 <h2>Behavior of Total Energy, Kinetic Energy, and Potential Energy functionals with basis set size.<a class="headerlink" href="#behavior-of-total-energy-kinetic-energy-and-potential-energy-functionals-with-basis-set-size" title="Link to this heading">#</a></h2>
-<p>Typically speaking, the quality of the variational ground-state energy improves with the basis set size.
-Here we will look at the behavior of the total energy, the kinetic energy, and the potential energy of the
-trial wavefunction as a function of basis set size.</p>
-<p>For a given trial wavefunction (as determined by the variationally determined ground-state eigenvector <span class="math notranslate nohighlight">\({\bf c}\)</span>,
-we can define the total energy as
-\begin{equation}
-E = {\bf c}^t {\bf H} {\bf c}
-\end{equation}
-the kinetic energy as
-\begin{equation}
-T = {\bf c}^t {\bf T} {\bf c},
-\end{equation}
-and the potential energy as
-\begin{equation}
-V = {\bf c}^t {\bf V} {\bf c}.
-\end{equation}</p>
-<p>where <span class="math notranslate nohighlight">\({\bf c}^t\)</span> is just the transpose of <span class="math notranslate nohighlight">\({\bf c}\)</span>. We will perform this computation for
-basis set sizes spanning <code class="docutils literal notranslate"><span class="pre">n_basis</span> <span class="pre">=</span> <span class="pre">2</span></code> to <code class="docutils literal notranslate"><span class="pre">n_basis</span> <span class="pre">=</span> <span class="pre">202</span></code>, and we will compare to the
-ground state and first excited state of the ordinary particle in a box (<span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span>).</p>
+</section>
+<section id="variational-convergence-with-increasing-basis-set-size">
+<h2>Variational Convergence with Increasing Basis Set Size<a class="headerlink" href="#variational-convergence-with-increasing-basis-set-size" title="Link to this heading">#</a></h2>
+<p>According to the <strong>Variational Principle</strong>, the ground-state energy obtained from any trial
+wavefunction is always an <em>upper bound</em> to the true ground-state energy.<br />
+As we expand the basis set used to construct the trial wavefunction, the quality of this
+approximation improves, and the total variational energy should <strong>monotonically decrease</strong> toward
+the exact value.</p>
+<p>In this section, we examine how the <strong>total energy</strong>, <strong>kinetic energy</strong>, and <strong>potential energy</strong>
+of the variational ground state evolve with the number of basis functions <code class="docutils literal notranslate"><span class="pre">n_basis</span></code>.</p>
+<p>For each basis size, the total, kinetic, and potential energies are defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+E = \mathbf{c}^T \mathbf{H} \mathbf{c}, \quad
+T = \mathbf{c}^T \mathbf{T} \mathbf{c}, \quad
+V = \mathbf{c}^T \mathbf{V} \mathbf{c},
+\]</div>
+<p>where<span class="math notranslate nohighlight">\(\mathbf{c} \)</span> is the normalized eigenvector corresponding to the lowest eigenvalue
+of the Hamiltonian matrix <span class="math notranslate nohighlight">\( \mathbf{H} \)</span>.</p>
+<p>We will also compare our variational results with the analytic particle-in-a-box energy
+levels <span class="math notranslate nohighlight">\(E_1 \)</span> and <span class="math notranslate nohighlight">\( E_2\)</span>, which serve as useful references.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define the number of basis functions</span>
-<span class="n">n_basis_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">E_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">T_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">V_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">E_1_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">E_2_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">202</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
-    <span class="n">n_basis_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="n">H</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">build_matrices</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="n">e_t</span><span class="p">,</span> <span class="n">c_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
-    <span class="n">E_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e_t</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">T_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">c_t</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">T_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">c_t</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]),</span> <span class="n">T_c</span> <span class="p">)</span> <span class="p">)</span>
-    <span class="n">V_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">c_t</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">V_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">c_t</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]),</span> <span class="n">V_c</span> <span class="p">)</span> <span class="p">)</span>
-    <span class="n">E_1_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">E_2_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-    
-    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
+<span class="c1"># Initialize storage lists</span>
+<span class="n">n_basis_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">E_list</span><span class="p">,</span> <span class="n">T_list</span><span class="p">,</span> <span class="n">V_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">E1_ref</span><span class="p">,</span> <span class="n">E2_ref</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+<span class="c1"># Define basis range</span>
+<span class="n">basis_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basis_range</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n_basis</span> <span class="ow">in</span> <span class="n">basis_range</span><span class="p">:</span>
+    <span class="n">H</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">build_matrices</span><span class="p">(</span><span class="n">n_basis</span><span class="p">)</span>
     
+    <span class="c1"># Solve variational eigenproblem</span>
+    <span class="n">e_vals</span><span class="p">,</span> <span class="n">c_vecs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+    <span class="n">c0</span> <span class="o">=</span> <span class="n">c_vecs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># ground-state coefficients</span>
     
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_basis_list</span><span class="p">,</span> <span class="n">E_list</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;E&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_basis_list</span><span class="p">,</span> <span class="n">T_list</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_basis_list</span><span class="p">,</span> <span class="n">V_list</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;V&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_basis_list</span><span class="p">,</span> <span class="n">E_1_list</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;E_1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_basis_list</span><span class="p">,</span> <span class="n">E_2_list</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;E_2&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="c1"># Expectation values</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">c0</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">H</span> <span class="o">@</span> <span class="n">c0</span><span class="p">)</span>
+    <span class="n">T_exp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">c0</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">T</span> <span class="o">@</span> <span class="n">c0</span><span class="p">)</span>
+    <span class="n">V_exp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">c0</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">V</span> <span class="o">@</span> <span class="n">c0</span><span class="p">)</span>
+    
+    <span class="c1"># Store results</span>
+    <span class="n">n_basis_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n_basis</span><span class="p">)</span>
+    <span class="n">E_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+    <span class="n">T_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">T_exp</span><span class="p">)</span>
+    <span class="n">V_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">V_exp</span><span class="p">)</span>
+    
+    <span class="c1"># Reference PIB energies (for same box length L=1)</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="mf">10.0</span>
+    <span class="n">E1_ref</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">L</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">E2_ref</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">L</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># Convert lists to arrays</span>
+<span class="n">n_basis_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">n_basis_list</span><span class="p">)</span>
+<span class="n">E_list</span><span class="p">,</span> <span class="n">T_list</span><span class="p">,</span> <span class="n">V_list</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="p">(</span><span class="n">E_list</span><span class="p">,</span> <span class="n">T_list</span><span class="p">,</span> <span class="n">V_list</span><span class="p">))</span>
+<span class="n">E1_ref</span><span class="p">,</span> <span class="n">E2_ref</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="p">(</span><span class="n">E1_ref</span><span class="p">,</span> <span class="n">E2_ref</span><span class="p">))</span>
+
+<span class="c1"># --- Plot ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_basis_list</span><span class="p">,</span> <span class="n">E_list</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$E_{\mathrm</span><span class="si">{total}</span><span class="s2">}$&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;navy&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_basis_list</span><span class="p">,</span> <span class="n">T_list</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$T_{\mathrm</span><span class="si">{kinetic}</span><span class="s2">}$&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkorange&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_basis_list</span><span class="p">,</span> <span class="n">V_list</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$V_{\mathrm</span><span class="si">{potential}</span><span class="s2">}$&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Reference PIB energy lines (constant)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">E1_ref</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$E_1$ (PIB)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">E2_ref</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$E_2$ (PIB)&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Formatting ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Convergence of Variational Energies with Basis Set Size&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Number of Basis Functions&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Energy (a.u.)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1267b3af0&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+ 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40]
 </pre></div>
 </div>
-<img alt="../../_images/f24c17f36bb4cdd550c7a4d71d26227ad6ae08afe4cbafb47cc2eb0630d8b1e7.png" src="../../_images/f24c17f36bb4cdd550c7a4d71d26227ad6ae08afe4cbafb47cc2eb0630d8b1e7.png" />
+<img alt="../../_images/cdc02cd7c6f5f8d75cf15a48aa5f4b35b7f318af44678814b4f2b82ae776c345.png" src="../../_images/cdc02cd7c6f5f8d75cf15a48aa5f4b35b7f318af44678814b4f2b82ae776c345.png" />
 </div>
 </div>
 </section>
@@ -994,6 +1171,24 @@ ground state and first excited state of the ordinary particle in a box (<span cl
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Newton-Raphson.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../resources/formula_sheet.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Useful Formulae</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1028,6 +1223,7 @@ ground state and first excited state of the ordinary particle in a box (<span cl
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-part-2">Questions Part 2:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-of-total-energy-kinetic-energy-and-potential-energy-functionals-with-basis-set-size">Behavior of Total Energy, Kinetic Energy, and Potential Energy functionals with basis set size.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-convergence-with-increasing-basis-set-size">Variational Convergence with Increasing Basis Set Size</a></li>
 </ul>
 </li>
 </ul>
