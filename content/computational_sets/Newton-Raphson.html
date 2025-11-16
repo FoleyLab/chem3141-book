@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/computational_sets/Newton-Raphson';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Useful Formulae" href="../resources/formula_sheet.html" />
-    <link rel="prev" title="Vibrational Transitions in CO Using Perturbation Theory" href="CO_Perturbation_Theory_Quartic.html" />
+    <link rel="next" title="Linear Variational Method" href="linear_variational_method.html" />
+    <link rel="prev" title="Vibrational Transitions in CO Using Variational Method" href="CO_Variational.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -219,10 +219,19 @@
 <li class="toctree-l1"><a class="reference internal" href="CO_Perturbation_Theory_Quartic.html">Vibrational Transitions in CO Using Perturbation Theory</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="CO_Variational.html">Vibrational Transitions in CO Using Variational Method</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</a></li>
 
 
 
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="linear_variational_method.html">Linear Variational Method</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
@@ -481,6 +490,16 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-iterate-newtonraphson-updates">🔄 Step 4: Iterate Newton–Raphson updates</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-finite-difference-gradients-and-hessians">⚙️ Step 5: Finite-Difference Gradients and Hessians</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-numerical-gradients-from-quantum-chemistry-calculations">⚛️ Step 7: Numerical Gradients from Quantum Chemistry Calculations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-pyscf">Installing pyscf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-pyscf-energy-calculation">Running PySCF energy calculation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-potential-energy-scan">⚙️ Step 1: Potential Energy Scan</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-numerical-gradient-from-energy-differences">🧮 Step 2: Numerical Gradient from Energy Differences</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-1d-newtonraphson-geometry-optimization-of-co">🧮 Step 8: 1D Newton–Raphson Geometry Optimization of CO</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preview-toward-quasi-newton-bfgs">🌱 Preview: Toward Quasi-Newton (BFGS)</a></li>
 </ul>
 
             </nav>
@@ -884,6 +903,424 @@ that performs these updates automatically and returns:</p>
 <p>(You can, in principle, then plot the path of iterations on a contour plot of <span class="math notranslate nohighlight">\( f(x, y) \)</span>!)</p>
 </section>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-5-finite-difference-gradients-and-hessians">
+<h1>⚙️ Step 5: Finite-Difference Gradients and Hessians<a class="headerlink" href="#step-5-finite-difference-gradients-and-hessians" title="Link to this heading">#</a></h1>
+<p>So far, we’ve relied on <strong>analytical derivatives</strong> — but in many real problems,<br />
+we can’t easily compute <span class="math notranslate nohighlight">\( \nabla f\)</span> or <span class="math notranslate nohighlight">\( \mathbf{H} \)</span> analytically.</p>
+<p>A common alternative is to use <strong>finite differences</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial f}{\partial x_i} \approx \frac{f(x_i + h) - f(x_i - h)}{2h}
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial^2 f}{\partial x_i \partial x_j} \approx
+\frac{f(x_i + h, x_j + h) - f(x_i + h, x_j - h)
+- f(x_i - h, x_j + h) + f(x_i - h, x_j - h)}{4h^2}.
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(h\)</span> is some small step along the direction <span class="math notranslate nohighlight">\(x_i\)</span> or <span class="math notranslate nohighlight">\(x_j\)</span>, as appropriate.  This finite difference approximation typically becomes closer to the exact derivative as <span class="math notranslate nohighlight">\(h\)</span> approaches zero, so numerically we typically set <span class="math notranslate nohighlight">\(h\)</span> to some very small value like <span class="math notranslate nohighlight">\(h = 0.001\)</span> Angstroms for molecular geometries.</p>
+<p>We’ll test this idea using the same function:</p>
+<div class="math notranslate nohighlight">
+\[
+f(x, y) = \sin(x) + \cos(y)
+\]</div>
+<p>and compare our <strong>numerical</strong> gradients and Hessians to the <strong>analytical</strong> ones.  Again, it will be adequate to set <span class="math notranslate nohighlight">\(h\)</span> to some very small value like <span class="math notranslate nohighlight">\(h = 0.001\)</span> for this comparison.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">numerical_grad</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the numerical gradient (∇f) of a 2D function using central finite differences.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    f : function</span>
+<span class="sd">        A Python function that takes two arguments, e.g. f(x, y) = sin(x) + cos(y).</span>
+<span class="sd">    x : array-like of shape (2,)</span>
+<span class="sd">        The point [x, y] at which to evaluate the gradient.</span>
+<span class="sd">    h : float, optional</span>
+<span class="sd">        The finite difference step size (default is 1e-3).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    grad : ndarray of shape (2,)</span>
+<span class="sd">        The numerical gradient vector [∂f/∂x, ∂f/∂y].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Initialize gradient vector with zeros (same dimension as x)</span>
+    <span class="n">grad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="c1"># Loop over each coordinate direction (x and y)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+        <span class="c1"># Create a step vector for perturbing one coordinate at a time</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">step</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span>
+
+        <span class="c1"># TODO: Use the central finite-difference formula</span>
+        <span class="c1">## fp = ### complete code here</span>
+        <span class="c1">## fm = ### complete code here</span>
+        <span class="c1"># grad[i] = ### complete code here</span>
+
+    <span class="k">return</span> <span class="n">grad</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">numerical_hessian</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the numerical Hessian (matrix of second derivatives) of a 2D function </span>
+<span class="sd">    using central finite differences.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    f : function</span>
+<span class="sd">        A Python function that takes two arguments, e.g. f(x, y) = sin(x) + cos(y).</span>
+<span class="sd">    x : array-like of shape (2,)</span>
+<span class="sd">        The point [x, y] at which to evaluate the Hessian.</span>
+<span class="sd">    h : float, optional</span>
+<span class="sd">        The finite difference step size (default is 1e-4).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    H : ndarray of shape (2, 2)</span>
+<span class="sd">        The numerical Hessian matrix:</span>
+<span class="sd">            [[∂²f/∂x², ∂²f/∂x∂y],</span>
+<span class="sd">             [∂²f/∂y∂x, ∂²f/∂y²]]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Initialize empty Hessian matrix</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+    <span class="c1"># Double loop over indices (i, j)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="c1"># Create small step vectors along the i-th and j-th directions</span>
+            <span class="n">ei</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">ej</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">ei</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span>
+            <span class="n">ej</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span>
+
+            <span class="c1"># TODO: Use the 4-point central difference formula for second derivatives:</span>
+            <span class="c1"># fpp = ### complete code here</span>
+            <span class="c1"># fpm = ### complete code here</span>
+            <span class="c1"># fmp = ### complete code here</span>
+            <span class="c1"># fmm = ### complete code here</span>
+            <span class="c1">#</span>
+            <span class="c1"># H[i, j] = ### complete code here</span>
+
+    <span class="k">return</span> <span class="n">H</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅ <strong>Your task:</strong></p>
+<ul class="simple">
+<li><p>Complete the formulas in each loop according to the provided comments.</p></li>
+<li><p>Test your functions using <code class="docutils literal notranslate"><span class="pre">f2(x,</span> <span class="pre">y)</span> <span class="pre">=</span> <span class="pre">np.sin(x)</span> <span class="pre">+</span> <span class="pre">np.cos(y)</span></code> at a few points (e.g. <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">1]</span></code>).</p></li>
+<li><p>Compare your numerical derivatives with the analytical ones to check accuracy.</p></li>
+</ul>
+<p>💭 <strong>Hint:</strong><br />
+Remember that the function <code class="docutils literal notranslate"><span class="pre">f</span></code> takes <em>two separate arguments</em> (x and y),<br />
+so when calling it inside your loop you’ll want to unpack the array <code class="docutils literal notranslate"><span class="pre">x</span></code> using <code class="docutils literal notranslate"><span class="pre">*x</span></code>.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-7-numerical-gradients-from-quantum-chemistry-calculations">
+<h1>⚛️ Step 7: Numerical Gradients from Quantum Chemistry Calculations<a class="headerlink" href="#step-7-numerical-gradients-from-quantum-chemistry-calculations" title="Link to this heading">#</a></h1>
+<p>So far, we’ve used simple mathematical functions like <span class="math notranslate nohighlight">\( f(x, y) = \sin(x) + \cos(y) \)</span>
+to test our numerical gradient and Hessian code.</p>
+<p>Let’s now connect this idea to a <em>real chemistry application</em>:
+computing the <strong>potential energy surface</strong> of a molecule using <em>ab initio</em> methods.</p>
+<p>In this example, we’ll use the <strong>PySCF</strong> package to compute the total electronic energy of CO
+as a function of the C–O bond length.</p>
+<p>We’ll then see how we could use the same finite-difference formulas to estimate
+the <strong>numerical gradient</strong> (and eventually, the curvature) of that potential energy surface.</p>
+<section id="installing-pyscf">
+<h2>Installing pyscf<a class="headerlink" href="#installing-pyscf" title="Link to this heading">#</a></h2>
+<p>You can install pyscf within this Jupypter session by running</p>
+<p><code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">pyscf</span></code></p>
+<p>in the next cell.  You may also install pyscf into your local conda environment, and once you do that, you can skip this step in the future.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pyscf
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="running-pyscf-energy-calculation">
+<h2>Running PySCF energy calculation<a class="headerlink" href="#running-pyscf-energy-calculation" title="Link to this heading">#</a></h2>
+<p>The next cell will set up a template for the geometry of a simple diatomic molecule, CO, where the <span class="math notranslate nohighlight">\(x\)</span> value of the O atom is a variable.  Note that since this is a diatomic, the internal geometry of the molecule depends only on the scalar distance between the C and O atoms (the bond length), so the energy can be seen as a 1 dimensional function of the bond length.  Here, we will keep the <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span> coordinates of the C atom fixed at the origin, and the <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> coordinates of the O atom will be similarly fixed at the origin.  Thus, the <span class="math notranslate nohighlight">\(x\)</span> coordinate of the O atom alone determines the bond length.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyscf</span><span class="w"> </span><span class="kn">import</span> <span class="n">gto</span><span class="p">,</span> <span class="n">scf</span>
+
+<span class="c1"># Conversion factor: Angstrom → Bohr (atomic units)</span>
+<span class="n">ang_to_au</span> <span class="o">=</span> <span class="mf">1.88973</span>
+
+<span class="c1"># Template for the CO molecule</span>
+<span class="n">mol_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">C 0 0 0</span>
+<span class="s2">O </span><span class="si">{}</span><span class="s2"> 0 0</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_pyscf_energy</span><span class="p">(</span><span class="n">R_CO_angstrom</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the RHF total energy (in Hartrees) for CO at a given C–O distance.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    R_CO_angstrom : float</span>
+<span class="sd">        The C–O bond length in Angstroms.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    energy : float</span>
+<span class="sd">        The Hartree–Fock total energy (in Hartree atomic units).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mol</span> <span class="o">=</span> <span class="n">gto</span><span class="o">.</span><span class="n">M</span><span class="p">(</span>
+        <span class="n">atom</span><span class="o">=</span><span class="n">mol_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">R_CO_angstrom</span><span class="p">),</span>
+        <span class="n">basis</span><span class="o">=</span><span class="s1">&#39;cc-pvdz&#39;</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">spin</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">scf</span><span class="o">.</span><span class="n">RHF</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">kernel</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">mf</span><span class="o">.</span><span class="n">e_tot</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-1-potential-energy-scan">
+<h1>⚙️ Step 1: Potential Energy Scan<a class="headerlink" href="#step-1-potential-energy-scan" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dx</span> <span class="o">=</span> <span class="mf">0.01</span>  <span class="c1"># step size in Angstroms</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+
+<span class="n">hf_energies</span> <span class="o">=</span> <span class="p">[</span><span class="n">compute_pyscf_energy</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="k">for</span> <span class="n">R</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First few RHF energies (Hartree):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hf_energies</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+
+
+<span class="c1"># plot of energies vs bond length</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">hf_energies</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RHF Energy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Bond length (Angstroms)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Energy (Hartree)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅ <strong>Question:</strong><br />
+What trend do you see in the energy values as the bond length changes?<br />
+Where roughly is the equilibrium bond length?</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-2-numerical-gradient-from-energy-differences">
+<h1>🧮 Step 2: Numerical Gradient from Energy Differences<a class="headerlink" href="#step-2-numerical-gradient-from-energy-differences" title="Link to this heading">#</a></h1>
+<p>Now let’s numerically differentiate this energy function to estimate the force on the atoms, similar to what we did before but now we will call the <code class="docutils literal notranslate"><span class="pre">compute_pyscf_energy()</span></code> function!.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">numerical_gradient_energy</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute numerical derivative of energy with respect to bond length (force),</span>
+<span class="sd">    using a central finite difference formula.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    f : callable</span>
+<span class="sd">        A function that returns the molecular energy at a given bond length.</span>
+<span class="sd">    R : float</span>
+<span class="sd">        Current bond length in Angstroms.</span>
+<span class="sd">    h : float, optional</span>
+<span class="sd">        Step size in Angstroms (default 0.01 Å).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dE_dR : float</span>
+<span class="sd">        Numerical derivative of energy with respect to R (Hartree per Bohr)</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">    Note: PySCF and our compute_pyscf_energy function will take the geometry information in Angstroms, </span>
+<span class="sd">    and will return the energy in atomic units.  It is good practice to keep the gradient and Hessian in a common unit</span>
+<span class="sd">    system, so we will want to convert the step length h from Angstroms to Bohr (where Bohr is the atomic unit of length)</span>
+<span class="sd">    for the gradient and Hessian calculations.</span>
+<span class="sd">    The conversion factor ang_to_au = 1.88973</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># TODO: Use the central finite-difference formula</span>
+    <span class="n">E_plus</span> <span class="o">=</span> <span class="c1">### complete code here</span>
+    <span class="n">E_minus</span> <span class="o">=</span> <span class="c1">### complete code here</span>
+
+    <span class="c1"># get h in atomic units for the denominator of the finite difference calculation</span>
+    <span class="n">ang_to_au</span> <span class="o">=</span> <span class="mf">1.88973</span>
+    <span class="n">h_au</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">ang_to_au</span>
+    <span class="n">dE_dR</span> <span class="o">=</span> <span class="c1">### complete code here</span>
+    <span class="k">return</span> <span class="n">dE_dR</span>
+
+<span class="c1"># Try evaluating at R = 1.2 Å</span>
+<span class="n">R0</span> <span class="o">=</span> <span class="mf">1.2</span>
+<span class="n">grad_R</span> <span class="o">=</span> <span class="n">numerical_gradient_energy</span><span class="p">(</span><span class="n">compute_pyscf_energy</span><span class="p">,</span> <span class="n">R0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Numerical dE/dR at R = </span><span class="si">{</span><span class="n">R0</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Å = </span><span class="si">{</span><span class="n">grad_R</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> Hartree/Bohr&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅ <strong>Questions:</strong></p>
+<ol class="arabic simple">
+<li><p>At what bond length does your numerical gradient change sign?<br />
+(That’s the equilibrium bond length!)</p></li>
+<li><p>How many energy evaluations does it take to compute this gradient?</p></li>
+<li><p>What would happen if you needed to compute <strong>gradients for all atomic coordinates</strong> in a polyatomic molecule?</p></li>
+</ol>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-8-1d-newtonraphson-geometry-optimization-of-co">
+<h1>🧮 Step 8: 1D Newton–Raphson Geometry Optimization of CO<a class="headerlink" href="#step-8-1d-newtonraphson-geometry-optimization-of-co" title="Link to this heading">#</a></h1>
+<p>Now that we can compute the molecular energy <span class="math notranslate nohighlight">\( E(R) \)</span> and its numerical derivative
+<span class="math notranslate nohighlight">\( \frac{dE}{dR} \)</span>, we can perform a simple <strong>geometry optimization</strong>.</p>
+<p>For a diatomic molecule, this means finding the bond length <span class="math notranslate nohighlight">\( R \)</span> that minimizes the total energy.</p>
+<p>We’ll use the <strong>1D Newton–Raphson method</strong>, applied to the derivative of the potential energy:
+<span class="math notranslate nohighlight">\(
+R_{n+1} = R_n - \frac{(dE/dR)}{(d^2E/dR^2)}
+\)</span></p>
+<p>Since we don’t have an analytic expression for <span class="math notranslate nohighlight">\( E(R) \)</span>, we’ll also approximate
+the second derivative (curvature) numerically using finite differences.</p>
+<p>You will need to complete the second derivative function, but the Newton-Raphson optimization function that calls these functions is already complete for you below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">numerical_second_derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the numerical second derivative of energy with respect to bond length</span>
+<span class="sd">    using the central finite-difference formula.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    f : callable</span>
+<span class="sd">        Function returning molecular energy at a given bond length.</span>
+<span class="sd">    R : float</span>
+<span class="sd">        Current bond length (Angstroms).</span>
+<span class="sd">    h : float, optional</span>
+<span class="sd">        Step size for finite difference (default 0.01 Å).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    d2E_dR2 : float</span>
+<span class="sd">        Numerical second derivative (Hartree per Bohr²).</span>
+
+<span class="sd">    Note Again: PySCF and our compute_pyscf_energy function will take the geometry information in Angstroms, </span>
+<span class="sd">    and will return the energy in atomic units.  It is good practice to keep the gradient and Hessian in a common unit</span>
+<span class="sd">    system, so we will want to convert the step length h from Angstroms to Bohr (where Bohr is the atomic unit of length)</span>
+<span class="sd">    for the gradient and Hessian calculations.</span>
+<span class="sd">    The conversion factor ang_to_au = 1.88973</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">E_plus</span> <span class="o">=</span> <span class="c1">## complete code here</span>
+    <span class="n">E_minus</span> <span class="o">=</span> <span class="c1">## complete code here</span>
+    <span class="n">E0</span> <span class="o">=</span> <span class="c1">## complete code here</span>
+    
+    <span class="c1"># get h in atomic units for the denominator of the finite difference calculation</span>
+    <span class="n">ang_to_au</span> <span class="o">=</span> <span class="mf">1.88973</span>
+    <span class="n">h_au</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">ang_to_au</span>
+    
+    <span class="n">d2E_dR2</span> <span class="o">=</span> <span class="c1">## complete code here</span>
+    <span class="k">return</span> <span class="n">d2E_dR2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">newton_optimize_bond</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">R0</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Perform a 1D Newton–Raphson optimization of a bond length.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    f : callable</span>
+<span class="sd">        Function returning molecular energy at a given bond length.</span>
+<span class="sd">    R0 : float</span>
+<span class="sd">        Initial bond length (Angstroms).</span>
+<span class="sd">    tol : float</span>
+<span class="sd">        Convergence tolerance on bond length change (Å).</span>
+<span class="sd">    max_iter : int</span>
+<span class="sd">        Maximum number of iterations.</span>
+<span class="sd">    h : float</span>
+<span class="sd">        Step size for numerical derivatives.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    R_opt : float</span>
+<span class="sd">        Optimized bond length (Å).</span>
+<span class="sd">    E_opt : float</span>
+<span class="sd">        Energy at optimized geometry (Hartree).</span>
+
+<span class="sd">    Note: PySCF and our compute_pyscf_energy function will take the geometry information in Angstroms, </span>
+<span class="sd">    and will return the energy in atomic units.  It is good practice to keep the gradient and Hessian in a common unit</span>
+<span class="sd">    system, so we will want to convert the step length h from Angstroms to Bohr (where Bohr is the atomic unit of length)</span>
+<span class="sd">    for the gradient and Hessian calculations.  This means tht when we compute step = -grad / hess, this step will be in Bohr.</span>
+<span class="sd">    We need to convert this step back to Angstroms before adding it to R, this time using the inverse of the conversion from Angstromg -&gt; Bohr</span>
+<span class="sd">    ang_to_au = 1.88973 -&gt; au_to_ang = 1/1.88973</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># conversion from Bohr to Angstroms</span>
+    <span class="n">au_to_ang</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mf">1.88973</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">R0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Starting optimization from R = </span><span class="si">{</span><span class="n">R0</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> Å&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+        <span class="n">grad</span> <span class="o">=</span> <span class="n">numerical_gradient_energy</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+        <span class="n">hess</span> <span class="o">=</span> <span class="n">numerical_second_derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+
+        <span class="n">step</span> <span class="o">=</span> <span class="o">-</span><span class="n">grad</span> <span class="o">/</span> <span class="n">hess</span>
+        <span class="n">step_Angs</span> <span class="o">=</span> <span class="n">step</span> <span class="o">*</span> <span class="n">au_to_ang</span>
+        <span class="n">R_new</span> <span class="o">=</span> <span class="n">R</span> <span class="o">+</span> <span class="n">step</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iter </span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">2d</span><span class="si">}</span><span class="s2">: R = </span><span class="si">{</span><span class="n">R</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> Å, E = </span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="n">R</span><span class="p">)</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> Ha, dE/dR = </span><span class="si">{</span><span class="n">grad</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2">, step = </span><span class="si">{</span><span class="n">step_Angs</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">step</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✅ Converged to R = </span><span class="si">{</span><span class="n">R_new</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> Å, E = </span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="n">R_new</span><span class="p">)</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> Ha&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">R_new</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">R_new</span><span class="p">)</span>
+
+        <span class="n">R</span> <span class="o">=</span> <span class="n">R_new</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">⚠️ Did not converge within max_iter&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">R</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">R_start</span> <span class="o">=</span> <span class="mf">1.4</span>  <span class="c1"># initial guess in Å</span>
+<span class="n">R_opt</span><span class="p">,</span> <span class="n">E_opt</span> <span class="o">=</span> <span class="n">newton_optimize_bond</span><span class="p">(</span><span class="n">compute_pyscf_energy</span><span class="p">,</span> <span class="n">R_start</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="err">✅</span> <span class="o">**</span><span class="n">Questions</span> <span class="n">to</span> <span class="n">Explore</span><span class="o">**</span>
+<span class="mf">1.</span> <span class="n">How</span> <span class="n">many</span> <span class="n">iterations</span> <span class="n">did</span> <span class="n">it</span> <span class="n">take</span> <span class="n">to</span> converge<span class="o">?</span>
+<span class="mf">2.</span> <span class="n">Try</span> <span class="n">changing</span> <span class="n">the</span> <span class="n">initial</span> <span class="n">guess</span> <span class="p">(</span><span class="err">`</span><span class="n">R_start</span> <span class="o">=</span> <span class="mf">0.8</span><span class="err">`</span> <span class="ow">or</span> <span class="err">`</span><span class="mf">1.8</span><span class="err">`</span><span class="p">)</span><span class="o">.</span>  
+   <span class="n">Does</span> <span class="n">Newton</span><span class="err">–</span><span class="n">Raphson</span> <span class="n">still</span> <span class="n">converge</span> <span class="n">to</span> <span class="n">the</span> <span class="n">same</span> <span class="n">bond</span> length<span class="o">?</span>
+<span class="mf">3.</span> <span class="n">Why</span> <span class="n">does</span> <span class="n">the</span> <span class="n">second</span> <span class="n">derivative</span> <span class="p">(</span><span class="n">the</span> <span class="n">curvature</span><span class="p">)</span> <span class="n">need</span> <span class="n">to</span> <span class="n">be</span> <span class="n">positive</span> <span class="n">at</span> <span class="n">the</span> minimum<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="preview-toward-quasi-newton-bfgs">
+<h1>🌱 Preview: Toward Quasi-Newton (BFGS)<a class="headerlink" href="#preview-toward-quasi-newton-bfgs" title="Link to this heading">#</a></h1>
+<p>In the next section, we’ll generalize this:</p>
+<p>Replace explicit finite-difference Hessians with an updated estimate of curvature.</p>
+<p>Apply the BFGS update rule, which efficiently refines the Hessian using gradient changes between steps.</p>
+<p>This will bring us from the conceptually exact but expensive Newton–Raphson approach
+to a practically efficient optimization algorithm used in real quantum chemistry geometry optimizers.</p>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -916,20 +1353,20 @@ that performs these updates automatically and returns:</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="CO_Perturbation_Theory_Quartic.html"
+       href="CO_Variational.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Vibrational Transitions in CO Using Perturbation Theory</p>
+        <p class="prev-next-title">Vibrational Transitions in CO Using Variational Method</p>
       </div>
     </a>
     <a class="right-next"
-       href="../resources/formula_sheet.html"
+       href="linear_variational_method.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Useful Formulae</p>
+        <p class="prev-next-title">Linear Variational Method</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -971,6 +1408,16 @@ that performs these updates automatically and returns:</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-iterate-newtonraphson-updates">🔄 Step 4: Iterate Newton–Raphson updates</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-finite-difference-gradients-and-hessians">⚙️ Step 5: Finite-Difference Gradients and Hessians</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-numerical-gradients-from-quantum-chemistry-calculations">⚛️ Step 7: Numerical Gradients from Quantum Chemistry Calculations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-pyscf">Installing pyscf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-pyscf-energy-calculation">Running PySCF energy calculation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-potential-energy-scan">⚙️ Step 1: Potential Energy Scan</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-numerical-gradient-from-energy-differences">🧮 Step 2: Numerical Gradient from Energy Differences</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-1d-newtonraphson-geometry-optimization-of-co">🧮 Step 8: 1D Newton–Raphson Geometry Optimization of CO</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preview-toward-quasi-newton-bfgs">🌱 Preview: Toward Quasi-Newton (BFGS)</a></li>
 </ul>
 
   </nav></div>
