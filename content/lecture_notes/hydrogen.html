@@ -219,10 +219,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../computational_sets/CO_Perturbation_Theory_Quartic.html">Vibrational Transitions in CO Using Perturbation Theory</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/CO_Variational.html">Vibrational Transitions in CO Using Variational Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computational_sets/Newton-Raphson.html">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</a></li>
 
 
 
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/linear_variational_method.html">Linear Variational Method</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
@@ -491,7 +500,7 @@ document.write(`
 \[\begin{align}
 \hat{H} = -\frac{\hbar^2}{2m_\text{e}}\nabla_\text{e}^2  - \frac{\hbar^2}{2m_\text{n}}\nabla_\text{n}^2 + V(r)
 \end{align}\]</div>
-<p>where the subscripts “e” and “n” refer to the electron and respectively, respectively, <span class="math notranslate nohighlight">\(r\)</span> refers to the distance between the electron and nucleus</p>
+<p>where the subscripts “e” and “n” refer to the electron and respectively, <span class="math notranslate nohighlight">\(r\)</span> refers to the distance between the electron and nucleus</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \vec{r} &amp;= \vec{r}_\text{n} - \vec{r}_\text{e} \\
@@ -842,7 +851,7 @@ u(\rho) = c_0 \rho^{l+1} e^{\rho}
 <div class="math notranslate nohighlight">
 \[ c_{j_\text{max}} = 0 = 2(l + j_\text{max} + 1) - \bar{\rho}\]</div>
 <p>At this point, we introduce a new quantum number, <span class="math notranslate nohighlight">\(n = l + j_\text{max} + 1,\)</span> which we will call the <strong>principal quantum number</strong>. We can see that <span class="math notranslate nohighlight">\(l \le n - 1\)</span> and the minimum value for <span class="math notranslate nohighlight">\(n\)</span> is one, just like we learn in our general chemistry courses.</p>
-<p>The principle quantum number is related to the energy of the hydrogenic atom, but it will take just a bit more algebra to see exactly how. We know that <span class="math notranslate nohighlight">\(\bar{\rho} = 2n,\)</span> and that <span class="math notranslate nohighlight">\(\bar{\rho}\)</span> is related to a number of fundamantal constants. We have</p>
+<p>The principle quantum number is related to the energy of the hydrogenic atom, but it will take just a bit more algebra to see exactly how. We know that <span class="math notranslate nohighlight">\(\bar{\rho} = 2n,\)</span> and that <span class="math notranslate nohighlight">\(\bar{\rho}\)</span> is related to a number of fundamental constants. We have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \bar{\rho} = 2n &amp;= \frac{\mu Z e^2}{2\pi\epsilon_0\hbar^2 k} \\
@@ -1415,7 +1424,7 @@ The most likely radius for a 3s electron is 13.1 a0
 </div>
 </div>
 </div>
-<p>These distribution functions fit our general chemistry intuition for how far electrons in different shells should lie from the nucleus. The <span class="math notranslate nohighlight">\(1s\)</span> electron is most likely to be found closer to the nucleus than the <span class="math notranslate nohighlight">\(2s\)</span> electron, which, in turn, is more likely to be found closer to the nucleus than the <span class="math notranslate nohighlight">\(3s\)</span> electron. Interestingly, the most likely position for the <span class="math notranslate nohighlight">\(1s\)</span> electron (<span class="math notranslate nohighlight">\(r_\text{max}\)</span>) is 1 <span class="math notranslate nohighlight">\(a_0,\)</span> which agrees with the prediction made by Bohr’s model. The average <span class="math notranslate nohighlight">\(r\)</span> values (the expectation value of <span class="math notranslate nohighlight">\(r\)</span>) show similar qualitative trends. <span class="math notranslate nohighlight">\(\langle r \rangle\)</span> for the <span class="math notranslate nohighlight">\(1s\)</span> state is smaller than that for the <span class="math notranslate nohighlight">\(2s\)</span> state, which is smaller than that for the <span class="math notranslate nohighlight">\(3s\)</span> state. For the <span class="math notranslate nohighlight">\(1s\)</span> state, in particular, note that the average <span class="math notranslate nohighlight">\(r\)</span> value is a bit larger than the most probable <span class="math notranslate nohighlight">\(r\)</span>. We can rationalize this result based on the assymetry of the radial distribution function; it is clear that more density lies at <span class="math notranslate nohighlight">\(r &gt; r_\text{max}\)</span> than <span class="math notranslate nohighlight">\(r &lt; r_\text{max}\)</span>. Lastly, we note that the radial distribution functions for the <span class="math notranslate nohighlight">\(2s\)</span> and <span class="math notranslate nohighlight">\(3s\)</span> electrons go to zero once and twice, respectively, at <span class="math notranslate nohighlight">\(r\)</span> values greater than zero. These points correspond to radial nodes.</p>
+<p>These distribution functions fit our general chemistry intuition for how far electrons in different shells should lie from the nucleus. The <span class="math notranslate nohighlight">\(1s\)</span> electron is most likely to be found closer to the nucleus than the <span class="math notranslate nohighlight">\(2s\)</span> electron, which, in turn, is more likely to be found closer to the nucleus than the <span class="math notranslate nohighlight">\(3s\)</span> electron. Interestingly, the most likely position for the <span class="math notranslate nohighlight">\(1s\)</span> electron (<span class="math notranslate nohighlight">\(r_\text{max}\)</span>) is 1 <span class="math notranslate nohighlight">\(a_0,\)</span> which agrees with the prediction made by Bohr’s model. The average <span class="math notranslate nohighlight">\(r\)</span> values (the expectation value of <span class="math notranslate nohighlight">\(r\)</span>) show similar qualitative trends. <span class="math notranslate nohighlight">\(\langle r \rangle\)</span> for the <span class="math notranslate nohighlight">\(1s\)</span> state is smaller than that for the <span class="math notranslate nohighlight">\(2s\)</span> state, which is smaller than that for the <span class="math notranslate nohighlight">\(3s\)</span> state. For the <span class="math notranslate nohighlight">\(1s\)</span> state, in particular, note that the average <span class="math notranslate nohighlight">\(r\)</span> value is a bit larger than the most probable <span class="math notranslate nohighlight">\(r\)</span>. We can rationalize this result based on the asymmetry of the radial distribution function; it is clear that more density lies at <span class="math notranslate nohighlight">\(r &gt; r_\text{max}\)</span> than <span class="math notranslate nohighlight">\(r &lt; r_\text{max}\)</span>. Lastly, we note that the radial distribution functions for the <span class="math notranslate nohighlight">\(2s\)</span> and <span class="math notranslate nohighlight">\(3s\)</span> electrons go to zero once and twice, respectively, at <span class="math notranslate nohighlight">\(r\)</span> values greater than zero. These points correspond to radial nodes.</p>
 <p>The following Python code provides a similar visualization for the radial distribution functions for <span class="math notranslate nohighlight">\(n=3\)</span> and different <span class="math notranslate nohighlight">\(l\)</span> values (<span class="math notranslate nohighlight">\(l=0, 1, 2\)</span>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1641,9 +1650,9 @@ for \)</span>r$.</p>
 <p>Recall the greatest equation, Euler’s equation, says</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
-e^{\pm i\phi} = \cos(\phi) \pm \sin(\phi)
+e^{\pm i\phi} = \cos(\phi) \pm i\sin(\phi)
 \end{align}\]</div>
-<p>which suggests that we can take linear combinations of <span class="math notranslate nohighlight">\(\psi_{2, 1, \pm 1}\)</span> to eliminate the compex factors. We have</p>
+<p>which suggests that we can take linear combinations of <span class="math notranslate nohighlight">\(\psi_{2, 1, \pm 1}\)</span> to eliminate the complex factors. We have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \psi_{2p_x} &amp;= -\frac{1}{2^{1/2}} \left ( \psi_{2,1,1} - \psi_{2,1,-1} \right )\\  

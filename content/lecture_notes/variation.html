@@ -219,10 +219,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../computational_sets/CO_Perturbation_Theory_Quartic.html">Vibrational Transitions in CO Using Perturbation Theory</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/CO_Variational.html">Vibrational Transitions in CO Using Variational Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computational_sets/Newton-Raphson.html">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</a></li>
 
 
 
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/linear_variational_method.html">Linear Variational Method</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
@@ -582,7 +591,7 @@ N x(L-x)\text{, } &amp;0 \le x \le L \\
 0\text{, }&amp;x \ge L 
 \end{cases}
 \end{align}\end{split}\]</div>
-<p>The code also evaluates the expecation value of the Hamiltonian with respect to <span class="math notranslate nohighlight">\(\phi,\)</span> which, according to the variation theorem, should be greater than or equal to the exact ground-state energy for the PIB problem. To simplify matters, we will work in atomic units. We choose the mass of the particle to be that of an electron (<span class="math notranslate nohighlight">\(m = m_\text{e} = 1\)</span>), and the length of the box to be <span class="math notranslate nohighlight">\(L = 1 a_0\)</span>. Because</p>
+<p>The code also evaluates the expectation value of the Hamiltonian with respect to <span class="math notranslate nohighlight">\(\phi,\)</span> which, according to the variation theorem, should be greater than or equal to the exact ground-state energy for the PIB problem. To simplify matters, we will work in atomic units. We choose the mass of the particle to be that of an electron (<span class="math notranslate nohighlight">\(m = m_\text{e} = 1\)</span>), and the length of the box to be <span class="math notranslate nohighlight">\(L = 1 a_0\)</span>. Because</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
 \langle \phi | \hat{H} | \phi \rangle = -\frac{\hbar^2}{2m}  \left \langle \phi \left | \frac{d^2}{dx^2}\right | \phi \right \rangle
@@ -850,7 +859,7 @@ W &amp;= \frac{\hbar^2}{2m} c + \frac{\pi^2}{2} \nu^2 m c^{-1} \\
 </section>
 <section id="the-variation-theorem-for-excited-states">
 <h2>The Variation Theorem for Excited States<a class="headerlink" href="#the-variation-theorem-for-excited-states" title="Link to this heading">#</a></h2>
-<p>As expressed above, the variation theorem appears to be useful only for approximating the wave function for the lowest-energy eigenfunction of a given Hamiltonian. However, it is possible to extend this theorem to excited states. We proceed in the same manner as before, by expanding the trial function, <span class="math notranslate nohighlight">\(\phi,\)</span> in the basis of eigen state of the Hamiltonian. We have</p>
+<p>As expressed above, the variation theorem appears to be useful only for approximating the wave function for the lowest-energy eigenfunction of a given Hamiltonian. However, it is possible to extend this theorem to excited states. We proceed in the same manner as before, by expanding the trial function, <span class="math notranslate nohighlight">\(\phi,\)</span> in the basis of eigenstate of the Hamiltonian. We have</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
 |\phi\rangle = \sum_k c_k |\psi_k\rangle
@@ -1245,7 +1254,7 @@ S_{ik} &amp;= S_{ki}
 \[\begin{align}
 \sum_k \left [ H_{ik} - S_{ik}W\right ] c_k = 0\text{, }~~~\forall~i
 \end{align}\]</div>
-<p>It will be easiest to understsand how to solve this set of linear equations if we consider the specific case where trial function is expanded in a basis of only two functions, in which case we would have</p>
+<p>It will be easiest to understand how to solve this set of linear equations if we consider the specific case where trial function is expanded in a basis of only two functions, in which case we would have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 i &amp;= 1: ~~~ (H_{11} - S_{11} W) c_1 + (H_{12} - W S_{12}) c_2 = 0 \\
@@ -1263,7 +1272,7 @@ i &amp;= 2: ~~~ (H_{21} - S_{21} W) c_1 + (H_{22} - W S_{22}) c_2 = 0
 </li>
 <li><p>Use numerical matrix methods. The linear equations are equivalent to what is called a generalized eigenvalue problem. If the basis is orthonormalized, then the linear equations would be equivalent to matrix eigenvalue problem, which could be solved by finding a transformation that brings the matrix to diagonal form. This approach is most similar to how some problems in quantum chemistry are solved, in practice, so we will return to this idea later.</p></li>
 </ol>
-<p>For now, let us proced with option 2. Again, consider the two basis function case, where the secular equation is</p>
+<p>For now, let us proceed with option 2. Again, consider the two basis function case, where the secular equation is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \det ( {\bf H} - W {\bf S} ) &amp;= 0 \\
@@ -1273,7 +1282,7 @@ H_{21} - S_{21}W &amp; H_{22} - S_{22}W \\
 \end{vmatrix} \\
 &amp;= (H_{11} - S_{11}W)(H_{22} - S_{22}W) - (H_{12} - S_{12}W)(H_{21} - S_{21}W)
 \end{align}\end{split}\]</div>
-<p>In the last line, we have followed the <a class="reference external" href="https://en.wikipedia.org/wiki/Determinant">rule for evaluating a <span class="math notranslate nohighlight">\(2\times 2\)</span> determinant</a>. This equation is quadratic in <span class="math notranslate nohighlight">\(W,\)</span> which implies the existance of two solutions, or two estimates of the energy. With <span class="math notranslate nohighlight">\(n\)</span> basis functions, we would have an <span class="math notranslate nohighlight">\(n\)</span>th-order polynomial that would give <span class="math notranslate nohighlight">\(n\)</span> estimates for energies with</p>
+<p>In the last line, we have followed the <a class="reference external" href="https://en.wikipedia.org/wiki/Determinant">rule for evaluating a <span class="math notranslate nohighlight">\(2\times 2\)</span> determinant</a>. This equation is quadratic in <span class="math notranslate nohighlight">\(W,\)</span> which implies the existence of two solutions, or two estimates of the energy. With <span class="math notranslate nohighlight">\(n\)</span> basis functions, we would have an <span class="math notranslate nohighlight">\(n\)</span>th-order polynomial that would give <span class="math notranslate nohighlight">\(n\)</span> estimates for energies with</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
 W_1 \le W_2 \le ... \le W_n
@@ -1298,7 +1307,7 @@ E_2 \le W_2 \\
 |f_3\rangle &amp;= x(l-x)(l/2-x) \\
 |f_4\rangle &amp;= x^2(l-x)^2(l/2-x) \\
 \end{align}\end{split}\]</div>
-<p>Wait, does the use of four basis functions imply that we will need to deal with a <span class="math notranslate nohighlight">\(4\times 4\)</span> determinant? In general, yes, but for this specify example, not quite. The actual structure of the problem will be much simpler, and the reason is symmetry.</p>
+<p>Wait, does the use of four basis functions imply that we will need to deal with a <span class="math notranslate nohighlight">\(4\times 4\)</span> determinant? In general, yes, but for this specific example, not quite. The actual structure of the problem will be much simpler, and the reason is symmetry.</p>
 <p>First, let us think about the symmetry of the basis functions. <span class="math notranslate nohighlight">\(|f_1\rangle\)</span> and <span class="math notranslate nohighlight">\(|f_2\rangle\)</span> are even about the middle of the box, while <span class="math notranslate nohighlight">\(|f_3\rangle\)</span> and <span class="math notranslate nohighlight">\(|f_4\rangle\)</span> are odd. As such,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
@@ -1323,7 +1332,7 @@ S_{21} &amp; S_{22} &amp; 0 &amp; 0 \\
 \[\begin{align}
 \hat{\Pi} f(x, y, z) = f(-x, -y, -z)
 \end{align}\]</div>
-<p>What are the eigenvalues of this operator? It may be useful to consider what happens when acting on both sides of this equation with the partity operator</p>
+<p>What are the eigenvalues of this operator? It may be useful to consider what happens when acting on both sides of this equation with the parity operator</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \hat{\Pi}^2 f(x, y, z) &amp;= \hat{\Pi} f(-x, -y, -z) \\
@@ -1417,7 +1426,7 @@ g_i(x, y, z) = \pm g_i(-x, -y, -z)
 \[\begin{align}
 [\hat{H}, \hat{\Pi}] = 0
 \end{align}\]</div>
-<p>More generally, for a multidimensional problem, if the potential has even parity, then the Hamiltonian will commute with the parity operator. In such cases, it should be possible to define sumultaneous eigenfunctions of both operators. In other words, the eigenfunctions of the Hamiltonian could be chosen such that they have even or odd parity.</p>
+<p>More generally, for a multidimensional problem, if the potential has even parity, then the Hamiltonian will commute with the parity operator. In such cases, it should be possible to define simultaneous eigenfunctions of both operators. In other words, the eigenfunctions of the Hamiltonian could be chosen such that they have even or odd parity.</p>
 <p>Before returning to the secular equation, we require one additional theorem for Hermitian operators:</p>
 <p><strong>Theorem</strong> If <span class="math notranslate nohighlight">\(g_i\)</span> and <span class="math notranslate nohighlight">\(g_j\)</span> are eigenfunctions of a Hermitian operator <span class="math notranslate nohighlight">\(\hat{A}\)</span> with different eigenvalues, then</p>
 <div class="math notranslate nohighlight">

@@ -219,10 +219,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../computational_sets/CO_Perturbation_Theory_Quartic.html">Vibrational Transitions in CO Using Perturbation Theory</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/CO_Variational.html">Vibrational Transitions in CO Using Variational Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computational_sets/Newton-Raphson.html">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</a></li>
 
 
 
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/linear_variational_method.html">Linear Variational Method</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
@@ -484,7 +493,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-8-perturbation-theory">
 <h1>Chapter 8: Perturbation Theory<a class="headerlink" href="#chapter-8-perturbation-theory" title="Link to this heading">#</a></h1>
 <p>Prof. Eugene DePrince, Florida State University</p>
-<p>In the last notebook, we used the variation theorem to find approximate solutions to the Schrödinger equation. An alterative approach is based on perturbation theory. This notebook outlines the fundamental principles of time-independent and time-dependent perturbation theories.</p>
+<p>In the last notebook, we used the variation theorem to find approximate solutions to the Schrödinger equation. An alternative approach is based on perturbation theory. This notebook outlines the fundamental principles of time-independent and time-dependent perturbation theories.</p>
 <section id="time-independent-perturbation-theory">
 <h2>Time-Independent Perturbation Theory<a class="headerlink" href="#time-independent-perturbation-theory" title="Link to this heading">#</a></h2>
 <p>Time-independent perturbation theory is an approach for finding approximate solutions to the time-independent Schrödinger equation that complements the variational approach discussed in the last notebook. The basic idea is that the Hamiltonian for a system can be partitioned into a “simple” Hamiltonian for which solutions can be determined and a “small” perturbation to that simple Hamiltonian. We have</p>
@@ -500,7 +509,7 @@ document.write(`
 <p>where <span class="math notranslate nohighlight">\(E_n^{(0)}\)</span> and <span class="math notranslate nohighlight">\(\psi_n^{(0)}\)</span> are called the zeroth-order energies and wave functions, respectively.</p>
 <section id="non-degenerate-perturbation-theory">
 <h3>Non-Degenerate Perturbation Theory<a class="headerlink" href="#non-degenerate-perturbation-theory" title="Link to this heading">#</a></h3>
-<p>The next steps differ depending on whether or not any of the eigenvalues of <span class="math notranslate nohighlight">\(\hat{H}_0\)</span> are degenerate. We will consider only the case that the eigenvalues are all non-degenerate; the resulting perturbation theory is thus called non-denerate perturbation theory.</p>
+<p>The next steps differ depending on whether or not any of the eigenvalues of <span class="math notranslate nohighlight">\(\hat{H}_0\)</span> are degenerate. We will consider only the case that the eigenvalues are all non-degenerate; the resulting perturbation theory is thus called non-degenerate perturbation theory.</p>
 <p>Consider a wave function, <span class="math notranslate nohighlight">\(|\psi_n\rangle\)</span>, that satisfies the time-independent Schrödinger equation,</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
@@ -516,7 +525,7 @@ document.write(`
 \[\begin{align}
 |\psi_n\rangle  = \left . |\psi_n\rangle  \right |_{\lambda = 0} + \lambda \left . \frac{\partial |\psi_n\rangle}{\partial \lambda} \right |_{\lambda = 0} + \lambda ^2\frac{1}{2!}\left . \frac{\partial^2 |\psi_n\rangle}{\partial \lambda^2} \right |_{\lambda = 0} + \lambda ^3 \frac{1}{3!} \left . \frac{\partial^3 |\psi_n\rangle}{\partial \lambda^3} \right |_{\lambda = 0} + ...
 \end{align}\]</div>
-<p>We can simply our notation by first noting that</p>
+<p>We can simplify our notation by first noting that</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
 \left . |\psi_n\rangle  \right |_{\lambda = 0} = |\psi_n^{(0)}\rangle
@@ -686,7 +695,7 @@ Note that, while the first-order correction to the wave function for state \)</s
 \[\begin{align}
 |\psi_n^{(1)}\rangle = \sum_{k\neq n} c^{(1)}_k |\psi_k^{(0)}\rangle
 \end{align}\]</div>
-<p>Note the restriction that <span class="math notranslate nohighlight">\(k \neq n\)</span>, which is necessary to guaratee that <span class="math notranslate nohighlight">\(\langle \psi_n^{(0)}|\psi_n^{(1)}\rangle = 0\)</span>. To determine a given expansion coefficient, we must project <span class="math notranslate nohighlight">\(|\psi_n^{(1)}\rangle\)</span> onto the corresponding basis function:</p>
+<p>Note the restriction that <span class="math notranslate nohighlight">\(k \neq n\)</span>, which is necessary to guarantee that <span class="math notranslate nohighlight">\(\langle \psi_n^{(0)}|\psi_n^{(1)}\rangle = 0\)</span>. To determine a given expansion coefficient, we must project <span class="math notranslate nohighlight">\(|\psi_n^{(1)}\rangle\)</span> onto the corresponding basis function:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \langle \psi_m^{(0)} | \psi_n^{(1)} \rangle &amp;= \sum_{k\neq n} c^{(1)}_k\langle \psi_m^{(0)} | \psi_k^{(0)} \rangle \\
@@ -706,9 +715,9 @@ c^{(1)}_m = \frac{\langle \psi_m^{(0)}| \hat{H}^\prime | \psi_n^{(0)} \rangle}{E
 <p>From our anharmonic oscillator example, the first-order correction to the wave function for state <span class="math notranslate nohighlight">\(n\)</span> would be</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
-|\psi_n^{(1)}\rangle = \sum_{k\neq n}^\infty \frac{N_k N_n \int_{-\infty}^{\infty} e^{-\alpha x^2} H_k(\alpha^{1/2}x) H_n(\alpha^{1/2} x) (cx^3 + dx^4)}{\hbar\omega ( n - k )} |\psi_k^{(0)}\rangle
+|\psi_n^{(1)}\rangle = \sum_{k\neq n}^\infty \frac{N_k N_n | \int_{-\infty}^{\infty} e^{-\alpha x^2} H_k(\alpha^{1/2}x) H_n(\alpha^{1/2} x) (cx^3 + dx^4)|^2}{\hbar\omega ( n - k )} |\psi_k^{(0)}\rangle
 \end{align}\]</div>
-<p>In this case, we can see that the summation is over an infinite number of states, <span class="math notranslate nohighlight">\(k\)</span>. Note, however, that this is not generally the case. In Møller-Plesset perturbation theory, for example, evalulating the first-order correction to the wave function does not require an infinite summation.</p>
+<p>In this case, we can see that the summation is over an infinite number of states, <span class="math notranslate nohighlight">\(k\)</span>. Note, however, that this is not generally the case. In Møller-Plesset perturbation theory, for example, evaluating the first-order correction to the wave function does not require an infinite summation.</p>
 </section>
 <section id="the-second-order-correction-to-the-energy">
 <h4>The Second-Order Correction to the Energy<a class="headerlink" href="#the-second-order-correction-to-the-energy" title="Link to this heading">#</a></h4>
@@ -752,8 +761,8 @@ E_0 = \frac{1}{2}\hbar \omega + \frac{3d}{4\alpha^2} + \sum_{k\neq 0} \frac{N_k 
 <li><p>Perturbed energies and wave functions allow us to “mix” character of other zeroth-order states into state <span class="math notranslate nohighlight">\(n\)</span>. This mixing is necessary because <span class="math notranslate nohighlight">\(|\psi_n^{(0)}\rangle\)</span> will not look exactly like <span class="math notranslate nohighlight">\(|\psi_n\rangle\)</span>.</p></li>
 <li><p>The <span class="math notranslate nohighlight">\(\frac{1}{E_n^{(0)} - E_k^{(0)}}\)</span> term implies that states nearby in energy dominate perturbative corrections for state <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
 <li><p>In general, summations can be infinite (e.g., as we saw for the anharmonic oscillator problem). Exceptions include Møller-Plesset perturbation theory.</p></li>
-<li><p>Higher-order corrections to the energies and wave functions can become extremely complicated. In electronic structure theory, the highest-order corrections one would typically encouter would be fourth or fifth order. As an example, the perturbative triple excitation correction (T) to the coupled-cluster with single and double excitations (CCSD) energy [CCSD(T)], mostly looks like the triples part of the fourth-order energy in Møller-Plesset perturbation theory. It also contains some terms that appear at fifth-order.</p></li>
-<li><p>If the zeroth-order problem has a continuum of eigenfunctions (e.g., unbound states in the hydrogen atom problem), the these states must be included in the perturbative expansins (in these cases, sums over states become integrals).</p></li>
+<li><p>Higher-order corrections to the energies and wave functions can become extremely complicated. In electronic structure theory, the highest-order corrections one would typically encounter would be fourth or fifth order. As an example, the perturbative triple excitation correction (T) to the coupled-cluster with single and double excitations (CCSD) energy [CCSD(T)], mostly looks like the triples part of the fourth-order energy in Møller-Plesset perturbation theory. It also contains some terms that appear at fifth-order.</p></li>
+<li><p>If the zeroth-order problem has a continuum of eigenfunctions (e.g., unbound states in the hydrogen atom problem), these states must be included in the perturbative expansions (in these cases, sums over states become integrals).</p></li>
 <li><p>The approach outlined above works well for <span class="math notranslate nohighlight">\(\hat{H}_0\)</span> with non-degenerate energy levels and when the perturbation is “small.” In such cases, <span class="math notranslate nohighlight">\(|\psi_n^{(0)}\rangle\)</span> gives a good approximation to <span class="math notranslate nohighlight">\(|\psi_n\rangle\)</span>.</p></li>
 <li><p>It is important to recognize that the energy in perturbation theory is not variational, i.e., there is no guarantee that it will be an upper bound to the true ground-state energy.</p></li>
 </ol>
