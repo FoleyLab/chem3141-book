@@ -219,10 +219,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../computational_sets/CO_Perturbation_Theory_Quartic.html">Vibrational Transitions in CO Using Perturbation Theory</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/CO_Variational.html">Vibrational Transitions in CO Using Variational Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computational_sets/Newton-Raphson.html">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</a></li>
 
 
 
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/linear_variational_method.html">Linear Variational Method</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
@@ -665,6 +674,25 @@ Well,
 </details>
 </div></blockquote>
 <blockquote>
+<div><p>Question 3</p>
+</div></blockquote>
+</div></blockquote>
+<p>Consider the superposition <span class="math notranslate nohighlight">\(|\psi\rangle = \frac{1}{\sqrt{5}}|\uparrow_z\rangle + \frac{2}{\sqrt{5}} |\downarrow_z\rangle\)</span>, what is the probability of measuring <span class="math notranslate nohighlight">\(\hbar/2\)</span> for <span class="math notranslate nohighlight">\(S_z\)</span>?  What is the probability of measuring <span class="math notranslate nohighlight">\(-\hbar/2\)</span> for <span class="math notranslate nohighlight">\(S_z\)</span>?</p>
+<blockquote>
+<div><blockquote>
+<div><details>
+<summary>Answer 3/summary> 
+<p>Well,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+P(+\hbar/2) = |\frac{1}{\sqrt{5}}|^2 = \frac{1}{5} \\
+P(-\hbar/2) = |\frac{2}{\sqrt{5}}|^2 = \frac{4}{5} \\
+\end{align}\end{split}\]</div>
+</details>
+</div></blockquote>
+</div></blockquote>
+<blockquote>
+<div><blockquote>
 <div><p>Question 2</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
@@ -719,7 +747,14 @@ Well,
 \[c_{\downarrow} = \langle\downarrow_z|\psi\rangle\]</div>
 <p><strong>Example</strong>: For the <span class="math notranslate nohighlight">\(+x\)</span> eigenstate <span class="math notranslate nohighlight">\(|\uparrow_x\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 1 \end{pmatrix}\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}c_{\uparrow} = \langle\uparrow_z|\uparrow_x\rangle = \begin{pmatrix} 1 &amp; 0 \end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 1 \end{pmatrix} = \frac{1}{\sqrt{2}}\end{split}\]</div>
+\[\begin{split}c_{\uparrow} = \langle \uparrow_z \mid \uparrow_x \rangle 
+= (1\;\;0)\,\frac{1}{\sqrt{2}}
+\begin{pmatrix}
+1 \\
+1
+\end{pmatrix}
+= \frac{1}{\sqrt{2}}\left[(1)(1) + (0)(1)\right]
+= \frac{1}{\sqrt{2}}.\end{split}\]</div>
 <p><strong>Bra-Ket Notation</strong>
 Let’s clarify the notation we’re using:</p>
 <p>A ket <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> represents a quantum state as a column vector

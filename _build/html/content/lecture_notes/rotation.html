@@ -219,10 +219,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../computational_sets/CO_Perturbation_Theory_Quartic.html">Vibrational Transitions in CO Using Perturbation Theory</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/CO_Variational.html">Vibrational Transitions in CO Using Variational Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../computational_sets/Newton-Raphson.html">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</a></li>
 
 
 
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computational_sets/linear_variational_method.html">Linear Variational Method</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
@@ -503,10 +512,10 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-5-angular-momentum-and-rotational-motion">
 <h1>Chapter 5: Angular Momentum, and Rotational Motion<a class="headerlink" href="#chapter-5-angular-momentum-and-rotational-motion" title="Link to this heading">#</a></h1>
 <p>Prof. Eugene DePrince, Florida State University, Prof. Jay Foley, UNC Charlotte</p>
-<p>In the previous notebooks, we discussed quantum mechanical problems involving translational and vibrational motion. In this notebook, we explore the properties of the operators corresponding to the angular momentum of a microscopic particle and model problems for rotational motion. We will find analytic solutions the Schrödinger equation for the particle-on-a-ring and particle-on-a-sphere models, which are models for rotational in two or three dimensions, respectively. The particle-on-a-sphere model is also known as the rigid rotor. We will also use an alternative approach based on “ladder” operators to find eigenvalues of some angular momentum operators. The properties of angular momentum discussed in this chapter have many similarities (but also key differences) with spin angular momentum discussed in the first chapter of this book, so we will reiterate some of the salient points about spin angular momentum at the end.</p>
+<p>In the previous notebooks, we discussed quantum mechanical problems involving translational and vibrational motion. In this notebook, we explore the properties of the operators corresponding to the angular momentum of a microscopic particle and model problems for rotational motion. We will find analytic solutions the Schrödinger equation for the particle-on-a-ring and particle-on-a-sphere models, which are models for rotation in two or three dimensions, respectively. The particle-on-a-sphere model is also known as the rigid rotor. We will also use an alternative approach based on “ladder” operators to find eigenvalues of some angular momentum operators. The properties of angular momentum discussed in this chapter have many similarities (but also key differences) with spin angular momentum discussed in the first chapter of this book, so we will reiterate some of the salient points about spin angular momentum at the end.</p>
 <section id="comparison-between-linear-and-angular-momentum">
 <h2>Comparison between linear and angular momentum<a class="headerlink" href="#comparison-between-linear-and-angular-momentum" title="Link to this heading">#</a></h2>
-<p>The picture we can often have in our mind for rotational motion in two dimensions is the rotation of two masses about a fixed axis where each mass is constrained to lie in a common plane.  We illustrate that with a diatomic rotating in a plan, and with a figure skater rotating in a plane.
+<p>The picture we can often have in our mind for rotational motion in two dimensions is the rotation of two masses about a fixed axis where each mass is constrained to lie in a common plane.  We illustrate that with a diatomic rotating in a plane, and with a figure skater rotating in a plane.
 <img alt="Slide 1 image" src="../../_images/slide01_img01.png" /></p>
 <p><strong>What are the key properties and descriptors that we use for rotational motion, and how do they differ from linear motion?</strong></p>
 <p>The following table summarizes these different properties and descriptors.</p>
@@ -562,7 +571,7 @@ document.write(`
 <h2>Chemical realizations of rotations in 2D<a class="headerlink" href="#chemical-realizations-of-rotations-in-2d" title="Link to this heading">#</a></h2>
 <p>The kind of constrained rotational motion just described might not sound particularly relevant to chemistry, but in fact it is actually more common than you might think.  The following two scenarios arise in many contexts in chemistry</p>
 <ol class="arabic simple">
-<li><p>The rotational motion of a molecule adsorbed to a solid surface, which occurs broadly in hetergeneous catalysis, surface science, etc
+<li><p>The rotational motion of a molecule adsorbed to a solid surface, which occurs broadly in heterogeneous catalysis, surface science, etc
 <img alt="Slide 1 image" src="../../_images/slide02_img02.png" /></p></li>
 <li><p>The rotational orbits of electrons in aromatic systems like benzene, porphyrin, etc
 <img alt="Slide 1 image" src="../../_images/slide02_img01.png" /></p></li>
@@ -710,7 +719,7 @@ and
 <div class="cell_output docutils container">
 <div class="output text_html"><img src="https://raw.githubusercontent.com/deprincelab/deprincelab.github.io/main/tutorials/jupyter_notebooks/rotation/spherical_polar_coordinates.png" width="300"/></div></div>
 </div>
-<p>Here, <span class="math notranslate nohighlight">\(r\)</span>, represents the distance from the origin and spans the range <span class="math notranslate nohighlight">\(r = [0, \infty]\)</span>. The angle, <span class="math notranslate nohighlight">\(\phi\)</span>, is the azimuthal angle, which spans the range <span class="math notranslate nohighlight">\(\phi = [0, 2\pi]\)</span> radians. The angle, <span class="math notranslate nohighlight">\(\theta\)</span>, is the polar angle, which spanse the range <span class="math notranslate nohighlight">\(\theta = [0, \pi]\)</span> radians. The spherical polar coordinates are related to the usual Cartesian coordinates by</p>
+<p>Here, <span class="math notranslate nohighlight">\(r\)</span>, represents the distance from the origin and spans the range <span class="math notranslate nohighlight">\(r = [0, \infty]\)</span>. The angle, <span class="math notranslate nohighlight">\(\phi\)</span>, is the azimuthal angle, which spans the range <span class="math notranslate nohighlight">\(\phi = [0, 2\pi]\)</span> radians. The angle, <span class="math notranslate nohighlight">\(\theta\)</span>, is the polar angle, which spans the range <span class="math notranslate nohighlight">\(\theta = [0, \pi]\)</span> radians. The spherical polar coordinates are related to the usual Cartesian coordinates by</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 x &amp;= r \sin(\theta)\cos(\phi) \\
@@ -730,7 +739,7 @@ r &amp;= \left ( x^2 + y^2 + z^2 \right )^{1/2}
 \frac{\partial }{\partial y} &amp;= \left (\frac{\partial r}{\partial y} \right )_{x,z} \frac{\partial }{\partial r} + \left (\frac{\partial \theta}{\partial y} \right )_{x,z} \frac{\partial }{\partial \theta} + \left (\frac{\partial \phi}{\partial y} \right )_{x,z} \frac{\partial }{\partial \phi} \\
 &amp;= \sin(\theta)\sin(\phi)\frac{\partial}{\partial r} + \frac{\cos(\theta)\sin(\phi)}{r}\frac{\partial}{\partial\theta}+\frac{\cos(\theta)}{r\sin(\theta)}\frac{\partial}{\partial \phi}
 \end{align}\end{split}\]</div>
-<p>Lastly, for the partial derivative with respect to <span class="math notranslate nohighlight">\(y\)</span>, we have</p>
+<p>Lastly, for the partial derivative with respect to <span class="math notranslate nohighlight">\(z\)</span>, we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align}
 \frac{\partial }{\partial z} &amp;= \left (\frac{\partial r}{\partial z} \right )_{y,z} \frac{\partial }{\partial r} + \left (\frac{\partial \theta}{\partial z} \right )_{y,z} \frac{\partial }{\partial \theta} + \left (\frac{\partial \phi}{\partial z} \right )_{y,z} \frac{\partial }{\partial \phi} \\
@@ -795,7 +804,7 @@ $<span class="math notranslate nohighlight">\(\begin{align}
 \[ \begin{align}
 \hat{H} = \frac{\hat{L}^2_z}{2I}
 \end{align}\]</div>
-<p>Given this form for the Hamiltonian, is is clear that <span class="math notranslate nohighlight">\(\hat{H}\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z\)</span> will commute and we should thus be able to obtain simultaneous eigenfunctions of both operators.</p>
+<p>Given this form for the Hamiltonian, it is clear that <span class="math notranslate nohighlight">\(\hat{H}\)</span> and <span class="math notranslate nohighlight">\(\hat{L}_z\)</span> will commute and we should thus be able to obtain simultaneous eigenfunctions of both operators.</p>
 <p>Now, let us find solutions to the Schrödinger equation. We have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
@@ -1255,7 +1264,7 @@ E = E_M + E_\mu
 \hat{H}_\mu &amp;= \frac{\hat{p}_\mu^2}{2\mu} + V(\vec{r}) 
 \end{align}\end{split}\]</div>
 <p>The first of these equations resembles the Schrödinger equation for a free-particle of mass, <span class="math notranslate nohighlight">\(M.\)</span> As such, the energy, <span class="math notranslate nohighlight">\(E_M,\)</span> corresponds to the translational energy of the entire system traveling through space and will not be quantized. The Schrödinger equation for the effective particle of mass, <span class="math notranslate nohighlight">\(\mu,\)</span> is more complicated, and its solution will depend on the precise form of <span class="math notranslate nohighlight">\(V(\vec{r}).\)</span> Depending on the form of this potential, <span class="math notranslate nohighlight">\(E_\mu\)</span> may be quantized.</p>
-<p>To this point, this analysis has been completely general. The Hamiltonian for any two-particle system with a potential that depends on the inter-particle distance can be separated in this way. The <span class="math notranslate nohighlight">\(\vec{R}\)</span>-dependent part of the wave function will always look like that for a free-particle, where as the <span class="math notranslate nohighlight">\(\vec{r}\)</span>-dependent part will be more interesting.  Here, we are specifically concerned with the case where <span class="math notranslate nohighlight">\(\psi(\vec{r})\)</span> is a wave function characterizing the rotational motion of a molecular system (specifically, a diatomic molecule). In the <strong>rigid rotor</strong> model, the atoms in this molecular are assumed to rotate about their center of mass, at a fixed distance, <span class="math notranslate nohighlight">\(d\)</span> from one-another. As a result <span class="math notranslate nohighlight">\(V(\vec{r})\)</span> is chosen to be zero when <span class="math notranslate nohighlight">\(|\vec{r}|=d\)</span> and infinite otherwise. This potential is <strong>sperically symmetrical</strong>, meaning that it depends on the magnitude but not the orientation of <span class="math notranslate nohighlight">\(\vec{r}.\)</span>  For a particle experiencing such a potential, the force experienced by the particle is radially directed. For this reason, this type of a problem is called a <strong>central force problem</strong>.</p>
+<p>To this point, this analysis has been completely general. The Hamiltonian for any two-particle system with a potential that depends on the inter-particle distance can be separated in this way. The <span class="math notranslate nohighlight">\(\vec{R}\)</span>-dependent part of the wave function will always look like that for a free-particle, where as the <span class="math notranslate nohighlight">\(\vec{r}\)</span>-dependent part will be more interesting.  Here, we are specifically concerned with the case where <span class="math notranslate nohighlight">\(\psi(\vec{r})\)</span> is a wave function characterizing the rotational motion of a molecular system (specifically, a diatomic molecule). In the <strong>rigid rotor</strong> model, the atoms in this molecular are assumed to rotate about their center of mass, at a fixed distance, <span class="math notranslate nohighlight">\(d\)</span> from one-another. As a result <span class="math notranslate nohighlight">\(V(\vec{r})\)</span> is chosen to be zero when <span class="math notranslate nohighlight">\(|\vec{r}|=d\)</span> and infinite otherwise. This potential is <strong>spherically symmetrical</strong>, meaning that it depends on the magnitude but not the orientation of <span class="math notranslate nohighlight">\(\vec{r}.\)</span>  For a particle experiencing such a potential, the force experienced by the particle is radially directed. For this reason, this type of a problem is called a <strong>central force problem</strong>.</p>
 <blockquote>
 <div><p>Practice</p>
 <blockquote>
@@ -1670,7 +1679,7 @@ b_k &amp;= b \pm k \hbar
 \[\begin{align}
 \hat{M}_z (\hat{M}_+ Y_\text{max}) = (b_\text{max} + \hbar)(\hat{M}_+ Y_\text{max})
 \end{align}\]</div>
-<p>This result suggests that the state <span class="math notranslate nohighlight">\(\hat{M}_+ Y_\text{max}\)</span> has a larger <span class="math notranslate nohighlight">\(z\)</span> projection of the angular momentum than the state <span class="math notranslate nohighlight">\(Y_\text{max}\)</span>, which contradicts our assertion that <span class="math notranslate nohighlight">\(Y_\text{max}\)</span> represents the top rung of the ladder of functions. To avoid this contridiction, the application of <span class="math notranslate nohighlight">\(\hat{M}_+\)</span> to <span class="math notranslate nohighlight">\(Y_\text{max}\)</span> must be zero:</p>
+<p>This result suggests that the state <span class="math notranslate nohighlight">\(\hat{M}_+ Y_\text{max}\)</span> has a larger <span class="math notranslate nohighlight">\(z\)</span> projection of the angular momentum than the state <span class="math notranslate nohighlight">\(Y_\text{max}\)</span>, which contradicts our assertion that <span class="math notranslate nohighlight">\(Y_\text{max}\)</span> represents the top rung of the ladder of functions. To avoid this contradiction, the application of <span class="math notranslate nohighlight">\(\hat{M}_+\)</span> to <span class="math notranslate nohighlight">\(Y_\text{max}\)</span> must be zero:</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
 \hat{M}_+Y_\text{max} = 0
@@ -1782,7 +1791,7 @@ c = j(j+1)\hbar^2
 </section>
 <section id="spin-angular-momentum">
 <h2>Spin Angular Momentum<a class="headerlink" href="#spin-angular-momentum" title="Link to this heading">#</a></h2>
-<p>Spin angular momentum is an intrinsic property of microscopic particles, like their mass and charge. The concept of spin emerges in Dirac’s relativistic extension of the Schrödinger equation. In non-relativistic quantum mechanics, spin is incorporated into a wave function because we know, from experiment, that quantum particles possess this property. Fundamental particles can be chategorized in one of two ways, based on their spin. <strong>Fermions</strong> have half-integer spin; for example, electrons are fermions with a spin quantum number, <span class="math notranslate nohighlight">\(s = \frac{1}{2}.\)</span> <strong>Bosons</strong> have integer spin; for example, photons are bosons with <span class="math notranslate nohighlight">\(s = 1.\)</span></p>
+<p>Spin angular momentum is an intrinsic property of microscopic particles, like their mass and charge. The concept of spin emerges in Dirac’s relativistic extension of the Schrödinger equation. In non-relativistic quantum mechanics, spin is incorporated into a wave function because we know, from experiment, that quantum particles possess this property. Fundamental particles can be categorized in one of two ways, based on their spin. <strong>Fermions</strong> have half-integer spin; for example, electrons are fermions with a spin quantum number, <span class="math notranslate nohighlight">\(s = \frac{1}{2}.\)</span> <strong>Bosons</strong> have integer spin; for example, photons are bosons with <span class="math notranslate nohighlight">\(s = 1.\)</span></p>
 <p>Let us consider the spin of an electron, which is a fermion. All electrons have <span class="math notranslate nohighlight">\(s = \frac{1}{2},\)</span> which determins the magnitude of the spin angular momentum, <span class="math notranslate nohighlight">\(s(s+1)\hbar^2 = \frac{3}{4}\hbar^2.\)</span> From general chemistry, we learn that electrons can have <span class="math notranslate nohighlight">\(\alpha\)</span> or <span class="math notranslate nohighlight">\(\beta\)</span> spin, and we also refer to these electrons has having spin up or down. The terms “up” and “down” refer to the <span class="math notranslate nohighlight">\(z\)</span> projection of the spin angular momentum, <span class="math notranslate nohighlight">\(m_s \hbar.\)</span> From the analysis in the previous section, we know <span class="math notranslate nohighlight">\(m_s\)</span> for an electron can take on two values. <span class="math notranslate nohighlight">\(\alpha\)</span> spin electrons have <span class="math notranslate nohighlight">\(m_s = + \frac{1}{2},\)</span> while <span class="math notranslate nohighlight">\(\beta\)</span> spin electrons have <span class="math notranslate nohighlight">\(m_s = - \frac{1}{2}.\)</span></p>
 <p>The operators for spin angular momentum are analogous to those we considered above for orbital angular momentum. We have</p>
 <div class="math notranslate nohighlight">
