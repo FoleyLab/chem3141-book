@@ -59,7 +59,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/computational_sets/Spin_one_half';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/computational_sets/spin_one_half';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Computational Set 2: Entangling Operations through strong light-matter coupling" href="two_qubit_entangled.html" />
@@ -216,13 +216,32 @@
 
 <li class="toctree-l1"><a class="reference internal" href="two_qubit_entangled.html">Computational Set 2: Entangling Operations through strong light-matter coupling</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="CO_Perturbation_Theory_Quartic.html">Vibrational Transitions in CO Using Perturbation Theory</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="Newton-Raphson.html">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spherical_harmonics.html">Computational Demo: Spherical Harmonics</a></li>
 
 
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="co2_raman.html">Lab Supplement: Raman Spectroscopy</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="variational_method_rotor_in_a_field.html">Computational Demo: The Variational Method with the 2D Rigid Rotor with HF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co_perturbation_theory.html">Computational Demo: Vibrational Transitions in CO Using Perturbation Theory</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="co_variational.html">Computational Demo: Vibrational Transitions in CO Using Variational Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="newton_raphson.html">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="linear_variational_method.html">Linear Variational Method</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
@@ -287,7 +306,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/FoleyLab/chem3141-book/blob/main/content/computational_sets/Spin_one_half.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/FoleyLab/chem3141-book/blob/main/content/computational_sets/spin_one_half.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -335,7 +354,7 @@
       
       
       
-      <li><a href="https://github.com/FoleyLab/chem3141-book/issues/new?title=Issue%20on%20page%20%2Fcontent/computational_sets/Spin_one_half.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/FoleyLab/chem3141-book/issues/new?title=Issue%20on%20page%20%2Fcontent/computational_sets/spin_one_half.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -365,7 +384,7 @@
       
       
       
-      <li><a href="../../_sources/content/computational_sets/Spin_one_half.ipynb" target="_blank"
+      <li><a href="../../_sources/content/computational_sets/spin_one_half.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -500,6 +519,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">🧠 Conceptual Questions</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stern-gerlach-practice-problem">Stern-Gerlach - Practice Problem</a></li>
 </ul>
 </li>
 </ul>
@@ -516,7 +536,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="computational-set-1-introduction-to-spin-1-2">
 <h1>Computational Set 1: Introduction to Spin 1/2<a class="headerlink" href="#computational-set-1-introduction-to-spin-1-2" title="Link to this heading">#</a></h1>
-<p><a class="reference external" href="https://foleylab.github.io/">Jay Foley, University of North Carolina Charlotte</a></p>
+<p><a class="reference external" href="https://foleylab.github.io/">Jay Foley, Kielee Rybicki, Crisbel Forero, Ian Chaput, Jonathan Aidan, University of North Carolina Charlotte</a></p>
 <section id="learning-outcomes">
 <h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Link to this heading">#</a></h2>
 <p>By the end of this workbook, students should be able to</p>
@@ -532,7 +552,7 @@ document.write(`
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
-<p>We will use Python and NumPy to illustrate basic formalism of spin 1/2 in quantum mechanics.  We assume familiarity with this formalism; for background on this topic, we recommend you read <a class="reference internal" href="note05.html"><span class="doc std std-doc">more on spin</span></a>.</p>
+<p>We will use Python and NumPy to illustrate basic formalism of spin 1/2 in quantum mechanics.  We assume familiarity with this formalism; for background on this topic, we recommend you read <a class="reference internal" href="images/note05.html"><span class="doc std std-doc">more on spin</span></a>.</p>
 <p>Spin angular momentum is an observable in quantum mechanics and has
 associated operators with eigenstates.  Traditionally, the components of angular momentum are represented along the <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span> axes, and we have
 Hermitian operators associated with each component (<span class="math notranslate nohighlight">\(\hat{S}_x, \hat{S}_y, \hat{S}_z\)</span>), along with the square magnitude <span class="math notranslate nohighlight">\(\hat{S}^2\)</span>.  For particles like electrons, protons, and neutrons, these component operators
@@ -1421,6 +1441,102 @@ You can compute matrix products using either of the following equivalent syntaxe
 </div>
 </section>
 </section>
+<section id="stern-gerlach-practice-problem">
+<h2>Stern-Gerlach - Practice Problem<a class="headerlink" href="#stern-gerlach-practice-problem" title="Link to this heading">#</a></h2>
+<p>Consider an ideal Stern-Gerlach experiment, that makes sequential measurements of the spin 1/2 components, <span class="math notranslate nohighlight">\(S_y\)</span>, <span class="math notranslate nohighlight">\(S_x\)</span>, and <span class="math notranslate nohighlight">\(S_y\)</span> again. 1000 particles with an initial state with spin-up along <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(|Y^+ \rangle\)</span> are sent through the series of apparatus, aligned in a way where in each case the particles emitted from the spin-up port enter the next apparatus.</p>
+<p>How many particles are expected to emerge…</p>
+<p>a) with <span class="math notranslate nohighlight">\(S_y = +\frac{\hbar}{2}\)</span> from the first port?</p>
+<details>
+<summary><strong>💡 Solution</strong></summary>
+<p>Find the probability of getting <span class="math notranslate nohighlight">\(|Y^+\rangle\)</span> when the particle is in <span class="math notranslate nohighlight">\(|Y^+\rangle\)</span> state given by:</p>
+<div class="math notranslate nohighlight">
+\[P(Y^+) = |\langle Y^+|Y^+\rangle|^2\]</div>
+<p>Express <span class="math notranslate nohighlight">\(|Y^+ \rangle\)</span> as a vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}|Y^+ \rangle = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ i \end{pmatrix}\end{split}\]</div>
+<p>Find the bra by taking the adjoint of the ket</p>
+<div class="math notranslate nohighlight">
+\[\langle Y^+| = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; -i \end{pmatrix}\]</div>
+<p>Compute the braket:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\langle Y^+|Y^+ \rangle = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; -i \end{pmatrix} \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ i \end{pmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\langle Y^+|Y^+ \rangle = \frac{1}{2} (1+1) = 1\]</div>
+<p>Square the magnitude</p>
+<div class="math notranslate nohighlight">
+\[P(Y^+) = |1|^2 = 1\]</div>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[1000 \times 1 = 1000\]</div>
+</details>
+<hr class="docutils" />
+<p>✅ <strong>Final Answer:</strong></p>
+<p>1000 <span class="math notranslate nohighlight">\(|Y^+\rangle\)</span> particles</p>
+<hr class="docutils" />
+<p>The probability is 1 because the particles are already in in an eigenstate of <span class="math notranslate nohighlight">\(S_y\)</span> .</p>
+</details>
+<hr class="docutils" />
+<p>b) What number would you expect to emerge with <span class="math notranslate nohighlight">\(+\frac{\hbar}{2}\)</span> from the second port that measures spin along <span class="math notranslate nohighlight">\(x\)</span>?</p>
+<details>
+<summary><strong>💡 Solution</strong></summary>
+<p>Find the probability of getting <span class="math notranslate nohighlight">\(|X^+\rangle\)</span> when the particle is in <span class="math notranslate nohighlight">\(|Y^+\rangle\)</span> state given by:</p>
+<div class="math notranslate nohighlight">
+\[P(X^+) = |\langle X^+|Y^+\rangle|^2\]</div>
+<p>Express states as vectors</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}|Y^+\rangle = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ i \end{pmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\langle X^+| = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \end{pmatrix}\]</div>
+<p>Compute the braket</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\langle X^+|Y^+\rangle = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \end{pmatrix} \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ i \end{pmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\langle X^+|Y^+\rangle = \frac{1}{2} (1+i)\]</div>
+<p>Square the magnitude</p>
+<div class="math notranslate nohighlight">
+\[P(X^+) = \frac{1}{4}|(1+i)|^2 = \frac{2}{4}\]</div>
+<div class="math notranslate nohighlight">
+\[P(X^+) = \frac{1}{2}\]</div>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[1000 \times \frac{1}{2} = 500\]</div>
+<hr class="docutils" />
+<p>✅ <strong>Final Answer:</strong></p>
+<p>500 <span class="math notranslate nohighlight">\(|X^+\rangle\)</span> particles</p>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(S_y\)</span> and <span class="math notranslate nohighlight">\(S_x\)</span> are not correlated. Knowing the value of <span class="math notranslate nohighlight">\(S_y\)</span> does NOT tell us the value of <span class="math notranslate nohighlight">\(S_x\)</span>, so the probability becomes an equal 50/50 split.</p>
+</details>
+<hr class="docutils" />
+<p>c) What number would you expect to emerge with <span class="math notranslate nohighlight">\(+\frac{\hbar}{2}\)</span> from the third port that re-measures spin along <span class="math notranslate nohighlight">\(y\)</span>?</p>
+<details>
+<summary><strong>💡 Solution</strong></summary>
+<p>Find the probability of getting <span class="math notranslate nohighlight">\(|Y^+\rangle\)</span> when the particle is in <span class="math notranslate nohighlight">\(|X^+\rangle\)</span> state given by:</p>
+<div class="math notranslate nohighlight">
+\[P(Y^+) = |\langle Y^+|X^+\rangle|^2\]</div>
+<p>Express states as vectors</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}|X^+\rangle = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ 1 \end{pmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\langle Y^+| = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; -i\end{pmatrix}\]</div>
+<p>Compute the braket</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\langle Y^+|X^+\rangle = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; -i \end{pmatrix} \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ 1 \end{pmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\langle Y^+|X^+\rangle = \frac{1}{2} (1-i)\]</div>
+<p>Square the magnitude</p>
+<div class="math notranslate nohighlight">
+\[P(Y^+) = \frac{1}{4}|(1-i)|^2 = \frac{2}{4}\]</div>
+<div class="math notranslate nohighlight">
+\[P(Y^+) = \frac{1}{2}\]</div>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[500 \times \frac{1}{2} = 250\]</div>
+<hr class="docutils" />
+<p>✅ <strong>Final Answer:</strong></p>
+<p>250 <span class="math notranslate nohighlight">\(|Y^+\rangle\)</span> particles</p>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(S_y\)</span> and <span class="math notranslate nohighlight">\(S_x\)</span> are not compatible, so the values of <span class="math notranslate nohighlight">\(S_y\)</span> and <span class="math notranslate nohighlight">\(S_x\)</span> CANNOT be simultaneously known. Gaining precision on <span class="math notranslate nohighlight">\(S_x\)</span> reduces precision on <span class="math notranslate nohighlight">\(S_y\)</span>.</p>
+</details></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1528,6 +1644,7 @@ You can compute matrix products using either of the following equivalent syntaxe
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">🧠 Conceptual Questions</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stern-gerlach-practice-problem">Stern-Gerlach - Practice Problem</a></li>
 </ul>
 </li>
 </ul>
