@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Vibrational Transitions in CO Using Variational Method &#8212; My sample book</title>
+    <title>Computational Demo: Vibrational Transitions in CO Using Variational Method &#8212; My sample book</title>
   
   
   
@@ -59,11 +59,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/computational_sets/CO_Variational';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/computational_sets/co_variational';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function" href="Newton-Raphson.html" />
-    <link rel="prev" title="Vibrational Transitions in CO Using Perturbation Theory" href="CO_Perturbation_Theory_Quartic.html" />
+    <link rel="next" title="🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function" href="newton_raphson.html" />
+    <link rel="prev" title="Computational Demo: Vibrational Transitions in CO Using Perturbation Theory" href="co_perturbation_theory.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -211,16 +211,32 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="two_qubit_entangled.html">Computational Set 2: Entangling Operations through strong light-matter coupling</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="CO_Perturbation_Theory_Quartic.html">Vibrational Transitions in CO Using Perturbation Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spherical_harmonics.html">Computational Demo: Spherical Harmonics</a></li>
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Vibrational Transitions in CO Using Variational Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Newton-Raphson.html">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="co2_raman.html">Lab Supplement: Raman Spectroscopy</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="variational_method_rotor_in_a_field.html">Computational Demo: The Variational Method with the 2D Rigid Rotor with HF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co_perturbation_theory.html">Computational Demo: Vibrational Transitions in CO Using Perturbation Theory</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Computational Demo: Vibrational Transitions in CO Using Variational Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="newton_raphson.html">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</a></li>
+
+
+
+
+
+
 
 
 
@@ -290,7 +306,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/FoleyLab/chem3141-book/blob/main/content/computational_sets/CO_Variational.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/FoleyLab/chem3141-book/blob/main/content/computational_sets/co_variational.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -338,7 +354,7 @@
       
       
       
-      <li><a href="https://github.com/FoleyLab/chem3141-book/issues/new?title=Issue%20on%20page%20%2Fcontent/computational_sets/CO_Variational.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/FoleyLab/chem3141-book/issues/new?title=Issue%20on%20page%20%2Fcontent/computational_sets/co_variational.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -368,7 +384,7 @@
       
       
       
-      <li><a href="../../_sources/content/computational_sets/CO_Variational.ipynb" target="_blank"
+      <li><a href="../../_sources/content/computational_sets/co_variational.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -452,7 +468,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Vibrational Transitions in CO Using Variational Method</h1>
+    <h1>Computational Demo: Vibrational Transitions in CO Using Variational Method</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -479,8 +495,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="vibrational-transitions-in-co-using-variational-method">
-<h1>Vibrational Transitions in CO Using Variational Method<a class="headerlink" href="#vibrational-transitions-in-co-using-variational-method" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="computational-demo-vibrational-transitions-in-co-using-variational-method">
+<h1>Computational Demo: Vibrational Transitions in CO Using Variational Method<a class="headerlink" href="#computational-demo-vibrational-transitions-in-co-using-variational-method" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://foleylab.github.io/">Jay Foley, University of North Carolina Charlotte</a></p>
 <hr class="docutils" />
 <section id="summary">
@@ -828,16 +844,16 @@ $<span class="math notranslate nohighlight">\(
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="CO_Perturbation_Theory_Quartic.html"
+       href="co_perturbation_theory.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Vibrational Transitions in CO Using Perturbation Theory</p>
+        <p class="prev-next-title">Computational Demo: Vibrational Transitions in CO Using Perturbation Theory</p>
       </div>
     </a>
     <a class="right-next"
-       href="Newton-Raphson.html"
+       href="newton_raphson.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
