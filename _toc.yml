@@ -22,14 +22,14 @@ parts:
 
   - caption: Computational Sets
     chapters:
-      - file: content/computational_sets/Spin_one_half
+      - file: content/computational_sets/spin_one_half
       - file: content/computational_sets/two_qubit_entangled
       - file: content/computational_sets/spherical_harmonics
       - file: content/computational_sets/co2_raman
       - file: content/computational_sets/variational_method_rotor_in_a_field
-      - file: content/computational_sets/CO_Perturbation_Theory_Quartic
-      - file: content/computational_sets/CO_Variational
-      - file: content/computational_sets/Newton-Raphson
+      - file: content/computational_sets/co_perturbation_theory
+      - file: content/computational_sets/co_variational
+      - file: content/computational_sets/newton_raphson
       - file: content/computational_sets/linear_variational_method
 
   - caption: Resources
