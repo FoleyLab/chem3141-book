@@ -224,6 +224,7 @@
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">🧪 Lab Supplement: Raman Spectroscopy</a></li>
 
+
 <li class="toctree-l1"><a class="reference internal" href="variational_method_rotor_in_a_field.html">Computational Demo: The Variational Method with the 2D Rigid Rotor with HF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="co_perturbation_theory.html">Computational Demo: Vibrational Transitions in CO Using Perturbation Theory</a></li>
 
@@ -480,27 +481,26 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">🧪 Lab Supplement: Raman Spectroscopy</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">🎯 Objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">📘 Learning Outcomes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-needs-review">⚗️ Approach - NEEDS REVIEW!!!</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-k-mathrm-cc">🧮 Deriving  <span class="math notranslate nohighlight">\( k_{\mathrm{CC}} \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">⚗️ Approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intuiting-the-cc-force-constant">Intuiting the CC force constant</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computational-setup">💻 Computational Setup</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-required-libraries">🧰 Importing Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation">🧾 Preparation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-written-block-variable-assignment">⚙️ Pre-Written Block: Variable Assignment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-force-constants">🧠 Understanding the Force Constants</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-force-constants">📘 Table of Force Constants</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-idea">💬 Key Idea</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-the-f-matrix">🧮 Constructing the F Matrix</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-the-g-matrix-full-expressions">⚙️ Constructing the G Matrix (Full Expressions)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-written-block-assignment-of-elements-of-bf-g-and-bf-f-matrices-happens-here-do-not-modify-this-block">PRE-WRITTEN BLOCK: Assignment of elements of <span class="math notranslate nohighlight">\({\bf G}\)</span> and <span class="math notranslate nohighlight">\({\bf F}\)</span> matrices happens here!  Do not modify this block.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-do-complete-build-f-matrix-kcc-params-function">To-Do:  Complete build_F_matrix(kCC, params): function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-the-g-matrix-full-expressions">⚙️ Constructing the G Matrix (Full Expressions)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-do-complete-build-g-matrix-params-function">To-Do:  Complete build_G_matrix(params): function</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-vibrational-frequencies-are-eigenvalues-of-bf-fg">The vibrational frequencies are eigenvalues of <span class="math notranslate nohighlight">\({\bf FG}\)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-the-functionality-together">Putting the functionality together</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#set-your-minimum-and-maximum-values-for-the-slider">Set your minimum and maximum values for the slider</a></li>
 </ul>
 
             </nav>
@@ -515,7 +515,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-supplement-raman-spectroscopy">
 <h1>🧪 Lab Supplement: Raman Spectroscopy<a class="headerlink" href="#lab-supplement-raman-spectroscopy" title="Link to this heading">#</a></h1>
-<p><a class="reference external" href="https://chemistry.charlotte.edu/"><strong>Profs. Mike Murphy, Lauren Woods, and Jay Foley</strong> — University of North Carolina at Charlotte</a></p>
+<p><a class="reference external" href="https://chemistry.charlotte.edu/"><strong>Profs. Mike Murphy, Lauren Woods, Chase Slowey, and Jay Foley</strong> — University of North Carolina at Charlotte</a></p>
 <hr class="docutils" />
 <section id="objectives">
 <h2>🎯 Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
@@ -527,7 +527,7 @@ document.write(`
 </section>
 <section id="learning-outcomes">
 <h2>📘 Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Link to this heading">#</a></h2>
-<p>By the end of this lab notebook, you should be able to:</p>
+<p>By the end of this lab, you should be able to:</p>
 <ol class="arabic simple">
 <li><p>Identify the <strong>symmetry</strong> of simple molecules</p></li>
 <li><p>Differentiate between <strong>Raman</strong> and <strong>Infrared (IR)</strong> active vibrational modes</p></li>
@@ -540,27 +540,16 @@ document.write(`
 You can run this notebook interactively in Google Colab using the “Open in Colab” button on your Jupyter Book page.</p>
 </div></blockquote>
 </section>
-<section id="approach-needs-review">
-<h2>⚗️ Approach - NEEDS REVIEW!!!<a class="headerlink" href="#approach-needs-review" title="Link to this heading">#</a></h2>
+<section id="approach">
+<h2>⚗️ Approach<a class="headerlink" href="#approach" title="Link to this heading">#</a></h2>
 <p>The <strong>FTIR spectrum</strong> for <em>trans</em>-dichloroethylene, together with Eqs. (3) and (4), determines three of the four force constants —<br />
-<span class="math notranslate nohighlight">\( k_{\mathrm{CH}} \)</span>, <span class="math notranslate nohighlight">\( k_{\alpha} \)</span>, and <span class="math notranslate nohighlight">\( k_{\tau} \)</span> — within the approximations applied.</p>
+<span class="math notranslate nohighlight">\( k_{\mathrm{CH}} \)</span>, <span class="math notranslate nohighlight">\( k_{\theta} \)</span>, and <span class="math notranslate nohighlight">\( k_{\tau} \)</span> — within the approximations applied.</p>
 <p>The remaining force constant, <span class="math notranslate nohighlight">\(k_{\mathrm{CC}} \)</span>, requires measurement of the <strong>Raman spectrum</strong>, because the carbon–carbon stretch <span class="math notranslate nohighlight">\( \bar{\nu}_{\mathrm{CC}} \)</span> does <strong>not</strong> change the molecular dipole moment and is therefore <strong>absent in the FTIR spectrum</strong>.</p>
-<hr class="docutils" />
-<section id="deriving-k-mathrm-cc">
-<h3>🧮 Deriving  <span class="math notranslate nohighlight">\( k_{\mathrm{CC}} \)</span><a class="headerlink" href="#deriving-k-mathrm-cc" title="Link to this heading">#</a></h3>
-<p>Deriving a simple expression for <span class="math notranslate nohighlight">\( k_{\mathrm{CC}} \)</span> is difficult because the modes <span class="math notranslate nohighlight">\( S_1 \)</span>, <span class="math notranslate nohighlight">\( S_2 \)</span>, and <span class="math notranslate nohighlight">\( S_3 \)</span> are <strong>coupled</strong> in the secular equation.<br />
-The determinant then involves finding the roots of a <strong>cubic polynomial</strong>.</p>
-<p>We could use Python to solve the <span class="math notranslate nohighlight">\( 3 \times 3\)</span>  determinant for the <em>trans</em> isomer,<br />
-but for the <em>cis</em> isomer, the system is more complex.<br />
-Since entering and solving the <strong>complete secular equation</strong> (Eq. A10) in Python is not much more difficult,<br />
-we can obtain solutions for <strong>both isomers</strong> by assuming that the bond force constants are the same for each.</p>
-<p>Solving the general secular equation thus provides:</p>
-<ul class="simple">
-<li><p>a <strong>check of the validity</strong> of the approach, and</p></li>
-<li><p>insight into the <strong>effect of the approximations</strong> involved.</p></li>
-</ul>
+<p>You will be asked to enter in values for these four force constants, molecular geometries, atomic masses, and all measured FTIR and Raman transitions in wavenumbers as an initial step of this notebook.</p>
 </section>
-<hr class="docutils" />
+<section id="intuiting-the-cc-force-constant">
+<h2>Intuiting the CC force constant<a class="headerlink" href="#intuiting-the-cc-force-constant" title="Link to this heading">#</a></h2>
+<p>Rather than measure or calculate  <span class="math notranslate nohighlight">\(k_{\mathrm{CC}} \)</span> explicitly, you will utilize this notebook to guess and check values within a range that you will set using your chemical intuition.  You will complete select lines of code to complete an implementation of the <span class="math notranslate nohighlight">\({\bf FG}\)</span> matrix method, which given a complete of force constants, molecular geometry, and atomic masses, enables computation of the Raman and FTIR transition frequencies.  The notebook will also provide a slider that you can use to adjust your guess of <span class="math notranslate nohighlight">\(k_{\mathrm{CC}} \)</span>.  As you adjust the slider, the notebook should update the <span class="math notranslate nohighlight">\({\bf FG}\)</span> matrix, estimate of the frequencies, and provide an analysis of the closeness of the reesults of the <span class="math notranslate nohighlight">\({\bf FG}\)</span> method to your measured values.  Your goal is to minimize the error by identifying the best possible value of <span class="math notranslate nohighlight">\(k_{\mathrm{CC}} \)</span>.</p>
 <section id="computational-setup">
 <h3>💻 Computational Setup<a class="headerlink" href="#computational-setup" title="Link to this heading">#</a></h3>
 <p>Several scientific programs can perform these calculations,<br />
@@ -587,13 +576,15 @@ together, they allow you to determine all four force constants for the molecule.
 <li><p><strong>NumPy</strong> — for numerical calculations and array handling</p></li>
 <li><p><strong>SciPy</strong> — for scientific utilities and signal processing</p></li>
 <li><p><strong>Matplotlib</strong> — for plotting and data visualization</p></li>
+<li><p><strong>ipywidgets</strong> and <strong>IPython</strong> for interactive slider features</p></li>
 </ul>
 <p>Run the following cell to import the required modules.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">signal</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">FloatSlider</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
 </pre></div>
 </div>
 </div>
@@ -609,6 +600,7 @@ you <em>did</em> bring your lab notebook, right? 😄</p>
 <li><p><strong>Bond angles</strong> (in radians)</p></li>
 <li><p><strong>Atomic masses</strong> (in amu)</p></li>
 <li><p><strong>Force constants</strong></p></li>
+<li><p><strong>Expected Vibrational Frequencies</strong> (in <span class="math notranslate nohighlight">\(cm^{-1}\)</span>, ordered from largest to smallest values <strong>NOT</strong> in the same order as the worksheet)</p></li>
 </ul>
 <p>Be sure to record your values carefully —<br />
 these will be used in subsequent calculations of the <strong>G matrix</strong> and <strong>force constants</strong>.</p>
@@ -617,62 +609,34 @@ these will be used in subsequent calculations of the <strong>G matrix</strong> a
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># STUDENT INPUT SECTION</span>
 <span class="c1"># Replace placeholder values with experimental or calculated ones as directed in lab handout.</span>
 
+<span class="c1"># Student input dictionary template</span>
 <span class="n">student_input</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="c1"># Geometry (distances in Å, angles in radians)</span>
-    <span class="s2">&quot;tau&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span>                     <span class="c1"># 0 for cis, π for trans</span>
+    <span class="c1"># Geometry (distances in Å, angles in radians, mass in AMU)</span>
+    <span class="s2">&quot;tau&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span>                      <span class="c1"># 0 for cis, π for trans</span>
     <span class="s2">&quot;C-C bondlength&quot;</span><span class="p">:</span> <span class="mf">1.31</span><span class="p">,</span>
     <span class="s2">&quot;C-H bondlength&quot;</span><span class="p">:</span> <span class="mf">1.07</span><span class="p">,</span>
-    <span class="s2">&quot;C-C-H bond angle&quot;</span><span class="p">:</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">&quot;C-C-H bond angle&quot;</span><span class="p">:</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">3</span><span class="p">,</span> 
     <span class="s2">&quot;C mass&quot;</span><span class="p">:</span> <span class="mf">12.01</span><span class="p">,</span>
     <span class="s2">&quot;H mass&quot;</span><span class="p">:</span> <span class="mf">1.008</span><span class="p">,</span>
-
-    <span class="c1"># Force constants</span>
-    <span class="s2">&quot;C-C force constant&quot;</span><span class="p">:</span> <span class="mf">7.70</span><span class="p">,</span>        <span class="c1"># kCC  (N/cm)</span>
-    <span class="s2">&quot;C-H force constant&quot;</span><span class="p">:</span> <span class="mf">5.23</span><span class="p">,</span>        <span class="c1"># kCH  (N/cm)</span>
-    <span class="s2">&quot;C-C–C-H interaction&quot;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>       <span class="c1"># kCCCH (N/cm)</span>
-    <span class="s2">&quot;C-C–bend interaction&quot;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>      <span class="c1"># kCCth (Å N/cm)</span>
-    <span class="s2">&quot;C-H–bend interaction&quot;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>      <span class="c1"># kCHatha (Å N/cm)</span>
+    <span class="c1"># Force constants (N/cm or Å² N/cm as noted)</span>
+    <span class="s2">&quot;C-H force constant&quot;</span><span class="p">:</span> <span class="mf">5.217</span><span class="p">,</span>        <span class="c1"># kCH  (N/cm)</span>
+    <span class="s2">&quot;C-C–C-H interaction&quot;</span><span class="p">:</span> <span class="mf">0.30</span><span class="p">,</span>       <span class="c1"># kCCCH (N/cm)</span>
+    <span class="s2">&quot;C-C–bend interaction&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>      <span class="c1"># kCCth (Å N/cm)</span>
+    <span class="s2">&quot;C-H–bend interaction&quot;</span><span class="p">:</span> <span class="mf">0.16</span><span class="p">,</span>      <span class="c1"># kCHatha (Å N/cm)</span>
     <span class="s2">&quot;bend-bend coupling&quot;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>        <span class="c1"># kthathb (Å² N/cm)</span>
-    <span class="s2">&quot;bend force constant&quot;</span><span class="p">:</span> <span class="mf">0.904</span><span class="p">,</span>      <span class="c1"># ktheta (Å² N/cm)</span>
-    <span class="s2">&quot;torsion force constant&quot;</span><span class="p">:</span> <span class="mf">0.190</span>    <span class="c1"># ktau (Å N/cm)</span>
+    <span class="s2">&quot;bend force constant&quot;</span><span class="p">:</span> <span class="mf">0.902</span><span class="p">,</span>      <span class="c1"># ktheta (Å² N/cm)</span>
+    <span class="s2">&quot;torsion force constant&quot;</span><span class="p">:</span> <span class="mf">0.1893</span><span class="p">,</span>   <span class="c1"># ktau (Å N/cm)</span>
+    
+    <span class="c1"># Expected vibrational frequencies in cm⁻¹ - </span>
+    <span class="c1"># </span>
+    <span class="s2">&quot;S1&quot;</span><span class="p">:</span> <span class="mi">3086</span><span class="p">,</span>
+    <span class="s2">&quot;S2&quot;</span><span class="p">:</span> <span class="mi">3073</span><span class="p">,</span>
+    <span class="s2">&quot;S3&quot;</span><span class="p">:</span> <span class="mi">1577</span><span class="p">,</span>
+    <span class="s2">&quot;S4&quot;</span><span class="p">:</span> <span class="mi">1271</span><span class="p">,</span>
+    <span class="s2">&quot;S5&quot;</span><span class="p">:</span> <span class="mi">1199</span><span class="p">,</span>
+    <span class="s2">&quot;S6&quot;</span><span class="p">:</span> <span class="mi">897</span>
+    
 <span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="pre-written-block-variable-assignment">
-<h2>⚙️ Pre-Written Block: Variable Assignment<a class="headerlink" href="#pre-written-block-variable-assignment" title="Link to this heading">#</a></h2>
-<p>The following code cell will automatically <strong>assign variables</strong> for the subsequent
-calculations based on the values you entered in the <code class="docutils literal notranslate"><span class="pre">student_input</span></code> dictionary above.</p>
-<p>➡️ <strong>Do not edit this cell</strong> — just run it once after updating your inputs.</p>
-<p>This block:</p>
-<ul class="simple">
-<li><p>extracts bond lengths, angles, and masses,</p></li>
-<li><p>computes inverse quantities (e.g., <span class="math notranslate nohighlight">\(1/r_{\mathrm{CC}}\)</span>, <span class="math notranslate nohighlight">\(1/m_{\mathrm{C}}\)</span>), and</p></li>
-<li><p>loads your force constants for use in the <span class="math notranslate nohighlight">\(F\)</span> and <span class="math notranslate nohighlight">\(G\)</span> matrix calculations that follow.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⚠️ DO NOT MODIFY THIS CELL — JUST RUN IT ONCE AFTER ENTERING YOUR INPUTS</span>
-
-<span class="c1"># Geometric parameters</span>
-<span class="n">tau</span> <span class="o">=</span> <span class="n">student_input</span><span class="p">[</span><span class="s2">&quot;tau&quot;</span><span class="p">]</span>
-<span class="n">alpha</span> <span class="o">=</span> <span class="n">student_input</span><span class="p">[</span><span class="s2">&quot;C-C-H bond angle&quot;</span><span class="p">]</span>
-<span class="n">rhoCC</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">student_input</span><span class="p">[</span><span class="s2">&quot;C-C bondlength&quot;</span><span class="p">]</span>
-<span class="n">rhoCH</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">student_input</span><span class="p">[</span><span class="s2">&quot;C-H bondlength&quot;</span><span class="p">]</span>
-<span class="n">muC</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">student_input</span><span class="p">[</span><span class="s2">&quot;C mass&quot;</span><span class="p">]</span>
-<span class="n">muH</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">student_input</span><span class="p">[</span><span class="s2">&quot;H mass&quot;</span><span class="p">]</span>
-
-<span class="c1"># Force constants</span>
-<span class="n">kCC</span>   <span class="o">=</span> <span class="n">student_input</span><span class="p">[</span><span class="s2">&quot;C-C force constant&quot;</span><span class="p">]</span>
-<span class="n">kCH</span>   <span class="o">=</span> <span class="n">student_input</span><span class="p">[</span><span class="s2">&quot;C-H force constant&quot;</span><span class="p">]</span>
-<span class="n">kCCCH</span> <span class="o">=</span> <span class="n">student_input</span><span class="p">[</span><span class="s2">&quot;C-C–C-H interaction&quot;</span><span class="p">]</span>
-<span class="n">kCCth</span> <span class="o">=</span> <span class="n">student_input</span><span class="p">[</span><span class="s2">&quot;C-C–bend interaction&quot;</span><span class="p">]</span>
-<span class="n">kCHatha</span> <span class="o">=</span> <span class="n">student_input</span><span class="p">[</span><span class="s2">&quot;C-H–bend interaction&quot;</span><span class="p">]</span>
-<span class="n">kthathb</span> <span class="o">=</span> <span class="n">student_input</span><span class="p">[</span><span class="s2">&quot;bend-bend coupling&quot;</span><span class="p">]</span>
-<span class="n">ktheta</span>  <span class="o">=</span> <span class="n">student_input</span><span class="p">[</span><span class="s2">&quot;bend force constant&quot;</span><span class="p">]</span>
-<span class="n">ktau</span>    <span class="o">=</span> <span class="n">student_input</span><span class="p">[</span><span class="s2">&quot;torsion force constant&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -774,34 +738,82 @@ F_{66} &amp;= k_{\tau}
 \end{split}\]</div>
 <p>All other matrix elements are zero.<br />
 The matrix is <strong>symmetric</strong>, so <span class="math notranslate nohighlight">\( F_{ij} = F_{ji} \)</span>.</p>
-<p>In this step, we’ll assemble the 6×6 matrix using the constants
-you defined earlier from <code class="docutils literal notranslate"><span class="pre">student_input</span></code>.</p>
+</section>
+<section id="to-do-complete-build-f-matrix-kcc-params-function">
+<h2>To-Do:  Complete build_F_matrix(kCC, params): function<a class="headerlink" href="#to-do-complete-build-f-matrix-kcc-params-function" title="Link to this heading">#</a></h2>
+<p>The function below is partially completed.  You will need to complete the lines that assign elements <span class="math notranslate nohighlight">\(F_{11}\)</span>, <span class="math notranslate nohighlight">\(F_{12}\)</span>, and <span class="math notranslate nohighlight">\(F_{13}\)</span> according to the formulae abouve.  In particular, you need to complete only the lines</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+    <span class="n">F11</span> <span class="o">=</span> <span class="c1">#&lt;== complete here!</span>
+    <span class="n">F12</span> <span class="o">=</span> <span class="c1">#&lt;== complete here!</span>
+    <span class="n">F13</span> <span class="o">=</span> <span class="c1">#&lt;== complete here!</span>
+</pre></div>
+</div>
+<p>using correct python / numpy syntax.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 🧩 Step: Build the F matrix (6×6)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">build_F_matrix</span><span class="p">(</span><span class="n">kCC</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build the F (force constant) matrix for dichloroethylene.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    kCC : float</span>
+<span class="sd">        C-C double bond force constant (N/cm)</span>
+<span class="sd">    params : dict</span>
+<span class="sd">        Dictionary containing other force constants</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    --------</span>
+<span class="sd">    F : ndarray (6x6)</span>
+<span class="sd">        Force constant matrix</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Extract force constants from params</span>
+    <span class="n">kCH</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;C-H force constant&quot;</span><span class="p">]</span>
+    <span class="n">kCCCH</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;C-C–C-H interaction&quot;</span><span class="p">]</span>
+    <span class="n">kCCth</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;C-C–bend interaction&quot;</span><span class="p">]</span>
+    <span class="n">kCHatha</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;C-H–bend interaction&quot;</span><span class="p">]</span>
+    <span class="n">kthathb</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;bend-bend coupling&quot;</span><span class="p">]</span>
+    <span class="n">ktheta</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;bend force constant&quot;</span><span class="p">]</span>
+    <span class="n">ktau</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;torsion force constant&quot;</span><span class="p">]</span>
+    
+    <span class="c1"># Initialize 6x6 symmetric matrix</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+    <span class="c1"># Define elements F11, F12, F13</span>
+    <span class="c1">### These will be uncommented in the student version</span>
+    <span class="c1">#F11 = #&lt;== complete here!</span>
+    <span class="c1">#F12 = #&lt;== complete here!</span>
+    <span class="c1">#F13 = #&lt;== complete here!</span>
 
-<span class="c1"># ✏️ TODO 1: Create a 6×6 zero matrix</span>
-<span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    
+    <span class="c1"># Fill non-zero elements according to the provided formula</span>
+    <span class="c1">### These will be uncommented in the student version</span>
+    <span class="c1">#F[0, 0] = F11</span>
+    <span class="c1">#F[0, 1] = F12</span>
+    <span class="c1">#F[0, 2] = F13</span>
 
-<span class="c1"># --- Assign elements based on the lab handout equations ---</span>
-<span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">kCC</span>
-<span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">kCCCH</span>
-<span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">kCCth</span>
-<span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">kCH</span>
-<span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">kCHatha</span>
-<span class="n">F</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">ktheta</span> <span class="o">+</span> <span class="n">kthathb</span>
-<span class="n">F</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">kCH</span>
-<span class="n">F</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">kCHatha</span>
-<span class="n">F</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">ktheta</span> <span class="o">-</span> <span class="n">kthathb</span>
-<span class="n">F</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">ktau</span>
-
-<span class="c1"># --- Make symmetric ---</span>
-<span class="n">F</span> <span class="o">=</span> <span class="n">F</span> <span class="o">+</span> <span class="n">F</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">F</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ F matrix constructed (N/cm):&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="c1">### These next three lines will be absent in the student version</span>
+    <span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">kCC</span>
+    <span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">kCCCH</span>
+    <span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">kCCth</span>
+    
+    <span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">kCH</span>
+    <span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">kCHatha</span>
+    
+    <span class="n">F</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">ktheta</span> <span class="o">+</span> <span class="n">kthathb</span>
+    
+    <span class="n">F</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">kCH</span>
+    <span class="n">F</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">kCHatha</span>
+    
+    <span class="n">F</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">ktheta</span> <span class="o">-</span> <span class="n">kthathb</span>
+    
+    <span class="n">F</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">ktau</span>
+    
+    <span class="c1"># Make symmetric (fill lower triangle)</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">F</span> <span class="o">+</span> <span class="n">F</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">diagonal</span><span class="p">())</span>
+    
+    <span class="k">return</span> <span class="n">F</span>
+    
 </pre></div>
 </div>
 </div>
@@ -837,336 +849,279 @@ G_{66} &amp;= \tfrac{8}{3}\left[A + C(1 + \cos\tau)\right].
 \end{aligned}
 \end{split}\]</div>
 <p>All other <span class="math notranslate nohighlight">\(G_{ij}\)</span> values are zero in this simplified model.</p>
+</section>
 <hr class="docutils" />
+<section id="to-do-complete-build-g-matrix-params-function">
+<h2>To-Do:  Complete build_G_matrix(params): function<a class="headerlink" href="#to-do-complete-build-g-matrix-params-function" title="Link to this heading">#</a></h2>
+<p>The function below is partially completed.  You will need to complete the lines that assign elements <span class="math notranslate nohighlight">\(G_{11}\)</span>, <span class="math notranslate nohighlight">\(G_{12}\)</span>, and <span class="math notranslate nohighlight">\(G_{13}\)</span> according to the formulae abouve.  In particular, you need to complete only the lines</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+    <span class="n">G11</span> <span class="o">=</span> <span class="c1">#&lt;== complete here!</span>
+    <span class="n">G12</span> <span class="o">=</span> <span class="c1">#&lt;== complete here!</span>
+    <span class="n">G13</span> <span class="o">=</span> <span class="c1">#&lt;== complete here!</span>
+</pre></div>
+</div>
+<p>using correct python / numpy syntax.</p>
 <blockquote>
 <div><p>💡 <em>Tip:</em> The diagonal terms represent self-coupling of internal coordinates,<br />
 while the off-diagonal terms (<span class="math notranslate nohighlight">\(G_{12}\)</span>, <span class="math notranslate nohighlight">\(G_{13}\)</span>, etc.) capture kinetic coupling between motions.</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 🧩 Step: Build the full 6×6 G matrix based on the lab handout equations</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">build_G_matrix</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build the G (kinematic) matrix for dichloroethylene.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    params : dict</span>
+<span class="sd">        Dictionary containing geometric and mass parameters</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    --------</span>
+<span class="sd">    G : ndarray (6x6)</span>
+<span class="sd">        Kinematic matrix</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Extract parameters</span>
+    <span class="n">tau</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;tau&quot;</span><span class="p">]</span>
+    <span class="n">rho_CC</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;C-C bondlength&quot;</span><span class="p">]</span>
+    <span class="n">rho_CH</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;C-H bondlength&quot;</span><span class="p">]</span>
+    <span class="n">m_C</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;C mass&quot;</span><span class="p">]</span>
+    <span class="n">m_H</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;H mass&quot;</span><span class="p">]</span>
+    
+    <span class="c1"># Convert AMU to appropriate units (1 AMU = 1.66054e-27 kg)</span>
+    <span class="c1"># For consistency with force constants in N/cm, use reciprocal masses in AMU⁻¹</span>
+    <span class="n">mu_C</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">m_C</span>
+    <span class="n">mu_H</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">m_H</span>
+    
+    <span class="c1"># Calculate intermediate quantities</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="p">(</span><span class="n">mu_H</span> <span class="o">+</span> <span class="n">mu_C</span><span class="p">)</span> <span class="o">*</span> <span class="n">rho_CH</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">mu_C</span> <span class="o">*</span> <span class="n">rho_CC</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">rho_CC</span> <span class="o">+</span> <span class="n">rho_CH</span><span class="p">)</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">mu_C</span> <span class="o">*</span> <span class="n">rho_CC</span> <span class="o">*</span> <span class="p">(</span><span class="n">rho_CC</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="p">))</span> <span class="o">+</span> <span class="n">rho_CH</span><span class="p">)</span>
+    
+    <span class="c1"># Initialize 6x6 symmetric matrix</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+    <span class="c1">### These will be uncommented in the student version</span>
+    <span class="c1">#G11 = #&lt;== complete here!</span>
+    <span class="c1">#G12 = #&lt;== complete here!</span>
+    <span class="c1">#G13 = #&lt;== complete here!</span>
 
-<span class="c1"># --- Precompute constants ---</span>
-<span class="n">A</span> <span class="o">=</span> <span class="p">(</span><span class="n">muH</span> <span class="o">+</span> <span class="n">muC</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">rhoCH</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">B</span> <span class="o">=</span> <span class="n">muC</span> <span class="o">*</span> <span class="n">rhoCC</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">rhoCC</span> <span class="o">+</span> <span class="n">rhoCH</span><span class="p">)</span>
-<span class="n">C</span> <span class="o">=</span> <span class="n">muC</span> <span class="o">*</span> <span class="n">rhoCC</span> <span class="o">*</span> <span class="p">(</span><span class="n">rhoCC</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="p">))</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">rhoCH</span><span class="p">)</span>
+    
+    
+    <span class="c1"># Fill non-zero elements according to the provided formula</span>
+    <span class="c1">### These will be uncommented in the student version</span>
+    <span class="c1">#G[0, 0] = G11</span>
+    <span class="c1">#G[0, 1] = G12</span>
+    <span class="c1">#G[0, 2] = G13</span>
 
-<span class="c1"># --- Initialize G matrix ---</span>
-<span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-
-<span class="c1"># --- Assign elements ---</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">muC</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">muC</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">rhoCH</span> <span class="o">*</span> <span class="n">muC</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">muC</span> <span class="o">+</span> <span class="n">muH</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">rhoCC</span> <span class="o">*</span> <span class="n">muC</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="p">))</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">rhoCC</span> <span class="o">*</span> <span class="n">muC</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="p">))</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="p">)))</span>
-
-<span class="c1"># --- Enforce symmetry ---</span>
-<span class="n">G</span> <span class="o">=</span> <span class="n">G</span> <span class="o">+</span> <span class="n">G</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ G matrix constructed (Å²·amu⁻¹):&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Next you will compute elements of the <span class="math notranslate nohighlight">\({\bf G}\)</span> matrix.  Equations for each will be given along with a code block to be completed by you.</p>
-<p>For your reference, the variable names have been stored in python as follows:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Equation</p></th>
-<th class="head"><p>Python</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\mu_C\)</span></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">muC</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\mu_H\)</span></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">muH</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\alpha_0\)</span></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\tau_0\)</span></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">tau</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\rho_{CC}\)</span></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">rhoCC</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\rho_{CH}\)</span></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">rhoCH</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Next you will define the G matrix elements given in Eq. A9 using appropriate python syntax, for example</p>
-<p>\begin{equation}
-G_{23} = -\rho_{CC} \mu_C {\rm sin}(\alpha_0) (1 - {\rm cos}(\tau_0))
-\end{equation}
-would be evaluated in python as</p>
-<p><code class="docutils literal notranslate"><span class="pre">G23</span> <span class="pre">=</span> <span class="pre">-rhoCC</span> <span class="pre">*</span> <span class="pre">muC</span> <span class="pre">*</span> <span class="pre">np.sin(alpha)</span> <span class="pre">*</span> <span class="pre">(1-np.cos(tau))</span></code></p>
-<p>Go ahead and practice typing the syntax yourself with <span class="math notranslate nohighlight">\(G_{23}\)</span> in the block below.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MODIFY THIS BLOCK BEFORE RUNNING IT!  IT NEEDS YOUR CODING SKILLS!</span>
-<span class="n">G23</span> <span class="o">=</span> <span class="o">-</span><span class="n">rhoCC</span> <span class="o">*</span> <span class="n">muC</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="p">))</span> <span class="c1"># &lt;== INSERT PYTHON CODE TO COMPUTE G23 HERE! ==&gt;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now try some more elements without being given the explicit python syntax. You will find a text block with the math for each element that you will compute, along with a code block just below the equation for you to complete.</p>
-<div class="math notranslate nohighlight">
-\[ G_{11} = 2\mu_C \]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MODIFY THIS BLOCK BEFORE RUNNING IT!  IT NEEDS YOUR CODING SKILLS!</span>
-<span class="n">G11</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">muC</span> <span class="c1"># &lt;== INSERT PYTHON CODE TO COMPUTE G11 HERE! ==&gt;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="math notranslate nohighlight">
-\[ G_{12} = \sqrt{2} \mu_C {\rm cos}(\alpha_0) \]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MODIFY THIS BLOCK BEFORE RUNNING IT!  IT NEEDS YOUR CODING SKILLS!</span>
-<span class="n">G12</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">muC</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="c1"># &lt;== INSERT PYTHON CODE TO COMPUTE G12 HERE! ==&gt;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="math notranslate nohighlight">
-\[ G_{13} = -\sqrt{2} \rho_{CH} \mu_C {\rm sin}(\alpha_0) \]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MODIFY THIS BLOCK BEFORE RUNNING IT!  IT NEEDS YOUR CODING SKILLS!</span>
-<span class="n">G13</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">rhoCH</span> <span class="o">*</span> <span class="n">muC</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="c1"># &lt;== INSERT PYTHON CODE TO COMPUTE G13 HERE! ==&gt;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="math notranslate nohighlight">
-\[ G_{22} = G_{44} = \mu_C + \mu_H \]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MODIFY THIS BLOCK BEFORE RUNNING IT!  IT NEEDS YOUR CODING SKILLS!</span>
-<span class="n">G22</span> <span class="o">=</span> <span class="n">muC</span> <span class="o">+</span> <span class="n">muH</span> <span class="c1"># &lt;== INSERT PYTHON CODE TO COMPUTE G22 HERE!  ==&gt;</span>
-
-<span class="c1"># You get G44 for free!</span>
-<span class="n">G44</span> <span class="o">=</span> <span class="n">G22</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="math notranslate nohighlight">
-\[ G_{45} = -\rho_{CC} \mu_C  {\rm sin}(\alpha_0)(1 + {\rm cos}(\tau_0)) \]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MODIFY THIS BLOCK BEFORE RUNNING IT!  IT NEEDS YOUR CODING SKILLS!</span>
-<span class="n">G45</span> <span class="o">=</span> <span class="o">-</span><span class="n">rhoCC</span> <span class="o">*</span> <span class="n">muC</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="p">))</span><span class="c1"># &lt;== INSERT PYTHON CODE TO COMPUTE G45 HERE!  ==&gt;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Hopefully this gives you some better feel for the terms that contribute to these elements!  To check your syntax, run the block below that will check your values.  You will see a warning that tells you which (if any) values failed this test.  If you find that one or more values failed, go back the specific lines of code where those values were computed and double check your code against the equations!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DO NOT MODIFY THIS BLOCK!!! JUST RUN IT!</span>
-<span class="n">expected_G11</span> <span class="o">=</span>  <span class="mi">2</span> <span class="o">*</span> <span class="n">muC</span>
-<span class="n">expected_G12</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">muC</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
-<span class="n">expected_G13</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">rhoCH</span> <span class="o">*</span> <span class="n">muC</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
-<span class="n">expected_G22</span> <span class="o">=</span> <span class="n">muC</span> <span class="o">+</span> <span class="n">muH</span>
-<span class="n">expected_G23</span> <span class="o">=</span> <span class="o">-</span><span class="n">rhoCC</span> <span class="o">*</span> <span class="n">muC</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="p">))</span>
-<span class="n">expected_G33</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">rhoCC</span> <span class="o">*</span> <span class="n">muC</span> <span class="o">*</span> <span class="p">(</span><span class="n">rhoCC</span> <span class="o">-</span> <span class="n">rhoCH</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span> <span class="o">+</span> <span class="n">rhoCH</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">muC</span> <span class="o">+</span> <span class="n">muH</span><span class="p">)</span>
-<span class="n">expected_G44</span> <span class="o">=</span> <span class="n">muH</span> <span class="o">+</span> <span class="n">muC</span>
-<span class="n">expected_G45</span> <span class="o">=</span> <span class="o">-</span><span class="n">rhoCC</span> <span class="o">*</span> <span class="n">muC</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="p">))</span>
-<span class="n">expected_G55</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">rhoCC</span> <span class="o">*</span> <span class="n">muC</span> <span class="o">*</span> <span class="p">(</span><span class="n">rhoCC</span> <span class="o">-</span> <span class="n">rhoCH</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="p">))</span> <span class="o">+</span> <span class="n">rhoCH</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">muC</span> <span class="o">+</span> <span class="n">muH</span><span class="p">)</span>
-<span class="n">expected_G66</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="mi">2</span>
-    <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
-    <span class="o">*</span> <span class="p">(</span>
-        <span class="mi">2</span>
-        <span class="o">*</span> <span class="n">rhoCC</span>
-        <span class="o">*</span> <span class="n">muC</span>
-        <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
-        <span class="o">*</span> <span class="p">(</span><span class="n">rhoCC</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="o">-</span> <span class="n">rhoCH</span><span class="p">)</span>
-        <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="p">))</span>
-        <span class="o">+</span> <span class="n">rhoCH</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">muC</span> <span class="o">+</span> <span class="n">muH</span><span class="p">)</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-
-<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">expected_G11</span><span class="p">,</span> <span class="n">G11</span><span class="p">):</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;G11 Passed&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;**** G11 Failed *****&quot;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">expected_G12</span><span class="p">,</span> <span class="n">G12</span><span class="p">):</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;G12 Passed&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;**** G12 Failed *****&quot;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">expected_G13</span><span class="p">,</span> <span class="n">G13</span><span class="p">):</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;G13 Passed&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;**** G13 Failed *****&quot;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">expected_G22</span><span class="p">,</span> <span class="n">G22</span><span class="p">):</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;G22 Passed&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;**** G22 Failed *****&quot;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">expected_G23</span><span class="p">,</span> <span class="n">G23</span><span class="p">):</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;G23 Passed&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;**** G23 Failed *****&quot;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">expected_G44</span><span class="p">,</span> <span class="n">G44</span><span class="p">):</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;G44 Passed&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;**** G44 Failed *****&quot;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">expected_G45</span><span class="p">,</span> <span class="n">G45</span><span class="p">):</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;G45 Passed&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;**** G45 Failed *****&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G11 Passed
-G12 Passed
-G13 Passed
-G22 Passed
-G23 Passed
-G44 Passed
-G45 Passed
-</pre></div>
-</div>
-</div>
-</div>
-<section id="pre-written-block-assignment-of-elements-of-bf-g-and-bf-f-matrices-happens-here-do-not-modify-this-block">
-<h3>PRE-WRITTEN BLOCK: Assignment of elements of <span class="math notranslate nohighlight">\({\bf G}\)</span> and <span class="math notranslate nohighlight">\({\bf F}\)</span> matrices happens here!  Do not modify this block.<a class="headerlink" href="#pre-written-block-assignment-of-elements-of-bf-g-and-bf-f-matrices-happens-here-do-not-modify-this-block" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DO NOT MODIFY THIS BLOCK!!! JUST RUN IT!</span>
-<span class="c1"># initialize F and G matrices</span>
-<span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-
-<span class="c1"># Assign elements of G</span>
-<span class="c1"># G11</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">G11</span>
-<span class="c1"># G12</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">G12</span>
-<span class="c1"># G13</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span>  <span class="n">G13</span>
-<span class="c1"># G22</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">G22</span>
-<span class="c1"># G23</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">G23</span>
-<span class="c1"># G33</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">expected_G33</span>
-<span class="c1"># G44</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">G44</span>
-<span class="c1"># G45</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">G45</span>
-<span class="c1"># G55</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">expected_G55</span>
-<span class="c1"># G66</span>
-<span class="n">G</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">expected_G66</span>
-
-
-<span class="c1"># Assign elements of F</span>
-<span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">kCC</span>
-<span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">kCH</span>
-<span class="n">F</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">kalpha</span>
-<span class="n">F</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">kCH</span>
-<span class="n">F</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">kalpha</span>
-<span class="n">F</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">ktau</span>
+    <span class="n">G</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">mu_C</span>
+    <span class="n">G</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">mu_C</span>
+    <span class="n">G</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">rho_CH</span> <span class="o">*</span> <span class="n">mu_C</span>
+    
+    <span class="n">G</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">mu_C</span> <span class="o">+</span> <span class="n">mu_H</span>
+    <span class="n">G</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">rho_CC</span> <span class="o">*</span> <span class="n">mu_C</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+    
+    <span class="n">G</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="p">))</span>
+    
+    <span class="n">G</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">mu_C</span> <span class="o">+</span> <span class="n">mu_H</span>
+    <span class="n">G</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">rho_CC</span> <span class="o">*</span> <span class="n">mu_C</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+    
+    <span class="n">G</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="p">))</span>
+    
+    <span class="n">G</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="p">)))</span>
+    
+    <span class="c1"># Make symmetric (fill lower triangle)</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">G</span> <span class="o">+</span> <span class="n">G</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">diagonal</span><span class="p">())</span>
+    
+    <span class="k">return</span> <span class="n">G</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="putting-the-functionality-together">
+<h1>Putting the functionality together<a class="headerlink" href="#putting-the-functionality-together" title="Link to this heading">#</a></h1>
+<p>The next cell will define helper functions that create the interactive capabilities that enable you to adjust a slider to guess-and-check different values of <span class="math notranslate nohighlight">\(k_{\rm CC}\)</span>.  You need just run these cells, there is nothing to modify here!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_vibrational_frequencies</span><span class="p">(</span><span class="n">kCC</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute vibrational frequencies using the Wilson FG method.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    kCC : float</span>
+<span class="sd">        C-C double bond force constant (N/cm)</span>
+<span class="sd">    params : dict</span>
+<span class="sd">        Dictionary containing all other parameters</span>
+<span class="sd">    verbose : bool</span>
+<span class="sd">        Whether to print detailed output</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    --------</span>
+<span class="sd">    frequencies : ndarray</span>
+<span class="sd">        Vibrational frequencies in cm⁻¹</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Build F and G matrices</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">build_F_matrix</span><span class="p">(</span><span class="n">kCC</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">build_G_matrix</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;F matrix:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">G matrix:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    
+    <span class="c1"># Compute FG product</span>
+    <span class="n">FG</span> <span class="o">=</span> <span class="n">F</span> <span class="o">@</span> <span class="n">G</span>
+    
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">FG matrix:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">FG</span><span class="p">)</span>
+    
+    <span class="c1"># Diagonalize FG to get eigenvalues (λ)</span>
+    <span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">FG</span><span class="p">)</span>
+    
+    <span class="c1"># Sort eigenvalues in descending order</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">eigenvalues</span> <span class="o">=</span> <span class="n">eigenvalues</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Eigenvalues (λ):&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">)</span>
+    
+    <span class="c1"># Convert eigenvalues to frequencies</span>
+    <span class="c1"># ν = (1/2πc) * sqrt(λ) where c is speed of light</span>
+    <span class="c1"># For our units: ν (cm⁻¹) = 1302.79 * sqrt(λ)</span>
+    <span class="c1"># The conversion factor accounts for units of F (N/cm) and G (AMU⁻¹)</span>
+    <span class="n">conversion_factor</span> <span class="o">=</span> <span class="mf">1302.79</span>  <span class="c1"># Converts sqrt(eigenvalue) to cm⁻¹</span>
+    <span class="n">frequencies</span> <span class="o">=</span> <span class="n">conversion_factor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="n">frequencies</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compare_with_expected</span><span class="p">(</span><span class="n">calculated</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compare calculated frequencies with expected values.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    calculated : ndarray</span>
+<span class="sd">        Calculated vibrational frequencies</span>
+<span class="sd">    params : dict</span>
+<span class="sd">        Dictionary containing expected frequencies</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">expected_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="s2">&quot;S2&quot;</span><span class="p">,</span> <span class="s2">&quot;S3&quot;</span><span class="p">,</span> <span class="s2">&quot;S4&quot;</span><span class="p">,</span> <span class="s2">&quot;S5&quot;</span><span class="p">,</span> <span class="s2">&quot;S6&quot;</span><span class="p">]</span>
+    <span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="n">params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">expected_keys</span><span class="p">]</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;COMPARISON WITH EXPECTED VALUES&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Mode&#39;</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Calculated&#39;</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Expected&#39;</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Error&#39;</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;</span><span class="si">% E</span><span class="s1">rror&#39;</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+    
+    <span class="n">total_error</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">calc</span><span class="p">,</span> <span class="n">exp</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">calculated</span><span class="p">,</span> <span class="n">expected</span><span class="p">)):</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="n">calc</span> <span class="o">-</span> <span class="n">exp</span>
+        <span class="n">percent_error</span> <span class="o">=</span> <span class="p">(</span><span class="n">error</span> <span class="o">/</span> <span class="n">exp</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">exp</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">total_error</span> <span class="o">+=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">percent_error</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;S&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">calc</span><span class="si">:</span><span class="s2">&lt;15.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">exp</span><span class="si">:</span><span class="s2">&lt;15.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">&lt;15.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">percent_error</span><span class="si">:</span><span class="s2">&lt;10.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Absolute % Error: </span><span class="si">{</span><span class="n">total_error</span><span class="o">/</span><span class="mi">6</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">interactive_spectrum</span><span class="p">(</span><span class="n">kCC_value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Interactive function called by the slider.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    kCC_value : float</span>
+<span class="sd">        C-C double bond force constant from slider</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">70</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;C-C FORCE CONSTANT: kCC = </span><span class="si">{</span><span class="n">kCC_value</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> N/cm&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">70</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Compute frequencies</span>
+    <span class="n">frequencies</span> <span class="o">=</span> <span class="n">compute_vibrational_frequencies</span><span class="p">(</span><span class="n">kCC_value</span><span class="p">,</span> <span class="n">student_input</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Calculated Vibrational Frequencies (cm⁻¹):&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">freq</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">frequencies</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  S</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">freq</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> cm⁻¹&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Compare with expected</span>
+    <span class="n">compare_with_expected</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">student_input</span><span class="p">)</span>
+    
+    <span class="c1"># Create visualization</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    
+    <span class="c1"># Bar chart comparison</span>
+    <span class="n">modes</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;S</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">modes</span><span class="p">))</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="mf">0.35</span>
+    
+    <span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="n">student_input</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;S</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
+    
+    <span class="n">ax1</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">frequencies</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Calculated&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">expected</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Expected&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Vibrational Mode&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency (cm⁻¹)&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Calculated vs Expected Frequencies&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">modes</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    
+    <span class="c1"># Error plot</span>
+    <span class="n">errors</span> <span class="o">=</span> <span class="p">[(</span><span class="n">calc</span> <span class="o">-</span> <span class="n">exp</span><span class="p">)</span> <span class="k">for</span> <span class="n">calc</span><span class="p">,</span> <span class="n">exp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">expected</span><span class="p">)]</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span> <span class="k">if</span> <span class="n">e</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;blue&#39;</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">errors</span><span class="p">]</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">modes</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Vibrational Mode&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Error (cm⁻¹)&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Frequency Errors (Calculated - Expected)&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="the-vibrational-frequencies-are-eigenvalues-of-bf-fg">
-<h1>The vibrational frequencies are eigenvalues of <span class="math notranslate nohighlight">\({\bf FG}\)</span><a class="headerlink" href="#the-vibrational-frequencies-are-eigenvalues-of-bf-fg" title="Link to this heading">#</a></h1>
-<p>We have now build the <span class="math notranslate nohighlight">\({\bf G}\)</span> and <span class="math notranslate nohighlight">\({\bf F}\)</span> matrices separately.  The vibrational frequencies for your system can be calculated by taking the eigenvalues of the matrix defined as the matrix product of <span class="math notranslate nohighlight">\({\bf G}\)</span> and <span class="math notranslate nohighlight">\({\bf F}\)</span>.</p>
-<p>In python, you can compute the product of two matrices using the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> symbol, and you can find the eigenvalues and eigenvectors using the <code class="docutils literal notranslate"><span class="pre">eig</span></code> function of the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> library.  We will give you the syntax here, but you need to type this yourself in the following code block!</p>
-<p>To form the GF matrix, type</p>
-<p><code class="docutils literal notranslate"><span class="pre">GF</span> <span class="pre">=</span> <span class="pre">G</span> <span class="pre">&#64;</span> <span class="pre">F</span></code></p>
-<p>To find the eigenvalues and eigenvectors (stored as variables <code class="docutils literal notranslate"><span class="pre">lam</span></code> and <code class="docutils literal notranslate"><span class="pre">v</span></code>, respectively), type</p>
-<p><code class="docutils literal notranslate"><span class="pre">lam,</span> <span class="pre">v</span> <span class="pre">=</span> <span class="pre">np.linalg.eig(GF)</span></code></p>
+<section class="tex2jax_ignore mathjax_ignore" id="set-your-minimum-and-maximum-values-for-the-slider">
+<h1>Set your minimum and maximum values for the slider<a class="headerlink" href="#set-your-minimum-and-maximum-values-for-the-slider" title="Link to this heading">#</a></h1>
+<p>Below are two variables that will adjust the minimum and maximum values of <span class="math notranslate nohighlight">\(k_{\rm CC}\)</span> in <span class="math notranslate nohighlight">\(N \cdot m\)</span>.  Use your chemical intuition and the existing values of other force constants to decide a reasonable minimum and maximum value to try.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MODIFY THIS BLOCK BEFORE RUNNING IT!  IT NEEDS YOUR CODING SKILLS!</span>
-
-<span class="c1"># Form the matrix product of G and F, which we will call GF</span>
-<span class="n">GF</span> <span class="o">=</span> <span class="n">G</span> <span class="o">@</span> <span class="n">F</span>
-
-<span class="c1"># find the eigenvalues (lam) and eigenvectors (v) of the GF matrix</span>
-<span class="n">lam</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">GF</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slider_min</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">#&lt;== insert your minimum value for k_CC here</span>
+<span class="n">slider_max</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1">#&lt;== insert your maximum value for k_CC here</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>We now have the vibrational frequencies stored in <code class="docutils literal notranslate"><span class="pre">lam</span></code>!  Yay!!!!</p>
-<p>The last block, which has also been pre-written for you, will just print out this information with some formatting for you to use in your lab report.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DO NOT MODIFY THIS BLOCK!!! JUST RUN IT!</span>
-<span class="c1"># sort the frequencies from highest to lowest</span>
-<span class="n">idx</span> <span class="o">=</span> <span class="n">lam</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">lam</span> <span class="o">=</span> <span class="n">lam</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-<span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:,</span><span class="n">idx</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create interactive widget with slider</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WILSON FG METHOD: DICHLOROETHYLENE VIBRATIONAL SPECTRUM CALCULATOR&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Adjust the C-C force constant slider to optimize the predicted spectrum&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Compare your calculated frequencies with the expected values</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="c1"># convert into wavenumbers in inverse centimeters</span>
-<span class="n">nu_tilde</span> <span class="o">=</span> <span class="p">(</span><span class="n">lam</span> <span class="o">*</span> <span class="mi">1697200</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
-
-
-
-<span class="c1"># print with formatting!</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)):</span>
-  <span class="nb">print</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;Mode </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">:    </span><span class="si">{</span><span class="n">nu_tilde</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s1">12.3f</span><span class="si">}</span><span class="s1"> (cm^-1)&#39;</span><span class="p">)</span>
-
-<span class="c1"># values from Mike&#39;s mathematica code - these probably won&#39;t match because</span>
-<span class="c1"># the students will have different geometries, etc, so we won&#39;t compare them to anything!</span>
-<span class="n">expected_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3101.02</span><span class="p">,</span> <span class="mf">3089.5</span><span class="p">,</span> <span class="mf">1551.2</span><span class="p">,</span> <span class="mf">1200.43</span><span class="p">,</span> <span class="mf">1174.63</span><span class="p">,</span> <span class="mf">898.699</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">kCC</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mode 1:        3103.906 (cm^-1)
-Mode 2:        3089.497 (cm^-1)
-Mode 3:        1540.716 (cm^-1)
-Mode 4:        1200.431 (cm^-1)
-Mode 5:        1187.602 (cm^-1)
-Mode 6:         962.646 (cm^-1)
-7.7
+<span class="c1"># Create slider for kCC (typical range for C=C is 9-11 N/cm)</span>
+<span class="n">interact</span><span class="p">(</span><span class="n">interactive_spectrum</span><span class="p">,</span> 
+         <span class="n">kCC_value</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="n">slider_min</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="n">slider_max</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">slider_min</span><span class="p">,</span> 
+                               <span class="n">description</span><span class="o">=</span><span class="s1">&#39;kCC (N/cm):&#39;</span><span class="p">,</span> 
+                               <span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                               <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}))</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>NOTE:  I don’t think we need any of the text below but I’m leaving it here anyway!</strong></p>
-<p>where the first three force constants are the values calculated by hand using Eqs. 3 and 4 and k_CC is an initial guess (try 7.5). Next define the F and G matrices enclosing each row in parentheses separated by commas, with an outer set of parentheses:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>F = {{kCC,0,0,0,0,0},{0,kCH,0,0,0,0},{0,0,kalpha,0,0,0},{0,0,0,kCH,0,0}.….};
-G = {{G12,G13,G14,0,0,0},{G12,G22,G23,0,0,0},{G13,G23,G33,0,0,0},….};
-</pre></div>
-</div>
-<p>Perhaps the simplest way to solve the characteristic equation A10 is as an eigenvalue equation with the solutions, the lambda values, as the eigenvalues of the G×F matrix. A statement that would calculate the eigenvalues in Mathematica would look like:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>lambda = Eigenvalues[G.F];		(Matrices are multiplied using a period)
-</pre></div>
-</div>
-<p>The variable lambda is a list of 6 eigenvalues in units of Ncm-1amu-1. Use Eq. 1 to calculate the vibrational wavenumbers in a subsequent statement, but this time don’t end the line with a semicolon so that the list will be displayed. When the program is run using the menu item Evaluate  Evaluate Notebook, the wavenumbers will be ordered from highest to lowest rather than in the order S_1 - S_6. One way to help identify the mode corresponding to each wavenumber is to look at the symmetry species of the mode by adding the following statements:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ev = Eigenvectors[G.F];
-MatrixForm[ev]
-</pre></div>
-</div>
-<p>This will display a matrix in which the rows contain the coefficients of the S_i for each normal mode Q_i ordered the same way as the wavenumbers. Say, for example, row 3 has all elements zero except the sixth. Then the third largest wavenumber must be associated with the out-of-plane bending mode S_6 having symmetry Ag or A1 symmetry. On the other hand, if row 3 has three nonzero elements, the third largest wavenumber must be S_1, S_2, or S_3.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1236,27 +1191,26 @@ MatrixForm[ev]
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">🧪 Lab Supplement: Raman Spectroscopy</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">🎯 Objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">📘 Learning Outcomes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-needs-review">⚗️ Approach - NEEDS REVIEW!!!</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-k-mathrm-cc">🧮 Deriving  <span class="math notranslate nohighlight">\( k_{\mathrm{CC}} \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">⚗️ Approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intuiting-the-cc-force-constant">Intuiting the CC force constant</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computational-setup">💻 Computational Setup</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-required-libraries">🧰 Importing Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation">🧾 Preparation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-written-block-variable-assignment">⚙️ Pre-Written Block: Variable Assignment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-force-constants">🧠 Understanding the Force Constants</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-force-constants">📘 Table of Force Constants</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-idea">💬 Key Idea</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-the-f-matrix">🧮 Constructing the F Matrix</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-the-g-matrix-full-expressions">⚙️ Constructing the G Matrix (Full Expressions)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-written-block-assignment-of-elements-of-bf-g-and-bf-f-matrices-happens-here-do-not-modify-this-block">PRE-WRITTEN BLOCK: Assignment of elements of <span class="math notranslate nohighlight">\({\bf G}\)</span> and <span class="math notranslate nohighlight">\({\bf F}\)</span> matrices happens here!  Do not modify this block.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-do-complete-build-f-matrix-kcc-params-function">To-Do:  Complete build_F_matrix(kCC, params): function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-the-g-matrix-full-expressions">⚙️ Constructing the G Matrix (Full Expressions)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-do-complete-build-g-matrix-params-function">To-Do:  Complete build_G_matrix(params): function</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-vibrational-frequencies-are-eigenvalues-of-bf-fg">The vibrational frequencies are eigenvalues of <span class="math notranslate nohighlight">\({\bf FG}\)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-the-functionality-together">Putting the functionality together</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#set-your-minimum-and-maximum-values-for-the-slider">Set your minimum and maximum values for the slider</a></li>
 </ul>
 
   </nav></div>
