@@ -599,28 +599,28 @@ where the cavity is tuned to the <strong>fundamental transition of HF</strong> w
 <p>The <strong>minimal coupling Hamiltonian</strong> is written as:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{H}_{p \cdot A} =
-\mathcal{H}_{\mathrm{m}} \otimes \mathcal{I}_{\mathrm{P}} +
-\mathcal{I}_{\mathrm{M}} \otimes \mathcal{H}_{\mathrm{c}} +
-\mathcal{I}_{\mathrm{M}} \otimes \mathcal{H}_{\mathrm{dia}} +
-\mathcal{H}_{\mathrm{int}}
+\mathbf{H}_{p \cdot A} =
+\mathbf{H}_{\mathrm{m}} \otimes \mathbf{I}_{\mathrm{P}} +
+\mathbf{I}_{\mathrm{M}} \otimes \mathbf{H}_{\mathrm{c}} +
+\mathbf{I}_{\mathrm{M}} \otimes \mathbf{H}_{\mathrm{dia}} +
+\mathbf{H}_{\mathrm{int}}
 \]</div>
 <p>The <strong>Pauli–Fierz Hamiltonian</strong> is written as:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{H}_{\mathrm{PF}} =
-\mathcal{H}_{\mathrm{m}} \otimes \mathcal{I}_{\mathrm{P}} +
-\mathcal{I}_{\mathrm{M}} \otimes \mathcal{H}_{\mathrm{c}} +
-\mathcal{H}_{\mathrm{dse}} \otimes \mathcal{I}_{\mathrm{P}} +
-\mathcal{H}_{\mathrm{int}}
+\mathbf{H}_{\mathrm{PF}} =
+\mathbf{H}_{\mathrm{m}} \otimes \mathbf{I}_{\mathrm{P}} +
+\mathbf{I}_{\mathrm{M}} \otimes \mathbf{H}_{\mathrm{c}} +
+\mathbf{H}_{\mathrm{dse}} \otimes \mathbf{I}_{\mathrm{P}} +
+\mathbf{H}_{\mathrm{int}}
 \]</div>
 <hr class="docutils" />
 </section>
 <section id="notes-on-the-components">
 <h2>🧠 Notes on the Components<a class="headerlink" href="#notes-on-the-components" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>The <strong>bare matter Hamiltonian</strong> (<span class="math notranslate nohighlight">\(\mathcal{H}_{\mathrm{m}}\)</span>) is defined in Eq. (2.14).</p></li>
-<li><p>The <strong>bare cavity Hamiltonian</strong> (<span class="math notranslate nohighlight">\(\mathcal{H}_{\mathrm{c}}\)</span>) is given in Eq. (2.18).</p></li>
+<li><p>The <strong>bare matter Hamiltonian</strong> (<span class="math notranslate nohighlight">\(\mathbf{H}_{\mathrm{m}}\)</span>) is defined in Eq. (2.14).</p></li>
+<li><p>The <strong>bare cavity Hamiltonian</strong> (<span class="math notranslate nohighlight">\(\mathbf{H}_{\mathrm{c}}\)</span>) is given in Eq. (2.18).</p></li>
 <li><p>For the <em>p·A</em> form: the <strong>interaction</strong> and <strong>diamagnetic</strong> terms are given in Eq. (2.25).</p></li>
 <li><p>For the <em>d·E</em> (Pauli–Fierz) form: the <strong>interaction</strong> and <strong>dipole self-energy (DSE)</strong> terms
 appear in Eq. (2.43).</p></li>
@@ -1031,17 +1031,17 @@ needed to construct the corresponding Hamiltonian matrix.</p></li>
 <p>The <strong>bare matter Hamiltonian</strong> is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{H}_{\mathrm{m}} = 
+\mathbf{H}_{\mathrm{m}} = 
 \hbar \omega_f 
 \left(
-\mathcal{A}^\dagger \mathcal{A} + \tfrac{1}{2}\mathcal{I}
+\mathbf{A}^\dagger \mathbf{A} + \tfrac{1}{2}\mathbf{I}
 \right)
 \]</div>
 <p>where:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\mathcal{A}^\dagger\)</span> and <span class="math notranslate nohighlight">\(\mathcal{A}\)</span> are the <strong>creation</strong> and <strong>annihilation</strong> operator matrices
+<li><p><span class="math notranslate nohighlight">\(\mathbf{A}^\dagger\)</span> and <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> are the <strong>creation</strong> and <strong>annihilation</strong> operator matrices
 in the matter Hilbert space, and</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathcal{I}\)</span> is the <strong>identity matrix</strong> in that subspace.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{I}\)</span> is the <strong>identity matrix</strong> in that subspace.</p></li>
 </ul>
 <hr class="docutils" />
 <blockquote>
@@ -1103,17 +1103,17 @@ to the harmonic oscillator Hamiltonian for the matter subsystem.</p>
 <p>The Hamiltonian is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{H}_{\mathrm{c}} =
+\mathbf{H}_{\mathrm{c}} =
 \hbar \omega_{\mathrm{c}}
 \left(
-\mathcal{B}^\dagger \mathcal{B} + \tfrac{1}{2}\mathcal{I}
+\mathbf{B}^\dagger \mathbf{B} + \tfrac{1}{2}\mathbf{I}
 \right)
 \]</div>
 <p>where:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\mathcal{B}^\dagger\)</span> and <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> are the <strong>creation</strong> and <strong>annihilation</strong> operator matrices
+<li><p><span class="math notranslate nohighlight">\(\mathbf{B}^\dagger\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> are the <strong>creation</strong> and <strong>annihilation</strong> operator matrices
 for the <strong>photonic Hilbert space</strong>, and</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathcal{I}\)</span> is the <strong>identity matrix</strong> in that subspace.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{I}\)</span> is the <strong>identity matrix</strong> in that subspace.</p></li>
 </ul>
 <p>Just as before, we’ll use the helper function <code class="docutils literal notranslate"><span class="pre">build_ladder_operator_matrices()</span></code> to generate these operators.</p>
 <hr class="docutils" />
@@ -1169,10 +1169,10 @@ It accounts for the quadratic interaction between the electromagnetic vector pot
 <p>The diamagnetic Hamiltonian is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{H}_{\mathrm{dia}} =
+\mathbf{H}_{\mathrm{dia}} =
 \frac{z^2}{2 \mu} \mathbf{A}_0^2
 \left(
-\mathcal{B}^\dagger + \mathcal{B}
+\mathbf{B}^\dagger + \mathbf{B}
 \right)^2
 \]</div>
 <p>where:</p>
@@ -1189,8 +1189,8 @@ It effectively contributes a <strong>photon-number-dependent energy shift</stron
 <hr class="docutils" />
 <blockquote>
 <div><p>💡 <em>Note:</em><br />
-The ladder operators <span class="math notranslate nohighlight">\(\mathcal{B}^\dagger\)</span> and <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> act in the <strong>photonic Hilbert space</strong>,
-and the matrix form of <span class="math notranslate nohighlight">\((\mathcal{B}^\dagger + \mathcal{B})^2\)</span> will depend on the dimension you choose for that space.</p>
+The ladder operators <span class="math notranslate nohighlight">\(\mathbf{B}^\dagger\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> act in the <strong>photonic Hilbert space</strong>,
+and the matrix form of <span class="math notranslate nohighlight">\((\mathbf{B}^\dagger + \mathbf{B})^2\)</span> will depend on the dimension you choose for that space.</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1254,16 +1254,16 @@ and the quantized vector potential of the electromagnetic field.<br />
 It appears only in the <strong>minimal coupling</strong> (<em>p·A</em>) Hamiltonian and has the form:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{H}_{\mathrm{int}} =
+\mathbf{H}_{\mathrm{int}} =
 -i\,\frac{z}{\mu}
 \sqrt{\frac{\mu \hbar \omega_f}{2}}\,
 \mathbf{A}_0
 \left(
-\mathcal{A}^\dagger - \mathcal{A}
+\mathbf{A}^\dagger - \mathbf{A}
 \right)
 \otimes
 \left(
-\mathcal{B}^\dagger + \mathcal{B}
+\mathbf{B}^\dagger + \mathbf{B}
 \right)
 \]</div>
 <p>where:</p>
@@ -1283,7 +1283,7 @@ it’s the mathematical origin of <strong>Rabi splitting</strong> and <strong>po
 <hr class="docutils" />
 <blockquote>
 <div><p>💡 <em>Reminder:</em><br />
-This interaction term, together with the diamagnetic term <span class="math notranslate nohighlight">\(\mathcal{H}_{\mathrm{dia}}\)</span>, ensures
+This interaction term, together with the diamagnetic term <span class="math notranslate nohighlight">\(\mathbf{H}_{\mathrm{dia}}\)</span>, ensures
 that the full <em>p·A</em> Hamiltonian remains <strong>gauge invariant</strong>.</p>
 </div></blockquote>
 <div class="cell docutils container">
@@ -1358,16 +1358,16 @@ that the full <em>p·A</em> Hamiltonian remains <strong>gauge invariant</strong>
 Here, the interaction between the molecular dipole and the quantized electric field is expressed as:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{H}_{\mathrm{int}} =
+\mathbf{H}_{\mathrm{int}} =
 -\,z \frac{\hbar}{2}
 \sqrt{\frac{\omega_{\mathrm{cav}}}{\mu \omega_f}}\,
 \mathbf{E}_0
 \left(
-\mathcal{A}^\dagger + \mathcal{A}
+\mathbf{A}^\dagger + \mathbf{A}
 \right)
 \otimes
 \left(
-\mathcal{B}^\dagger + \mathcal{B}
+\mathbf{B}^\dagger + \mathbf{B}
 \right)
 \]</div>
 <p>where:</p>
@@ -1382,8 +1382,8 @@ Here, the interaction between the molecular dipole and the quantized electric fi
 <section id="physical-interpretation">
 <h3>🧠 Physical Interpretation<a class="headerlink" href="#physical-interpretation" title="Link to this heading">#</a></h3>
 <p>This bilinear term describes <strong>dipole–field coupling</strong>:<br />
-the molecular dipole moment operator <span class="math notranslate nohighlight">\((\mathcal{A}^\dagger + \mathcal{A})\)</span> interacts directly with<br />
-the electric field operator <span class="math notranslate nohighlight">\((\mathcal{B}^\dagger + \mathcal{B})\)</span>.</p>
+the molecular dipole moment operator <span class="math notranslate nohighlight">\((\mathbf{A}^\dagger + \mathbf{A})\)</span> interacts directly with<br />
+the electric field operator <span class="math notranslate nohighlight">\((\mathbf{B}^\dagger + \mathbf{B})\)</span>.</p>
 <ul class="simple">
 <li><p>The <strong>strength of coupling</strong> depends on <span class="math notranslate nohighlight">\(\sqrt{\omega_{\mathrm{cav}} / (\mu \omega_f)}\)</span>.</p></li>
 <li><p>The <strong>prefactor</strong> ensures the correct scaling between field amplitude and molecular motion.</p></li>
@@ -1465,11 +1465,11 @@ This term is essential for ensuring that the PF Hamiltonian remains <strong>stab
 <p>The DSE Hamiltonian is written as:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{H}_{\mathrm{DSE}} =
+\mathbf{H}_{\mathrm{DSE}} =
 z^2 \frac{\hbar}{4 \mu \omega_f}\,
 \mathbf{E}_0^2
 \left(
-\mathcal{A}^\dagger + \mathcal{A}
+\mathbf{A}^\dagger + \mathbf{A}
 \right)^2
 \]</div>
 <p>where:</p>
