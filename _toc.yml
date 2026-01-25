@@ -26,6 +26,7 @@ parts:
       - file: content/computational_sets/two_qubit_entangled
       - file: content/computational_sets/spherical_harmonics
       - file: content/computational_sets/co2_raman
+      - file: content/computational_sets/pib_cyanine_dye_demo
       - file: content/computational_sets/variational_method_rotor_in_a_field
       - file: content/computational_sets/co_perturbation_theory
       - file: content/computational_sets/co_variational
