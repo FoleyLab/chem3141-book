@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/computational_sets/co2_raman';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Computational Demo: The Variational Method with the 2D Rigid Rotor with HF" href="variational_method_rotor_in_a_field.html" />
+    <link rel="next" title="Particle in a box model of Cyanine Dyes" href="pib_cyanine_dye_demo.html" />
     <link rel="prev" title="Computational Demo: Spherical Harmonics" href="spherical_harmonics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -223,6 +223,14 @@
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">🧪 Lab Supplement: Vibrational Spectroscopy of Cis and Trans Dichloroethylene</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="pib_cyanine_dye_demo.html">Particle in a box model of Cyanine Dyes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cqed_demo.html">🧰 Importing Required Libraries</a></li>
+
 
 
 
@@ -659,7 +667,7 @@ you <em>did</em> bring your lab notebook, right? 😄</p>
 <li><p><strong>Atomic masses</strong> (in amu)</p></li>
 <li><p><strong>Force constants</strong></p></li>
 <li><p><strong>Expected Vibrational Frequencies</strong> (in <span class="math notranslate nohighlight">\(cm^{-1}\)</span>, ordered from largest to smallest values <strong>NOT</strong> in the same order as the worksheet)
-In particular, set <code class="docutils literal notranslate"><span class="pre">S1</span></code> equal to your largest vibrational frequency, <code class="docutils literal notranslate"><span class="pre">S2</span></code> to your second-largest vibrational frequency, and so on, so that <code class="docutils literal notranslate"><span class="pre">S6</span></code> is set to your smallest vibrational frequency.</p></li>
+In particular, set <code class="docutils literal notranslate"><span class="pre">v1</span></code> equal to your largest vibrational frequency, <code class="docutils literal notranslate"><span class="pre">v2</span></code> to your second-largest vibrational frequency, and so on, so that <code class="docutils literal notranslate"><span class="pre">v6</span></code> is set to your smallest vibrational frequency.</p></li>
 </ul>
 <p><strong>Be sure to record your values carefully</strong> these will be used in subsequent calculations of the <strong>G matrix</strong> and <strong>force constants</strong>.</p>
 <div class="cell docutils container">
@@ -688,12 +696,12 @@ In particular, set <code class="docutils literal notranslate"><span class="pre">
 
     <span class="c1"># Expected vibrational frequencies in cm⁻¹ -</span>
     <span class="c1">#</span>
-    <span class="s2">&quot;S1&quot;</span><span class="p">:</span> <span class="p">,</span>
-    <span class="s2">&quot;S2&quot;</span><span class="p">:</span> <span class="p">,</span>
-    <span class="s2">&quot;S3&quot;</span><span class="p">:</span> <span class="p">,</span>
-    <span class="s2">&quot;S4&quot;</span><span class="p">:</span> <span class="p">,</span>
-    <span class="s2">&quot;S5&quot;</span><span class="p">:</span> <span class="p">,</span>
-    <span class="s2">&quot;S6&quot;</span><span class="p">:</span>
+    <span class="s2">&quot;v1&quot;</span><span class="p">:</span> <span class="p">,</span>
+    <span class="s2">&quot;v2&quot;</span><span class="p">:</span> <span class="p">,</span>
+    <span class="s2">&quot;v3&quot;</span><span class="p">:</span> <span class="p">,</span>
+    <span class="s2">&quot;v4&quot;</span><span class="p">:</span> <span class="p">,</span>
+    <span class="s2">&quot;v5&quot;</span><span class="p">:</span> <span class="p">,</span>
+    <span class="s2">&quot;v6&quot;</span><span class="p">:</span>
 
 <span class="p">}</span>
 </pre></div>
@@ -1063,7 +1071,7 @@ while the off-diagonal terms (<span class="math notranslate nohighlight">\(G_{12
 <span class="sd">    params : dict</span>
 <span class="sd">        Dictionary containing expected frequencies</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">expected_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="s2">&quot;S2&quot;</span><span class="p">,</span> <span class="s2">&quot;S3&quot;</span><span class="p">,</span> <span class="s2">&quot;S4&quot;</span><span class="p">,</span> <span class="s2">&quot;S5&quot;</span><span class="p">,</span> <span class="s2">&quot;S6&quot;</span><span class="p">]</span>
+    <span class="n">expected_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;v1&quot;</span><span class="p">,</span> <span class="s2">&quot;v2&quot;</span><span class="p">,</span> <span class="s2">&quot;v3&quot;</span><span class="p">,</span> <span class="s2">&quot;v4&quot;</span><span class="p">,</span> <span class="s2">&quot;v5&quot;</span><span class="p">,</span> <span class="s2">&quot;v6&quot;</span><span class="p">]</span>
     <span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="n">params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">expected_keys</span><span class="p">]</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
@@ -1436,11 +1444,11 @@ while the off-diagonal terms (<span class="math notranslate nohighlight">\(G_{12
       </div>
     </a>
     <a class="right-next"
-       href="variational_method_rotor_in_a_field.html"
+       href="pib_cyanine_dye_demo.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Computational Demo: The Variational Method with the 2D Rigid Rotor with HF</p>
+        <p class="prev-next-title">Particle in a box model of Cyanine Dyes</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
