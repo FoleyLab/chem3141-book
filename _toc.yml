@@ -1,5 +1,5 @@
 format: jb-book
-root: content/index
+root: intro
 
 parts:
   - caption: Lecture Notes
@@ -24,7 +24,7 @@ parts:
     chapters:
       - file: content/computational_sets/spin_one_half
       - file: content/computational_sets/two_qubit_entangled
-      - file: content/computational-sets/single_qubit_cavity_lindblad
+      - file: content/computational_sets/single_qubit_cavity_lindblad
       - file: content/computational_sets/spherical_harmonics
       - file: content/computational_sets/co2_raman
       - file: content/computational_sets/pib_cyanine_dye_demo
@@ -44,6 +44,5 @@ parts:
       - file: content/resources/note05
       - file: content/resources/notebooks
       - file: content/resources/spin_background
-
 
 

@@ -150,9 +150,13 @@ Once the pull request is reviewed and merged, your notebook will become part of 
 
 
 ## Workflow for making edits
+jupyter-book clean . --html
+jupyter-book build .
+ghp-import -n -p -f _build/html
 
 1.  Make edits within the main branch
-2.  build jupyter book with `jupyter-book build .` from within the top-level directory of the main branch
-3.  Commit changes to main branch from github desktop
-4.  Push the `_build` folder to gh-pages branch using `ghp-import -n -p -f _build/html`
-5. Check the build remotely by going to the gh-pages branch, push on the "Actions" button, and follow the link after the deploy action finalizes.  The page should render at https://foleylab.github.io/chem3141-book/intro.html
+2. Clean html with `jupyter-book clean . --html`
+3.  build jupyter book with `jupyter-book build .` from within the top-level directory of the main branch
+4.  Commit changes to main branch from github desktop
+5.  Push the `_build` folder to gh-pages branch using `ghp-import -n -p -f _build/html`
+6. Check the build remotely by going to the gh-pages branch, push on the "Actions" button, and follow the link after the deploy action finalizes.  The page should render at https://foleylab.github.io/chem3141-book/intro.html

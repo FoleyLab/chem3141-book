@@ -1,9 +1,26 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: My sample book
+title: "CHEM 3141: Quantum Mechanics"
 author: Jay Foley
 logo: logo.png
+
+exclude_patterns:
+  - _build
+  - Thumbs.db
+  - .DS_Store
+  - "**.ipynb_checkpoints"
+  - CHEM_3141_PR_Spin_one_half.ipynb
+  - markdown.md
+  - markdown-notebooks.md
+  - notebooks.ipynb
+  - content/drafts/**
+  - content/computational_sets/Energy_Expectation_Uncertainty.ipynb
+  - content/computational_sets/images/note05.md
+  - content/computational_sets/old_co2_raman.ipynb
+  - content/computational_sets/two_qubit_entangled-Lindblad.ipynb
+  - content/lecture_notes/Rotational_Motion_Slides.md
+  - content/lecture_notes/Rotational_Motion_Slides_to_Markdown.ipynb
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -30,11 +47,6 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
-
-launch_buttons:
-  colab_url: https://colab.research.google.com
-  notebook_interface: "jupyterlab"
-
 
 launch_buttons:
   notebook_interface: "jupyterlab"  # or "classic" if you prefer
