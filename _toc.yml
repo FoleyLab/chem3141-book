@@ -23,18 +23,18 @@ parts:
   - caption: Computational Sets
     chapters:
       - file: content/computational_sets/spin_one_half
-      - file: content/computational_sets/two_qubit_entangled
-      - file: content/computational_sets/single_qubit_cavity_lindblad
-      - file: content/computational_sets/spherical_harmonics
-      - file: content/computational_sets/co2_raman
       - file: content/computational_sets/pib_cyanine_dye_demo
       - file: content/computational_sets/interactive_harmonic_oscillator
-      - file: content/computational_sets/cqed_demo
-      - file: content/computational_sets/variational_method_rotor_in_a_field
+      - file: content/computational_sets/spherical_harmonics
+      - file: content/computational_sets/co2_raman
+      - file: content/computational_sets/linear_variational_method
       - file: content/computational_sets/co_perturbation_theory
       - file: content/computational_sets/co_variational
+      - file: content/computational_sets/variational_method_rotor_in_a_field
+      - file: content/computational_sets/two_qubit_entangled
+      - file: content/computational_sets/single_qubit_cavity_lindblad
+      - file: content/computational_sets/cqed_demo
       - file: content/computational_sets/newton_raphson
-      - file: content/computational_sets/linear_variational_method
 
   - caption: Resources
     chapters:
@@ -44,5 +44,4 @@ parts:
       - file: content/resources/note05
       - file: content/resources/notebooks
       - file: content/resources/spin_background
-
 
