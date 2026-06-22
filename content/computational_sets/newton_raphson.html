@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function &#8212; CHEM 3141: Quantum Mechanics</title>
+    <title>Computational Set 13: Newton-Raphson Optimization &#8212; CHEM 3141: Quantum Mechanics</title>
   
   
   
@@ -65,8 +65,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/computational_sets/newton_raphson';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Linear Variational Method" href="linear_variational_method.html" />
-    <link rel="prev" title="Computational Demo: Vibrational Transitions in CO Using Variational Method" href="co_variational.html" />
+    <link rel="next" title="Useful Formulae" href="../resources/formula_sheet.html" />
+    <link rel="prev" title="Computational Set 12: Cavity Quantum Electrodynamics" href="cqed_demo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -166,7 +166,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    Welcome to the CHEM 3141 Jupyter Book
+                    CHEM 3141: Quantum Mechanics
                 </a>
             </li>
         </ul>
@@ -203,48 +203,48 @@
 <li class="toctree-l1"><a class="reference internal" href="spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="two_qubit_entangled.html">Computational Set 2: Entangling Operations through strong light-matter coupling</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="single_qubit_cavity_lindblad.html">Computational Set 3: Open-System Jaynes-Cummings Dynamics</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="spherical_harmonics.html">Computational Demo: Spherical Harmonics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pib_cyanine_dye_demo.html">Computational Set 2: Particle-in-a-Box Model of Cyanine Dyes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactive_harmonic_oscillator.html">Computational Set 3: Harmonic Oscillator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spherical_harmonics.html">Computational Set 4: Spherical Harmonics</a></li>
 
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="co2_raman.html">🧪 Lab Supplement: Vibrational Spectroscopy of Cis and Trans Dichloroethylene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co2_raman.html">Computational Set 5: Vibrational Spectroscopy of Cis and Trans Dichloroethylene</a></li>
 
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="pib_cyanine_dye_demo.html">Particle in a box model of Cyanine Dyes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interactive_harmonic_oscillator.html">Computational Demo: Harmonic oscillator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cqed_demo.html">🧰 Importing Required Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_variational_method.html">Computational Set 6: Linear Variational Method</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="co_perturbation_theory.html">Computational Set 7: Perturbation Theory for Carbon Monoxide</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="co_variational.html">Computational Set 8: Variational Method for Carbon Monoxide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variational_method_rotor_in_a_field.html">Computational Set 9: Variational Method for a Rotor in a Field</a></li>
+<li class="toctree-l1"><a class="reference internal" href="two_qubit_entangled.html">Computational Set 10: Entangling Operations through Strong Light-Matter Coupling</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="single_qubit_cavity_lindblad.html">Computational Set 11: Open-System Jaynes-Cummings Dynamics</a></li>
 
-
-
-<li class="toctree-l1"><a class="reference internal" href="variational_method_rotor_in_a_field.html">Computational Demo: The Variational Method with the 2D Rigid Rotor with HF</a></li>
-<li class="toctree-l1"><a class="reference internal" href="co_perturbation_theory.html">Computational Demo: Vibrational Transitions in CO Using Perturbation Theory</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="co_variational.html">Computational Demo: Vibrational Transitions in CO Using Variational Method</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cqed_demo.html">Computational Set 12: Cavity Quantum Electrodynamics</a></li>
 
 
 
 
 
 
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Computational Set 13: Newton-Raphson Optimization</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="linear_variational_method.html">Linear Variational Method</a></li>
+
+
+
+
+
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
@@ -468,7 +468,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</h1>
+    <h1>Computational Set 13: Newton-Raphson Optimization</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -478,7 +478,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Computational Set 13: Newton-Raphson Optimization</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-define-the-function-and-its-derivatives">✏️ Step 1: Define the function and its derivatives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-evaluate-at-the-initial-point">🔍 Step 2: Evaluate at the initial point</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-find-the-optimal-step">🧮 Step 3: Find the optimal step</a></li>
@@ -522,8 +522,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="guided-exercise-newtonraphson-step-for-a-quadratic-function">
-<h1>🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function<a class="headerlink" href="#guided-exercise-newtonraphson-step-for-a-quadratic-function" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="computational-set-13-newton-raphson-optimization">
+<h1>Computational Set 13: Newton-Raphson Optimization<a class="headerlink" href="#computational-set-13-newton-raphson-optimization" title="Link to this heading">#</a></h1>
 <p>Let’s consider the function:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1366,20 +1366,20 @@ Try your hand at adding a function <code class="docutils literal notranslate"><s
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="co_variational.html"
+       href="cqed_demo.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Computational Demo: Vibrational Transitions in CO Using Variational Method</p>
+        <p class="prev-next-title">Computational Set 12: Cavity Quantum Electrodynamics</p>
       </div>
     </a>
     <a class="right-next"
-       href="linear_variational_method.html"
+       href="../resources/formula_sheet.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Linear Variational Method</p>
+        <p class="prev-next-title">Useful Formulae</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1401,7 +1401,7 @@ Try your hand at adding a function <code class="docutils literal notranslate"><s
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">🧭 Guided Exercise: Newton–Raphson Step for a Quadratic Function</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Computational Set 13: Newton-Raphson Optimization</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-define-the-function-and-its-derivatives">✏️ Step 1: Define the function and its derivatives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-evaluate-at-the-initial-point">🔍 Step 2: Evaluate at the initial point</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-find-the-optimal-step">🧮 Step 3: Find the optimal step</a></li>
