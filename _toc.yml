@@ -35,6 +35,10 @@ parts:
       - file: content/computational_sets/single_qubit_cavity_lindblad
       - file: content/computational_sets/cqed_demo
       - file: content/computational_sets/newton_raphson
+      - file: content/computational_sets/data_analysis_A_linear_regression
+      - file: content/computational_sets/data_analysis_B_multiple_regression
+      - file: content/computational_sets/data_analysis_C_weighted_regression
+      - file: content/computational_sets/data_analysis_D_curve_fitting
 
   - caption: Resources
     chapters:
