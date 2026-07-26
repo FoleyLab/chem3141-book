@@ -1,0 +1,651 @@
+
+Host: CHEM4VYDH4JALT
+
+Timers On : Thu Jul 23 20:01:00 2026
+Timers Off: Thu Jul 23 20:01:01 2026
+
+Wall Time:        0.35 seconds
+
+                                                       Time (seconds)
+Module                                       User      System        Wall        Calls
+
+--------------------------------------------------------------------------------------
+
+**************************************************************************************
+
+Host: CHEM4VYDH4JALT
+
+Timers On : Thu Jul 23 20:01:00 2026
+Timers Off: Thu Jul 23 20:01:02 2026
+
+Wall Time:        1.63 seconds
+
+                                                       Time (seconds)
+Module                                       User      System        Wall        Calls
+
+--------------------------------------------------------------------------------------
+
+**************************************************************************************
+
+Host: CHEM4VYDH4JALT
+
+Timers On : Thu Jul 23 20:01:05 2026
+Timers Off: Thu Jul 23 20:01:20 2026
+
+Wall Time:       15.05 seconds
+
+                                                       Time (seconds)
+Module                                       User      System        Wall        Calls
+Total PK formation time             :      2.633u      0.033s      1.616w      4 calls
+Libint2ERI::Libint2ERI              :      0.067u      0.000s      0.039w      9 calls
+HF: Form core H                     :      0.000u      0.000s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.033u      0.017s      0.024w      2 calls
+SAD Guess                           :      0.033u      0.017s      0.023w      2 calls
+HF: Form G                          :      0.500u      0.000s      0.282w     35 calls
+JK: D                               :      0.000u      0.000s      0.000w     68 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w     68 calls
+JK: JK                              :      0.933u      0.000s      0.553w     68 calls
+PK computes JK                      :      0.933u      0.000s      0.552w     68 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w     68 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.050u      0.000s      0.045w     33 calls
+HF: Form C                          :      0.033u      0.000s      0.024w     33 calls
+
+--------------------------------------------------------------------------------------
+Total PK formation time             :      2.633u      0.033s      1.616w      4 calls
+| Libint2ERI::Libint2ERI            :      0.050u      0.000s      0.034w      8 calls
+HF: Form core H                     :      0.000u      0.000s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.033u      0.017s      0.024w      2 calls
+| SAD Guess                         :      0.033u      0.017s      0.023w      2 calls
+HF: Form G                          :      0.500u      0.000s      0.282w     35 calls
+| JK: D                             :      0.000u      0.000s      0.000w     35 calls
+| JK: USO2AO                        :      0.000u      0.000s      0.000w     35 calls
+| JK: JK                            :      0.500u      0.000s      0.282w     35 calls
+| | PK computes JK                  :      0.500u      0.000s      0.282w     35 calls
+| JK: AO2USO                        :      0.000u      0.000s      0.000w     35 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.050u      0.000s      0.045w     33 calls
+HF: Form C                          :      0.033u      0.000s      0.024w     33 calls
+JK: D                               :      0.000u      0.000s      0.000w     33 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w     33 calls
+JK: JK                              :      0.433u      0.000s      0.271w     33 calls
+| PK computes JK                    :      0.433u      0.000s      0.271w     33 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w     33 calls
+Libint2ERI::Libint2ERI              :      0.017u      0.000s      0.004w      1 calls
+
+**************************************************************************************
+
+Host: CHEM4VYDH4JALT
+
+Timers On : Thu Jul 23 20:01:26 2026
+Timers Off: Thu Jul 23 20:01:31 2026
+
+Wall Time:        5.01 seconds
+
+                                                       Time (seconds)
+Module                                       User      System        Wall        Calls
+Total PK formation time             :      3.250u      0.050s      1.973w      5 calls
+Libint2ERI::Libint2ERI              :      0.050u      0.000s      0.044w     10 calls
+HF: Form core H                     :      0.000u      0.000s      0.003w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.033u      0.017s      0.026w      2 calls
+SAD Guess                           :      0.033u      0.017s      0.025w      2 calls
+HF: Form G                          :      0.500u      0.000s      0.283w     35 calls
+JK: D                               :      0.000u      0.000s      0.001w     96 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w     96 calls
+JK: JK                              :      3.583u      0.017s      2.159w     96 calls
+PK computes JK                      :      3.583u      0.017s      2.158w     96 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w     96 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.067u      0.017s      0.048w     33 calls
+HF: Form C                          :      0.033u      0.000s      0.024w     33 calls
+
+--------------------------------------------------------------------------------------
+Total PK formation time             :      3.250u      0.050s      1.973w      5 calls
+| Libint2ERI::Libint2ERI            :      0.050u      0.000s      0.044w     10 calls
+HF: Form core H                     :      0.000u      0.000s      0.003w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.033u      0.017s      0.026w      2 calls
+| SAD Guess                         :      0.033u      0.017s      0.025w      2 calls
+HF: Form G                          :      0.500u      0.000s      0.283w     35 calls
+| JK: D                             :      0.000u      0.000s      0.000w     35 calls
+| JK: USO2AO                        :      0.000u      0.000s      0.000w     35 calls
+| JK: JK                            :      0.500u      0.000s      0.282w     35 calls
+| | PK computes JK                  :      0.500u      0.000s      0.282w     35 calls
+| JK: AO2USO                        :      0.000u      0.000s      0.000w     35 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.067u      0.017s      0.048w     33 calls
+HF: Form C                          :      0.033u      0.000s      0.024w     33 calls
+JK: D                               :      0.000u      0.000s      0.000w     61 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w     61 calls
+JK: JK                              :      3.083u      0.017s      1.876w     61 calls
+| PK computes JK                    :      3.083u      0.017s      1.876w     61 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w     61 calls
+
+**************************************************************************************
+
+Host: CHEM4VYDH4JALT
+
+Timers On : Thu Jul 23 20:02:21 2026
+Timers Off: Thu Jul 23 20:02:31 2026
+
+Wall Time:       10.47 seconds
+
+                                                       Time (seconds)
+Module                                       User      System        Wall        Calls
+Total PK formation time             :      3.817u      0.050s      2.328w      6 calls
+Libint2ERI::Libint2ERI              :      0.083u      0.017s      0.055w     13 calls
+HF: Form core H                     :      0.000u      0.000s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.050u      0.033s      0.025w      2 calls
+SAD Guess                           :      0.050u      0.033s      0.024w      2 calls
+HF: Form G                          :      0.467u      0.000s      0.282w     35 calls
+JK: D                               :      0.000u      0.000s      0.000w     72 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w     72 calls
+JK: JK                              :      1.817u      0.000s      1.107w     72 calls
+PK computes JK                      :      1.817u      0.000s      1.107w     72 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w     72 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.083u      0.000s      0.045w     33 calls
+HF: Form C                          :      0.033u      0.000s      0.023w     33 calls
+
+--------------------------------------------------------------------------------------
+Total PK formation time             :      3.817u      0.050s      2.328w      6 calls
+| Libint2ERI::Libint2ERI            :      0.083u      0.017s      0.051w     12 calls
+HF: Form core H                     :      0.000u      0.000s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.050u      0.033s      0.025w      2 calls
+| SAD Guess                         :      0.050u      0.033s      0.024w      2 calls
+HF: Form G                          :      0.467u      0.000s      0.282w     35 calls
+| JK: D                             :      0.000u      0.000s      0.000w     35 calls
+| JK: USO2AO                        :      0.000u      0.000s      0.000w     35 calls
+| JK: JK                            :      0.467u      0.000s      0.281w     35 calls
+| | PK computes JK                  :      0.467u      0.000s      0.281w     35 calls
+| JK: AO2USO                        :      0.000u      0.000s      0.000w     35 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.083u      0.000s      0.045w     33 calls
+HF: Form C                          :      0.033u      0.000s      0.023w     33 calls
+JK: D                               :      0.000u      0.000s      0.000w     37 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w     37 calls
+JK: JK                              :      1.350u      0.000s      0.826w     37 calls
+| PK computes JK                    :      1.350u      0.000s      0.826w     37 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w     37 calls
+Libint2ERI::Libint2ERI              :      0.000u      0.000s      0.004w      1 calls
+
+**************************************************************************************
+
+Host: CHEM4VYDH4JALT
+
+Timers On : Thu Jul 23 20:02:42 2026
+Timers Off: Thu Jul 23 20:02:49 2026
+
+Wall Time:        6.92 seconds
+
+                                                       Time (seconds)
+Module                                       User      System        Wall        Calls
+Total PK formation time             :      3.200u      0.050s      1.950w      5 calls
+Libint2ERI::Libint2ERI              :      0.067u      0.000s      0.047w     11 calls
+HF: Form core H                     :      0.000u      0.000s      0.004w      2 calls
+HF: Form S/X                        :      0.017u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.033u      0.000s      0.025w      2 calls
+SAD Guess                           :      0.033u      0.000s      0.024w      2 calls
+HF: Form G                          :      0.483u      0.000s      0.283w     35 calls
+JK: D                               :      0.000u      0.000s      0.000w     70 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w     70 calls
+JK: JK                              :      1.383u      0.017s      0.830w     70 calls
+PK computes JK                      :      1.383u      0.017s      0.830w     70 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w     70 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.033u      0.017s      0.045w     33 calls
+HF: Form C                          :      0.050u      0.000s      0.023w     33 calls
+
+--------------------------------------------------------------------------------------
+Total PK formation time             :      3.200u      0.050s      1.950w      5 calls
+| Libint2ERI::Libint2ERI            :      0.050u      0.000s      0.042w     10 calls
+HF: Form core H                     :      0.000u      0.000s      0.004w      2 calls
+HF: Form S/X                        :      0.017u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.033u      0.000s      0.025w      2 calls
+| SAD Guess                         :      0.033u      0.000s      0.024w      2 calls
+HF: Form G                          :      0.483u      0.000s      0.283w     35 calls
+| JK: D                             :      0.000u      0.000s      0.000w     35 calls
+| JK: USO2AO                        :      0.000u      0.000s      0.000w     35 calls
+| JK: JK                            :      0.483u      0.000s      0.283w     35 calls
+| | PK computes JK                  :      0.483u      0.000s      0.282w     35 calls
+| JK: AO2USO                        :      0.000u      0.000s      0.000w     35 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.033u      0.017s      0.045w     33 calls
+HF: Form C                          :      0.050u      0.000s      0.023w     33 calls
+JK: D                               :      0.000u      0.000s      0.000w     35 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w     35 calls
+JK: JK                              :      0.900u      0.017s      0.548w     35 calls
+| PK computes JK                    :      0.900u      0.017s      0.548w     35 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w     35 calls
+Libint2ERI::Libint2ERI              :      0.017u      0.000s      0.004w      1 calls
+
+**************************************************************************************
+
+Host: CHEM4VYDH4JALT
+
+Timers On : Thu Jul 23 20:03:16 2026
+Timers Off: Thu Jul 23 20:03:32 2026
+
+Wall Time:       16.27 seconds
+
+                                                       Time (seconds)
+Module                                       User      System        Wall        Calls
+Total PK formation time             :      3.833u      0.033s      2.352w      6 calls
+Libint2ERI::Libint2ERI              :      0.083u      0.000s      0.056w     13 calls
+HF: Form core H                     :      0.000u      0.017s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.033u      0.000s      0.024w      2 calls
+SAD Guess                           :      0.033u      0.000s      0.023w      2 calls
+HF: Form G                          :      0.467u      0.000s      0.284w     35 calls
+JK: D                               :      0.000u      0.000s      0.001w    109 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w    109 calls
+JK: JK                              :      4.717u      0.067s      2.861w    109 calls
+PK computes JK                      :      4.717u      0.067s      2.861w    109 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w    109 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.050u      0.000s      0.046w     33 calls
+HF: Form C                          :      0.033u      0.000s      0.024w     33 calls
+
+--------------------------------------------------------------------------------------
+Total PK formation time             :      3.833u      0.033s      2.352w      6 calls
+| Libint2ERI::Libint2ERI            :      0.083u      0.000s      0.052w     12 calls
+HF: Form core H                     :      0.000u      0.017s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.033u      0.000s      0.024w      2 calls
+| SAD Guess                         :      0.033u      0.000s      0.023w      2 calls
+HF: Form G                          :      0.467u      0.000s      0.284w     35 calls
+| JK: D                             :      0.000u      0.000s      0.000w     35 calls
+| JK: USO2AO                        :      0.000u      0.000s      0.000w     35 calls
+| JK: JK                            :      0.467u      0.000s      0.284w     35 calls
+| | PK computes JK                  :      0.467u      0.000s      0.284w     35 calls
+| JK: AO2USO                        :      0.000u      0.000s      0.000w     35 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.050u      0.000s      0.046w     33 calls
+HF: Form C                          :      0.033u      0.000s      0.024w     33 calls
+JK: D                               :      0.000u      0.000s      0.000w     74 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w     74 calls
+JK: JK                              :      4.250u      0.067s      2.578w     74 calls
+| PK computes JK                    :      4.250u      0.067s      2.577w     74 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w     74 calls
+Libint2ERI::Libint2ERI              :      0.000u      0.000s      0.005w      1 calls
+
+**************************************************************************************
+
+Host: CHEM4VYDH4JALT
+
+Timers On : Thu Jul 23 20:03:52 2026
+Timers Off: Thu Jul 23 20:04:15 2026
+
+Wall Time:       23.21 seconds
+
+                                                       Time (seconds)
+Module                                       User      System        Wall        Calls
+Total PK formation time             :      3.850u      0.100s      2.376w      6 calls
+Libint2ERI::Libint2ERI              :      0.100u      0.000s      0.056w     13 calls
+HF: Form core H                     :      0.000u      0.000s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.050u      0.000s      0.025w      2 calls
+SAD Guess                           :      0.050u      0.000s      0.024w      2 calls
+HF: Form G                          :      0.450u      0.000s      0.284w     35 calls
+JK: D                               :      0.000u      0.000s      0.001w    145 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w    145 calls
+JK: JK                              :      7.550u      0.067s      4.578w    145 calls
+PK computes JK                      :      7.550u      0.067s      4.577w    145 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w    145 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.067u      0.033s      0.046w     33 calls
+HF: Form C                          :      0.067u      0.000s      0.024w     33 calls
+
+--------------------------------------------------------------------------------------
+Total PK formation time             :      3.850u      0.100s      2.376w      6 calls
+| Libint2ERI::Libint2ERI            :      0.083u      0.000s      0.051w     12 calls
+HF: Form core H                     :      0.000u      0.000s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.050u      0.000s      0.025w      2 calls
+| SAD Guess                         :      0.050u      0.000s      0.024w      2 calls
+HF: Form G                          :      0.450u      0.000s      0.284w     35 calls
+| JK: D                             :      0.000u      0.000s      0.000w     35 calls
+| JK: USO2AO                        :      0.000u      0.000s      0.000w     35 calls
+| JK: JK                            :      0.450u      0.000s      0.283w     35 calls
+| | PK computes JK                  :      0.450u      0.000s      0.283w     35 calls
+| JK: AO2USO                        :      0.000u      0.000s      0.000w     35 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.067u      0.033s      0.046w     33 calls
+HF: Form C                          :      0.067u      0.000s      0.024w     33 calls
+JK: D                               :      0.000u      0.000s      0.001w    110 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w    110 calls
+JK: JK                              :      7.100u      0.067s      4.294w    110 calls
+| PK computes JK                    :      7.100u      0.067s      4.294w    110 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w    110 calls
+Libint2ERI::Libint2ERI              :      0.017u      0.000s      0.005w      1 calls
+
+**************************************************************************************
+
+Host: CHEM4VYDH4JALT
+
+Timers On : Thu Jul 23 20:04:41 2026
+Timers Off: Thu Jul 23 20:04:57 2026
+
+Wall Time:       16.18 seconds
+
+                                                       Time (seconds)
+Module                                       User      System        Wall        Calls
+Total PK formation time             :      3.200u      0.067s      1.969w      5 calls
+Libint2ERI::Libint2ERI              :      0.083u      0.017s      0.047w     11 calls
+HF: Form core H                     :      0.000u      0.000s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.002w      2 calls
+HF: Guess                           :      0.050u      0.000s      0.025w      2 calls
+SAD Guess                           :      0.050u      0.000s      0.024w      2 calls
+HF: Form G                          :      0.467u      0.000s      0.284w     35 calls
+JK: D                               :      0.000u      0.000s      0.000w     95 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w     95 calls
+JK: JK                              :      3.350u      0.033s      2.016w     95 calls
+PK computes JK                      :      3.350u      0.033s      2.015w     95 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w     95 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.067u      0.000s      0.046w     33 calls
+HF: Form C                          :      0.067u      0.000s      0.024w     33 calls
+
+--------------------------------------------------------------------------------------
+Total PK formation time             :      3.200u      0.067s      1.969w      5 calls
+| Libint2ERI::Libint2ERI            :      0.067u      0.017s      0.043w     10 calls
+HF: Form core H                     :      0.000u      0.000s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.002w      2 calls
+HF: Guess                           :      0.050u      0.000s      0.025w      2 calls
+| SAD Guess                         :      0.050u      0.000s      0.024w      2 calls
+HF: Form G                          :      0.467u      0.000s      0.284w     35 calls
+| JK: D                             :      0.000u      0.000s      0.000w     35 calls
+| JK: USO2AO                        :      0.000u      0.000s      0.000w     35 calls
+| JK: JK                            :      0.467u      0.000s      0.284w     35 calls
+| | PK computes JK                  :      0.467u      0.000s      0.283w     35 calls
+| JK: AO2USO                        :      0.000u      0.000s      0.000w     35 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.067u      0.000s      0.046w     33 calls
+HF: Form C                          :      0.067u      0.000s      0.024w     33 calls
+JK: D                               :      0.000u      0.000s      0.000w     60 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w     60 calls
+JK: JK                              :      2.883u      0.033s      1.732w     60 calls
+| PK computes JK                    :      2.883u      0.033s      1.732w     60 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w     60 calls
+Libint2ERI::Libint2ERI              :      0.017u      0.000s      0.004w      1 calls
+
+**************************************************************************************
+
+Host: CHEM4VYDH4JALT
+
+Timers On : Thu Jul 23 20:05:17 2026
+Timers Off: Thu Jul 23 20:05:29 2026
+
+Wall Time:       11.57 seconds
+
+                                                       Time (seconds)
+Module                                       User      System        Wall        Calls
+Total PK formation time             :      2.550u      0.033s      1.575w      4 calls
+Libint2ERI::Libint2ERI              :      0.083u      0.000s      0.039w      9 calls
+HF: Form core H                     :      0.000u      0.000s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.050u      0.017s      0.024w      2 calls
+SAD Guess                           :      0.050u      0.017s      0.024w      2 calls
+HF: Form G                          :      0.450u      0.000s      0.284w     35 calls
+JK: D                               :      0.000u      0.000s      0.000w     68 calls
+JK: USO2AO                          :      0.017u      0.000s      0.000w     68 calls
+JK: JK                              :      0.883u      0.017s      0.550w     68 calls
+PK computes JK                      :      0.883u      0.017s      0.550w     68 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w     68 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.083u      0.000s      0.046w     33 calls
+HF: Form C                          :      0.050u      0.000s      0.024w     33 calls
+
+--------------------------------------------------------------------------------------
+Total PK formation time             :      2.550u      0.033s      1.575w      4 calls
+| Libint2ERI::Libint2ERI            :      0.067u      0.000s      0.035w      8 calls
+HF: Form core H                     :      0.000u      0.000s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.050u      0.017s      0.024w      2 calls
+| SAD Guess                         :      0.050u      0.017s      0.024w      2 calls
+HF: Form G                          :      0.450u      0.000s      0.284w     35 calls
+| JK: D                             :      0.000u      0.000s      0.000w     35 calls
+| JK: USO2AO                        :      0.017u      0.000s      0.000w     35 calls
+| JK: JK                            :      0.433u      0.000s      0.283w     35 calls
+| | PK computes JK                  :      0.433u      0.000s      0.283w     35 calls
+| JK: AO2USO                        :      0.000u      0.000s      0.000w     35 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.083u      0.000s      0.046w     33 calls
+HF: Form C                          :      0.050u      0.000s      0.024w     33 calls
+JK: D                               :      0.000u      0.000s      0.000w     33 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w     33 calls
+JK: JK                              :      0.450u      0.017s      0.267w     33 calls
+| PK computes JK                    :      0.450u      0.017s      0.267w     33 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w     33 calls
+Libint2ERI::Libint2ERI              :      0.017u      0.000s      0.004w      1 calls
+
+**************************************************************************************
+
+Host: CHEM4VYDH4JALT
+
+Timers On : Thu Jul 23 20:05:44 2026
+Timers Off: Thu Jul 23 20:06:02 2026
+
+Wall Time:       17.80 seconds
+
+                                                       Time (seconds)
+Module                                       User      System        Wall        Calls
+Total PK formation time             :      3.200u      0.050s      1.970w      5 calls
+Libint2ERI::Libint2ERI              :      0.083u      0.000s      0.048w     11 calls
+HF: Form core H                     :      0.000u      0.000s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.017u      0.000s      0.027w      2 calls
+SAD Guess                           :      0.017u      0.000s      0.026w      2 calls
+HF: Form G                          :      0.483u      0.000s      0.284w     35 calls
+JK: D                               :      0.000u      0.000s      0.001w    217 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w    217 calls
+JK: JK                              :     12.633u      0.117s      7.655w    217 calls
+PK computes JK                      :     12.633u      0.117s      7.655w    217 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w    217 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.067u      0.000s      0.047w     33 calls
+HF: Form C                          :      0.033u      0.000s      0.024w     33 calls
+
+--------------------------------------------------------------------------------------
+Total PK formation time             :      3.200u      0.050s      1.970w      5 calls
+| Libint2ERI::Libint2ERI            :      0.083u      0.000s      0.043w     10 calls
+HF: Form core H                     :      0.000u      0.000s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.017u      0.000s      0.027w      2 calls
+| SAD Guess                         :      0.017u      0.000s      0.026w      2 calls
+HF: Form G                          :      0.483u      0.000s      0.284w     35 calls
+| JK: D                             :      0.000u      0.000s      0.000w     35 calls
+| JK: USO2AO                        :      0.000u      0.000s      0.000w     35 calls
+| JK: JK                            :      0.483u      0.000s      0.284w     35 calls
+| | PK computes JK                  :      0.483u      0.000s      0.283w     35 calls
+| JK: AO2USO                        :      0.000u      0.000s      0.000w     35 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.067u      0.000s      0.047w     33 calls
+HF: Form C                          :      0.033u      0.000s      0.024w     33 calls
+JK: D                               :      0.000u      0.000s      0.001w    182 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w    182 calls
+JK: JK                              :     12.150u      0.117s      7.372w    182 calls
+| PK computes JK                    :     12.150u      0.117s      7.371w    182 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w    182 calls
+Libint2ERI::Libint2ERI              :      0.000u      0.000s      0.005w      1 calls
+
+**************************************************************************************
+
+Host: CHEM4VYDH4JALT
+
+Timers On : Thu Jul 23 20:06:15 2026
+Timers Off: Thu Jul 23 20:06:25 2026
+
+Wall Time:        9.78 seconds
+
+                                                       Time (seconds)
+Module                                       User      System        Wall        Calls
+Total PK formation time             :      3.850u      0.100s      2.355w      6 calls
+Libint2ERI::Libint2ERI              :      0.050u      0.000s      0.056w     13 calls
+HF: Form core H                     :      0.000u      0.000s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.033u      0.000s      0.025w      2 calls
+SAD Guess                           :      0.033u      0.000s      0.024w      2 calls
+HF: Form G                          :      0.467u      0.000s      0.284w     35 calls
+JK: D                               :      0.000u      0.000s      0.000w     70 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w     70 calls
+JK: JK                              :      1.083u      0.000s      0.645w     70 calls
+PK computes JK                      :      1.083u      0.000s      0.645w     70 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w     70 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.067u      0.033s      0.046w     33 calls
+HF: Form C                          :      0.033u      0.000s      0.024w     33 calls
+
+--------------------------------------------------------------------------------------
+Total PK formation time             :      3.850u      0.100s      2.355w      6 calls
+| Libint2ERI::Libint2ERI            :      0.050u      0.000s      0.051w     12 calls
+HF: Form core H                     :      0.000u      0.000s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.033u      0.000s      0.025w      2 calls
+| SAD Guess                         :      0.033u      0.000s      0.024w      2 calls
+HF: Form G                          :      0.467u      0.000s      0.284w     35 calls
+| JK: D                             :      0.000u      0.000s      0.000w     35 calls
+| JK: USO2AO                        :      0.000u      0.000s      0.000w     35 calls
+| JK: JK                            :      0.467u      0.000s      0.284w     35 calls
+| | PK computes JK                  :      0.467u      0.000s      0.284w     35 calls
+| JK: AO2USO                        :      0.000u      0.000s      0.000w     35 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.067u      0.033s      0.046w     33 calls
+HF: Form C                          :      0.033u      0.000s      0.024w     33 calls
+JK: D                               :      0.000u      0.000s      0.000w     35 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w     35 calls
+JK: JK                              :      0.617u      0.000s      0.362w     35 calls
+| PK computes JK                    :      0.617u      0.000s      0.361w     35 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w     35 calls
+Libint2ERI::Libint2ERI              :      0.000u      0.000s      0.004w      1 calls
+
+**************************************************************************************
+
+Host: CHEM4VYDH4JALT
+
+Timers On : Thu Jul 23 20:06:39 2026
+Timers Off: Thu Jul 23 20:06:53 2026
+
+Wall Time:       13.57 seconds
+
+                                                       Time (seconds)
+Module                                       User      System        Wall        Calls
+Total PK formation time             :      3.200u      0.083s      1.967w      5 calls
+Libint2ERI::Libint2ERI              :      0.067u      0.050s      0.048w     11 calls
+HF: Form core H                     :      0.017u      0.000s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.033u      0.000s      0.024w      2 calls
+SAD Guess                           :      0.033u      0.000s      0.023w      2 calls
+HF: Form G                          :      0.467u      0.017s      0.284w     35 calls
+JK: D                               :      0.000u      0.000s      0.000w     95 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w     95 calls
+JK: JK                              :      3.333u      0.050s      2.012w     95 calls
+PK computes JK                      :      3.333u      0.033s      2.012w     95 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w     95 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.100u      0.000s      0.046w     33 calls
+HF: Form C                          :      0.033u      0.000s      0.024w     33 calls
+
+--------------------------------------------------------------------------------------
+Total PK formation time             :      3.200u      0.083s      1.967w      5 calls
+| Libint2ERI::Libint2ERI            :      0.050u      0.033s      0.043w     10 calls
+HF: Form core H                     :      0.017u      0.000s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.033u      0.000s      0.024w      2 calls
+| SAD Guess                         :      0.033u      0.000s      0.023w      2 calls
+HF: Form G                          :      0.467u      0.017s      0.284w     35 calls
+| JK: D                             :      0.000u      0.000s      0.000w     35 calls
+| JK: USO2AO                        :      0.000u      0.000s      0.000w     35 calls
+| JK: JK                            :      0.467u      0.017s      0.284w     35 calls
+| | PK computes JK                  :      0.467u      0.000s      0.284w     35 calls
+| JK: AO2USO                        :      0.000u      0.000s      0.000w     35 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.100u      0.000s      0.046w     33 calls
+HF: Form C                          :      0.033u      0.000s      0.024w     33 calls
+JK: D                               :      0.000u      0.000s      0.000w     60 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w     60 calls
+JK: JK                              :      2.867u      0.033s      1.728w     60 calls
+| PK computes JK                    :      2.867u      0.033s      1.728w     60 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w     60 calls
+Libint2ERI::Libint2ERI              :      0.017u      0.017s      0.004w      1 calls
+
+**************************************************************************************
+
+Host: CHEM4VYDH4JALT
+
+Timers On : Thu Jul 23 20:07:31 2026
+Timers Off: Thu Jul 23 20:07:51 2026
+
+Wall Time:       20.55 seconds
+
+                                                       Time (seconds)
+Module                                       User      System        Wall        Calls
+Total PK formation time             :      3.817u      0.033s      2.339w      6 calls
+Libint2ERI::Libint2ERI              :      0.100u      0.017s      0.056w     13 calls
+HF: Form core H                     :      0.017u      0.017s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.033u      0.000s      0.024w      2 calls
+SAD Guess                           :      0.033u      0.000s      0.023w      2 calls
+HF: Form G                          :      0.500u      0.000s      0.284w     35 calls
+JK: D                               :      0.000u      0.000s      0.001w    122 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w    122 calls
+JK: JK                              :      5.767u      0.033s      3.458w    122 calls
+PK computes JK                      :      5.767u      0.033s      3.458w    122 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w    122 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.050u      0.000s      0.045w     33 calls
+HF: Form C                          :      0.000u      0.000s      0.024w     33 calls
+
+--------------------------------------------------------------------------------------
+Total PK formation time             :      3.817u      0.033s      2.339w      6 calls
+| Libint2ERI::Libint2ERI            :      0.100u      0.017s      0.051w     12 calls
+HF: Form core H                     :      0.017u      0.017s      0.004w      2 calls
+HF: Form S/X                        :      0.000u      0.000s      0.001w      2 calls
+HF: Guess                           :      0.033u      0.000s      0.024w      2 calls
+| SAD Guess                         :      0.033u      0.000s      0.023w      2 calls
+HF: Form G                          :      0.500u      0.000s      0.284w     35 calls
+| JK: D                             :      0.000u      0.000s      0.000w     35 calls
+| JK: USO2AO                        :      0.000u      0.000s      0.000w     35 calls
+| JK: JK                            :      0.500u      0.000s      0.283w     35 calls
+| | PK computes JK                  :      0.500u      0.000s      0.283w     35 calls
+| JK: AO2USO                        :      0.000u      0.000s      0.000w     35 calls
+HF: Form F                          :      0.000u      0.000s      0.000w     35 calls
+HF: Form D                          :      0.000u      0.000s      0.000w     35 calls
+HF: DIIS                            :      0.050u      0.000s      0.045w     33 calls
+HF: Form C                          :      0.000u      0.000s      0.024w     33 calls
+JK: D                               :      0.000u      0.000s      0.000w     87 calls
+JK: USO2AO                          :      0.000u      0.000s      0.000w     87 calls
+JK: JK                              :      5.267u      0.033s      3.175w     87 calls
+| PK computes JK                    :      5.267u      0.033s      3.175w     87 calls
+JK: AO2USO                          :      0.000u      0.000s      0.000w     87 calls
+Libint2ERI::Libint2ERI              :      0.000u      0.000s      0.004w      1 calls
+
+**************************************************************************************
