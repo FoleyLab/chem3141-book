@@ -514,6 +514,13 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postulate-4-completeness-of-eigenfunctions">Postulate 4: Completeness of Eigenfunctions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expansion-in-the-s-z-basis">Expansion in the <span class="math notranslate nohighlight">\(S_z\)</span> Basis</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-expansion-coefficients">Computing Expansion Coefficients</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-inner-product-as-a-generalized-dot-product">The Inner Product as a Generalized Dot Product</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-orthogonality-and-normalization-of-the-basis">Example 1: Orthogonality and normalization of the basis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-computing-components-by-projection">Example 2: Computing components by projection</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-inner-product-of-two-general-states">Example 3: Inner product of two general states</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postulate-5-expectation-values">Postulate 5: Expectation Values</a><ul class="nav section-nav flex-column">
@@ -525,7 +532,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-evolution-and-unobserved-systems">Time Evolution and Unobserved Systems</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-angular-momentum">Spin Angular Momentum</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-problems">Practice Problems</a></li>
 </ul>
@@ -786,6 +793,105 @@ The bra-ket <span class="math notranslate nohighlight">\(\langle\phi|\psi\rangle
 <div class="math notranslate nohighlight">
 \[ z^* = c - di \]</div>
 </section>
+<section id="the-inner-product-as-a-generalized-dot-product">
+<h3>The Inner Product as a Generalized Dot Product<a class="headerlink" href="#the-inner-product-as-a-generalized-dot-product" title="Link to this heading">#</a></h3>
+<p>The inner product <span class="math notranslate nohighlight">\(\langle\phi|\psi\rangle\)</span> looks like an abstract piece of notation, but for spin-1/2 systems it is entirely equivalent to the familiar dot (scalar) product between Euclidean vectors. The table below makes this analogy explicit.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Euclidean vectors</p></th>
+<th class="head"><p>Quantum state vectors</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\vec{u} = (u_1, u_2)\)</span></p></td>
+<td><p>$</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\vec{u}\cdot\vec{v} = u_1 v_1 + u_2 v_2\)</span></p></td>
+<td><p>$\langle\phi</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\vec{u}\cdot\hat{x} = u_1\)</span> (component along <span class="math notranslate nohighlight">\(x\)</span>)</p></td>
+<td><p>$\langle\uparrow_z</p></td>
+</tr>
+<tr class="row-odd"><td><p>$</p></td>
+<td><p>\vec{u}</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\vec{u}\perp\vec{v}\iff\vec{u}\cdot\vec{v}=0\)</span></p></td>
+<td><p>$\langle\phi</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Important difference:</strong> the bra involves complex conjugation. While the dot product uses both vectors as-is, the inner product conjugates the components of the first argument:
+$<span class="math notranslate nohighlight">\( \langle\phi| \longleftrightarrow \begin{pmatrix} a_\phi^* &amp; b_\phi^* \end{pmatrix}. \)</span>$</p>
+<section id="example-1-orthogonality-and-normalization-of-the-basis">
+<h4>Example 1: Orthogonality and normalization of the basis<a class="headerlink" href="#example-1-orthogonality-and-normalization-of-the-basis" title="Link to this heading">#</a></h4>
+<p>Our basis states <span class="math notranslate nohighlight">\(|\uparrow_z\rangle\)</span> and <span class="math notranslate nohighlight">\(|\downarrow_z\rangle\)</span> behave just like the perpendicular unit vectors <span class="math notranslate nohighlight">\(\hat{x}\)</span> and <span class="math notranslate nohighlight">\(\hat{y}\)</span> in the plane:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Inner product</p></th>
+<th class="head"><p>Result</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Euclidean analogue</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>$\langle\uparrow_z</p></td>
+<td><p>\uparrow_z\rangle$</p></td>
+<td><p><span class="math notranslate nohighlight">\((1\;0)\begin{pmatrix}1\\0\end{pmatrix} = 1\)</span></p></td>
+<td><p>$</p></td>
+</tr>
+<tr class="row-odd"><td><p>$\langle\downarrow_z</p></td>
+<td><p>\downarrow_z\rangle$</p></td>
+<td><p><span class="math notranslate nohighlight">\((0\;1)\begin{pmatrix}0\\1\end{pmatrix} = 1\)</span></p></td>
+<td><p>$</p></td>
+</tr>
+<tr class="row-even"><td><p>$\langle\uparrow_z</p></td>
+<td><p>\downarrow_z\rangle$</p></td>
+<td><p><span class="math notranslate nohighlight">\((1\;0)\begin{pmatrix}0\\1\end{pmatrix} = 0\)</span></p></td>
+<td><p>The two states are orthogonal</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The states <span class="math notranslate nohighlight">\(|\uparrow_z\rangle\)</span> and <span class="math notranslate nohighlight">\(|\downarrow_z\rangle\)</span> form an <strong>orthonormal basis</strong>: each has length one, and they are perpendicular (orthogonal) to one another — exactly like <span class="math notranslate nohighlight">\(\hat{x}\)</span> and <span class="math notranslate nohighlight">\(\hat{y}\)</span>.</p>
+</section>
+<section id="example-2-computing-components-by-projection">
+<h4>Example 2: Computing components by projection<a class="headerlink" href="#example-2-computing-components-by-projection" title="Link to this heading">#</a></h4>
+<p>Finding an expansion coefficient is the quantum analogue of computing the component of a vector along a basis direction:</p>
+<div class="math notranslate nohighlight">
+\[ c_{\uparrow} = \langle\uparrow_z|\psi\rangle \quad\longleftrightarrow\quad v_x = \vec{v}\cdot\hat{x}. \]</div>
+<p>For <span class="math notranslate nohighlight">\(|\psi\rangle = \frac{1}{\sqrt{5}}|\uparrow_z\rangle + \frac{2}{\sqrt{5}}|\downarrow_z\rangle\)</span>:
+$<span class="math notranslate nohighlight">\(
+\langle\uparrow_z|\psi\rangle = (1\;0)\begin{pmatrix}1/\sqrt{5} \\ 2/\sqrt{5}\end{pmatrix} = \frac{1}{\sqrt{5}}.
+\)</span>$</p>
+<p>This tells us that the “amount” of <span class="math notranslate nohighlight">\(|\uparrow_z\rangle\)</span> contained in <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> is <span class="math notranslate nohighlight">\(1/\sqrt{5}\)</span>. The probability <span class="math notranslate nohighlight">\(P(+\hbar/2) = |\langle\uparrow_z|\psi\rangle|^2 = 1/5\)</span> is the squared magnitude of this projection — conceptually the same as computing a squared component.</p>
+</section>
+<section id="example-3-inner-product-of-two-general-states">
+<h4>Example 3: Inner product of two general states<a class="headerlink" href="#example-3-inner-product-of-two-general-states" title="Link to this heading">#</a></h4>
+<p>Just as we can take the dot product of any two Euclidean vectors, we can take the inner product of any two quantum states. For
+$<span class="math notranslate nohighlight">\( |\phi\rangle = a|\uparrow_z\rangle + b|\downarrow_z\rangle, \qquad |\psi\rangle = c|\uparrow_z\rangle + d|\downarrow_z\rangle, \)</span><span class="math notranslate nohighlight">\(
+we have
+\)</span><span class="math notranslate nohighlight">\( \langle\phi|\psi\rangle = a^*c + b^*d. \)</span>$</p>
+<p>This follows directly from the matrix representation:
+$<span class="math notranslate nohighlight">\(
+\langle\phi|\psi\rangle = \begin{pmatrix} a^* &amp; b^* \end{pmatrix} \begin{pmatrix} c \\ d \end{pmatrix} = a^*c + b^*d.
+\)</span>$</p>
+<p><strong>Concrete numbers:</strong> let <span class="math notranslate nohighlight">\(|\phi\rangle = \frac{1}{\sqrt{2}}(|\uparrow_z\rangle + |\downarrow_z\rangle)\)</span> (which is <span class="math notranslate nohighlight">\(|\uparrow_x\rangle\)</span>) and <span class="math notranslate nohighlight">\(|\psi\rangle = \frac{1}{\sqrt{5}}|\uparrow_z\rangle + \frac{2}{\sqrt{5}}|\downarrow_z\rangle\)</span>:
+$<span class="math notranslate nohighlight">\(
+\langle\phi|\psi\rangle = \frac{1}{\sqrt{2}}\cdot\frac{1}{\sqrt{5}} + \frac{1}{\sqrt{2}}\cdot\frac{2}{\sqrt{5}} = \frac{3}{\sqrt{10}}.
+\)</span>$</p>
+<p>The state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> has a substantial projection onto <span class="math notranslate nohighlight">\(|\uparrow_x\rangle\)</span>.</p>
+</section>
+<section id="summary">
+<h4>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Inner product</strong> <span class="math notranslate nohighlight">\(\langle\phi|\psi\rangle\)</span> — a complex number directly analogous to <span class="math notranslate nohighlight">\(\vec{u}\cdot\vec{v}\)</span>.</p></li>
+<li><p><strong>Norm</strong> <span class="math notranslate nohighlight">\(\sqrt{\langle\psi|\psi\rangle}\)</span> — analogous to <span class="math notranslate nohighlight">\(|\vec{v}|\)</span>.</p></li>
+<li><p><strong>Orthogonality</strong> <span class="math notranslate nohighlight">\(\langle\phi|\psi\rangle = 0\)</span> — analogous to <span class="math notranslate nohighlight">\(\vec{u}\perp\vec{v}\)</span>.</p></li>
+<li><p><strong>Projection interpretation</strong> <span class="math notranslate nohighlight">\(|\langle\phi|\psi\rangle|^2\)</span> gives the probability that <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> is found in state <span class="math notranslate nohighlight">\(|\phi\rangle\)</span> — the squared magnitude of the projection of <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> onto <span class="math notranslate nohighlight">\(|\phi\rangle\)</span>.</p></li>
+</ul>
+</section>
+</section>
 </section>
 <hr class="docutils" />
 <section id="postulate-5-expectation-values">
@@ -821,8 +927,8 @@ The bra-ket <span class="math notranslate nohighlight">\(\langle\phi|\psi\rangle
 </section>
 </section>
 <hr class="docutils" />
-<section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h2>Summary<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>These six postulates provide the complete mathematical framework for quantum mechanics. They connect the abstract mathematical formalism (wavefunctions, operators, eigenvalues) to physical observations (measurement outcomes, probabilities, time evolution). The Stern-Gerlach experiments we discussed earlier provide beautiful experimental demonstrations of these postulates in action, particularly showing how measurements of non-commuting observables (like <span class="math notranslate nohighlight">\(\hat{S}_z\)</span> and <span class="math notranslate nohighlight">\(\hat{S}_x\)</span>) lead to the probabilistic nature of quantum mechanics.</p>
 </section>
 <section id="spin-angular-momentum">
@@ -1169,6 +1275,13 @@ Physics. Phys. T oday 2003, 56, 53–59.</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postulate-4-completeness-of-eigenfunctions">Postulate 4: Completeness of Eigenfunctions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expansion-in-the-s-z-basis">Expansion in the <span class="math notranslate nohighlight">\(S_z\)</span> Basis</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-expansion-coefficients">Computing Expansion Coefficients</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-inner-product-as-a-generalized-dot-product">The Inner Product as a Generalized Dot Product</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-orthogonality-and-normalization-of-the-basis">Example 1: Orthogonality and normalization of the basis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-computing-components-by-projection">Example 2: Computing components by projection</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-inner-product-of-two-general-states">Example 3: Inner product of two general states</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postulate-5-expectation-values">Postulate 5: Expectation Values</a><ul class="nav section-nav flex-column">
@@ -1180,7 +1293,7 @@ Physics. Phys. T oday 2003, 56, 53–59.</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-evolution-and-unobserved-systems">Time Evolution and Unobserved Systems</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-angular-momentum">Spin Angular Momentum</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-problems">Practice Problems</a></li>
 </ul>
