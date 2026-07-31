@@ -804,25 +804,28 @@ The bra-ket <span class="math notranslate nohighlight">\(\langle\phi|\psi\rangle
 </thead>
 <tbody>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\vec{u} = (u_1, u_2)\)</span></p></td>
-<td><p>$</p></td>
+<td><p><span class="math notranslate nohighlight">\(\\vert\psi\rangle = (a, b)^T\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\vec{u}\cdot\vec{v} = u_1 v_1 + u_2 v_2\)</span></p></td>
-<td><p>$\langle\phi</p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle\phi\\vert\psi\rangle = a_\phi^* a_\psi + b_\phi^* b_\psi\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\vec{u}\cdot\hat{x} = u_1\)</span> (component along <span class="math notranslate nohighlight">\(x\)</span>)</p></td>
-<td><p>$\langle\uparrow_z</p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle\uparrow_z\\vert\psi\rangle = a\)</span> (amplitude for <span class="math notranslate nohighlight">\(\uparrow_z\)</span>)</p></td>
 </tr>
 <tr class="row-odd"><td><p>$</p></td>
 <td><p>\vec{u}</p></td>
 </tr>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\vec{u}\perp\vec{v}\iff\vec{u}\cdot\vec{v}=0\)</span></p></td>
-<td><p>$\langle\phi</p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle\phi\\vert\psi\rangle = 0\)</span> means orthogonal states</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p><strong>Important difference:</strong> the bra involves complex conjugation. While the dot product uses both vectors as-is, the inner product conjugates the components of the first argument:
-$<span class="math notranslate nohighlight">\( \langle\phi| \longleftrightarrow \begin{pmatrix} a_\phi^* &amp; b_\phi^* \end{pmatrix}. \)</span>$</p>
+<p><strong>Important difference:</strong> the bra involves complex conjugation. While the dot product uses both vectors as-is, the inner product conjugates the components of the first argument:</p>
+<div class="math notranslate nohighlight">
+\[ 
+\langle\phi| \longleftrightarrow \begin{pmatrix} a_\phi^* &amp; b_\phi^* \end{pmatrix}. 
+\]</div>
 <section id="example-1-orthogonality-and-normalization-of-the-basis">
 <h4>Example 1: Orthogonality and normalization of the basis<a class="headerlink" href="#example-1-orthogonality-and-normalization-of-the-basis" title="Link to this heading">#</a></h4>
 <p>Our basis states <span class="math notranslate nohighlight">\(|\uparrow_z\rangle\)</span> and <span class="math notranslate nohighlight">\(|\downarrow_z\rangle\)</span> behave just like the perpendicular unit vectors <span class="math notranslate nohighlight">\(\hat{x}\)</span> and <span class="math notranslate nohighlight">\(\hat{y}\)</span> in the plane:</p>
@@ -835,20 +838,20 @@ $<span class="math notranslate nohighlight">\( \langle\phi| \longleftrightarrow 
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>$\langle\uparrow_z</p></td>
-<td><p>\uparrow_z\rangle$</p></td>
-<td><p><span class="math notranslate nohighlight">\((1\;0)\begin{pmatrix}1\\0\end{pmatrix} = 1\)</span></p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\langle\uparrow_z\\vert\uparrow_z\rangle\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\((1, 0)(1, 0)^T = 1\)</span></p></td>
 <td><p>$</p></td>
+<td><p>\uparrow_z\rangle$ has unit norm</p></td>
 </tr>
-<tr class="row-odd"><td><p>$\langle\downarrow_z</p></td>
-<td><p>\downarrow_z\rangle$</p></td>
-<td><p><span class="math notranslate nohighlight">\((0\;1)\begin{pmatrix}0\\1\end{pmatrix} = 1\)</span></p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\langle\downarrow_z\\vert\downarrow_z\rangle\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\((0, 1)(0, 1)^T = 1\)</span></p></td>
 <td><p>$</p></td>
+<td><p>\downarrow_z\rangle$ has unit norm</p></td>
 </tr>
-<tr class="row-even"><td><p>$\langle\uparrow_z</p></td>
-<td><p>\downarrow_z\rangle$</p></td>
-<td><p><span class="math notranslate nohighlight">\((1\;0)\begin{pmatrix}0\\1\end{pmatrix} = 0\)</span></p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\langle\uparrow_z\\vert\downarrow_z\rangle\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\((1, 0)(0, 1)^T = 0\)</span></p></td>
 <td><p>The two states are orthogonal</p></td>
+<td><p><span class="math notranslate nohighlight">\(\hat{x}\cdot\hat{y}=0\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -859,27 +862,38 @@ $<span class="math notranslate nohighlight">\( \langle\phi| \longleftrightarrow 
 <h4>Example 2: Computing components by projection<a class="headerlink" href="#example-2-computing-components-by-projection" title="Link to this heading">#</a></h4>
 <p>Finding an expansion coefficient is the quantum analogue of computing the component of a vector along a basis direction:</p>
 <div class="math notranslate nohighlight">
-\[ c_{\uparrow} = \langle\uparrow_z|\psi\rangle \quad\longleftrightarrow\quad v_x = \vec{v}\cdot\hat{x}. \]</div>
-<p>For <span class="math notranslate nohighlight">\(|\psi\rangle = \frac{1}{\sqrt{5}}|\uparrow_z\rangle + \frac{2}{\sqrt{5}}|\downarrow_z\rangle\)</span>:
-$<span class="math notranslate nohighlight">\(
-\langle\uparrow_z|\psi\rangle = (1\;0)\begin{pmatrix}1/\sqrt{5} \\ 2/\sqrt{5}\end{pmatrix} = \frac{1}{\sqrt{5}}.
-\)</span>$</p>
+\[ 
+c_{\uparrow} = \langle\uparrow_z|\psi\rangle \quad\longleftrightarrow\quad v_x = \vec{v}\cdot\hat{x}. 
+\]</div>
+<p>For <span class="math notranslate nohighlight">\(|\psi\rangle = \frac{1}{\sqrt{5}}|\uparrow_z\rangle + \frac{2}{\sqrt{5}}|\downarrow_z\rangle\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\langle\uparrow_z|\psi\rangle = \begin{pmatrix}1 &amp; 0\end{pmatrix}\begin{pmatrix}1/\sqrt{5} \\ 2/\sqrt{5}\end{pmatrix} = \frac{1}{\sqrt{5}}.
+\end{split}\]</div>
 <p>This tells us that the “amount” of <span class="math notranslate nohighlight">\(|\uparrow_z\rangle\)</span> contained in <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> is <span class="math notranslate nohighlight">\(1/\sqrt{5}\)</span>. The probability <span class="math notranslate nohighlight">\(P(+\hbar/2) = |\langle\uparrow_z|\psi\rangle|^2 = 1/5\)</span> is the squared magnitude of this projection — conceptually the same as computing a squared component.</p>
 </section>
 <section id="example-3-inner-product-of-two-general-states">
 <h4>Example 3: Inner product of two general states<a class="headerlink" href="#example-3-inner-product-of-two-general-states" title="Link to this heading">#</a></h4>
-<p>Just as we can take the dot product of any two Euclidean vectors, we can take the inner product of any two quantum states. For
-$<span class="math notranslate nohighlight">\( |\phi\rangle = a|\uparrow_z\rangle + b|\downarrow_z\rangle, \qquad |\psi\rangle = c|\uparrow_z\rangle + d|\downarrow_z\rangle, \)</span><span class="math notranslate nohighlight">\(
-we have
-\)</span><span class="math notranslate nohighlight">\( \langle\phi|\psi\rangle = a^*c + b^*d. \)</span>$</p>
-<p>This follows directly from the matrix representation:
-$<span class="math notranslate nohighlight">\(
+<p>Just as we can take the dot product of any two Euclidean vectors, we can take the inner product of any two quantum states. For</p>
+<div class="math notranslate nohighlight">
+\[ 
+|\phi\rangle = a|\uparrow_z\rangle + b|\downarrow_z\rangle, \qquad |\psi\rangle = c|\uparrow_z\rangle + d|\downarrow_z\rangle, 
+\]</div>
+<p>we have</p>
+<div class="math notranslate nohighlight">
+\[ 
+\langle\phi|\psi\rangle = a^*c + b^*d. 
+\]</div>
+<p>This follows directly from the matrix representation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \langle\phi|\psi\rangle = \begin{pmatrix} a^* &amp; b^* \end{pmatrix} \begin{pmatrix} c \\ d \end{pmatrix} = a^*c + b^*d.
-\)</span>$</p>
-<p><strong>Concrete numbers:</strong> let <span class="math notranslate nohighlight">\(|\phi\rangle = \frac{1}{\sqrt{2}}(|\uparrow_z\rangle + |\downarrow_z\rangle)\)</span> (which is <span class="math notranslate nohighlight">\(|\uparrow_x\rangle\)</span>) and <span class="math notranslate nohighlight">\(|\psi\rangle = \frac{1}{\sqrt{5}}|\uparrow_z\rangle + \frac{2}{\sqrt{5}}|\downarrow_z\rangle\)</span>:
-$<span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<p><strong>Concrete numbers:</strong> let <span class="math notranslate nohighlight">\(|\phi\rangle = \frac{1}{\sqrt{2}}(|\uparrow_z\rangle + |\downarrow_z\rangle)\)</span> (which is <span class="math notranslate nohighlight">\(|\uparrow_x\rangle\)</span>) and <span class="math notranslate nohighlight">\(|\psi\rangle = \frac{1}{\sqrt{5}}|\uparrow_z\rangle + \frac{2}{\sqrt{5}}|\downarrow_z\rangle\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \langle\phi|\psi\rangle = \frac{1}{\sqrt{2}}\cdot\frac{1}{\sqrt{5}} + \frac{1}{\sqrt{2}}\cdot\frac{2}{\sqrt{5}} = \frac{3}{\sqrt{10}}.
-\)</span>$</p>
+\]</div>
 <p>The state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> has a substantial projection onto <span class="math notranslate nohighlight">\(|\uparrow_x\rangle\)</span>.</p>
 </section>
 <section id="summary">

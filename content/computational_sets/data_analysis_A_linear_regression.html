@@ -487,7 +487,6 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-to-python-start-here">New to Python? Start here</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-new-to-matplotlib-section-here-too">Add a New to Matplotlib section here too!</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data">The data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-build-the-derived-columns">Step 1 — Build the derived columns</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-plot-the-data">Step 2 — Plot the data</a></li>
@@ -525,6 +524,7 @@
 \[
 P(\text{Torr}) = P_{\text{obs}}\,\bigl(1 - 1.8\times10^{-4}\,T\bigr), \qquad T \text{ in } {}^{\circ}\mathrm{C}. \tag{1}
 \]</div>
+<p><em>Note: the original lab handout’s Eq. 1 had a typo — the raw quantity being corrected was left blank (”<span class="math notranslate nohighlight">\(P()\)</span>”). Here <span class="math notranslate nohighlight">\(P_{\text{obs}}\)</span> denotes the raw mercury height difference <span class="math notranslate nohighlight">\(h_{\text{left}} - h_{\text{right}}\)</span> (mm Hg, numerically equal to Torr before correction), consistent with the step-by-step instructions elsewhere in the handout.</em></p>
 <p>The gauge response should be <strong>linear</strong> in pressure up to atmospheric pressure, so we model</p>
 <div class="math notranslate nohighlight">
 \[
@@ -561,15 +561,14 @@ recommended if any of the above is unfamiliar.</p>
 </div></blockquote>
 </section>
 <hr class="docutils" />
-<section id="add-a-new-to-matplotlib-section-here-too">
-<h2>Add a New to Matplotlib section here too!<a class="headerlink" href="#add-a-new-to-matplotlib-section-here-too" title="Link to this heading">#</a></h2>
-</section>
 <section id="the-data">
 <h2>The data<a class="headerlink" href="#the-data" title="Link to this heading">#</a></h2>
 <p>A run of the calibration produced, at each step:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">P_dial</span></code> — the vacuum-gauge dial reading (inHg, read to 0.1 inHg),</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">h_left</span></code>, <code class="docutils literal notranslate"><span class="pre">h_right</span></code> — heights of the left and right mercury menisci (mm),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">h_left</span></code>, <code class="docutils literal notranslate"><span class="pre">h_right</span></code> — the left and right mercury meniscus positions, each recorded as a
+<em>displacement from a common zeroed reference</em> (mm), not as independent absolute heights.
+One arm moves positive, the other negative, as pressure is admitted.</p></li>
 </ul>
 <p>together with the barometric pressure <code class="docutils literal notranslate"><span class="pre">P_atm_inHg</span></code> and the manometer temperature <code class="docutils literal notranslate"><span class="pre">T_C</span></code>.</p>
 <p>Run the cell below to load the data — <strong>you don’t need to edit it.</strong></p>
@@ -579,18 +578,30 @@ recommended if any of the above is unfamiliar.</p>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1"># --- Experimental constants ---</span>
-<span class="n">P_atm_inHg</span> <span class="o">=</span> <span class="mf">29.62</span>     <span class="c1"># barometric (atmospheric) pressure, inHg</span>
-<span class="n">T_C</span>        <span class="o">=</span> <span class="mf">22.5</span>      <span class="c1"># manometer temperature, degrees C</span>
+<span class="n">P_atm_inHg</span> <span class="o">=</span> <span class="mf">31.20</span>     <span class="c1"># barometric (atmospheric) pressure, inHg</span>
+<span class="n">T_C</span>        <span class="o">=</span> <span class="mf">21.5</span>      <span class="c1"># manometer temperature, degrees C</span>
 
 <span class="c1"># --- Raw readings (one row per step) ---</span>
-<span class="n">P_dial</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">29.2</span><span class="p">,</span> <span class="mf">28.0</span><span class="p">,</span> <span class="mf">26.5</span><span class="p">,</span> <span class="mf">24.8</span><span class="p">,</span> <span class="mf">23.2</span><span class="p">,</span> <span class="mf">21.4</span><span class="p">,</span> <span class="mf">19.9</span><span class="p">,</span> <span class="mf">18.3</span><span class="p">,</span> <span class="mf">16.7</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">])</span>   <span class="c1"># inHg</span>
-<span class="n">h_left</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">749</span><span class="p">,</span> <span class="mi">721</span><span class="p">,</span> <span class="mi">680</span><span class="p">,</span> <span class="mi">636</span><span class="p">,</span> <span class="mi">596</span><span class="p">,</span> <span class="mi">552</span><span class="p">,</span> <span class="mi">513</span><span class="p">,</span> <span class="mi">471</span><span class="p">,</span> <span class="mi">429</span><span class="p">,</span> <span class="mi">388</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span> <span class="c1"># mm</span>
-<span class="n">h_right</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">760</span><span class="p">,</span> <span class="mi">759</span><span class="p">,</span> <span class="mi">760</span><span class="p">,</span> <span class="mi">760</span><span class="p">,</span> <span class="mi">761</span><span class="p">,</span> <span class="mi">761</span><span class="p">,</span> <span class="mi">760</span><span class="p">,</span> <span class="mi">760</span><span class="p">,</span> <span class="mi">758</span><span class="p">,</span> <span class="mi">761</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span> <span class="c1"># mm</span>
+<span class="c1"># A small, real subset of a run (from an instructor-provided data set), used to illustrate</span>
+<span class="c1"># the array operations below. Note the convention: h_left and h_right are each measured as a</span>
+<span class="c1"># *displacement from a common zero* (both start at 0), not as independent absolute heights --</span>
+<span class="c1"># one arm reads positive, the other negative, as pressure is admitted.</span>
+<span class="n">P_dial</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">26.4</span><span class="p">,</span> <span class="mf">22.1</span><span class="p">,</span> <span class="mf">17.2</span><span class="p">,</span> <span class="mf">12.8</span><span class="p">,</span> <span class="mf">8.1</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">])</span>            <span class="c1"># inHg</span>
+<span class="n">h_left</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">62.0</span><span class="p">,</span> <span class="mf">122.0</span><span class="p">,</span> <span class="mf">182.0</span><span class="p">,</span> <span class="mf">242.0</span><span class="p">,</span> <span class="mf">289.0</span><span class="p">])</span>       <span class="c1"># mm, displacement from zero</span>
+<span class="n">h_right</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">181.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">242.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">289.0</span><span class="p">])</span>  <span class="c1"># mm, displacement from zero</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">P_dial</span><span class="p">)</span><span class="si">}</span><span class="s2"> data points loaded.&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P_dial  (inHg):&quot;</span><span class="p">,</span> <span class="n">P_dial</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;h_left  (mm)  :&quot;</span><span class="p">,</span> <span class="n">h_left</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;h_right (mm)  :&quot;</span><span class="p">,</span> <span class="n">h_right</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6 data points loaded.
+P_dial  (inHg): [26.4 22.1 17.2 12.8  8.1  4.4]
+h_left  (mm)  : [  0.  62. 122. 182. 242. 289.]
+h_right (mm)  : [   0.  -61. -122. -181. -242. -289.]
 </pre></div>
 </div>
 </div>
@@ -616,8 +627,8 @@ difference is then scaled by the thermal-expansion factor of Eq. (1) to give a r
 <span class="c1"># x data, in inHg:  atmospheric pressure  -  dial reading</span>
 <span class="n">P_gauge</span> <span class="o">=</span>  <span class="n">P_atm_inHg</span> <span class="o">-</span> <span class="n">P_dial</span>                <span class="c1"># &lt;-- replace with your expression</span>
 
-<span class="c1"># y data, in Torr:  (right column height  -  left column height)  scaled by  therm</span>
-<span class="n">P_torr</span> <span class="o">=</span>  <span class="n">therm</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_left</span> <span class="o">-</span> <span class="n">h_right</span><span class="p">)</span>                 <span class="c1"># &lt;-- replace with your expression</span>
+<span class="c1"># y data, in Torr:  |height difference between the two mercury columns|  scaled by  therm</span>
+<span class="n">P_torr</span> <span class="o">=</span>  <span class="n">therm</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">h_left</span> <span class="o">-</span> <span class="n">h_right</span><span class="p">)</span>                 <span class="c1"># &lt;-- replace with your expression</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P_gauge (inHg):&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">P_gauge</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P_torr  (Torr):&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">P_torr</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
@@ -625,11 +636,8 @@ difference is then scaled by the thermal-expansion factor of Eq. (1) to give a r
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P_gauge (inHg): [ 4.8  6.   7.1  8.   9.1 10.5 11.6 12.7 14.  15.1 16.3 17.4 18.4 19.6
- 20.7 21.7 23.1 24.3 25.5 26.2 26.8 27.7 29.  31. ]
-P_torr  (Torr): [   0.   348.6  627.6  926.4 1225.2 1544.  1862.8 2121.8 2430.6 2719.4
- 3038.2 3337.  3616.  3924.8 4203.7 4502.5 4821.3 5110.1 5418.9 5618.2
- 5757.6 6016.6 6295.5 6594.4]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P_gauge (inHg): [ 4.8  9.1 14.  18.4 23.1 26.8]
+P_torr  (Torr): [  0.  122.5 243.1 361.6 482.1 575.8]
 </pre></div>
 </div>
 </div>
@@ -658,7 +666,7 @@ is a <em>format string</em> (<code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5543a02765fc53938a37def4e32929dfd005ae326e5c6288f7208da2f5bb330f.png" src="../../_images/5543a02765fc53938a37def4e32929dfd005ae326e5c6288f7208da2f5bb330f.png" />
+<img alt="../../_images/02b5a06be9d4302bfa40e5f91285a2d6ce5d6bc9bef8dba5851eb348f019d21e.png" src="../../_images/02b5a06be9d4302bfa40e5f91285a2d6ce5d6bc9bef8dba5851eb348f019d21e.png" />
 </div>
 </div>
 </section>
@@ -682,6 +690,13 @@ intact when you export from Excel):</p>
 <li><p><strong>To the right of the first two rows</strong> — the atmospheric pressure (<code class="docutils literal notranslate"><span class="pre">Patm</span> <span class="pre">=</span></code>) and manometer
 temperature (<code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">=</span></code>), each followed by its value and unit.</p></li>
 </ul>
+<p>⚠️ <strong>Check your units before trusting the dropdown.</strong> The sample file’s own header says
+“(cm)”, but the lab write-up’s procedure says heights are read <em>“to the nearest mm,”</em> and
+values on the order of a few hundred <strong>millimeters</strong> are physically reasonable for this
+apparatus (a few hundred <strong>centimeters</strong> — multiple meters — would not be). If your CSV’s
+header also says “cm” but the numbers look mm-scale, leave the dropdown on <code class="docutils literal notranslate"><span class="pre">mm</span></code> rather than
+switching it, or check with your instructor which is correct — selecting the wrong option
+silently scales every height by 10×.</p>
 <p>Run the cell below, click <strong>Upload CSV</strong>, and choose your file. If your heights were recorded in
 <strong>cm</strong> rather than <strong>mm</strong>, switch the <strong>Height units</strong> dropdown to <code class="docutils literal notranslate"><span class="pre">cm</span></code> — the next cell will
 convert them automatically.</p>
@@ -701,6 +716,8 @@ real data — then continue on to Step 3 below.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a2c599f147734cfe952ba654a213b506", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -739,6 +756,18 @@ real data — then continue on to Step 3 below.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P_dial :&quot;</span><span class="p">,</span> <span class="n">P_dial</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;h_left (mm):&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">h_left</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;h_right (mm):&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">h_right</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>24 data points loaded from file.
+P_atm = 31.2 inHg,  T = 21.5 °C
+P_dial : [26.4 25.2 24.1 23.2 22.1 20.7 19.6 18.5 17.2 16.1 14.9 13.8 12.8 11.6
+ 10.5  9.5  8.1  6.9  5.7  5.   4.4  3.5  2.2  0.2]
+h_left (mm): [  0.  18.  32.  47.  62.  78.  94. 107. 122. 137. 153. 168. 182. 197.
+ 211. 226. 242. 257. 272. 282. 289. 302. 316. 331.]
+h_right (mm): [   0.  -17.  -31.  -46.  -61.  -77.  -93. -106. -122. -136. -152. -167.
+ -181. -197. -211. -226. -242. -256. -272. -282. -289. -302. -316. -331.]
 </pre></div>
 </div>
 </div>
@@ -808,7 +837,6 @@ passes near every point.</p>
 2, in which case it keeps <strong>two</strong>.</p></li>
 <li><p><strong>Rule 2:</strong> the last digit of the uncertainty sets the last digit reported in the value.</p></li>
 </ul>
-<p><strong>JJF Note: keep the rules and just have them report the slope and intercept using correct sig figs in a markdown cell</strong>.</p>
 </section>
 <section id="discussion">
 <h2>Discussion<a class="headerlink" href="#discussion" title="Link to this heading">#</a></h2>
@@ -894,7 +922,6 @@ passes near every point.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-to-python-start-here">New to Python? Start here</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-new-to-matplotlib-section-here-too">Add a New to Matplotlib section here too!</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data">The data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-build-the-derived-columns">Step 1 — Build the derived columns</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-plot-the-data">Step 2 — Plot the data</a></li>
