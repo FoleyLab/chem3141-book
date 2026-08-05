@@ -247,9 +247,17 @@
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Computational Set: Data Analysis A — Linear Regression</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="data_analysis_B_multiple_regression.html">Computational Set: Data Analysis B — Multiple (Polynomial) Regression</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="data_analysis_C_weighted_regression.html">Computational Set: Data Analysis C — Weighted Linear Regression</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="data_analysis_D_curve_fitting.html">Computational Set: Data Analysis D — Nonlinear Curve Fitting</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
@@ -482,6 +490,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Computational Set: Data Analysis A — Linear Regression</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration-of-a-pressure-gauge">Calibration of a Pressure Gauge</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
 </ul>
@@ -491,11 +500,17 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-build-the-derived-columns">Step 1 — Build the derived columns</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-plot-the-data">Step 2 — Plot the data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-your-real-data">Working with your real data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-cell-below-to-load-your-data-you-don-t-need-to-edit-it">📥 Run the cell below to load your data - <strong>you don’t need to edit it.</strong></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-linear-regression-with-uncertainties">Step 3 — Linear regression with uncertainties</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-overlay-the-regression-line">Step 4 — Overlay the regression line</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-report-the-parameters-with-correct-significant-figures">Step 5 — Report the parameters with correct significant figures</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -697,7 +712,8 @@ apparatus (a few hundred <strong>centimeters</strong> — multiple meters — wo
 header also says “cm” but the numbers look mm-scale, leave the dropdown on <code class="docutils literal notranslate"><span class="pre">mm</span></code> rather than
 switching it, or check with your instructor which is correct — selecting the wrong option
 silently scales every height by 10×.</p>
-<p>Run the cell below, click <strong>Upload CSV</strong>, and choose your file. If your heights were recorded in
+<p>💾 <strong>Run the cell below to load the data — you don’t need to edit it.</strong>
+Run the cell below, click <strong>Upload CSV</strong>, and choose your file. If your heights were recorded in
 <strong>cm</strong> rather than <strong>mm</strong>, switch the <strong>Height units</strong> dropdown to <code class="docutils literal notranslate"><span class="pre">cm</span></code> — the next cell will
 convert them automatically.</p>
 <p><strong>Important:</strong> the cell after the uploader <em>overwrites</em> <code class="docutils literal notranslate"><span class="pre">P_dial</span></code>, <code class="docutils literal notranslate"><span class="pre">h_left</span></code>, <code class="docutils literal notranslate"><span class="pre">h_right</span></code>,
@@ -719,6 +735,10 @@ real data — then continue on to Step 3 below.</p>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">{"model_id": "a2c599f147734cfe952ba654a213b506", "version_major": 2, "version_minor": 0}</script></div>
 </div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="run-the-cell-below-to-load-your-data-you-don-t-need-to-edit-it">
+<h1>📥 Run the cell below to load your data - <strong>you don’t need to edit it.</strong><a class="headerlink" href="#run-the-cell-below-to-load-your-data-you-don-t-need-to-edit-it" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this cell AFTER you&#39;ve uploaded your file above.</span>
@@ -772,7 +792,6 @@ h_right (mm): [   0.  -17.  -31.  -46.  -61.  -77.  -93. -106. -122. -136. -152.
 </div>
 </div>
 </div>
-</section>
 <section id="step-3-linear-regression-with-uncertainties">
 <h2>Step 3 — Linear regression with uncertainties<a class="headerlink" href="#step-3-linear-regression-with-uncertainties" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">numpy.polyfit(x,</span> <span class="pre">y,</span> <span class="pre">deg,</span> <span class="pre">cov=True)</span></code> returns two things: the best-fit coefficients <strong>and</strong> the
@@ -917,6 +936,7 @@ passes near every point.</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Computational Set: Data Analysis A — Linear Regression</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration-of-a-pressure-gauge">Calibration of a Pressure Gauge</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
 </ul>
@@ -926,11 +946,17 @@ passes near every point.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-build-the-derived-columns">Step 1 — Build the derived columns</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-plot-the-data">Step 2 — Plot the data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-your-real-data">Working with your real data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-cell-below-to-load-your-data-you-don-t-need-to-edit-it">📥 Run the cell below to load your data - <strong>you don’t need to edit it.</strong></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-linear-regression-with-uncertainties">Step 3 — Linear regression with uncertainties</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-overlay-the-regression-line">Step 4 — Overlay the regression line</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-report-the-parameters-with-correct-significant-figures">Step 5 — Report the parameters with correct significant figures</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>

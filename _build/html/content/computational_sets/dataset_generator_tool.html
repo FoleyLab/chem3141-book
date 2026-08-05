@@ -1,0 +1,1118 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chem 3141 Lab Data Set Modification &amp; Generation Tool &#8212; CHEM 3141: Quantum Mechanics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/computational_sets/dataset_generator_tool';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="CHEM 3141: Quantum Mechanics - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="CHEM 3141: Quantum Mechanics - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    CHEM 3141: Quantum Mechanics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture Notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates_two_level.html">Chapter 1: Introduction to Quantum Phenomena</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/qm_postulates.html">Chapter 2: The Postulates Revisited</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/translation.html">Chapter 3: Translational Motion</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/vibration.html">Chapter 4: Vibrational Motion</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/rotation.html">Chapter 5: Angular Momentum, and Rotational Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/hydrogen.html">Chapter 6: The Hydrogen Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/variation.html">Chapter 7: The Variation Theorem</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/perturbation.html">Chapter 8: Perturbation Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture_notes/SphHarm_visualize.html">Visualizing Spherical harmonics</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Sets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_1.html">Problem Set 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problem_sets/ps_2.html">Problem Set 2</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Sets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="spin_one_half.html">Computational Set 1: Introduction to Spin 1/2</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="pib_cyanine_dye_demo.html">Computational Set 2: Particle-in-a-Box Model of Cyanine Dyes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactive_harmonic_oscillator.html">Computational Set 3: Harmonic Oscillator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spherical_harmonics.html">Computational Set 4: Spherical Harmonics</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="co2_raman.html">Computational Set 5: Vibrational Spectroscopy of Cis and Trans Dichloroethylene</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="linear_variational_method.html">Computational Set 6: Linear Variational Method</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="co_perturbation_theory.html">Computational Set 7: Perturbation Theory for Carbon Monoxide</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="co_variational.html">Computational Set 8: Variational Method for Carbon Monoxide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variational_method_rotor_in_a_field.html">Computational Set 9: Variational Method for a Rotor in a Field</a></li>
+<li class="toctree-l1"><a class="reference internal" href="two_qubit_entangled.html">Computational Set 10: Entangling Operations through Strong Light-Matter Coupling</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="single_qubit_cavity_lindblad.html">Computational Set 11: Open-System Jaynes-Cummings Dynamics</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="cqed_demo.html">Computational Set 12: Cavity Quantum Electrodynamics</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="newton_raphson.html">Computational Set 13: Newton-Raphson Optimization</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="data_analysis_A_linear_regression.html">Computational Set: Data Analysis A — Linear Regression</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="data_analysis_B_multiple_regression.html">Computational Set: Data Analysis B — Multiple (Polynomial) Regression</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="data_analysis_C_weighted_regression.html">Computational Set: Data Analysis C — Weighted Linear Regression</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="data_analysis_D_curve_fitting.html">Computational Set: Data Analysis D — Nonlinear Curve Fitting</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/formula_sheet.html">Useful Formulae</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note01.html">Hydrogenlike atoms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note03.html">Atomic orbitals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/note05.html">Additional Notes on Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/spin_background.html">Spin</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/FoleyLab/chem3141-book/blob/main/content/computational_sets/dataset_generator_tool.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/FoleyLab/chem3141-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FoleyLab/chem3141-book/issues/new?title=Issue%20on%20page%20%2Fcontent/computational_sets/dataset_generator_tool.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/computational_sets/dataset_generator_tool.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chem 3141 Lab Data Set Modification & Generation Tool</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features:</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chem-3141-lab-data-set-modification-generation-tool">
+<h1>Chem 3141 Lab Data Set Modification &amp; Generation Tool<a class="headerlink" href="#chem-3141-lab-data-set-modification-generation-tool" title="Link to this heading">#</a></h1>
+<p>This interactive Jupyter notebook tool allows instructors and teaching assistants to modify master computational data sets (Types A, B, and C) and bulk-generate customized data sets for distribution to a large lab class.</p>
+<hr class="docutils" />
+<section id="features">
+<h2>Features:<a class="headerlink" href="#features" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Easy Type Selection</strong>: Switch seamlessly between Dataset Types A, B, and C.</p></li>
+<li><p><strong>Built-in Master Datasets</strong>: Hard-coded Version 1 master datasets are embedded directly—no external file loading required.</p></li>
+<li><p><strong>Custom Master Upload</strong>: Easily upload a custom CSV file to serve as the new master baseline.</p></li>
+<li><p><strong>Interactive Parameter Tuning</strong>: Fine-tune modification values (deltas for pressure, temperature, resistance, rate constants).</p></li>
+<li><p><strong>Single &amp; Bulk Export</strong>: Preview modified data side-by-side with original master data, and export single CSV files or a ZIP bundle of unique datasets for a student roster.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">zipfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">clear_output</span><span class="p">,</span> <span class="n">FileLink</span>
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># 1. EMBEDDED MASTER VERSION 1 DATASETS (Hard-copied)</span>
+<span class="c1"># =============================================================================</span>
+
+<span class="n">MASTER_A1_TEXT</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Pdial (inHg),left (cm),right (cm),,Patm =,31.20,inHg</span>
+<span class="s2">26.4,0,0,,T =,21.5,°C</span>
+<span class="s2">25.2,18,-17,,,,</span>
+<span class="s2">24.1,32,-31,,,,</span>
+<span class="s2">23.2,47,-46,,,,</span>
+<span class="s2">22.1,62,-61,,,,</span>
+<span class="s2">20.7,78,-77,,,,</span>
+<span class="s2">19.6,94,-93,,,,</span>
+<span class="s2">18.5,107,-106,,,,</span>
+<span class="s2">17.2,122,-122,,,,</span>
+<span class="s2">16.1,137,-136,,,,</span>
+<span class="s2">14.9,153,-152,,,,</span>
+<span class="s2">13.8,168,-167,,,,</span>
+<span class="s2">12.8,182,-181,,,,</span>
+<span class="s2">11.6,197,-197,,,,</span>
+<span class="s2">10.5,211,-211,,,,</span>
+<span class="s2">9.5,226,-226,,,,</span>
+<span class="s2">8.1,242,-242,,,,</span>
+<span class="s2">6.9,257,-256,,,,</span>
+<span class="s2">5.7,272,-272,,,,</span>
+<span class="s2">5.0,282,-282,,,,</span>
+<span class="s2">4.4,289,-289,,,,</span>
+<span class="s2">3.5,302,-302,,,,</span>
+<span class="s2">2.2,316,-316,,,,</span>
+<span class="s2">0.2,331,-331,,,,</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">MASTER_B1_TEXT</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;R (W),T (°C)</span>
+<span class="s2">5695,5.8</span>
+<span class="s2">4316,11.4</span>
+<span class="s2">3316,16.9</span>
+<span class="s2">2777,20.8</span>
+<span class="s2">2143,26.6</span>
+<span class="s2">1736,31.5</span>
+<span class="s2">1413,36.7</span>
+<span class="s2">1171,41.2</span>
+<span class="s2">979,45.9</span>
+<span class="s2">801.2,51.0</span>
+<span class="s2">651.8,56.5</span>
+<span class="s2">555.4,61.0</span>
+<span class="s2">478.0,65.2</span>
+<span class="s2">383.1,70.9</span>
+<span class="s2">330.8,76.0</span>
+<span class="s2">275.5,81.7</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">MASTER_C1_TEXT</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;T (°C),k (s-1),Dk (s-1)</span>
+<span class="s2">24.4,0.000073,0.00003</span>
+<span class="s2">30.0,0.000139,0.00005</span>
+<span class="s2">34.7,0.000353,0.00007</span>
+<span class="s2">40.2,0.000717,0.00012</span>
+<span class="s2">45.1,0.001600,0.00017</span>
+<span class="s2">50.3,0.003340,0.00015</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># 2. PARSING, MODIFICATION &amp; EXPORT FUNCTIONS</span>
+<span class="c1"># =============================================================================</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_dataset_A</span><span class="p">(</span><span class="n">csv_content</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse Type A dataset (preserves Patm, T, and (Pdial, left, right) structure).&quot;&quot;&quot;</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">csv_content</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span>
+    <span class="n">parts1</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="n">patm_val</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts1</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">parts1</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="k">else</span> <span class="mf">31.20</span>
+    
+    <span class="n">parts2</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="n">temp_val</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts2</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">parts2</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="k">else</span> <span class="mf">21.5</span>
+    
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">])])</span>
+            
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Pdial (inHg)&#39;</span><span class="p">,</span> <span class="s1">&#39;left (cm)&#39;</span><span class="p">,</span> <span class="s1">&#39;right (cm)&#39;</span><span class="p">])</span>
+    <span class="n">meta</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Patm&#39;</span><span class="p">:</span> <span class="n">patm_val</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="n">temp_val</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">,</span> <span class="n">meta</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">modify_dataset_A</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">meta</span><span class="p">,</span> <span class="n">delta_pdial</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">delta_left</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">delta_right</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">new_temp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">patm_offset</span><span class="o">=</span><span class="mf">1.1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Modify Type A dataset parameters.&quot;&quot;&quot;</span>
+    <span class="n">df_mod</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df_mod</span><span class="p">[</span><span class="s1">&#39;Pdial (inHg)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_mod</span><span class="p">[</span><span class="s1">&#39;Pdial (inHg)&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">delta_pdial</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">new_left</span> <span class="o">=</span> <span class="n">df_mod</span><span class="p">[</span><span class="s1">&#39;left (cm)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">new_right</span> <span class="o">=</span> <span class="n">df_mod</span><span class="p">[</span><span class="s1">&#39;right (cm)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    
+    <span class="c1"># Row 1 left and right remain 0</span>
+    <span class="n">new_left</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_left</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">delta_left</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">new_right</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_right</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">delta_right</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="n">df_mod</span><span class="p">[</span><span class="s1">&#39;left (cm)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_left</span>
+    <span class="n">df_mod</span><span class="p">[</span><span class="s1">&#39;right (cm)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_right</span>
+    
+    <span class="n">temp_out</span> <span class="o">=</span> <span class="n">new_temp</span> <span class="k">if</span> <span class="n">new_temp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">meta</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>
+    <span class="n">first_pdial</span> <span class="o">=</span> <span class="n">df_mod</span><span class="p">[</span><span class="s1">&#39;Pdial (inHg)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">patm_out</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">first_pdial</span> <span class="o">+</span> <span class="n">patm_offset</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    
+    <span class="n">meta_mod</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Patm&#39;</span><span class="p">:</span> <span class="n">patm_out</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">temp_out</span><span class="p">,</span> <span class="mi">1</span><span class="p">)}</span>
+    <span class="k">return</span> <span class="n">df_mod</span><span class="p">,</span> <span class="n">meta_mod</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">export_csv_A</span><span class="p">(</span><span class="n">df_mod</span><span class="p">,</span> <span class="n">meta_mod</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Format Type A modified data back into original CSV structure.&quot;&quot;&quot;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pdial (inHg),left (cm),right (cm),,Patm =,</span><span class="si">{</span><span class="n">meta_mod</span><span class="p">[</span><span class="s1">&#39;Patm&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">,inHg,&quot;</span><span class="p">)</span>
+    <span class="n">r0</span> <span class="o">=</span> <span class="n">df_mod</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">r0</span><span class="p">[</span><span class="s1">&#39;Pdial (inHg)&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">r0</span><span class="p">[</span><span class="s1">&#39;left (cm)&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">r0</span><span class="p">[</span><span class="s1">&#39;right (cm)&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">,,T =,</span><span class="si">{</span><span class="n">meta_mod</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">,°C,&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">df_mod</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;Pdial (inHg)&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;left (cm)&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;right (cm)&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">,,,,,,&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_dataset_B</span><span class="p">(</span><span class="n">csv_content</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse Type B dataset.&quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">csv_content</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">,</span> <span class="p">{}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">modify_dataset_B</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">delta_r</span><span class="o">=-</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=-</span><span class="mf">2.0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Modify Type B dataset parameters.&quot;&quot;&quot;</span>
+    <span class="n">df_mod</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df_mod</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_mod</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">delta_r</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">df_mod</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_mod</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">delta_t</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df_mod</span><span class="p">,</span> <span class="p">{}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">export_csv_B</span><span class="p">(</span><span class="n">df_mod</span><span class="p">,</span> <span class="n">meta_mod</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Format Type B modified data into CSV.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">df_mod</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_dataset_C</span><span class="p">(</span><span class="n">csv_content</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse Type C dataset.&quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">csv_content</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">,</span> <span class="p">{}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">modify_dataset_C</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">delta_k</span><span class="o">=</span><span class="mf">0.000009</span><span class="p">,</span> <span class="n">delta_dk</span><span class="o">=</span><span class="mf">0.00005</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Modify Type C dataset parameters.&quot;&quot;&quot;</span>
+    <span class="n">df_mod</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df_mod</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_mod</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">delta_t</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">df_mod</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_mod</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">delta_k</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+    <span class="n">df_mod</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_mod</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">delta_dk</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df_mod</span><span class="p">,</span> <span class="p">{}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">export_csv_C</span><span class="p">(</span><span class="n">df_mod</span><span class="p">,</span> <span class="n">meta_mod</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Format Type C modified data into CSV.&quot;&quot;&quot;</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">df_mod</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">df_mod</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">df_mod</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">df_mod</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Master dataset functions and V1 data structures loaded successfully.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Master dataset functions and V1 data structures loaded successfully.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =============================================================================</span>
+<span class="c1"># 3. INTERACTIVE IPYWIDGETS GUI</span>
+<span class="c1"># =============================================================================</span>
+
+<span class="n">custom_master_files</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+
+<span class="c1"># Type Selection &amp; Master File Management</span>
+<span class="n">type_dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;Type A (Manometer/Pressure)&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Type B (Thermistor Resistance)&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Type C (Kinetics Rate Constant)&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">)],</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Data Type:&#39;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;140px&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">file_uploader</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FileUpload</span><span class="p">(</span>
+    <span class="n">accept</span><span class="o">=</span><span class="s1">&#39;.csv&#39;</span><span class="p">,</span>
+    <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Upload Custom Master CSV&#39;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;button_color&#39;</span><span class="p">:</span> <span class="s1">&#39;#4a90e2&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">reset_master_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Reset to Default Master V1&#39;</span><span class="p">,</span>
+    <span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;warning&#39;</span><span class="p">,</span>
+    <span class="n">icon</span><span class="o">=</span><span class="s1">&#39;undo&#39;</span>
+<span class="p">)</span>
+
+<span class="n">upload_status_lbl</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;&lt;i style=&#39;color:gray;&#39;&gt;Using default Master Version 1 data&lt;/i&gt;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Type A Parameter Controls</span>
+<span class="n">a_delta_pdial</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">5.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Δ Pdial (inHg):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;160px&#39;</span><span class="p">})</span>
+<span class="n">a_delta_left</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Δ left (cm):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;160px&#39;</span><span class="p">})</span>
+<span class="n">a_delta_right</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Δ right (cm):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;160px&#39;</span><span class="p">})</span>
+<span class="n">a_temp</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">21.5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">19.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">35.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Temperature T (°C):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;160px&#39;</span><span class="p">})</span>
+<span class="n">a_patm_offset</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">5.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Patm - Pdial[0] (inHg):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;160px&#39;</span><span class="p">})</span>
+
+<span class="c1"># Type B Parameter Controls</span>
+<span class="n">b_delta_r</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=-</span><span class="mf">20.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">100.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Δ R (Ω):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;160px&#39;</span><span class="p">})</span>
+<span class="n">b_delta_t</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=-</span><span class="mf">2.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Δ T (°C):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;160px&#39;</span><span class="p">})</span>
+
+<span class="c1"># Type C Parameter Controls</span>
+<span class="n">c_delta_t</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Δ T (°C):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;160px&#39;</span><span class="p">})</span>
+<span class="n">c_delta_k</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">BoundedFloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.000009</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">0.001</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.000001</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;.6f&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Δ k (s⁻¹):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;160px&#39;</span><span class="p">})</span>
+<span class="n">c_delta_dk</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">BoundedFloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.000050</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">0.001</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.000005</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;.5f&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Δ Dk (s⁻¹):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;160px&#39;</span><span class="p">})</span>
+
+<span class="c1"># Preview &amp; Export Controls</span>
+<span class="n">out_preview</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+<span class="n">single_export_filename</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;data_analysis_example_data_sets_A2.csv&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Export Filename:&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;140px&#39;</span><span class="p">})</span>
+<span class="n">single_export_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Export Single CSV&#39;</span><span class="p">,</span> <span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;success&#39;</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="s1">&#39;download&#39;</span><span class="p">)</span>
+<span class="n">out_single_export</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="c1"># Containers</span>
+<span class="n">ctrl_box_A</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">a_delta_pdial</span><span class="p">,</span> <span class="n">a_delta_left</span><span class="p">,</span> <span class="n">a_delta_right</span><span class="p">,</span> <span class="n">a_temp</span><span class="p">,</span> <span class="n">a_patm_offset</span><span class="p">])</span>
+<span class="n">ctrl_box_B</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">b_delta_r</span><span class="p">,</span> <span class="n">b_delta_t</span><span class="p">])</span>
+<span class="n">ctrl_box_C</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">c_delta_t</span><span class="p">,</span> <span class="n">c_delta_k</span><span class="p">,</span> <span class="n">c_delta_dk</span><span class="p">])</span>
+<span class="n">param_container</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">ctrl_box_A</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_master_csv_text</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">custom_master_files</span><span class="p">[</span><span class="n">dtype</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">custom_master_files</span><span class="p">[</span><span class="n">dtype</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">dtype</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">MASTER_A1_TEXT</span>
+    <span class="k">elif</span> <span class="n">dtype</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">MASTER_B1_TEXT</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">MASTER_C1_TEXT</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_param_container</span><span class="p">():</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">type_dropdown</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span>
+        <span class="n">param_container</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctrl_box_A</span><span class="p">]</span>
+        <span class="n">single_export_filename</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;data_analysis_example_data_sets_A2.csv&#39;</span>
+    <span class="k">elif</span> <span class="n">t</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span>
+        <span class="n">param_container</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctrl_box_B</span><span class="p">]</span>
+        <span class="n">single_export_filename</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;data_analysis_example_data_sets_B2.csv&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">param_container</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctrl_box_C</span><span class="p">]</span>
+        <span class="n">single_export_filename</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;data_analysis_example_data_sets_C2.csv&#39;</span>
+        
+    <span class="k">if</span> <span class="n">custom_master_files</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">upload_status_lbl</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&lt;b style=&#39;color:#2a7ae9;&#39;&gt;Currently using custom uploaded master for Type </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">&lt;/b&gt;&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">upload_status_lbl</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&lt;i style=&#39;color:gray;&#39;&gt;Currently using default Master Version 1 data for Type </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">&lt;/i&gt;&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">render_preview</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">out_preview</span><span class="p">:</span>
+        <span class="n">clear_output</span><span class="p">()</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="n">type_dropdown</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">csv_text</span> <span class="o">=</span> <span class="n">get_master_csv_text</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">dtype</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span>
+            <span class="n">df_orig</span><span class="p">,</span> <span class="n">meta_orig</span> <span class="o">=</span> <span class="n">parse_dataset_A</span><span class="p">(</span><span class="n">csv_text</span><span class="p">)</span>
+            <span class="n">df_mod</span><span class="p">,</span> <span class="n">meta_mod</span> <span class="o">=</span> <span class="n">modify_dataset_A</span><span class="p">(</span>
+                <span class="n">df_orig</span><span class="p">,</span> <span class="n">meta_orig</span><span class="p">,</span> 
+                <span class="n">delta_pdial</span><span class="o">=</span><span class="n">a_delta_pdial</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> 
+                <span class="n">delta_left</span><span class="o">=</span><span class="n">a_delta_left</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> 
+                <span class="n">delta_right</span><span class="o">=</span><span class="n">a_delta_right</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> 
+                <span class="n">new_temp</span><span class="o">=</span><span class="n">a_temp</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> 
+                <span class="n">patm_offset</span><span class="o">=</span><span class="n">a_patm_offset</span><span class="o">.</span><span class="n">value</span>
+            <span class="p">)</span>
+            <span class="n">html_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            &lt;div style=&quot;display:flex; gap:30px;&quot;&gt;</span>
+<span class="s2">                &lt;div style=&quot;background-color:#f9f9f9; padding:12px; border-radius:8px; border:1px solid #ddd;&quot;&gt;</span>
+<span class="s2">                    &lt;h4 style=&quot;margin-top:0;&quot;&gt;Original Master (Type A)&lt;/h4&gt;</span>
+<span class="s2">                    &lt;p&gt;&lt;b&gt;Patm:&lt;/b&gt; </span><span class="si">{</span><span class="n">meta_orig</span><span class="p">[</span><span class="s1">&#39;Patm&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> inHg &amp;nbsp;|&amp;nbsp; &lt;b&gt;T:&lt;/b&gt; </span><span class="si">{</span><span class="n">meta_orig</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> °C&lt;/p&gt;</span>
+<span class="s2">                    </span><span class="si">{</span><span class="n">df_orig</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">max_rows</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="si">}</span>
+<span class="s2">                &lt;/div&gt;</span>
+<span class="s2">                &lt;div style=&quot;background-color:#f0f7ff; padding:12px; border-radius:8px; border:1px solid #b6d4fe;&quot;&gt;</span>
+<span class="s2">                    &lt;h4 style=&quot;margin-top:0; color:#0d6efd;&quot;&gt;Modified Output (Type A)&lt;/h4&gt;</span>
+<span class="s2">                    &lt;p&gt;&lt;b&gt;Patm:&lt;/b&gt; </span><span class="si">{</span><span class="n">meta_mod</span><span class="p">[</span><span class="s1">&#39;Patm&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> inHg &amp;nbsp;|&amp;nbsp; &lt;b&gt;T:&lt;/b&gt; </span><span class="si">{</span><span class="n">meta_mod</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> °C&lt;/p&gt;</span>
+<span class="s2">                    </span><span class="si">{</span><span class="n">df_mod</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">max_rows</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="si">}</span>
+<span class="s2">                &lt;/div&gt;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">            &quot;&quot;&quot;</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">html_str</span><span class="p">))</span>
+            
+        <span class="k">elif</span> <span class="n">dtype</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span>
+            <span class="n">df_orig</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parse_dataset_B</span><span class="p">(</span><span class="n">csv_text</span><span class="p">)</span>
+            <span class="n">df_mod</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">modify_dataset_B</span><span class="p">(</span><span class="n">df_orig</span><span class="p">,</span> <span class="n">delta_r</span><span class="o">=</span><span class="n">b_delta_r</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">b_delta_t</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">html_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            &lt;div style=&quot;display:flex; gap:30px;&quot;&gt;</span>
+<span class="s2">                &lt;div style=&quot;background-color:#f9f9f9; padding:12px; border-radius:8px; border:1px solid #ddd;&quot;&gt;</span>
+<span class="s2">                    &lt;h4 style=&quot;margin-top:0;&quot;&gt;Original Master (Type B)&lt;/h4&gt;</span>
+<span class="s2">                    </span><span class="si">{</span><span class="n">df_orig</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">max_rows</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="si">}</span>
+<span class="s2">                &lt;/div&gt;</span>
+<span class="s2">                &lt;div style=&quot;background-color:#f0f7ff; padding:12px; border-radius:8px; border:1px solid #b6d4fe;&quot;&gt;</span>
+<span class="s2">                    &lt;h4 style=&quot;margin-top:0; color:#0d6efd;&quot;&gt;Modified Output (Type B)&lt;/h4&gt;</span>
+<span class="s2">                    </span><span class="si">{</span><span class="n">df_mod</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">max_rows</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="si">}</span>
+<span class="s2">                &lt;/div&gt;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">            &quot;&quot;&quot;</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">html_str</span><span class="p">))</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">df_orig</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parse_dataset_C</span><span class="p">(</span><span class="n">csv_text</span><span class="p">)</span>
+            <span class="n">df_mod</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">modify_dataset_C</span><span class="p">(</span><span class="n">df_orig</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">c_delta_t</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">delta_k</span><span class="o">=</span><span class="n">c_delta_k</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">delta_dk</span><span class="o">=</span><span class="n">c_delta_dk</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">html_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            &lt;div style=&quot;display:flex; gap:30px;&quot;&gt;</span>
+<span class="s2">                &lt;div style=&quot;background-color:#f9f9f9; padding:12px; border-radius:8px; border:1px solid #ddd;&quot;&gt;</span>
+<span class="s2">                    &lt;h4 style=&quot;margin-top:0;&quot;&gt;Original Master (Type C)&lt;/h4&gt;</span>
+<span class="s2">                    </span><span class="si">{</span><span class="n">df_orig</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">max_rows</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="si">}</span>
+<span class="s2">                &lt;/div&gt;</span>
+<span class="s2">                &lt;div style=&quot;background-color:#f0f7ff; padding:12px; border-radius:8px; border:1px solid #b6d4fe;&quot;&gt;</span>
+<span class="s2">                    &lt;h4 style=&quot;margin-top:0; color:#0d6efd;&quot;&gt;Modified Output (Type C)&lt;/h4&gt;</span>
+<span class="s2">                    </span><span class="si">{</span><span class="n">df_mod</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">max_rows</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="si">}</span>
+<span class="s2">                &lt;/div&gt;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">            &quot;&quot;&quot;</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">html_str</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_type_change</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="n">update_param_container</span><span class="p">()</span>
+    <span class="n">render_preview</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_file_upload</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">file_uploader</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="n">file_info</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">file_uploader</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">file_info</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">type_dropdown</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">custom_master_files</span><span class="p">[</span><span class="n">dtype</span><span class="p">]</span> <span class="o">=</span> <span class="n">content</span>
+    <span class="n">update_param_container</span><span class="p">()</span>
+    <span class="n">render_preview</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_reset_master</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">type_dropdown</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">custom_master_files</span><span class="p">[</span><span class="n">dtype</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">file_uploader</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">update_param_container</span><span class="p">()</span>
+    <span class="n">render_preview</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_single_export</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">out_single_export</span><span class="p">:</span>
+        <span class="n">clear_output</span><span class="p">()</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="n">type_dropdown</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">csv_text</span> <span class="o">=</span> <span class="n">get_master_csv_text</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">single_export_filename</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;dataset_</span><span class="si">{</span><span class="n">dtype</span><span class="si">}</span><span class="s2">_modified.csv&quot;</span>
+        
+        <span class="k">if</span> <span class="n">dtype</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span>
+            <span class="n">df_orig</span><span class="p">,</span> <span class="n">meta_orig</span> <span class="o">=</span> <span class="n">parse_dataset_A</span><span class="p">(</span><span class="n">csv_text</span><span class="p">)</span>
+            <span class="n">df_mod</span><span class="p">,</span> <span class="n">meta_mod</span> <span class="o">=</span> <span class="n">modify_dataset_A</span><span class="p">(</span><span class="n">df_orig</span><span class="p">,</span> <span class="n">meta_orig</span><span class="p">,</span> <span class="n">a_delta_pdial</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">a_delta_left</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">a_delta_right</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">a_temp</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">a_patm_offset</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">out_csv</span> <span class="o">=</span> <span class="n">export_csv_A</span><span class="p">(</span><span class="n">df_mod</span><span class="p">,</span> <span class="n">meta_mod</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">dtype</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span>
+            <span class="n">df_orig</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parse_dataset_B</span><span class="p">(</span><span class="n">csv_text</span><span class="p">)</span>
+            <span class="n">df_mod</span><span class="p">,</span> <span class="n">meta_mod</span> <span class="o">=</span> <span class="n">modify_dataset_B</span><span class="p">(</span><span class="n">df_orig</span><span class="p">,</span> <span class="n">b_delta_r</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">b_delta_t</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">out_csv</span> <span class="o">=</span> <span class="n">export_csv_B</span><span class="p">(</span><span class="n">df_mod</span><span class="p">,</span> <span class="n">meta_mod</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">df_orig</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parse_dataset_C</span><span class="p">(</span><span class="n">csv_text</span><span class="p">)</span>
+            <span class="n">df_mod</span><span class="p">,</span> <span class="n">meta_mod</span> <span class="o">=</span> <span class="n">modify_dataset_C</span><span class="p">(</span><span class="n">df_orig</span><span class="p">,</span> <span class="n">c_delta_t</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">c_delta_k</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">c_delta_dk</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">out_csv</span> <span class="o">=</span> <span class="n">export_csv_C</span><span class="p">(</span><span class="n">df_mod</span><span class="p">,</span> <span class="n">meta_mod</span><span class="p">)</span>
+            
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">out_csv</span><span class="p">)</span>
+            
+        <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;p style=&#39;color:green;&#39;&gt;&lt;b&gt;Saved successfully:&lt;/b&gt; &lt;code&gt;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&lt;/code&gt;&lt;/p&gt;&quot;</span><span class="p">))</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">FileLink</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+
+<span class="c1"># Event Listeners</span>
+<span class="n">type_dropdown</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">on_type_change</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">file_uploader</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">on_file_upload</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">reset_master_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_reset_master</span><span class="p">)</span>
+<span class="n">single_export_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_single_export</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">widget</span> <span class="ow">in</span> <span class="p">[</span><span class="n">a_delta_pdial</span><span class="p">,</span> <span class="n">a_delta_left</span><span class="p">,</span> <span class="n">a_delta_right</span><span class="p">,</span> <span class="n">a_temp</span><span class="p">,</span> <span class="n">a_patm_offset</span><span class="p">,</span> <span class="n">b_delta_r</span><span class="p">,</span> <span class="n">b_delta_t</span><span class="p">,</span> <span class="n">c_delta_t</span><span class="p">,</span> <span class="n">c_delta_k</span><span class="p">,</span> <span class="n">c_delta_dk</span><span class="p">]:</span>
+    <span class="n">widget</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">render_preview</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+<span class="c1"># Batch Generator Controls</span>
+<span class="n">batch_type</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;Type A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Type B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Type C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">)],</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Batch Type:&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;140px&#39;</span><span class="p">})</span>
+<span class="n">batch_count</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Student Count (N):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;140px&#39;</span><span class="p">})</span>
+<span class="n">batch_mode</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">RadioButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;Randomized Variation per Student&#39;</span><span class="p">,</span> <span class="s1">&#39;random&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Stepped Parameter Offset per Student&#39;</span><span class="p">,</span> <span class="s1">&#39;step&#39;</span><span class="p">)],</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;random&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Variation Mode:&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;140px&#39;</span><span class="p">})</span>
+<span class="n">batch_zip_name</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;chem3141_lab_datasets.zip&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;ZIP Filename:&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;140px&#39;</span><span class="p">})</span>
+<span class="n">batch_export_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Generate &amp; Export ZIP&#39;</span><span class="p">,</span> <span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;primary&#39;</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="s1">&#39;archive&#39;</span><span class="p">)</span>
+<span class="n">out_batch</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_batch_export</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">out_batch</span><span class="p">:</span>
+        <span class="n">clear_output</span><span class="p">()</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="n">batch_type</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">N</span> <span class="o">=</span> <span class="n">batch_count</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">mode</span> <span class="o">=</span> <span class="n">batch_mode</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">zip_filename</span> <span class="o">=</span> <span class="n">batch_zip_name</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">or</span> <span class="s1">&#39;class_datasets.zip&#39;</span>
+        
+        <span class="n">csv_text</span> <span class="o">=</span> <span class="n">get_master_csv_text</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">zip_buffer</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+        
+        <span class="n">out_dir</span> <span class="o">=</span> <span class="s2">&quot;generated_datasets&quot;</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
+        <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">zip_buffer</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZIP_DEFLATED</span><span class="p">)</span> <span class="k">as</span> <span class="n">zf</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">dtype</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span>
+                    <span class="n">df_orig</span><span class="p">,</span> <span class="n">meta_orig</span> <span class="o">=</span> <span class="n">parse_dataset_A</span><span class="p">(</span><span class="n">csv_text</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;random&#39;</span><span class="p">:</span>
+                        <span class="n">dp</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)),</span> <span class="mi">1</span><span class="p">)</span>
+                        <span class="n">dl</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
+                        <span class="n">dr</span> <span class="o">=</span> <span class="o">-</span><span class="n">dl</span>
+                        <span class="n">temp</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">19.5</span><span class="p">,</span> <span class="mf">35.0</span><span class="p">)),</span> <span class="mi">1</span><span class="p">)</span>
+                        <span class="n">poff</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">dp</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                        <span class="n">dl</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">5</span><span class="p">)</span>
+                        <span class="n">dr</span> <span class="o">=</span> <span class="o">-</span><span class="n">dl</span>
+                        <span class="n">temp</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="mf">19.5</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">30</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+                        <span class="n">poff</span> <span class="o">=</span> <span class="mf">1.1</span>
+                    <span class="n">df_mod</span><span class="p">,</span> <span class="n">meta_mod</span> <span class="o">=</span> <span class="n">modify_dataset_A</span><span class="p">(</span><span class="n">df_orig</span><span class="p">,</span> <span class="n">meta_orig</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="n">dl</span><span class="p">,</span> <span class="n">dr</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">poff</span><span class="p">)</span>
+                    <span class="n">out_csv</span> <span class="o">=</span> <span class="n">export_csv_A</span><span class="p">(</span><span class="n">df_mod</span><span class="p">,</span> <span class="n">meta_mod</span><span class="p">)</span>
+                    
+                <span class="k">elif</span> <span class="n">dtype</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span>
+                    <span class="n">df_orig</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parse_dataset_B</span><span class="p">(</span><span class="n">csv_text</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;random&#39;</span><span class="p">:</span>
+                        <span class="n">dr</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">)),</span> <span class="mi">1</span><span class="p">)</span>
+                        <span class="n">dt</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)),</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">dr</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="o">-</span><span class="mf">20.0</span> <span class="o">+</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                        <span class="n">dt</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">df_mod</span><span class="p">,</span> <span class="n">meta_mod</span> <span class="o">=</span> <span class="n">modify_dataset_B</span><span class="p">(</span><span class="n">df_orig</span><span class="p">,</span> <span class="n">dr</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+                    <span class="n">out_csv</span> <span class="o">=</span> <span class="n">export_csv_B</span><span class="p">(</span><span class="n">df_mod</span><span class="p">,</span> <span class="n">meta_mod</span><span class="p">)</span>
+                    
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">df_orig</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parse_dataset_C</span><span class="p">(</span><span class="n">csv_text</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;random&#39;</span><span class="p">:</span>
+                        <span class="n">dt</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)),</span> <span class="mi">1</span><span class="p">)</span>
+                        <span class="n">dk</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.00002</span><span class="p">,</span> <span class="mf">0.00002</span><span class="p">)),</span> <span class="mi">6</span><span class="p">)</span>
+                        <span class="n">ddk</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.00008</span><span class="p">,</span> <span class="mf">0.00008</span><span class="p">)),</span> <span class="mi">5</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">dt</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                        <span class="n">dk</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="mf">0.000001</span> <span class="o">*</span> <span class="n">i</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+                        <span class="n">ddk</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="mf">0.000005</span> <span class="o">*</span> <span class="n">i</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+                    <span class="n">df_mod</span><span class="p">,</span> <span class="n">meta_mod</span> <span class="o">=</span> <span class="n">modify_dataset_C</span><span class="p">(</span><span class="n">df_orig</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">dk</span><span class="p">,</span> <span class="n">ddk</span><span class="p">)</span>
+                    <span class="n">out_csv</span> <span class="o">=</span> <span class="n">export_csv_C</span><span class="p">(</span><span class="n">df_mod</span><span class="p">,</span> <span class="n">meta_mod</span><span class="p">)</span>
+                
+                <span class="n">fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;student_</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">_data_type_</span><span class="si">{</span><span class="n">dtype</span><span class="si">}</span><span class="s2">.csv&quot;</span>
+                <span class="n">zf</span><span class="o">.</span><span class="n">writestr</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">out_csv</span><span class="p">)</span>
+                
+                <span class="c1"># Save copy to local directory</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">fname</span><span class="p">),</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">out_csv</span><span class="p">)</span>
+        
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">zip_filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">zip_buffer</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+            
+        <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;p style=&#39;color:green;&#39;&gt;&lt;b&gt;Batch Generation Complete:&lt;/b&gt; Generated &lt;b&gt;</span><span class="si">{</span><span class="n">N</span><span class="si">}</span><span class="s2">&lt;/b&gt; datasets stored in &lt;code&gt;</span><span class="si">{</span><span class="n">out_dir</span><span class="si">}</span><span class="s2">/&lt;/code&gt; and packed into &lt;code&gt;</span><span class="si">{</span><span class="n">zip_filename</span><span class="si">}</span><span class="s2">&lt;/code&gt;&lt;/p&gt;&quot;</span><span class="p">))</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">FileLink</span><span class="p">(</span><span class="n">zip_filename</span><span class="p">))</span>
+
+<span class="n">batch_export_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_batch_export</span><span class="p">)</span>
+
+<span class="c1"># Tab Construction</span>
+<span class="n">tab1_layout</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;h3&gt;1. Master Data Source&lt;/h3&gt;&quot;</span><span class="p">),</span>
+    <span class="n">type_dropdown</span><span class="p">,</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">file_uploader</span><span class="p">,</span> <span class="n">reset_master_btn</span><span class="p">]),</span>
+    <span class="n">upload_status_lbl</span><span class="p">,</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;hr&gt;&lt;h3&gt;2. Numerical Parameter Controls&lt;/h3&gt;&quot;</span><span class="p">),</span>
+    <span class="n">param_container</span><span class="p">,</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;hr&gt;&lt;h3&gt;3. Data Comparison Preview &amp; Single Export&lt;/h3&gt;&quot;</span><span class="p">),</span>
+    <span class="n">out_preview</span><span class="p">,</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">single_export_filename</span><span class="p">,</span> <span class="n">single_export_btn</span><span class="p">]),</span>
+    <span class="n">out_single_export</span>
+<span class="p">])</span>
+
+<span class="n">tab2_layout</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;h3&gt;Batch Class Roster Exporter&lt;/h3&gt;&lt;p&gt;Bulk-generate N distinct datasets for your class roster with unique variations.&lt;/p&gt;&quot;</span><span class="p">),</span>
+    <span class="n">batch_type</span><span class="p">,</span>
+    <span class="n">batch_count</span><span class="p">,</span>
+    <span class="n">batch_mode</span><span class="p">,</span>
+    <span class="n">batch_zip_name</span><span class="p">,</span>
+    <span class="n">batch_export_btn</span><span class="p">,</span>
+    <span class="n">out_batch</span>
+<span class="p">])</span>
+
+<span class="n">main_tabs</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Tab</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">[</span><span class="n">tab1_layout</span><span class="p">,</span> <span class="n">tab2_layout</span><span class="p">])</span>
+<span class="n">main_tabs</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Single Dataset Modifier&#39;</span><span class="p">)</span>
+<span class="n">main_tabs</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Batch Class Roster Exporter&#39;</span><span class="p">)</span>
+
+<span class="c1"># Display App</span>
+<span class="n">update_param_container</span><span class="p">()</span>
+<span class="n">render_preview</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">main_tabs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "106255e4e90944ddaa558b0dc838ece4", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/computational_sets"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features:</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jay Foley
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
