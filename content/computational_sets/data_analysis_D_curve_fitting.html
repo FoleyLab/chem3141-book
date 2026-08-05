@@ -247,9 +247,17 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="data_analysis_A_linear_regression.html">Computational Set: Data Analysis A — Linear Regression</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="data_analysis_B_multiple_regression.html">Computational Set: Data Analysis B — Multiple (Polynomial) Regression</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="data_analysis_C_weighted_regression.html">Computational Set: Data Analysis C — Weighted Linear Regression</a></li>
+
+
+
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Computational Set: Data Analysis D — Nonlinear Curve Fitting</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
@@ -482,11 +490,15 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Computational Set: Data Analysis D — Nonlinear Curve Fitting</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bond-length-of-a-diatomic-from-a-morse-potential">Bond Length of a Diatomic from a Morse Potential</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data">The data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-cell-below-to-load-your-data-you-don-t-need-to-edit-it">📥 Run the cell below to load your data - <strong>you don’t need to edit it.</strong></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-prepare-the-energies">Step 1 — Prepare the energies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-plot-the-data-and-estimate-starting-values">Step 2 — Plot the data and estimate starting values</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-define-the-model-and-fit-it">Step 3 — Define the model and fit it</a></li>
@@ -494,6 +506,9 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-report-the-parameters-with-correct-significant-figures">Step 5 — Report the parameters with correct significant figures</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -547,26 +562,53 @@ fits are iterative and can fail from a poor start, so we estimate the parameters
 <p>A Gaussian DFT scan produced the electronic energy of CO at a series of bond lengths. Energies are
 in <strong>kcal/mol</strong> (<code class="docutils literal notranslate"><span class="pre">V_kcal</span></code>, reported relative to the first geometry, as Gaussian does) and distances
 in <strong>ångström</strong> (<code class="docutils literal notranslate"><span class="pre">r</span></code>).</p>
-<p>Run the cell below to load the data — <strong>you don’t need to edit it.</strong></p>
-<p><strong>JJF Note:  Replace this with a data upload call</strong></p>
+<p>💾 <strong>Run the cell below to load the data — you don’t need to edit it.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">curve_fit</span>
 
-<span class="n">KCAL_TO_KJ</span> <span class="o">=</span> <span class="mf">4.184</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">FileUpload</span><span class="p">,</span> <span class="n">Dropdown</span><span class="p">,</span> <span class="n">VBox</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="n">r</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">,</span> <span class="mf">1.10</span><span class="p">,</span> <span class="mf">1.128</span><span class="p">,</span> <span class="mf">1.18</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">1.35</span><span class="p">,</span> <span class="mf">1.50</span><span class="p">,</span> <span class="mf">1.70</span><span class="p">,</span> <span class="mf">2.00</span><span class="p">,</span> <span class="mf">2.40</span><span class="p">])</span>  <span class="c1"># angstrom</span>
-<span class="n">V_kcal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">0.064</span><span class="p">,</span> <span class="o">-</span><span class="mf">35.663</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.543</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.580</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.671</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.105</span><span class="p">,</span>
-                   <span class="o">-</span><span class="mf">50.329</span><span class="p">,</span> <span class="o">-</span><span class="mf">24.351</span><span class="p">,</span> <span class="mf">19.068</span><span class="p">,</span> <span class="mf">71.451</span><span class="p">,</span> <span class="mf">126.136</span><span class="p">,</span> <span class="mf">163.232</span><span class="p">])</span>                          <span class="c1"># kcal/mol</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="si">}</span><span class="s2"> points loaded.&quot;</span><span class="p">)</span>
+<span class="n">uploader</span> <span class="o">=</span> <span class="n">FileUpload</span><span class="p">(</span><span class="n">accept</span><span class="o">=</span><span class="s1">&#39;.csv&#39;</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Upload CSV&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">VBox</span><span class="p">([</span><span class="n">uploader</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="run-the-cell-below-to-load-your-data-you-don-t-need-to-edit-it">
+<h1>📥 Run the cell below to load your data - <strong>you don’t need to edit it.</strong><a class="headerlink" href="#run-the-cell-below-to-load-your-data-you-don-t-need-to-edit-it" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this cell AFTER you&#39;ve uploaded your file above.</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">uploader</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No file uploaded yet — click &#39;Upload CSV&#39; above, choose your file, then re-run this cell.&quot;</span><span class="p">)</span>
+
+<span class="c1"># ipywidgets FileUpload.value is a tuple of dicts (v8+) or a dict keyed by filename (v7)</span>
+<span class="n">uploaded</span> <span class="o">=</span> <span class="n">uploader</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">uploader</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="n">uploader</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">uploaded</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">])),</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># --- First two columns: r (Angstroms),V (kcal / mol ---</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="n">r</span>  <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">V</span>  <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="si">}</span><span class="s2"> data points loaded from file.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bond length = </span><span class="si">{</span><span class="n">R</span><span class="si">}</span><span class="s2"> in Angstroms,  V = </span><span class="si">{</span><span class="n">V</span><span class="si">}</span><span class="s2"> kcal / mol&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <section id="step-1-prepare-the-energies">
 <h2>Step 1 — Prepare the energies<a class="headerlink" href="#step-1-prepare-the-energies" title="Link to this heading">#</a></h2>
 <p>Two small conversions before fitting:</p>
@@ -578,13 +620,24 @@ first geometry, so <strong>shift</strong> the data down by its minimum value to 
 <p>👉 <strong>Your task:</strong> complete the two expressions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert kcal/mol to kJ/mol</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conversion from kcal / mol to kj/mol</span>
+<span class="n">KCAL_TO_KJ</span> <span class="o">=</span> <span class="mf">4.184</span>
+
+<span class="c1"># convert kcal/mol to kJ/mol</span>
 <span class="n">V_kJ</span> <span class="o">=</span>                   <span class="c1"># &lt;-- replace with your expression</span>
 
 <span class="c1"># shift so the minimum energy is zero</span>
 <span class="n">Vdata</span> <span class="o">=</span>                  <span class="c1"># &lt;-- subtract the minimum of V_kJ from V_kJ   (hint: np.min)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vdata (kJ/mol):&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Vdata</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+    <span class="n">V_kJ</span> <span class="o">=</span>                   <span class="c1"># &lt;-- replace with your expression</span>
+                             <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>
@@ -774,11 +827,15 @@ plot it over the data. <code class="docutils literal notranslate"><span class="p
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Computational Set: Data Analysis D — Nonlinear Curve Fitting</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bond-length-of-a-diatomic-from-a-morse-potential">Bond Length of a Diatomic from a Morse Potential</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data">The data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-cell-below-to-load-your-data-you-don-t-need-to-edit-it">📥 Run the cell below to load your data - <strong>you don’t need to edit it.</strong></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-prepare-the-energies">Step 1 — Prepare the energies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-plot-the-data-and-estimate-starting-values">Step 2 — Plot the data and estimate starting values</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-define-the-model-and-fit-it">Step 3 — Define the model and fit it</a></li>
@@ -786,6 +843,9 @@ plot it over the data. <code class="docutils literal notranslate"><span class="p
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-report-the-parameters-with-correct-significant-figures">Step 5 — Report the parameters with correct significant figures</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>

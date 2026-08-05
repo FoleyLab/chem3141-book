@@ -247,9 +247,17 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="data_analysis_A_linear_regression.html">Computational Set: Data Analysis A — Linear Regression</a></li>
+
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Computational Set: Data Analysis B — Multiple (Polynomial) Regression</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="data_analysis_C_weighted_regression.html">Computational Set: Data Analysis C — Weighted Linear Regression</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="data_analysis_D_curve_fitting.html">Computational Set: Data Analysis D — Nonlinear Curve Fitting</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
@@ -482,11 +490,16 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Computational Set: Data Analysis B — Multiple (Polynomial) Regression</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration-of-a-thermistor">Calibration of a Thermistor</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data">The data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data">The data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-cell-below-to-load-the-data-you-don-t-need-to-edit-it">💾 Run the cell below to load the data — <strong>you don’t need to edit it.</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-cell-below-to-load-your-data-you-don-t-need-to-edit-it">📥 Run the cell below to load your data - <strong>you don’t need to edit it.</strong></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-build-the-derived-columns">Step 1 — Build the derived columns</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-plot-the-data">Step 2 — Plot the data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-quadratic-multiple-regression-with-uncertainties">Step 3 — Quadratic (multiple) regression with uncertainties</a></li>
@@ -494,6 +507,9 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-report-the-parameters-with-correct-significant-figures">Step 5 — Report the parameters with correct significant figures</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -540,26 +556,64 @@ coefficients, still <strong>highest power first</strong>: <code class="docutils 
 </div></blockquote>
 </section>
 </section>
-<section id="the-data">
-<h2>The data<a class="headerlink" href="#the-data" title="Link to this heading">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="the-data">
+<h1>The data<a class="headerlink" href="#the-data" title="Link to this heading">#</a></h1>
 <p>For each calibration point we have the thermistor resistance <code class="docutils literal notranslate"><span class="pre">R</span></code> (in Ω) and the bath
 temperature <code class="docutils literal notranslate"><span class="pre">T_C</span></code> (in °C) measured with a reference thermometer.</p>
-<p><strong>JJF Note: This data will be imported, get rid of the hard-coded data and add data upload.</strong></p>
-<p>Run the cell below to load the data — <strong>you don’t need to edit it.</strong></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="run-the-cell-below-to-load-the-data-you-don-t-need-to-edit-it">
+<h1>💾 Run the cell below to load the data — <strong>you don’t need to edit it.</strong><a class="headerlink" href="#run-the-cell-below-to-load-the-data-you-don-t-need-to-edit-it" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="n">R</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1800</span><span class="p">,</span> <span class="mi">3200</span><span class="p">,</span> <span class="mi">5600</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">18000</span><span class="p">,</span> <span class="mi">32000</span><span class="p">,</span> <span class="mi">56000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>  <span class="c1"># ohms</span>
-<span class="n">T_C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">75.05</span><span class="p">,</span> <span class="mf">58.84</span><span class="p">,</span> <span class="mf">45.68</span><span class="p">,</span> <span class="mf">34.48</span><span class="p">,</span> <span class="mf">25.00</span><span class="p">,</span> <span class="mf">16.74</span><span class="p">,</span> <span class="mf">10.03</span><span class="p">,</span> <span class="mf">4.57</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">])</span>             <span class="c1"># deg C</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">FileUpload</span><span class="p">,</span> <span class="n">Dropdown</span><span class="p">,</span> <span class="n">VBox</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">R</span><span class="p">)</span><span class="si">}</span><span class="s2"> calibration points loaded.&quot;</span><span class="p">)</span>
+<span class="n">uploader</span> <span class="o">=</span> <span class="n">FileUpload</span><span class="p">(</span><span class="n">accept</span><span class="o">=</span><span class="s1">&#39;.csv&#39;</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Upload CSV&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">VBox</span><span class="p">([</span><span class="n">uploader</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The history saving thread hit an unexpected error (OperationalError(&#39;attempt to write a readonly database&#39;)).History will not be written to the database.
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "374af67872764c098082fdda3ed716f8", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="run-the-cell-below-to-load-your-data-you-don-t-need-to-edit-it">
+<h1>📥 Run the cell below to load your data - <strong>you don’t need to edit it.</strong><a class="headerlink" href="#run-the-cell-below-to-load-your-data-you-don-t-need-to-edit-it" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this cell AFTER you&#39;ve uploaded your file above.</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">uploader</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No file uploaded yet — click &#39;Upload CSV&#39; above, choose your file, then re-run this cell.&quot;</span><span class="p">)</span>
+
+<span class="c1"># ipywidgets FileUpload.value is a tuple of dicts (v8+) or a dict keyed by filename (v7)</span>
+<span class="n">uploaded</span> <span class="o">=</span> <span class="n">uploader</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">uploader</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="n">uploader</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">uploaded</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">])),</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># --- First two columns: R(omega), T(deg C) ---</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="n">R</span>  <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">T</span>  <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">R</span><span class="p">)</span><span class="si">}</span><span class="s2"> data points loaded from file.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resistance (W) = </span><span class="si">{</span><span class="n">R</span><span class="si">}</span><span class="s2"> in Ohms,  T = </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2"> °C&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
 <section id="step-1-build-the-derived-columns">
 <h2>Step 1 — Build the derived columns<a class="headerlink" href="#step-1-build-the-derived-columns" title="Link to this heading">#</a></h2>
 <p>Equation (3) treats <span class="math notranslate nohighlight">\(\ln(R/\Omega)\)</span> as the predictor and <span class="math notranslate nohighlight">\(1/T\)</span> (with <span class="math notranslate nohighlight">\(T\)</span> in <strong>Kelvin</strong>) as the
@@ -742,11 +796,16 @@ solid curve on top of the data.</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Computational Set: Data Analysis B — Multiple (Polynomial) Regression</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration-of-a-thermistor">Calibration of a Thermistor</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data">The data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data">The data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-cell-below-to-load-the-data-you-don-t-need-to-edit-it">💾 Run the cell below to load the data — <strong>you don’t need to edit it.</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-cell-below-to-load-your-data-you-don-t-need-to-edit-it">📥 Run the cell below to load your data - <strong>you don’t need to edit it.</strong></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-build-the-derived-columns">Step 1 — Build the derived columns</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-plot-the-data">Step 2 — Plot the data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-quadratic-multiple-regression-with-uncertainties">Step 3 — Quadratic (multiple) regression with uncertainties</a></li>
@@ -754,6 +813,9 @@ solid curve on top of the data.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-report-the-parameters-with-correct-significant-figures">Step 5 — Report the parameters with correct significant figures</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
