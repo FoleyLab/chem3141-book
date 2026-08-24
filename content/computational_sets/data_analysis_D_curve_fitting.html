@@ -604,7 +604,7 @@ in <strong>ångström</strong> (<code class="docutils literal notranslate"><span
 
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="si">}</span><span class="s2"> data points loaded from file.&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bond length = </span><span class="si">{</span><span class="n">R</span><span class="si">}</span><span class="s2"> in Angstroms,  V = </span><span class="si">{</span><span class="n">V</span><span class="si">}</span><span class="s2"> kcal / mol&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bond length = </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s2"> in Angstroms,  V = </span><span class="si">{</span><span class="n">V</span><span class="si">}</span><span class="s2"> kcal / mol&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -624,20 +624,13 @@ first geometry, so <strong>shift</strong> the data down by its minimum value to 
 <span class="n">KCAL_TO_KJ</span> <span class="o">=</span> <span class="mf">4.184</span>
 
 <span class="c1"># convert kcal/mol to kJ/mol</span>
-<span class="n">V_kJ</span> <span class="o">=</span>                   <span class="c1"># &lt;-- replace with your expression</span>
+<span class="n">V_kJ</span> <span class="o">=</span>               <span class="c1"># &lt;-- replace with your expression</span>
+
 
 <span class="c1"># shift so the minimum energy is zero</span>
-<span class="n">Vdata</span> <span class="o">=</span>                  <span class="c1"># &lt;-- subtract the minimum of V_kJ from V_kJ   (hint: np.min)</span>
+<span class="n">Vdata</span> <span class="o">=</span>               <span class="c1"># &lt;-- subtract the minimum of V_kJ from V_kJ   (hint: np.min)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vdata (kJ/mol):&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Vdata</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-    <span class="n">V_kJ</span> <span class="o">=</span>                   <span class="c1"># &lt;-- replace with your expression</span>
-                             <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>
